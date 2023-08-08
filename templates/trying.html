@@ -11,6 +11,9 @@
       crossorigin="anonymous"
     />
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
+      *{
+        font-family: 'Exo 2', sans-serif !important;      }
       .background-setter {
         background-color: #0d111b !important;
       }
@@ -35,23 +38,27 @@
         height: 1px;
         width: 100%;
       }
+      
       .custom-div {
       background-color: #181E30;
       border-radius: 10px; /* Rounded corners */
       padding: 20px;
       margin: 20px;
-      max-width: 30rem;
+      max-width: 35rem;
       min-width: 15rem;
       margin: 0 auto;
       margin-top: 3rem;
       margin-bottom: 3rem;
+      
+      
     }
     .custom-input {
       background-color: rgba(13, 17, 27, 0.5);
       border: 1px solid rgba(13, 17, 27, 0.5);
-      border-radius: 15px;
+      border-radius: 20px;
       padding: 10px;
       max-width: 30rem;
+      max-height: 3rem;
       margin: 0 auto;
       
     }
@@ -71,7 +78,7 @@
     .custom-button {
       background-color: #FFD700;
       border: none;
-      border-radius: 10px;
+      border-radius: 20px;
       padding: 10px 20px;
       color: white;
       font-weight: bold;
@@ -81,40 +88,77 @@
       display: block;
       margin: 0 auto;
       margin-top: 2rem !important;
+      height: 2.75rem !important;
 
     }
     .custom-button:hover {
       background-color: white;
       color: black;
+    
     }
+
+    .input-div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    
+    
     </style>
   </head>
   <body class="background-setter">
-    <h4 class="mt-1 ms-1 white-color-setter">Forman Course Scheduler</h4>
+    <h4 class="mt-1 ms-1 white-color-setter text-center">Forman Course Scheduler</h4>
     <div class="line-container"></div>
     <section>
+      
         <div class="custom-div white-color-setter">
-            <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
-            <datalist id="term">
-              </datalist>
-            <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
-            <datalist id="department">
-            </datalist>
-            <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
-            <datalist id="course">
-            </datalist>
-            <input type="text" id="instructor-selector" list="instructor" class="form-control custom-input white-color-setter text-center my-2" placeholder="Instructor" style="color: white;">
-            <datalist id="instructor">
-            </datalist>
-            <button class="btn custom-button mt-2" onclick="filterCourses()">Custom Button</button>
+          <div class="input-div">
+            <div>
+
+              <div  class="input-direct-div" style="margin-bottom: 2rem;">
+
+                <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
+                <datalist id="term">
+                </datalist>
+              </div>
+              <div class="input-direct-div" >
+
+                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
+                <datalist id="department">
+                </datalist>
+              </div>
+            </div>
+            <div>
+              <div class="input-direct-div" style="margin-bottom: 2rem;">
+                
+                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
+                <datalist id="course">
+                </datalist>
+              </div>
+              <div class="input-direct-div">
+
+                <input type="text" id="instructor-selector" list="instructor" class="form-control custom-input white-color-setter text-center my-2" placeholder="Instructor" style="color: white;">
+                <datalist id="instructor">
+                </datalist>
+              </div>
+            </div>
+
+          </div>
+
+            <div class="button-div">
+
+              <button class="btn custom-button mt-2" onclick="filterCourses()">Filter</button>
+            </div>
    
         </div>
 
         </div>
     </section>
     <section>
-        <h1 class="mt-1 ms-1 white-color-setter text-center">Filtered Courses</h1>
-        <ul id="courses-list"></ul>
+        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+        <ul id="courses-list" style="list-style-type: none;"></ul>
     </section>
 
     <script
@@ -190,7 +234,7 @@
         coursesList.empty();
 
         courses.forEach((course) => {
-          const li = $("<li>");
+          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px'><li>");
           const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
           const checkbox = $('<input type="checkbox">').attr(
             "value",
@@ -220,30 +264,27 @@
           li.append(
             ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
           );
-          li.append("<br>");
+          
           li.append(` Credits: <strong>${course.credits}</strong>`);
-          li.append("<br>");
           li.append(
             ` Section: <strong>${course.section}</strong> - Instructor: <strong>${course.instructor_name}</strong>`
           );
 
           if (course.classroom !== "TBDTBD") {
-            li.append("<br>");
+            
             li.append(
               ` <strong>${course.classroom}</strong> on <strong>${course.days}</strong> from <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
-            li.append("<br>");
+            
             li.append(
               `<strong>${course.alternate_classroom}</strong> on <strong>${course.alternate_days}</strong> from <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong>`
             );
           }
 
-          li.append("<br>");
-          li.append("<hr>");
-          li.append("<br>");
+        
           coursesList.append(li);
         });
       }
