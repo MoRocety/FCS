@@ -52,7 +52,7 @@ def index():
 
         return json.dumps(sections_json, indent=2)
     
-    return render_template('New_index.html')
+    return render_template('trying.html')
 
 
 @my_blueprint.route('/departments', methods=['GET'])
