@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
+      *{
+        font-family: 'Exo 2', sans-serif !important;      }
+      .background-setter {
+        background-color: #0d111b !important;
+      }
+
+      .white-color-setter-background {
+        background-color: #f8f9fc !important;
+      }
+      .white-color-setter {
+        color: #f8f9fc;
+      }
+      .input-color-setter {
+        color: rgba(13, 17, 27, 0.5);
+      }
+      
+      .filteredCourseP{
+        margin-bottom: 0px !important;
+      }
+      hr {
+        height: 2px;
+        width: 100svw;
+      }
+      .line-container {
+        background-color: #f8f9fc !important;
+        height: 1px;
+        width: 100%;
+      }
+      
+      .custom-div {
+      background-color: #181E30;
+      border-radius: 10px; /* Rounded corners */
+      padding: 20px;
+      margin: 20px;
+      max-width: 35rem;
+      min-width: 15rem;
+      margin: 0 auto;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      
+      
+    }
+    .custom-input {
+      background-color: rgba(13, 17, 27, 0.5);
+      border: 1px solid rgba(13, 17, 27, 0.5);
+      border-radius: 20px;
+      padding: 10px;
+      max-width: 30rem;
+      max-height: 3rem;
+      margin: 0 auto;
+      
+    }
+    .custom-input::placeholder {
+      color: white;
+    }
+    .custom-input:focus {
+      background-color: rgba(13, 17, 27, 0.5);
+      border-color: rgba(13, 17, 27, 0.5);
+    }
+
+    .custom-input:hover {
+      background-color: rgba(13, 17, 27, 0.5);
+      border-color: rgba(13, 17, 27, 0.5);
+    }
+
+    .custom-button {
+      background-color: #FFD700;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+      display: block;
+      margin: 0 auto;
+      margin-top: 2rem !important;
+      height: 2.75rem !important;
+
+    }
+    .custom-button:hover {
+      background-color: white;
+      color: black;
+    
+    }
+
+    .input-div{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4rem;
+    }
+
+    
+    
+    </style>
+  </head>
+  <body class="background-setter">
+    <h4 class="mt-1 ms-1 white-color-setter text-center">Forman Course Scheduler</h4>
+    <div class="line-container"></div>
+    <section id="inputSection">
+      
+        <div class="custom-div white-color-setter">
+          <div class="input-div">
+            <div>
+
+              <div  class="input-direct-div" style="margin-bottom: 2rem;">
+
+                <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
+                <datalist id="term">
+                </datalist>
+              </div>
+              <div class="input-direct-div" >
+
+                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
+                <datalist id="department">
+                </datalist>
+              </div>
+            </div>
+            <div>
+              <div class="input-direct-div" style="margin-bottom: 2rem;">
+                
+                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
+                <datalist id="course">
+                </datalist>
+              </div>
+              <div class="input-direct-div">
+
+                <input type="text" id="instructor-selector" list="instructor" class="form-control custom-input white-color-setter text-center my-2" placeholder="Instructor" style="color: white;">
+                <datalist id="instructor">
+                </datalist>
+              </div>
+            </div>
+
+          </div>
+
+            <div class="button-div">
+
+              <button class="btn custom-button mt-2" onclick="filterCourses()">Filter</button>
+            </div>
+   
+        </div>
+
+        </div>
+    </section>
+    <section id="filterCoursesSection">
+        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+        <ul id="courses-list" style="list-style-type: none; "></ul>
+    </section>
+    <section id="shortlistedCoursesSection">
+      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>      <ul id="selected-courses-list">
+        <p id="selected-courses-count" style="color:white;">
+          Selected Courses Count: <strong>0</strong>
+        </p>
+       
+        <!-- Selected courses will be dynamically added here -->
+        
+
+        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
+
+        
+      </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+    <script>
+      var selectedCourses = [];
+      var selectedCoursesCount = 0;
+      var crucialCheckboxes = [];
+      var checkedCrucials = [];
+
+      $(document).ready(function () {
+        $(".select2").select2();
+
+        // Initialize the credit range slider
+        $("#credit-range").slider({
+          tooltip: "always",
+        });
+
+        // Populate dropdown menus
+        populateDropdown("#department", "/departments");
+        populateDropdown("#course", "/courses");
+        populateDropdown("#instructor", "/instructors");
+      });
+
+      function populateDropdown(selector, url) {
+        const dropdown = $(selector);
+        $.ajax({
+          url: url,
+          type: "GET",
+          success: function (response) {
+            const options = JSON.parse(response);
+            options.unshift({ label: "All", value: "all" });
+            dropdown.empty();
+            options.forEach((option) => {
+              const optionElement = $("<option>")
+                .attr("value", option.value)
+                .text(option.label);
+              dropdown.append(optionElement);
+            });
+          },
+        });
+      }
+
+      function filterCourses() {
+        const selectedDepartment = $("#department-selector").val();
+        const selectedCourse = $("#course-selector").val();
+        const selectedInstructor = $("#instructor-selector").val();
+        $.ajax({
+          url: "/",
+          type: "POST",
+          data: {
+            dropdown: selectedDepartment,
+            dropdown2: selectedCourse,
+            dropdown3: selectedInstructor,
+          },
+          success: function (response) {
+            const courses = JSON.parse(response);
+            displayCourses(courses);
+          },
+        });
+      }
+
+      function displayCourses(courses) {
+        console.log(courses)
+        const coursesList = $("#courses-list");
+        coursesList.empty();
+
+        courses.forEach((course) => {
+          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+            const liDiv = $("<div  style='border-radius: 50px; '></div>")
+            const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+          const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
+            "value",
+            compositeKey
+          );
+
+          // Check if the course is already selected
+          const isSelected = selectedCourses.some(
+            (selectedCourse) =>
+              selectedCourse.course_id === course.course_id &&
+              selectedCourse.department_id === course.department_id &&
+              selectedCourse.section === course.section
+          );
+          if (isSelected) {
+            checkbox.prop("checked", true);
+          }
+
+          checkbox.on("change", function () {
+            if (this.checked) {
+              addSelectedCourse(course);
+            } else {
+              removeSelectedCourse(course);
+            }
+          });
+          
+          li.append(checkbox);
+          li.append(liDiv)
+          liDiv.append(
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
+          );
+          
+          liDiv.append(
+            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+          );
+
+          if (course.classroom !== "TBDTBD") {
+            
+            liDiv.append(
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
+            );
+          }
+
+          if (course.alternate_classroom !== "None") {
+            
+            liDiv.append(
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
+            );
+          }
+
+        
+          coursesList.append(li);
+        });
+      }
+
+      function addSelectedCourse(course) {
+        selectedCourses.push(course);
+        selectedCoursesCount++;
+        updateSelectedCoursesList();
+        updateSelectedCoursesCount();
+
+        // Check if the course already exists in the crucialCheckboxes array
+        const isCourseExist = crucialCheckboxes.some(
+          (item) =>
+            item.course_id === course.course_id &&
+            item.department_id === course.department_id
+        );
+
+        if (!isCourseExist) {
+          crucialCheckboxes.push(course);
+        }
+        updateCrucialCourses();
+      }
+
+      function removeSelectedCourse(course) {
+        const index = selectedCourses.findIndex(
+          (c) =>
+            c.course_id === course.course_id &&
+            c.department_id === course.department_id &&
+            c.section === course.section
+        );
+
+        if (index !== -1) {
+          selectedCourses.splice(index, 1);
+          selectedCoursesCount--;
+          updateSelectedCoursesList();
+          updateSelectedCoursesCount();
+
+          const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+          const checkbox = $(
+            `input[type="checkbox"][value="${compositeKey}"]`
+          );
+          checkbox.prop("checked", false);
+
+          // Check if the course is still present in the selectedCourses array
+          const isCoursePresent = selectedCourses.some(
+            (c) =>
+              c.course_id === course.course_id &&
+              c.department_id === course.department_id
+          );
+
+          if (!isCoursePresent) {
+            // Remove the course from crucialCheckboxes array
+            const crucialIndex = crucialCheckboxes.findIndex(
+              (c) =>
+                c.course_id === course.course_id &&
+                c.department_id === course.department_id
+            );
+            if (crucialIndex !== -1) {
+              crucialCheckboxes.splice(crucialIndex, 1);
+            }
+
+            // Remove the course from checkedCrucials array
+            const checkedCrucialIndex = checkedCrucials.findIndex(
+              (c) =>
+                c.course_id === course.course_id &&
+                c.department_id === course.department_id
+            );
+            if (checkedCrucialIndex !== -1) {
+              checkedCrucials.splice(checkedCrucialIndex, 1);
+            }
+          }
+        }
+
+        updateCrucialCourses();
+      }
+
+      function updateSelectedCoursesList() {
+        const selectedCoursesList = $("#selected-courses-list");
+        selectedCoursesList.empty();
+
+        selectedCourses.forEach((course) => {
+          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+   const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
+
+          const popButton = $(
+            '<button class="btn btn-danger btn-sm">-</button>'
+          );
+          popButton.on("click", function () {
+            removeSelectedCourse(course);
+          });
+          li.append(popButton);
+          li.append(shortLiDiv)
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
+          );
+          
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+          );
+
+          if (course.classroom !== "TBDTBD") {
+            
+            shortLiDiv.append(
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
+            );
+          }
+
+          if (course.alternate_classroom !== "None") {
+            
+            shortLiDiv.append(
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
+            );
+          }
+
+
+        
+          selectedCoursesList.append(li);
+        });
+      }
+
+      function updateSelectedCoursesCount() {
+        const selectedCoursesCountElement = $("#selected-courses-count");
+        selectedCoursesCountElement.html(
+          `Selected Courses Count: <strong>${selectedCoursesCount}</strong>`
+        );
+      }
+
+      function updateCrucialCourses() {
+        const crucialList = $("#crucialCoursesContainer");
+        crucialList.empty();
+
+        crucialCheckboxes.forEach((course) => {
+          const li = $("<li>");
+          const compositeKey = `${course.course_id}-${course.department_id}`;
+          const checkbox = $('<input type="checkbox">').attr(
+            "value",
+            compositeKey
+          );
+
+          // Check if the course is already selected
+          const isChecked = checkedCrucials.some(
+            (checkedCrucial) =>
+              checkedCrucial.course_id === course.course_id &&
+              checkedCrucial.department_id === course.department_id
+          );
+          if (isChecked) {
+            checkbox.prop("checked", true);
+          }
+
+          checkbox.on("change", function () {
+            if (this.checked) {
+              checkedCrucials.push(course);
+            } else {
+              const index = checkedCrucials.findIndex(
+                (c) =>
+                  c.course_id === course.course_id &&
+                  c.department_id === course.department_id
+              );
+
+              if (index !== -1) {
+                checkedCrucials.splice(index, 1);
+
+                const compositeKey = `${course.course_id}-${course.department_id}`;
+                const checkbox = $(
+                  `input[type="checkbox"][value="${compositeKey}"]`
+                );
+                checkbox.prop("checked", false);
+              }
+            }
+          });
+
+          // Append checkbox, course information, and line break outside the event handler
+          li.append(checkbox);
+          li.append(
+            ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+          );
+          li.append("<br>");
+          crucialList.append(li);
+        });
+      }
+
+      function submitSelectedCourses() {
+        // Retrieve the slider values
+        const sliderValues = $("#credit-range").slider("getValue");
+        const minCredit = sliderValues[0];
+        const maxCredit = sliderValues[1];
+
+        // Prepare the data to be sent
+        const data = {
+          selectedCourses: selectedCourses.map((course) => ({
+            course_id: course.course_id,
+            department_id: course.department_id,
+            section: course.section,
+            instructor_name: course.instructor_name,
+          })),
+          checkedCrucials: checkedCrucials.map((course) => ({
+            course_id: course.course_id,
+            department_id: course.department_id,
+          })),
+          minCredit: minCredit,
+          maxCredit: maxCredit,
+        };
+
+        // Send the data to the backend
+        $.ajax({
+          url: "/submit",
+          type: "POST",
+          data: JSON.stringify(data),
+          contentType: "application/json",
+          success: function (response) {
+            displayCombinations(JSON.parse(response));
+          },
+        });
+      }
+
+      function displayCombinations(combinations) {
+        const combinationsList = $("#combinations-list");
+        combinationsList.empty();
+
+        for (const [combinationName, combinationData] of Object.entries(
+          combinations
+        )) {
+          const combinationHeader = $("<h4>").text(combinationName);
+          combinationsList.append(combinationHeader);
+
+          const coursesList = $("<ul>");
+
+          combinationData.forEach((course) => {
+            const courseItem = $("<li>");
+            courseItem.append(
+              ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+            );
+            courseItem.append("<br>");
+            courseItem.append(` Credits: <strong>${course.credits}</strong>`);
+            courseItem.append("<br>");
+            courseItem.append(
+              ` Section: <strong>${course.section}</strong> - Instructor: <strong>${course.instructor_name}</strong>`
+            );
+
+            if (course.classroom !== "TBDTBD") {
+              courseItem.append("<br>");
+              courseItem.append(
+                ` <strong>${course.classroom}</strong> on <strong>${course.days}</strong> from <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong>`
+              );
+            }
+
+            if (course.alternate_classroom !== "None") {
+              courseItem.append("<br>");
+              courseItem.append(
+                `<strong>${course.alternate_classroom}</strong> on <strong>${course.alternate_days}</strong> from <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong>`
+              );
+            }
+
+            courseItem.append("<br>");
+
+            coursesList.append(courseItem);
+            coursesList.append("<hr>");
+          });
+
+          combinationsList.append(coursesList);
+
+          // Display total credits
+          const totalCredits = $("<p>").html(
+            `Total Credits: <strong>${combinationData.reduce(
+              (sum, course) => sum + course.credits,
+              0
+            )}</strong>`
+          );
+
+          combinationsList.append(totalCredits);
+          combinationsList.append("<hr>");
+          combinationsList.append("<br>");
+        }
+      }
+    </script>
+  </body>
+</html>
