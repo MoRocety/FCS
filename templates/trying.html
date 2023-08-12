@@ -28,7 +28,9 @@
         color: rgba(13, 17, 27, 0.5);
       }
       
-
+      .filteredCourseP{
+        margin-bottom: 0px !important;
+      }
       hr {
         height: 2px;
         width: 100svw;
@@ -111,7 +113,7 @@
   <body class="background-setter">
     <h4 class="mt-1 ms-1 white-color-setter text-center">Forman Course Scheduler</h4>
     <div class="line-container"></div>
-    <section>
+    <section id="inputSection">
       
         <div class="custom-div white-color-setter">
           <div class="input-div">
@@ -156,10 +158,23 @@
 
         </div>
     </section>
-    <section>
+    <section id="filterCoursesSection">
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
-        <ul id="courses-list" style="list-style-type: none;"></ul>
+        <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
+    <section id="shortlistedCoursesSection">
+      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>      <ul id="selected-courses-list">
+        <p id="selected-courses-count" style="color:white;">
+          Selected Courses Count: <strong>0</strong>
+        </p>
+       
+        <!-- Selected courses will be dynamically added here -->
+        
+
+        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
+
+        
+      </section>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -234,9 +249,10 @@
         coursesList.empty();
 
         courses.forEach((course) => {
-          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px'><li>");
-          const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-          const checkbox = $('<input type="checkbox">').attr(
+          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+            const liDiv = $("<div  style='border-radius: 50px; '></div>")
+            const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+          const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
             "value",
             compositeKey
           );
@@ -259,28 +275,28 @@
               removeSelectedCourse(course);
             }
           });
-
+          
           li.append(checkbox);
-          li.append(
-            ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+          li.append(liDiv)
+          liDiv.append(
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
           );
           
-          li.append(` Credits: <strong>${course.credits}</strong>`);
-          li.append(
-            ` Section: <strong>${course.section}</strong> - Instructor: <strong>${course.instructor_name}</strong>`
+          liDiv.append(
+            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
             
-            li.append(
-              ` <strong>${course.classroom}</strong> on <strong>${course.days}</strong> from <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong>`
+            liDiv.append(
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
             
-            li.append(
-              `<strong>${course.alternate_classroom}</strong> on <strong>${course.alternate_days}</strong> from <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong>`
+            liDiv.append(
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
@@ -366,7 +382,9 @@
         selectedCoursesList.empty();
 
         selectedCourses.forEach((course) => {
-          const li = $("<li>");
+          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+   const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
+
           const popButton = $(
             '<button class="btn btn-danger btn-sm">-</button>'
           );
@@ -374,33 +392,31 @@
             removeSelectedCourse(course);
           });
           li.append(popButton);
-          li.append(
-            ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+          li.append(shortLiDiv)
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
           );
-          li.append("<br>");
-          li.append(` Credits: <strong>${course.credits}</strong>`);
-          li.append("<br>");
-          li.append(
-            ` Section: <strong>${course.section}</strong> - Instructor: <strong>${course.instructor_name}</strong>`
+          
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
-            li.append("<br>");
-            li.append(
-              ` <strong>${course.classroom}</strong> on <strong>${course.days}</strong> from <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong>`
+            
+            shortLiDiv.append(
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
-            li.append("<br>");
-            li.append(
-              `<strong>${course.alternate_classroom}</strong> on <strong>${course.alternate_days}</strong> from <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong>`
+            
+            shortLiDiv.append(
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
-          li.append("<br>");
-          li.append("<hr>");
-          li.append("<br>");
+
+        
           selectedCoursesList.append(li);
         });
       }

@@ -55,6 +55,51 @@ def index():
     return render_template('trying.html')
 
 
+@my_blueprint.route('/old', methods=['GET', 'POST'])
+def old():
+    if request.method == 'POST':
+        dropdown_value = request.form['dropdown']
+        dropdown2_value = request.form['dropdown2']
+        dropdown3_value = request.form['dropdown3']
+
+        filtered_sections = course_data
+
+        
+        if dropdown_value != "all":
+            filtered_sections = [x for x in filtered_sections if x[0] == dropdown_value]
+
+        if dropdown2_value != "all":
+            filtered_sections = [x for x in filtered_sections if x[3] == dropdown2_value]
+
+        if dropdown3_value != "all":
+            filtered_sections = [x for x in filtered_sections if x[8] == dropdown3_value]
+        
+        # Convert sections to JSON format
+        sections_json = []
+        for section in filtered_sections:
+            sections_json.append({
+                'department_id': section[0],
+                'course_id': section[1],
+                'section': section[2],
+                'name': section[3],
+                'credits': section[4],
+                'days': "".join(filter(str.isalpha, section[5])),
+                'start_time': section[6],
+                'end_time': section[7],
+                'instructor_name': section[8],
+                'classroom': section[9],
+                'alternate_classroom': section[10],
+                'alternate_days': "".join(filter(str.isalpha, section[11])),
+                'alternate_start_time': section[12],
+                'alternate_end_time': section[13]
+            })
+
+        return json.dumps(sections_json, indent=2)
+    
+    return render_template('New_index.html')
+
+
+
 @my_blueprint.route('/departments', methods=['GET'])
 def get_departments():
     departments.sort()
