@@ -7,9 +7,6 @@ from combcheck import *
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
-department_id = 'COMP'  # Replace with the specific department ID
-course_id = '200'  # Replace with the specific course ID
-
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
@@ -20,14 +17,13 @@ def index():
 
         filtered_sections = course_data
 
-        
-        if dropdown_value != "all":
+        if not (dropdown_value == "All" or dropdown_value == ""):
             filtered_sections = [x for x in filtered_sections if x[0] == dropdown_value]
 
-        if dropdown2_value != "all":
+        if not (dropdown2_value == "All" or dropdown2_value == ""):
             filtered_sections = [x for x in filtered_sections if x[3] == dropdown2_value]
 
-        if dropdown3_value != "all":
+        if not (dropdown3_value == "All" or dropdown3_value == ""):
             filtered_sections = [x for x in filtered_sections if x[8] == dropdown3_value]
         
         # Convert sections to JSON format
@@ -55,61 +51,18 @@ def index():
     return render_template('trying.html')
 
 
-@my_blueprint.route('/old', methods=['GET', 'POST'])
-def old():
-    if request.method == 'POST':
-        dropdown_value = request.form['dropdown']
-        dropdown2_value = request.form['dropdown2']
-        dropdown3_value = request.form['dropdown3']
-
-        filtered_sections = course_data
-
-        
-        if dropdown_value != "all":
-            filtered_sections = [x for x in filtered_sections if x[0] == dropdown_value]
-
-        if dropdown2_value != "all":
-            filtered_sections = [x for x in filtered_sections if x[3] == dropdown2_value]
-
-        if dropdown3_value != "all":
-            filtered_sections = [x for x in filtered_sections if x[8] == dropdown3_value]
-        
-        # Convert sections to JSON format
-        sections_json = []
-        for section in filtered_sections:
-            sections_json.append({
-                'department_id': section[0],
-                'course_id': section[1],
-                'section': section[2],
-                'name': section[3],
-                'credits': section[4],
-                'days': "".join(filter(str.isalpha, section[5])),
-                'start_time': section[6],
-                'end_time': section[7],
-                'instructor_name': section[8],
-                'classroom': section[9],
-                'alternate_classroom': section[10],
-                'alternate_days': "".join(filter(str.isalpha, section[11])),
-                'alternate_start_time': section[12],
-                'alternate_end_time': section[13]
-            })
-
-        return json.dumps(sections_json, indent=2)
-    
-    return render_template('New_index.html')
-
-
-
 @my_blueprint.route('/departments', methods=['GET'])
 def get_departments():
     departments.sort()
     departments_ = [{'label': department, 'value': department} for department in departments]
     return json.dumps(departments_)
 
+
 @my_blueprint.route('/courses', methods=['GET'])
 def get_courses():
     courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
     return json.dumps(courses_)
+
 
 @my_blueprint.route('/instructors', methods=['GET'])
 def get_instructors():
@@ -117,6 +70,32 @@ def get_instructors():
     instructors.sort()
     unique_instructors = [{'label': instructor, 'value': instructor} for instructor in instructors]
     return json.dumps(unique_instructors)
+
+
+@my_blueprint.route('/updateDropdown', methods=['POST'])
+def update_dropdown():
+    data = request.get_json()['data']  # Extract 'data' from the request JSON
+
+    print(data)
+    # Assuming 'sections' and 'courses' are available somewhere
+    if data == "all":
+        instructors_ = list(set([x[6] for x in sections]))
+        courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
+
+    else:
+        instructors_ = list(set([x[6] for x in sections if x[0] == data]))
+        courses_ = [{'label': course[2], 'value': course[2]} for course in courses if course[0] == data]
+    
+    instructors_.sort()
+    instructors_ = [{'label': instructor, 'value': instructor} for instructor in instructors_]    
+
+    response_data = {
+        'courses': courses_,
+        'instructors': instructors_
+    }
+
+    return json.dumps(response_data)
+
 
 @my_blueprint.route('/submit', methods=['POST'])
 def submit_selected_courses():

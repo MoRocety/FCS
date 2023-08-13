@@ -34,3 +34,19 @@ for x in course_data:
         filtered_data[8], filtered_data[9], filtered_data[10], filtered_data[11] = x[10], alt_result, x[12], x[13]
 
     sections.append(tuple(filtered_data))
+
+
+def data_retrieve(dept, name, instructor, start, end):
+    
+
+    with open("falldata.txt", "r") as infile:
+        for line in infile:
+            data = line.strip().split("!!")
+            departments.add(x[0])
+
+            course = (x[0], x[1], x[3], x[4])
+            courses.add(course)
+
+    course_data = [x.split("!!") for x in course_data[:-1]]
+
+    

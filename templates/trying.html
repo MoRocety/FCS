@@ -99,19 +99,21 @@
     
     }
 
+    ::placeholder {
+    font-weight: bold;
+    }
+
     .input-div{
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 4rem;
     }
-
-    
     
     </style>
   </head>
   <body class="background-setter">
-    <h4 class="mt-1 ms-1 white-color-setter text-center">Forman Course Scheduler</h4>
+    <h1 class="mt-1 ms-1 white-color-setter text-center"><strong>Forman Course Scheduler</strong></h1>
     <div class="line-container"></div>
     <section id="inputSection">
       
@@ -203,6 +205,12 @@
         populateDropdown("#department", "/departments");
         populateDropdown("#course", "/courses");
         populateDropdown("#instructor", "/instructors");
+
+        $('#department-selector').on('change', function () {
+          const selectedValue = $(this).val();
+          updateDropdown(selectedValue);
+        });
+
       });
 
       function populateDropdown(selector, url) {
@@ -212,7 +220,7 @@
           type: "GET",
           success: function (response) {
             const options = JSON.parse(response);
-            options.unshift({ label: "All", value: "all" });
+            options.unshift({value: "All" });
             dropdown.empty();
             options.forEach((option) => {
               const optionElement = $("<option>")
@@ -244,7 +252,7 @@
       }
 
       function displayCourses(courses) {
-        console.log(courses)
+        console.log("kek");
         const coursesList = $("#courses-list");
         coursesList.empty();
 
@@ -289,14 +297,14 @@
           if (course.classroom !== "TBDTBD") {
             
             liDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
             
             liDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
@@ -304,6 +312,35 @@
           coursesList.append(li);
         });
       }
+      
+
+      function updateDropdown(selectedValue) {
+        const dropdown2 = $("#course");
+        const dropdown3 = $("#instructor");
+        $.ajax({
+            url: '/updateDropdown',
+            type: 'POST',
+            data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+            contentType: 'application/json',
+            success: function (response) {
+                const options = JSON.parse(response);
+                options.courses.unshift({value: 'All' });
+                dropdown2.empty();
+                options.courses.forEach(option => {
+                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
+                    dropdown2.append(optionElement);
+                });
+
+                options.instructors.unshift({value: 'All' });
+                dropdown3.empty();
+                options.instructors.forEach(option => {
+                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
+                    dropdown3.append(optionElement);
+                });
+            }
+        });
+      }
+      
 
       function addSelectedCourse(course) {
         selectedCourses.push(course);
@@ -383,7 +420,7 @@
 
         selectedCourses.forEach((course) => {
           const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
-   const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
+          const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
 
           const popButton = $(
             '<button class="btn btn-danger btn-sm">-</button>'
@@ -404,14 +441,14 @@
           if (course.classroom !== "TBDTBD") {
             
             shortLiDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> : <strong>${course.end_time}</strong></p>`
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
             
             shortLiDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> : <strong>${course.alternate_end_time}</strong></p>`
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
