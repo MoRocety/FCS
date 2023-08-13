@@ -1,12 +1,13 @@
 from flask import render_template, Blueprint, request
 from flask_cors import CORS
 import json
-from dataread import *
+from dataread import fileread
 from combcheck import *
 
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
+course_data, departments, courses, sections = fileread("2023 Fall")
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
@@ -29,6 +30,12 @@ def index():
         # Convert sections to JSON format
         sections_json = []
         for section in filtered_sections:
+            if section[8] != "TBD":
+                instructor = section[8].title()
+            
+            else:
+                instructor = section[8]
+
             sections_json.append({
                 'department_id': section[0],
                 'course_id': section[1],
@@ -38,7 +45,7 @@ def index():
                 'days': "".join(filter(str.isalpha, section[5])),
                 'start_time': section[6],
                 'end_time': section[7],
-                'instructor_name': section[8],
+                'instructor_name': instructor,
                 'classroom': section[9],
                 'alternate_classroom': section[10],
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
@@ -49,6 +56,17 @@ def index():
         return json.dumps(sections_json, indent=2)
     
     return render_template('trying.html')
+
+
+@my_blueprint.route('/updateTerm', methods=['POST'])
+def update_term():
+    global course_data, departments, courses, sections
+
+    selected_value = request.json.get('selectedValue')
+    course_data, departments, courses, sections = fileread(selected_value)
+
+    print(departments)
+    return "Data updated successfully"
 
 
 @my_blueprint.route('/departments', methods=['GET'])
@@ -76,7 +94,6 @@ def get_instructors():
 def update_dropdown():
     data = request.get_json()['data']  # Extract 'data' from the request JSON
 
-    print(data)
     # Assuming 'sections' and 'courses' are available somewhere
     if data == "all":
         instructors_ = list(set([x[6] for x in sections]))

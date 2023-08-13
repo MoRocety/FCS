@@ -31,10 +31,12 @@
       .filteredCourseP{
         margin-bottom: 0px !important;
       }
+
       hr {
         height: 2px;
         width: 100svw;
       }
+
       .line-container {
         background-color: #f8f9fc !important;
         height: 1px;
@@ -67,6 +69,7 @@
     .custom-input::placeholder {
       color: white;
     }
+
     .custom-input:focus {
       background-color: rgba(13, 17, 27, 0.5);
       border-color: rgba(13, 17, 27, 0.5);
@@ -91,16 +94,15 @@
       margin: 0 auto;
       margin-top: 2rem !important;
       height: 2.75rem !important;
-
     }
+
     .custom-button:hover {
       background-color: white;
       color: black;
-    
     }
 
     ::placeholder {
-    font-weight: bold;
+      font-weight: bold;
     }
 
     .input-div{
@@ -125,20 +127,20 @@
 
                 <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
                 <datalist id="term">
+                  <option value="2023 Fall">
+                  <option value="Pharmacy Program Fall 2023">
                 </datalist>
               </div>
               <div class="input-direct-div" >
-
-                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
-                <datalist id="department">
+                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
+                <datalist id="course">
                 </datalist>
               </div>
             </div>
             <div>
-              <div class="input-direct-div" style="margin-bottom: 2rem;">
-                
-                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
-                <datalist id="course">
+              <div class="input-direct-div" style="margin-bottom: 2rem;">                
+                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
+                <datalist id="department">
                 </datalist>
               </div>
               <div class="input-direct-div">
@@ -152,7 +154,6 @@
           </div>
 
             <div class="button-div">
-
               <button class="btn custom-button mt-2" onclick="filterCourses()">Filter</button>
             </div>
    
@@ -164,18 +165,14 @@
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
         <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
+
     <section id="shortlistedCoursesSection">
-      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>      <ul id="selected-courses-list">
+      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
+        <!-- Selected courses will be dynamically added here -->
+        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
         <p id="selected-courses-count" style="color:white;">
           Selected Courses Count: <strong>0</strong>
         </p>
-       
-        <!-- Selected courses will be dynamically added here -->
-        
-
-        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
-
-        
       </section>
 
     <script
@@ -192,26 +189,60 @@
       var selectedCoursesCount = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
+      var currentTerm = "2023 Fall";
 
       $(document).ready(function () {
         $(".select2").select2();
 
-        // Initialize the credit range slider
-        $("#credit-range").slider({
-          tooltip: "always",
-        });
+        $("#filterCoursesSection").hide();
+        $("#shortlistedCoursesSection").hide();
 
         // Populate dropdown menus
         populateDropdown("#department", "/departments");
         populateDropdown("#course", "/courses");
         populateDropdown("#instructor", "/instructors");
 
+        $('#term-selector').on('change', function () {
+          const selectedValue = $(this).val();
+          updateTerm(selectedValue)
+        });
+
         $('#department-selector').on('change', function () {
           const selectedValue = $(this).val();
           updateDropdown(selectedValue);
         });
+        
+        $('.custom-button').on('click', function () {
+          const selectedTerm = $('#term-selector').val();
+          if (selectedTerm !== currentTerm) {
+              selectedCourses = [];
+              selectedCoursesCount = 0;
+              updateSelectedCoursesList();
+              updateSelectedCoursesCount();
+
+              currentTerm = selectedTerm;
+              $("#filterCoursesSection").hide();
+              $("#shortlistedCoursesSection").hide();
+          }
+           
+        });
 
       });
+
+      function updateTerm(selectedValue) {
+        $.ajax({
+          url: "updateTerm",
+          type: "POST",
+          data: JSON.stringify({ selectedValue: selectedValue }),
+          contentType: "application/json", 
+          success: function () {
+            populateDropdown("#department", "/departments");
+            populateDropdown("#course", "/courses");
+            populateDropdown("#instructor", "/instructors");
+          }
+        });
+      }
+
 
       function populateDropdown(selector, url) {
         const dropdown = $(selector);
@@ -246,13 +277,17 @@
           },
           success: function (response) {
             const courses = JSON.parse(response);
-            displayCourses(courses);
+            if (courses.length > 0) {
+                $("#filterCoursesSection").show(); 
+                displayCourses(courses);
+            } else {
+                $("#filterCoursesSection").hide(); 
+            }
           },
         });
       }
 
       function displayCourses(courses) {
-        console.log("kek");
         const coursesList = $("#courses-list");
         coursesList.empty();
 
@@ -279,8 +314,11 @@
           checkbox.on("change", function () {
             if (this.checked) {
               addSelectedCourse(course);
+              $("#shortlistedCoursesSection").show();
+
             } else {
               removeSelectedCourse(course);
+              
             }
           });
           
@@ -290,25 +328,39 @@
             ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
           );
           
+          
           liDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
-            
+            let classroomSlice;
+
+            if (course.classroom.length === 11) {
+              classroomSlice = -5;
+            } else {
+              classroomSlice = -4;
+            }
+
             liDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
+            let classroomSlice;
+
+            if (course.alternate_classroom.length === 11) {
+              classroomSlice = -5;
+            } else {
+              classroomSlice = -4;
+            }
             
             liDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
-        
           coursesList.append(li);
         });
       }
@@ -411,6 +463,11 @@
           }
         }
 
+        // Check if there are any selected courses left
+        if (selectedCourses.length === 0) {
+            $("#shortlistedCoursesSection").hide(); // Hide the shortlisted courses section
+        }
+
         updateCrucialCourses();
       }
 
@@ -459,10 +516,8 @@
       }
 
       function updateSelectedCoursesCount() {
-        const selectedCoursesCountElement = $("#selected-courses-count");
-        selectedCoursesCountElement.html(
-          `Selected Courses Count: <strong>${selectedCoursesCount}</strong>`
-        );
+        const selectedCoursesCountElement = $('#selected-courses-count');
+        selectedCoursesCountElement.html(`Selected Courses Count: <strong>${selectedCoursesCount}</strong>`);
       }
 
       function updateCrucialCourses() {
