@@ -64,6 +64,8 @@
       max-width: 30rem;
       max-height: 3rem;
       margin: 0 auto;
+      font-weight: bold;
+      text-transform: uppercase; 
       
     }
     .custom-input::placeholder {
@@ -161,12 +163,12 @@
 
         </div>
     </section>
-    <section id="filterCoursesSection">
+    <section id="filterCoursesSection", style="display: none;">
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
         <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
 
-    <section id="shortlistedCoursesSection">
+    <section id="shortlistedCoursesSection", style="display: none;">
       <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
         <!-- Selected courses will be dynamically added here -->
         <ul id="selected-courses-list" style="list-style-type: none; "></ul>
@@ -189,22 +191,40 @@
       var selectedCoursesCount = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
-      var currentTerm = "2023 Fall";
+      var currentTerm = "2023 FALL";
 
       $(document).ready(function () {
         $(".select2").select2();
-
-        $("#filterCoursesSection").hide();
-        $("#shortlistedCoursesSection").hide();
 
         // Populate dropdown menus
         populateDropdown("#department", "/departments");
         populateDropdown("#course", "/courses");
         populateDropdown("#instructor", "/instructors");
 
+        // Add event listeners to clear dropdown values on focus
+        $("#term-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+
+        $("#course-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+
+        $("#department-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+
+        $("#instructor-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+        
         $('#term-selector').on('change', function () {
           const selectedValue = $(this).val();
-          updateTerm(selectedValue)
+
+          if (selectedValue === '2023 FALL' || selectedValue === 'PHARMACY PROGRAM FALL 2023') {
+            updateTerm(selectedValue)
+          }
+
         });
 
         $('#department-selector').on('change', function () {
@@ -215,9 +235,21 @@
             populateDropdown("#instructor", "/instructors");
             
           } else {
-            updateDropdown(selectedValue);
+            updateDepartment(selectedValue);
           }
         });
+
+        /* Worth looking into later
+        $('#course-selector').on('change', function () {
+          const selectedValue = $(this).val();
+
+          if (selectedValue === 'All' || selectedValue === '') {
+            populateDropdown("#instructor", "/instructors");
+            
+          } else {
+            updateCourse(selectedValue);
+          }
+        });*/
         
         $('.custom-button').on('click', function () {
           const selectedTerm = $('#term-selector').val();
@@ -228,12 +260,13 @@
               updateSelectedCoursesCount();
 
               currentTerm = selectedTerm;
-              $("#filterCoursesSection").hide();
-              $("#shortlistedCoursesSection").hide();
+              $("#filterCoursesSection").css("display", "none");
+              $("#shortlistedCoursesSection").css("display", "none");
+
           }
            
         });
-
+        
       });
 
       function updateTerm(selectedValue) {
@@ -243,6 +276,11 @@
           data: JSON.stringify({ selectedValue: selectedValue }),
           contentType: "application/json", 
           success: function () {
+
+            dropdownCache["/departments"] = undefined;
+            dropdownCache["/courses"] = undefined;
+            dropdownCache["/instructors"] = undefined;
+
             populateDropdown("#department", "/departments");
             populateDropdown("#course", "/courses");
             populateDropdown("#instructor", "/instructors");
@@ -316,10 +354,10 @@
           success: function (response) {
             const courses = JSON.parse(response);
             if (courses.length > 0) {
-                $("#filterCoursesSection").show(); 
+                $("#filterCoursesSection").removeAttr("style");
                 displayCourses(courses);
             } else {
-                $("#filterCoursesSection").hide(); 
+                $("#filterCoursesSection").css("display", "none");
             }
           },
         });
@@ -352,8 +390,8 @@
           checkbox.on("change", function () {
             if (this.checked) {
               addSelectedCourse(course);
-              $("#shortlistedCoursesSection").show();
-
+              $("#shortlistedCoursesSection").removeAttr("style");
+              
             } else {
               removeSelectedCourse(course);
               
@@ -404,16 +442,17 @@
       }
       
 
-      function updateDropdown(selectedValue) {
+      function updateDepartment(selectedValue) {
         const dropdown2 = $("#course");
         const dropdown3 = $("#instructor");
         $.ajax({
-            url: '/updateDropdown',
+            url: '/updateDepartment',
             type: 'POST',
             data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
             contentType: 'application/json',
             success: function (response) {
                 const options = JSON.parse(response);
+
                 options.courses.unshift({value: 'All' });
                 dropdown2.empty();
                 options.courses.forEach(option => {
@@ -430,6 +469,28 @@
             }
         });
       }
+
+      /* Worth looking into later
+      function updateCourse(selectedValue) {
+        const dropdown = $("#department");
+        const dropdown3 = $("#instructor");
+        $.ajax({
+            url: '/updateCourse',
+            type: 'POST',
+            data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+            contentType: 'application/json',
+            success: function (response) {
+                const options = JSON.parse(response);
+              
+                options.instructors.unshift({value: 'All' });
+                dropdown3.empty();
+                options.instructors.forEach(option => {
+                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
+                    dropdown3.append(optionElement);
+                });
+            }
+        });
+      }*/
       
 
       function addSelectedCourse(course) {
@@ -503,7 +564,7 @@
 
         // Check if there are any selected courses left
         if (selectedCourses.length === 0) {
-            $("#shortlistedCoursesSection").hide(); // Hide the shortlisted courses section
+            $("#shortlistedCoursesSection").css("display", "none");
         }
 
         updateCrucialCourses();

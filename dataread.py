@@ -1,8 +1,8 @@
 def fileread(term):
-    if term == "2023 Fall":
+    if term == "2023 FALL":
         infile = open("falldata.txt", "r")
 
-    else:
+    elif term == "PHARMACY PROGRAM FALL 2023":
         infile = open("pharmdata.txt", "r")
 
     course_data = infile.read().split("\n")
@@ -15,7 +15,7 @@ def fileread(term):
 
     # Getting to table 2
     # DEPT, ID, NAME, CREDITS
-    courses = list(set((x[0], x[1], x[3], x[4]) for x in course_data))
+    courses = list(set((x[0], x[1], cap_first_preserve_case(x[3]), x[4]) for x in course_data))
     courses = sorted(courses, key=lambda x: (x[0], x[1]))
 
     # Getting to table 3
@@ -60,4 +60,7 @@ def fileread(term):
 
     course_data = [x.split("!!") for x in course_data[:-1]]'''
 
-    
+def cap_first_preserve_case(s):
+    if len(s) == 0:
+        return s
+    return s[:1].upper() + s[1:]
