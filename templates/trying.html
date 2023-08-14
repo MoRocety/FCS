@@ -31,10 +31,12 @@
       .filteredCourseP{
         margin-bottom: 0px !important;
       }
+
       hr {
         height: 2px;
         width: 100svw;
       }
+
       .line-container {
         background-color: #f8f9fc !important;
         height: 1px;
@@ -62,11 +64,14 @@
       max-width: 30rem;
       max-height: 3rem;
       margin: 0 auto;
+      font-weight: bold;
+      text-transform: uppercase; 
       
     }
     .custom-input::placeholder {
       color: white;
     }
+
     .custom-input:focus {
       background-color: rgba(13, 17, 27, 0.5);
       border-color: rgba(13, 17, 27, 0.5);
@@ -91,16 +96,15 @@
       margin: 0 auto;
       margin-top: 2rem !important;
       height: 2.75rem !important;
-
     }
+
     .custom-button:hover {
       background-color: white;
       color: black;
-    
     }
 
     ::placeholder {
-    font-weight: bold;
+      font-weight: bold;
     }
 
     .input-div{
@@ -125,20 +129,20 @@
 
                 <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
                 <datalist id="term">
+                  <option value="2023 Fall">
+                  <option value="Pharmacy Program Fall 2023">
                 </datalist>
               </div>
               <div class="input-direct-div" >
-
-                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
-                <datalist id="department">
+                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
+                <datalist id="course">
                 </datalist>
               </div>
             </div>
             <div>
-              <div class="input-direct-div" style="margin-bottom: 2rem;">
-                
-                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
-                <datalist id="course">
+              <div class="input-direct-div" style="margin-bottom: 2rem;">                
+                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
+                <datalist id="department">
                 </datalist>
               </div>
               <div class="input-direct-div">
@@ -152,7 +156,6 @@
           </div>
 
             <div class="button-div">
-
               <button class="btn custom-button mt-2" onclick="filterCourses()">Filter</button>
             </div>
    
@@ -160,22 +163,18 @@
 
         </div>
     </section>
-    <section id="filterCoursesSection">
+    <section id="filterCoursesSection", style="display: none;">
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
         <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
-    <section id="shortlistedCoursesSection">
-      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>      <ul id="selected-courses-list">
+
+    <section id="shortlistedCoursesSection", style="display: none;">
+      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
+        <!-- Selected courses will be dynamically added here -->
+        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
         <p id="selected-courses-count" style="color:white;">
           Selected Courses Count: <strong>0</strong>
         </p>
-       
-        <!-- Selected courses will be dynamically added here -->
-        
-
-        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
-
-        
       </section>
 
     <script
@@ -192,44 +191,152 @@
       var selectedCoursesCount = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
+      var currentTerm = "2023 FALL";
 
       $(document).ready(function () {
         $(".select2").select2();
-
-        // Initialize the credit range slider
-        $("#credit-range").slider({
-          tooltip: "always",
-        });
 
         // Populate dropdown menus
         populateDropdown("#department", "/departments");
         populateDropdown("#course", "/courses");
         populateDropdown("#instructor", "/instructors");
 
-        $('#department-selector').on('change', function () {
-          const selectedValue = $(this).val();
-          updateDropdown(selectedValue);
+        // Add event listeners to clear dropdown values on focus
+        $("#term-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
         });
 
+        $("#course-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+
+        $("#department-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+
+        $("#instructor-selector").on("focus", function () {
+          $(this).val(""); // Clear the value
+        });
+        
+        $('#term-selector').on('change', function () {
+          const selectedValue = $(this).val();
+
+          if (selectedValue === '2023 FALL' || selectedValue === 'PHARMACY PROGRAM FALL 2023') {
+            updateTerm(selectedValue)
+          }
+
+        });
+
+        $('#department-selector').on('change', function () {
+          const selectedValue = $(this).val();
+
+          if (selectedValue === 'All' || selectedValue === '') {
+            populateDropdown("#course", "/courses");
+            populateDropdown("#instructor", "/instructors");
+            
+          } else {
+            updateDepartment(selectedValue);
+          }
+        });
+
+        /* Worth looking into later
+        $('#course-selector').on('change', function () {
+          const selectedValue = $(this).val();
+
+          if (selectedValue === 'All' || selectedValue === '') {
+            populateDropdown("#instructor", "/instructors");
+            
+          } else {
+            updateCourse(selectedValue);
+          }
+        });*/
+        
+        $('.custom-button').on('click', function () {
+          const selectedTerm = $('#term-selector').val();
+          if (selectedTerm !== currentTerm) {
+              selectedCourses = [];
+              selectedCoursesCount = 0;
+              updateSelectedCoursesList();
+              updateSelectedCoursesCount();
+
+              currentTerm = selectedTerm;
+              $("#filterCoursesSection").css("display", "none");
+              $("#shortlistedCoursesSection").css("display", "none");
+
+          }
+           
+        });
+        
       });
 
-      function populateDropdown(selector, url) {
-        const dropdown = $(selector);
+      function updateTerm(selectedValue) {
         $.ajax({
-          url: url,
-          type: "GET",
-          success: function (response) {
-            const options = JSON.parse(response);
-            options.unshift({value: "All" });
+          url: "updateTerm",
+          type: "POST",
+          data: JSON.stringify({ selectedValue: selectedValue }),
+          contentType: "application/json", 
+          success: function () {
+
+            dropdownCache["/departments"] = undefined;
+            dropdownCache["/courses"] = undefined;
+            dropdownCache["/instructors"] = undefined;
+
+            populateDropdown("#department", "/departments");
+            populateDropdown("#course", "/courses");
+            populateDropdown("#instructor", "/instructors");
+          }
+        });
+      }
+
+
+      // Create an object to store cached dropdown options
+      const dropdownCache = {};
+
+      // Function to fetch dropdown options from the server
+      function fetchDropdownOptions(selector, url) {
+        return new Promise((resolve, reject) => {
+          if (dropdownCache[url]) {
+            // If options are already cached, return them
+            resolve(dropdownCache[url]);
+          } else {
+            // Fetch options from the server
+            $.ajax({
+              url: url,
+              type: 'GET',
+              success: (response) => {
+                const options = JSON.parse(response);
+                dropdownCache[url] = options; // Cache the options
+                resolve(options);
+              },
+              error: (error) => {
+                reject(error);
+              },
+            });
+          }
+        });
+      }
+
+      // Populate dropdown based on cached or fetched options
+      function populateDropdown(selector, url) {
+        fetchDropdownOptions(selector, url)
+          .then((options) => {
+            const dropdown = $(selector);
             dropdown.empty();
+
+            // Add the "All" option
+            const allOption = $('<option>').attr('value', 'All').text('All');
+            dropdown.append(allOption);
+            
             options.forEach((option) => {
-              const optionElement = $("<option>")
-                .attr("value", option.value)
+              const optionElement = $('<option>')
+                .attr('value', option.value)
                 .text(option.label);
               dropdown.append(optionElement);
             });
-          },
-        });
+          })
+          .catch((error) => {
+            console.error('Error fetching dropdown options:', error);
+          });
       }
 
       function filterCourses() {
@@ -246,13 +353,17 @@
           },
           success: function (response) {
             const courses = JSON.parse(response);
-            displayCourses(courses);
+            if (courses.length > 0) {
+                $("#filterCoursesSection").removeAttr("style");
+                displayCourses(courses);
+            } else {
+                $("#filterCoursesSection").css("display", "none");
+            }
           },
         });
       }
 
       function displayCourses(courses) {
-        console.log("kek");
         const coursesList = $("#courses-list");
         coursesList.empty();
 
@@ -279,8 +390,11 @@
           checkbox.on("change", function () {
             if (this.checked) {
               addSelectedCourse(course);
+              $("#shortlistedCoursesSection").removeAttr("style");
+              
             } else {
               removeSelectedCourse(course);
+              
             }
           });
           
@@ -290,40 +404,55 @@
             ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
           );
           
+          
           liDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
-            
+            let classroomSlice;
+
+            if (course.classroom.length === 11) {
+              classroomSlice = -5;
+            } else {
+              classroomSlice = -4;
+            }
+
             liDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+              ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
+            let classroomSlice;
+
+            if (course.alternate_classroom.length === 11) {
+              classroomSlice = -5;
+            } else {
+              classroomSlice = -4;
+            }
             
             liDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
 
-        
           coursesList.append(li);
         });
       }
       
 
-      function updateDropdown(selectedValue) {
+      function updateDepartment(selectedValue) {
         const dropdown2 = $("#course");
         const dropdown3 = $("#instructor");
         $.ajax({
-            url: '/updateDropdown',
+            url: '/updateDepartment',
             type: 'POST',
             data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
             contentType: 'application/json',
             success: function (response) {
                 const options = JSON.parse(response);
+
                 options.courses.unshift({value: 'All' });
                 dropdown2.empty();
                 options.courses.forEach(option => {
@@ -340,6 +469,28 @@
             }
         });
       }
+
+      /* Worth looking into later
+      function updateCourse(selectedValue) {
+        const dropdown = $("#department");
+        const dropdown3 = $("#instructor");
+        $.ajax({
+            url: '/updateCourse',
+            type: 'POST',
+            data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+            contentType: 'application/json',
+            success: function (response) {
+                const options = JSON.parse(response);
+              
+                options.instructors.unshift({value: 'All' });
+                dropdown3.empty();
+                options.instructors.forEach(option => {
+                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
+                    dropdown3.append(optionElement);
+                });
+            }
+        });
+      }*/
       
 
       function addSelectedCourse(course) {
@@ -411,6 +562,11 @@
           }
         }
 
+        // Check if there are any selected courses left
+        if (selectedCourses.length === 0) {
+            $("#shortlistedCoursesSection").css("display", "none");
+        }
+
         updateCrucialCourses();
       }
 
@@ -459,10 +615,8 @@
       }
 
       function updateSelectedCoursesCount() {
-        const selectedCoursesCountElement = $("#selected-courses-count");
-        selectedCoursesCountElement.html(
-          `Selected Courses Count: <strong>${selectedCoursesCount}</strong>`
-        );
+        const selectedCoursesCountElement = $('#selected-courses-count');
+        selectedCoursesCountElement.html(`Selected Courses Count: <strong>${selectedCoursesCount}</strong>`);
       }
 
       function updateCrucialCourses() {

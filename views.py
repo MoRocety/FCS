@@ -1,44 +1,52 @@
 from flask import render_template, Blueprint, request
 from flask_cors import CORS
 import json
-from dataread import *
+from dataread import fileread, cap_first_preserve_case
 from combcheck import *
 
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
+course_data, departments, courses, sections = fileread("2023 FALL")
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        dropdown_value = request.form['dropdown']
-        dropdown2_value = request.form['dropdown2']
-        dropdown3_value = request.form['dropdown3']
+        dropdown_value = request.form['dropdown'].upper()
+        dropdown2_value = request.form['dropdown2'].upper()
+        dropdown3_value = request.form['dropdown3'].upper()
 
+        print(dropdown_value, dropdown2_value, dropdown3_value)
         filtered_sections = course_data
 
-        if not (dropdown_value == "All" or dropdown_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[0] == dropdown_value]
+        if not (dropdown_value == "ALL" or dropdown_value == ""):
+            filtered_sections = [x for x in filtered_sections if x[0].upper() == dropdown_value]
 
-        if not (dropdown2_value == "All" or dropdown2_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[3] == dropdown2_value]
+        if not (dropdown2_value == "ALL" or dropdown2_value == ""):
+            filtered_sections = [x for x in filtered_sections if x[3].upper() == dropdown2_value]
 
-        if not (dropdown3_value == "All" or dropdown3_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[8] == dropdown3_value]
+        if not (dropdown3_value == "ALL" or dropdown3_value == ""):
+            filtered_sections = [x for x in filtered_sections if x[8].upper() == dropdown3_value]
         
         # Convert sections to JSON format
         sections_json = []
         for section in filtered_sections:
+            if section[8] != "TBD":
+                instructor = section[8].title()
+            
+            else:
+                instructor = section[8]
+
             sections_json.append({
                 'department_id': section[0],
                 'course_id': section[1],
                 'section': section[2],
-                'name': section[3],
+                'name': cap_first_preserve_case(section[3]),
                 'credits': section[4],
                 'days': "".join(filter(str.isalpha, section[5])),
                 'start_time': section[6],
                 'end_time': section[7],
-                'instructor_name': section[8],
+                'instructor_name': instructor,
                 'classroom': section[9],
                 'alternate_classroom': section[10],
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
@@ -51,6 +59,16 @@ def index():
     return render_template('trying.html')
 
 
+@my_blueprint.route('/updateTerm', methods=['POST'])
+def update_term():
+    global course_data, departments, courses, sections
+
+    selected_value = request.json.get('selectedValue')
+    course_data, departments, courses, sections = fileread(selected_value)
+
+    return "Data updated successfully"
+
+
 @my_blueprint.route('/departments', methods=['GET'])
 def get_departments():
     departments.sort()
@@ -60,7 +78,9 @@ def get_departments():
 
 @my_blueprint.route('/courses', methods=['GET'])
 def get_courses():
-    courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
+    courses_ = list(set([course[2] for course in courses]))
+    courses_.sort()
+    courses_ = [{'label': cap_first_preserve_case(course), 'value': cap_first_preserve_case(course)} for course in courses_]
     return json.dumps(courses_)
 
 
@@ -72,22 +92,20 @@ def get_instructors():
     return json.dumps(unique_instructors)
 
 
-@my_blueprint.route('/updateDropdown', methods=['POST'])
-def update_dropdown():
-    data = request.get_json()['data']  # Extract 'data' from the request JSON
-
-    print(data)
-    # Assuming 'sections' and 'courses' are available somewhere
-    if data == "all":
-        instructors_ = list(set([x[6] for x in sections]))
-        courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
-
-    else:
-        instructors_ = list(set([x[6] for x in sections if x[0] == data]))
-        courses_ = [{'label': course[2], 'value': course[2]} for course in courses if course[0] == data]
+@my_blueprint.route('/updateDepartment', methods=['POST'])
+def update_department():
+    data = request.get_json()['data'].upper()  # Extract 'data' from the request JSON
+    instructors_ = list(set([x[6] for x in sections if x[0] == data]))
+    courses_ = list(set(course[2] for course in courses if course[0] == data))
     
-    instructors_.sort()
-    instructors_ = [{'label': instructor, 'value': instructor} for instructor in instructors_]    
+    instructors_ = [
+    {'label': instructor.title(), 'value': instructor.title()} if instructor != 'TBD'
+      else {'label': instructor.upper(), 'value': instructor.upper()}
+    for instructor in instructors_
+    ]
+
+    courses_.sort()
+    courses_ = [{'label': cap_first_preserve_case(course), 'value': cap_first_preserve_case(course)} for course in courses_]
 
     response_data = {
         'courses': courses_,
@@ -95,6 +113,27 @@ def update_dropdown():
     }
 
     return json.dumps(response_data)
+
+# Will look into it later
+'''
+@my_blueprint.route('/updateCourse', methods=['POST'])
+def update_course():
+    data = request.get_json()['data'].upper()
+    instructors_ = list(set([x[8] for x in course_data if x[3].upper() == data]))
+    
+    instructors_.sort()
+
+    instructors_ = [
+    {'label': instructor.title(), 'value': instructor.title()} if instructor != 'TBD'
+      else {'label': instructor.upper(), 'value': instructor.upper()}
+    for instructor in instructors_
+    ]
+
+    response_data = {
+        'instructors': instructors_
+    }
+
+    return json.dumps(response_data)'''
 
 
 @my_blueprint.route('/submit', methods=['POST'])
