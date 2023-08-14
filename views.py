@@ -65,7 +65,6 @@ def update_term():
     selected_value = request.json.get('selectedValue')
     course_data, departments, courses, sections = fileread(selected_value)
 
-    print(departments)
     return "Data updated successfully"
 
 
@@ -78,7 +77,9 @@ def get_departments():
 
 @my_blueprint.route('/courses', methods=['GET'])
 def get_courses():
-    courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
+    courses_ = list(set([course[2] for course in courses]))
+    courses_.sort()
+    courses_ = [{'label': course, 'value': course} for course in courses_]
     return json.dumps(courses_)
 
 
@@ -93,18 +94,16 @@ def get_instructors():
 @my_blueprint.route('/updateDropdown', methods=['POST'])
 def update_dropdown():
     data = request.get_json()['data']  # Extract 'data' from the request JSON
-
-    # Assuming 'sections' and 'courses' are available somewhere
-    if data == "all":
-        instructors_ = list(set([x[6] for x in sections]))
-        courses_ = [{'label': course[2], 'value': course[2]} for course in courses]
-
-    else:
-        instructors_ = list(set([x[6] for x in sections if x[0] == data]))
-        courses_ = [{'label': course[2], 'value': course[2]} for course in courses if course[0] == data]
+    instructors_ = list(set([x[6] for x in sections if x[0] == data]))
+    courses_ = list(set(course[2] for course in courses if course[0] == data))
     
     instructors_.sort()
     instructors_ = [{'label': instructor, 'value': instructor} for instructor in instructors_]    
+
+    courses_.sort()
+    courses_ = [{'label': course, 'value': course} for course in courses_]
+
+    print(data, len(courses_))
 
     response_data = {
         'courses': courses_,

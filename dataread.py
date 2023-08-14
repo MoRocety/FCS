@@ -15,7 +15,7 @@ def fileread(term):
 
     # Getting to table 2
     # DEPT, ID, NAME, CREDITS
-    courses = list(set((x[0], x[1], x[3], x[4])for x in course_data))
+    courses = list(set((x[0], x[1], x[3], x[4]) for x in course_data))
     courses = sorted(courses, key=lambda x: (x[0], x[1]))
 
     # Getting to table 3
