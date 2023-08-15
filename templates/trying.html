@@ -206,11 +206,12 @@
           $(this).val(""); // Clear the value
         });
 
-        $("#course-selector").on("focus", function () {
+        $("#department-selector").on("focus", function () {
           $(this).val(""); // Clear the value
+          updateDepartment(selectedValue)
         });
 
-        $("#department-selector").on("focus", function () {
+        $("#course-selector").on("focus", function () {
           $(this).val(""); // Clear the value
         });
 
@@ -284,6 +285,11 @@
             populateDropdown("#department", "/departments");
             populateDropdown("#course", "/courses");
             populateDropdown("#instructor", "/instructors");
+
+            $("#department-selector").val(''); // Clear the department dropdown
+            $("#course-selector").val(''); // Clear the course dropdown
+            $("#instructor-selector").val(''); // Clear the instructor dropdown
+
           }
         });
       }
