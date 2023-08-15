@@ -201,6 +201,7 @@
         populateDropdown("#course", "/courses");
         populateDropdown("#instructor", "/instructors");
 
+          
         // Add event listeners to clear dropdown values on focus
         $("#term-selector").on("focus", function () {
           $(this).val(""); // Clear the value
@@ -218,6 +219,7 @@
         $("#instructor-selector").on("focus", function () {
           $(this).val(""); // Clear the value
         });
+
         
         $('#term-selector').on('change', function () {
           const selectedValue = $(this).val();
