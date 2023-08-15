@@ -16,7 +16,6 @@ def index():
         dropdown2_value = request.form['dropdown2'].upper()
         dropdown3_value = request.form['dropdown3'].upper()
 
-        print(dropdown_value, dropdown2_value, dropdown3_value)
         filtered_sections = course_data
 
         if not (dropdown_value == "ALL" or dropdown_value == ""):
@@ -63,7 +62,7 @@ def index():
 def update_term():
     global course_data, departments, courses, sections
 
-    selected_value = request.json.get('selectedValue')
+    selected_value = request.json.get('selectedValue').upper()
     course_data, departments, courses, sections = fileread(selected_value)
 
     return "Data updated successfully"
@@ -114,12 +113,53 @@ def update_department():
 
     return json.dumps(response_data)
 
-# Will look into it later
-'''
+@my_blueprint.route('/updateInstructor', methods=['POST'])
+def update_instructor():
+    data = request.get_json()['data'].upper()
+    department = request.get_json()['department'].upper()
+
+    if (department == "ALL" or department == "") and (data == "ALL" or data == ""):
+        courses_ = list(set([x[3] for x in course_data]))
+
+    elif (department == "ALL" or department == "") and (not (data == "ALL" or data == "")):
+        courses_ = list(set([x[3] for x in course_data if x[8].upper() == data]))
+
+    elif (not (department == "ALL" or department == "")) and (data == "ALL" or data == ""):
+        courses_ = list(set([x[3] for x in course_data if x[0].upper() == department]))
+
+    else:
+        courses_ = list(set([x[3] for x in course_data if x[8].upper() == data and x[0].upper() == department]))
+    
+    courses_.sort()
+
+    courses_ = [
+    {'label': course.title(), 'value': course.title()} if course != 'TBD'
+      else {'label': course.upper(), 'value': course.upper()}
+    for course in courses_
+    ]
+
+    response_data = {
+        'courses': courses_
+    }
+
+    return json.dumps(response_data)
+
 @my_blueprint.route('/updateCourse', methods=['POST'])
 def update_course():
     data = request.get_json()['data'].upper()
-    instructors_ = list(set([x[8] for x in course_data if x[3].upper() == data]))
+    department = request.get_json()['department'].upper()
+
+    if (department == "ALL" or department == "") and (data == "ALL" or data == ""):
+        instructors_ = list(set([x[8] for x in course_data]))
+
+    elif (department == "ALL" or department == "") and (not (data == "ALL" or data == "")):
+        instructors_ = list(set([x[8] for x in course_data if x[3].upper() == data]))
+
+    elif (not (department == "ALL" or department == "")) and (data == "ALL" or data == ""):
+        instructors_ = list(set([x[8] for x in course_data if x[0].upper() == department]))
+
+    else:
+        instructors_ = list(set([x[8] for x in course_data if x[0].upper() == department and x[3].upper() == data]))
     
     instructors_.sort()
 
@@ -133,7 +173,7 @@ def update_course():
         'instructors': instructors_
     }
 
-    return json.dumps(response_data)'''
+    return json.dumps(response_data)
 
 
 @my_blueprint.route('/submit', methods=['POST'])

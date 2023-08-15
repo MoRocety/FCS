@@ -206,29 +206,44 @@
           $(this).val(""); // Clear the value
         });
 
-        $("#course-selector").on("focus", function () {
+        $("#department-selector").on("focus", function () {
+          var old = $(this).val();
+          
           $(this).val(""); // Clear the value
+
+          if (old !== "All" && old !== "") {
+            populateDropdown("#course", "/courses");
+            populateDropdown("#instructor", "/instructors");
+          }
         });
 
-        $("#department-selector").on("focus", function () {
+        $("#course-selector").on("focus", function () {
           $(this).val(""); // Clear the value
+          const selectedValue = $(this).val(); 
+          updateCourse(selectedValue); 
         });
 
         $("#instructor-selector").on("focus", function () {
           $(this).val(""); // Clear the value
+          const selectedValue = $(this).val(); 
+          updateInstructor(selectedValue); 
         });
+
         
         $('#term-selector').on('change', function () {
           const selectedValue = $(this).val();
 
-          if (selectedValue === '2023 FALL' || selectedValue === 'PHARMACY PROGRAM FALL 2023') {
+          if (selectedValue === '2023 Fall' || selectedValue === 'Pharmacy Program Fall 2023') {
             updateTerm(selectedValue)
           }
+        
 
         });
 
         $('#department-selector').on('change', function () {
           const selectedValue = $(this).val();
+          $("#course-selector").val("");
+          $("#instructor-selector").val("");
 
           if (selectedValue === 'All' || selectedValue === '') {
             populateDropdown("#course", "/courses");
@@ -239,17 +254,22 @@
           }
         });
 
-        /* Worth looking into later
         $('#course-selector').on('change', function () {
+          const selectedValue = $(this).val();  
+          updateCourse(selectedValue);
+          
+        });
+
+        $('#instructor-selector').on('change', function () {
           const selectedValue = $(this).val();
 
           if (selectedValue === 'All' || selectedValue === '') {
-            populateDropdown("#instructor", "/instructors");
+            populateDropdown("#course", "/courses");
             
           } else {
-            updateCourse(selectedValue);
+            updateInstructor(selectedValue);
           }
-        });*/
+        });
         
         $('.custom-button').on('click', function () {
           const selectedTerm = $('#term-selector').val();
@@ -276,7 +296,7 @@
           data: JSON.stringify({ selectedValue: selectedValue }),
           contentType: "application/json", 
           success: function () {
-
+            
             dropdownCache["/departments"] = undefined;
             dropdownCache["/courses"] = undefined;
             dropdownCache["/instructors"] = undefined;
@@ -284,6 +304,11 @@
             populateDropdown("#department", "/departments");
             populateDropdown("#course", "/courses");
             populateDropdown("#instructor", "/instructors");
+
+            $("#department-selector").val(''); // Clear the department dropdown
+            $("#course-selector").val(''); // Clear the course dropdown
+            $("#instructor-selector").val(''); // Clear the instructor dropdown
+
           }
         });
       }
@@ -445,6 +470,7 @@
       function updateDepartment(selectedValue) {
         const dropdown2 = $("#course");
         const dropdown3 = $("#instructor");
+
         $.ajax({
             url: '/updateDepartment',
             type: 'POST',
@@ -470,27 +496,50 @@
         });
       }
 
-      /* Worth looking into later
       function updateCourse(selectedValue) {
-        const dropdown = $("#department");
         const dropdown3 = $("#instructor");
+        const departmentValue = $("#department-selector").val();
+
         $.ajax({
             url: '/updateCourse',
             type: 'POST',
-            data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+            data: JSON.stringify({ department: departmentValue, data: selectedValue }), 
+            contentType: 'application/json',
+            success: function (response) {
+              const options = JSON.parse(response);
+
+              options.instructors.unshift({ value: 'All'}); 
+              dropdown3.empty();
+              options.instructors.forEach(option => {
+                  const optionElement = $('<option>').attr('value', option.value).text(option.label);
+                  dropdown3.append(optionElement);
+              });
+            }
+        });
+      }
+
+
+      function updateInstructor(selectedValue) {
+        const dropdown2 = $("#course");      
+        const departmentValue = $("#department-selector").val();
+
+        $.ajax({
+            url: '/updateInstructor',
+            type: 'POST',
+            data: JSON.stringify({ department: departmentValue, data: selectedValue }), 
             contentType: 'application/json',
             success: function (response) {
                 const options = JSON.parse(response);
               
-                options.instructors.unshift({value: 'All' });
-                dropdown3.empty();
-                options.instructors.forEach(option => {
+                options.courses.unshift({value: 'All' });
+                dropdown2.empty();
+                options.courses.forEach(option => {
                     const optionElement = $('<option>').attr('value', option.value).text(option.label);
-                    dropdown3.append(optionElement);
+                    dropdown2.append(optionElement);
                 });
             }
         });
-      }*/
+      }
       
 
       function addSelectedCourse(course) {
