@@ -14,6 +14,11 @@ def indexOld():
     return render_template("New_index.html")
 
 
+
+@my_blueprint.route('/test', methods=['GET', 'POST'])
+def indexOld2():
+    return render_template("tester.html")
+
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':

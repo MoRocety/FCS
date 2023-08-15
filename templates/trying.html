@@ -10,6 +10,14 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Link to Bootstrap Slider CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css">
+  <!-- Link to Bootstrap Slider JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
       *{
@@ -113,6 +121,50 @@
       align-items: center;
       gap: 4rem;
     }
+
+
+    .slider-track{
+      margin-bottom: 1rem  !important;
+    }
+    .slider-handle{
+      border: none;
+      outline: none;
+      background-image: linear-gradient(to bottom, #FFD700, #FFD700) !important;
+    }
+
+    .slider-track-low{
+      border: none;
+      outline: none;
+      background-color: #0D111B !important;
+    }
+    .slider-track-high{
+      border: none;
+      outline: none;
+      background-color: #0D111B !important;
+    }
+    .slider-selection{
+      border: none;
+      outline: none;
+      background-image: linear-gradient(to bottom, #0D111B, #0D111B) !important;
+    }
+
+    .separator-line {
+  height: 1rem;
+  border: none;
+  border-top: 10px solid #0d111b !important; /* Line color */
+  margin: 0; /* Remove default margin */
+  margin-top: 2rem;
+  width: calc(100% + 2 * 20px); /* Account for the padding on both sides */
+  margin-left: -20px; /* Counteract the left padding */
+  margin-right: -20px; /* Counteract the right padding */
+  opacity: 100%;
+  
+}
+
+.slider.slider-horizontal{
+ width: 70% !important;
+ }
+
     
     </style>
   </head>
@@ -178,12 +230,35 @@
       </section>
 
       <section id="combinationMenu">
-        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Combination Menu</h1>
+        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Schedule Menu</h1>
 
-        <div class="custom-div white-color-setter text-center">
-          ankara messi
+        <div class="custom-div white-color-setter text-center form-group">
+          <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Credit Hour Range</h6>
+          <div class="form-group">
+
+            <span class="text-center m-2">0</span>
+            <input class="form-control text-center mb-5" id="credit-range" type="text" data-slider-id="credit-range-slider" data-slider-min="0" data-slider-max="22" data-slider-step="1" data-slider-value="[0,22]"/>
+            <span class="text-center m-2">22</span>
+          </div>
+
+          <hr class="separator-line ">
+        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses:</h6>
+          <div id="crucialCoursesContainer" class="text-left">
+            <!-- Existing HTML content -->
+          </div>
+          
+          
+          
         </div>
+        
+      </section>
+      <div class="button-div">
+        <button class="btn custom-button mt-2" onclick="submitSelectedCourses()">Filter</button>
+      </div>
+      <section id="combinations">
+        <div id="combinations-list">
 
+        </div>
       </section>
 
     <script
@@ -196,6 +271,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
     <script>
+      $(document).ready(function () {
+        // Initialize the Bootstrap slider
+        var rangeSlider = new Slider("#credit-range", {
+          tooltip: "hide",
+        
+        });
+      });
+
+
+      
+    </script>
+    <script>
+
+
+
+
+
       var selectedCourses = [];
       var selectedCoursesCount = 0;
       var crucialCheckboxes = [];
@@ -204,6 +296,10 @@
 
       $(document).ready(function () {
         $(".select2").select2();
+
+                  // Initialize the credit range slider
+          
+
 
         // Populate dropdown menus
         populateDropdown("#department", "/departments");
@@ -682,7 +778,7 @@
         crucialList.empty();
 
         crucialCheckboxes.forEach((course) => {
-          const li = $("<li>");
+          const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
           const compositeKey = `${course.course_id}-${course.department_id}`;
           const checkbox = $('<input type="checkbox">').attr(
             "value",
@@ -734,8 +830,13 @@
       function submitSelectedCourses() {
         // Retrieve the slider values
         const sliderValues = $("#credit-range").slider("getValue");
-        const minCredit = sliderValues[0];
-        const maxCredit = sliderValues[1];
+        
+        const inputString = sliderValues[0].value;
+        const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+
+        const minCredit = integersArray[0];
+        const maxCredit = integersArray[1];
+
 
         // Prepare the data to be sent
         const data = {
