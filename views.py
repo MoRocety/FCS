@@ -63,7 +63,7 @@ def index():
 def update_term():
     global course_data, departments, courses, sections
 
-    selected_value = request.json.get('selectedValue')
+    selected_value = request.json.get('selectedValue').upper()
     course_data, departments, courses, sections = fileread(selected_value)
 
     return "Data updated successfully"

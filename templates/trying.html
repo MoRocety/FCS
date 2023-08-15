@@ -221,7 +221,7 @@
         $('#term-selector').on('change', function () {
           const selectedValue = $(this).val();
 
-          if (selectedValue === '2023 FALL' || selectedValue === 'PHARMACY PROGRAM FALL 2023') {
+          if (selectedValue === '2023 Fall' || selectedValue === 'Pharmacy Program Fall 2023') {
             updateTerm(selectedValue)
           }
 
@@ -276,7 +276,7 @@
           data: JSON.stringify({ selectedValue: selectedValue }),
           contentType: "application/json", 
           success: function () {
-
+            
             dropdownCache["/departments"] = undefined;
             dropdownCache["/courses"] = undefined;
             dropdownCache["/instructors"] = undefined;
