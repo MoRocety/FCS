@@ -9,6 +9,16 @@ CORS(my_blueprint)
 
 course_data, departments, courses, sections = fileread("2023 FALL")
 
+@my_blueprint.route('/old', methods=['GET', 'POST'])
+def indexOld():
+    return render_template("New_index.html")
+
+
+
+@my_blueprint.route('/test', methods=['GET', 'POST'])
+def indexOld2():
+    return render_template("tester.html")
+
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':

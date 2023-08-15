@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Range Slider with Two Handles</title>
+    <!-- Link to Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <!-- Link to Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Link to Bootstrap Slider CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
+    />
+    <!-- Link to Bootstrap Slider JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Bootstrap Range Slider with Two Handles</h2>
+      <input
+        id="range-slider"
+        type="text"
+        data-slider-id="rangeSlider"
+        data-slider-min="0"
+        data-slider-max="100"
+        data-slider-step="1"
+        data-slider-value="[25, 75]"
+      />
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        // Initialize the Bootstrap slider
+        var rangeSlider = new Slider("#range-slider", {
+          tooltip: "hide",
+          range: true,
+        });
+      });
+    </script>
+  </body>
+</html>
