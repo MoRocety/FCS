@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap demo</title>
+    <title>FCS</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -279,62 +279,32 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
     <script>
 
-
-
-      $(document).ready(function () {
-  // Initialize the Bootstrap slider
-  var rangeSlider = new Slider("#credit-range", {
-    tooltip: "hide"
-  });
-
-  rangeSlider.setValue([15, 17]);
-  // Add event handler to the slider's "slide" event
-  rangeSlider.on("slide", function (slideEvt) {
-
-    const span1 = document.getElementById("span1")
-    const span2 = document.getElementById("span2")
-
-    // var values = slideEvt.value; // Array containing the two handle values
-    
-    span1.innerText = slideEvt[0];
-    span2.innerText= slideEvt[1];
-    
-    // Do something with the handle values
-    // console.log("Value 1:", value1);
-    // console.log("Value 2:", value2);
-  });
-});
-
-
-
-      
-    </script>
-
-    <script>
-      function spanChanger(){
-          const minValue = document.querySelectorAll("[aria-valuenow]")[0]
-          const maxvalue = document.querySelectorAll('[aria-valuenow]')[1]
-
-
-      }
-
-    </script>
-    <script>
-
-
-
-
-
       var selectedCourses = [];
       var selectedCoursesCount = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
       var currentTerm = "2023 FALL";
+      var pgno = 1
 
       $(document).ready(function () {
         $(".select2").select2();
 
-                  // Initialize the credit range slider
+        // Initialize the Bootstrap slider
+        var rangeSlider = new Slider("#credit-range", {
+          tooltip: "hide"
+        });
+
+        rangeSlider.setValue([15, 17]);
+        // Add event handler to the slider's "slide" event
+        rangeSlider.on("slide", function (slideEvt) {
+
+          const span1 = document.getElementById("span1")
+          const span2 = document.getElementById("span2")
+          
+          span1.innerText = slideEvt[0];
+          span2.innerText= slideEvt[1];
+          
+        });
           
 
 
@@ -519,6 +489,7 @@
             dropdown: selectedDepartment,
             dropdown2: selectedCourse,
             dropdown3: selectedInstructor,
+            page: 1,
           },
           success: function (response) {
             const courses = JSON.parse(response);
@@ -527,8 +498,6 @@
                 displayCourses(courses);
             } else {
                 $("#filterCoursesSection").css("display", "none");
-
-
             }
           },
         });
@@ -563,7 +532,6 @@
               addSelectedCourse(course);
               $("#shortlistedCoursesSection").removeAttr("style");
               $("#combinationMenu").removeAttr("style");
-              spanChanger()
 
               
             } else {
@@ -920,13 +888,13 @@
         for (const [combinationName, combinationData] of Object.entries(
           combinations
         )) {
-          const combinationHeader = $("<h4>").text(combinationName);
+          const combinationHeader = $("<h4>").text(combinationName).css("color", "white");
           combinationsList.append(combinationHeader);
 
           const coursesList = $("<ul>");
 
           combinationData.forEach((course) => {
-            const courseItem = $("<li>");
+            const courseItem = $("<li>").css("color", "white");
             courseItem.append(
               ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
             );
@@ -965,13 +933,14 @@
               (sum, course) => sum + course.credits,
               0
             )}</strong>`
-          );
+          ).css("color", "white");
 
           combinationsList.append(totalCredits);
           combinationsList.append("<hr>");
           combinationsList.append("<br>");
         }
       }
+
     </script>
   </body>
 </html>

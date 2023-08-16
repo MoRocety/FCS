@@ -48,18 +48,6 @@ def fileread(term):
     return course_data, departments, courses, sections
         
 
-# We'll see
-'''def data_retrieve(dept, name, instructor, start, end):
-    with open("falldata.txt", "r") as infile:
-        for line in infile:
-            data = line.strip().split("!!")
-            departments.add(x[0])
-
-            course = (x[0], x[1], x[3], x[4])
-            courses.add(course)
-
-    course_data = [x.split("!!") for x in course_data[:-1]]'''
-
 def cap_first_preserve_case(s):
     if len(s) == 0:
         return s
