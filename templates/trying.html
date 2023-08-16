@@ -235,14 +235,17 @@
 
       <section id="combinationMenu" style="display: none;">
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Schedule Menu</h1>
+        <p id="selected-courses-count"   class="text-center" style="color:white;">
+          Specify Credit Hours 
+        </p>
 
         <div class="custom-div white-color-setter text-center form-group">
           <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Credit Hour Range</h6>
           <div class="form-group">
 
-            <span class="text-center m-2">0</span>
-            <input class="form-control text-center mb-5" id="credit-range" type="text" data-slider-id="credit-range-slider" data-slider-min="0" data-slider-max="22" data-slider-step="1" data-slider-value="[0,22]"/>
-            <span class="text-center m-2">22</span>
+            <span id="span1" class="text-center m-4">15</span>
+            <input class="form-control text-center mb-5" id="credit-range" type="text" data-slider-id="credit-range-slider" data-slider-min="0" data-slider-max="22" data-slider-step="1" data-slider-value="[0,22]" style="margin-inline: 1rem !important;"/>
+            <span id="span2" class="text-center m-4 ml-3">17</span>
           </div>
 
           <hr class="separator-line ">
@@ -275,16 +278,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
     <script>
+
+
+
       $(document).ready(function () {
-        // Initialize the Bootstrap slider
-        var rangeSlider = new Slider("#credit-range", {
-          tooltip: "hide",
-        
-        });
-      });
+  // Initialize the Bootstrap slider
+  var rangeSlider = new Slider("#credit-range", {
+    tooltip: "hide"
+  });
+
+  rangeSlider.setValue([15, 17]);
+  // Add event handler to the slider's "slide" event
+  rangeSlider.on("slide", function (slideEvt) {
+
+    const span1 = document.getElementById("span1")
+    const span2 = document.getElementById("span2")
+
+    // var values = slideEvt.value; // Array containing the two handle values
+    
+    span1.innerText = slideEvt[0];
+    span2.innerText= slideEvt[1];
+    
+    // Do something with the handle values
+    // console.log("Value 1:", value1);
+    // console.log("Value 2:", value2);
+  });
+});
+
 
 
       
+    </script>
+
+    <script>
+      function spanChanger(){
+          const minValue = document.querySelectorAll("[aria-valuenow]")[0]
+          const maxvalue = document.querySelectorAll('[aria-valuenow]')[1]
+
+
+      }
+
     </script>
     <script>
 
@@ -530,6 +563,7 @@
               addSelectedCourse(course);
               $("#shortlistedCoursesSection").removeAttr("style");
               $("#combinationMenu").removeAttr("style");
+              spanChanger()
 
               
             } else {
