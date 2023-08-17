@@ -29,6 +29,7 @@
       .white-color-setter-background {
         background-color: #f8f9fc !important;
       }
+
       .white-color-setter {
         color: #f8f9fc;
       }
@@ -52,18 +53,17 @@
       }
       
       .custom-div {
-      background-color: #181E30;
-      border-radius: 10px; /* Rounded corners */
-      padding: 20px;
-      margin: 20px;
-      max-width: 35rem;
-      min-width: 15rem;
-      margin: 0 auto;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-      
-      
-    }
+        background-color: #181E30;
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px;
+        margin: 20px;
+        max-width: 35rem;
+        min-width: 15rem;
+        margin: 0 auto;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
       .custom-input {
         background-color: rgba(13, 17, 27, 0.5);
         border: 1px solid rgba(13, 17, 27, 0.5);
@@ -74,8 +74,8 @@
         margin: 0 auto;
         font-weight: bold;
         text-transform: uppercase; 
-        
       }
+
       .custom-input::placeholder {
         color: white;
       }
@@ -201,6 +201,7 @@
         background-color: rgba(127, 127, 127, 1);
         color: black; 
         z-index: 1;
+        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -454,8 +455,6 @@
               $("#filterCoursesSection").css("display", "none");
               $("#shortlistedCoursesSection").css("display", "none");
               $("#combinationMenu").css("display", "none");
-
-
           }
            
         });
@@ -792,7 +791,6 @@
             $("#shortlistedCoursesSection").css("display", "none");
             $("#combinationMenu").css("display", "none");
 
-
         }
 
         updateCrucialCourses();
@@ -835,8 +833,6 @@
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
-
-
         
           selectedCoursesList.append(li);
         });
@@ -978,7 +974,7 @@
                                 if (currentColorIndex === colorCount) {
                                     currentColorIndex = 0;
                                 }
-                            }
+                            }                            
 
                             if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
                                 const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
@@ -1000,10 +996,10 @@
                             }
                             
                             if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
-                                const startMinutes = parseInt(course.start_time.substring(course.alternate_start_time.length - 2));
-                                const endMinutes = parseInt(course.end_time.substring(course.alternate_end_time.length - 2));
-                                const startTimeHours = parseInt(course.start_time.substring(0, course.alternate_start_time.length - 3));
-                                const endTimeHours = parseInt(course.end_time.substring(0, course.alternate_end_time.length - 3));
+                                const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
+                                const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
+                                const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
+                                const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
 
                                 const topPercentage = (startMinutes / 60) * 100;
                                 const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
@@ -1014,9 +1010,7 @@
                                     "background-color": courseColorMap[course.department_id + course.course_id]
                                 }).text(course.department_id + course.course_id + " - " + course.section);
 
-                                currentTd.append(cellContent);
-
-                              
+                                currentTd.append(cellContent);   
                             }
                         });
                     });
