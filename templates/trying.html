@@ -64,111 +64,169 @@
       
       
     }
-    .custom-input {
-      background-color: rgba(13, 17, 27, 0.5);
-      border: 1px solid rgba(13, 17, 27, 0.5);
-      border-radius: 20px;
-      padding: 10px;
-      max-width: 30rem;
-      max-height: 3rem;
-      margin: 0 auto;
-      font-weight: bold;
-      text-transform: uppercase; 
-      
-    }
-    .custom-input::placeholder {
-      color: white;
-    }
+      .custom-input {
+        background-color: rgba(13, 17, 27, 0.5);
+        border: 1px solid rgba(13, 17, 27, 0.5);
+        border-radius: 20px;
+        padding: 10px;
+        max-width: 30rem;
+        max-height: 3rem;
+        margin: 0 auto;
+        font-weight: bold;
+        text-transform: uppercase; 
+        
+      }
+      .custom-input::placeholder {
+        color: white;
+      }
 
-    .custom-input:focus {
-      background-color: rgba(13, 17, 27, 0.5);
-      border-color: rgba(13, 17, 27, 0.5);
-    }
+      .custom-input:focus {
+        background-color: rgba(13, 17, 27, 0.5);
+        border-color: rgba(13, 17, 27, 0.5);
+      }
 
-    .custom-input:hover {
-      background-color: rgba(13, 17, 27, 0.5);
-      border-color: rgba(13, 17, 27, 0.5);
-    }
+      .custom-input:hover {
+        background-color: rgba(13, 17, 27, 0.5);
+        border-color: rgba(13, 17, 27, 0.5);
+      }
 
-    .custom-button {
-      background-color: #FFD700;
-      border: none;
-      border-radius: 20px;
-      padding: 10px 20px;
-      color: white;
-      font-weight: bold;
-      color: black;
-      text-align: center;
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
-      display: block;
-      margin: 0 auto;
-      margin-top: 2rem !important;
-      height: 2.75rem !important;
-    }
+      .custom-button {
+        background-color: #FFD700;
+        border: none;
+        border-radius: 20px;
+        padding: 10px 20px;
+        color: white;
+        font-weight: bold;
+        color: black;
+        text-align: center;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+        display: block;
+        margin: 0 auto;
+        margin-top: 2rem !important;
+        height: 2.75rem !important;
+      }
 
-    .custom-button:hover {
-      background-color: white;
-      color: black;
-    }
+      .custom-button:hover {
+        background-color: white;
+        color: black;
+      }
 
-    ::placeholder {
-      font-weight: bold;
-    }
+      ::placeholder {
+        font-weight: bold;
+      }
 
-    .input-div{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 4rem;
-    }
+      .input-div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+      }
 
 
-    .slider-track{
-      margin-bottom: 1rem  !important;
-    }
-    .slider-handle{
-      border: none;
-      outline: none;
-      background-image: linear-gradient(to bottom, #FFD700, #FFD700) !important;
-    }
+      .slider-track{
+        margin-bottom: 1rem  !important;
+      }
+      .slider-handle{
+        border: none;
+        outline: none;
+        background-image: linear-gradient(to bottom, #FFD700, #FFD700) !important;
+      }
 
-    .slider-track-low{
-      border: none;
-      outline: none;
-      background-color: #0D111B !important;
-    }
-    .slider-track-high{
-      border: none;
-      outline: none;
-      background-color: #0D111B !important;
-    }
-    .slider-selection{
-      border: none;
-      outline: none;
-      background-image: linear-gradient(to bottom, #0D111B, #0D111B) !important;
-    }
+      .slider-track-low{
+        border: none;
+        outline: none;
+        background-color: #0D111B !important;
+      }
 
-    .separator-line {
-  height: 1rem;
-  border: none;
-  border-top: 10px solid #0d111b !important; /* Line color */
-  margin: 0; /* Remove default margin */
-  margin-top: 2rem;
-  width: calc(100% + 2 * 20px); /* Account for the padding on both sides */
-  margin-left: -20px; /* Counteract the left padding */
-  margin-right: -20px; /* Counteract the right padding */
-  opacity: 100%;
-  
-}
+      .slider-track-high{
+        border: none;
+        outline: none;
+        background-color: #0D111B !important;
+      }
 
-.slider.slider-horizontal{
- width: 70% !important;
- }
+      .slider-selection{
+        border: none;
+        outline: none;
+        background-image: linear-gradient(to bottom, #0D111B, #0D111B) !important;
+      }
 
- #combinationMenu .custom-div{
-  border-radius: 50px;
- }
+      .separator-line {
+        height: 1rem;
+        border: none;
+        border-top: 10px solid #0d111b !important; /* Line color */
+        margin: 0; /* Remove default margin */
+        margin-top: 2rem;
+        width: calc(100% + 2 * 20px); /* Account for the padding on both sides */
+        margin-left: -20px; /* Counteract the left padding */
+        margin-right: -20px; /* Counteract the right padding */
+        opacity: 100%;
+        
+      }
 
+      .slider.slider-horizontal{
+        width: 70% !important;
+      }
+
+      #combinationMenu .custom-div{
+        border-radius: 50px;
+      }
+
+      .custom-table {
+          border-collapse: collapse;
+          width: 100%;
+          max-width: 900px;
+          margin: auto;
+          font-family: 'Exo 2', sans-serif;
+      }
+
+      .custom-table th, .custom-table td {
+        border: 1px solid #ddd;
+        padding-top: 38px;
+        padding-left: 19px;
+        padding-right: 19px;
+        padding-bottom: 0;
+        width: auto;
+        position: relative;
+        vertical-align: bottom; /* Vertically center the content */
+        text-align: center; /* Horizontally center the content */
+      }
+
+      .cell-content {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        border-radius: 20px;
+        width: 100%;
+        background-color: rgba(127, 127, 127, 1);
+        color: black; 
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .custom-table td {
+        color: #fff; /* White text color on dark background */
+        width: 150px; 
+        font-weight: bold;
+      }
+
+      .custom-table td, .cell-content {
+        font-family: 'Exo 2', sans-serif;
+      }
+
+      tr:first-child td {
+        border: none; /* Remove any existing borders */
+        border-bottom: 1px; /* Apply a border only on the bottom */
+        width: 150px; 
+      }
+
+      .combinations-list {
+        display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+      }
     
     </style>
   </head>
@@ -252,27 +310,25 @@
         <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses:</h6>
           <div id="crucialCoursesContainer" class="text-left">
             <!-- Existing HTML content -->
-          </div>
-          
-          
-          
+          </div>       
         </div>
         
         <div class="button-div" >
           <button class="btn custom-button mt-2" onclick="submitSelectedCourses()">Generate</button>
         </div>
       </section>
-      <section id="combinations">
-        <div id="combinations-list">
 
-        </div>
+      <section id="combinations">
+        <!-- Populate with divs accordingly -->
       </section>
+    
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
       crossorigin="anonymous"
     ></script>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
@@ -284,7 +340,11 @@
       var crucialCheckboxes = [];
       var checkedCrucials = [];
       var currentTerm = "2023 FALL";
-      var pgno = 1
+      var pgno = 1;
+      const days = ["M", "T", "W", "R", "F"];
+      const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
+
+      const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
       $(document).ready(function () {
         $(".select2").select2();
@@ -305,7 +365,6 @@
           span2.innerText= slideEvt[1];
           
         });
-          
 
 
         // Populate dropdown menus
@@ -852,7 +911,6 @@
         const minCredit = integersArray[0];
         const maxCredit = integersArray[1];
 
-
         // Prepare the data to be sent
         const data = {
           selectedCourses: selectedCourses.map((course) => ({
@@ -876,71 +934,107 @@
           data: JSON.stringify(data),
           contentType: "application/json",
           success: function (response) {
-            displayCombinations(JSON.parse(response));
+            createTable(JSON.parse(response));
           },
         });
       }
 
-      function displayCombinations(combinations) {
-        const combinationsList = $("#combinations-list");
-        combinationsList.empty();
+      function createTable(combinations) {
+        const section = $("#combinations"); // Target the section with id "combinations"
+        section.empty(); // Clear any existing content
 
-        for (const [combinationName, combinationData] of Object.entries(
-          combinations
-        )) {
-          const combinationHeader = $("<h4>").text(combinationName).css("color", "white");
-          combinationsList.append(combinationHeader);
+        for (var combinationKey in combinations) {
+            var combinationData = combinations[combinationKey];
 
-          const coursesList = $("<ul>");
+            const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
+            const table = $("<table>").addClass("custom-table");
 
-          combinationData.forEach((course) => {
-            const courseItem = $("<li>").css("color", "white");
-            courseItem.append(
-              ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
-            );
-            courseItem.append("<br>");
-            courseItem.append(` Credits: <strong>${course.credits}</strong>`);
-            courseItem.append("<br>");
-            courseItem.append(
-              ` Section: <strong>${course.section}</strong> - Instructor: <strong>${course.instructor_name}</strong>`
-            );
+            const colorCount = colors.length - 1;
+            var currentColorIndex = 0;
+            const courseColorMap = {};
 
-            if (course.classroom !== "TBDTBD") {
-              courseItem.append("<br>");
-              courseItem.append(
-                ` <strong>${course.classroom}</strong> on <strong>${course.days}</strong> from <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong>`
-              );
+            for (let i = 8; i <= 18; i++) {
+                const row = $("<tr>");
+                
+                if (i === 8) {
+                    row.append($("<td>").text(format12HourTime(i)));
+
+                    days.forEach(day => {
+                        row.append($("<td>").text(daydic[day])); 
+                    });
+
+                } else {
+                    row.append($("<td>").text(format12HourTime(i)));
+
+                    days.forEach(day => {
+                        const currentTd = $("<td>");
+                        row.append(currentTd);
+
+                        combinationData.forEach(function (course) {
+                            if (courseColorMap[course.department_id + course.course_id] === undefined) {
+                                courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
+                                currentColorIndex += 1;
+
+                                if (currentColorIndex === colorCount) {
+                                    currentColorIndex = 0;
+                                }
+                            }
+
+                            if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
+                                const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
+                                const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
+                                const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
+                                const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
+
+                                const topPercentage = (startMinutes / 60) * 100;
+                                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                                const cellContent = $("<div>").addClass("cell-content").css({
+                                    "top": topPercentage + "%",
+                                    "height": heightPercentage + "%",
+                                    "background-color": courseColorMap[course.department_id + course.course_id]
+                                }).text(course.department_id + course.course_id + " - " + course.section);
+
+                                currentTd.append(cellContent);
+
+                            }
+                            
+                            if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
+                                const startMinutes = parseInt(course.start_time.substring(course.alternate_start_time.length - 2));
+                                const endMinutes = parseInt(course.end_time.substring(course.alternate_end_time.length - 2));
+                                const startTimeHours = parseInt(course.start_time.substring(0, course.alternate_start_time.length - 3));
+                                const endTimeHours = parseInt(course.end_time.substring(0, course.alternate_end_time.length - 3));
+
+                                const topPercentage = (startMinutes / 60) * 100;
+                                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                                const cellContent = $("<div>").addClass("cell-content").css({
+                                    "top": topPercentage + "%",
+                                    "height": heightPercentage + "%",
+                                    "background-color": courseColorMap[course.department_id + course.course_id]
+                                }).text(course.department_id + course.course_id + " - " + course.section);
+
+                                currentTd.append(cellContent);
+
+                              
+                            }
+                        });
+                    });
+                }
+                table.append(row);
             }
-
-            if (course.alternate_classroom !== "None") {
-              courseItem.append("<br>");
-              courseItem.append(
-                `<strong>${course.alternate_classroom}</strong> on <strong>${course.alternate_days}</strong> from <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong>`
-              );
-            }
-
-            courseItem.append("<br>");
-
-            coursesList.append(courseItem);
-            coursesList.append("<hr>");
-          });
-
-          combinationsList.append(coursesList);
-
-          // Display total credits
-          const totalCredits = $("<p>").html(
-            `Total Credits: <strong>${combinationData.reduce(
-              (sum, course) => sum + course.credits,
-              0
-            )}</strong>`
-          ).css("color", "white");
-
-          combinationsList.append(totalCredits);
-          combinationsList.append("<hr>");
-          combinationsList.append("<br>");
+            newDiv.append(table);
+            section.append(newDiv);
         }
-      }
+    }
 
+    function format12HourTime(hour) {
+      let suffix = hour >= 12 ? "PM" : "AM";
+      hour = hour % 12 || 12;
+      return `${hour}:00 ${suffix}`;
+    }
+
+    
     </script>
   </body>
 </html>
