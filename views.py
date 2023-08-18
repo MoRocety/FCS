@@ -21,18 +21,51 @@ def indexOld2():
     return render_template("tester.html")
 
 
+
+@my_blueprint.route('/paginationClick', methods=['POST'])
+def paginator():
+    page = int(request.form['page'])
+    items_per_page = 20
+    start_index = (page - 1) * items_per_page
+    end_index = start_index + items_per_page
+
+    global cached_sections
+    filtered_sections = cached_sections
+
+    sections_json = []
+
+    for section in filtered_sections[start_index:end_index]:
+        
+        if section[8] != "TBD":
+            instructor = section[8].title()
+        
+        else:
+            instructor = section[8]
+
+        sections_json.append({
+            'department_id': section[0],
+            'course_id': section[1],
+            'section': section[2],
+            'name': cap_first_preserve_case(section[3]),
+            'credits': section[4],
+            'days': "".join(filter(str.isalpha, section[5])),
+            'start_time': section[6],
+            'end_time': section[7],
+            'instructor_name': instructor,
+            'classroom': section[9],
+            'alternate_classroom': section[10],
+            'alternate_days': "".join(filter(str.isalpha, section[11])),
+            'alternate_start_time': section[12],
+            'alternate_end_time': section[13]
+        })
+    return json.dumps(sections_json, indent=2)
+
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
         dropdown_value = request.form['dropdown'].upper()
         dropdown2_value = request.form['dropdown2'].upper()
         dropdown3_value = request.form['dropdown3'].upper()
-        
-        page = int(request.form['page'])
-
-        items_per_page = 20
-        start_index = (page - 1) * items_per_page
-        end_index = start_index + items_per_page
 
         filtered_sections = []
 
@@ -42,10 +75,15 @@ def index():
                     if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
                         filtered_sections.append(x)
 
+
+        global cached_sections
+        cached_sections = filtered_sections
+
         # Convert sections to JSON format
         sections_json = []
+
         # Showing simon else
-        for section in filtered_sections[start_index:end_index]:
+        for section in filtered_sections[0:20]:
         
             if section[8] != "TBD":
                 instructor = section[8].title()
@@ -74,7 +112,6 @@ def index():
     
     
     return render_template('trying.html')
-
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
 def update_term():
