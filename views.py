@@ -21,7 +21,6 @@ def indexOld2():
     return render_template("tester.html")
 
 
-
 @my_blueprint.route('/paginationClick', methods=['POST'])
 def paginator():
     page = int(request.form['page'])
@@ -250,7 +249,7 @@ def submit_selected_courses():
     filtered_combinations = [filtered_comb for filtered_comb in filtered_combinations
                           if crucial(filtered_comb, [course["department_id"] + course["course_id"] for course in crucial_courses])]
 
-    combinations_dict = {}
+    combinations_lst = []
     for i, combination in enumerate(filtered_combinations, start=1):
         combination_data = []
         for section in combination:
@@ -272,7 +271,7 @@ def submit_selected_courses():
             }
             combination_data.append(course_data_)
 
-        combinations_dict[f'Combination {i}'] = combination_data
+        combinations_lst.append(combination_data)
  
     # Return a response
-    return json.dumps(combinations_dict)
+    return json.dumps(combinations_lst)

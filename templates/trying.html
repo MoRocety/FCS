@@ -126,6 +126,7 @@
       .slider-track{
         margin-bottom: 1rem  !important;
       }
+
       .slider-handle{
         border: none;
         outline: none;
@@ -229,6 +230,11 @@
         align-items: center; /* Center vertically */
       }
 
+      .course-name {
+        font-family: 'Exo 2', sans-serif;
+        color: white;
+      }
+
       .pagination {
     display: inline-block;
     font-weight: bold;
@@ -326,7 +332,7 @@
     <section id="shortlistedCoursesSection", style="display: none;">
       <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
         <!-- Selected courses will be dynamically added here -->
-        <p id="selected-courses-count"   class="text-center" style="color:white;">
+        <p id="selected-courses-count" class="text-center" style="color:white;">
           Selected Courses Count: <strong>0</strong>
         </p>
         <ul id="selected-courses-list" style="list-style-type: none; "></ul>
@@ -335,11 +341,11 @@
       <section id="combinationMenu" style="display: none;">
         <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Schedule Menu</h1>
         <p id="selected-courses-count"   class="text-center" style="color:white;">
-          Specify Credit Hours 
+          (Narrow Down Schedule Generation)
         </p>
 
         <div class="custom-div white-color-setter text-center form-group">
-          <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Credit Hour Range</h6>
+          <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Adjustable Credit Hour Range</h6>
           <div class="form-group">
 
             <span id="span1" class="text-center m-4">15</span>
@@ -348,7 +354,7 @@
           </div>
 
           <hr class="separator-line ">
-        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses:</h6>
+        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses</h6>
           <div id="crucialCoursesContainer" class="text-left">
             <!-- Existing HTML content -->
           </div>       
@@ -359,8 +365,8 @@
         </div>
       </section>
 
-      <section id="combinations">
-        <!-- Populate with divs accordingly -->
+      <section id="combinations" style="display: none";>
+        <!-- Table comes here -->
       </section>
     
       <script>
@@ -419,7 +425,8 @@
             link.classList.add("active");
           }
           link.addEventListener("click", () => {
-            paginationFunction(link.textContent)
+            event.preventDefault();
+            paginationFunction(link.textContent);
             // Update the selected page and regenerate pagination
             selectedPage = pageNumber;
             generatePagination(selectedPage, totalPages, visiblePages);
@@ -571,6 +578,7 @@
               $("#filterCoursesSection").css("display", "none");
               $("#shortlistedCoursesSection").css("display", "none");
               $("#combinationMenu").css("display", "none");
+              $("#combinations").css("display", "none");
           }
            
         });
@@ -912,6 +920,8 @@
         if (selectedCourses.length === 0) {
             $("#shortlistedCoursesSection").css("display", "none");
             $("#combinationMenu").css("display", "none");
+            $("#combinations").css("display", "none");
+
 
         }
 
@@ -1054,7 +1064,7 @@
           success: function (response) {
             
             combinations = JSON.parse(response);
-            createTable(1);
+            createTable(0);
           },
         });
       }
@@ -1063,15 +1073,56 @@
         const section = $("#combinations"); // Target the section with id "combinations"
         section.empty(); // Clear any existing content
 
-        const unfiltered_combination = combinations["Combination " + n];
-        var combination = [];
+        const h1Element = $("<h1>")
+          .addClass("mt-1 ms-1 white-color-setter text-center")
+          .text("Generated Schedules")
+          .css("font-weight", "900");
 
-        unfiltered_combination.forEach(course=>{
-          if(course.start_time!== "None"){
-            combination.push(course)
-            
+        const h2Element = $("<h2>")
+          .addClass("mt-1 ms-1 white-color-setter text-center")
+          .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
+          .css("font-weight", "900");
+
+        const previousButton = $("<button>")
+          .text("Previous")
+          .on("click", function() {
+            if (n > 0) {
+              createTable(n - 1);
+            }
+          });
+
+        const nextButton = $("<button>")
+          .text("Next")
+          .on("click", function() {
+            if (n < combinations.length - 1) {
+              createTable(n + 1);
+            }
+          });
+
+        section.append(h1Element, h2Element, previousButton, nextButton);
+
+        const combination = combinations[n]; 
+        const descriptionDiv = $("<div>").css("text-align", "center");
+
+        if (combination !== undefined) {
+          $("#combinations").removeAttr("style");
+          
+          for (const course of combination) {
+              const departmentID = course.department_id;
+              const courseCode = course.course_id;
+              const courseSection = course.section;
+              const courseName = course.name;
+
+              const courseDescriptor = $("<span>")
+                  .html(`${departmentID} ${courseCode} - <b>${courseSection}</b> - <b>${courseName}</b>`)
+                  .addClass("course-name");
+
+              descriptionDiv.append(courseDescriptor);
+              descriptionDiv.append("<br>");
           }
-        })
+      } else {
+          return;
+      }
 
         const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
         const table = $("<table>").addClass("custom-table");
@@ -1079,81 +1130,82 @@
         const colorCount = colors.length - 1;
         var currentColorIndex = 0;
         const courseColorMap = {};
-
-        if (combination.length>0) {
           
-          for (let i = 8; i <= 18; i++) {
-            const row = $("<tr>");
-            
-              if (i === 8) {
-                row.append($("<td>").text(format12HourTime(i)));
+        for (let i = 8; i <= 18; i++) {
+          const row = $("<tr>");
+          
+            if (i === 8) {
+              row.append($("<td>").text(format12HourTime(i)));
 
-                days.forEach(day => {
-                    row.append($("<td>").text(daydic[day])); 
-                });
+              days.forEach(day => {
+                  row.append($("<td>").text(daydic[day])); 
+              });
 
-            } else {
-                row.append($("<td>").text(format12HourTime(i)));
+          } else {
+              row.append($("<td>").text(format12HourTime(i)));
 
-                days.forEach(day => {
-                    const currentTd = $("<td>");
-                    row.append(currentTd);
+              days.forEach(day => {
+                  const currentTd = $("<td>");
+                  row.append(currentTd);
+                  
+                  
+                  combination.forEach(function (course) {
                     
-                    
-                    combination.forEach(function (course) {
+                      if (courseColorMap[course.department_id + course.course_id] === undefined) {
+                          courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
+                          currentColorIndex += 1;
+
+                          if (currentColorIndex === colorCount) {
+                              currentColorIndex = 0;
+                          }
+                      }                            
+
+                      if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
+                          const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
+                          const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
+                          const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
+                          const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
+
+                          const topPercentage = (startMinutes / 60) * 100;
+                          const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                          const cellContent = $("<div>").addClass("cell-content").css({
+                              "overflow": "auto",
+                              "top": topPercentage + "%",
+                              "height": heightPercentage + "%",
+                              "background-color": courseColorMap[course.department_id + course.course_id]
+                          }).text(course.department_id + course.course_id + " - " + course.section);
+
+                          currentTd.append(cellContent);
+
+                      }
                       
-                        if (courseColorMap[course.department_id + course.course_id] === undefined) {
-                            courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
-                            currentColorIndex += 1;
+                      if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
+                          const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
+                          const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
+                          const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
+                          const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
 
-                            if (currentColorIndex === colorCount) {
-                                currentColorIndex = 0;
-                            }
-                        }                            
+                          const topPercentage = (startMinutes / 60) * 100;
+                          const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
 
-                        if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
-                            const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
-                            const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
-                            const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
-                            const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
+                          const cellContent = $("<div>").addClass("cell-content").css({
+                              "top": topPercentage + "%",
+                              "height": heightPercentage + "%",
+                              "background-color": courseColorMap[course.department_id + course.course_id]
+                          }).text(course.department_id + course.course_id + " - " + course.section);
 
-                            const topPercentage = (startMinutes / 60) * 100;
-                            const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+                          currentTd.append(cellContent);   
+                      }
+                  });
+              });
+          }
+          table.append(row);
+      }
 
-                            const cellContent = $("<div>").addClass("cell-content").css({
-                                "top": topPercentage + "%",
-                                "height": heightPercentage + "%",
-                                "background-color": courseColorMap[course.department_id + course.course_id]
-                            }).text(course.department_id + course.course_id + " - " + course.section);
-
-                            currentTd.append(cellContent);
-
-                        }
-                        
-                        if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
-                            const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
-                            const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
-                            const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
-                            const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
-
-                            const topPercentage = (startMinutes / 60) * 100;
-                            const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
-
-                            const cellContent = $("<div>").addClass("cell-content").css({
-                                "top": topPercentage + "%",
-                                "height": heightPercentage + "%",
-                                "background-color": courseColorMap[course.department_id + course.course_id]
-                            }).text(course.department_id + course.course_id + " - " + course.section);
-
-                            currentTd.append(cellContent);   
-                        }
-                    });
-                });
-            }
-            table.append(row);
-        }}
-        newDiv.append(table);
-        section.append(newDiv);
+      newDiv.append(table);
+      section.append(descriptionDiv);
+      section.append(newDiv);
       
     }
 
