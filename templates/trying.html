@@ -228,6 +228,25 @@
         justify-content: center; /* Center horizontally */
         align-items: center; /* Center vertically */
       }
+
+      .pagination {
+    display: inline-block;
+  }
+
+  .pagination a {
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .pagination a.active {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .pagination a:hover:not(.active) {
+    background-color: #ddd;
+  }
     
     </style>
   </head>
@@ -279,8 +298,10 @@
         </div>
     </section>
     <section id="filterCoursesSection", style="display: none;">
-        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
-        <ul id="courses-list" style="list-style-type: none; "></ul>
+     <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+     
+         <div class="pagination" id="pagination" style="margin: 0 auto;">
+        </div>        <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
 
     <section id="shortlistedCoursesSection", style="display: none;">
@@ -323,7 +344,63 @@
         <!-- Populate with divs accordingly -->
       </section>
     
-
+      <script>
+        function generatePagination(currentPage, totalPages, visiblePages) {
+          const paginationContainer = document.getElementById("pagination");
+          paginationContainer.innerHTML = "";
+        
+          const halfVisiblePages = Math.floor(visiblePages / 2);
+          const startPage = Math.max(currentPage - halfVisiblePages, 1);
+          const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+        
+          if (startPage > 1) {
+            paginationContainer.appendChild(createPaginationLink(1, currentPage));
+          }
+        
+          if (startPage > 2) {
+            paginationContainer.appendChild(createEllipsis());
+          }
+        
+          for (let page = startPage; page <= endPage; page++) {
+            paginationContainer.appendChild(createPaginationLink(page, currentPage));
+          }
+        
+          if (endPage < totalPages - 1) {
+            paginationContainer.appendChild(createEllipsis());
+          }
+        
+          if (endPage < totalPages) {
+            paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
+          }
+        }
+        
+        function createPaginationLink(pageNumber, currentPage) {
+          const link = document.createElement("a");
+          link.href = "#";
+          link.textContent = pageNumber;
+          if (pageNumber === currentPage) {
+            link.classList.add("active");
+          }
+          link.addEventListener("click", () => {
+            // Update the selected page and regenerate pagination
+            selectedPage = pageNumber;
+            generatePagination(selectedPage, totalPages, visiblePages);
+          });
+          return link;
+        }
+        
+        function createEllipsis() {
+          const ellipsis = document.createElement("span");
+          ellipsis.textContent = "...";
+          return ellipsis;
+        }
+        
+        // Example usage
+        let selectedPage = 5;
+        const totalPages = 20;
+        const visiblePages = 5;
+        generatePagination(selectedPage, totalPages, visiblePages);
+        </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -551,9 +628,10 @@
           },
           success: function (response) {
             const courses = JSON.parse(response);
-            if (courses.length > 0) {
+           
+            if (courses.data.length > 0) {
                 $("#filterCoursesSection").removeAttr("style");
-                displayCourses(courses);
+                displayCourses(courses.data);
             } else {
                 $("#filterCoursesSection").css("display", "none");
             }
