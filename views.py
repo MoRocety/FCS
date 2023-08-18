@@ -14,10 +14,10 @@ def indexOld():
     return render_template("New_index.html")
 
 
-
 @my_blueprint.route('/test', methods=['GET', 'POST'])
 def indexOld2():
     return render_template("tester.html")
+
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
@@ -25,20 +25,25 @@ def index():
         dropdown_value = request.form['dropdown'].upper()
         dropdown2_value = request.form['dropdown2'].upper()
         dropdown3_value = request.form['dropdown3'].upper()
-
-        filtered_sections = course_data
-
-        if not (dropdown_value == "ALL" or dropdown_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[0].upper() == dropdown_value]
-
-        if not (dropdown2_value == "ALL" or dropdown2_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[3].upper() == dropdown2_value]
-
-        if not (dropdown3_value == "ALL" or dropdown3_value == ""):
-            filtered_sections = [x for x in filtered_sections if x[8].upper() == dropdown3_value]
         
+        page = int(request.form['page'])
+
+        items_per_page = 20
+        start_index = (page - 1) * items_per_page
+        end_index = start_index + items_per_page
+
+        filtered_sections = []
+
+        for x in course_data:
+            if dropdown_value == "ALL" or dropdown_value == "" or x[0].upper() == dropdown_value:
+                if dropdown2_value == "ALL" or dropdown2_value == "" or x[3].upper() == dropdown2_value:
+                    if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
+                        filtered_sections.append(x)
+
         # Convert sections to JSON format
         sections_json = []
+        # Showing simon else
+        # for section in filtered_sections[start_index:end_index]:
         for section in filtered_sections:
             if section[8] != "TBD":
                 instructor = section[8].title()
@@ -64,6 +69,7 @@ def index():
             })
 
         return json.dumps(sections_json, indent=2)
+    
     
     return render_template('trying.html')
 
@@ -123,23 +129,20 @@ def update_department():
 
     return json.dumps(response_data)
 
+
 @my_blueprint.route('/updateInstructor', methods=['POST'])
 def update_instructor():
     data = request.get_json()['data'].upper()
     department = request.get_json()['department'].upper()
 
-    if (department == "ALL" or department == "") and (data == "ALL" or data == ""):
-        courses_ = list(set([x[3] for x in course_data]))
+    filtered_courses = []
 
-    elif (department == "ALL" or department == "") and (not (data == "ALL" or data == "")):
-        courses_ = list(set([x[3] for x in course_data if x[8].upper() == data]))
+    for x in course_data:
+        if (department == "ALL" or department == "" or x[0].upper() == department) and \
+        (data == "ALL" or data == "" or x[8].upper() == data):
+            filtered_courses.append(x[3])
 
-    elif (not (department == "ALL" or department == "")) and (data == "ALL" or data == ""):
-        courses_ = list(set([x[3] for x in course_data if x[0].upper() == department]))
-
-    else:
-        courses_ = list(set([x[3] for x in course_data if x[8].upper() == data and x[0].upper() == department]))
-    
+    courses_ = list(set(filtered_courses))    
     courses_.sort()
 
     courses_ = [
@@ -154,23 +157,20 @@ def update_instructor():
 
     return json.dumps(response_data)
 
+
 @my_blueprint.route('/updateCourse', methods=['POST'])
 def update_course():
     data = request.get_json()['data'].upper()
     department = request.get_json()['department'].upper()
 
-    if (department == "ALL" or department == "") and (data == "ALL" or data == ""):
-        instructors_ = list(set([x[8] for x in course_data]))
+    filtered_instructors = []
 
-    elif (department == "ALL" or department == "") and (not (data == "ALL" or data == "")):
-        instructors_ = list(set([x[8] for x in course_data if x[3].upper() == data]))
+    for x in course_data:
+        if (department == "ALL" or department == "" or x[0].upper() == department) and \
+        (data == "ALL" or data == "" or x[3].upper() == data):
+            filtered_instructors.append(x[8])
 
-    elif (not (department == "ALL" or department == "")) and (data == "ALL" or data == ""):
-        instructors_ = list(set([x[8] for x in course_data if x[0].upper() == department]))
-
-    else:
-        instructors_ = list(set([x[8] for x in course_data if x[0].upper() == department and x[3].upper() == data]))
-    
+    instructors_ = list(set(filtered_instructors))    
     instructors_.sort()
 
     instructors_ = [
@@ -237,5 +237,3 @@ def submit_selected_courses():
  
     # Return a response
     return json.dumps(combinations_dict)
-
-
