@@ -231,21 +231,37 @@
 
       .pagination {
     display: inline-block;
-  }
+    font-weight: bold;
+}
 
   .pagination a {
     padding: 8px 16px;
     text-decoration: none;
     transition: background-color 0.3s;
+    border-radius: 10px;
+    background-color: #181E30;
+    color: white!important;
+    margin-left: 3px!important;
+    margin-right: 3px!important;
+
   }
 
   .pagination a.active {
-    background-color: #007bff;
-    color: white;
+    background-color: gold;
+    color: black !important;
+
   }
 
   .pagination a:hover:not(.active) {
-    background-color: #ddd;
+    background-color: gold;
+    color: black !important;
+
+  }
+
+  .pagination span{
+    color: white!important;
+    margin-left: 3px!important;
+    margin-right: 3px!important;
   }
     
     </style>
@@ -297,11 +313,14 @@
 
         </div>
     </section>
-    <section id="filterCoursesSection", style="display: none;">
-     <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+    <section id="filterCoursesSection", style="display: none; text-align: center;">
+     <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
      
-         <div class="pagination" id="pagination" style="margin: 0 auto;">
-        </div>        <ul id="courses-list" style="list-style-type: none; "></ul>
+            <div class="pagination-container" style="text-align: center; margin-top:1.5rem;">
+
+              <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
+            </div>
+         <ul id="courses-list" style="list-style-type: none; "></ul>
     </section>
 
     <section id="shortlistedCoursesSection", style="display: none;">
@@ -345,6 +364,24 @@
       </section>
     
       <script>
+        function paginationFunction(pageNumber) {
+        
+        $.ajax({
+          url: "paginationClick",
+          type: "POST",
+          data: {
+            page: pageNumber
+          },
+          success: function (response) {
+            const courses = JSON.parse(response);           
+                displayCourses(courses);
+            }
+          },)
+        }
+      
+
+      </script>
+      <script>
         function generatePagination(currentPage, totalPages, visiblePages) {
           const paginationContainer = document.getElementById("pagination");
           paginationContainer.innerHTML = "";
@@ -382,6 +419,7 @@
             link.classList.add("active");
           }
           link.addEventListener("click", () => {
+            paginationFunction(link.textContent)
             // Update the selected page and regenerate pagination
             selectedPage = pageNumber;
             generatePagination(selectedPage, totalPages, visiblePages);
@@ -395,11 +433,7 @@
           return ellipsis;
         }
         
-        // Example usage
-        let selectedPage = 5;
-        const totalPages = 20;
-        const visiblePages = 5;
-        generatePagination(selectedPage, totalPages, visiblePages);
+        
         </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -422,6 +456,10 @@
       const days = ["M", "T", "W", "R", "F"];
       const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
       var combinations;
+
+      let selectedPage;
+      let totalPages; 
+      let visiblePages;
 
       const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
@@ -625,10 +663,15 @@
             dropdown: selectedDepartment,
             dropdown2: selectedCourse,
             dropdown3: selectedInstructor,
-            page: 1,
+            
           },
           success: function (response) {
             const courses = JSON.parse(response);
+            selectedPage = 1;
+            totalPages = Math.ceil(courses.size/20);
+            visiblePages = 3;
+            generatePagination(selectedPage, totalPages, visiblePages);
+
            
             if (courses.data.length > 0) {
                 $("#filterCoursesSection").removeAttr("style");
@@ -1011,7 +1054,6 @@
           success: function (response) {
             
             combinations = JSON.parse(response);
-            console.log(combinations);
             createTable(1);
           },
         });
@@ -1021,7 +1063,15 @@
         const section = $("#combinations"); // Target the section with id "combinations"
         section.empty(); // Clear any existing content
 
-        const combination = combinations["Combination " + n];
+        const unfiltered_combination = combinations["Combination " + n];
+        var combination = [];
+
+        unfiltered_combination.forEach(course=>{
+          if(course.start_time!== "None"){
+            combination.push(course)
+            
+          }
+        })
 
         const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
         const table = $("<table>").addClass("custom-table");
@@ -1030,10 +1080,12 @@
         var currentColorIndex = 0;
         const courseColorMap = {};
 
-        for (let i = 8; i <= 18; i++) {
+        if (combination.length>0) {
+          
+          for (let i = 8; i <= 18; i++) {
             const row = $("<tr>");
             
-            if (i === 8) {
+              if (i === 8) {
                 row.append($("<td>").text(format12HourTime(i)));
 
                 days.forEach(day => {
@@ -1046,8 +1098,10 @@
                 days.forEach(day => {
                     const currentTd = $("<td>");
                     row.append(currentTd);
-
+                    
+                    
                     combination.forEach(function (course) {
+                      
                         if (courseColorMap[course.department_id + course.course_id] === undefined) {
                             courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
                             currentColorIndex += 1;
@@ -1097,11 +1151,11 @@
                 });
             }
             table.append(row);
-        }
+        }}
         newDiv.append(table);
         section.append(newDiv);
+      
     }
-
 
     function format12HourTime(hour) {
       let suffix = hour >= 12 ? "PM" : "AM";
