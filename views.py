@@ -4,6 +4,8 @@ import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
 
+cached_sections = []
+
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
