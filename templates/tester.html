@@ -1,48 +1,296 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Range Slider with Two Handles</title>
-    <!-- Link to Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-    />
-    <!-- Link to Bootstrap JS and jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Link to Bootstrap Slider CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css"
-    />
-    <!-- Link to Bootstrap Slider JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+      
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin: auto;
+        font-family: 'Exo 2', sans-serif;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding-top: 40px;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-bottom: 0px;
+        width: auto;
+        position: relative; /* Make the table cells positioned elements */
+        vertical-align: bottom;
+      }
+
+      .righte {
+        
+        padding-right: 10px;
+        border: 1px solid #ddd;
+        padding-left: 40px;
+        padding-top: 40px;
+        padding-bottom: 0px;
+        width: auto;
+        position: relative; /* Make the table cells positioned elements */
+        vertical-align: bottom;
+      }
+
+      th {
+        background-color: #f2f2f2;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      /* Style for the overlay div */
+      .os {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 183%; /* Since 50/60 is 0.833*/
+
+        background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent red */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ml {
+        position: absolute;
+        top: 50%;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 125%; /* Since 50/60 is 0.833*/
+
+        background-color: rgba(0, 125, 125, 0.5); /* Semi-transparent red */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .web {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 183%; /* Since 50/60 is 0.833*/
+
+        background-color: rgba(125, 0, 125, 0.5); /* Semi-transparent red */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ai {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 183%; /* Since 50/60 is 0.833*/
+
+        background-color: rgba(0, 0, 255, 0.5); /* Semi-transparent red */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .automata {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 83%;
+
+        background-color: rgba(0, 255, 0, 0.5); /* Semi-transparent green */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .de {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        border-radius: 20px;
+        width: 100%;
+        height: 83%;
+
+        background-color: rgba(125, 125, 0, 0.5); /* Semi-transparent green */
+        z-index: 1; /* Place it above the table cells */
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+    </style>
   </head>
   <body>
-    <div class="container mt-5">
-      <h2>Bootstrap Range Slider with Two Handles</h2>
-      <input
-        id="range-slider"
-        type="text"
-        data-slider-id="rangeSlider"
-        data-slider-min="0"
-        data-slider-max="100"
-        data-slider-step="1"
-        data-slider-value="[25, 75]"
-      />
-    </div>
-
-    <script>
-      $(document).ready(function () {
-        // Initialize the Bootstrap slider
-        var rangeSlider = new Slider("#range-slider", {
-          tooltip: "hide",
-          range: true,
-        });
-      });
-    </script>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th class="righte">Fri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>8</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td></td>
+          <td>
+            <div class="ml">ML S316</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td>
+            <div class="ml">ML S316</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>
+            <div class="automata">Automata S215</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td>
+            <div class="automata">Automata S215</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td class="righte">
+            <div class="automata">Automata S215</div>
+            <!-- Add the overlay div -->
+          </td>
+        </tr>
+        <tr>
+          <td>12</td>
+          <td>
+            <div class="os">OS S219</div>
+            <!-- Add another overlay div -->
+          </td>
+          <td>
+            <div class="ai">AI S215</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td>
+            <div class="os">OS S219</div>
+            <!-- Add another overlay div -->
+          </td>
+          <td>
+            <div class="ai">AI S219</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td class="righte"></td>
+        </tr>
+          <td>13</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>14</td>
+          <td>
+            <div class="de">DE S413</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td>
+            <div class="de">DE S413</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td class="righte">
+            <div class="de">DE S413</div>
+            <!-- Add the overlay div -->
+          </td>
+        </tr>
+        <tr>
+          <td>15</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>16</td>
+          <td></td>
+          <td>
+            <div class="web">Web S320</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td></td>
+          <td>
+            <div class="web">Web S320</div>
+            <!-- Add the overlay div -->
+          </td>
+          <td class="righte"></td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td class="righte"></td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>
