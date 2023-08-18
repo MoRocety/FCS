@@ -4,6 +4,8 @@ import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
 
+cached_sections = []
+
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
@@ -43,8 +45,8 @@ def index():
         # Convert sections to JSON format
         sections_json = []
         # Showing simon else
-        # for section in filtered_sections[start_index:end_index]:
-        for section in filtered_sections:
+        for section in filtered_sections[start_index:end_index]:
+        
             if section[8] != "TBD":
                 instructor = section[8].title()
             
@@ -68,7 +70,7 @@ def index():
                 'alternate_end_time': section[13]
             })
 
-        return json.dumps(sections_json, indent=2)
+        return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
     
     return render_template('trying.html')

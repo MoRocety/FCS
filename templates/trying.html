@@ -344,6 +344,7 @@
       var pgno = 1;
       const days = ["M", "T", "W", "R", "F"];
       const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
+      var combinations;
 
       const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
@@ -551,15 +552,16 @@
           },
           success: function (response) {
             const courses = JSON.parse(response);
-            if (courses.length > 0) {
+           
+            if (courses.data.length > 0) {
                 $("#filterCoursesSection").removeAttr("style");
-                displayCourses(courses);
+                displayCourses(courses.data);
             } else {
                 $("#filterCoursesSection").css("display", "none");
             }
           },
-        });
-      }
+        });
+      }
 
       function displayCourses(courses) {
         const coursesList = $("#courses-list");
@@ -930,97 +932,99 @@
           data: JSON.stringify(data),
           contentType: "application/json",
           success: function (response) {
-            createTable(JSON.parse(response));
+            
+            combinations = JSON.parse(response);
+            console.log(combinations);
+            createTable(1);
           },
         });
       }
 
-      function createTable(combinations) {
+      function createTable(n) {
         const section = $("#combinations"); // Target the section with id "combinations"
         section.empty(); // Clear any existing content
 
-        for (var combinationKey in combinations) {
-            var combinationData = combinations[combinationKey];
+        const combination = combinations["Combination " + n];
 
-            const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
-            const table = $("<table>").addClass("custom-table");
+        const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
+        const table = $("<table>").addClass("custom-table");
 
-            const colorCount = colors.length - 1;
-            var currentColorIndex = 0;
-            const courseColorMap = {};
+        const colorCount = colors.length - 1;
+        var currentColorIndex = 0;
+        const courseColorMap = {};
 
-            for (let i = 8; i <= 18; i++) {
-                const row = $("<tr>");
-                
-                if (i === 8) {
-                    row.append($("<td>").text(format12HourTime(i)));
+        for (let i = 8; i <= 18; i++) {
+            const row = $("<tr>");
+            
+            if (i === 8) {
+                row.append($("<td>").text(format12HourTime(i)));
 
-                    days.forEach(day => {
-                        row.append($("<td>").text(daydic[day])); 
-                    });
+                days.forEach(day => {
+                    row.append($("<td>").text(daydic[day])); 
+                });
 
-                } else {
-                    row.append($("<td>").text(format12HourTime(i)));
+            } else {
+                row.append($("<td>").text(format12HourTime(i)));
 
-                    days.forEach(day => {
-                        const currentTd = $("<td>");
-                        row.append(currentTd);
+                days.forEach(day => {
+                    const currentTd = $("<td>");
+                    row.append(currentTd);
 
-                        combinationData.forEach(function (course) {
-                            if (courseColorMap[course.department_id + course.course_id] === undefined) {
-                                courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
-                                currentColorIndex += 1;
+                    combination.forEach(function (course) {
+                        if (courseColorMap[course.department_id + course.course_id] === undefined) {
+                            courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
+                            currentColorIndex += 1;
 
-                                if (currentColorIndex === colorCount) {
-                                    currentColorIndex = 0;
-                                }
-                            }                            
-
-                            if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
-                                const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
-                                const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
-                                const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
-                                const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
-
-                                const topPercentage = (startMinutes / 60) * 100;
-                                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
-
-                                const cellContent = $("<div>").addClass("cell-content").css({
-                                    "top": topPercentage + "%",
-                                    "height": heightPercentage + "%",
-                                    "background-color": courseColorMap[course.department_id + course.course_id]
-                                }).text(course.department_id + course.course_id + " - " + course.section);
-
-                                currentTd.append(cellContent);
-
+                            if (currentColorIndex === colorCount) {
+                                currentColorIndex = 0;
                             }
-                            
-                            if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
-                                const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
-                                const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
-                                const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
-                                const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
+                        }                            
 
-                                const topPercentage = (startMinutes / 60) * 100;
-                                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+                        if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
+                            const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
+                            const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
+                            const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
+                            const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
 
-                                const cellContent = $("<div>").addClass("cell-content").css({
-                                    "top": topPercentage + "%",
-                                    "height": heightPercentage + "%",
-                                    "background-color": courseColorMap[course.department_id + course.course_id]
-                                }).text(course.department_id + course.course_id + " - " + course.section);
+                            const topPercentage = (startMinutes / 60) * 100;
+                            const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
 
-                                currentTd.append(cellContent);   
-                            }
-                        });
+                            const cellContent = $("<div>").addClass("cell-content").css({
+                                "top": topPercentage + "%",
+                                "height": heightPercentage + "%",
+                                "background-color": courseColorMap[course.department_id + course.course_id]
+                            }).text(course.department_id + course.course_id + " - " + course.section);
+
+                            currentTd.append(cellContent);
+
+                        }
+                        
+                        if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
+                            const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
+                            const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
+                            const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
+                            const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
+
+                            const topPercentage = (startMinutes / 60) * 100;
+                            const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                            const cellContent = $("<div>").addClass("cell-content").css({
+                                "top": topPercentage + "%",
+                                "height": heightPercentage + "%",
+                                "background-color": courseColorMap[course.department_id + course.course_id]
+                            }).text(course.department_id + course.course_id + " - " + course.section);
+
+                            currentTd.append(cellContent);   
+                        }
                     });
-                }
-                table.append(row);
+                });
             }
-            newDiv.append(table);
-            section.append(newDiv);
+            table.append(row);
         }
+        newDiv.append(table);
+        section.append(newDiv);
     }
+
 
     function format12HourTime(hour) {
       let suffix = hour >= 12 ? "PM" : "AM";
