@@ -90,7 +90,7 @@
         border-color: rgba(13, 17, 27, 0.5);
       }
 
-      .custom-button {
+      .custom-button, .custom-button2 {
         background-color: #FFD700;
         border: none;
         border-radius: 20px;
@@ -100,10 +100,20 @@
         color: black;
         text-align: center;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
-        display: block;
         margin: 0 auto;
-        margin-top: 2rem !important;
+        
         height: 2.75rem !important;
+      }
+
+      .custom-button {
+        display: block;
+        margin-top: 2rem !important;
+      }
+
+      .custom-button2 {
+        display: inline;
+        vertical-align: center;
+        margin: 5px;
       }
 
       .custom-button:hover {
@@ -353,7 +363,7 @@
             <span id="span2" class="text-center m-4 ml-3">17</span>
           </div>
 
-          <hr class="separator-line ">
+          <hr class="separator-line">
         <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses</h6>
           <div id="crucialCoursesContainer" class="text-left">
             <!-- Existing HTML content -->
@@ -456,6 +466,7 @@
 
       var selectedCourses = [];
       var selectedCoursesCount = 0;
+      var currentWeight = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
       var currentTerm = "2023 FALL";
@@ -464,9 +475,12 @@
       const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
       var combinations;
 
+        
       let selectedPage;
       let totalPages; 
       let visiblePages;
+      let lastSliderValues;
+      
 
       const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
@@ -478,18 +492,35 @@
           tooltip: "hide"
         });
 
+        
         rangeSlider.setValue([15, 17]);
-        // Add event handler to the slider's "slide" event
-        rangeSlider.on("slide", function (slideEvt) {
+        lastSliderValues = [15, 17];
 
-          const span1 = document.getElementById("span1")
-          const span2 = document.getElementById("span2")
-          
-          span1.innerText = slideEvt[0];
-          span2.innerText= slideEvt[1];
-          
+        // Add event handler to the slider's "change" event
+        rangeSlider.on("change", function (event) {
+          console.log(event);
+          const oldValue = event.oldValue;        
+          const newValue = event.newValue;
+
+          const minCredit = newValue[0];
+          const maxCredit = newValue[1];
+
+          // Perform credit check
+          const totalWeight = credit_check(selectedCourses, minCredit, maxCredit);
+          currentWeight = totalWeight;
+          console.log(totalWeight);
+
+          if (totalWeight > 500000) {
+            // Revert slider value
+            rangeSlider.setValue(oldValue);
+          } else {
+            // Update span elements
+            const span1 = document.getElementById("span1");
+            const span2 = document.getElementById("span2");
+            span1.innerText = minCredit;
+            span2.innerText = maxCredit;
+          }
         });
-
 
         // Populate dropdown menus
         populateDropdown("#department", "/departments");
@@ -699,7 +730,7 @@
           const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
             const liDiv = $("<div  style='border-radius: 50px; '></div>")
             const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-          const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
+            const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
             "value",
             compositeKey
           );
@@ -716,27 +747,53 @@
           }
 
           checkbox.on("change", function () {
+            const sliderValues = $("#credit-range").slider("getValue");
+            const inputString = sliderValues[0].value;
+            const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+            const minCredit = integersArray[0];
+            const maxCredit = integersArray[1];
+            
             if (this.checked) {
-              addSelectedCourse(course);
-              $("#shortlistedCoursesSection").removeAttr("style");
-              $("#combinationMenu").removeAttr("style");
+                const combinedCourses = [...selectedCourses, course];
+                const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+                console.log(totalWeight);
+                currentWeight = totalWeight;
 
-              
+                if (totalWeight > 500000) {
+                  // Prevent the checkbox from being checked
+                  this.checked = false;
+                  alert("Total weight would exceed 500,000. Cannot add the course.");
+                }
+
+                else {
+                  addSelectedCourse(course);
+                  $("#shortlistedCoursesSection").removeAttr("style");
+                  $("#combinationMenu").removeAttr("style");
+                }
+                
             } else {
-              removeSelectedCourse(course);
-              
+                  const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
+                  const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+                  console.log(totalWeight);
+                  currentWeight = totalWeight;
+                  removeSelectedCourse(course);
             }
-          });
+            
+        });
+
           
           li.append(checkbox);
           li.append(liDiv)
           liDiv.append(
-            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
           );
-          
           
           liDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+          );
+
+          liDiv.append(
+            ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
@@ -848,23 +905,24 @@
       
 
       function addSelectedCourse(course) {
-        selectedCourses.push(course);
-        selectedCoursesCount++;
-        updateSelectedCoursesList();
-        updateSelectedCoursesCount();
+          selectedCourses.push(course);
+          selectedCoursesCount++;
+          updateSelectedCoursesList();
+          updateSelectedCoursesCount();
 
-        // Check if the course already exists in the crucialCheckboxes array
-        const isCourseExist = crucialCheckboxes.some(
-          (item) =>
-            item.course_id === course.course_id &&
-            item.department_id === course.department_id
-        );
+          // Check if the course already exists in the crucialCheckboxes array
+          const isCourseExist = crucialCheckboxes.some(
+              (item) =>
+                  item.course_id === course.course_id &&
+                  item.department_id === course.department_id
+          );
 
-        if (!isCourseExist) {
-          crucialCheckboxes.push(course);
-        }
-        updateCrucialCourses();
+          if (!isCourseExist) {
+              crucialCheckboxes.push(course);
+          }
+          updateCrucialCourses();
       }
+    
 
       function removeSelectedCourse(course) {
         const index = selectedCourses.findIndex(
@@ -939,17 +997,34 @@
           const popButton = $(
             '<button class="btn btn-danger btn-sm">-</button>'
           );
+
           popButton.on("click", function () {
+            const sliderValues = $("#credit-range").slider("getValue");
+            const inputString = sliderValues[0].value;
+            const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+            const minCredit = integersArray[0];
+            const maxCredit = integersArray[1];
+
+            const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
+            const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+            console.log(totalWeight);
+            currentWeight = totalWeight;
+
             removeSelectedCourse(course);
           });
+
           li.append(popButton);
           li.append(shortLiDiv)
           shortLiDiv.append(
-            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong> </p>`
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
           );
           
           shortLiDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+          );
+          
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
           );
 
           if (course.classroom !== "TBDTBD") {
@@ -1029,6 +1104,37 @@
         });
       }
 
+      function factorial(n) {
+        let result = 1;
+        for (let i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+     }
+
+      // Function to calculate the combination value (n choose r)
+      function comb(n, r) {
+          return factorial(n) / (factorial(r) * factorial(n - r));
+      }
+
+      // Credit check function
+      function credit_check(courses, LL_credit_hours, UL_credit_hours) {
+          // Find the maximum and minimum credit hours among the courses
+          const max_credit_hours = Math.max(...courses.map(course => course.credits));
+          const min_credit_hours = Math.min(...courses.filter(course => course.credits !== 0).map(course => course.credits));
+
+          // Calculate the lower and upper limit number of courses based on credit hours
+          const LL = Math.floor(LL_credit_hours / max_credit_hours);
+          const UL = Math.min(courses.length, Math.floor(UL_credit_hours / min_credit_hours)) + 1;
+
+          let total_weight = 0;
+          for (let r = LL; r < UL; r++) {
+              total_weight += r * comb(courses.length, r);
+          }
+
+          return total_weight; // Or return any other desired value
+      }
+
       function submitSelectedCourses() {
         // Retrieve the slider values
         const sliderValues = $("#credit-range").slider("getValue");
@@ -1061,8 +1167,7 @@
           type: "POST",
           data: JSON.stringify(data),
           contentType: "application/json",
-          success: function (response) {
-            
+          success: function (response) {            
             combinations = JSON.parse(response);
             createTable(0);
           },
@@ -1073,33 +1178,16 @@
         const section = $("#combinations"); // Target the section with id "combinations"
         section.empty(); // Clear any existing content
 
-        const h1Element = $("<h1>")
+        const h2Element = $("<h2>")
           .addClass("mt-1 ms-1 white-color-setter text-center")
           .text("Generated Schedules")
           .css("font-weight", "900");
 
-        const h2Element = $("<h2>")
+        const h3Element = $("<h3>")
           .addClass("mt-1 ms-1 white-color-setter text-center")
           .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
           .css("font-weight", "900");
 
-        const previousButton = $("<button>")
-          .text("Previous")
-          .on("click", function() {
-            if (n > 0) {
-              createTable(n - 1);
-            }
-          });
-
-        const nextButton = $("<button>")
-          .text("Next")
-          .on("click", function() {
-            if (n < combinations.length - 1) {
-              createTable(n + 1);
-            }
-          });
-
-        section.append(h1Element, h2Element, previousButton, nextButton);
 
         const combination = combinations[n]; 
         const descriptionDiv = $("<div>").css("text-align", "center");
@@ -1112,9 +1200,10 @@
               const courseCode = course.course_id;
               const courseSection = course.section;
               const courseName = course.name;
+              const courseInstructor = course.instructor_name
 
               const courseDescriptor = $("<span>")
-                  .html(`${departmentID} ${courseCode} - <b>${courseSection}</b> - <b>${courseName}</b>`)
+                  .html(`${departmentID} ${courseCode} - <b>${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
                   .addClass("course-name");
 
               descriptionDiv.append(courseDescriptor);
@@ -1124,6 +1213,27 @@
           return;
       }
 
+      const buttonContainer = $("<div>")
+          .addClass("text-center") // Center the buttons horizontally
+          .append(
+            $("<button>")
+              .text("Previous") // Change the text of the first button
+              .addClass("custom-button2 mt-2")
+              .on("click", function () {
+                if (n > 0) {
+                  createTable(n - 1);
+                }
+              }),
+            $("<button>")
+              .text("Next") // Change the text of the second button to "Next"
+              .addClass("custom-button2 mt-2")
+              .on("click", function () {
+                if (n < combinations.length - 1) {
+                  createTable(n + 1);
+                }
+              })
+        );
+        
         const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
         const table = $("<table>").addClass("custom-table");
 
@@ -1203,10 +1313,12 @@
           table.append(row);
       }
 
-      newDiv.append(table);
-      section.append(descriptionDiv);
-      section.append(newDiv);
+      const customDiv = $("<div>")
+        .addClass("custom-div") // Apply the custom-div class
+        .append(h3Element, descriptionDiv, buttonContainer);
       
+      newDiv.append(table);
+      section.append(h2Element, customDiv, newDiv);
     }
 
     function format12HourTime(hour) {

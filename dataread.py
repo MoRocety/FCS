@@ -1,9 +1,9 @@
 def fileread(term):
     if term == "2023 FALL":
-        infile = open("falldata.txt", "r")
+        infile = open("2023FAdata.txt", "r")
 
     elif term == "PHARMACY PROGRAM FALL 2023":
-        infile = open("pharmdata.txt", "r")
+        infile = open("PH23FAdata.txt", "r")
 
     course_data = infile.read().split("\n")
 
@@ -21,11 +21,6 @@ def fileread(term):
             if int(x[1][:-1]) < 500:
                 course_data.append(x)
 
-        else:
-            # Do nothing for non-numeric and non-alphanumeric values
-            pass
-
-
     # Taking care of table 1
     departments = list(set([x[0] for x in course_data]))
 
@@ -35,7 +30,7 @@ def fileread(term):
     courses = sorted(courses, key=lambda x: (x[0], x[1]))
 
     # Getting to table 3
-    # DEPT, ID, SECTION, DAYS, START, END, INSTRUCTOR, CLASSROOM, ALT CLASSROOM, ALT DAYS, ALT START, ALT END
+    # DEPT, ID, SECTION, DAYS, START, END, INSTRUCTOR, CLASSROOM, ALT CLASSROOM, ALT DAYS, ALT START, ALT END, T SEATS, A SEATS 
     sections = []
     for x in course_data:
         result = x[5]

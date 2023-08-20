@@ -1,5 +1,5 @@
 from itertools import combinations
-from datetime import datetime, time
+from datetime import datetime
 import ast
 
 def credit_check(courses, LL_credit_hours, UL_credit_hours):
@@ -25,7 +25,7 @@ def credit_check(courses, LL_credit_hours, UL_credit_hours):
     # Calculate the lower and upper limit number of courses based on credit hours
     LL = (LL_credit_hours // max_credit_hours)
     UL = (min(len(courses), (UL_credit_hours // min_credit_hours))) + 1
-
+                             
     # Iterate over different numbers of courses
     for r in range(LL, UL):
         # Generate combinations of courses for the current number of courses
