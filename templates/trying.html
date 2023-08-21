@@ -279,6 +279,39 @@
     margin-left: 3px!important;
     margin-right: 3px!important;
   }
+
+  #combinations > div.custom-div{
+    border-radius: 50px;
+  }
+
+  #combinations > div.custom-div > hr{
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+  }
+
+  #courses-list > div > input[type=checkbox] {
+  /* Increase the dimensions */
+  width: 28px;
+  height: 16px;
+  border-radius: 30px;
+  
+  /* Add some spacing and alignment */
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+#selected-courses-list > div > button{
+ width: 28px;
+  height: 16px;
+  border-radius: 30px;
+  
+  /* Add some spacing and alignment */
+  margin-right: 10px;
+  vertical-align: middle;}
+
+/* .custom-height1{
+  height: 16px !important;
+} */
     
     </style>
   </head>
@@ -371,7 +404,7 @@
         </div>
         
         <div class="button-div" >
-          <button class="btn custom-button mt-2" onclick="submitSelectedCourses()">Generate</button>
+          <button class="btn custom-button mt-2 mb-4" onclick="submitSelectedCourses()">Generate</button>
         </div>
       </section>
 
@@ -498,7 +531,6 @@
 
         // Add event handler to the slider's "change" event
         rangeSlider.on("change", function (event) {
-          console.log(event);
           const oldValue = event.oldValue;        
           const newValue = event.newValue;
 
@@ -508,7 +540,7 @@
           // Perform credit check
           const totalWeight = credit_check(selectedCourses, minCredit, maxCredit);
           currentWeight = totalWeight;
-          console.log(totalWeight);
+          
 
           if (totalWeight > 500000) {
             // Revert slider value
@@ -756,7 +788,7 @@
             if (this.checked) {
                 const combinedCourses = [...selectedCourses, course];
                 const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-                console.log(totalWeight);
+                
                 currentWeight = totalWeight;
 
                 if (totalWeight > 500000) {
@@ -774,7 +806,7 @@
             } else {
                   const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
                   const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-                  console.log(totalWeight);
+                  
                   currentWeight = totalWeight;
                   removeSelectedCourse(course);
             }
@@ -909,17 +941,6 @@
           selectedCoursesCount++;
           updateSelectedCoursesList();
           updateSelectedCoursesCount();
-
-          // Check if the course already exists in the crucialCheckboxes array
-          const isCourseExist = crucialCheckboxes.some(
-              (item) =>
-                  item.course_id === course.course_id &&
-                  item.department_id === course.department_id
-          );
-
-          if (!isCourseExist) {
-              crucialCheckboxes.push(course);
-          }
           updateCrucialCourses();
       }
     
@@ -937,54 +958,21 @@
           selectedCoursesCount--;
           updateSelectedCoursesList();
           updateSelectedCoursesCount();
+          updateCrucialCourses();
 
           const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-          const checkbox = $(
-            `input[type="checkbox"][value="${compositeKey}"]`
-          );
+          const checkbox = $(`input[type="checkbox"][value="${compositeKey}"]`);
           checkbox.prop("checked", false);
-
-          // Check if the course is still present in the selectedCourses array
-          const isCoursePresent = selectedCourses.some(
-            (c) =>
-              c.course_id === course.course_id &&
-              c.department_id === course.department_id
-          );
-
-          if (!isCoursePresent) {
-            // Remove the course from crucialCheckboxes array
-            const crucialIndex = crucialCheckboxes.findIndex(
-              (c) =>
-                c.course_id === course.course_id &&
-                c.department_id === course.department_id
-            );
-            if (crucialIndex !== -1) {
-              crucialCheckboxes.splice(crucialIndex, 1);
-            }
-
-            // Remove the course from checkedCrucials array
-            const checkedCrucialIndex = checkedCrucials.findIndex(
-              (c) =>
-                c.course_id === course.course_id &&
-                c.department_id === course.department_id
-            );
-            if (checkedCrucialIndex !== -1) {
-              checkedCrucials.splice(checkedCrucialIndex, 1);
-            }
-          }
         }
 
-        // Check if there are any selected courses left
-        if (selectedCourses.length === 0) {
-            $("#shortlistedCoursesSection").css("display", "none");
-            $("#combinationMenu").css("display", "none");
-            $("#combinations").css("display", "none");
-
-
-        }
-
-        updateCrucialCourses();
+        
+      if (selectedCourses.length === 0) {
+        $("#shortlistedCoursesSection").css("display", "none");
+        $("#combinationMenu").css("display", "none");
+        $("#combinations").css("display", "none");
       }
+      }
+
 
       function updateSelectedCoursesList() {
         const selectedCoursesList = $("#selected-courses-list");
@@ -995,7 +983,9 @@
           const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
 
           const popButton = $(
-            '<button class="btn btn-danger btn-sm">-</button>'
+            `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+</svg>`
           );
 
           popButton.on("click", function () {
@@ -1007,7 +997,7 @@
 
             const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
             const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-            console.log(totalWeight);
+            
             currentWeight = totalWeight;
 
             removeSelectedCourse(course);
@@ -1052,56 +1042,116 @@
 
       function updateCrucialCourses() {
         const crucialList = $("#crucialCoursesContainer");
+
         crucialList.empty();
 
-        crucialCheckboxes.forEach((course) => {
-          const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
-          const compositeKey = `${course.course_id}-${course.department_id}`;
-          const checkbox = $('<input type="checkbox">').attr(
-            "value",
-            compositeKey
-          );
+        const compositeKeys = [];
 
-          // Check if the course is already selected
-          const isChecked = checkedCrucials.some(
-            (checkedCrucial) =>
-              checkedCrucial.course_id === course.course_id &&
-              checkedCrucial.department_id === course.department_id
-          );
-          if (isChecked) {
-            checkbox.prop("checked", true);
-          }
+        selectedCourses.forEach(course => {
+          var compositeKey = `${course.department_id}${course.course_id}`;
 
-          checkbox.on("change", function () {
-            if (this.checked) {
-              checkedCrucials.push(course);
-            } else {
-              const index = checkedCrucials.findIndex(
-                (c) =>
-                  c.course_id === course.course_id &&
-                  c.department_id === course.department_id
-              );
-
-              if (index !== -1) {
-                checkedCrucials.splice(index, 1);
-
-                const compositeKey = `${course.course_id}-${course.department_id}`;
-                const checkbox = $(
-                  `input[type="checkbox"][value="${compositeKey}"]`
+          if (!compositeKeys.includes(compositeKey)) {
+            compositeKeys.push(compositeKey);
+            const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
+            const checkbox = $('<input type="checkbox">').attr(
+              "value",
+              compositeKey
+            );
+            // Add checkbox and other content to the <li> element
+            li.append(checkbox);
+            crucialList.append(li);
+          
+                // Check if the course is already selected
+                const isChecked = checkedCrucials.some(
+                  (checkedCrucial) =>
+                    checkedCrucial.course_id === course.course_id &&
+                    checkedCrucial.department_id === course.department_id
                 );
-                checkbox.prop("checked", false);
-              }
-            }
-          });
+                if (isChecked) {
+                  checkbox.prop("checked", true);
+                }
 
-          // Append checkbox, course information, and line break outside the event handler
-          li.append(checkbox);
-          li.append(
-            ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
-          );
-          li.append("<br>");
-          crucialList.append(li);
-        });
+                checkbox.on("change", function () {
+                  if (this.checked) {
+                    checkedCrucials.push(course);
+                  } else {
+                    const index = checkedCrucials.findIndex(
+                      (c) =>
+                        c.course_id === course.course_id &&
+                        c.department_id === course.department_id
+                    );
+
+                    if (index !== -1) {
+                      checkedCrucials.splice(index, 1);
+
+                      const compositeKey = `${course.course_id}-${course.department_id}`;
+                      const checkbox = $(
+                        `input[type="checkbox"][value="${compositeKey}"]`
+                      );
+                      checkbox.prop("checked", false);
+                    }
+                  }
+                });
+
+                // Append checkbox, course information, and line break outside the event handler
+                li.append(checkbox);
+                li.append(
+                  ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+                );
+                li.append("<br>");
+                crucialList.append(li);
+                  
+                }
+              })
+              
+        // crucialCheckboxes.forEach((course) => {
+        //   const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
+        //   const compositeKey = `${course.course_id}-${course.department_id}`;
+        //   const checkbox = $('<input type="checkbox">').attr(
+        //     "value",
+        //     compositeKey
+        //   );
+
+        //   // Check if the course is already selected
+        //   const isChecked = checkedCrucials.some(
+        //     (checkedCrucial) =>
+        //       checkedCrucial.course_id === course.course_id &&
+        //       checkedCrucial.department_id === course.department_id
+        //   );
+        //   if (isChecked) {
+        //     checkbox.prop("checked", true);
+        //   }
+
+        //   checkbox.on("change", function () {
+        //     if (this.checked) {
+        //       checkedCrucials.push(course);
+        //     } else {
+        //       const index = checkedCrucials.findIndex(
+        //         (c) =>
+        //           c.course_id === course.course_id &&
+        //           c.department_id === course.department_id
+        //       );
+
+        //       if (index !== -1) {
+        //         checkedCrucials.splice(index, 1);
+
+        //         const compositeKey = `${course.course_id}-${course.department_id}`;
+        //         const checkbox = $(
+        //           `input[type="checkbox"][value="${compositeKey}"]`
+        //         );
+        //         checkbox.prop("checked", false);
+        //       }
+        //     }
+        //   });
+
+        //   // Append checkbox, course information, and line break outside the event handler
+        //   li.append(checkbox);
+        //   li.append(
+        //     ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+        //   );
+        //   li.append("<br>");
+        //   crucialList.append(li);
+        // });
       }
 
       function factorial(n) {
@@ -1176,6 +1226,7 @@
 
       function createTable(n) {
         const section = $("#combinations"); // Target the section with id "combinations"
+        section.css("text-align","center")
         section.empty(); // Clear any existing content
 
         const h2Element = $("<h2>")
@@ -1183,14 +1234,18 @@
           .text("Generated Schedules")
           .css("font-weight", "900");
 
+          
+
         const h3Element = $("<h3>")
-          .addClass("mt-1 ms-1 white-color-setter text-center")
+          .addClass("mt-1 ms-1 white-color-setter text-center mb-3")
           .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
           .css("font-weight", "900");
 
 
         const combination = combinations[n]; 
-        const descriptionDiv = $("<div>").css("text-align", "center");
+        const descriptionDiv = $("<ul>").css("text-align", "left");
+          descriptionDiv.css("margin","0px")
+          descriptionDiv.css("border-radius","30px")
 
         if (combination !== undefined) {
           $("#combinations").removeAttr("style");
@@ -1202,12 +1257,11 @@
               const courseName = course.name;
               const courseInstructor = course.instructor_name
 
-              const courseDescriptor = $("<span>")
-                  .html(`${departmentID} ${courseCode} - <b>${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
+              const courseDescriptor = $("<li><span>")
+                  .html(` ${departmentID} ${courseCode} - ${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
                   .addClass("course-name");
 
               descriptionDiv.append(courseDescriptor);
-              descriptionDiv.append("<br>");
           }
       } else {
           return;
@@ -1315,10 +1369,12 @@
 
       const customDiv = $("<div>")
         .addClass("custom-div") // Apply the custom-div class
-        .append(h3Element, descriptionDiv, buttonContainer);
+        .append(h3Element,          '<hr class="separator-line">'
+, descriptionDiv);
       
       newDiv.append(table);
-      section.append(h2Element, customDiv, newDiv);
+      section.append(h2Element, customDiv, buttonContainer,newDiv);
+      
     }
 
     function format12HourTime(hour) {

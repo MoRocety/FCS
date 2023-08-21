@@ -274,8 +274,8 @@ CSCS!!100!!E!!Intro to Computing!!3!!['T', 'R']!!14:00!!15:15!!S Abbasi!!SBLOCKS
 CSCS!!100!!G!!Intro to Computing!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Toor!!SBLOCKS120!!None!!None!!None!!None!!25!!0
 CSCS!!100!!H!!Intro to Computing!!3!!['T', 'R']!!15:30!!16:45!!TBD!!SBLOCKS120!!None!!None!!None!!None!!25!!0
 CSCS!!100!!J!!Intro to Computing!!3!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS320!!None!!None!!None!!None!!35!!0
-CSCS!!105!!A!!Basic Electronics!!4!!['M']!!08:00!!10:50!!Team!!SBLOCKS027!!SBLOCKS216!!['F']!!08:00!!10:50!!35!!19
-CSCS!!105!!B!!Basic Electronics!!4!!['M', 'W', 'F']!!12:00!!12:50!!Team!!SBLOCKS215!!SBLOCKS027!!['F']!!14:00!!17:00!!35!!21
+CSCS!!105!!A!!Basic Electronics!!4!!['M']!!08:00!!10:50!!Team!!SBLOCKS027!!SBLOCKS216!!['F']!!08:00!!10:50!!35!!12
+CSCS!!105!!B!!Basic Electronics!!4!!['M', 'W', 'F']!!12:00!!12:50!!Team!!SBLOCKS215!!SBLOCKS027!!['F']!!14:00!!17:00!!35!!13
 CSCS!!105!!C!!Basic Electronics!!4!!['M', 'W', 'F']!!11:00!!11:50!!Team!!SBLOCKS215!!SBLOCKS027!!['R']!!08:00!!10:50!!35!!20
 CSCS!!201!!A!!Multivariate Calculu!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Ghulam!!SBLOCKS413!!None!!None!!None!!None!!35!!0
 CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS413!!None!!None!!None!!None!!35!!16
@@ -791,24 +791,24 @@ STAT!!503!!A!!Adv. Regre. Analysis!!3!!['T', 'R']!!16:00!!17:30!!I Naqvi!!SBLOCK
 STAT!!516!!A!!Adv. Stat. Qual. Cnt!!3!!['T', 'R']!!17:30!!19:00!!M Mughal!!SBLOCKS421!!None!!None!!None!!None!!15!!15
 STAT!!699A!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699B!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
-UNIV!!100!!A!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!N Justin!!EBLOCKE040!!SBLOCKS007!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!AA!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Saleem!!EBLOCKE041!!EBLOCKE214!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!B!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!F Aftab!!EBLOCKE101!!SBLOCKS007!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!BB!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Latif!!EBLOCKE102!!EBLOCKE214!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!C!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Batool!!EBLOCKE103!!SBLOCKS115!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!CC!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Amir!!EBLOCKE104!!EBLOCKE347!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!D!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Khan!!EBLOCKE105!!EBLOCKE242!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!DD!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Athar!!EBLOCKE121!!EBLOCKE222!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!E!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!J Hassan!!EBLOCKE122!!SBLOCKS115!!['F']!!14:00!!16:00!!35!!35
-UNIV!!100!!EE!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!G Ayub!!EBLOCKE126!!EBLOCKE222!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!F!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!R. Farooq!!EBLOCKE139!!SBLOCKS210!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!FF!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!Z Hashmi!!EBLOCKE140!!EBLOCKE222!!['F']!!14:00!!16:00!!35!!35
-UNIV!!100!!G!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Yaqub!!EBLOCKE202!!SBLOCKS210!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!H!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Nadeem!!EBLOCKE203!!SBLOCKS210!!['F']!!14:00!!16:00!!35!!35
-UNIV!!100!!J!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S. Zehra!!EBLOCKE204!!SBLOCKS212!!['M']!!14:00!!16:00!!35!!35
-UNIV!!100!!K!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!R Anjum!!EBLOCKE205!!SBLOCKS212!!['W']!!14:00!!16:00!!35!!35
-UNIV!!100!!L!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Ali!!EBLOCKE213!!SBLOCKS212!!['F']!!14:00!!16:00!!35!!35
-UNIV!!100!!M!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!K Shakrul!!EBLOCKE214!!EBLOCKE121!!['M']!!14:00!!16:00!!35!!35
+UNIV!!100!!A!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!N Justin!!EBLOCKE040!!SBLOCKS007!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!AA!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Saleem!!EBLOCKE041!!EBLOCKE214!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!B!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!F Aftab!!EBLOCKE101!!SBLOCKS007!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!BB!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Latif!!EBLOCKE102!!EBLOCKE214!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!C!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Batool!!EBLOCKE103!!SBLOCKS115!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!CC!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Amir!!EBLOCKE104!!EBLOCKE347!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!D!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Khan!!EBLOCKE105!!EBLOCKE242!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!DD!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Athar!!EBLOCKE121!!EBLOCKE222!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!E!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!J Hassan!!EBLOCKE122!!SBLOCKS115!!['F']!!14:00!!16:00!!35!!0
+UNIV!!100!!EE!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!G Ayub!!EBLOCKE126!!EBLOCKE222!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!F!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!R. Farooq!!EBLOCKE139!!SBLOCKS210!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!FF!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!Z Hashmi!!EBLOCKE140!!EBLOCKE222!!['F']!!14:00!!16:00!!35!!0
+UNIV!!100!!G!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Yaqub!!EBLOCKE202!!SBLOCKS210!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!H!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Nadeem!!EBLOCKE203!!SBLOCKS210!!['F']!!14:00!!16:00!!35!!0
+UNIV!!100!!J!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S. Zehra!!EBLOCKE204!!SBLOCKS212!!['M']!!14:00!!16:00!!35!!0
+UNIV!!100!!K!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!R Anjum!!EBLOCKE205!!SBLOCKS212!!['W']!!14:00!!16:00!!35!!0
+UNIV!!100!!L!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Ali!!EBLOCKE213!!SBLOCKS212!!['F']!!14:00!!16:00!!35!!0
+UNIV!!100!!M!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!K Shakrul!!EBLOCKE214!!EBLOCKE121!!['M']!!14:00!!16:00!!35!!1
 UNIV!!100!!N!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Jelani!!EBLOCKE221!!EBLOCKE121!!['F']!!14:00!!16:00!!35!!35
 UNIV!!100!!P!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!J Tariq!!EBLOCKE222!!EBLOCKE121!!['W']!!14:00!!16:00!!35!!35
 UNIV!!100!!Q!!FOUND UNIV EDUC!!3!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!F Rehan!!EBLOCKE227!!EBLOCKE122!!['M']!!14:00!!16:00!!35!!35

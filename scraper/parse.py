@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import json
 
-datasets = ["2023FA", "PH23FA"]
+datasets = ['2023FA', 'PH23FA']
 
 for ds in datasets:
     with open(f"{ds}.json", "r") as f:

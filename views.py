@@ -248,9 +248,6 @@ def submit_selected_courses():
     max_credit = int(data['maxCredit'])
 
     credit_filtered_combinations = credit_check(shortlist, min_credit, max_credit)
-
-    if not credit_filtered_combinations:
-        return abort(400, "Request would take too long to process. Narrow down on your range, shorten your shortlist, and try again.")
     
     filtered_combinations = [filtered_comb for filtered_comb in credit_filtered_combinations
                              if duplicate_checker(filtered_comb) is False
