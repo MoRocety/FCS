@@ -4,6 +4,7 @@ import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
 import time
+from scraper.master import current_time
 
 cached_sections = []
 
@@ -64,6 +65,7 @@ def paginator():
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
+    
     if request.method == 'POST':
         dropdown_value = request.form['dropdown'].upper()
         dropdown2_value = request.form['dropdown2'].upper()
@@ -115,7 +117,7 @@ def index():
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
     
-    return render_template('trying.html')
+    return render_template('trying.html', current_time=current_time)
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
 def update_term():

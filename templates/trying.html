@@ -54,15 +54,15 @@
       
       .custom-div {
         background-color: #181E30;
-        border-radius: 10px; /* Rounded corners */
+        border-radius: 50px; /* Rounded corners */
         padding: 20px;
         margin: 20px;
         max-width: 35rem;
-        min-width: 15rem;
+        /* min-width: 15rem; */
         margin: 0 auto;
         margin-top: 3rem;
         margin-bottom: 3rem;
-      }
+        width: calc(70% - 20px);      }
 
       .custom-input {
         background-color: rgba(13, 17, 27, 0.5);
@@ -107,7 +107,7 @@
 
       .custom-button {
         display: block;
-        margin-top: 2rem !important;
+        /* margin-top: 2rem !important; */
       }
 
       .custom-button2 {
@@ -127,9 +127,22 @@
 
       .input-div{
         display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+      }
+      #inputSection > div > div.input-div > div{
+        display: flex;
+    gap: 4rem;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+      }
+
+      .input-direct-div{
+        width: 60%;
       }
 
 
@@ -190,16 +203,20 @@
           font-family: 'Exo 2', sans-serif;
       }
 
-      .custom-table th, .custom-table td {
+      .custom-table td {
         border: 1px solid #ddd;
-        padding-top: 38px;
+        /* padding-top: 38px;
         padding-left: 19px;
-        padding-right: 19px;
-        padding-bottom: 0;
-        width: auto;
+        padding-right: 19px; */
+        /* padding-bottom: 0; */
+        width: calc(900px/6);
+        height: 65px;
         position: relative;
         vertical-align: bottom; /* Vertically center the content */
         text-align: center; /* Horizontally center the content */
+        color: #fff; /* White text color on dark background */
+        width: 150px; 
+        font-weight: bold;
       }
 
       .cell-content {
@@ -216,13 +233,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-      }
-
-      .custom-table td {
-        color: #fff; /* White text color on dark background */
-        width: 150px; 
-        font-weight: bold;
-      }
+      }      
 
       .custom-table td, .cell-content {
         font-family: 'Exo 2', sans-serif;
@@ -312,6 +323,77 @@
 /* .custom-height1{
   height: 16px !important;
 } */
+
+#courses-list{
+  margin: 0px !important;
+  padding: 0px !important;
+  width: 100%;
+}
+
+#selected-courses-list{
+  margin: 0px !important;
+  padding: 0px !important;
+  width: 100%;
+}
+/* #inputContainerDiv{
+  margin-bottom: 2rem!important;
+} */
+
+
+/* Your main styles here */
+
+/* Media query for devices with width less than 622px */
+@media (max-width: 425px){
+
+.input-div{
+  flex-direction: column;
+  gap: 0rem !important;
+}
+
+#inputSection > div > div.input-div > div{
+        display: flex;
+        gap:0rem !important;
+        flex-direction: column;
+      }
+
+      input[type="text"] {
+  width: 100%;
+}
+.input-direct-div {
+    width: 90%;
+}
+
+.custom-div{
+  width: 90%;
+  font-size: 14px!important;
+  
+}
+
+.slider.slider-horizontal{
+        width: 50% !important;
+      }
+
+
+body > h1 > strong{
+  font-size: 25px;
+}
+  
+td{
+  padding-left:0px !important ;
+  padding-right:0px !important;
+  padding-top:0px !important;
+  width: calc(100vw/6) !important;
+  font-size: 12px;
+
+}
+
+.cell-content{
+  font-size: 10px!important;
+}
+  
+}
+    
+
     
     </style>
   </head>
@@ -324,7 +406,7 @@
           <div class="input-div">
             <div>
 
-              <div  class="input-direct-div" style="margin-bottom: 2rem;">
+              <div  class="input-direct-div" >
 
                 <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
                 <datalist id="term">
@@ -332,16 +414,17 @@
                   <option value="Pharmacy Program Fall 2023">
                 </datalist>
               </div>
-              <div class="input-direct-div" >
-                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
-                <datalist id="course">
+              <div class="input-direct-div" >                
+                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Dept" style="color: white;">
+                <datalist id="department">
                 </datalist>
               </div>
+              
             </div>
             <div>
-              <div class="input-direct-div" style="margin-bottom: 2rem;">                
-                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Department" style="color: white;">
-                <datalist id="department">
+              <div  class="input-direct-div" >
+                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
+                <datalist id="course">
                 </datalist>
               </div>
               <div class="input-direct-div">
@@ -353,9 +436,10 @@
             </div>
 
           </div>
+          
 
             <div class="button-div">
-              <button class="btn custom-button mt-2" onclick="filterCourses()">Filter</button>
+              <button class="btn custom-button " onclick="filterCourses()">Filter</button>
             </div>
    
         </div>
@@ -404,6 +488,7 @@
         </div>
         
         <div class="button-div" >
+          <i onclick="" class="bi bi-arrow-left-square-fill"></i>
           <button class="btn custom-button mt-2 mb-4" onclick="submitSelectedCourses()">Generate</button>
         </div>
       </section>
@@ -411,6 +496,9 @@
       <section id="combinations" style="display: none";>
         <!-- Table comes here -->
       </section>
+      <p class="text-center white-color-setter">
+        Last Updated: {{current_time}}
+      </p>
     
       <script>
         function paginationFunction(pageNumber) {
@@ -1103,55 +1191,6 @@
                   
                 }
               })
-              
-        // crucialCheckboxes.forEach((course) => {
-        //   const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
-        //   const compositeKey = `${course.course_id}-${course.department_id}`;
-        //   const checkbox = $('<input type="checkbox">').attr(
-        //     "value",
-        //     compositeKey
-        //   );
-
-        //   // Check if the course is already selected
-        //   const isChecked = checkedCrucials.some(
-        //     (checkedCrucial) =>
-        //       checkedCrucial.course_id === course.course_id &&
-        //       checkedCrucial.department_id === course.department_id
-        //   );
-        //   if (isChecked) {
-        //     checkbox.prop("checked", true);
-        //   }
-
-        //   checkbox.on("change", function () {
-        //     if (this.checked) {
-        //       checkedCrucials.push(course);
-        //     } else {
-        //       const index = checkedCrucials.findIndex(
-        //         (c) =>
-        //           c.course_id === course.course_id &&
-        //           c.department_id === course.department_id
-        //       );
-
-        //       if (index !== -1) {
-        //         checkedCrucials.splice(index, 1);
-
-        //         const compositeKey = `${course.course_id}-${course.department_id}`;
-        //         const checkbox = $(
-        //           `input[type="checkbox"][value="${compositeKey}"]`
-        //         );
-        //         checkbox.prop("checked", false);
-        //       }
-        //     }
-        //   });
-
-        //   // Append checkbox, course information, and line break outside the event handler
-        //   li.append(checkbox);
-        //   li.append(
-        //     ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
-        //   );
-        //   li.append("<br>");
-        //   crucialList.append(li);
-        // });
       }
 
       function factorial(n) {
@@ -1235,7 +1274,6 @@
           .css("font-weight", "900");
 
           
-
         const h3Element = $("<h3>")
           .addClass("mt-1 ms-1 white-color-setter text-center mb-3")
           .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
@@ -1270,17 +1308,29 @@
       const buttonContainer = $("<div>")
           .addClass("text-center") // Center the buttons horizontally
           .append(
-            $("<button>")
-              .text("Previous") // Change the text of the first button
-              .addClass("custom-button2 mt-2")
+            $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+</svg>`)
+              // .text("Previous") // Change the text of the first button
+              .addClass("mt-2")
+              .css({
+                "margin-left":"1rem",
+                "margin-right":"1rem"
+              })
               .on("click", function () {
                 if (n > 0) {
                   createTable(n - 1);
                 }
               }),
-            $("<button>")
-              .text("Next") // Change the text of the second button to "Next"
-              .addClass("custom-button2 mt-2")
+            $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
+  <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+</svg>`)
+              // .text("Next") // Change the text of the second button to "Next"
+              .addClass("mt-2")
+              .css({
+                "margin-left":"1rem",
+                "margin-right":"1rem"
+              })
               .on("click", function () {
                 if (n < combinations.length - 1) {
                   createTable(n + 1);
@@ -1338,7 +1388,7 @@
                               "top": topPercentage + "%",
                               "height": heightPercentage + "%",
                               "background-color": courseColorMap[course.department_id + course.course_id]
-                          }).text(course.department_id + course.course_id + " - " + course.section);
+                          }).text(course.department_id + course.course_id + " - " + course.section+`\n${course.classroom.slice(6)}`);
 
                           currentTd.append(cellContent);
 
@@ -1357,7 +1407,7 @@
                               "top": topPercentage + "%",
                               "height": heightPercentage + "%",
                               "background-color": courseColorMap[course.department_id + course.course_id]
-                          }).text(course.department_id + course.course_id + " - " + course.section);
+                            }).text(course.department_id + course.course_id + " - " + course.section+`\n${course.alternate_classroom.slice(6)}`);
 
                           currentTd.append(cellContent);   
                       }
