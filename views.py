@@ -116,8 +116,7 @@ def index():
 
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
-    
-    return render_template('trying.html', current_time=current_time)
+    return render_template('trying.html', current_time=scraper.master.current_time)
 
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
