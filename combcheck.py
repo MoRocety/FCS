@@ -57,7 +57,7 @@ def clash_check(courses):
     additional_courses = []
 
     for course in processed_courses:
-        if course[-1] != "None":
+        if course[-3] != "None":
             to_append = course[0:5] + course[11:]
             additional_courses.append(to_append)
 
@@ -68,14 +68,24 @@ def clash_check(courses):
         course1 = processed_courses[i]
         course1_days = set(ast.literal_eval(course1[5]))
 
+        course1_start = datetime.strptime(course1[6], "%H:%M").time()
+        course1_end = datetime.strptime(course1[7], "%H:%M").time()
+
         for j in range(i + 1, len(processed_courses)):
             course2 = processed_courses[j]
             course2_days = set(ast.literal_eval(course2[5]))
 
-            if len(course1_days.intersection(course2_days)) != 0:
-                if (datetime.strptime(course1[6], "%H:%M").time() <= datetime.strptime(course2[6], "%H:%M").time() <= datetime.strptime(course1[7], "%H:%M").time())\
-                or (datetime.strptime(course1[6], "%H:%M").time() <= datetime.strptime(course2[7], "%H:%M").time() <= datetime.strptime(course1[7], "%H:%M").time()):
-                    return True
+            course2_start = datetime.strptime(course2[6], "%H:%M").time()
+            course2_end = datetime.strptime(course2[7], "%H:%M").time()
+
+            if course1_days.intersection(course2_days):
+                
+                if (course1_start <= course2_start <= course1_end)\
+                    or (course1_start <= course2_end <= course1_end)\
+                    or (course2_start <= course1_start <= course2_end)\
+                    or (course2_start <= course1_end <= course2_end):
+                        
+                        return True
 
     return False
 

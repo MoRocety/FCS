@@ -11,7 +11,7 @@
       crossorigin="anonymous"
     />
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- Link to Bootstrap Slider CSS -->
@@ -136,7 +136,7 @@
       #inputSection > div > div.input-div > div{
         display: flex;
     gap: 4rem;
-    width: 100%;
+    width: 90%;
     align-items: center;
     justify-content: center;
       }
@@ -347,6 +347,7 @@
 
 .input-div{
   flex-direction: column;
+
   gap: 0rem !important;
 }
 
@@ -359,6 +360,7 @@
       input[type="text"] {
   width: 100%;
 }
+
 .input-direct-div {
     width: 90%;
 }
@@ -389,6 +391,10 @@ td{
 
 .cell-content{
   font-size: 10px!important;
+}
+
+#filterCoursesSection{
+  margin-bottom:3rem !important;
 }
   
 }
@@ -446,7 +452,7 @@ td{
 
         </div>
     </section>
-    <section id="filterCoursesSection", style="display: none; text-align: center;">
+    <section id="filterCoursesSection", style="display: none; text-align: center; " style=>
      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
      
             <div class="pagination-container" style="text-align: center; margin-top:1.5rem;">
@@ -454,9 +460,14 @@ td{
               <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
             </div>
          <ul id="courses-list" style="list-style-type: none; "></ul>
+
+         <div class="pagination-container" style="text-align: center; margin-top:1.5rem; margin-bottom:1.5rem;">
+
+          <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
+        </div>
     </section>
 
-    <section id="shortlistedCoursesSection", style="display: none;">
+    <section id="shortlistedCoursesSection", style="display: none;margin-top:1rem;">
       <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
         <!-- Selected courses will be dynamically added here -->
         <p id="selected-courses-count" class="text-center" style="color:white;">
@@ -520,33 +531,54 @@ td{
       </script>
       <script>
         function generatePagination(currentPage, totalPages, visiblePages) {
-          const paginationContainer = document.getElementById("pagination");
-          paginationContainer.innerHTML = "";
+          const paginationContainers = document.querySelectorAll(".pagination");
         
-          const halfVisiblePages = Math.floor(visiblePages / 2);
-          const startPage = Math.max(currentPage - halfVisiblePages, 1);
-          const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+          paginationContainers.forEach((paginationContainer) => {
+            paginationContainer.innerHTML = "";
         
-          if (startPage > 1) {
-            paginationContainer.appendChild(createPaginationLink(1, currentPage));
-          }
+            const halfVisiblePages = Math.floor(visiblePages / 2);
+            const startPage = Math.max(currentPage - halfVisiblePages, 1);
+            const endPage = Math.min(startPage + visiblePages - 1, totalPages);
         
-          if (startPage > 2) {
-            paginationContainer.appendChild(createEllipsis());
-          }
+            if (startPage > 1) {
+              paginationContainer.appendChild(createPaginationLink(1, currentPage));
+            }
         
-          for (let page = startPage; page <= endPage; page++) {
-            paginationContainer.appendChild(createPaginationLink(page, currentPage));
-          }
+            if (startPage > 2) {
+              paginationContainer.appendChild(createEllipsis());
+            }
         
-          if (endPage < totalPages - 1) {
-            paginationContainer.appendChild(createEllipsis());
-          }
+            for (let page = startPage; page <= endPage; page++) {
+              paginationContainer.appendChild(createPaginationLink(page, currentPage));
+            }
         
-          if (endPage < totalPages) {
-            paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
-          }
+            if (endPage < totalPages - 1) {
+              paginationContainer.appendChild(createEllipsis());
+            }
+        
+            if (endPage < totalPages) {
+              paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
+            }
+          });
         }
+        
+        // Example functions for creating pagination elements
+        function createPaginationLink(page, currentPage) {
+          const link = document.createElement("a");
+          link.href = `#page${page}`;
+          link.textContent = page;
+          if (page === currentPage) {
+            link.classList.add("active");
+          }
+          return link;
+        }
+        
+        function createEllipsis() {
+          const ellipsis = document.createElement("span");
+          ellipsis.textContent = "...";
+          return ellipsis;
+        }
+        
         
         function createPaginationLink(pageNumber, currentPage) {
           const link = document.createElement("a");
@@ -836,6 +868,7 @@ td{
                 $("#filterCoursesSection").removeAttr("style");
                 displayCourses(courses.data);
             } else {
+                alert("No courses could be displayed, try changing or loosening your filters.");
                 $("#filterCoursesSection").css("display", "none");
             }
           },
@@ -882,7 +915,7 @@ td{
                 if (totalWeight > 500000) {
                   // Prevent the checkbox from being checked
                   this.checked = false;
-                  alert("Total weight would exceed 500,000. Cannot add the course.");
+                  alert("Cannot pefrom action without removing another course or narrowing credit hour range. Narrow it down people!");
                 }
 
                 else {
@@ -1302,6 +1335,7 @@ td{
               descriptionDiv.append(courseDescriptor);
           }
       } else {
+          alert("No combination could be generated. Add more courses or widen the credit hour range. Scale it up people!");
           return;
       }
 
@@ -1418,7 +1452,7 @@ td{
       }
 
       const customDiv = $("<div>")
-        .addClass("custom-div") // Apply the custom-div class
+        .addClass("custom-div")
         .append(h3Element,          '<hr class="separator-line">'
 , descriptionDiv);
       

@@ -1,9 +1,8 @@
-from flask import render_template, Blueprint, request, abort
+from flask import render_template, Blueprint, request
 from flask_cors import CORS
 import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
-import time
 from scraper.master import current_time
 
 cached_sections = []
@@ -63,6 +62,7 @@ def paginator():
         })
     return json.dumps(sections_json, indent=2)
 
+
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
     
@@ -118,6 +118,7 @@ def index():
     
     
     return render_template('trying.html', current_time=current_time)
+
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
 def update_term():
@@ -233,7 +234,6 @@ def update_course():
 
 @my_blueprint.route('/submit', methods=['POST'])
 def submit_selected_courses():
-    start_time = time.time()
     data = request.json
     selected_courses = data['selectedCourses']
     crucial_courses = data['checkedCrucials']
@@ -284,8 +284,5 @@ def submit_selected_courses():
 
         combinations_lst.append(combination_data)
  
-    end_time = time.time()
-
-    print(end_time-start_time)
     # Return a response
     return json.dumps(combinations_lst)

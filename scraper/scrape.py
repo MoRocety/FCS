@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import json
 
 sess = Session()
-
 terms = ['2023FA', 'PH23FA']
 
 for term in terms:
