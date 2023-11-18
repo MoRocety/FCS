@@ -3,7 +3,6 @@ from flask_cors import CORS
 import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
-from scraper.master import current_time
 
 cached_sections = []
 
@@ -20,7 +19,6 @@ def indexOld():
 @my_blueprint.route('/test', methods=['GET', 'POST'])
 def indexOld2():
     return render_template("tester.html")
-
 
 @my_blueprint.route('/paginationClick', methods=['POST'])
 def paginator():
@@ -57,8 +55,8 @@ def paginator():
             'alternate_days': "".join(filter(str.isalpha, section[11])),
             'alternate_start_time': section[12],
             'alternate_end_time': section[13],
-            'total_seats': section[14],
-            'available_seats': section[15]
+            #'total_seats': section[14],
+            #'available_seats': section[15]
         })
     return json.dumps(sections_json, indent=2)
 
@@ -110,12 +108,18 @@ def index():
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
                 'alternate_start_time': section[12],
                 'alternate_end_time': section[13],
-                'total_seats': section[14],
-                'available_seats': section[15]
+                #'total_seats': section[14],
+                #'available_seats': section[15]
             })
 
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
+    # Get current time
+    current_time = datetime.now()
+
+    # Format current time in 12-hour format
+    current_time = current_time.strftime("%I:%M %p")
+
     return render_template('trying.html', current_time=current_time)
 
 
@@ -276,8 +280,8 @@ def submit_selected_courses():
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
                 'alternate_start_time': section[12],
                 'alternate_end_time': section[13],
-                'total_seats': section[14],
-                'available_seats': section[15]
+                #'total_seats': section[14],
+                #'available_seats': section[15]
             }
             combination_data.append(course_data_)
 
