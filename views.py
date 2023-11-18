@@ -3,6 +3,7 @@ from flask_cors import CORS
 import json
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
+from datetime import datetime, timedelta, timezone
 
 cached_sections = []
 
@@ -114,13 +115,17 @@ def index():
 
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
-    # Get current time
-    current_time = datetime.now()
+    # Get current time in UTC
+    current_time_utc = datetime.utcnow()
 
-    # Format current time in 12-hour format
-    current_time = current_time.strftime("%I:%M %p")
+    # Set the timezone to Pakistan Standard Time (Asia/Karachi)
+    pst_timezone = timezone(timedelta(hours=5))
+    current_time_pst = current_time_utc.replace(tzinfo=timezone.utc).astimezone(pst_timezone)
 
-    return render_template('trying.html', current_time=current_time)
+    # Format the times in 12-hour format
+    formatted_current_time = current_time_pst.strftime("%I:%M %p")
+    
+    return render_template('trying.html', current_time=formatted_current_time)
 
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
