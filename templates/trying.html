@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FCS</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -547,14 +549,14 @@ td{
         <!-- Table comes here -->
       </section>
 
-    <p id="disclaimer" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
+    <p id="disclaimer" style="margin-left: 10%; margin-right: 10%; margin-top: 3rem; margin-bottom: 2rem;" class="text-center white-color-setter">
       <strong>Disclaimer:</strong> While our goal is to provide a comprehensive course scheduling solution,
       the platform currently does not account for prerequisites, availablity of seats, or cross-listed
       courses. Users are encouraged to have a solid understanding of their degree
       requirements and use this tool as a supplementary resource.
     </p>
 
-    <p id="PCR" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
+    <p id="PCR" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2rem;" class="text-center white-color-setter">
       <strong>Check out friends at <a target="_blank" style="text-decoration: none;"
       href="https://wocx.xyz/project-common-room">Project Common Room</a></strong>
     </p>
@@ -728,9 +730,7 @@ td{
         populateDropdown("#instructor", "/instructors");
 
         // Add event listeners to clear dropdown values on focus
-        $("#term-selector").on("focus", function () {
-          $(this).val(""); // Clear the value
-        });
+        // Term selector is now readonly, no focus handler needed
 
         $("#department-selector").on("focus", function () {
           var old = $(this).val();
@@ -982,6 +982,10 @@ td{
             );
           }
 
+          liDiv.append(
+            ` <p class="filteredCourseP">Available Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
+          );
+
           coursesList.append(li);
         });
       }
@@ -1156,6 +1160,10 @@ td{
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
+
+          shortLiDiv.append(
+            ` <p class="filteredCourseP">Available Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
+          );
         
           selectedCoursesList.append(li);
         });

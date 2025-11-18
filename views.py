@@ -60,8 +60,8 @@ def paginator():
             'alternate_days': "".join(filter(str.isalpha, section[11])),
             'alternate_start_time': section[12],
             'alternate_end_time': section[13],
-            #'total_seats': section[14],
-            #'available_seats': section[15]
+            'total_seats': section[14],
+            'available_seats': section[15]
         })
     return json.dumps(sections_json, indent=2)
 
@@ -113,8 +113,8 @@ def index():
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
                 'alternate_start_time': section[12],
                 'alternate_end_time': section[13],
-                #'total_seats': section[14],
-                #'available_seats': section[15]
+                'total_seats': section[14],
+                'available_seats': section[15]
             })
 
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)

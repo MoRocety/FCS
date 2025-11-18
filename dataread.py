@@ -30,7 +30,7 @@ def fileread():
 
     infile.close()
 
-    filtered_course_data = [x.split("!!") for x in course_data[:-1]]
+    filtered_course_data = [x.split("!!") for x in course_data if x.strip()]
     course_data = []
 
     for x in filtered_course_data:
@@ -69,7 +69,7 @@ def fileread():
         if instructor != "TBD":
             instructor = instructor.title()
 
-        filtered_data = [x[0], x[1], x[2], result, start, end, instructor, x[9], None, None, None, None]
+        filtered_data = [x[0], x[1], x[2], result, start, end, instructor, x[9], None, None, None, None, x[14], x[15]]
 
         if x[10] != "None":
             alt_result = x[11]
