@@ -75,9 +75,39 @@ def get_active_term_human():
 
 def set_active_term(term_code):
     """
-    Set the active term (in memory only).
-    To persist, update the .env file or environment variable.
+    Set the active term in memory and persist to .env file.
+    
+    Args:
+        term_code (str): Term code like '2026SP'
     """
     global ACTIVE_TERM
     ACTIVE_TERM = term_code
+    
+    # Also update environment variable for current process
+    os.environ['ACTIVE_TERM'] = term_code
+    
+    # Update .env file to persist across restarts
+    env_file = BASE_DIR / '.env'
+    
+    if env_file.exists():
+        # Read existing .env
+        lines = env_file.read_text().splitlines()
+        updated = False
+        
+        # Update ACTIVE_TERM line if it exists
+        for i, line in enumerate(lines):
+            if line.strip().startswith('ACTIVE_TERM='):
+                lines[i] = f'ACTIVE_TERM={term_code}'
+                updated = True
+                break
+        
+        # Add ACTIVE_TERM if it doesn't exist
+        if not updated:
+            lines.append(f'ACTIVE_TERM={term_code}')
+        
+        # Write back to .env
+        env_file.write_text('\n'.join(lines) + '\n')
+    else:
+        # Create new .env with ACTIVE_TERM
+        env_file.write_text(f'ACTIVE_TERM={term_code}\n')
 

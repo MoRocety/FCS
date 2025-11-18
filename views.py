@@ -347,16 +347,13 @@ def update_courses_webhook():
         
         print(f"Saved course data to {filepath}")
         
-        # Update the ACTIVE_TERM file
-        active_term_file = Path(__file__).parent / 'ACTIVE_TERM'
-        with open(active_term_file, 'w') as f:
-            f.write(term_code)
-        
-        print(f"Updated ACTIVE_TERM to {term_code}")
+        # Update ACTIVE_TERM in config and .env
+        set_active_term(term_code)
+        print(f"Updated ACTIVE_TERM to {term_code} (in memory and .env)")
         
         # Reload the course data globally
         global course_data, departments, courses, sections
-        course_data, departments, courses, sections = fileread(term_code)
+        course_data, departments, courses, sections = fileread()
         
         # Clear cached sections
         global cached_sections
