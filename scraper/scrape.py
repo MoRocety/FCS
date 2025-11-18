@@ -29,6 +29,18 @@ def detect_active_term(soup):
     term_select = soup.find('select', {'name': 'empower_global_term_id'})
     if not term_select:
         print("Warning: Could not find term selector dropdown")
+        # Debug: Show what selects we DID find
+        all_selects = soup.find_all('select')
+        if all_selects:
+            print(f"  Found {len(all_selects)} select elements:")
+            for sel in all_selects[:3]:  # Show first 3
+                name = sel.get('name', 'no-name')
+                id_attr = sel.get('id', 'no-id')
+                print(f"    - name='{name}', id='{id_attr}'")
+        else:
+            print("  No select elements found at all")
+            print(f"  Page title: {soup.title.string if soup.title else 'No title'}")
+            print(f"  Page length: {len(str(soup))} chars")
         return None
     
     # Find all FA/SP terms (exclude PH, IE, and other special programs)
