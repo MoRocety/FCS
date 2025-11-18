@@ -1,7 +1,34 @@
 from bs4 import BeautifulSoup
 import json
+import sys
+import os
+from pathlib import Path
 
-datasets = ['2023FA', 'PH23FA']
+# If ACTIVE_TERM is specified, use that. Otherwise, parse all available JSON files.
+def get_datasets_to_parse():
+    """
+    Get list of datasets to parse.
+    If run from scraper (after scrape.py), will auto-detect from JSON files.
+    """
+    # Check if we're in scraper directory
+    current_dir = Path(__file__).parent
+    
+    # Find all *FA.json and *SP.json files (term code JSON files)
+    json_files = []
+    for json_file in current_dir.glob('*.json'):
+        name = json_file.stem
+        # Match term codes: 4-6 chars ending in FA, SP, SU, WN
+        if len(name) <= 7 and (name.endswith('FA') or name.endswith('SP') or 
+                               name.endswith('SU') or name.endswith('WN')):
+            json_files.append(name)
+    
+    if json_files:
+        return json_files
+    
+    # Fallback to default
+    return ['2025FA']
+
+datasets = get_datasets_to_parse()
 
 for ds in datasets:
     with open(f"{ds}.json", "r") as f:
@@ -160,3 +187,6 @@ for ds in datasets:
 
 
     outfile.close()
+    print(f"✓ Parsed {ds}.json -> {ds}data.txt")
+
+print(f"\n✓ Successfully parsed {len(datasets)} dataset(s)")

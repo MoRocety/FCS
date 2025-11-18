@@ -1,10 +1,72 @@
-def fileread(term):
-    if term == "2023 FALL":
-        infile = open("2023FAdata.txt", "r")
+import os
+from pathlib import Path
 
-    elif term == "PHARMACY PROGRAM FALL 2023":
-        infile = open("PH23FAdata.txt", "r")
+# Import config module for term decoding
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from config import decode_term_code, get_data_filename, get_active_term
 
+
+def fileread(term=None):
+    """
+    Read course data from file.
+    
+    Args:
+        term (str): Term in human-readable format like "2025 Fall" or term code like "2025FA"
+                   If None, uses the active term from ACTIVE_TERM file or environment variable
+    
+    Returns:
+        tuple: (course_data, departments, courses, sections)
+    """
+    # If no term specified, use the active term
+    if term is None:
+        # Try to read from ACTIVE_TERM file first
+        active_term_file = Path(__file__).parent / 'ACTIVE_TERM'
+        if active_term_file.exists():
+            term_code = active_term_file.read_text().strip()
+        else:
+            # Fall back to environment variable or config default
+            term_code = get_active_term()
+        
+        # Convert to human-readable format for backwards compatibility
+        term = decode_term_code(term_code)
+    
+    # Try to detect if we got a term code instead of human-readable
+    # Term codes are like "2025FA", "PH23FA" - short and alphanumeric
+    if term and len(term) <= 7 and not ' ' in term:
+        # It's a term code, convert to human readable
+        term_code = term
+        term = decode_term_code(term)
+        filename = get_data_filename(term_code)
+    else:
+        # It's human readable, convert to term code for filename
+        # Legacy support for old format
+        if term == "2023 FALL":
+            filename = "2023FAdata.txt"
+        elif term == "PHARMACY PROGRAM FALL 2023":
+            filename = "PH23FAdata.txt"
+        elif term == "2025 FALL" or term == "2025 Fall":
+            filename = "2025FAdata.txt"
+        elif term == "PHARMACY PROGRAM FALL 2025" or term == "Pharmacy Program Fall 2025":
+            filename = "PH25FAdata.txt"
+        elif term == "2026 SPRING" or term == "2026 Spring":
+            filename = "2026SPdata.txt"
+        else:
+            # Try to guess from the term string
+            parts = term.upper().split()
+            if len(parts) >= 2:
+                year = parts[-1]  # Last part is usually the year
+                season = parts[-2]  # Second to last is the season
+                season_code = 'FA' if 'FALL' in season else 'SP' if 'SPRING' in season else 'SU' if 'SUMMER' in season else 'WN'
+                filename = f"{year}{season_code}data.txt"
+            else:
+                raise ValueError(f"Unknown term format: {term}")
+    
+    try:
+        infile = open(filename, "r", encoding="utf-8")
+    except FileNotFoundError:
+        raise FileNotFoundError(f"Data file not found for term: {term} (looking for {filename})")
+    
     course_data = infile.read().split("\n")
 
     infile.close()

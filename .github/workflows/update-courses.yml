@@ -1,0 +1,119 @@
+name: Update Course Data
+
+on:
+  # Run daily at 2 AM UTC (7 AM Pakistan time)
+  schedule:
+    - cron: '0 2 * * *'
+  
+  # Allow manual trigger from GitHub UI
+  workflow_dispatch:
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4
+    
+    - name: Run scraper
+      run: |
+        cd scraper
+        python scrape.py
+        echo "✓ Scraper completed"
+    
+    - name: Verify ACTIVE_TERM was created
+      run: |
+        if [ ! -f "ACTIVE_TERM" ]; then
+          echo "Error: ACTIVE_TERM file not created by scraper"
+          exit 1
+        fi
+        ACTIVE_TERM=$(cat ACTIVE_TERM)
+        echo "Active term detected: $ACTIVE_TERM"
+        echo "ACTIVE_TERM=$ACTIVE_TERM" >> $GITHUB_ENV
+    
+    - name: Run parser
+      run: |
+        cd scraper
+        python parse.py
+        echo "✓ Parser completed"
+    
+    - name: Verify data file was created
+      run: |
+        FILENAME="${ACTIVE_TERM}data.txt"
+        if [ ! -f "scraper/$FILENAME" ]; then
+          echo "Error: $FILENAME not created by parser"
+          exit 1
+        fi
+        SIZE=$(wc -c < "scraper/$FILENAME")
+        echo "Data file created: $FILENAME (${SIZE} bytes)"
+    
+    - name: Send to PythonAnywhere webhook
+      env:
+        WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
+        WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
+      run: |
+        cd scraper
+        FILENAME="${ACTIVE_TERM}data.txt"
+        
+        # Check if required secrets are set
+        if [ -z "$WEBHOOK_URL" ]; then
+          echo "Error: WEBHOOK_URL secret not set"
+          exit 1
+        fi
+        if [ -z "$WEBHOOK_SECRET" ]; then
+          echo "Error: WEBHOOK_SECRET secret not set"
+          exit 1
+        fi
+        
+        # Read file content and escape for JSON
+        # Use jq to properly escape the content as a JSON string
+        CONTENT=$(cat "$FILENAME" | jq -Rs .)
+        
+        # Create JSON payload
+        PAYLOAD=$(jq -n \
+          --arg term_code "$ACTIVE_TERM" \
+          --argjson content "$CONTENT" \
+          '{term_code: $term_code, content: $content}')
+        
+        # Send POST request to webhook
+        HTTP_CODE=$(curl -X POST "$WEBHOOK_URL" \
+          -H "Content-Type: application/json" \
+          -H "X-Webhook-Token: $WEBHOOK_SECRET" \
+          -d "$PAYLOAD" \
+          -w "%{http_code}" \
+          -o response.json \
+          -s)
+        
+        echo "HTTP Response Code: $HTTP_CODE"
+        echo "Response Body:"
+        cat response.json | jq '.' || cat response.json
+        
+        # Check if request was successful
+        if [ "$HTTP_CODE" -eq 200 ]; then
+          echo "✓ Successfully sent data to webhook"
+        else
+          echo "✗ Webhook request failed with HTTP $HTTP_CODE"
+          exit 1
+        fi
+    
+    - name: Upload artifacts (for debugging)
+      if: always()
+      uses: actions/upload-artifact@v3
+      with:
+        name: scraper-output
+        path: |
+          ACTIVE_TERM
+          scraper/*.json
+          scraper/*data.txt
+        retention-days: 7
+

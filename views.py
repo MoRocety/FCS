@@ -1,16 +1,20 @@
-from flask import render_template, Blueprint, request
+from flask import render_template, Blueprint, request, jsonify
 from flask_cors import CORS
 import json
+import os
+from pathlib import Path
 from dataread import fileread, cap_first_preserve_case
 from combcheck import *
 from datetime import datetime, timedelta, timezone
+from config import get_active_term, decode_term_code, get_active_term_human, set_active_term
 
 cached_sections = []
 
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
-course_data, departments, courses, sections = fileread("2023 FALL")
+# Load data for the active term (defaults to ACTIVE_TERM file or env variable)
+course_data, departments, courses, sections = fileread()
 
 @my_blueprint.route('/old', methods=['GET', 'POST'])
 def indexOld():
@@ -125,7 +129,14 @@ def index():
     # Format the times in 12-hour format
     formatted_current_time = current_time_pst.strftime("%I:%M %p")
     
-    return render_template('trying.html', current_time=formatted_current_time)
+    # Get active term info
+    active_term_code = get_active_term()
+    active_term_name = get_active_term_human()
+    
+    return render_template('trying.html', 
+                         current_time=formatted_current_time,
+                         active_term=active_term_name,
+                         active_term_code=active_term_code)
 
 
 @my_blueprint.route('/updateTerm', methods=['POST'])
@@ -294,3 +305,96 @@ def submit_selected_courses():
  
     # Return a response
     return json.dumps(combinations_lst)
+
+
+@my_blueprint.route('/webhook/update-courses', methods=['POST'])
+def update_courses_webhook():
+    """
+    Webhook endpoint for GitHub Actions to push updated course data.
+    
+    Expected JSON payload:
+    {
+        "term_code": "2025FA",
+        "content": "... course data file content ..."
+    }
+    
+    Headers:
+    X-Webhook-Token: secret token for authentication
+    """
+    # Auth check
+    auth_token = request.headers.get('X-Webhook-Token')
+    webhook_secret = os.environ.get('WEBHOOK_SECRET', 'change_this_in_production')
+    
+    if auth_token != webhook_secret:
+        return jsonify({'error': 'Unauthorized', 'message': 'Invalid webhook token'}), 401
+    
+    try:
+        data = request.json
+        term_code = data.get('term_code')
+        content = data.get('content')
+        
+        if not term_code or not content:
+            return jsonify({
+                'error': 'Bad Request',
+                'message': 'Missing term_code or content in request body'
+            }), 400
+        
+        # Save the data file
+        filename = f"{term_code}data.txt"
+        filepath = Path(__file__).parent / filename
+        
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        print(f"Saved course data to {filepath}")
+        
+        # Update the ACTIVE_TERM file
+        active_term_file = Path(__file__).parent / 'ACTIVE_TERM'
+        with open(active_term_file, 'w') as f:
+            f.write(term_code)
+        
+        print(f"Updated ACTIVE_TERM to {term_code}")
+        
+        # Reload the course data globally
+        global course_data, departments, courses, sections
+        course_data, departments, courses, sections = fileread(term_code)
+        
+        # Clear cached sections
+        global cached_sections
+        cached_sections = []
+        
+        human_readable = decode_term_code(term_code)
+        
+        return jsonify({
+            'success': True,
+            'message': f'Successfully updated course data for {human_readable}',
+            'term_code': term_code,
+            'term_name': human_readable,
+            'courses_loaded': len(course_data),
+            'departments_count': len(departments)
+        }), 200
+        
+    except Exception as e:
+        print(f"Error in webhook: {e}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({
+            'error': 'Internal Server Error',
+            'message': str(e)
+        }), 500
+
+
+@my_blueprint.route('/api/active-term', methods=['GET'])
+def get_active_term_info():
+    """
+    Get information about the currently active term.
+    """
+    term_code = get_active_term()
+    term_human = get_active_term_human()
+    
+    return jsonify({
+        'term_code': term_code,
+        'term_name': term_human,
+        'courses_count': len(course_data),
+        'departments_count': len(departments)
+    })
