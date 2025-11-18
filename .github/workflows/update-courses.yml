@@ -24,6 +24,7 @@ jobs:
     - name: Install dependencies
       run: |
         pip install requests beautifulsoup4
+        sudo apt-get update && sudo apt-get install -y jq
     
     - name: Run scraper
       run: |
@@ -66,13 +67,11 @@ jobs:
         FILENAME="${ACTIVE_TERM}data.txt"
         
         # Check if required secrets are set
-        if [ -z "$WEBHOOK_URL" ]; then
-          echo "Error: WEBHOOK_URL secret not set"
-          exit 1
-        fi
-        if [ -z "$WEBHOOK_SECRET" ]; then
-          echo "Error: WEBHOOK_SECRET secret not set"
-          exit 1
+        if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_SECRET" ]; then
+          echo "⚠️  Warning: WEBHOOK_URL or WEBHOOK_SECRET not set"
+          echo "⚠️  Skipping webhook update. Set these secrets in GitHub Settings → Secrets → Actions"
+          echo "⚠️  For now, manually upload the generated files to PythonAnywhere"
+          exit 0
         fi
         
         # Read file content and escape for JSON

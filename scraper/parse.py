@@ -7,26 +7,27 @@ from pathlib import Path
 # If ACTIVE_TERM is specified, use that. Otherwise, parse all available JSON files.
 def get_datasets_to_parse():
     """
-    Get list of datasets to parse.
-    If run from scraper (after scrape.py), will auto-detect from JSON files.
+    Get the active term to parse.
+    Only parses the term specified in ACTIVE_TERM file.
     """
-    # Check if we're in scraper directory
-    current_dir = Path(__file__).parent
+    # Read active term from ACTIVE_TERM file (one level up from scraper/)
+    active_term_file = Path(__file__).parent.parent / 'ACTIVE_TERM'
     
-    # Find all *FA.json and *SP.json files (term code JSON files)
-    json_files = []
-    for json_file in current_dir.glob('*.json'):
-        name = json_file.stem
-        # Match term codes: 4-6 chars ending in FA, SP, SU, WN
-        if len(name) <= 7 and (name.endswith('FA') or name.endswith('SP') or 
-                               name.endswith('SU') or name.endswith('WN')):
-            json_files.append(name)
+    if active_term_file.exists():
+        term_code = active_term_file.read_text().strip()
+        print(f"Active term from ACTIVE_TERM file: {term_code}")
+        return [term_code]
     
-    if json_files:
-        return json_files
+    # Fallback: check environment variable
+    term_code = os.environ.get('ACTIVE_TERM')
+    if term_code:
+        print(f"Active term from environment: {term_code}")
+        return [term_code]
     
-    # Fallback to default
-    return ['2025FA']
+    # Last resort: fail with clear error
+    print("ERROR: No ACTIVE_TERM file or environment variable found!")
+    print("The scraper should have created ACTIVE_TERM file.")
+    sys.exit(1)
 
 datasets = get_datasets_to_parse()
 
