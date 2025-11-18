@@ -233,20 +233,22 @@ def scrape_courses(terms=None, auto_detect=True):
 
 
 if __name__ == '__main__':
-    # Allow command line arguments for terms
-    if len(sys.argv) > 1:
-        terms_to_scrape = sys.argv[1:]
-    else:
-        # Default terms
-        terms_to_scrape = ['2025FA', 'PH25FA']
-    
     print("=" * 60)
     print("FCC Course Catalog Scraper")
     print("=" * 60)
-    print(f"Terms to scrape: {', '.join(terms_to_scrape)}")
-    print()
     
-    results = scrape_courses(terms_to_scrape)
+    # Allow command line arguments for terms
+    if len(sys.argv) > 1:
+        terms_to_scrape = sys.argv[1:]
+        print(f"Terms to scrape (manual): {', '.join(terms_to_scrape)}")
+        print()
+        # Use manual terms, disable auto-detect
+        results = scrape_courses(terms_to_scrape, auto_detect=False)
+    else:
+        # Auto-detect and scrape only the active term
+        print("Auto-detecting active term...")
+        print()
+        results = scrape_courses(None, auto_detect=True)
     
     print("\n" + "=" * 60)
     print("Summary:")
