@@ -33,6 +33,13 @@ datasets = get_datasets_to_parse()
 for ds in datasets:
     with open(f"{ds}.json", "r") as f:
         jsondata= json.load(f)
+    
+    # Check if we got valid data
+    if "html" not in jsondata:
+        print(f"✗ Error: {ds}.json does not contain 'html' field")
+        print(f"  JSON keys found: {list(jsondata.keys())}")
+        print(f"  Content preview: {str(jsondata)[:200]}")
+        continue
 
     soup = BeautifulSoup(jsondata["html"], "html.parser")
 
