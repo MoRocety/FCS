@@ -69,10 +69,12 @@ def get_data_filename(term_code):
 def get_active_term():
     """Get the currently active term code from ACTIVE_TERM file."""
     active_term_file = BASE_DIR / 'ACTIVE_TERM'
-    if active_term_file.exists():
-        return active_term_file.read_text().strip()
-    # Fallback if file doesn't exist
-    return '2025FA'
+    if not active_term_file.exists():
+        raise FileNotFoundError(
+            f"ACTIVE_TERM file not found at {active_term_file}. "
+            "Please create it with a term code like '2026SP'"
+        )
+    return active_term_file.read_text().strip()
 
 def get_active_term_human():
     """Get the currently active term in human-readable format."""
