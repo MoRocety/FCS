@@ -12,9 +12,9 @@ from pathlib import Path
 
 
 def main():
-    # Read environment variables
-    webhook_url = os.environ.get('WEBHOOK_URL')
-    webhook_secret = os.environ.get('WEBHOOK_SECRET')
+    # Read environment variables (strip any whitespace/newlines)
+    webhook_url = os.environ.get('WEBHOOK_URL', '').strip()
+    webhook_secret = os.environ.get('WEBHOOK_SECRET', '').strip()
     
     # Check if secrets are set
     if not webhook_url or not webhook_secret:
