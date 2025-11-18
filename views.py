@@ -347,9 +347,9 @@ def update_courses_webhook():
         
         print(f"Saved course data to {filepath}")
         
-        # Update ACTIVE_TERM in config and .env
+        # Update ACTIVE_TERM file
         set_active_term(term_code)
-        print(f"Updated ACTIVE_TERM to {term_code} (in memory and .env)")
+        print(f"Updated ACTIVE_TERM file to {term_code}")
         
         # Reload the course data globally
         global course_data, departments, courses, sections

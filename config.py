@@ -6,12 +6,13 @@ Handles environment variables and term configuration.
 import os
 from pathlib import Path
 
-# Load from environment variables or use defaults
-ACTIVE_TERM = os.getenv('ACTIVE_TERM', '2025FA')
-WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET', 'change_this_in_production')
-
 # Base directory
 BASE_DIR = Path(__file__).parent
+
+# Load WEBHOOK_SECRET from environment
+WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET', 'change_this_in_production')
+
+# ACTIVE_TERM is always read from file, never cached
 
 # Term code to human-readable mapping
 TERM_DECODE = {
@@ -66,48 +67,24 @@ def get_data_filename(term_code):
     return f'{term_code}data.txt'
 
 def get_active_term():
-    """Get the currently active term code."""
-    return ACTIVE_TERM
+    """Get the currently active term code from ACTIVE_TERM file."""
+    active_term_file = BASE_DIR / 'ACTIVE_TERM'
+    if active_term_file.exists():
+        return active_term_file.read_text().strip()
+    # Fallback if file doesn't exist
+    return '2025FA'
 
 def get_active_term_human():
     """Get the currently active term in human-readable format."""
-    return decode_term_code(ACTIVE_TERM)
+    return decode_term_code(get_active_term())
 
 def set_active_term(term_code):
     """
-    Set the active term in memory and persist to .env file.
+    Set the active term by writing to ACTIVE_TERM file.
     
     Args:
         term_code (str): Term code like '2026SP'
     """
-    global ACTIVE_TERM
-    ACTIVE_TERM = term_code
-    
-    # Also update environment variable for current process
-    os.environ['ACTIVE_TERM'] = term_code
-    
-    # Update .env file to persist across restarts
-    env_file = BASE_DIR / '.env'
-    
-    if env_file.exists():
-        # Read existing .env
-        lines = env_file.read_text().splitlines()
-        updated = False
-        
-        # Update ACTIVE_TERM line if it exists
-        for i, line in enumerate(lines):
-            if line.strip().startswith('ACTIVE_TERM='):
-                lines[i] = f'ACTIVE_TERM={term_code}'
-                updated = True
-                break
-        
-        # Add ACTIVE_TERM if it doesn't exist
-        if not updated:
-            lines.append(f'ACTIVE_TERM={term_code}')
-        
-        # Write back to .env
-        env_file.write_text('\n'.join(lines) + '\n')
-    else:
-        # Create new .env with ACTIVE_TERM
-        env_file.write_text(f'ACTIVE_TERM={term_code}\n')
+    active_term_file = BASE_DIR / 'ACTIVE_TERM'
+    active_term_file.write_text(term_code)
 
