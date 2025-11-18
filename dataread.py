@@ -39,28 +39,15 @@ def fileread(term=None):
         term = decode_term_code(term)
         filename = get_data_filename(term_code)
     else:
-        # It's human readable, convert to term code for filename
-        # Legacy support for old format
-        if term == "2023 FALL":
-            filename = "2023FAdata.txt"
-        elif term == "PHARMACY PROGRAM FALL 2023":
-            filename = "PH23FAdata.txt"
-        elif term == "2025 FALL" or term == "2025 Fall":
-            filename = "2025FAdata.txt"
-        elif term == "PHARMACY PROGRAM FALL 2025" or term == "Pharmacy Program Fall 2025":
-            filename = "PH25FAdata.txt"
-        elif term == "2026 SPRING" or term == "2026 Spring":
-            filename = "2026SPdata.txt"
+        # Try to guess from the term string
+        parts = term.upper().split()
+        if len(parts) >= 2:
+            year = parts[-1]  # Last part is usually the year
+            season = parts[-2]  # Second to last is the season
+            season_code = 'FA' if 'FALL' in season else 'SP' if 'SPRING' in season else 'SU' if 'SUMMER' in season else 'WN'
+            filename = f"{year}{season_code}data.txt"
         else:
-            # Try to guess from the term string
-            parts = term.upper().split()
-            if len(parts) >= 2:
-                year = parts[-1]  # Last part is usually the year
-                season = parts[-2]  # Second to last is the season
-                season_code = 'FA' if 'FALL' in season else 'SP' if 'SPRING' in season else 'SU' if 'SUMMER' in season else 'WN'
-                filename = f"{year}{season_code}data.txt"
-            else:
-                raise ValueError(f"Unknown term format: {term}")
+            raise ValueError(f"Unknown term format: {term}")
     
     try:
         infile = open(filename, "r", encoding="utf-8")
