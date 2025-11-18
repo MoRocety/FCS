@@ -5,7 +5,7 @@ Automatically extracts fresh session tokens and security keys.
 Also detects the active term from the website.
 """
 
-import requests
+from requests import Session
 from bs4 import BeautifulSoup
 import json
 import sys
@@ -76,27 +76,17 @@ def scrape_courses(terms=None, auto_detect=True):
     Scrape course data for given terms.
     
     Args:
-        terms (list): List of term IDs to scrape (e.g., ['2025FA', 'PH25FA'])
+        terms (list): List of term IDs to scrape (e.g., ['2026SP'])
                      If None and auto_detect=True, scrapes the active term only
-                     If None and auto_detect=False, defaults to ['2025FA', 'PH25FA']
         auto_detect (bool): If True, auto-detect and scrape only the active term
     
     Returns:
         dict: Dictionary mapping term IDs to their JSON data
     """
-    detected_term = None
-    
     results = {}
     
     # Create a session to maintain cookies across requests
-    session = requests.Session()
-    
-    # Set a realistic user agent
-    session.headers.update({
-        'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.9',
-    })
+    sess = Session()
     
     print("Step 1: Fetching initial page to get session and security tokens...")
     
@@ -104,16 +94,16 @@ def scrape_courses(terms=None, auto_detect=True):
     initial_url = 'https://mysis-fccollege.empower-xl.com/fusebox.cfm?fuseaction=CourseCatalog&rpt=1'
     
     try:
-        initial_response = session.get(initial_url)
-        initial_response.raise_for_status()
-    except requests.RequestException as e:
+        page = sess.get(initial_url).content
+    except Exception as e:
         print(f"Error fetching initial page: {e}")
         return results
     
     # Parse the HTML to extract security tokens
-    soup = BeautifulSoup(initial_response.content, 'html.parser')
+    soup = BeautifulSoup(page, 'html.parser')
     
     # Auto-detect the active term if requested
+    detected_term = None
     if auto_detect:
         detected_term = detect_active_term(soup)
         if detected_term:
@@ -122,45 +112,19 @@ def scrape_courses(terms=None, auto_detect=True):
             if terms is None:
                 terms = [detected_term]
     
-    # Fallback to defaults if still no terms
+    # If still no terms, fail - don't use defaults
     if terms is None:
-        terms = ['2025FA', 'PH25FA']
-    
-    # Find the center_col div and extract script tags
-    center_col = soup.find('div', id='center_col')
-    if not center_col:
-        print("Error: Could not find 'center_col' div. Website structure may have changed.")
+        print("Error: No terms specified and auto-detect failed")
         return results
     
-    scripts = center_col.find_all('script')
-    if len(scripts) < 2:
-        print("Error: Expected script tags not found. Website structure may have changed.")
-        return results
+    # Extract tokens using the simple working method
+    data = soup.find('div', id='center_col').find_all('script')[1].get_text().replace('\r', '').replace('\n', '').replace(' ', '').split(';')
     
-    # Extract the security token and key from the second script tag
-    script_content = scripts[1].get_text()
-    
-    # Parse the JavaScript to extract jsonkey and utoken
-    # Format: var jsonkey = "..."; var utoken = "...";
-    script_cleaned = script_content.replace('\r', '').replace('\n', '').replace(' ', '')
-    parts = script_cleaned.split(';')
-    
-    jsonkey = None
-    utoken = None
-    
-    for part in parts:
-        if 'jsonkey=' in part:
-            jsonkey = part.split('=')[1].replace('"', '').replace("'", '')
-        elif 'utoken=' in part:
-            utoken = part.split('=')[1].replace('"', '').replace("'", '')
-    
-    if not jsonkey or not utoken:
-        print("Error: Could not extract security tokens from page.")
-        print(f"Script content: {script_content[:200]}...")
-        return results
+    jsonkey = data[0].replace('"', '').split('=')[1]
+    utoken = data[1].replace('"', '').split('=')[1]
     
     print(f"✓ Extracted tokens successfully")
-    print(f"  Session ID: {session.cookies.get('JSESSIONID', 'Not found')}")
+    print(f"  Session ID: {sess.cookies.get('JSESSIONID', 'Active')}")
     print(f"  Security token (utoken): {utoken[:20]}...")
     print(f"  JSON key: {jsonkey[:20]}...")
     
@@ -168,66 +132,42 @@ def scrape_courses(terms=None, auto_detect=True):
     for term in terms:
         print(f"\nStep 2: Fetching course data for term {term}...")
         
-        # Prepare the API request
-        api_url = 'https://mysis-fccollege.empower-xl.com/cfcs/courseCatalog.cfc'
-        
         params = {
-            'method': 'GetList',
-            'returnformat': 'json',
-            utoken: jsonkey,  # Dynamic security token
-        }
-        
-        headers = {
-            'accept': 'application/json, text/javascript, */*; q=0.01',
-            'accept-language': 'en-US,en;q=0.9',
-            'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-            'origin': 'https://mysis-fccollege.empower-xl.com',
-            'referer': 'https://mysis-fccollege.empower-xl.com/fusebox.cfm?fuseaction=CourseCatalog&rpt=1',
-            'x-requested-with': 'XMLHttpRequest',
-        }
-        
-        data = {
             'fuseaction': 'CourseCatalog',
             'screen_width': '1920',
             'empower_global_term_id': term,
-            'cs_descr': '',
+            'cs_descr': "",
             'empower_global_dept_id': '',
             'empower_global_course_id': '',
             'cs_sess_id': '',
             'cs_loca_id': '',
             'cs_inst_id': '',
-            'cs_classroom': '',
             'cs_emph_id': '',
             'CS_time_start': '',
             'CS_time_end': '',
             'status': '1',
+            utoken: jsonkey,
         }
         
-        try:
-            response = session.post(api_url, params=params, headers=headers, data=data)
-            response.raise_for_status()
-            
-            course_data = response.json()
-            results[term] = course_data
-            
-            # Save to file
-            output_file = f'{term}.json'
-            with open(output_file, 'w', encoding='utf-8') as f:
-                json.dump(course_data, f, indent=2, ensure_ascii=False)
-            
-            print(f"✓ Successfully scraped {term}")
-            print(f"  Saved to: {output_file}")
-            
-            # Check if we got data
-            if 'html' in course_data:
-                # Count courses roughly
-                course_count = course_data.get('html', '').count('ui-grid-row')
-                print(f"  Courses found: ~{course_count}")
-            
-        except requests.RequestException as e:
-            print(f"✗ Error fetching data for {term}: {e}")
-        except json.JSONDecodeError as e:
-            print(f"✗ Error parsing JSON for {term}: {e}")
+        # Send the POST request using the session
+        re = sess.post('https://mysis-fccollege.empower-xl.com/cfcs/courseCatalog.cfc?method=GetList&returnformat=json&', params=params)
+        content = json.loads(re.content)
+        
+        results[term] = content
+        
+        # Write the JSON content to a file
+        with open(f"{term}.json", "w", encoding="utf-8") as f:
+            json.dump(content, f, indent=4)
+        
+        print(f"✓ Successfully scraped {term}")
+        print(f"  Saved to: {term}.json")
+        
+        # Check if we got data
+        if 'html' in content:
+            course_count = content.get('html', '').count('ui-grid-row')
+            print(f"  Courses found: ~{course_count}")
+        else:
+            print(f"  Warning: No 'html' field in response")
     
     return results
 
