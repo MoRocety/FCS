@@ -413,12 +413,8 @@ td{
             <div>
 
               <div  class="input-direct-div" >
-
-                <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
-                <datalist id="term">
-                  <option value="2023 Fall">
-                  <option value="Pharmacy Program Fall 2023">
-                </datalist>
+                <!-- Active term display (read-only, managed automatically) -->
+                <input type="text" id="term-selector" class="form-control custom-input white-color-setter text-center my-2" value="{{active_term}}" readonly style="color: white; background-color: #1a1a1a; cursor: not-allowed;">
               </div>
               <div class="input-direct-div" >                
                 <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Dept" style="color: white;">
@@ -708,15 +704,7 @@ td{
         });
 
         
-        $('#term-selector').on('change', function () {
-          const selectedValue = $(this).val();
-
-          if (selectedValue === '2023 Fall' || selectedValue === 'Pharmacy Program Fall 2023') {
-            updateTerm(selectedValue)
-          }
-        
-
-        });
+        // Term selector is now read-only - active term is managed automatically via webhook
 
         $('#department-selector').on('change', function () {
           const selectedValue = $(this).val();
@@ -768,29 +756,9 @@ td{
         
       });
 
-      function updateTerm(selectedValue) {
-        $.ajax({
-          url: "updateTerm",
-          type: "POST",
-          data: JSON.stringify({ selectedValue: selectedValue }),
-          contentType: "application/json", 
-          success: function () {
-            
-            dropdownCache["/departments"] = undefined;
-            dropdownCache["/courses"] = undefined;
-            dropdownCache["/instructors"] = undefined;
-
-            populateDropdown("#department", "/departments");
-            populateDropdown("#course", "/courses");
-            populateDropdown("#instructor", "/instructors");
-
-            $("#department-selector").val(''); // Clear the department dropdown
-            $("#course-selector").val(''); // Clear the course dropdown
-            $("#instructor-selector").val(''); // Clear the instructor dropdown
-
-          }
-        });
-      }
+      // updateTerm function removed - term is now managed automatically via webhook
+      // Active term updates happen server-side when webhook receives new data
+      // Users see the active term in read-only display above
 
 
       // Create an object to store cached dropdown options
