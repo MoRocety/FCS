@@ -1,569 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>FCS</title>
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-      crossorigin="anonymous"
-    />
 
-  <script defer src="https://analytics.wocx.xyz/script.js" data-website-id="d0572090-a29a-4843-8c70-e22b26cbcdd8"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FCS</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+
+  <script defer src="https://analytics.wocx.xyz/script.js"
+    data-website-id="d0572090-a29a-4843-8c70-e22b26cbcdd8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <!-- Link to Bootstrap Slider CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/css/bootstrap-slider.min.css">
   <!-- Link to Bootstrap Slider JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
-      *{
-        font-family: 'Exo 2', sans-serif !important;      }
-      .background-setter {
-        background-color: #0d111b !important;
-      }
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@200&display=swap');
 
-      body {
-        margin: 0;
-        padding: 0;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+    * {
+      font-family: 'Exo 2', sans-serif !important;
+    }
 
-      main {
-        margin-bottom: 5rem;
-      }
+    .background-setter {
+      background-color: #0d111b !important;
+    }
 
-      footer {
-        background-color: black;
-        color: white;
-        padding: 20px;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-      }
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-      .content {
-        flex: 1;
-      }
+    main {
+      margin-bottom: 5rem;
+    }
 
-      .white-color-setter-background {
-        background-color: #f8f9fc !important;
-      }
+    footer {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
 
-      .white-color-setter {
-        color: #f8f9fc;
-      }
-      .input-color-setter {
-        color: rgba(13, 17, 27, 0.5);
-      }
-      
-      .filteredCourseP{
-        margin-bottom: 0px !important;
-      }
+    .content {
+      flex: 1;
+    }
 
-      hr {
-        height: 2px;
-        width: 100svw;
-      }
+    .white-color-setter-background {
+      background-color: #f8f9fc !important;
+    }
 
-      .line-container {
-        background-color: #f8f9fc !important;
-        height: 1px;
-        width: 100%;
-      }
-      
-      .custom-div {
-        background-color: #181E30;
-        border-radius: 50px; /* Rounded corners */
-        padding: 20px;
-        margin: 20px;
-        max-width: 35rem;
-        /* min-width: 15rem; */
-        margin: 0 auto;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        width: calc(70% - 20px);      }
+    .white-color-setter {
+      color: #f8f9fc;
+    }
 
-      .custom-input {
-        background-color: rgba(13, 17, 27, 0.5);
-        border: 1px solid rgba(13, 17, 27, 0.5);
-        border-radius: 20px;
-        padding: 10px;
-        max-width: 30rem;
-        max-height: 3rem;
-        margin: 0 auto;
-        font-weight: bold;
-        text-transform: uppercase; 
-      }
+    .input-color-setter {
+      color: rgba(13, 17, 27, 0.5);
+    }
 
-      .custom-input::placeholder {
-        color: white;
-      }
+    .filteredCourseP {
+      margin-bottom: 0px !important;
+    }
 
-      .custom-input:focus {
-        background-color: rgba(13, 17, 27, 0.5);
-        border-color: rgba(13, 17, 27, 0.5);
-      }
+    hr {
+      height: 2px;
+      width: 100svw;
+    }
 
-      .custom-input:hover {
-        background-color: rgba(13, 17, 27, 0.5);
-        border-color: rgba(13, 17, 27, 0.5);
-      }
+    .line-container {
+      background-color: #f8f9fc !important;
+      height: 1px;
+      width: 100%;
+    }
 
-      .custom-button, .custom-button2 {
-        background-color: #FFD700;
-        border: none;
-        border-radius: 20px;
-        padding: 10px 20px;
-        color: white;
-        font-weight: bold;
-        color: black;
-        text-align: center;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
-        margin: 0 auto;
-        
-        height: 2.75rem !important;
-      }
+    .custom-div {
+      background-color: #181E30;
+      border-radius: 50px;
+      /* Rounded corners */
+      padding: 20px;
+      margin: 20px;
+      max-width: 35rem;
+      /* min-width: 15rem; */
+      margin: 0 auto;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      width: calc(70% - 20px);
+    }
 
-      .custom-button {
-        display: block;
-        /* margin-top: 2rem !important; */
-      }
+    .custom-input {
+      background-color: rgba(13, 17, 27, 0.5);
+      border: 1px solid rgba(13, 17, 27, 0.5);
+      border-radius: 20px;
+      padding: 10px;
+      max-width: 30rem;
+      max-height: 3rem;
+      margin: 0 auto;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
 
-      .custom-button2 {
-        display: inline;
-        vertical-align: center;
-        margin: 5px;
-      }
+    .custom-input::placeholder {
+      color: white;
+    }
 
-      .custom-button:hover {
-        background-color: white;
-        color: black;
-      }
+    .custom-input:focus {
+      background-color: rgba(13, 17, 27, 0.5);
+      border-color: rgba(13, 17, 27, 0.5);
+    }
 
-      ::placeholder {
-        font-weight: bold;
-      }
+    .custom-input:hover {
+      background-color: rgba(13, 17, 27, 0.5);
+      border-color: rgba(13, 17, 27, 0.5);
+    }
 
-      .input-div{
-        display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 2rem;
-      }
-      #inputSection > div > div.input-div > div{
-        display: flex;
-    gap: 4rem;
-    width: 90%;
-    align-items: center;
-    justify-content: center;
-      }
+    .custom-button,
+    .custom-button2 {
+      background-color: #FFD700;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 20px;
+      color: white;
+      font-weight: bold;
+      color: black;
+      text-align: center;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+      /* Add shadow */
+      margin: 0 auto;
 
-      .input-direct-div{
-        width: 60%;
-      }
+      height: 2.75rem !important;
+    }
+
+    .custom-button {
+      display: block;
+      /* margin-top: 2rem !important; */
+    }
+
+    .custom-button2 {
+      display: inline;
+      vertical-align: center;
+      margin: 5px;
+    }
+
+    .custom-button:hover {
+      background-color: white;
+      color: black;
+    }
+
+    ::placeholder {
+      font-weight: bold;
+    }
+
+    .input-div {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    #inputSection>div>div.input-div>div {
+      display: flex;
+      gap: 4rem;
+      width: 90%;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .input-direct-div {
+      width: 60%;
+    }
 
 
-      .slider-track{
-        margin-bottom: 1rem  !important;
-      }
+    .slider-track {
+      margin-bottom: 1rem !important;
+    }
 
-      .slider-handle{
-        border: none;
-        outline: none;
-        background-image: linear-gradient(to bottom, #FFD700, #FFD700) !important;
-      }
+    .slider-handle {
+      border: none;
+      outline: none;
+      background-image: linear-gradient(to bottom, #FFD700, #FFD700) !important;
+    }
 
-      .slider-track-low{
-        border: none;
-        outline: none;
-        background-color: #0D111B !important;
-      }
+    .slider-track-low {
+      border: none;
+      outline: none;
+      background-color: #0D111B !important;
+    }
 
-      .slider-track-high{
-        border: none;
-        outline: none;
-        background-color: #0D111B !important;
-      }
+    .slider-track-high {
+      border: none;
+      outline: none;
+      background-color: #0D111B !important;
+    }
 
-      .slider-selection{
-        border: none;
-        outline: none;
-        background-image: linear-gradient(to bottom, #0D111B, #0D111B) !important;
-      }
+    .slider-selection {
+      border: none;
+      outline: none;
+      background-image: linear-gradient(to bottom, #0D111B, #0D111B) !important;
+    }
 
-      .separator-line {
-        height: 1rem;
-        border: none;
-        border-top: 10px solid #0d111b !important; /* Line color */
-        margin: 0; /* Remove default margin */
-        margin-top: 2rem;
-        width: calc(100% + 2 * 20px); /* Account for the padding on both sides */
-        margin-left: -20px; /* Counteract the left padding */
-        margin-right: -20px; /* Counteract the right padding */
-        opacity: 100%;
-        
-      }
+    .separator-line {
+      height: 1rem;
+      border: none;
+      border-top: 10px solid #0d111b !important;
+      /* Line color */
+      margin: 0;
+      /* Remove default margin */
+      margin-top: 2rem;
+      width: calc(100% + 2 * 20px);
+      /* Account for the padding on both sides */
+      margin-left: -20px;
+      /* Counteract the left padding */
+      margin-right: -20px;
+      /* Counteract the right padding */
+      opacity: 100%;
 
-      .slider.slider-horizontal{
-        width: 70% !important;
-      }
+    }
 
-      #combinationMenu .custom-div{
-        border-radius: 50px;
-      }
+    .slider.slider-horizontal {
+      width: 70% !important;
+    }
 
-      .custom-table {
-          border-collapse: collapse;
-          width: 100%;
-          max-width: 900px;
-          margin: auto;
-          font-family: 'Exo 2', sans-serif;
-      }
+    #combinationMenu .custom-div {
+      border-radius: 50px;
+    }
 
-      .custom-table td {
-        border: 1px solid #ddd;
-        /* padding-top: 38px;
+    .custom-table {
+      border-collapse: collapse;
+      width: 100%;
+      max-width: 900px;
+      margin: auto;
+      font-family: 'Exo 2', sans-serif;
+    }
+
+    .custom-table td {
+      border: 1px solid #ddd;
+      /* padding-top: 38px;
         padding-left: 19px;
         padding-right: 19px; */
-        /* padding-bottom: 0; */
-        width: calc(900px/6);
-        height: 65px;
-        position: relative;
-        vertical-align: bottom; /* Vertically center the content */
-        text-align: center; /* Horizontally center the content */
-        color: #fff; /* White text color on dark background */
-        width: 150px; 
-        font-weight: bold;
-      }
+      /* padding-bottom: 0; */
+      width: calc(900px/6);
+      height: 65px;
+      position: relative;
+      vertical-align: bottom;
+      /* Vertically center the content */
+      text-align: center;
+      /* Horizontally center the content */
+      color: #fff;
+      /* White text color on dark background */
+      width: 150px;
+      font-weight: bold;
+    }
 
-      .cell-content {
-        position: absolute;
-        top: 0;
-        height: 100%;
-        left: 0;
-        border-radius: 20px;
-        width: 100%;
-        background-color: rgba(127, 127, 127, 1);
-        color: black; 
-        z-index: 1;
-        
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }      
+    .cell-content {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      left: 0;
+      border-radius: 20px;
+      width: 100%;
+      background-color: rgba(127, 127, 127, 1);
+      color: black;
+      z-index: 1;
 
-      .custom-table td, .cell-content {
-        font-family: 'Exo 2', sans-serif;
-      }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-      tr:first-child td {
-        border: none; /* Remove any existing borders */
-        border-bottom: 1px; /* Apply a border only on the bottom */
-        width: 150px; 
-      }
+    .custom-table td,
+    .cell-content {
+      font-family: 'Exo 2', sans-serif;
+    }
 
-      .combinations-list {
-        display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
-      }
+    tr:first-child td {
+      border: none;
+      /* Remove any existing borders */
+      border-bottom: 1px;
+      /* Apply a border only on the bottom */
+      width: 150px;
+    }
 
-      .course-name {
-        font-family: 'Exo 2', sans-serif;
-        color: white;
-      }
+    .combinations-list {
+      display: flex;
+      justify-content: center;
+      /* Center horizontally */
+      align-items: center;
+      /* Center vertically */
+    }
 
-      .pagination {
-    display: inline-block;
-    font-weight: bold;
-}
+    .course-name {
+      font-family: 'Exo 2', sans-serif;
+      color: white;
+    }
 
-  .pagination a {
-    padding: 8px 16px;
-    text-decoration: none;
-    transition: background-color 0.3s;
-    border-radius: 10px;
-    background-color: #181E30;
-    color: white!important;
-    margin-left: 3px!important;
-    margin-right: 3px!important;
+    .pagination {
+      display: inline-block;
+      font-weight: bold;
+    }
 
-  }
+    .pagination a {
+      padding: 8px 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      border-radius: 10px;
+      background-color: #181E30;
+      color: white !important;
+      margin-left: 3px !important;
+      margin-right: 3px !important;
 
-  .pagination a.active {
-    background-color: gold;
-    color: black !important;
+    }
 
-  }
+    .pagination a.active {
+      background-color: gold;
+      color: black !important;
 
-  .pagination a:hover:not(.active) {
-    background-color: gold;
-    color: black !important;
+    }
 
-  }
+    .pagination a:hover:not(.active) {
+      background-color: gold;
+      color: black !important;
 
-  .pagination span{
-    color: white!important;
-    margin-left: 3px!important;
-    margin-right: 3px!important;
-  }
+    }
 
-  #combinations > div.custom-div{
-    border-radius: 50px;
-  }
+    .pagination span {
+      color: white !important;
+      margin-left: 3px !important;
+      margin-right: 3px !important;
+    }
 
-  #combinations > div.custom-div > hr{
-    margin-top: 0rem;
-    margin-bottom: 1rem;
-  }
+    #combinations>div.custom-div {
+      border-radius: 50px;
+    }
 
-  #courses-list > div > input[type=checkbox] {
-  /* Increase the dimensions */
-  width: 28px;
-  height: 16px;
-  border-radius: 30px;
-  
-  /* Add some spacing and alignment */
-  margin-right: 10px;
-  vertical-align: middle;
-}
+    #combinations>div.custom-div>hr {
+      margin-top: 0rem;
+      margin-bottom: 1rem;
+    }
 
-#selected-courses-list > div > button{
- width: 28px;
-  height: 16px;
-  border-radius: 30px;
-  
-  /* Add some spacing and alignment */
-  margin-right: 10px;
-  vertical-align: middle;}
+    #courses-list>div>input[type=checkbox] {
+      /* Increase the dimensions */
+      width: 28px;
+      height: 16px;
+      border-radius: 30px;
 
-/* .custom-height1{
+      /* Add some spacing and alignment */
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    #selected-courses-list>div>button {
+      width: 28px;
+      height: 16px;
+      border-radius: 30px;
+
+      /* Add some spacing and alignment */
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    /* .custom-height1{
   height: 16px !important;
 } */
 
-#courses-list{
-  margin: 0px !important;
-  padding: 0px !important;
-  width: 100%;
-}
+    #courses-list {
+      margin: 0px !important;
+      padding: 0px !important;
+      width: 100%;
+    }
 
-#selected-courses-list{
-  margin: 0px !important;
-  padding: 0px !important;
-  width: 100%;
-}
-/* #inputContainerDiv{
+    #selected-courses-list {
+      margin: 0px !important;
+      padding: 0px !important;
+      width: 100%;
+    }
+
+    /* #inputContainerDiv{
   margin-bottom: 2rem!important;
 } */
 
 
-/* Your main styles here */
+    /* Your main styles here */
 
-/* Media query for devices with width less than 622px */
-@media (max-width: 425px){
+    /* Media query for devices with width less than 622px */
+    @media (max-width: 425px) {
 
-.input-div{
-  flex-direction: column;
+      .input-div {
+        flex-direction: column;
 
-  gap: 0rem !important;
-}
+        gap: 0rem !important;
+      }
 
-#inputSection > div > div.input-div > div{
+      #inputSection>div>div.input-div>div {
         display: flex;
-        gap:0rem !important;
+        gap: 0rem !important;
         flex-direction: column;
       }
 
       input[type="text"] {
-  width: 100%;
-}
+        width: 100%;
+      }
 
-.input-direct-div {
-    width: 90%;
-}
+      .input-direct-div {
+        width: 90%;
+      }
 
-.custom-div{
-  width: 90%;
-  font-size: 14px!important;
-  
-}
+      .custom-div {
+        width: 90%;
+        font-size: 14px !important;
 
-.slider.slider-horizontal{
+      }
+
+      .slider.slider-horizontal {
         width: 50% !important;
       }
 
 
-body > h1 > strong{
-  font-size: 25px;
-}
-  
-td{
-  padding-left:0px !important ;
-  padding-right:0px !important;
-  padding-top:0px !important;
-  width: calc(100vw/6) !important;
-  font-size: 12px;
+      body>h1>strong {
+        font-size: 25px;
+      }
 
-}
+      td {
+        padding-left: 0px !important;
+        padding-right: 0px !important;
+        padding-top: 0px !important;
+        width: calc(100vw/6) !important;
+        font-size: 12px;
 
-.cell-content{
-  font-size: 10px!important;
-}
+      }
 
-#filterCoursesSection{
-  margin-bottom:3rem !important;
-}
-  
-}
-    
+      .cell-content {
+        font-size: 10px !important;
+      }
 
-    
-    </style>
-  </head>
-  <body class="background-setter">
+      #filterCoursesSection {
+        margin-bottom: 3rem !important;
+      }
+
+    }
+  </style>
+</head>
+
+<body class="background-setter">
   <main class="content">
 
     <h1 class="mt-1 ms-1 white-color-setter text-center"><strong>Forman Course Scheduler</strong></h1>
     <div class="line-container"></div>
     <section id="inputSection">
-      
-        <div class="custom-div white-color-setter">
-          <div class="input-div">
-            <div>
 
-              <div  class="input-direct-div" >
+      <div class="custom-div white-color-setter">
+        <div class="input-div">
+          <div>
 
-                <input type="text" id="term-selector" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;" value="{{active_term}}" readonly>
-              </div>
-              <div class="input-direct-div" >                
-                <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Dept" style="color: white;">
-                <datalist id="department">
-                </datalist>
-              </div>
-              
+            <div class="input-direct-div">
+
+              <input type="text" id="term-selector"
+                class="form-control custom-input white-color-setter text-center my-2" placeholder="Term"
+                style="color: white;" value="{{active_term}}" readonly>
             </div>
-            <div>
-              <div  class="input-direct-div" >
-                <input type="text" id="course-selector" list="course" class="form-control custom-input white-color-setter text-center my-2" placeholder="Course" style="color: white;">
-                <datalist id="course">
-                </datalist>
-              </div>
-              <div class="input-direct-div">
-
-                <input type="text" id="instructor-selector" list="instructor" class="form-control custom-input white-color-setter text-center my-2" placeholder="Instructor" style="color: white;">
-                <datalist id="instructor">
-                </datalist>
-              </div>
+            <div class="input-direct-div">
+              <input type="text" id="department-selector" list="department"
+                class="form-control custom-input white-color-setter text-center my-2" placeholder="Dept"
+                style="color: white;">
+              <datalist id="department">
+              </datalist>
             </div>
 
           </div>
-          
-
-            <div class="button-div">
-              <button class="btn custom-button " onclick="filterCourses()">Filter</button>
+          <div>
+            <div class="input-direct-div">
+              <input type="text" id="course-selector" list="course"
+                class="form-control custom-input white-color-setter text-center my-2" placeholder="Course"
+                style="color: white;">
+              <datalist id="course">
+              </datalist>
             </div>
-   
-        </div>
+            <div class="input-direct-div">
+
+              <input type="text" id="instructor-selector" list="instructor"
+                class="form-control custom-input white-color-setter text-center my-2" placeholder="Instructor"
+                style="color: white;">
+              <datalist id="instructor">
+              </datalist>
+            </div>
+          </div>
 
         </div>
+
+
+        <div class="button-div">
+          <button class="btn custom-button " onclick="filterCourses()">Filter</button>
+        </div>
+
+      </div>
+
+      </div>
 
       <p id="note" class="text-center" style="color:white; margin-left: 10%; margin-right: 10%">
         <strong>Note</strong>: These filters are entirely optional.
       </p>
 
     </section>
-    <section id="filterCoursesSection", style="display: none; text-align: center; " style=>
-     <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
-     
+    <section id="filterCoursesSection" , style="display: none; text-align: center; " style=>
+      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+
       <p class="text-center" style="color: white; margin-bottom: 2.0rem;">
         (Add Each Of Your Favored Courses)
       </p>
 
-            <div class="pagination-container" style="text-align: center; margin-top:1.5rem;">
+      <div class="pagination-container" style="text-align: center; margin-top:1.5rem;">
 
-              <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
-            </div>
-         <ul id="courses-list" style="list-style-type: none; "></ul>
+        <div style="width:100%;display: inline-block;" class="pagination" id="pagination" style="margin: 0 auto;"></div>
+      </div>
+      <ul id="courses-list" style="list-style-type: none; "></ul>
 
-         <div class="pagination-container" style="text-align: center; margin-top:1.5rem; margin-bottom:1.5rem;">
+      <div class="pagination-container" style="text-align: center; margin-top:1.5rem; margin-bottom:1.5rem;">
 
-          <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
-        </div>
+        <div style="width:100%;display: inline-block;" class="pagination" id="pagination" style="margin: 0 auto;"></div>
+      </div>
     </section>
 
-    <section id="shortlistedCoursesSection", style="display: none;margin-top:1rem;">
+    <section id="shortlistedCoursesSection" , style="display: none;margin-top:1rem;">
       <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Shortlisted Courses</h1>
-        <!-- Selected courses will be dynamically added here -->
-        <p id="selected-courses-count" class="text-center" style="color:white;">
-          Selected Courses Count: <strong>0</strong>
-        </p>
-        <ul id="selected-courses-list" style="list-style-type: none; "></ul>
-      </section>
+      <!-- Selected courses will be dynamically added here -->
+      <p id="selected-courses-count" class="text-center" style="color:white;">
+        Selected Courses Count: <strong>0</strong>
+      </p>
+      <ul id="selected-courses-list" style="list-style-type: none; "></ul>
+    </section>
 
-      <section id="combinationMenu" style="display: none;">
-        <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Schedule Menu</h1>
-        <p id="selected-courses-count"   class="text-center" style="color:white;">
-          (Narrow Down Schedule Generation)
-        </p>
+    <section id="combinationMenu" style="display: none;">
+      <h1 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: 900;">Schedule Menu</h1>
+      <p id="selected-courses-count" class="text-center" style="color:white;">
+        (Narrow Down Schedule Generation)
+      </p>
 
-        <div class="custom-div white-color-setter text-center form-group">
-          <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Adjustable Credit Hour Range</h6>
-          <div class="form-group">
+      <div class="custom-div white-color-setter text-center form-group">
+        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Adjustable
+          Credit Hour Range</h6>
+        <div class="form-group">
 
-            <span id="span1" class="text-center m-4">15</span>
-            <input class="form-control text-center mb-5" id="credit-range" type="text" data-slider-id="credit-range-slider" data-slider-min="0" data-slider-max="22" data-slider-step="1" data-slider-value="[0,22]" style="margin-inline: 1rem !important;"/>
-            <span id="span2" class="text-center m-4 ml-3">17</span>
-          </div>
-
-          <hr class="separator-line">
-        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have Courses</h6>
-          <div id="crucialCoursesContainer" class="text-left">
-            <!-- Existing HTML content -->
-          </div>       
+          <span id="span1" class="text-center m-4">15</span>
+          <input class="form-control text-center mb-5" id="credit-range" type="text"
+            data-slider-id="credit-range-slider" data-slider-min="0" data-slider-max="22" data-slider-step="1"
+            data-slider-value="[0,22]" style="margin-inline: 1rem !important;" />
+          <span id="span2" class="text-center m-4 ml-3">17</span>
         </div>
-        
-        <div class="button-div" >
-          <i onclick="" class="bi bi-arrow-left-square-fill"></i>
-          <button class="btn custom-button mt-2 mb-4" onclick="submitSelectedCourses()">Generate</button>
+
+        <hr class="separator-line">
+        <h6 class="mt-1 ms-1 white-color-setter text-center" style="font-weight: bold; margin-bottom: 1rem;">Must Have
+          Courses</h6>
+        <div id="crucialCoursesContainer" class="text-left">
+          <!-- Existing HTML content -->
         </div>
+      </div>
+
+      <div class="button-div">
+        <i onclick="" class="bi bi-arrow-left-square-fill"></i>
+        <button class="btn custom-button mt-2 mb-4" onclick="submitSelectedCourses()">Generate</button>
+      </div>
 
       <p id="note2" class="text-center" style="color:white;">
         <strong>Note</strong>: Schedule generation could take a while.
       </p>
 
-      </section>
+    </section>
 
-      <section id="combinations" style="display: none";>
-        <!-- Table comes here -->
-      </section>
+    <section id="combinations" style="display: none" ;>
+      <!-- Table comes here -->
+    </section>
 
-    <p id="disclaimer" style="margin-left: 10%; margin-right: 10%; margin-top: 3rem; margin-bottom: 2rem;" class="text-center white-color-setter">
+    <p id="disclaimer" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
       <strong>Disclaimer:</strong> While our goal is to provide a comprehensive course scheduling solution,
       the platform currently does not account for prerequisites, availablity of seats, or cross-listed
       courses. Users are encouraged to have a solid understanding of their degree
       requirements and use this tool as a supplementary resource.
     </p>
 
-    <p id="PCR" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2rem;" class="text-center white-color-setter">
+    <p id="PCR" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
       <strong>Check out friends at <a target="_blank" style="text-decoration: none;"
-      href="https://wocx.xyz/project-common-room">Project Common Room</a></strong>
+          href="https://wocx.xyz/project-common-room">Project Common Room</a></strong>
     </p>
 
-      <script>
-        function paginationFunction(pageNumber) {
-        
+    <script>
+      function paginationFunction(pageNumber) {
+
         $.ajax({
           url: "paginationClick",
           type: "POST",
@@ -571,95 +604,93 @@ td{
             page: pageNumber
           },
           success: function (response) {
-            const courses = JSON.parse(response);           
-                displayCourses(courses);
-            }
-          },)
-        }
-      
+            const courses = JSON.parse(response);
+            displayCourses(courses);
+          }
+        },)
+      }
 
-      </script>
-      <script>
-        function generatePagination(currentPage, totalPages, visiblePages) {
-          const paginationContainers = document.querySelectorAll(".pagination");
-        
-          paginationContainers.forEach((paginationContainer) => {
-            paginationContainer.innerHTML = "";
-        
-            const halfVisiblePages = Math.floor(visiblePages / 2);
-            const startPage = Math.max(currentPage - halfVisiblePages, 1);
-            const endPage = Math.min(startPage + visiblePages - 1, totalPages);
-        
-            if (startPage > 1) {
-              paginationContainer.appendChild(createPaginationLink(1, currentPage));
-            }
-        
-            if (startPage > 2) {
-              paginationContainer.appendChild(createEllipsis());
-            }
-        
-            for (let page = startPage; page <= endPage; page++) {
-              paginationContainer.appendChild(createPaginationLink(page, currentPage));
-            }
-        
-            if (endPage < totalPages - 1) {
-              paginationContainer.appendChild(createEllipsis());
-            }
-        
-            if (endPage < totalPages) {
-              paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
-            }
-          });
-        }
-        
-        // Example functions for creating pagination elements
-        function createPaginationLink(page, currentPage) {
-          const link = document.createElement("a");
-          link.href = `#page${page}`;
-          link.textContent = page;
-          if (page === currentPage) {
-            link.classList.add("active");
+
+    </script>
+    <script>
+      function generatePagination(currentPage, totalPages, visiblePages) {
+        const paginationContainers = document.querySelectorAll(".pagination");
+
+        paginationContainers.forEach((paginationContainer) => {
+          paginationContainer.innerHTML = "";
+
+          const halfVisiblePages = Math.floor(visiblePages / 2);
+          const startPage = Math.max(currentPage - halfVisiblePages, 1);
+          const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+
+          if (startPage > 1) {
+            paginationContainer.appendChild(createPaginationLink(1, currentPage));
           }
-          return link;
-        }
-        
-        function createEllipsis() {
-          const ellipsis = document.createElement("span");
-          ellipsis.textContent = "...";
-          return ellipsis;
-        }
-        
-        
-        function createPaginationLink(pageNumber, currentPage) {
-          const link = document.createElement("a");
-          link.href = "#";
-          link.textContent = pageNumber;
-          if (pageNumber === currentPage) {
-            link.classList.add("active");
+
+          if (startPage > 2) {
+            paginationContainer.appendChild(createEllipsis());
           }
-          link.addEventListener("click", () => {
-            event.preventDefault();
-            paginationFunction(link.textContent);
-            // Update the selected page and regenerate pagination
-            selectedPage = pageNumber;
-            generatePagination(selectedPage, totalPages, visiblePages);
-          });
-          return link;
+
+          for (let page = startPage; page <= endPage; page++) {
+            paginationContainer.appendChild(createPaginationLink(page, currentPage));
+          }
+
+          if (endPage < totalPages - 1) {
+            paginationContainer.appendChild(createEllipsis());
+          }
+
+          if (endPage < totalPages) {
+            paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
+          }
+        });
+      }
+
+      // Example functions for creating pagination elements
+      function createPaginationLink(page, currentPage) {
+        const link = document.createElement("a");
+        link.href = `#page${page}`;
+        link.textContent = page;
+        if (page === currentPage) {
+          link.classList.add("active");
         }
-        
-        function createEllipsis() {
-          const ellipsis = document.createElement("span");
-          ellipsis.textContent = "...";
-          return ellipsis;
+        return link;
+      }
+
+      function createEllipsis() {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        return ellipsis;
+      }
+
+
+      function createPaginationLink(pageNumber, currentPage) {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = pageNumber;
+        if (pageNumber === currentPage) {
+          link.classList.add("active");
         }
-        
-        
-        </script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        link.addEventListener("click", () => {
+          event.preventDefault();
+          paginationFunction(link.textContent);
+          // Update the selected page and regenerate pagination
+          selectedPage = pageNumber;
+          generatePagination(selectedPage, totalPages, visiblePages);
+        });
+        return link;
+      }
+
+      function createEllipsis() {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        return ellipsis;
+      }
+
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
@@ -675,15 +706,15 @@ td{
       var currentTerm = "{{active_term}}";
       var pgno = 1;
       const days = ["M", "T", "W", "R", "F"];
-      const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
+      const daydic = { "M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri" };
       var combinations;
 
-        
+
       let selectedPage;
-      let totalPages; 
+      let totalPages;
       let visiblePages;
       let lastSliderValues;
-      
+
 
       const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
@@ -695,13 +726,13 @@ td{
           tooltip: "hide"
         });
 
-        
+
         rangeSlider.setValue([15, 17]);
         lastSliderValues = [15, 17];
 
         // Add event handler to the slider's "change" event
         rangeSlider.on("change", function (event) {
-          const oldValue = event.oldValue;        
+          const oldValue = event.oldValue;
           const newValue = event.newValue;
 
           const minCredit = newValue[0];
@@ -710,7 +741,7 @@ td{
           // Perform credit check
           const totalWeight = credit_check(selectedCourses, minCredit, maxCredit);
           currentWeight = totalWeight;
-          
+
 
           if (totalWeight > 500000) {
             // Revert slider value
@@ -734,7 +765,7 @@ td{
 
         $("#department-selector").on("focus", function () {
           var old = $(this).val();
-          
+
           $(this).val(""); // Clear the value
 
           if (old !== "All" && old !== "") {
@@ -745,17 +776,17 @@ td{
 
         $("#course-selector").on("focus", function () {
           $(this).val(""); // Clear the value
-          const selectedValue = $(this).val(); 
-          updateCourse(selectedValue); 
+          const selectedValue = $(this).val();
+          updateCourse(selectedValue);
         });
 
         $("#instructor-selector").on("focus", function () {
           $(this).val(""); // Clear the value
-          const selectedValue = $(this).val(); 
-          updateInstructor(selectedValue); 
+          const selectedValue = $(this).val();
+          updateInstructor(selectedValue);
         });
 
-        
+
         $('#department-selector').on('change', function () {
           const selectedValue = $(this).val();
           $("#course-selector").val("");
@@ -764,16 +795,16 @@ td{
           if (selectedValue === 'All' || selectedValue === '') {
             populateDropdown("#course", "/courses");
             populateDropdown("#instructor", "/instructors");
-            
+
           } else {
             updateDepartment(selectedValue);
           }
         });
 
         $('#course-selector').on('change', function () {
-          const selectedValue = $(this).val();  
+          const selectedValue = $(this).val();
           updateCourse(selectedValue);
-          
+
         });
 
         $('#instructor-selector').on('change', function () {
@@ -781,16 +812,16 @@ td{
 
           if (selectedValue === 'All' || selectedValue === '') {
             populateDropdown("#course", "/courses");
-            
+
           } else {
             updateInstructor(selectedValue);
           }
         });
-        
+
         $('.custom-button').on('click', function () {
           // Term is now fixed, no need to check for changes
         });
-        
+
       });
 
 
@@ -832,7 +863,7 @@ td{
             // Add the "All" option
             const allOption = $('<option>').attr('value', 'All').text('All');
             dropdown.append(allOption);
-            
+
             options.forEach((option) => {
               const optionElement = $('<option>')
                 .attr('value', option.value)
@@ -856,29 +887,29 @@ td{
             dropdown: selectedDepartment,
             dropdown2: selectedCourse,
             dropdown3: selectedInstructor,
-            
+
           },
           success: function (response) {
             const courses = JSON.parse(response);
             selectedPage = 1;
-            totalPages = Math.ceil(courses.size/20);
+            totalPages = Math.ceil(courses.size / 20);
             visiblePages = 3;
             generatePagination(selectedPage, totalPages, visiblePages);
 
-           
-            if (courses.data.length > 0) {
-                const element = document.getElementById("note");
-                element.style.display = "none";
 
-                $("#filterCoursesSection").removeAttr("style");
-                displayCourses(courses.data);
+            if (courses.data.length > 0) {
+              const element = document.getElementById("note");
+              element.style.display = "none";
+
+              $("#filterCoursesSection").removeAttr("style");
+              displayCourses(courses.data);
             } else {
-                alert("No courses could be displayed, try changing or loosening your filters.");
-                $("#filterCoursesSection").css("display", "none");
+              alert("No courses could be displayed, try changing or loosening your filters.");
+              $("#filterCoursesSection").css("display", "none");
             }
           },
-        });
-      }
+        });
+      }
 
       function displayCourses(courses) {
         const coursesList = $("#courses-list");
@@ -886,9 +917,9 @@ td{
 
         courses.forEach((course) => {
           const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
-            const liDiv = $("<div  style='border-radius: 50px; '></div>")
-            const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-            const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
+          const liDiv = $("<div  style='border-radius: 50px; '></div>")
+          const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+          const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
             "value",
             compositeKey
           );
@@ -910,42 +941,42 @@ td{
             const integersArray = inputString.split(',').map(str => parseInt(str, 10));
             const minCredit = integersArray[0];
             const maxCredit = integersArray[1];
-            
+
             if (this.checked) {
-                const combinedCourses = [...selectedCourses, course];
-                const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-                
-                currentWeight = totalWeight;
+              const combinedCourses = [...selectedCourses, course];
+              const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
 
-                if (totalWeight > 500000) {
-                  // Prevent the checkbox from being checked
-                  this.checked = false;
-                  alert("Cannot pefrom action without removing another course or narrowing credit hour range. Narrow it down people!");
-                }
+              currentWeight = totalWeight;
 
-                else {
-                  addSelectedCourse(course);
-                  $("#shortlistedCoursesSection").removeAttr("style");
-                  $("#combinationMenu").removeAttr("style");
-                }
-                
+              if (totalWeight > 500000) {
+                // Prevent the checkbox from being checked
+                this.checked = false;
+                alert("Cannot pefrom action without removing another course or narrowing credit hour range. Narrow it down people!");
+              }
+
+              else {
+                addSelectedCourse(course);
+                $("#shortlistedCoursesSection").removeAttr("style");
+                $("#combinationMenu").removeAttr("style");
+              }
+
             } else {
-                  const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
-                  const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-                  
-                  currentWeight = totalWeight;
-                  removeSelectedCourse(course);
-            }
-            
-        });
+              const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
+              const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
 
-          
+              currentWeight = totalWeight;
+              removeSelectedCourse(course);
+            }
+
+          });
+
+
           li.append(checkbox);
           li.append(liDiv)
           liDiv.append(
             ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong></p>`
           );
-          
+
           liDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
@@ -976,7 +1007,7 @@ td{
             } else {
               classroomSlice = -4;
             }
-            
+
             liDiv.append(
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
@@ -989,34 +1020,34 @@ td{
           coursesList.append(li);
         });
       }
-      
+
 
       function updateDepartment(selectedValue) {
         const dropdown2 = $("#course");
         const dropdown3 = $("#instructor");
 
         $.ajax({
-            url: '/updateDepartment',
-            type: 'POST',
-            data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
-            contentType: 'application/json',
-            success: function (response) {
-                const options = JSON.parse(response);
+          url: '/updateDepartment',
+          type: 'POST',
+          data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+          contentType: 'application/json',
+          success: function (response) {
+            const options = JSON.parse(response);
 
-                options.courses.unshift({value: 'All' });
-                dropdown2.empty();
-                options.courses.forEach(option => {
-                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
-                    dropdown2.append(optionElement);
-                });
+            options.courses.unshift({ value: 'All' });
+            dropdown2.empty();
+            options.courses.forEach(option => {
+              const optionElement = $('<option>').attr('value', option.value).text(option.label);
+              dropdown2.append(optionElement);
+            });
 
-                options.instructors.unshift({value: 'All' });
-                dropdown3.empty();
-                options.instructors.forEach(option => {
-                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
-                    dropdown3.append(optionElement);
-                });
-            }
+            options.instructors.unshift({ value: 'All' });
+            dropdown3.empty();
+            options.instructors.forEach(option => {
+              const optionElement = $('<option>').attr('value', option.value).text(option.label);
+              dropdown3.append(optionElement);
+            });
+          }
         });
       }
 
@@ -1025,55 +1056,55 @@ td{
         const departmentValue = $("#department-selector").val();
 
         $.ajax({
-            url: '/updateCourse',
-            type: 'POST',
-            data: JSON.stringify({ department: departmentValue, data: selectedValue }), 
-            contentType: 'application/json',
-            success: function (response) {
-              const options = JSON.parse(response);
+          url: '/updateCourse',
+          type: 'POST',
+          data: JSON.stringify({ department: departmentValue, data: selectedValue }),
+          contentType: 'application/json',
+          success: function (response) {
+            const options = JSON.parse(response);
 
-              options.instructors.unshift({ value: 'All'}); 
-              dropdown3.empty();
-              options.instructors.forEach(option => {
-                  const optionElement = $('<option>').attr('value', option.value).text(option.label);
-                  dropdown3.append(optionElement);
-              });
-            }
+            options.instructors.unshift({ value: 'All' });
+            dropdown3.empty();
+            options.instructors.forEach(option => {
+              const optionElement = $('<option>').attr('value', option.value).text(option.label);
+              dropdown3.append(optionElement);
+            });
+          }
         });
       }
 
 
       function updateInstructor(selectedValue) {
-        const dropdown2 = $("#course");      
+        const dropdown2 = $("#course");
         const departmentValue = $("#department-selector").val();
 
         $.ajax({
-            url: '/updateInstructor',
-            type: 'POST',
-            data: JSON.stringify({ department: departmentValue, data: selectedValue }), 
-            contentType: 'application/json',
-            success: function (response) {
-                const options = JSON.parse(response);
-              
-                options.courses.unshift({value: 'All' });
-                dropdown2.empty();
-                options.courses.forEach(option => {
-                    const optionElement = $('<option>').attr('value', option.value).text(option.label);
-                    dropdown2.append(optionElement);
-                });
-            }
+          url: '/updateInstructor',
+          type: 'POST',
+          data: JSON.stringify({ department: departmentValue, data: selectedValue }),
+          contentType: 'application/json',
+          success: function (response) {
+            const options = JSON.parse(response);
+
+            options.courses.unshift({ value: 'All' });
+            dropdown2.empty();
+            options.courses.forEach(option => {
+              const optionElement = $('<option>').attr('value', option.value).text(option.label);
+              dropdown2.append(optionElement);
+            });
+          }
         });
       }
-      
+
 
       function addSelectedCourse(course) {
-          selectedCourses.push(course);
-          selectedCoursesCount++;
-          updateSelectedCoursesList();
-          updateSelectedCoursesCount();
-          updateCrucialCourses();
+        selectedCourses.push(course);
+        selectedCoursesCount++;
+        updateSelectedCoursesList();
+        updateSelectedCoursesCount();
+        updateCrucialCourses();
       }
-    
+
 
       function removeSelectedCourse(course) {
         const index = selectedCourses.findIndex(
@@ -1095,12 +1126,12 @@ td{
           checkbox.prop("checked", false);
         }
 
-        
-      if (selectedCourses.length === 0) {
-        $("#shortlistedCoursesSection").css("display", "none");
-        $("#combinationMenu").css("display", "none");
-        $("#combinations").css("display", "none");
-      }
+
+        if (selectedCourses.length === 0) {
+          $("#shortlistedCoursesSection").css("display", "none");
+          $("#combinationMenu").css("display", "none");
+          $("#combinations").css("display", "none");
+        }
       }
 
 
@@ -1127,7 +1158,7 @@ td{
 
             const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
             const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-            
+
             currentWeight = totalWeight;
 
             removeSelectedCourse(course);
@@ -1138,24 +1169,24 @@ td{
           shortLiDiv.append(
             ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong></p>`
           );
-          
+
           shortLiDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
-          
+
           /*shortLiDiv.append(
             ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
           );*/
 
           if (course.classroom !== "TBDTBD") {
-            
+
             shortLiDiv.append(
               ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
             );
           }
 
           if (course.alternate_classroom !== "None") {
-            
+
             shortLiDiv.append(
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
@@ -1164,7 +1195,7 @@ td{
           shortLiDiv.append(
             ` <p class="filteredCourseP">Available Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
           );
-        
+
           selectedCoursesList.append(li);
         });
       }
@@ -1194,86 +1225,86 @@ td{
             // Add checkbox and other content to the <li> element
             li.append(checkbox);
             crucialList.append(li);
-          
-                // Check if the course is already selected
-                const isChecked = checkedCrucials.some(
-                  (checkedCrucial) =>
-                    checkedCrucial.course_id === course.course_id &&
-                    checkedCrucial.department_id === course.department_id
+
+            // Check if the course is already selected
+            const isChecked = checkedCrucials.some(
+              (checkedCrucial) =>
+                checkedCrucial.course_id === course.course_id &&
+                checkedCrucial.department_id === course.department_id
+            );
+            if (isChecked) {
+              checkbox.prop("checked", true);
+            }
+
+            checkbox.on("change", function () {
+              if (this.checked) {
+                checkedCrucials.push(course);
+              } else {
+                const index = checkedCrucials.findIndex(
+                  (c) =>
+                    c.course_id === course.course_id &&
+                    c.department_id === course.department_id
                 );
-                if (isChecked) {
-                  checkbox.prop("checked", true);
+
+                if (index !== -1) {
+                  checkedCrucials.splice(index, 1);
+
+                  const compositeKey = `${course.course_id}-${course.department_id}`;
+                  const checkbox = $(
+                    `input[type="checkbox"][value="${compositeKey}"]`
+                  );
+                  checkbox.prop("checked", false);
                 }
+              }
+            });
 
-                checkbox.on("change", function () {
-                  if (this.checked) {
-                    checkedCrucials.push(course);
-                  } else {
-                    const index = checkedCrucials.findIndex(
-                      (c) =>
-                        c.course_id === course.course_id &&
-                        c.department_id === course.department_id
-                    );
+            // Append checkbox, course information, and line break outside the event handler
+            li.append(checkbox);
+            li.append(
+              ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+            );
+            li.append("<br>");
+            crucialList.append(li);
 
-                    if (index !== -1) {
-                      checkedCrucials.splice(index, 1);
-
-                      const compositeKey = `${course.course_id}-${course.department_id}`;
-                      const checkbox = $(
-                        `input[type="checkbox"][value="${compositeKey}"]`
-                      );
-                      checkbox.prop("checked", false);
-                    }
-                  }
-                });
-
-                // Append checkbox, course information, and line break outside the event handler
-                li.append(checkbox);
-                li.append(
-                  ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
-                );
-                li.append("<br>");
-                crucialList.append(li);
-                  
-                }
-              })
+          }
+        })
       }
 
       function factorial(n) {
         let result = 1;
         for (let i = 2; i <= n; i++) {
-            result *= i;
+          result *= i;
         }
         return result;
-     }
+      }
 
       // Function to calculate the combination value (n choose r)
       function comb(n, r) {
-          return factorial(n) / (factorial(r) * factorial(n - r));
+        return factorial(n) / (factorial(r) * factorial(n - r));
       }
 
       // Credit check function
       function credit_check(courses, LL_credit_hours, UL_credit_hours) {
-          // Find the maximum and minimum credit hours among the courses
-          const max_credit_hours = Math.max(...courses.map(course => course.credits));
-          const min_credit_hours = Math.min(...courses.filter(course => course.credits !== 0).map(course => course.credits));
+        // Find the maximum and minimum credit hours among the courses
+        const max_credit_hours = Math.max(...courses.map(course => course.credits));
+        const min_credit_hours = Math.min(...courses.filter(course => course.credits !== 0).map(course => course.credits));
 
-          // Calculate the lower and upper limit number of courses based on credit hours
-          const LL = Math.floor(LL_credit_hours / max_credit_hours);
-          const UL = Math.min(courses.length, Math.floor(UL_credit_hours / min_credit_hours)) + 1;
+        // Calculate the lower and upper limit number of courses based on credit hours
+        const LL = Math.floor(LL_credit_hours / max_credit_hours);
+        const UL = Math.min(courses.length, Math.floor(UL_credit_hours / min_credit_hours)) + 1;
 
-          let total_weight = 0;
-          for (let r = LL; r < UL; r++) {
-              total_weight += r * comb(courses.length, r);
-          }
+        let total_weight = 0;
+        for (let r = LL; r < UL; r++) {
+          total_weight += r * comb(courses.length, r);
+        }
 
-          return total_weight; // Or return any other desired value
+        return total_weight; // Or return any other desired value
       }
 
       function submitSelectedCourses() {
         // Retrieve the slider values
         const sliderValues = $("#credit-range").slider("getValue");
-        
+
         const inputString = sliderValues[0].value;
         const integersArray = inputString.split(',').map(str => parseInt(str, 10));
 
@@ -1311,7 +1342,7 @@ td{
           type: "POST",
           data: JSON.stringify(data),
           contentType: "application/json",
-          success: function (response) {            
+          success: function (response) {
             combinations = JSON.parse(response);
             createTable(0);
           },
@@ -1320,7 +1351,7 @@ td{
 
       function createTable(n) {
         const section = $("#combinations"); // Target the section with id "combinations"
-        section.css("text-align","center")
+        section.css("text-align", "center")
         section.empty(); // Clear any existing content
 
         const h2Element = $("<h2>")
@@ -1328,40 +1359,40 @@ td{
           .text("Generated Schedules")
           .css("font-weight", "900");
 
-          
+
         const h3Element = $("<h3>")
           .addClass("mt-1 ms-1 white-color-setter text-center mb-3")
           .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
           .css("font-weight", "900");
 
 
-        const combination = combinations[n]; 
+        const combination = combinations[n];
         const descriptionDiv = $("<ul>").css("text-align", "left");
-          descriptionDiv.css("margin","0px")
-          descriptionDiv.css("border-radius","30px")
+        descriptionDiv.css("margin", "0px")
+        descriptionDiv.css("border-radius", "30px")
 
         if (combination !== undefined) {
           $("#combinations").removeAttr("style");
-          
+
           for (const course of combination) {
-              const departmentID = course.department_id;
-              const courseCode = course.course_id;
-              const courseSection = course.section;
-              const courseName = course.name;
-              const courseInstructor = course.instructor_name
+            const departmentID = course.department_id;
+            const courseCode = course.course_id;
+            const courseSection = course.section;
+            const courseName = course.name;
+            const courseInstructor = course.instructor_name
 
-              const courseDescriptor = $("<li><span>")
-                  .html(` ${departmentID} ${courseCode} - ${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
-                  .addClass("course-name");
+            const courseDescriptor = $("<li><span>")
+              .html(` ${departmentID} ${courseCode} - ${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
+              .addClass("course-name");
 
-              descriptionDiv.append(courseDescriptor);
+            descriptionDiv.append(courseDescriptor);
           }
-      } else {
+        } else {
           alert("No combination could be generated. Add more courses or widen the credit hour range. Scale it up people!");
           return;
-      }
+        }
 
-      const buttonContainer = $("<div>")
+        const buttonContainer = $("<div>")
           .addClass("text-center") // Center the buttons horizontally
           .append(
             $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
@@ -1370,8 +1401,8 @@ td{
               // .text("Previous") // Change the text of the first button
               .addClass("mt-2")
               .css({
-                "margin-left":"1rem",
-                "margin-right":"1rem"
+                "margin-left": "1rem",
+                "margin-right": "1rem"
               })
               .on("click", function () {
                 if (n > 0) {
@@ -1384,112 +1415,112 @@ td{
               // .text("Next") // Change the text of the second button to "Next"
               .addClass("mt-2")
               .css({
-                "margin-left":"1rem",
-                "margin-right":"1rem"
+                "margin-left": "1rem",
+                "margin-right": "1rem"
               })
               .on("click", function () {
                 if (n < combinations.length - 1) {
                   createTable(n + 1);
                 }
               })
-        );
-        
+          );
+
         const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
         const table = $("<table>").addClass("custom-table");
 
         const colorCount = colors.length - 1;
         var currentColorIndex = 0;
         const courseColorMap = {};
-          
+
         for (let i = 8; i <= 18; i++) {
           const row = $("<tr>");
-          
-            if (i === 8) {
-              row.append($("<td>").text(format12HourTime(i)));
 
-              days.forEach(day => {
-                  row.append($("<td>").text(daydic[day])); 
-              });
+          if (i === 8) {
+            row.append($("<td>").text(format12HourTime(i)));
+
+            days.forEach(day => {
+              row.append($("<td>").text(daydic[day]));
+            });
 
           } else {
-              row.append($("<td>").text(format12HourTime(i)));
+            row.append($("<td>").text(format12HourTime(i)));
 
-              days.forEach(day => {
-                  const currentTd = $("<td>");
-                  row.append(currentTd);
-                  
-                  
-                  combination.forEach(function (course) {
-                    
-                      if (courseColorMap[course.department_id + course.course_id] === undefined) {
-                          courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
-                          currentColorIndex += 1;
+            days.forEach(day => {
+              const currentTd = $("<td>");
+              row.append(currentTd);
 
-                          if (currentColorIndex === colorCount) {
-                              currentColorIndex = 0;
-                          }
-                      }                            
 
-                      if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
-                          const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
-                          const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
-                          const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
-                          const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
+              combination.forEach(function (course) {
 
-                          const topPercentage = (startMinutes / 60) * 100;
-                          const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+                if (courseColorMap[course.department_id + course.course_id] === undefined) {
+                  courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
+                  currentColorIndex += 1;
 
-                          const cellContent = $("<div>").addClass("cell-content").css({
-                              "overflow": "auto",
-                              "top": topPercentage + "%",
-                              "height": heightPercentage + "%",
-                              "background-color": courseColorMap[course.department_id + course.course_id]
-                          }).text(course.department_id + course.course_id + " - " + course.section+`\n${course.classroom.slice(6)}`);
+                  if (currentColorIndex === colorCount) {
+                    currentColorIndex = 0;
+                  }
+                }
 
-                          currentTd.append(cellContent);
+                if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
+                  const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
+                  const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
+                  const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
+                  const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
 
-                      }
-                      
-                      if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
-                          const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
-                          const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
-                          const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
-                          const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
+                  const topPercentage = (startMinutes / 60) * 100;
+                  const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
 
-                          const topPercentage = (startMinutes / 60) * 100;
-                          const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+                  const cellContent = $("<div>").addClass("cell-content").css({
+                    "overflow": "auto",
+                    "top": topPercentage + "%",
+                    "height": heightPercentage + "%",
+                    "background-color": courseColorMap[course.department_id + course.course_id]
+                  }).text(course.department_id + course.course_id + " - " + course.section + `\n${course.classroom.slice(6)}`);
 
-                          const cellContent = $("<div>").addClass("cell-content").css({
-                              "top": topPercentage + "%",
-                              "height": heightPercentage + "%",
-                              "background-color": courseColorMap[course.department_id + course.course_id]
-                            }).text(course.department_id + course.course_id + " - " + course.section+`\n${course.alternate_classroom.slice(6)}`);
+                  currentTd.append(cellContent);
 
-                          currentTd.append(cellContent);   
-                      }
-                  });
+                }
+
+                if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
+                  const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
+                  const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
+                  const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
+                  const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
+
+                  const topPercentage = (startMinutes / 60) * 100;
+                  const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                  const cellContent = $("<div>").addClass("cell-content").css({
+                    "top": topPercentage + "%",
+                    "height": heightPercentage + "%",
+                    "background-color": courseColorMap[course.department_id + course.course_id]
+                  }).text(course.department_id + course.course_id + " - " + course.section + `\n${course.alternate_classroom.slice(6)}`);
+
+                  currentTd.append(cellContent);
+                }
               });
+            });
           }
           table.append(row);
+        }
+
+        const customDiv = $("<div>")
+          .addClass("custom-div")
+          .append(h3Element, '<hr class="separator-line">'
+            , descriptionDiv);
+
+        newDiv.append(table);
+        section.append(h2Element, customDiv, buttonContainer, newDiv);
+
       }
 
-      const customDiv = $("<div>")
-        .addClass("custom-div")
-        .append(h3Element,          '<hr class="separator-line">'
-, descriptionDiv);
-      
-      newDiv.append(table);
-      section.append(h2Element, customDiv, buttonContainer,newDiv);
-      
-    }
+      function format12HourTime(hour) {
+        let suffix = hour >= 12 ? "PM" : "AM";
+        hour = hour % 12 || 12;
+        return `${hour}:00 ${suffix}`;
+      }
 
-    function format12HourTime(hour) {
-      let suffix = hour >= 12 ? "PM" : "AM";
-      hour = hour % 12 || 12;
-      return `${hour}:00 ${suffix}`;
-    }
 
-    
     </script>
   </main>
   <footer style="z-index: 100;text-decoration: none;">
@@ -1499,5 +1530,6 @@ td{
 
     | <a style="text-decoration: none;" href="mailto: mujtabakhalid20@gmail.com,rocety27@gmail.com">Contact Us</a>
   </footer>
-  </body>
+</body>
+
 </html>
