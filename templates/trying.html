@@ -584,7 +584,7 @@
 
     <p id="disclaimer" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
       <strong>Disclaimer:</strong> While our goal is to provide a comprehensive course scheduling solution,
-      the platform currently does not account for prerequisites, availablity of seats, or cross-listed
+      the platform currently does not account for prerequisites, <s>availablity of seats</s>, or cross-listed
       courses. Users are encouraged to have a solid understanding of their degree
       requirements and use this tool as a supplementary resource.
     </p>
@@ -974,16 +974,16 @@
           li.append(checkbox);
           li.append(liDiv)
           liDiv.append(
-            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong> | Credits: <strong>${course.credits}</strong></p>`
+            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
           );
 
           liDiv.append(
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
-          /*liDiv.append(
+          liDiv.append(
             ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );*/
+          );
 
           if (course.classroom !== "TBDTBD") {
             let classroomSlice;
@@ -1012,10 +1012,6 @@
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
-
-          liDiv.append(
-            ` <p class="filteredCourseP">Available Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );
 
           coursesList.append(li);
         });
@@ -1174,9 +1170,9 @@
             ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
           );
 
-          /*shortLiDiv.append(
+          shortLiDiv.append(
             ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );*/
+          );
 
           if (course.classroom !== "TBDTBD") {
 
@@ -1191,10 +1187,6 @@
               `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
             );
           }
-
-          shortLiDiv.append(
-            ` <p class="filteredCourseP">Available Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );
 
           selectedCoursesList.append(li);
         });
