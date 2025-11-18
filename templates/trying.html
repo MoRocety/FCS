@@ -166,6 +166,22 @@
       color: black;
     }
 
+    .arrow-nav-button {
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-block;
+    }
+
+    .arrow-nav-button:hover {
+      transform: scale(1.15);
+      filter: brightness(1.2);
+    }
+
+    .arrow-nav-button:active {
+      transform: scale(0.9);
+      filter: brightness(1.4);
+    }
+
     ::placeholder {
       font-weight: bold;
     }
@@ -591,7 +607,8 @@
       requirements and use this tool as a supplementary resource.
     </p>
 
-    <p id="PCR" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2rem;" class="text-center white-color-setter">
+    <p id="PCR" style="margin-left: 10%; margin-right: 10%; margin-bottom: 2rem;"
+      class="text-center white-color-setter">
       <strong>Check out friends at <a target="_blank" style="text-decoration: none;"
           href="https://wocx.xyz/project-common-room">Project Common Room</a></strong>
     </p>
@@ -600,926 +617,6 @@
       Last Updated: <strong>{{current_time}} PKT</strong>
     </p>
 
-    <script>
-      function paginationFunction(pageNumber) {
-
-        $.ajax({
-          url: "paginationClick",
-          type: "POST",
-          data: {
-            page: pageNumber
-          },
-          success: function (response) {
-            const courses = JSON.parse(response);
-            displayCourses(courses);
-          }
-        },)
-      }
-
-
-    </script>
-    <script>
-      function generatePagination(currentPage, totalPages, visiblePages) {
-        const paginationContainers = document.querySelectorAll(".pagination");
-
-        paginationContainers.forEach((paginationContainer) => {
-          paginationContainer.innerHTML = "";
-
-          const halfVisiblePages = Math.floor(visiblePages / 2);
-          const startPage = Math.max(currentPage - halfVisiblePages, 1);
-          const endPage = Math.min(startPage + visiblePages - 1, totalPages);
-
-          if (startPage > 1) {
-            paginationContainer.appendChild(createPaginationLink(1, currentPage));
-          }
-
-          if (startPage > 2) {
-            paginationContainer.appendChild(createEllipsis());
-          }
-
-          for (let page = startPage; page <= endPage; page++) {
-            paginationContainer.appendChild(createPaginationLink(page, currentPage));
-          }
-
-          if (endPage < totalPages - 1) {
-            paginationContainer.appendChild(createEllipsis());
-          }
-
-          if (endPage < totalPages) {
-            paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
-          }
-        });
-      }
-
-      // Example functions for creating pagination elements
-      function createPaginationLink(page, currentPage) {
-        const link = document.createElement("a");
-        link.href = `#page${page}`;
-        link.textContent = page;
-        if (page === currentPage) {
-          link.classList.add("active");
-        }
-        return link;
-      }
-
-      function createEllipsis() {
-        const ellipsis = document.createElement("span");
-        ellipsis.textContent = "...";
-        return ellipsis;
-      }
-
-
-      function createPaginationLink(pageNumber, currentPage) {
-        const link = document.createElement("a");
-        link.href = "#";
-        link.textContent = pageNumber;
-        if (pageNumber === currentPage) {
-          link.classList.add("active");
-        }
-        link.addEventListener("click", () => {
-          event.preventDefault();
-          paginationFunction(link.textContent);
-          // Update the selected page and regenerate pagination
-          selectedPage = pageNumber;
-          generatePagination(selectedPage, totalPages, visiblePages);
-        });
-        return link;
-      }
-
-      function createEllipsis() {
-        const ellipsis = document.createElement("span");
-        ellipsis.textContent = "...";
-        return ellipsis;
-      }
-
-
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-      crossorigin="anonymous"></script>
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
-    <script>
-
-      var selectedCourses = [];
-      var selectedCoursesCount = 0;
-      var currentWeight = 0;
-      var crucialCheckboxes = [];
-      var checkedCrucials = [];
-      var currentTerm = "{{active_term}}";
-      var pgno = 1;
-      const days = ["M", "T", "W", "R", "F"];
-      const daydic = { "M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri" };
-      var combinations;
-
-
-      let selectedPage;
-      let totalPages;
-      let visiblePages;
-      let lastSliderValues;
-
-
-      const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
-
-      $(document).ready(function () {
-        $(".select2").select2();
-
-        // Initialize the Bootstrap slider
-        var rangeSlider = new Slider("#credit-range", {
-          tooltip: "hide"
-        });
-
-
-        rangeSlider.setValue([15, 17]);
-        lastSliderValues = [15, 17];
-
-        // Add event handler to the slider's "change" event
-        rangeSlider.on("change", function (event) {
-          const oldValue = event.oldValue;
-          const newValue = event.newValue;
-
-          const minCredit = newValue[0];
-          const maxCredit = newValue[1];
-
-          // Perform credit check
-          const totalWeight = credit_check(selectedCourses, minCredit, maxCredit);
-          currentWeight = totalWeight;
-
-
-          if (totalWeight > 500000) {
-            // Revert slider value
-            rangeSlider.setValue(oldValue);
-          } else {
-            // Update span elements
-            const span1 = document.getElementById("span1");
-            const span2 = document.getElementById("span2");
-            span1.innerText = minCredit;
-            span2.innerText = maxCredit;
-          }
-        });
-
-        // Populate dropdown menus
-        populateDropdown("#department", "/departments");
-        populateDropdown("#course", "/courses");
-        populateDropdown("#instructor", "/instructors");
-
-        // Add event listeners to clear dropdown values on focus
-        // Term selector is now readonly, no focus handler needed
-
-        $("#department-selector").on("focus", function () {
-          var old = $(this).val();
-
-          $(this).val(""); // Clear the value
-
-          if (old !== "All" && old !== "") {
-            populateDropdown("#course", "/courses");
-            populateDropdown("#instructor", "/instructors");
-          }
-        });
-
-        $("#course-selector").on("focus", function () {
-          $(this).val(""); // Clear the value
-          const selectedValue = $(this).val();
-          updateCourse(selectedValue);
-        });
-
-        $("#instructor-selector").on("focus", function () {
-          $(this).val(""); // Clear the value
-          const selectedValue = $(this).val();
-          updateInstructor(selectedValue);
-        });
-
-
-        $('#department-selector').on('change', function () {
-          const selectedValue = $(this).val();
-          $("#course-selector").val("");
-          $("#instructor-selector").val("");
-
-          if (selectedValue === 'All' || selectedValue === '') {
-            populateDropdown("#course", "/courses");
-            populateDropdown("#instructor", "/instructors");
-
-          } else {
-            updateDepartment(selectedValue);
-          }
-        });
-
-        $('#course-selector').on('change', function () {
-          const selectedValue = $(this).val();
-          updateCourse(selectedValue);
-
-        });
-
-        $('#instructor-selector').on('change', function () {
-          const selectedValue = $(this).val();
-
-          if (selectedValue === 'All' || selectedValue === '') {
-            populateDropdown("#course", "/courses");
-
-          } else {
-            updateInstructor(selectedValue);
-          }
-        });
-
-        $('.custom-button').on('click', function () {
-          // Term is now fixed, no need to check for changes
-        });
-
-      });
-
-
-
-      // Create an object to store cached dropdown options
-      const dropdownCache = {};
-
-      // Function to fetch dropdown options from the server
-      function fetchDropdownOptions(selector, url) {
-        return new Promise((resolve, reject) => {
-          if (dropdownCache[url]) {
-            // If options are already cached, return them
-            resolve(dropdownCache[url]);
-          } else {
-            // Fetch options from the server
-            $.ajax({
-              url: url,
-              type: 'GET',
-              success: (response) => {
-                const options = JSON.parse(response);
-                dropdownCache[url] = options; // Cache the options
-                resolve(options);
-              },
-              error: (error) => {
-                reject(error);
-              },
-            });
-          }
-        });
-      }
-
-      // Populate dropdown based on cached or fetched options
-      function populateDropdown(selector, url) {
-        fetchDropdownOptions(selector, url)
-          .then((options) => {
-            const dropdown = $(selector);
-            dropdown.empty();
-
-            // Add the "All" option
-            const allOption = $('<option>').attr('value', 'All').text('All');
-            dropdown.append(allOption);
-
-            options.forEach((option) => {
-              const optionElement = $('<option>')
-                .attr('value', option.value)
-                .text(option.label);
-              dropdown.append(optionElement);
-            });
-          })
-          .catch((error) => {
-            console.error('Error fetching dropdown options:', error);
-          });
-      }
-
-      function filterCourses() {
-        const selectedDepartment = $("#department-selector").val();
-        const selectedCourse = $("#course-selector").val();
-        const selectedInstructor = $("#instructor-selector").val();
-        $.ajax({
-          url: "/",
-          type: "POST",
-          data: {
-            dropdown: selectedDepartment,
-            dropdown2: selectedCourse,
-            dropdown3: selectedInstructor,
-
-          },
-          success: function (response) {
-            const courses = JSON.parse(response);
-            selectedPage = 1;
-            totalPages = Math.ceil(courses.size / 20);
-            visiblePages = 3;
-            generatePagination(selectedPage, totalPages, visiblePages);
-
-
-            if (courses.data.length > 0) {
-              const element = document.getElementById("note");
-              element.style.display = "none";
-
-              $("#filterCoursesSection").removeAttr("style");
-              displayCourses(courses.data);
-            } else {
-              alert("No courses could be displayed, try changing or loosening your filters.");
-              $("#filterCoursesSection").css("display", "none");
-            }
-          },
-        });
-      }
-
-      function displayCourses(courses) {
-        const coursesList = $("#courses-list");
-        coursesList.empty();
-
-        courses.forEach((course) => {
-          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
-          const liDiv = $("<div  style='border-radius: 50px; '></div>")
-          const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-          const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
-            "value",
-            compositeKey
-          );
-
-          // Check if the course is already selected
-          const isSelected = selectedCourses.some(
-            (selectedCourse) =>
-              selectedCourse.course_id === course.course_id &&
-              selectedCourse.department_id === course.department_id &&
-              selectedCourse.section === course.section
-          );
-          if (isSelected) {
-            checkbox.prop("checked", true);
-          }
-
-          checkbox.on("change", function () {
-            const sliderValues = $("#credit-range").slider("getValue");
-            const inputString = sliderValues[0].value;
-            const integersArray = inputString.split(',').map(str => parseInt(str, 10));
-            const minCredit = integersArray[0];
-            const maxCredit = integersArray[1];
-
-            if (this.checked) {
-              const combinedCourses = [...selectedCourses, course];
-              const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-
-              currentWeight = totalWeight;
-
-              if (totalWeight > 500000) {
-                // Prevent the checkbox from being checked
-                this.checked = false;
-                alert("Cannot perform action without removing another course or narrowing credit hour range. Narrow it down people!");
-              }
-
-              else {
-                addSelectedCourse(course);
-                $("#shortlistedCoursesSection").removeAttr("style");
-                $("#combinationMenu").removeAttr("style");
-              }
-
-            } else {
-              const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
-              const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-
-              currentWeight = totalWeight;
-              removeSelectedCourse(course);
-            }
-
-          });
-
-
-          li.append(checkbox);
-          li.append(liDiv)
-          liDiv.append(
-            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
-          );
-
-          liDiv.append(
-            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
-          );
-
-          liDiv.append(
-            ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );
-
-          if (course.classroom !== "TBDTBD") {
-            let classroomSlice;
-
-            if (course.classroom.length === 11) {
-              classroomSlice = -5;
-            } else {
-              classroomSlice = -4;
-            }
-
-            liDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
-            );
-          }
-
-          if (course.alternate_classroom !== "None") {
-            let classroomSlice;
-
-            if (course.alternate_classroom.length === 11) {
-              classroomSlice = -5;
-            } else {
-              classroomSlice = -4;
-            }
-
-            liDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
-            );
-          }
-
-          coursesList.append(li);
-        });
-      }
-
-
-      function updateDepartment(selectedValue) {
-        const dropdown2 = $("#course");
-        const dropdown3 = $("#instructor");
-
-        $.ajax({
-          url: '/updateDepartment',
-          type: 'POST',
-          data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
-          contentType: 'application/json',
-          success: function (response) {
-            const options = JSON.parse(response);
-
-            options.courses.unshift({ value: 'All' });
-            dropdown2.empty();
-            options.courses.forEach(option => {
-              const optionElement = $('<option>').attr('value', option.value).text(option.label);
-              dropdown2.append(optionElement);
-            });
-
-            options.instructors.unshift({ value: 'All' });
-            dropdown3.empty();
-            options.instructors.forEach(option => {
-              const optionElement = $('<option>').attr('value', option.value).text(option.label);
-              dropdown3.append(optionElement);
-            });
-          }
-        });
-      }
-
-      function updateCourse(selectedValue) {
-        const dropdown3 = $("#instructor");
-        const departmentValue = $("#department-selector").val();
-
-        $.ajax({
-          url: '/updateCourse',
-          type: 'POST',
-          data: JSON.stringify({ department: departmentValue, data: selectedValue }),
-          contentType: 'application/json',
-          success: function (response) {
-            const options = JSON.parse(response);
-
-            options.instructors.unshift({ value: 'All' });
-            dropdown3.empty();
-            options.instructors.forEach(option => {
-              const optionElement = $('<option>').attr('value', option.value).text(option.label);
-              dropdown3.append(optionElement);
-            });
-          }
-        });
-      }
-
-
-      function updateInstructor(selectedValue) {
-        const dropdown2 = $("#course");
-        const departmentValue = $("#department-selector").val();
-
-        $.ajax({
-          url: '/updateInstructor',
-          type: 'POST',
-          data: JSON.stringify({ department: departmentValue, data: selectedValue }),
-          contentType: 'application/json',
-          success: function (response) {
-            const options = JSON.parse(response);
-
-            options.courses.unshift({ value: 'All' });
-            dropdown2.empty();
-            options.courses.forEach(option => {
-              const optionElement = $('<option>').attr('value', option.value).text(option.label);
-              dropdown2.append(optionElement);
-            });
-          }
-        });
-      }
-
-
-      function addSelectedCourse(course) {
-        selectedCourses.push(course);
-        selectedCoursesCount++;
-        updateSelectedCoursesList();
-        updateSelectedCoursesCount();
-        updateCrucialCourses();
-      }
-
-
-      function removeSelectedCourse(course) {
-        const index = selectedCourses.findIndex(
-          (c) =>
-            c.course_id === course.course_id &&
-            c.department_id === course.department_id &&
-            c.section === course.section
-        );
-
-        if (index !== -1) {
-          selectedCourses.splice(index, 1);
-          selectedCoursesCount--;
-          updateSelectedCoursesList();
-          updateSelectedCoursesCount();
-          updateCrucialCourses();
-
-          const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
-          const checkbox = $(`input[type="checkbox"][value="${compositeKey}"]`);
-          checkbox.prop("checked", false);
-        }
-
-
-        if (selectedCourses.length === 0) {
-          $("#shortlistedCoursesSection").css("display", "none");
-          $("#combinationMenu").css("display", "none");
-          $("#combinations").css("display", "none");
-        }
-      }
-
-
-      function updateSelectedCoursesList() {
-        const selectedCoursesList = $("#selected-courses-list");
-        selectedCoursesList.empty();
-
-        selectedCourses.forEach((course) => {
-          const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
-          const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
-
-          const popButton = $(
-            `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545" class="bi bi-x-square-fill" viewBox="0 0 16 16">
-  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
-</svg>`
-          );
-
-          popButton.on("click", function () {
-            const sliderValues = $("#credit-range").slider("getValue");
-            const inputString = sliderValues[0].value;
-            const integersArray = inputString.split(',').map(str => parseInt(str, 10));
-            const minCredit = integersArray[0];
-            const maxCredit = integersArray[1];
-
-            const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
-            const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
-
-            currentWeight = totalWeight;
-
-            removeSelectedCourse(course);
-          });
-
-          li.append(popButton);
-          li.append(shortLiDiv)
-          shortLiDiv.append(
-            ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
-          );
-
-          shortLiDiv.append(
-            ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
-          );
-
-          shortLiDiv.append(
-            ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
-          );
-
-          if (course.classroom !== "TBDTBD") {
-
-            shortLiDiv.append(
-              ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
-            );
-          }
-
-          if (course.alternate_classroom !== "None") {
-
-            shortLiDiv.append(
-              `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
-            );
-          }
-
-          selectedCoursesList.append(li);
-        });
-      }
-
-      function updateSelectedCoursesCount() {
-        const selectedCoursesCountElement = $('#selected-courses-count');
-        selectedCoursesCountElement.html(`Selected Courses Count: <strong>${selectedCoursesCount}</strong>`);
-      }
-
-      function updateCrucialCourses() {
-        const crucialList = $("#crucialCoursesContainer");
-
-        crucialList.empty();
-
-        const compositeKeys = [];
-
-        selectedCourses.forEach(course => {
-          var compositeKey = `${course.department_id}${course.course_id}`;
-
-          if (!compositeKeys.includes(compositeKey)) {
-            compositeKeys.push(compositeKey);
-            const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
-            const checkbox = $('<input type="checkbox">').attr(
-              "value",
-              compositeKey
-            );
-            // Add checkbox and other content to the <li> element
-            li.append(checkbox);
-            crucialList.append(li);
-
-            // Check if the course is already selected
-            const isChecked = checkedCrucials.some(
-              (checkedCrucial) =>
-                checkedCrucial.course_id === course.course_id &&
-                checkedCrucial.department_id === course.department_id
-            );
-            if (isChecked) {
-              checkbox.prop("checked", true);
-            }
-
-            checkbox.on("change", function () {
-              if (this.checked) {
-                checkedCrucials.push(course);
-              } else {
-                const index = checkedCrucials.findIndex(
-                  (c) =>
-                    c.course_id === course.course_id &&
-                    c.department_id === course.department_id
-                );
-
-                if (index !== -1) {
-                  checkedCrucials.splice(index, 1);
-
-                  const compositeKey = `${course.course_id}-${course.department_id}`;
-                  const checkbox = $(
-                    `input[type="checkbox"][value="${compositeKey}"]`
-                  );
-                  checkbox.prop("checked", false);
-                }
-              }
-            });
-
-            // Append checkbox, course information, and line break outside the event handler
-            li.append(checkbox);
-            li.append(
-              ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
-            );
-            li.append("<br>");
-            crucialList.append(li);
-
-          }
-        })
-      }
-
-      function factorial(n) {
-        let result = 1;
-        for (let i = 2; i <= n; i++) {
-          result *= i;
-        }
-        return result;
-      }
-
-      // Function to calculate the combination value (n choose r)
-      function comb(n, r) {
-        return factorial(n) / (factorial(r) * factorial(n - r));
-      }
-
-      // Credit check function
-      function credit_check(courses, LL_credit_hours, UL_credit_hours) {
-        // Find the maximum and minimum credit hours among the courses
-        const max_credit_hours = Math.max(...courses.map(course => course.credits));
-        const min_credit_hours = Math.min(...courses.filter(course => course.credits !== 0).map(course => course.credits));
-
-        // Calculate the lower and upper limit number of courses based on credit hours
-        const LL = Math.floor(LL_credit_hours / max_credit_hours);
-        const UL = Math.min(courses.length, Math.floor(UL_credit_hours / min_credit_hours)) + 1;
-
-        let total_weight = 0;
-        for (let r = LL; r < UL; r++) {
-          total_weight += r * comb(courses.length, r);
-        }
-
-        return total_weight; // Or return any other desired value
-      }
-
-      function submitSelectedCourses() {
-        // Retrieve the slider values
-        const sliderValues = $("#credit-range").slider("getValue");
-
-        const inputString = sliderValues[0].value;
-        const integersArray = inputString.split(',').map(str => parseInt(str, 10));
-
-        const minCredit = integersArray[0];
-        const maxCredit = integersArray[1];
-
-        const element = document.getElementById("note2");
-        element.style.display = "none";
-
-        // Target the section with id "combinations"
-        const section = $("#combinations");
-
-        section.empty().append("<h6 class='my-3 white-color-setter text-center'>Generating Schedules...</h6>")
-          .css("font-weight", "900");
-
-        // Prepare the data to be sent
-        const data = {
-          selectedCourses: selectedCourses.map((course) => ({
-            course_id: course.course_id,
-            department_id: course.department_id,
-            section: course.section,
-            instructor_name: course.instructor_name,
-          })),
-          checkedCrucials: checkedCrucials.map((course) => ({
-            course_id: course.course_id,
-            department_id: course.department_id,
-          })),
-          minCredit: minCredit,
-          maxCredit: maxCredit,
-        };
-
-        // Send the data to the backend
-        $.ajax({
-          url: "/submit",
-          type: "POST",
-          data: JSON.stringify(data),
-          contentType: "application/json",
-          success: function (response) {
-            combinations = JSON.parse(response);
-            createTable(0);
-          },
-        });
-      }
-
-      function createTable(n) {
-        const section = $("#combinations"); // Target the section with id "combinations"
-        section.css("text-align", "center")
-        section.empty(); // Clear any existing content
-
-        const h2Element = $("<h2>")
-          .addClass("mt-1 ms-1 white-color-setter text-center")
-          .text("Generated Schedules")
-          .css("font-weight", "900");
-
-
-        const h3Element = $("<h3>")
-          .addClass("mt-1 ms-1 white-color-setter text-center mb-3")
-          .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
-          .css("font-weight", "900");
-
-
-        const combination = combinations[n];
-        const descriptionDiv = $("<ul>").css("text-align", "left");
-        descriptionDiv.css("margin", "0px")
-        descriptionDiv.css("border-radius", "30px")
-
-        if (combination !== undefined) {
-          $("#combinations").removeAttr("style");
-
-          for (const course of combination) {
-            const departmentID = course.department_id;
-            const courseCode = course.course_id;
-            const courseSection = course.section;
-            const courseName = course.name;
-            const courseInstructor = course.instructor_name
-
-            const courseDescriptor = $("<li><span>")
-              .html(` ${departmentID} ${courseCode} - ${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
-              .addClass("course-name");
-
-            descriptionDiv.append(courseDescriptor);
-          }
-        } else {
-          alert("No combination could be generated. Add more courses or widen the credit hour range. Scale it up people!");
-          return;
-        }
-
-        const buttonContainer = $("<div>")
-          .addClass("text-center") // Center the buttons horizontally
-          .append(
-            $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg>`)
-              // .text("Previous") // Change the text of the first button
-              .addClass("mt-2")
-              .css({
-                "margin-left": "1rem",
-                "margin-right": "1rem"
-              })
-              .on("click", function () {
-                if (n > 0) {
-                  createTable(n - 1);
-                }
-              }),
-            $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-right-square-fill" viewBox="0 0 16 16">
-  <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
-</svg>`)
-              // .text("Next") // Change the text of the second button to "Next"
-              .addClass("mt-2")
-              .css({
-                "margin-left": "1rem",
-                "margin-right": "1rem"
-              })
-              .on("click", function () {
-                if (n < combinations.length - 1) {
-                  createTable(n + 1);
-                }
-              })
-          );
-
-        const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
-        const table = $("<table>").addClass("custom-table");
-
-        const colorCount = colors.length - 1;
-        var currentColorIndex = 0;
-        const courseColorMap = {};
-
-        for (let i = 8; i <= 18; i++) {
-          const row = $("<tr>");
-
-          if (i === 8) {
-            row.append($("<td>").text(format12HourTime(i)));
-
-            days.forEach(day => {
-              row.append($("<td>").text(daydic[day]));
-            });
-
-          } else {
-            row.append($("<td>").text(format12HourTime(i)));
-
-            days.forEach(day => {
-              const currentTd = $("<td>");
-              row.append(currentTd);
-
-
-              combination.forEach(function (course) {
-
-                if (courseColorMap[course.department_id + course.course_id] === undefined) {
-                  courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
-                  currentColorIndex += 1;
-
-                  if (currentColorIndex === colorCount) {
-                    currentColorIndex = 0;
-                  }
-                }
-
-                if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
-                  const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
-                  const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
-                  const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
-                  const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
-
-                  const topPercentage = (startMinutes / 60) * 100;
-                  const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
-
-                  const cellContent = $("<div>").addClass("cell-content").css({
-                    "overflow": "auto",
-                    "top": topPercentage + "%",
-                    "height": heightPercentage + "%",
-                    "background-color": courseColorMap[course.department_id + course.course_id]
-                  }).text(course.department_id + course.course_id + " - " + course.section + `\n${course.classroom.slice(6)}`);
-
-                  currentTd.append(cellContent);
-
-                }
-
-                if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
-                  const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
-                  const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
-                  const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
-                  const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
-
-                  const topPercentage = (startMinutes / 60) * 100;
-                  const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
-
-                  const cellContent = $("<div>").addClass("cell-content").css({
-                    "top": topPercentage + "%",
-                    "height": heightPercentage + "%",
-                    "background-color": courseColorMap[course.department_id + course.course_id]
-                  }).text(course.department_id + course.course_id + " - " + course.section + `\n${course.alternate_classroom.slice(6)}`);
-
-                  currentTd.append(cellContent);
-                }
-              });
-            });
-          }
-          table.append(row);
-        }
-
-        const customDiv = $("<div>")
-          .addClass("custom-div")
-          .append(h3Element, '<hr class="separator-line">'
-            , descriptionDiv);
-
-        newDiv.append(table);
-        section.append(h2Element, customDiv, buttonContainer, newDiv);
-
-      }
-
-      function format12HourTime(hour) {
-        let suffix = hour >= 12 ? "PM" : "AM";
-        hour = hour % 12 || 12;
-        return `${hour}:00 ${suffix}`;
-      }
-
-
-    </script>
   </main>
   <footer style="z-index: 100;text-decoration: none;">
     &copy; 2023 FCS | Created by <a target="_blank" style="text-decoration: none;"
@@ -1528,6 +625,931 @@
 
     | <a style="text-decoration: none;" href="mailto: mujtabakhalid20@gmail.com,rocety27@gmail.com">Contact Us</a>
   </footer>
+
+  <script>
+    function paginationFunction(pageNumber) {
+
+      $.ajax({
+        url: "paginationClick",
+        type: "POST",
+        data: {
+          page: pageNumber
+        },
+        success: function (response) {
+          const courses = JSON.parse(response);
+          displayCourses(courses);
+        }
+      },)
+    }
+
+    function generatePagination(currentPage, totalPages, visiblePages) {
+      const paginationContainers = document.querySelectorAll(".pagination");
+
+      paginationContainers.forEach((paginationContainer) => {
+        paginationContainer.innerHTML = "";
+
+        const halfVisiblePages = Math.floor(visiblePages / 2);
+        const startPage = Math.max(currentPage - halfVisiblePages, 1);
+        const endPage = Math.min(startPage + visiblePages - 1, totalPages);
+
+        if (startPage > 1) {
+          paginationContainer.appendChild(createPaginationLink(1, currentPage));
+        }
+
+        if (startPage > 2) {
+          paginationContainer.appendChild(createEllipsis());
+        }
+
+        for (let page = startPage; page <= endPage; page++) {
+          paginationContainer.appendChild(createPaginationLink(page, currentPage));
+        }
+
+        if (endPage < totalPages - 1) {
+          paginationContainer.appendChild(createEllipsis());
+        }
+
+        if (endPage < totalPages) {
+          paginationContainer.appendChild(createPaginationLink(totalPages, currentPage));
+        }
+      });
+    }
+
+    // Example functions for creating pagination elements
+    function createPaginationLink(page, currentPage) {
+      const link = document.createElement("a");
+      link.href = `#page${page}`;
+      link.textContent = page;
+      if (page === currentPage) {
+        link.classList.add("active");
+      }
+      return link;
+    }
+
+    function createEllipsis() {
+      const ellipsis = document.createElement("span");
+      ellipsis.textContent = "...";
+      return ellipsis;
+    }
+
+
+    function createPaginationLink(pageNumber, currentPage) {
+      const link = document.createElement("a");
+      link.href = "#";
+      link.textContent = pageNumber;
+      if (pageNumber === currentPage) {
+        link.classList.add("active");
+      }
+      link.addEventListener("click", () => {
+        event.preventDefault();
+        paginationFunction(link.textContent);
+        // Update the selected page and regenerate pagination
+        selectedPage = pageNumber;
+        generatePagination(selectedPage, totalPages, visiblePages);
+      });
+      return link;
+    }
+
+    function createEllipsis() {
+      const ellipsis = document.createElement("span");
+      ellipsis.textContent = "...";
+      return ellipsis;
+    }
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/11.0.2/bootstrap-slider.min.js"></script>
+  <script>
+
+    var selectedCourses = [];
+    var selectedCoursesCount = 0;
+    var currentWeight = 0;
+    var crucialCheckboxes = [];
+    var checkedCrucials = [];
+    var currentTerm = "{{active_term}}";
+    var pgno = 1;
+    const days = ["M", "T", "W", "R", "F"];
+    const daydic = { "M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri" };
+    var combinations;
+
+
+    let selectedPage;
+    let totalPages;
+    let visiblePages;
+    let lastSliderValues;
+
+
+    const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
+
+    $(document).ready(function () {
+      $(".select2").select2();
+
+      // Initialize the Bootstrap slider
+      var rangeSlider = new Slider("#credit-range", {
+        tooltip: "hide"
+      });
+
+
+      rangeSlider.setValue([15, 17]);
+      lastSliderValues = [15, 17];
+
+      // Add event handler to the slider's "change" event
+      rangeSlider.on("change", function (event) {
+        const oldValue = event.oldValue;
+        const newValue = event.newValue;
+
+        const minCredit = newValue[0];
+        const maxCredit = newValue[1];
+
+        // Perform credit check
+        const totalWeight = credit_check(selectedCourses, minCredit, maxCredit);
+        currentWeight = totalWeight;
+
+
+        if (totalWeight > 500000) {
+          // Revert slider value
+          rangeSlider.setValue(oldValue);
+        } else {
+          // Update span elements
+          const span1 = document.getElementById("span1");
+          const span2 = document.getElementById("span2");
+          span1.innerText = minCredit;
+          span2.innerText = maxCredit;
+        }
+      });
+
+      // Populate dropdown menus
+      populateDropdown("#department", "/departments");
+      populateDropdown("#course", "/courses");
+      populateDropdown("#instructor", "/instructors");
+
+      // Add event listeners to clear dropdown values on focus
+      // Term selector is now readonly, no focus handler needed
+
+      $("#department-selector").on("focus", function () {
+        var old = $(this).val();
+
+        $(this).val(""); // Clear the value
+
+        if (old !== "All" && old !== "") {
+          populateDropdown("#course", "/courses");
+          populateDropdown("#instructor", "/instructors");
+        }
+      });
+
+      $("#course-selector").on("focus", function () {
+        $(this).val(""); // Clear the value
+        const selectedValue = $(this).val();
+        updateCourse(selectedValue);
+      });
+
+      $("#instructor-selector").on("focus", function () {
+        $(this).val(""); // Clear the value
+        const selectedValue = $(this).val();
+        updateInstructor(selectedValue);
+      });
+
+
+      $('#department-selector').on('change', function () {
+        const selectedValue = $(this).val();
+        $("#course-selector").val("");
+        $("#instructor-selector").val("");
+
+        if (selectedValue === 'All' || selectedValue === '') {
+          populateDropdown("#course", "/courses");
+          populateDropdown("#instructor", "/instructors");
+
+        } else {
+          updateDepartment(selectedValue);
+        }
+      });
+
+      $('#course-selector').on('change', function () {
+        const selectedValue = $(this).val();
+        updateCourse(selectedValue);
+
+      });
+
+      $('#instructor-selector').on('change', function () {
+        const selectedValue = $(this).val();
+
+        if (selectedValue === 'All' || selectedValue === '') {
+          populateDropdown("#course", "/courses");
+
+        } else {
+          updateInstructor(selectedValue);
+        }
+      });
+
+      $('.custom-button').on('click', function () {
+        // Term is now fixed, no need to check for changes
+      });
+
+    });
+
+
+
+    // Create an object to store cached dropdown options
+    const dropdownCache = {};
+
+    // Function to fetch dropdown options from the server
+    function fetchDropdownOptions(selector, url) {
+      return new Promise((resolve, reject) => {
+        if (dropdownCache[url]) {
+          // If options are already cached, return them
+          resolve(dropdownCache[url]);
+        } else {
+          // Fetch options from the server
+          $.ajax({
+            url: url,
+            type: 'GET',
+            success: (response) => {
+              const options = JSON.parse(response);
+              dropdownCache[url] = options; // Cache the options
+              resolve(options);
+            },
+            error: (error) => {
+              reject(error);
+            },
+          });
+        }
+      });
+    }
+
+    // Populate dropdown based on cached or fetched options
+    function populateDropdown(selector, url) {
+      fetchDropdownOptions(selector, url)
+        .then((options) => {
+          const dropdown = $(selector);
+          dropdown.empty();
+
+          // Add the "All" option
+          const allOption = $('<option>').attr('value', 'All').text('All');
+          dropdown.append(allOption);
+
+          options.forEach((option) => {
+            const optionElement = $('<option>')
+              .attr('value', option.value)
+              .text(option.label);
+            dropdown.append(optionElement);
+          });
+        })
+        .catch((error) => {
+          console.error('Error fetching dropdown options:', error);
+        });
+    }
+
+    function filterCourses() {
+      const selectedDepartment = $("#department-selector").val();
+      const selectedCourse = $("#course-selector").val();
+      const selectedInstructor = $("#instructor-selector").val();
+      $.ajax({
+        url: "/",
+        type: "POST",
+        data: {
+          dropdown: selectedDepartment,
+          dropdown2: selectedCourse,
+          dropdown3: selectedInstructor,
+
+        },
+        success: function (response) {
+          const courses = JSON.parse(response);
+          selectedPage = 1;
+          totalPages = Math.ceil(courses.size / 20);
+          visiblePages = 3;
+          generatePagination(selectedPage, totalPages, visiblePages);
+
+
+          if (courses.data.length > 0) {
+            const element = document.getElementById("note");
+            element.style.display = "none";
+
+            $("#filterCoursesSection").removeAttr("style");
+            displayCourses(courses.data);
+          } else {
+            alert("No courses could be displayed, try changing or loosening your filters.");
+            $("#filterCoursesSection").css("display", "none");
+          }
+        },
+      });
+    }
+
+    function displayCourses(courses) {
+      const coursesList = $("#courses-list");
+      coursesList.empty();
+
+      courses.forEach((course) => {
+        const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+        const liDiv = $("<div  style='border-radius: 50px; '></div>")
+        const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+        const checkbox = $('<input type="checkbox" style="display:inline-block">').attr(
+          "value",
+          compositeKey
+        );
+
+        // Check if the course is already selected
+        const isSelected = selectedCourses.some(
+          (selectedCourse) =>
+            selectedCourse.course_id === course.course_id &&
+            selectedCourse.department_id === course.department_id &&
+            selectedCourse.section === course.section
+        );
+        if (isSelected) {
+          checkbox.prop("checked", true);
+        }
+
+        checkbox.on("change", function () {
+          const sliderValues = $("#credit-range").slider("getValue");
+          const inputString = sliderValues[0].value;
+          const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+          const minCredit = integersArray[0];
+          const maxCredit = integersArray[1];
+
+          if (this.checked) {
+            const combinedCourses = [...selectedCourses, course];
+            const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+
+            currentWeight = totalWeight;
+
+            if (totalWeight > 500000) {
+              // Prevent the checkbox from being checked
+              this.checked = false;
+              alert("Cannot perform action without removing another course or narrowing credit hour range. Narrow it down people!");
+            }
+
+            else {
+              addSelectedCourse(course);
+              $("#shortlistedCoursesSection").removeAttr("style");
+              $("#combinationMenu").removeAttr("style");
+            }
+
+          } else {
+            const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
+            const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+
+            currentWeight = totalWeight;
+            removeSelectedCourse(course);
+          }
+
+        });
+
+
+        li.append(checkbox);
+        li.append(liDiv)
+        liDiv.append(
+          ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
+        );
+
+        liDiv.append(
+          ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+        );
+
+        liDiv.append(
+          ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
+        );
+
+        if (course.classroom !== "TBDTBD") {
+          let classroomSlice;
+
+          if (course.classroom.length === 11) {
+            classroomSlice = -5;
+          } else {
+            classroomSlice = -4;
+          }
+
+          liDiv.append(
+            ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+          );
+        }
+
+        if (course.alternate_classroom !== "None") {
+          let classroomSlice;
+
+          if (course.alternate_classroom.length === 11) {
+            classroomSlice = -5;
+          } else {
+            classroomSlice = -4;
+          }
+
+          liDiv.append(
+            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+          );
+        }
+
+        coursesList.append(li);
+      });
+    }
+
+
+    function updateDepartment(selectedValue) {
+      const dropdown2 = $("#course");
+      const dropdown3 = $("#instructor");
+
+      $.ajax({
+        url: '/updateDepartment',
+        type: 'POST',
+        data: JSON.stringify({ data: selectedValue }), // Wrap selectedValue in an object
+        contentType: 'application/json',
+        success: function (response) {
+          const options = JSON.parse(response);
+
+          options.courses.unshift({ value: 'All' });
+          dropdown2.empty();
+          options.courses.forEach(option => {
+            const optionElement = $('<option>').attr('value', option.value).text(option.label);
+            dropdown2.append(optionElement);
+          });
+
+          options.instructors.unshift({ value: 'All' });
+          dropdown3.empty();
+          options.instructors.forEach(option => {
+            const optionElement = $('<option>').attr('value', option.value).text(option.label);
+            dropdown3.append(optionElement);
+          });
+        }
+      });
+    }
+
+    function updateCourse(selectedValue) {
+      const dropdown3 = $("#instructor");
+      const departmentValue = $("#department-selector").val();
+
+      $.ajax({
+        url: '/updateCourse',
+        type: 'POST',
+        data: JSON.stringify({ department: departmentValue, data: selectedValue }),
+        contentType: 'application/json',
+        success: function (response) {
+          const options = JSON.parse(response);
+
+          options.instructors.unshift({ value: 'All' });
+          dropdown3.empty();
+          options.instructors.forEach(option => {
+            const optionElement = $('<option>').attr('value', option.value).text(option.label);
+            dropdown3.append(optionElement);
+          });
+        }
+      });
+    }
+
+
+    function updateInstructor(selectedValue) {
+      const dropdown2 = $("#course");
+      const departmentValue = $("#department-selector").val();
+
+      $.ajax({
+        url: '/updateInstructor',
+        type: 'POST',
+        data: JSON.stringify({ department: departmentValue, data: selectedValue }),
+        contentType: 'application/json',
+        success: function (response) {
+          const options = JSON.parse(response);
+
+          options.courses.unshift({ value: 'All' });
+          dropdown2.empty();
+          options.courses.forEach(option => {
+            const optionElement = $('<option>').attr('value', option.value).text(option.label);
+            dropdown2.append(optionElement);
+          });
+        }
+      });
+    }
+
+
+    function addSelectedCourse(course) {
+      selectedCourses.push(course);
+      selectedCoursesCount++;
+      updateSelectedCoursesList();
+      updateSelectedCoursesCount();
+      updateCrucialCourses();
+    }
+
+
+    function removeSelectedCourse(course) {
+      const index = selectedCourses.findIndex(
+        (c) =>
+          c.course_id === course.course_id &&
+          c.department_id === course.department_id &&
+          c.section === course.section
+      );
+
+      if (index !== -1) {
+        selectedCourses.splice(index, 1);
+        selectedCoursesCount--;
+        updateSelectedCoursesList();
+        updateSelectedCoursesCount();
+        updateCrucialCourses();
+
+        const compositeKey = `${course.course_id}-${course.department_id}-${course.section}`;
+        const checkbox = $(`input[type="checkbox"][value="${compositeKey}"]`);
+        checkbox.prop("checked", false);
+      }
+
+
+      if (selectedCourses.length === 0) {
+        $("#shortlistedCoursesSection").css("display", "none");
+        $("#combinationMenu").css("display", "none");
+        $("#combinations").css("display", "none");
+      }
+    }
+
+
+    function updateSelectedCoursesList() {
+      const selectedCoursesList = $("#selected-courses-list");
+      selectedCoursesList.empty();
+
+      selectedCourses.forEach((course) => {
+        const li = $("<div class='custom-div white-color-setter' style='border-radius: 50px; display:flex; align-items:center; justify-content:start;gap: 1rem;'>");
+        const shortLiDiv = $("<div  style='border-radius: 50px; '></div>")
+
+        const popButton = $(
+          `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#dc3545" class="bi bi-x-square-fill" viewBox="0 0 16 16">
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 4.646L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 1 1 .708-.708z"/>
+</svg>`
+        );
+
+        popButton.on("click", function () {
+          const sliderValues = $("#credit-range").slider("getValue");
+          const inputString = sliderValues[0].value;
+          const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+          const minCredit = integersArray[0];
+          const maxCredit = integersArray[1];
+
+          const combinedCourses = selectedCourses.filter(selectedCourse => selectedCourse !== course);
+          const totalWeight = credit_check(combinedCourses, minCredit, maxCredit);
+
+          currentWeight = totalWeight;
+
+          removeSelectedCourse(course);
+        });
+
+        li.append(popButton);
+        li.append(shortLiDiv)
+        shortLiDiv.append(
+          ` <p class="filteredCourseP">${course.department_id} ${course.course_id} | <strong>${course.name}</strong></p>`
+        );
+
+        shortLiDiv.append(
+          ` <p class="filteredCourseP">Section: <strong>${course.section}</strong> | Instructor: <strong>${course.instructor_name}</strong></p>`
+        );
+
+        shortLiDiv.append(
+          ` <p class="filteredCourseP">Credits: <strong>${course.credits}</strong> | Seats: <strong>${course.available_seats}/${course.total_seats}</strong></p>`
+        );
+
+        if (course.classroom !== "TBDTBD") {
+
+          shortLiDiv.append(
+            ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+          );
+        }
+
+        if (course.alternate_classroom !== "None") {
+
+          shortLiDiv.append(
+            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+          );
+        }
+
+        selectedCoursesList.append(li);
+      });
+    }
+
+    function updateSelectedCoursesCount() {
+      const selectedCoursesCountElement = $('#selected-courses-count');
+      selectedCoursesCountElement.html(`Selected Courses Count: <strong>${selectedCoursesCount}</strong>`);
+    }
+
+    function updateCrucialCourses() {
+      const crucialList = $("#crucialCoursesContainer");
+
+      crucialList.empty();
+
+      const compositeKeys = [];
+
+      selectedCourses.forEach(course => {
+        var compositeKey = `${course.department_id}${course.course_id}`;
+
+        if (!compositeKeys.includes(compositeKey)) {
+          compositeKeys.push(compositeKey);
+          const li = $("<li style='list-style:none; text-align:left !important; margin-left:2rem'>");
+          const checkbox = $('<input type="checkbox">').attr(
+            "value",
+            compositeKey
+          );
+          // Add checkbox and other content to the <li> element
+          li.append(checkbox);
+          crucialList.append(li);
+
+          // Check if the course is already selected
+          const isChecked = checkedCrucials.some(
+            (checkedCrucial) =>
+              checkedCrucial.course_id === course.course_id &&
+              checkedCrucial.department_id === course.department_id
+          );
+          if (isChecked) {
+            checkbox.prop("checked", true);
+          }
+
+          checkbox.on("change", function () {
+            if (this.checked) {
+              checkedCrucials.push(course);
+            } else {
+              const index = checkedCrucials.findIndex(
+                (c) =>
+                  c.course_id === course.course_id &&
+                  c.department_id === course.department_id
+              );
+
+              if (index !== -1) {
+                checkedCrucials.splice(index, 1);
+
+                const compositeKey = `${course.course_id}-${course.department_id}`;
+                const checkbox = $(
+                  `input[type="checkbox"][value="${compositeKey}"]`
+                );
+                checkbox.prop("checked", false);
+              }
+            }
+          });
+
+          // Append checkbox, course information, and line break outside the event handler
+          li.append(checkbox);
+          li.append(
+            ` ${course.department_id} ${course.course_id} - <strong>${course.name}</strong>`
+          );
+          li.append("<br>");
+          crucialList.append(li);
+
+        }
+      })
+    }
+
+    function factorial(n) {
+      let result = 1;
+      for (let i = 2; i <= n; i++) {
+        result *= i;
+      }
+      return result;
+    }
+
+    // Function to calculate the combination value (n choose r)
+    function comb(n, r) {
+      return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+
+    // Credit check function
+    function credit_check(courses, LL_credit_hours, UL_credit_hours) {
+      // Find the maximum and minimum credit hours among the courses
+      const max_credit_hours = Math.max(...courses.map(course => course.credits));
+      const min_credit_hours = Math.min(...courses.filter(course => course.credits !== 0).map(course => course.credits));
+
+      // Calculate the lower and upper limit number of courses based on credit hours
+      const LL = Math.floor(LL_credit_hours / max_credit_hours);
+      const UL = Math.min(courses.length, Math.floor(UL_credit_hours / min_credit_hours)) + 1;
+
+      let total_weight = 0;
+      for (let r = LL; r < UL; r++) {
+        total_weight += r * comb(courses.length, r);
+      }
+
+      return total_weight; // Or return any other desired value
+    }
+
+    function submitSelectedCourses() {
+      // Retrieve the slider values
+      const sliderValues = $("#credit-range").slider("getValue");
+
+      const inputString = sliderValues[0].value;
+      const integersArray = inputString.split(',').map(str => parseInt(str, 10));
+
+      const minCredit = integersArray[0];
+      const maxCredit = integersArray[1];
+
+      const element = document.getElementById("note2");
+      element.style.display = "none";
+
+      // Target the section with id "combinations"
+      const section = $("#combinations");
+
+      section.empty().append("<h6 class='my-3 white-color-setter text-center'>Generating Schedules...</h6>")
+        .css("font-weight", "900");
+
+      // Prepare the data to be sent
+      const data = {
+        selectedCourses: selectedCourses.map((course) => ({
+          course_id: course.course_id,
+          department_id: course.department_id,
+          section: course.section,
+          instructor_name: course.instructor_name,
+        })),
+        checkedCrucials: checkedCrucials.map((course) => ({
+          course_id: course.course_id,
+          department_id: course.department_id,
+        })),
+        minCredit: minCredit,
+        maxCredit: maxCredit,
+      };
+
+      // Send the data to the backend
+      $.ajax({
+        url: "/submit",
+        type: "POST",
+        data: JSON.stringify(data),
+        contentType: "application/json",
+        success: function (response) {
+          combinations = JSON.parse(response);
+          createTable(0);
+        },
+      });
+    }
+
+    function createTable(n) {
+      const section = $("#combinations"); // Target the section with id "combinations"
+      section.css("text-align", "center")
+      section.empty(); // Clear any existing content
+
+      const h2Element = $("<h2>")
+        .addClass("mt-1 ms-1 white-color-setter text-center")
+        .text("Generated Schedules")
+        .css("font-weight", "900");
+
+      const pElement = $("<p>")
+        .addClass("text-center")
+        .css({
+          color: "white",
+        })
+        .text("(Shuffle Through Each Generated Schedule)");
+
+      const h3Element = $("<h3>")
+        .addClass("mt-1 ms-1 white-color-setter text-center mb-3")
+        .text("Schedule " + (n + 1) + "/" + (combinations.length)) // Use n+1 to get the correct schedule number
+        .css("font-weight", "900");
+
+      const combination = combinations[n];
+      const descriptionDiv = $("<ul>").css("text-align", "left");
+      descriptionDiv.css("margin", "0px")
+      descriptionDiv.css("border-radius", "30px")
+
+      if (combination !== undefined) {
+        $("#combinations").removeAttr("style");
+
+        for (const course of combination) {
+          const departmentID = course.department_id;
+          const courseCode = course.course_id;
+          const courseSection = course.section;
+          const courseName = course.name;
+          const courseInstructor = course.instructor_name
+
+          const courseDescriptor = $("<li><span>")
+            .html(` ${departmentID} ${courseCode} - ${courseSection}</b> - <b>${courseName}</b> - ${courseInstructor}`)
+            .addClass("course-name");
+
+          descriptionDiv.append(courseDescriptor);
+        }
+      } else {
+        alert("No combination could be generated. Add more courses or widen the credit hour range. Scale it up people!");
+        return;
+      }
+
+      const buttonContainer = $("<div>")
+        .addClass("text-center") // Center the buttons horizontally
+        .append(
+          $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-left-square-fill arrow-nav-button" viewBox="0 0 16 16">
+  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+</svg>`)
+            // .text("Previous") // Change the text of the first button
+            .addClass("mt-2")
+            .css({
+              "margin-left": "1rem",
+              "margin-right": "1rem"
+            })
+            .on("click", function () {
+              if (n > 0) {
+                createTable(n - 1);
+              }
+            }),
+          $(`<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="#FFD700" class="bi bi-arrow-right-square-fill arrow-nav-button" viewBox="0 0 16 16">
+  <path d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z"/>
+</svg>`)
+            // .text("Next") // Change the text of the second button to "Next"
+            .addClass("mt-2")
+            .css({
+              "margin-left": "1rem",
+              "margin-right": "1rem"
+            })
+            .on("click", function () {
+              if (n < combinations.length - 1) {
+                createTable(n + 1);
+              }
+            })
+        );
+
+      const newDiv = $("<div>").addClass("combinations-list"); // Create the new div
+      const table = $("<table>").addClass("custom-table");
+
+      const colorCount = colors.length - 1;
+      var currentColorIndex = 0;
+      const courseColorMap = {};
+
+      for (let i = 8; i <= 19; i++) {
+        const row = $("<tr>");
+
+        if (i === 8) {
+          row.append($("<td>").text(format12HourTime(i)));
+
+          days.forEach(day => {
+            row.append($("<td>").text(daydic[day]));
+          });
+
+        } else {
+          row.append($("<td>").text(format12HourTime(i)));
+
+          days.forEach(day => {
+            const currentTd = $("<td>");
+            row.append(currentTd);
+
+
+            combination.forEach(function (course) {
+
+              if (courseColorMap[course.department_id + course.course_id] === undefined) {
+                courseColorMap[course.department_id + course.course_id] = colors[currentColorIndex];
+                currentColorIndex += 1;
+
+                if (currentColorIndex === colorCount) {
+                  currentColorIndex = 0;
+                }
+              }
+
+              if (course.days.includes(day) && parseInt(course.start_time) === (i - 1)) {
+                const startMinutes = parseInt(course.start_time.substring(course.start_time.length - 2));
+                const endMinutes = parseInt(course.end_time.substring(course.end_time.length - 2));
+                const startTimeHours = parseInt(course.start_time.substring(0, course.start_time.length - 3));
+                const endTimeHours = parseInt(course.end_time.substring(0, course.end_time.length - 3));
+
+                const topPercentage = (startMinutes / 60) * 100;
+                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                const cellContent = $("<div>").addClass("cell-content").css({
+                  "overflow": "hidden",
+                  "top": topPercentage + "%",
+                  "height": heightPercentage + "%",
+                  "background-color": courseColorMap[course.department_id + course.course_id],
+                }).text(course.department_id + course.course_id + " " + "(" + course.section + ")" + `\n${course.classroom.slice(6)}`);
+
+                currentTd.append(cellContent);
+
+              }
+
+              if (course.alternate_days.includes(day) && parseInt(course.alternate_start_time) === (i - 1)) {
+                const startMinutes = parseInt(course.alternate_start_time.substring(course.alternate_start_time.length - 2));
+                const endMinutes = parseInt(course.alternate_end_time.substring(course.alternate_end_time.length - 2));
+                const startTimeHours = parseInt(course.alternate_start_time.substring(0, course.alternate_start_time.length - 3));
+                const endTimeHours = parseInt(course.alternate_end_time.substring(0, course.alternate_end_time.length - 3));
+
+                const topPercentage = (startMinutes / 60) * 100;
+                const heightPercentage = (((endTimeHours - startTimeHours) * 100) + ((endMinutes - startMinutes) * 100 / 60));
+
+                const cellContent = $("<div>").addClass("cell-content").css({
+                  "overflow": "hidden",
+                  "top": topPercentage + "%",
+                  "height": heightPercentage + "%",
+                  "background-color": courseColorMap[course.department_id + course.course_id],
+                }).text(course.department_id + course.course_id + " " + "(" + course.section + ")" + `\n${course.alternate_classroom.slice(6)}`);
+
+                currentTd.append(cellContent);
+              }
+            });
+          });
+        }
+        table.append(row);
+      }
+
+      const customDiv = $("<div>")
+        .addClass("custom-div")
+        .append(h3Element, '<hr class="separator-line">'
+          , descriptionDiv);
+
+      newDiv.append(table);
+      section.append(h2Element, pElement, customDiv, buttonContainer, newDiv);
+
+    }
+
+    function format12HourTime(hour) {
+      let suffix = hour >= 12 ? "PM" : "AM";
+      hour = hour % 12 || 12;
+      return `${hour}:00 ${suffix}`;
+    }
+
+
+  </script>
+
 </body>
 
 </html>
