@@ -18,10 +18,13 @@ def fileread():
     # Get the filename (e.g., "2026SPdata.txt")
     filename = get_data_filename(term_code)
     
+    # Build full path - use current file's directory
+    filepath = Path(__file__).parent / filename
+    
     try:
-        infile = open(filename, "r", encoding="utf-8")
+        infile = open(filepath, "r", encoding="utf-8")
     except FileNotFoundError:
-        raise FileNotFoundError(f"Data file not found for term: {term_code} (looking for {filename})")
+        raise FileNotFoundError(f"Data file not found for term: {term_code} (looking for {filepath})")
     
     course_data = infile.read().split("\n")
 
