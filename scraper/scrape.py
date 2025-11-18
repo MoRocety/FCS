@@ -133,24 +133,29 @@ def scrape_courses(terms=None, auto_detect=True):
         print(f"\nStep 2: Fetching course data for term {term}...")
         
         params = {
+            'method': 'GetList',
+        }
+        
+        data = {
             'fuseaction': 'CourseCatalog',
             'screen_width': '1920',
+            'token': jsonkey,  # Token goes in POST body, not URL params!
             'empower_global_term_id': term,
-            'cs_descr': "",
+            'cs_descr': '',
             'empower_global_dept_id': '',
             'empower_global_course_id': '',
             'cs_sess_id': '',
             'cs_loca_id': '',
             'cs_inst_id': '',
+            'cs_classroom': '',
             'cs_emph_id': '',
             'CS_time_start': '',
             'CS_time_end': '',
             'status': '1',
-            utoken: jsonkey,
         }
         
         # Send the POST request using the session
-        re = sess.post('https://mysis-fccollege.empower-xl.com/cfcs/courseCatalog.cfc?method=GetList&returnformat=json&', params=params)
+        re = sess.post('https://mysis-fccollege.empower-xl.com/cfcs/courseCatalog.cfc', params=params, data=data)
         content = json.loads(re.content)
         
         results[term] = content
