@@ -64,46 +64,7 @@ jobs:
         WEBHOOK_SECRET: ${{ secrets.WEBHOOK_SECRET }}
       run: |
         cd scraper
-        FILENAME="${ACTIVE_TERM}data.txt"
-        
-        # Check if required secrets are set
-        if [ -z "$WEBHOOK_URL" ] || [ -z "$WEBHOOK_SECRET" ]; then
-          echo "⚠️  Warning: WEBHOOK_URL or WEBHOOK_SECRET not set"
-          echo "⚠️  Skipping webhook update. Set these secrets in GitHub Settings → Secrets → Actions"
-          echo "⚠️  For now, manually upload the generated files to PythonAnywhere"
-          exit 0
-        fi
-        
-        # Read file content and escape for JSON
-        # Use jq to properly escape the content as a JSON string
-        CONTENT=$(cat "$FILENAME" | jq -Rs .)
-        
-        # Create JSON payload
-        PAYLOAD=$(jq -n \
-          --arg term_code "$ACTIVE_TERM" \
-          --argjson content "$CONTENT" \
-          '{term_code: $term_code, content: $content}')
-        
-        # Send POST request to webhook
-        HTTP_CODE=$(curl -X POST "$WEBHOOK_URL" \
-          -H "Content-Type: application/json" \
-          -H "X-Webhook-Token: $WEBHOOK_SECRET" \
-          -d "$PAYLOAD" \
-          -w "%{http_code}" \
-          -o response.json \
-          -s)
-        
-        echo "HTTP Response Code: $HTTP_CODE"
-        echo "Response Body:"
-        cat response.json | jq '.' || cat response.json
-        
-        # Check if request was successful
-        if [ "$HTTP_CODE" -eq 200 ]; then
-          echo "✓ Successfully sent data to webhook"
-        else
-          echo "✗ Webhook request failed with HTTP $HTTP_CODE"
-          exit 1
-        fi
+        python send_webhook.py
     
     - name: Upload artifacts (for debugging)
       if: always()
