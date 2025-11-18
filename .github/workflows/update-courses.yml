@@ -1,9 +1,9 @@
 name: Update Course Data
 
 on:
-  # Run daily at 2 AM UTC (7 AM Pakistan time)
+  # Run every 30 minutes
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '*/30 * * * *'
   
   # Allow manual trigger from GitHub UI
   workflow_dispatch:
