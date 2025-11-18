@@ -280,16 +280,22 @@ def submit_selected_courses():
     for combination in filtered_combinations:
         combination_data = []
         for section in combination:
+            # Format instructor name
+            if section[8] != "TBD":
+                instructor = section[8].title()
+            else:
+                instructor = section[8]
+            
             course_data_ = {
                 'department_id': section[0],
                 'course_id': section[1],
                 'section': section[2],
-                'name': section[3],
+                'name': cap_first_preserve_case(section[3]),
                 'credits': section[4],
                 'days': "".join(filter(str.isalpha, section[5])),
                 'start_time': section[6],
                 'end_time': section[7],
-                'instructor_name': section[8],
+                'instructor_name': instructor,
                 'classroom': section[9],
                 'alternate_classroom': section[10],
                 'alternate_days': "".join(filter(str.isalpha, section[11])),
