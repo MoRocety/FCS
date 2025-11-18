@@ -11,6 +11,7 @@
       crossorigin="anonymous"
     />
 
+  <script defer src="https://analytics.wocx.xyz/script.js" data-website-id="d0572090-a29a-4843-8c70-e22b26cbcdd8"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -24,6 +25,32 @@
         font-family: 'Exo 2', sans-serif !important;      }
       .background-setter {
         background-color: #0d111b !important;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        margin-bottom: 5rem;
+      }
+
+      footer {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      .content {
+        flex: 1;
       }
 
       .white-color-setter-background {
@@ -404,6 +431,8 @@ td{
     </style>
   </head>
   <body class="background-setter">
+  <main class="content">
+
     <h1 class="mt-1 ms-1 white-color-setter text-center"><strong>Forman Course Scheduler</strong></h1>
     <div class="line-container"></div>
     <section id="inputSection">
@@ -414,11 +443,7 @@ td{
 
               <div  class="input-direct-div" >
 
-                <input type="text" id="term-selector" list ="term" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;">
-                <datalist id="term">
-                  <option value="2023 Fall">
-                  <option value="Pharmacy Program Fall 2023">
-                </datalist>
+                <input type="text" id="term-selector" class="form-control custom-input white-color-setter text-center my-2" placeholder="Term" style="color: white;" value="{{active_term}}" readonly>
               </div>
               <div class="input-direct-div" >                
                 <input type="text" id="department-selector" list="department" class="form-control custom-input white-color-setter text-center my-2" placeholder="Dept" style="color: white;">
@@ -451,10 +476,19 @@ td{
         </div>
 
         </div>
+
+      <p id="note" class="text-center" style="color:white; margin-left: 10%; margin-right: 10%">
+        <strong>Note</strong>: These filters are entirely optional.
+      </p>
+
     </section>
     <section id="filterCoursesSection", style="display: none; text-align: center; " style=>
      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
      
+      <p class="text-center" style="color: white; margin-bottom: 2.0rem;">
+        (Add Each Of Your Favored Courses)
+      </p>
+
             <div class="pagination-container" style="text-align: center; margin-top:1.5rem;">
 
               <div style = "width:100%;display: inline-block;"class="pagination" id="pagination" style="margin: 0 auto;"></div> 
@@ -502,15 +536,29 @@ td{
           <i onclick="" class="bi bi-arrow-left-square-fill"></i>
           <button class="btn custom-button mt-2 mb-4" onclick="submitSelectedCourses()">Generate</button>
         </div>
+
+      <p id="note2" class="text-center" style="color:white;">
+        <strong>Note</strong>: Schedule generation could take a while.
+      </p>
+
       </section>
 
       <section id="combinations" style="display: none";>
         <!-- Table comes here -->
       </section>
-      <p class="text-center white-color-setter">
-        Active Term: {{active_term}} | Last Updated: {{current_time}}
-      </p>
-    
+
+    <p id="disclaimer" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
+      <strong>Disclaimer:</strong> While our goal is to provide a comprehensive course scheduling solution,
+      the platform currently does not account for prerequisites, availablity of seats, or cross-listed
+      courses. Users are encouraged to have a solid understanding of their degree
+      requirements and use this tool as a supplementary resource.
+    </p>
+
+    <p id="PCR" style="margin-left: 10%; margin-right: 10%;" class="text-center white-color-setter">
+      <strong>Check out friends at <a target="_blank" style="text-decoration: none;"
+      href="https://wocx.xyz/project-common-room">Project Common Room</a></strong>
+    </p>
+
       <script>
         function paginationFunction(pageNumber) {
         
@@ -622,7 +670,7 @@ td{
       var currentWeight = 0;
       var crucialCheckboxes = [];
       var checkedCrucials = [];
-      var currentTerm = "2023 FALL";
+      var currentTerm = "{{active_term}}";
       var pgno = 1;
       const days = ["M", "T", "W", "R", "F"];
       const daydic = {"M": "Mon", "T": "Tue", "W": "Wed", "R": "Thu", "F": "Fri"};
@@ -708,16 +756,6 @@ td{
         });
 
         
-        $('#term-selector').on('change', function () {
-          const selectedValue = $(this).val();
-
-          if (selectedValue === '2023 Fall' || selectedValue === 'Pharmacy Program Fall 2023') {
-            updateTerm(selectedValue)
-          }
-        
-
-        });
-
         $('#department-selector').on('change', function () {
           const selectedValue = $(this).val();
           $("#course-selector").val("");
@@ -750,47 +788,11 @@ td{
         });
         
         $('.custom-button').on('click', function () {
-          const selectedTerm = $('#term-selector').val();
-          if (selectedTerm !== currentTerm) {
-              selectedCourses = [];
-              selectedCoursesCount = 0;
-              updateSelectedCoursesList();
-              updateSelectedCoursesCount();
-
-              currentTerm = selectedTerm;
-              $("#filterCoursesSection").css("display", "none");
-              $("#shortlistedCoursesSection").css("display", "none");
-              $("#combinationMenu").css("display", "none");
-              $("#combinations").css("display", "none");
-          }
-           
+          // Term is now fixed, no need to check for changes
         });
         
       });
 
-      function updateTerm(selectedValue) {
-        $.ajax({
-          url: "updateTerm",
-          type: "POST",
-          data: JSON.stringify({ selectedValue: selectedValue }),
-          contentType: "application/json", 
-          success: function () {
-            
-            dropdownCache["/departments"] = undefined;
-            dropdownCache["/courses"] = undefined;
-            dropdownCache["/instructors"] = undefined;
-
-            populateDropdown("#department", "/departments");
-            populateDropdown("#course", "/courses");
-            populateDropdown("#instructor", "/instructors");
-
-            $("#department-selector").val(''); // Clear the department dropdown
-            $("#course-selector").val(''); // Clear the course dropdown
-            $("#instructor-selector").val(''); // Clear the instructor dropdown
-
-          }
-        });
-      }
 
 
       // Create an object to store cached dropdown options
@@ -865,6 +867,9 @@ td{
 
            
             if (courses.data.length > 0) {
+                const element = document.getElementById("note");
+                element.style.display = "none";
+
                 $("#filterCoursesSection").removeAttr("style");
                 displayCourses(courses.data);
             } else {
@@ -1267,6 +1272,15 @@ td{
         const minCredit = integersArray[0];
         const maxCredit = integersArray[1];
 
+        const element = document.getElementById("note2");
+        element.style.display = "none";
+
+        // Target the section with id "combinations"
+        const section = $("#combinations");
+
+        section.empty().append("<h6 class='my-3 white-color-setter text-center'>Generating Schedules...</h6>")
+          .css("font-weight", "900");
+
         // Prepare the data to be sent
         const data = {
           selectedCourses: selectedCourses.map((course) => ({
@@ -1469,5 +1483,13 @@ td{
 
     
     </script>
+  </main>
+  <footer style="z-index: 100;text-decoration: none;">
+    &copy; 2023 FCS | Created by <a target="_blank" style="text-decoration: none;"
+      href="https://www.linkedin.com/in/mujtaba-khalid-21b80a195/">Mujtaba Khalid</a> and <a target="_blank"
+      style="text-decoration: none;" href="https://www.linkedin.com/in/mohdbhatti27/">Muhammad R. Bhatti</a>
+
+    | <a style="text-decoration: none;" href="mailto: mujtabakhalid20@gmail.com,rocety27@gmail.com">Contact Us</a>
+  </footer>
   </body>
 </html>
