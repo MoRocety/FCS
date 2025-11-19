@@ -122,19 +122,23 @@ def index():
 
         return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
     
-    # Get current time in UTC
-    current_time_utc = datetime.utcnow()
-
-    # Set the timezone to Pakistan Standard Time (Asia/Karachi)
-    pst_timezone = timezone(timedelta(hours=5))
-    current_time_pst = current_time_utc.replace(tzinfo=timezone.utc).astimezone(pst_timezone)
-
-    # Format the times in 12-hour format
-    formatted_current_time = current_time_pst.strftime("%I:%M %p")
-    
     # Get active term info
     active_term_code = get_active_term()
     active_term_name = get_active_term_human()
+    
+    # Get last modified time of the course data file
+    from pathlib import Path
+    data_filename = f"{active_term_code}data.txt"
+    data_filepath = Path(__file__).parent / data_filename
+    
+    # Get file modification time and convert to PKT
+    file_mtime = data_filepath.stat().st_mtime
+    file_mtime_utc = datetime.fromtimestamp(file_mtime, tz=timezone.utc)
+    pst_timezone = timezone(timedelta(hours=5))
+    file_mtime_pkt = file_mtime_utc.astimezone(pst_timezone)
+    
+    # Format as time only
+    formatted_current_time = file_mtime_pkt.strftime("%I:%M %p")
     
     return render_template('trying.html', 
                          current_time=formatted_current_time,
