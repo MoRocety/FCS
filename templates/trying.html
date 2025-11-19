@@ -532,7 +532,7 @@
 
     </section>
     <section id="filterCoursesSection" , style="display: none; text-align: center; " style=>
-      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center" style="font-weight: 900;">Filtered Courses</h1>
+      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center paginationScroll" style="font-weight: 900;">Filtered Courses</h1>
 
       <p class="text-center" style="color: white; margin-bottom: 2.0rem;">
         (Add Each Of Your Favored Courses)
@@ -695,12 +695,17 @@
     function createPaginationLink(pageNumber, currentPage) {
       const link = document.createElement("a");
       link.href = "#";
+      link.className = "paginationA";
+      link.id = "paginationA";
       link.textContent = pageNumber;
+      const scrollGoal = document.querySelector(".paginationScroll");
+      
       if (pageNumber === currentPage) {
         link.classList.add("active");
       }
       link.addEventListener("click", () => {
         event.preventDefault();
+        scrollGoal.scrollIntoView({ behavior: 'smooth' });
         paginationFunction(link.textContent);
         // Update the selected page and regenerate pagination
         selectedPage = pageNumber;
