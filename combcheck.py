@@ -7,27 +7,42 @@ def credit_check(courses, LL_credit_hours, UL_credit_hours):
     if not courses:
         return []
 
-    # Find the maximum and minimum credit hours among the courses
-    max_credit_hours = max(course[4] for course in courses)
-    min_credit_hours = min(course[4] for course in courses if course[4] != 0)
+    # Sort the list in descending order by credits
+    courses = sorted(courses, key=lambda x: x[4], reverse=True)
 
-    # If the maximum credit hours is 0, handle special cases
-    if max_credit_hours == 0:
-        # If the lower limit credit hours is also 0, return all combinations of courses
-        if LL_credit_hours == 0:
-            return [combination for r in range(1, len(courses)+1) for combination in combinations(courses, r)]
+    # Iterate through it to find the minimum value for the lower limit
+    temp_lower = 0
+    temp_LL = 0
+    LL = 0
+
+    for course in courses:
+        temp_lower += course[4]
+        temp_LL += 1
+
+        # if greater than or equal to lower credit hours, break
+        if (temp_lower >= LL_credit_hours):
+            LL = temp_LL
+            break
+
+    if LL == 0:
+        return []
+
+    # Iterate through it in reverse order to find the minimum value for the upper limit
+    temp_upper = 0
+    UL = 0
+
+    for course in courses[::-1]:
+        temp_upper += course[4]
+
+        if temp_upper <= UL_credit_hours:
+            UL += 1
         else:
-            # Otherwise, there are no valid combinations, return an empty list
-            return []
+            break
 
     combinations_list = []
 
-    # Calculate the lower and upper limit number of courses based on credit hours
-    LL = (LL_credit_hours // max_credit_hours)
-    UL = (min(len(courses), (UL_credit_hours // min_credit_hours))) + 1
-                             
     # Iterate over different numbers of courses
-    for r in range(LL, UL):
+    for r in range(LL, UL+1):
         # Generate combinations of courses for the current number of courses
         for combination in combinations(courses, r):
             total_credit_hours = sum(course[4] for course in combination)
@@ -36,7 +51,7 @@ def credit_check(courses, LL_credit_hours, UL_credit_hours):
             if LL_credit_hours <= total_credit_hours <= UL_credit_hours:
                 combinations_list.append(combination)
 
-    return [combination for combination in combinations_list if combination]
+    return combinations_list
 
 
 def duplicate_checker(comb):
