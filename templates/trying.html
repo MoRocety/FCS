@@ -619,7 +619,7 @@
 
   </main>
   <footer style="z-index: 100;text-decoration: none;">
-    &copy; 2023 FCS | Created by <a target="_blank" style="text-decoration: none;"
+    &copy; 2023–25 FCS | Created by <a target="_blank" style="text-decoration: none;"
       href="https://www.linkedin.com/in/mujtaba-khalid-21b80a195/">Mujtaba Khalid</a> and <a target="_blank"
       style="text-decoration: none;" href="https://www.linkedin.com/in/mohdbhatti27/">Muhammad R. Bhatti</a>
 
@@ -628,12 +628,18 @@
 
   <script>
     function paginationFunction(pageNumber) {
+      const selectedDepartment = $("#department-selector").val();
+      const selectedCourse = $("#course-selector").val();
+      const selectedInstructor = $("#instructor-selector").val();
 
       $.ajax({
         url: "paginationClick",
         type: "POST",
         data: {
-          page: pageNumber
+          page: pageNumber,
+          dropdown: selectedDepartment,
+          dropdown2: selectedCourse,
+          dropdown3: selectedInstructor
         },
         success: function (response) {
           const courses = JSON.parse(response);
