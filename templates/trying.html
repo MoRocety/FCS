@@ -532,7 +532,8 @@
 
     </section>
     <section id="filterCoursesSection" , style="display: none; text-align: center; " style=>
-      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center paginationScroll" style="font-weight: 900;">Filtered Courses</h1>
+      <h1 class="mt-1 ms-1 mb-1 white-color-setter text-center paginationScroll" style="font-weight: 900;">Filtered
+        Courses</h1>
 
       <p class="text-center" style="color: white; margin-bottom: 2.0rem;">
         (Add Each Of Your Favored Courses)
@@ -618,13 +619,22 @@
     </p>
 
   </main>
-  <footer style="z-index: 100;text-decoration: none;">
-    &copy; 2023–25 FCS | Created by <a target="_blank" style="text-decoration: none;"
-      href="https://www.linkedin.com/in/mujtaba-khalid-21b80a195/">Mujtaba Khalid</a> and <a target="_blank"
-      style="text-decoration: none;" href="https://www.linkedin.com/in/mohdbhatti27/">Muhammad R. Bhatti</a>
+  <footer style="z-index: 100; text-decoration: none;">
+    © 2023–<span id="year"></span> FCS |
+    Created by
+    <a target="_blank" style="text-decoration: none;"
+      href="https://www.linkedin.com/in/mujtaba-khalid-21b80a195/">Mujtaba Khalid</a>
+    and
+    <a target="_blank" style="text-decoration: none;" href="https://www.linkedin.com/in/mohdbhatti27/">Muhammad R.
+      Bhatti</a>
+    |
+    <a style="text-decoration: none;" href="mailto:mujtabakhalid20@gmail.com,rocety27@gmail.com">Contact Us</a>
 
-    | <a style="text-decoration: none;" href="mailto: mujtabakhalid20@gmail.com,rocety27@gmail.com">Contact Us</a>
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
   </footer>
+
 
   <script>
     function paginationFunction(pageNumber) {
@@ -705,7 +715,7 @@
       link.id = "paginationA";
       link.textContent = pageNumber;
       const scrollGoal = document.querySelector(".paginationScroll");
-      
+
       if (pageNumber === currentPage) {
         link.classList.add("active");
       }
