@@ -8,8 +8,6 @@ from combcheck import *
 from datetime import datetime, timedelta, timezone
 from config import get_active_term, decode_term_code, get_active_term_human, set_active_term
 
-cached_sections = []
-
 my_blueprint = Blueprint('my_blueprint', __name__)
 CORS(my_blueprint)
 
@@ -32,8 +30,17 @@ def paginator():
     start_index = (page - 1) * items_per_page
     end_index = start_index + items_per_page
 
-    global cached_sections
-    filtered_sections = cached_sections
+    dropdown_value = request.form['dropdown'].upper()
+    dropdown2_value = request.form['dropdown2'].upper()
+    dropdown3_value = request.form['dropdown3'].upper()
+
+    filtered_sections = []
+
+    for x in course_data:
+        if dropdown_value == "ALL" or dropdown_value == "" or x[0].upper() == dropdown_value:
+            if dropdown2_value == "ALL" or dropdown2_value == "" or x[3].upper() == dropdown2_value:
+                if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
+                    filtered_sections.append(x)
 
     sections_json = []
 
@@ -81,10 +88,6 @@ def index():
                 if dropdown2_value == "ALL" or dropdown2_value == "" or x[3].upper() == dropdown2_value:
                     if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
                         filtered_sections.append(x)
-
-
-        global cached_sections
-        cached_sections = filtered_sections
 
         # Convert sections to JSON format
         sections_json = []
@@ -360,10 +363,6 @@ def update_courses_webhook():
         # Reload the course data globally
         global course_data, departments, courses, sections
         course_data, departments, courses, sections = fileread()
-        
-        # Clear cached sections
-        global cached_sections
-        cached_sections = []
         
         human_readable = decode_term_code(term_code)
         
