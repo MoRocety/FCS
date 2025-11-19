@@ -768,6 +768,20 @@
 
     const colors = ["#9DF4F2", "#CAFA9B", "#7C99F5", "#E8A3F7", "#B5D6F6", "#C4FAFE", "#EAB2A0", "#F092A7", "#BDF29F", "#88C7DD", "#FAE4A0"];
 
+    // Convert 24-hour time to 12-hour format
+    function convertTo12Hour(time24) {
+      if (!time24 || time24 === "TBD" || time24 === "None") {
+        return time24;
+      }
+      
+      const [hours, minutes] = time24.split(':');
+      const hour = parseInt(hours, 10);
+      const ampm = hour >= 12 ? 'PM' : 'AM';
+      const hour12 = hour % 12 || 12; // Convert 0 to 12
+      
+      return `${hour12}:${minutes} ${ampm}`;
+    }
+
     $(document).ready(function () {
       $(".select2").select2();
 
@@ -1045,7 +1059,7 @@
           }
 
           liDiv.append(
-            ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+            ` <p class="filteredCourseP"><strong>${course.classroom.slice(classroomSlice)}</strong> | <strong>${course.days}</strong> | <strong>${convertTo12Hour(course.start_time)}</strong> to <strong>${convertTo12Hour(course.end_time)}</strong></p>`
           );
         }
 
@@ -1059,7 +1073,7 @@
           }
 
           liDiv.append(
-            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(classroomSlice)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${convertTo12Hour(course.alternate_start_time)}</strong> to <strong>${convertTo12Hour(course.alternate_end_time)}</strong></p>`
           );
         }
 
@@ -1227,14 +1241,14 @@
         if (course.classroom !== "TBDTBD") {
 
           shortLiDiv.append(
-            ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${course.start_time}</strong> to <strong>${course.end_time}</strong></p>`
+            ` <p class="filteredCourseP"><strong>${course.classroom.slice(-4)}</strong> | <strong>${course.days}</strong> | <strong>${convertTo12Hour(course.start_time)}</strong> to <strong>${convertTo12Hour(course.end_time)}</strong></p>`
           );
         }
 
         if (course.alternate_classroom !== "None") {
 
           shortLiDiv.append(
-            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${course.alternate_start_time}</strong> to <strong>${course.alternate_end_time}</strong></p>`
+            `<p class="filteredCourseP"><strong>${course.alternate_classroom.slice(-4)}</strong> | <strong>${course.alternate_days}</strong> | <strong>${convertTo12Hour(course.alternate_start_time)}</strong> to <strong>${convertTo12Hour(course.alternate_end_time)}</strong></p>`
           );
         }
 
