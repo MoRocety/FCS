@@ -257,8 +257,9 @@ def update_course():
 def submit_selected_courses():
     data = request.json
     selected_courses = data['selectedCourses']
-    crucial_courses = data['checkedCrucials']
-    # Your code to process the selected courses on the backend
+    crucial_courses = [x for x in data['checkedCrucials'] 
+                   if x['department_id']+x['course_id'] in 
+                   [y['department_id']+y['course_id'] for y in selected_courses]]
 
     shortlist = [course for short_course in selected_courses for course in course_data
                  if (short_course['department_id'] == course[0])
