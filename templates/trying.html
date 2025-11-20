@@ -1399,7 +1399,30 @@
         data: JSON.stringify(data),
         contentType: "application/json",
         success: function (response) {
-          combinations = JSON.parse(response);
+          const responseData = JSON.parse(response);
+          combinations = responseData.schedules;
+          
+          // Check for missing courses and alert user
+          if (responseData.missing_courses && responseData.missing_courses.length > 0) {
+            const missingCount = responseData.missing_courses.length;
+            const missing = responseData.missing_courses;
+            
+            let alertMessage = `⚠️ Warning: ${missingCount} course${missingCount > 1 ? 's' : ''} from your selection could not be found:\n\n`;
+            
+            // Show first 3 courses, then "and X more..." if there are more
+            const displayLimit = 3;
+            for (let i = 0; i < Math.min(displayLimit, missing.length); i++) {
+              alertMessage += `• ${missing[i].department_id} ${missing[i].course_id}-${missing[i].section}\n`;
+            }
+            
+            if (missing.length > displayLimit) {
+              alertMessage += `... and ${missing.length - displayLimit} more\n`;
+            }
+            
+            alertMessage += `\nThe course data may have been updated. Please refresh the page and re-select your courses.`;
+            alert(alertMessage);
+          }
+          
           createTable(0);
         },
       });
