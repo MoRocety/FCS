@@ -261,14 +261,25 @@ def update_course():
 def submit_selected_courses():
     data = request.json
     selected_courses = data['selectedCourses']
-    crucial_courses = [x for x in data['checkedCrucials'] 
-                   if x['department_id']+x['course_id'] in 
-                   [y['department_id']+y['course_id'] for y in selected_courses]]
 
+    # After building shortlist and detecting missing courses (after line 279)
     shortlist = [course for short_course in selected_courses for course in course_data
                  if (short_course['department_id'] == course[0])
                  and (short_course['course_id'] == course[1])
                  and (short_course['section'] == course[2])]
+
+    # Use shortlist, not selected_courses
+    crucial_courses = [x for x in data['checkedCrucials']
+                        if x['department_id']+x['course_id'] in 
+                        [course[0]+course[1] for course in shortlist]]
+
+    # Detect missing courses
+    found_course_keys = {(course[0], course[1], course[2]) for course in shortlist}
+    missing_courses = [
+        short_course for short_course in selected_courses
+        if (short_course['department_id'], short_course['course_id'], short_course['section']) 
+        not in found_course_keys
+    ]
 
     shortlist = [[*sublist[:4], int(sublist[4]), *sublist[5:]] for sublist in shortlist]
 
@@ -316,24 +327,16 @@ def submit_selected_courses():
 
         combinations_lst.append(combination_data)
  
-    # Return a response
-    return json.dumps(combinations_lst)
+    # Return response with schedules and missing courses info
+    response = {
+        'schedules': combinations_lst,
+        'missing_courses': missing_courses
+    }
+    return json.dumps(response)
 
 
 @my_blueprint.route('/webhook/update-courses', methods=['POST'])
 def update_courses_webhook():
-    """
-    Webhook endpoint for GitHub Actions to push updated course data.
-    
-    Expected JSON payload:
-    {
-        "term_code": "2025FA",
-        "content": "... course data file content ..."
-    }
-    
-    Headers:
-    X-Webhook-Token: secret token for authentication
-    """
     # Auth check
     auth_token = request.headers.get('X-Webhook-Token')
     webhook_secret = os.environ.get('WEBHOOK_SECRET', 'change_this_in_production')
@@ -392,9 +395,6 @@ def update_courses_webhook():
 
 @my_blueprint.route('/api/active-term', methods=['GET'])
 def get_active_term_info():
-    """
-    Get information about the currently active term.
-    """
     term_code = get_active_term()
     term_human = get_active_term_human()
     
