@@ -63,12 +63,7 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "GitHub Actions Bot"
         
-        # Copy parsed data to root for commit (keep scraper/ clean in repo)
-        cp "scraper/${ACTIVE_TERM}data.txt" "${ACTIVE_TERM}data.txt"
-        cp "scraper/${ACTIVE_TERM}.json" "${ACTIVE_TERM}.json"
-        cp "ACTIVE_TERM" "ACTIVE_TERM"
-        
-        # Add files
+        # Add all scraped/parsed data files
         git add "${ACTIVE_TERM}data.txt" "${ACTIVE_TERM}.json" "ACTIVE_TERM"
         
         # Commit if there are changes
