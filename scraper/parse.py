@@ -78,22 +78,31 @@ for ds in datasets:
             # Col 4 with the schedule
             col4 = attr[4].text.strip().split("\n")
 
-            start = col4[0].strip().split(":")[1]
-            days = []
+            try:
+                start = col4[0].strip().split(":")[1]
+                days = []
 
-            for d in col4[1].strip().replace(" ", ""):
-                days.append(d)
+                for d in col4[1].strip().replace(" ", ""):
+                    days.append(d)
 
-            days = [d for d in days if d != " "]
+                days = [d for d in days if d != " "]
 
-            if len(col4) == 3:
-                time = col4[2].strip().split("-")
-                start_time = time[0].strip()
-                end_time = time[1].strip()
+                if len(col4) == 3:
+                    time = col4[2].strip().split("-")
+                    start_time = time[0].strip()
+                    end_time = time[1].strip()
 
-            else:
-                start_time = None
-                end_time = None
+                else:
+                    start_time = None
+                    end_time = None
+            except (IndexError, ValueError) as e:
+                print(f"\n❌ Error parsing schedule column (col4):")
+                print(f"Error type: {type(e).__name__}: {e}")
+                print(f"Raw div content (attr[4]):")
+                print(f"{attr[4]}")
+                print(f"Split col4 content: {col4}")
+                print(f"Course context: {dept} {course_code}-{section} {name}")
+                raise
 
             # Col 5 with just instructor
             instructor = ' '.join(attr[5].text.strip().split())
@@ -140,22 +149,31 @@ for ds in datasets:
             # Col 4 with the schedule
             col4 = attr[4].text.strip().split("\n")
 
-            start = col4[0].strip().split(":")[1]
-            days = []
+            try:
+                start = col4[0].strip().split(":")[1]
+                days = []
 
-            for d in col4[1].strip().replace(" ", ""):
-                days.append(d)
-            
-            days = [d for d in days if d != " "]
+                for d in col4[1].strip().replace(" ", ""):
+                    days.append(d)
+                
+                days = [d for d in days if d != " "]
 
-            if len(col4) == 3:
-                time = col4[2].strip().split("-")
-                start_time = time[0].strip()
-                end_time = time[1].strip()
-            
-            else:
-                start_time = None
-                end_time = None
+                if len(col4) == 3:
+                    time = col4[2].strip().split("-")
+                    start_time = time[0].strip()
+                    end_time = time[1].strip()
+                
+                else:
+                    start_time = None
+                    end_time = None
+            except (IndexError, ValueError) as e:
+                print(f"\n❌ Error parsing schedule column (col4) [len(attr)==6]:")
+                print(f"Error type: {type(e).__name__}: {e}")
+                print(f"Raw div content (attr[4]):")
+                print(f"{attr[4]}")
+                print(f"Split col4 content: {col4}")
+                print(f"Course context: {dept} {course_code}-{section} {name}")
+                raise
 
             # Col 5 with just instructor
             instructor = ' '.join(attr[5].text.strip().split())
