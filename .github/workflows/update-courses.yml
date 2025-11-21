@@ -63,8 +63,8 @@ jobs:
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "GitHub Actions Bot"
         
-        # Add all scraped/parsed data files
-        git add "${ACTIVE_TERM}data.txt" "${ACTIVE_TERM}.json" "ACTIVE_TERM"
+        # Add all scraped/parsed data files (scraper outputs to scraper/ directory)
+        git add "scraper/${ACTIVE_TERM}data.txt" "scraper/${ACTIVE_TERM}.json" "ACTIVE_TERM"
         
         # Commit if there are changes
         if git diff --staged --quiet; then
