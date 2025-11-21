@@ -58,6 +58,34 @@ jobs:
         SIZE=$(wc -c < "scraper/$FILENAME")
         echo "Data file created: $FILENAME (${SIZE} bytes)"
     
+    - name: Commit data to repository
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "GitHub Actions Bot"
+        
+        # Copy parsed data to root for commit (keep scraper/ clean in repo)
+        cp "scraper/${ACTIVE_TERM}data.txt" "${ACTIVE_TERM}data.txt"
+        cp "scraper/${ACTIVE_TERM}.json" "${ACTIVE_TERM}.json"
+        cp "ACTIVE_TERM" "ACTIVE_TERM"
+        
+        # Add files
+        git add "${ACTIVE_TERM}data.txt" "${ACTIVE_TERM}.json" "ACTIVE_TERM"
+        
+        # Commit if there are changes
+        if git diff --staged --quiet; then
+          echo "No changes to commit"
+        else
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          git commit -m "chore: update course data for ${ACTIVE_TERM} - ${TIMESTAMP}"
+          echo "✓ Committed course data changes"
+        fi
+    
+    - name: Push changes to repository
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: main
+    
     - name: Send to PythonAnywhere webhook
       env:
         WEBHOOK_URL: ${{ secrets.WEBHOOK_URL }}
