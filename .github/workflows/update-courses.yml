@@ -11,6 +11,8 @@ on:
 jobs:
   scrape-and-update:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Allow workflow to push commits
     
     steps:
     - name: Checkout repository
