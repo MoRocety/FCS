@@ -299,7 +299,7 @@ CRST!!585E!!A!!Bibl Theol:Ministry!!3!!['T', 'R']!!14:00!!15:15!!R Wetmore!!XBLO
 CSCS!!100!!A!!Intro to Computing!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Toor!!SBLOCKS320!!None!!None!!None!!None!!35!!35
 CSCS!!100!!B!!Intro to Computing!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Saleem!!SBLOCKS320!!None!!None!!None!!None!!35!!35
 CSCS!!100!!C!!Intro to Computing!!3!!['T', 'R']!!08:00!!09:15!!S Minhas!!SBLOCKS320!!None!!None!!None!!None!!35!!35
-CSCS!!100!!D!!Intro to Computing!!3!!['M', 'W', 'F']!!08:00!!08:50!!Z Malik!!SBLOCKS320!!None!!None!!None!!None!!35!!35
+CSCS!!100!!D!!Intro to Computing!!3!!['M', 'W', 'F']!!16:00!!16:50!!Z Malik!!SBLOCKS320!!None!!None!!None!!None!!35!!35
 CSCS!!100!!E!!Intro to Computing!!3!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!SBLOCKS218!!None!!None!!None!!None!!35!!35
 CSCS!!100!!F!!Intro to Computing!!3!!['M', 'W', 'F']!!08:00!!08:50!!Z Malik!!SBLOCKS219!!None!!None!!None!!None!!35!!35
 CSCS!!100!!G!!Intro to Computing!!3!!['T', 'R']!!08:00!!09:15!!TBD!!SBLOCKS218!!None!!None!!None!!None!!35!!35
@@ -310,17 +310,17 @@ CSCS!!100!!K!!Intro to Computing!!3!!['T', 'R']!!15:30!!16:45!!TBD!!SBLOCKS219!!
 CSCS!!105!!A!!Basic Electronics!!4!!['M']!!09:00!!10:50!!A Atique!!SBLOCKS027A!!SBLOCKS215!!['M', 'W', 'F']!!14:00!!14:50!!25!!25
 CSCS!!105!!B!!Basic Electronics!!4!!['T', 'R']!!12:30!!13:45!!Team!!SBLOCKS317!!SBLOCKS027A!!['R']!!09:00!!10:50!!35!!35
 CSCS!!105!!C!!Basic Electronics!!4!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS213!!SBLOCKS027A!!['F']!!09:00!!10:50!!35!!35
-CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!35
-CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!B Haq!!SBLOCKS424!!None!!None!!None!!None!!35!!35
-CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!F Janjua!!SBLOCKS215!!None!!None!!None!!None!!35!!35
+CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!35
+CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!35
+CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!35
 CSCS!!202!!A!!Comp Linear Algeb!!3!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!35
-CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!35
-CSCS!!202!!C!!Comp Linear Algeb!!3!!['T', 'R']!!15:30!!16:45!!S Iqbal!!SBLOCKS424!!None!!None!!None!!None!!35!!35
+CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!35
+CSCS!!202!!C!!Comp Linear Algeb!!3!!['T', 'R']!!15:30!!16:45!!F Jamil!!SBLOCKS424!!None!!None!!None!!None!!35!!35
 CSCS!!203!!A!!Differential Equatio!!3!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS417!!None!!None!!None!!None!!35!!35
-CSCS!!203!!B!!Diffential Equation!!3!!['M', 'W', 'F']!!15:00!!15:50!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!35
+CSCS!!203!!B!!Diffential Equation!!3!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 CSCS!!203!!C!!Differential Equatio!!3!!['T', 'R']!!09:30!!10:45!!I Shafique!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 CSCS!!313!!A!!Software Requir Eng!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Toor!!SBLOCKS215!!None!!None!!None!!None!!35!!35
-CSCS!!320!!A!!Numerical Computing!!3!!['M', 'W', 'F']!!10:00!!10:50!!N Shahid!!SBLOCKS316!!None!!None!!None!!None!!35!!35
+CSCS!!320!!A!!Numerical Computing!!3!!['M', 'W', 'F']!!10:00!!10:50!!K Azhar!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 CSCS!!320!!B!!Numerical Computing!!3!!['T', 'R']!!09:30!!10:45!!A Nadeem!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 CSCS!!320!!C!!Numerical Computing!!3!!['M', 'W', 'F']!!14:00!!14:50!!F Ibraheem!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 CSCS!!321!!A!!Cyber Security!!3!!['M']!!14:00!!15:50!!M Butt!!SBLOCKS219!!SBLOCKS119!!['W']!!14:00!!15:50!!35!!35
@@ -331,7 +331,7 @@ CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCK
 CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 CSCS!!468!!A!!Mob App Deveolopment!!3!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS216!!SBLOCKS319!!['W']!!11:00!!12:50!!35!!35
 CSCS!!470!!A!!Introduction to Game!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Shaheen!!SBLOCKS319!!None!!None!!None!!None!!35!!35
-CSCS!!475!!A!!Tech Entrepreneur!!3!!['M', 'W', 'F']!!11:00!!11:50!!Z Malik!!SBLOCKS218!!None!!None!!None!!None!!35!!35
+CSCS!!475!!A!!Tech Entrepreneur!!3!!['T', 'R']!!15:30!!16:45!!Z Malik!!SBLOCKS319!!None!!None!!None!!None!!35!!35
 CSCS!!482!!A!!GenAI Security!!3!!['M', 'W']!!09:00!!10:50!!S Saleem!!SBLOCKS219!!None!!None!!None!!None!!35!!35
 ECON!!100!!A!!Principles of Econom!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Lodhi!!EBLOCKE204!!None!!None!!None!!None!!35!!35
 ECON!!100!!B!!Principles of Econom!!3!!['M', 'W', 'F']!!09:00!!09:50!!T Ahmed!!EBLOCKE202!!None!!None!!None!!None!!35!!35
@@ -576,7 +576,7 @@ MATH!!100!!F!!Quantitative Skills!!3!!['T', 'R']!!09:30!!10:45!!F Jamil!!SBLOCKS
 MATH!!100!!G!!Quantitative Skills!!3!!['T', 'R']!!14:00!!15:15!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!35
 MATH!!101!!A!!Pre-Calc & Trigonom.!!3!!['M', 'W', 'F']!!08:00!!08:50!!G Mehak!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!101!!B!!Pre-Calc & Trigonom.!!3!!['M', 'W', 'F']!!11:00!!11:50!!B Haq!!SBLOCKS416!!None!!None!!None!!None!!35!!35
-MATH!!101!!C!!Pre-Calc & Trigonom.!!3!!['T', 'R']!!11:00!!12:15!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
+MATH!!101!!C!!Pre-Calc & Trigonom.!!3!!['T', 'R']!!11:00!!12:15!!A Nadeem!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!101!!D!!Pre-Calc & Trigonom.!!3!!['T', 'R']!!12:30!!13:45!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!102!!B!!Calculus 1!!3!!['M', 'W', 'F']!!11:00!!11:50!!I Shafique!!SBLOCKS412!!None!!None!!None!!None!!35!!35
 MATH!!103!!A!!Intro. Lin. Algebra!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Nadeem!!SBLOCKS410!!None!!None!!None!!None!!35!!35
