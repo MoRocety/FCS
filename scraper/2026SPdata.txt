@@ -14,7 +14,7 @@ BIOL!!102!!A!!Intro Plant Biology!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Hussain!!
 BIOL!!105!!A!!General Zoology!!4!!['M', 'W', 'F']!!14:00!!14:50!!S Butt!!SBLOCKS313!!SBLOCKS341!!['R']!!14:00!!15:50!!35!!0
 BIOL!!201!!A!!Cell Biology!!3!!['M', 'W']!!10:00!!10:50!!S Ali!!SBLOCKS313!!SBLOCKS321!!['R']!!08:00!!09:50!!35!!18
 BIOL!!201!!B!!Cell Biology!!3!!['M', 'W']!!12:00!!12:50!!S Dogar!!SBLOCKS313!!SBLOCKS321!!['T']!!14:00!!15:50!!35!!0
-BIOL!!203!!A!!General Genetics!!3!!['M', 'W']!!09:00!!09:50!!A Maqbool!!SBLOCKS321!!SBLOCKS331!!['T']!!11:00!!12:50!!35!!12
+BIOL!!203!!A!!General Genetics!!3!!['M', 'W']!!09:00!!09:50!!A Maqbool!!SBLOCKS321!!SBLOCKS331!!['T']!!11:00!!12:50!!35!!11
 BIOL!!212!!A!!Res Design& Biostat!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!10!!1
 BIOL!!313!!A!!Biochemistry!!4!!['M', 'W', 'F']!!08:00!!08:50!!S Ali!!SBLOCKS312!!SBLOCKS329!!['M']!!11:00!!12:50!!35!!0
 BIOL!!315!!A!!Fun of Microbiology!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Mehnaz!!SBLOCKS413!!SBLOCKS321!!['W']!!14:00!!15:50!!35!!0
@@ -260,7 +260,7 @@ COMP!!410!!A!!Parallel and Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Nasim!!SBLOCK
 COMP!!410!!B!!Parallel and Distrib!!3!!['T', 'R']!!13:00!!14:15!!S Nasim!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 COMP!!421!!A!!Information Security!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Basharat!!SBLOCKS216!!None!!None!!None!!None!!35!!4
 COMP!!421!!B!!Information Security!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Saleem!!SBLOCKS316!!None!!None!!None!!None!!35!!0
-COMP!!421!!C!!Information Security!!3!!['T', 'R']!!14:00!!15:15!!M Butt!!SBLOCKS316!!None!!None!!None!!None!!35!!12
+COMP!!421!!C!!Information Security!!3!!['T', 'R']!!14:00!!15:15!!M Butt!!SBLOCKS316!!None!!None!!None!!None!!35!!11
 COMP!!451!!A!!Compiler Constructio!!3!!['T']!!09:00!!10:50!!A Basharat!!SBLOCKS317!!SBLOCKS320!!['R']!!09:00!!10:50!!35!!8
 COMP!!451!!B!!Compiler Constructio!!3!!['M']!!11:00!!12:50!!M Butt!!SBLOCKS219!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!0
 COMP!!497A!!A!!Senior Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!150!!137
@@ -326,7 +326,7 @@ CSCS!!366!!A!!Into.to Nat Language!!3!!['T', 'R']!!15:30!!16:45!!F Ullah!!SBLOCK
 CSCS!!367!!A!!Blockchain tech.&app!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS317!!None!!None!!None!!None!!35!!26
 CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!9
 CSCS!!457!!A!!Computer Vision!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Ashraf!!SBLOCKS111!!None!!None!!None!!None!!35!!0
-CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!20
+CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!21
 CSCS!!468!!A!!Mob App Deveolopment!!3!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS216!!SBLOCKS319!!['W']!!11:00!!12:50!!35!!23
 CSCS!!470!!A!!Introduction to Game!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Shaheen!!SBLOCKS319!!None!!None!!None!!None!!35!!21
 CSCS!!475!!A!!Tech Entrepreneur!!3!!['T', 'R']!!15:30!!16:45!!Z Malik!!SBLOCKS319!!None!!None!!None!!None!!35!!0
@@ -505,12 +505,12 @@ HIST!!102!!A!!Survey of Westrn Civ!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Haider!!
 HIST!!201!!A!!Research Methods!!3!!['M', 'W', 'F']!!15:00!!15:50!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!202!!B!!Surv of Modern Europ!!3!!['T', 'R']!!09:30!!10:45!!S Sumbal!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!204!!A!!History of the U.S!!3!!['T', 'R']!!11:00!!12:15!!S Hayat!!EBLOCKE039!!None!!None!!None!!None!!35!!7
-HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EBLOCKE105!!None!!None!!None!!None!!35!!28
+HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EBLOCKE105!!None!!None!!None!!None!!35!!27
 HIST!!255!!A!!The Indus Valley!!3!!['T', 'R']!!15:30!!16:45!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!32
 HIST!!301!!A!!Philoso of History!!3!!['M', 'W', 'F']!!16:00!!16:50!!A Ijaz!!EBLOCKE040!!None!!None!!None!!None!!35!!17
 HIST!!302!!A!!Mughal Rule in India!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Haider!!EBLOCKE041!!None!!None!!None!!None!!35!!35
 HIST!!303!!A!!Intl Relations& Dipl!!3!!['M', 'W', 'F']!!16:00!!16:50!!M Haider!!EBLOCKE041!!None!!None!!None!!None!!35!!33
-HIST!!305!!A!!Ancnt Hist Sub-Cont!!3!!['M', 'W', 'F']!!11:00!!11:50!!F Masih!!EBLOCKE105!!None!!None!!None!!None!!35!!22
+HIST!!305!!A!!Ancnt Hist Sub-Cont!!3!!['M', 'W', 'F']!!11:00!!11:50!!F Masih!!EBLOCKE105!!None!!None!!None!!None!!35!!23
 HIST!!306!!A!!Islamic History!!3!!['T', 'R']!!12:30!!13:45!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!308!!A!!History of Lahore!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!35
 HIST!!312!!A!!Modern Muslim World!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Ijaz!!EBLOCKE243!!None!!None!!None!!None!!35!!32
@@ -523,7 +523,7 @@ HPED!!101!!A!!Cricket for Girls!!1!!['M', 'W']!!15:00!!16:00!!S Khaliq!!TBDTBD!!
 HPED!!105!!A!!Volleyball(Girls)!!1!!['M', 'W']!!16:00!!17:00!!S Khaliq!!VCOURTVCOURT!!None!!None!!None!!None!!25!!14
 HPED!!105!!B!!Volleyball for Boys!!1!!['T', 'R']!!16:00!!17:00!!S Nazir!!VCOURTVCOURT!!None!!None!!None!!None!!25!!15
 HPED!!106!!A!!Physcl. Exercise Boy!!1!!['T', 'R']!!15:00!!16:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!23
-HPED!!107!!A!!Athletics(Boys)!!1!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!19
+HPED!!107!!A!!Athletics(Boys)!!1!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!18
 HPED!!111!!A!!Tennis (Girls)!!1!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!15
 HPED!!111!!B!!Tennis for Boys!!1!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!None!!None!!None!!None!!25!!14
 HPED!!112!!A!!Handball (Girls)!!1!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!15
@@ -745,7 +745,7 @@ PSYC!!290!!A!!Consumer Psychology!!3!!['T', 'R']!!08:00!!09:15!!M Munir!!EBLOCKE
 PSYC!!295!!A!!Media Psychology!!3!!['T', 'R']!!15:30!!16:45!!Asajid!!EBLOCKE244!!None!!None!!None!!None!!35!!20
 PSYC!!298!!A!!His. & Sys.of Psych!!3!!['T', 'R']!!14:00!!15:15!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!0
 PSYC!!298!!B!!His. & Sys.of Psych!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!7
-PSYC!!300!!A!!Positive Psychology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Ateeq!!EBLOCKE246!!None!!None!!None!!None!!35!!9
+PSYC!!300!!A!!Positive Psychology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Ateeq!!EBLOCKE246!!None!!None!!None!!None!!35!!8
 PSYC!!301!!A!!Industrial Org Psyc!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Ateeq!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 PSYC!!305!!A!!Res Meth in Psyc I!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!EBLOCKE213!!None!!None!!None!!None!!35!!13
 PSYC!!305!!B!!Res Meth in Psyc I!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Majeed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
@@ -818,7 +818,7 @@ SOCL!!504!!A!!Sociology of Develop!!3!!['R']!!16:00!!19:00!!A Azeem!!EBLOCKE204!
 SOCL!!699A!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Athar!!TBDTBD!!None!!None!!None!!None!!25!!25
 SOCL!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Athar!!TBDTBD!!None!!None!!None!!None!!35!!35
 SOCL!!699E!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Athar!!TBDTBD!!None!!None!!None!!None!!25!!25
-SPAN!!101!!A!!Spanish I!!3!!['T', 'R']!!12:30!!13:45!!J parra!!EBLOCKE227!!None!!None!!None!!None!!20!!0
+SPAN!!101!!A!!Spanish I!!3!!['T', 'R']!!12:30!!13:45!!J parra!!EBLOCKE227!!None!!None!!None!!None!!20!!1
 STAT!!100!!E!!Basic Statistics!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Sarwar!!SBLOCKS425!!None!!None!!None!!None!!35!!1
 STAT!!100!!F!!Basic Statistics!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!5
 STAT!!100!!G!!Basic Statistics!!3!!['T', 'R']!!08:00!!09:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!29
