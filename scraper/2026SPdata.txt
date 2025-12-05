@@ -282,7 +282,7 @@ CRIM!!460!!A!!Comparative Criminal!!3!!['T', 'R']!!12:30!!13:45!!M Ali!!EBLOCKE2
 CRST!!151!!A!!Intro to Chris. Thou!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!22
 CRST!!152!!A!!Christian Ethics!!3!!['M', 'W', 'F']!!09:00!!09:50!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!7
 CRST!!152!!C!!Christian Ethics!!3!!['M', 'W', 'F']!!11:00!!11:50!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!0
-CRST!!155!!A!!Interpret the Bible!!3!!['T', 'R']!!09:30!!10:45!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!20
+CRST!!155!!A!!Interpret the Bible!!3!!['T', 'R']!!09:30!!10:45!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!19
 CRST!!211!!A!!Applied Theology 1!!1!!['M']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!29
 CRST!!212!!A!!Applied Theology 2!!1!!['W']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!31
 CRST!!232!!A!!Biblical Hebrew 2!!3!!['T', 'R']!!14:00!!15:15!!D Lanz!!EBLOCKE243!!None!!None!!None!!None!!35!!31
@@ -574,7 +574,7 @@ MATH!!105!!A!!Prob & Prob. Distrib!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Bashir!!
 MATH!!105!!B!!Prob & Prob. Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!9
 MATH!!107!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!20!!10
 MATH!!107!!B!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Hanook!!SBLOCKS417!!None!!None!!None!!None!!20!!18
-MATH!!107!!C!!Statistical Methods!!3!!['M', 'W', 'F']!!10:00!!10:50!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!20!!1
+MATH!!107!!C!!Statistical Methods!!3!!['M', 'W', 'F']!!10:00!!10:50!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!20!!0
 MATH!!107!!D!!Statistical Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!I Naqvi!!SBLOCKS420!!None!!None!!None!!None!!20!!2
 MATH!!107!!E!!Statistical Methods!!3!!['T', 'R']!!08:00!!09:15!!A Tayyab!!SBLOCKS420!!None!!None!!None!!None!!20!!0
 MATH!!107!!F!!Statistical Methods!!3!!['T', 'R']!!14:00!!15:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!20!!10
@@ -689,7 +689,7 @@ PLSC!!101!!E!!Intro to Pol Science!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!
 PLSC!!101!!F!!Intro to Pol Science!!3!!['T', 'R']!!09:30!!10:45!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!H!!Intro to Pol Science!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!5
 PLSC!!101!!I!!Intro to Pol Science!!3!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!0
-PLSC!!101!!J!!Intro to Pol Science!!3!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!4
+PLSC!!101!!J!!Intro to Pol Science!!3!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!5
 PLSC!!101!!K!!Intro to Pol Science!!3!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!20
 PLSC!!102!!A!!Pakistan Government!!3!!['T', 'R']!!11:00!!12:15!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!5
 PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!24
@@ -731,14 +731,14 @@ PSYC!!140!!A!!Psychology of leader!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!E
 PSYC!!150!!A!!Dev. Psychology - 1!!3!!['T', 'R']!!14:00!!15:15!!U Ashiq!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!150!!B!!Dev. Psychology - 1!!3!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!160!!A!!Emotional Intelligen!!3!!['M', 'W', 'F']!!08:00!!08:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!5
-PSYC!!165!!A!!AI in psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!8
+PSYC!!165!!A!!AI in psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!9
 PSYC!!220!!A!!Stat. for Psychology!!4!!['T', 'R']!!11:00!!12:15!!K Safdar!!SBLOCKS416!!EBLOCKE241!!['F']!!10:00!!11:50!!30!!0
 PSYC!!220!!B!!Stat. for Psychology!!4!!['T', 'R']!!12:30!!13:45!!U Ilyas!!EBLOCKE137!!EBLOCKE241!!['W']!!14:00!!15:50!!30!!0
 PSYC!!225!!A!!Ethics in Psychology!!3!!['T', 'R']!!15:30!!16:45!!ESchwaiger!!EBLOCKE246!!None!!None!!None!!None!!35!!29
 PSYC!!230!!A!!Management & Leaders!!3!!['M', 'W', 'F']!!14:00!!14:50!!Asajid!!SBLOCKS116!!None!!None!!None!!None!!35!!35
 PSYC!!245!!A!!Political Psychology!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Niazi!!EBLOCKE246!!None!!None!!None!!None!!35!!33
 PSYC!!275!!A!!Psyc of Peace & conf!!3!!['M', 'W', 'F']!!10:00!!10:50!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!0
-PSYC!!280!!A!!Social Psychology!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Shahed!!EBLOCKE244!!None!!None!!None!!None!!35!!2
+PSYC!!280!!A!!Social Psychology!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Shahed!!EBLOCKE244!!None!!None!!None!!None!!35!!1
 PSYC!!280!!B!!Social Psychology!!3!!['M', 'W', 'F']!!08:00!!08:50!!U Ilyas!!EBLOCKE038!!None!!None!!None!!None!!35!!24
 PSYC!!285!!A!!Spiritual Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!18
 PSYC!!290!!A!!Consumer Psychology!!3!!['T', 'R']!!08:00!!09:15!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!24
@@ -832,7 +832,7 @@ STAT!!101!!C!!Statistical Methods!!3!!['M', 'W', 'F']!!10:00!!10:50!!R Butt!!SBL
 STAT!!101!!D!!Statistical Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!I Naqvi!!SBLOCKS420!!None!!None!!None!!None!!15!!9
 STAT!!101!!E!!Statistical Methods!!3!!['T', 'R']!!08:00!!09:15!!A Tayyab!!SBLOCKS420!!None!!None!!None!!None!!15!!11
 STAT!!101!!F!!Statistical Methods!!3!!['T', 'R']!!14:00!!15:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!15!!11
-STAT!!101!!G!!Statistical Methods!!3!!['T', 'R']!!15:30!!16:45!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!15!!10
+STAT!!101!!G!!Statistical Methods!!3!!['T', 'R']!!15:30!!16:45!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!15!!11
 STAT!!102!!A!!Prob & Prob. Distrib!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!20!!0
 STAT!!102!!B!!Prob & Prob. Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!20!!2
 STAT!!115!!A!!Probability & Stat.!!3!!['T', 'R']!!14:00!!15:15!!I Naqvi!!SBLOCKS425!!None!!None!!None!!None!!35!!0
@@ -842,7 +842,7 @@ STAT!!201!!A!!Statis Inference I!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Mughal!!SB
 STAT!!206!!A!!Intro to Data Analyt!!3!!['T', 'R']!!11:00!!12:15!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!35!!8
 STAT!!206!!B!!Intro to Data Analyt!!3!!['T', 'R']!!09:30!!10:45!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!12
 STAT!!207!!A!!Business Analytics!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!2
-STAT!!207!!B!!Business Analytics!!3!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!12
+STAT!!207!!B!!Business Analytics!!3!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!11
 STAT!!208!!A!!Survey Methodologies!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!35!!32
 STAT!!212!!A!!Res. Meth. & Statis!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!20!!14
 STAT!!301!!A!!Sampling Tech. I!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Mushtaq!!SBLOCKS421!!None!!None!!None!!None!!35!!28
