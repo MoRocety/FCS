@@ -61,11 +61,11 @@ BUSN!!121!!K!!Microeconomics!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE
 BUSN!!160!!B!!Management Comm!!3!!['T', 'R']!!11:00!!12:15!!R John!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!160!!C!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!R John!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!160!!E!!Management Comm!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Mughal!!EBLOCKE331!!None!!None!!None!!None!!35!!26
-BUSN!!160!!F!!Management Comm!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!0
+BUSN!!160!!F!!Management Comm!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!1
 BUSN!!160!!G!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!4
 BUSN!!160!!H!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!I Nasir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!160!!I!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!2
-BUSN!!160!!J!!Management Comm!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!2
+BUSN!!160!!J!!Management Comm!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!1
 BUSN!!160!!K!!Management Comm!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!29
 BUSN!!206!!A!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!B!!Mgt. Acc. & Control!!3!!['T', 'R']!!12:30!!13:45!!A George!!EBLOCKE331!!None!!None!!None!!None!!35!!0
@@ -394,7 +394,7 @@ EDUC!!110!!F!!Foundations of Educ.!!3!!['T', 'R']!!14:00!!15:15!!J Hassan!!EBLOC
 EDUC!!110!!G!!Foundations of Educ.!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Aslam!!EBLOCKE121!!None!!None!!None!!None!!35!!25
 EDUC!!110!!H!!Foundations of Educa!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!25
 EDUC!!120!!A!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!M Raza!!EBLOCKE038!!None!!None!!None!!None!!35!!25
-EDUC!!120!!B!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!2
+EDUC!!120!!B!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!1
 EDUC!!120!!C!!Educ Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!120!!E!!Educ Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Burhan!!EBLOCKE222!!None!!None!!None!!None!!35!!32
 EDUC!!120!!F!!Educ Psychology!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!35
@@ -575,7 +575,7 @@ MATH!!105!!B!!Prob & Prob. Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLOCKS
 MATH!!107!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!20!!10
 MATH!!107!!B!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Hanook!!SBLOCKS417!!None!!None!!None!!None!!20!!18
 MATH!!107!!C!!Statistical Methods!!3!!['M', 'W', 'F']!!10:00!!10:50!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!20!!0
-MATH!!107!!D!!Statistical Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!I Naqvi!!SBLOCKS420!!None!!None!!None!!None!!20!!2
+MATH!!107!!D!!Statistical Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!I Naqvi!!SBLOCKS420!!None!!None!!None!!None!!20!!1
 MATH!!107!!E!!Statistical Methods!!3!!['T', 'R']!!08:00!!09:15!!A Tayyab!!SBLOCKS420!!None!!None!!None!!None!!20!!0
 MATH!!107!!F!!Statistical Methods!!3!!['T', 'R']!!14:00!!15:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!20!!10
 MATH!!107!!G!!Statistical Methods!!3!!['T', 'R']!!15:30!!16:45!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!20!!4
@@ -724,7 +724,7 @@ PLSC!!519!!A!!Local Govt. Sys Pak.!!3!!['W']!!16:00!!19:00!!M Younis!!EBLOCKE202
 PSYC!!100!!A!!Intro to Psychology!!3!!['M', 'W', 'F']!!15:00!!15:50!!Asajid!!SBLOCKS116!!None!!None!!None!!None!!35!!0
 PSYC!!100!!C!!Intro to Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!0
 PSYC!!100!!D!!Intro to Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!M Niazi!!EBLOCKE246!!None!!None!!None!!None!!35!!0
-PSYC!!100!!E!!Intro to Psychology!!3!!['M', 'W', 'F']!!08:00!!08:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!1
+PSYC!!100!!E!!Intro to Psychology!!3!!['M', 'W', 'F']!!08:00!!08:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!101!!A!!Life Skills!!3!!['M', 'W', 'F']!!12:00!!12:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!105!!A!!Eff. Communication!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Asif!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 PSYC!!140!!A!!Psychology of leader!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!32
@@ -858,11 +858,11 @@ STAT!!699A!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hano
 STAT!!699B!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699E!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 UNIV!!100!!C!!FOUND UNIV EDUC!!3!!['F']!!14:00!!16:00!!S Saleem!!EBLOCKE104!!None!!None!!None!!None!!35!!0
-URDU!!101!!C!!Communicative Urdu!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Virk!!EBLOCKE126!!None!!None!!None!!None!!35!!0
+URDU!!101!!C!!Communicative Urdu!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Virk!!EBLOCKE126!!None!!None!!None!!None!!35!!1
 URDU!!101!!D!!Communicative Urdu!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Ashraf!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!E!!Communicative Urdu!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Ashraf!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!F!!Communicative Urdu!!3!!['M', 'W', 'F']!!16:00!!16:50!!A Anwar!!EBLOCKE102!!None!!None!!None!!None!!35!!0
-URDU!!101!!K!!Communicative Urdu!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Khokhar!!EBLOCKE103!!None!!None!!None!!None!!35!!0
+URDU!!101!!K!!Communicative Urdu!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Khokhar!!EBLOCKE103!!None!!None!!None!!None!!35!!1
 URDU!!101!!L!!Communicative Urdu!!3!!['T', 'R']!!09:30!!10:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!M!!Communicative Urdu!!3!!['T', 'R']!!12:30!!13:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!N!!Communicative Urdu!!3!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!0
