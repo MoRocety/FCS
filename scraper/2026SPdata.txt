@@ -255,13 +255,13 @@ COMP!!360!!C!!Introduction to AI!!3!!['T']!!09:00!!10:50!!U Nisar!!SBLOCKS215!!S
 COMP!!401!!A!!Ethics Comp Professn!!1!!['M']!!15:00!!15:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!8
 COMP!!401!!B!!Ethics Comp Professn!!1!!['W']!!15:00!!15:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!15
 COMP!!401!!C!!Ethics Comp Professn!!1!!['W']!!16:00!!16:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!27
-COMP!!405!!A!!Human Computer Inter!!3!!['T', 'R']!!11:00!!12:50!!S Abbasi!!SBLOCKS219!!None!!None!!None!!None!!35!!29
+COMP!!405!!A!!Human Computer Inter!!3!!['T', 'R']!!11:00!!12:50!!S Abbasi!!SBLOCKS219!!None!!None!!None!!None!!35!!30
 COMP!!410!!A!!Parallel and Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Nasim!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 COMP!!410!!B!!Parallel and Distrib!!3!!['T', 'R']!!13:00!!14:15!!S Nasim!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 COMP!!421!!A!!Information Security!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Basharat!!SBLOCKS216!!None!!None!!None!!None!!35!!3
 COMP!!421!!B!!Information Security!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Saleem!!SBLOCKS316!!None!!None!!None!!None!!35!!0
 COMP!!421!!C!!Information Security!!3!!['T', 'R']!!14:00!!15:15!!M Butt!!SBLOCKS316!!None!!None!!None!!None!!35!!10
-COMP!!451!!A!!Compiler Constructio!!3!!['T']!!09:00!!10:50!!A Basharat!!SBLOCKS317!!SBLOCKS320!!['R']!!09:00!!10:50!!35!!8
+COMP!!451!!A!!Compiler Constructio!!3!!['T']!!09:00!!10:50!!A Basharat!!SBLOCKS317!!SBLOCKS320!!['R']!!09:00!!10:50!!35!!7
 COMP!!451!!B!!Compiler Constructio!!3!!['M']!!11:00!!12:50!!M Butt!!SBLOCKS219!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!0
 COMP!!497A!!A!!Senior Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!150!!138
 COMP!!497B!!A!!Senior Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!150!!46
@@ -315,7 +315,7 @@ CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS42
 CSCS!!202!!C!!Comp Linear Algeb!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS416!!None!!None!!None!!None!!35!!31
 CSCS!!203!!A!!Differential Equatio!!3!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS417!!None!!None!!None!!None!!35!!19
 CSCS!!203!!B!!Diffential Equation!!3!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS410!!None!!None!!None!!None!!35!!19
-CSCS!!203!!C!!Differential Equatio!!3!!['T', 'R']!!09:30!!10:45!!S Iqbal!!SBLOCKS413!!None!!None!!None!!None!!35!!1
+CSCS!!203!!C!!Differential Equatio!!3!!['T', 'R']!!09:30!!10:45!!S Iqbal!!SBLOCKS413!!None!!None!!None!!None!!35!!0
 CSCS!!313!!A!!Software Requir Eng!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Toor!!SBLOCKS215!!None!!None!!None!!None!!35!!0
 CSCS!!320!!A!!Numerical Computing!!3!!['M', 'W', 'F']!!14:00!!14:50!!K Azhar!!SBLOCKS216!!None!!None!!None!!None!!35!!6
 CSCS!!320!!B!!Numerical Computing!!3!!['T', 'R']!!09:30!!10:45!!A Nadeem!!SBLOCKS216!!None!!None!!None!!None!!35!!2
@@ -551,7 +551,7 @@ KORN!!101!!B!!Korean I!!3!!['T', 'R']!!11:00!!12:15!!S K Sook!!EBLOCKE140!!None!
 KORN!!102!!A!!Korean II!!3!!['T', 'R']!!12:30!!13:45!!R Park!!EBLOCKE230!!None!!None!!None!!None!!20!!19
 LING!!207!!A!!History of Eng. Lang!!3!!['M', 'W', 'F']!!12:00!!12:50!!R John!!EBLOCKE227!!None!!None!!None!!None!!35!!28
 LING!!217!!A!!Introduction to Ling!!3!!['T', 'R']!!12:30!!13:45!!F Aftab!!EBLOCKE041!!None!!None!!None!!None!!35!!3
-LING!!217!!B!!Introduction to Ling!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!23
+LING!!217!!B!!Introduction to Ling!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!22
 LING!!304!!A!!Semantics!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Justin!!EBLOCKE140!!None!!None!!None!!None!!35!!31
 LING!!308!!A!!Translation Studies!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Wasim!!EBLOCKE227!!None!!None!!None!!None!!35!!28
 LING!!309!!A!!Teaching English as!!3!!['T', 'R']!!09:30!!10:45!!A Fareed!!EBLOCKE040!!None!!None!!None!!None!!35!!33
@@ -745,7 +745,7 @@ PSYC!!290!!A!!Consumer Psychology!!3!!['T', 'R']!!08:00!!09:15!!M Munir!!EBLOCKE
 PSYC!!295!!A!!Media Psychology!!3!!['T', 'R']!!15:30!!16:45!!Asajid!!EBLOCKE244!!None!!None!!None!!None!!35!!20
 PSYC!!298!!A!!His. & Sys.of Psych!!3!!['T', 'R']!!14:00!!15:15!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!0
 PSYC!!298!!B!!His. & Sys.of Psych!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!5
-PSYC!!300!!A!!Positive Psychology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Ateeq!!EBLOCKE246!!None!!None!!None!!None!!35!!9
+PSYC!!300!!A!!Positive Psychology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Ateeq!!EBLOCKE246!!None!!None!!None!!None!!35!!8
 PSYC!!301!!A!!Industrial Org Psyc!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Ateeq!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 PSYC!!305!!A!!Res Meth in Psyc I!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!EBLOCKE213!!None!!None!!None!!None!!35!!12
 PSYC!!305!!B!!Res Meth in Psyc I!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Majeed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
@@ -768,7 +768,7 @@ PSYC!!415!!A!!Res Meth in Psyc II!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Jabeen!!E
 PSYC!!415!!B!!Res Meth in Psyc II!!3!!['T', 'R']!!09:30!!10:45!!M Niazi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 PSYC!!425!!A!!Sports Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!16
 PSYC!!430!!A!!Health Psychology!!3!!['T', 'R']!!15:30!!16:45!!S Shahed!!EBLOCKE243!!None!!None!!None!!None!!35!!0
-PSYC!!440!!A!!Counseling Psycholog!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ateeq!!SBLOCKS413!!None!!None!!None!!None!!35!!22
+PSYC!!440!!A!!Counseling Psycholog!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ateeq!!SBLOCKS413!!None!!None!!None!!None!!35!!21
 PSYC!!440!!B!!Counseling Psycholog!!3!!['T', 'R']!!15:30!!16:45!!N Asif!!SBLOCKS416!!None!!None!!None!!None!!35!!0
 PSYC!!465!!A!!Clinical Psyc!!4!!['M']!!14:00!!15:50!!A aziz!!EBLOCKE244!!EBLOCKE244!!['T', 'R']!!08:00!!09:15!!30!!5
 PSYC!!465!!B!!Clinical Psyc!!4!!['M', 'W', 'F']!!09:00!!09:50!!N Khan!!EBLOCKE137!!EBLOCKE346!!['F']!!14:00!!15:50!!35!!0
@@ -842,7 +842,7 @@ STAT!!201!!A!!Statis Inference I!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Mughal!!SB
 STAT!!206!!A!!Intro to Data Analyt!!3!!['T', 'R']!!11:00!!12:15!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!35!!9
 STAT!!206!!B!!Intro to Data Analyt!!3!!['T', 'R']!!09:30!!10:45!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!12
 STAT!!207!!A!!Business Analytics!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!1
-STAT!!207!!B!!Business Analytics!!3!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!10
+STAT!!207!!B!!Business Analytics!!3!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!9
 STAT!!208!!A!!Survey Methodologies!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!35!!32
 STAT!!212!!A!!Res. Meth. & Statis!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!20!!14
 STAT!!301!!A!!Sampling Tech. I!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Mushtaq!!SBLOCKS421!!None!!None!!None!!None!!35!!28
