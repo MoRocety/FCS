@@ -74,7 +74,7 @@ BUSN!!206!!D!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLO
 BUSN!!206!!E!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Ali Shah!!EBLOCKE333!!None!!None!!None!!None!!35!!13
 BUSN!!206!!F!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Ali Shah!!EBLOCKE333!!None!!None!!None!!None!!35!!27
 BUSN!!206!!G!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!16:00!!16:50!!A George!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!206!!H!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!3
+BUSN!!206!!H!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!2
 BUSN!!206!!I!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!J!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!5
@@ -359,7 +359,7 @@ ECON!!210!!A!!Population Economics!!3!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCK
 ECON!!210!!B!!Population Economics!!3!!['M', 'W', 'F']!!12:00!!12:50!!R Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!300!!A!!Fundam. of Econometr!!3!!['T', 'R']!!09:30!!10:45!!M Bhatti!!EBLOCKE205!!None!!None!!None!!None!!35!!21
 ECON!!300!!B!!Fundam. of Econometr!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Hanif!!EBLOCKE038!!None!!None!!None!!None!!35!!22
-ECON!!302!!A!!Res Meth. & Com. Ap!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EBLOCKE204!!None!!None!!None!!None!!35!!23
+ECON!!302!!A!!Res Meth. & Com. Ap!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EBLOCKE204!!None!!None!!None!!None!!35!!22
 ECON!!302!!B!!Res Meth. & Com. Ap!!3!!['T', 'R']!!11:00!!12:15!!M Tahir!!EBLOCKE241!!None!!None!!None!!None!!35!!24
 ECON!!304!!A!!Managerial Economics!!3!!['T', 'R']!!14:00!!15:15!!U Hanif!!EBLOCKE202!!None!!None!!None!!None!!35!!19
 ECON!!315!!A!!Advanced Math Econ!!3!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!22
@@ -367,7 +367,7 @@ ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!E
 ECON!!322!!A!!Data Analy for Econo!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!3
 ECON!!323!!A!!Digital Economics!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!16
 ECON!!325!!A!!Islamic Economics!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Ahmed!!EBLOCKE203!!None!!None!!None!!None!!35!!4
-ECON!!400!!A!!Issues in Pak Econ!!3!!['T', 'R']!!11:00!!12:15!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!6
+ECON!!400!!A!!Issues in Pak Econ!!3!!['T', 'R']!!11:00!!12:15!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!7
 ECON!!400!!B!!Issues in Pak Econ!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Tahir!!EBLOCKE202!!None!!None!!None!!None!!35!!26
 ECON!!406!!A!!Intro to Game Theory!!3!!['T', 'R']!!09:30!!10:45!!A Batool!!EBLOCKE202!!None!!None!!None!!None!!35!!26
 ECON!!411!!A!!Development Policy!!3!!['T', 'R']!!09:30!!10:45!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!25
@@ -423,10 +423,10 @@ ENGL!!214!!A!!18th Century Novel!!3!!['M', 'W', 'F']!!08:00!!08:50!!I Sayed!!EBL
 ENGL!!301!!A!!19th Ctry Engl Novel!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!19
 ENGL!!303!!A!!Science Fiction!!3!!['T', 'R']!!12:30!!13:45!!Quratulaen!!EBLOCKE221!!None!!None!!None!!None!!35!!0
 ENGL!!307!!A!!Classical Drama!!3!!['M', 'W', 'F']!!11:00!!11:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!18
-ENGL!!310!!A!!British Romantic Poe!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Karim!!EBLOCKE222!!None!!None!!None!!None!!35!!17
+ENGL!!310!!A!!British Romantic Poe!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Karim!!EBLOCKE222!!None!!None!!None!!None!!35!!18
 ENGL!!315!!A!!Poetry I!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Maqbool!!EBLOCKE227!!None!!None!!None!!None!!35!!11
 ENGL!!323!!A!!Amer. Poetry & dram!!3!!['M', 'W', 'F']!!12:00!!12:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!9
-ENGL!!328!!A!!Trauma Lit.&Theory!!3!!['T', 'R']!!09:30!!10:45!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!35!!12
+ENGL!!328!!A!!Trauma Lit.&Theory!!3!!['T', 'R']!!09:30!!10:45!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!35!!11
 ENGL!!331!!A!!Research Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Mir!!EBLOCKE222!!None!!None!!None!!None!!35!!17
 ENGL!!350!!A!!Adv. Creative Writin!!3!!['T', 'R']!!15:30!!16:45!!M Shahid!!EBLOCKE221!!None!!None!!None!!None!!35!!33
 ENGL!!400!!A!!Shakespearean Drama!!3!!['M', 'W', 'F']!!10:00!!10:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!18
@@ -872,7 +872,7 @@ URDU!!104!!A!!Sel Rep Urdu Prose!!3!!['T', 'R']!!11:00!!12:15!!A Samuel!!EBLOCKE
 URDU!!208!!A!!Script Wr in Urdu!!3!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!28
 URDU!!301!!A!!Modern Urdu Poetry!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE103!!None!!None!!None!!None!!35!!34
 URDU!!303!!A!!Intro Selectd Genres!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!35!!34
-URDU!!402!!A!!Study of Urdu Drama!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!34
+URDU!!402!!A!!Study of Urdu Drama!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!33
 URDU!!501!!A!!Pri. & App. of Res.!!3!!['W']!!16:00!!19:00!!A Virk!!EBLOCKE104!!None!!None!!None!!None!!25!!25
 URDU!!502!!A!!Pri. & App. of Crit.!!3!!['F']!!16:00!!19:00!!N Jamal!!EBLOCKE104!!None!!None!!None!!None!!25!!25
 URDU!!503!!A!!Tran: Theo. & Prac.!!3!!['W']!!16:00!!19:00!!A Samuel!!EBLOCKE105!!None!!None!!None!!None!!25!!25
