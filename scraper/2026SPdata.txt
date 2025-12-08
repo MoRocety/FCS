@@ -5,7 +5,7 @@ ARTS!!105!!A!!Religious Art!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Kamran!!SBLOCKS
 ARTS!!106!!A!!Women, Art & Politic!!3!!['T', 'R']!!14:00!!15:15!!S Kamran!!SBLOCKS116!!None!!None!!None!!None!!35!!0
 ARTS!!111!!A!!Fundam. of Drawing I!!3!!['T', 'R']!!14:00!!15:15!!S Ahmad!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 ARTS!!121!!A!!Draawing II!!3!!['T', 'R']!!12:30!!13:45!!S Naeem!!SBLOCKS008!!None!!None!!None!!None!!35!!34
-ARTS!!201!!A!!History of Art II!!3!!['T', 'R']!!08:00!!09:15!!S Naeem!!SBLOCKS111!!None!!None!!None!!None!!35!!33
+ARTS!!201!!A!!History of Art II!!3!!['T', 'R']!!08:00!!09:15!!S Naeem!!SBLOCKS111!!None!!None!!None!!None!!35!!32
 ARTS!!211!!A!!Drawing III!!3!!['T', 'R']!!14:00!!15:15!!S Naeem!!SBLOCKS111!!None!!None!!None!!None!!35!!35
 BIOL!!100!!C!!Intro. Biology!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Dogar!!SBLOCKS312!!SBLOCKS341!!['M']!!14:00!!15:50!!35!!0
 BIOL!!100!!E!!Intro. Biology!!4!!['T', 'R']!!12:30!!13:45!!I Ul Haq!!SBLOCKS312!!SBLOCKS341!!['W']!!14:00!!15:50!!35!!0
@@ -216,7 +216,7 @@ CHEM!!799E!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azee
 CHIN!!101!!A!!Chinese I!!3!!['T', 'R']!!09:30!!10:45!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!B!!Chinese I!!3!!['T', 'R']!!11:00!!12:15!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!102!!A!!Chinese II!!3!!['T', 'R']!!12:30!!13:45!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!19
-COMP!!102!!A!!Programming I!!4!!['T', 'R']!!08:00!!09:15!!F Shaheen!!SBLOCKS219!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!24
+COMP!!102!!A!!Programming I!!4!!['T', 'R']!!08:00!!09:15!!F Shaheen!!SBLOCKS219!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!23
 COMP!!102!!B!!Programming I!!4!!['T']!!11:00!!12:15!!U Nisar!!SBLOCKS320!!SBLOCKS215!!['R']!!11:00!!12:15!!35!!23
 COMP!!111!!A!!Programming II!!4!!['M', 'W', 'F']!!09:00!!09:50!!N Ashraf!!SBLOCKS317!!SBLOCKS319!!['M']!!14:00!!16:50!!35!!0
 COMP!!111!!B!!Programming II!!4!!['M', 'W', 'F']!!11:00!!11:50!!N Ashraf!!SBLOCKS218!!SBLOCKS320!!['T']!!10:00!!12:50!!35!!10
@@ -356,8 +356,8 @@ ECON!!202!!B!!Macroeconomics II!!3!!['M', 'W', 'F']!!14:00!!14:50!!Z Manzoor!!EB
 ECON!!203!!A!!Statistics for Econ.!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Jalil!!EBLOCKE202!!None!!None!!None!!None!!35!!26
 ECON!!203!!B!!Statistics for Econ.!!3!!['T', 'R']!!09:30!!10:45!!Z Iqbal!!EBLOCKE204!!None!!None!!None!!None!!35!!22
 ECON!!206!!A!!Banking and Finance!!3!!['T', 'R']!!11:00!!12:15!!N Ishtiaq!!EBLOCKE202!!None!!None!!None!!None!!35!!22
-ECON!!210!!A!!Population Economics!!3!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCKE204!!None!!None!!None!!None!!35!!21
-ECON!!210!!B!!Population Economics!!3!!['M', 'W', 'F']!!12:00!!12:50!!R Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!1
+ECON!!210!!A!!Population Economics!!3!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCKE204!!None!!None!!None!!None!!35!!20
+ECON!!210!!B!!Population Economics!!3!!['M', 'W', 'F']!!12:00!!12:50!!R Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!300!!A!!Fundam. of Econometr!!3!!['T', 'R']!!09:30!!10:45!!M Bhatti!!EBLOCKE205!!None!!None!!None!!None!!35!!21
 ECON!!300!!B!!Fundam. of Econometr!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Hanif!!EBLOCKE038!!None!!None!!None!!None!!35!!23
 ECON!!302!!A!!Res Meth. & Com. Ap!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EBLOCKE204!!None!!None!!None!!None!!35!!22
@@ -367,7 +367,7 @@ ECON!!315!!A!!Advanced Math Econ!!3!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE2
 ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!10
 ECON!!322!!A!!Data Analy for Econo!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!0
 ECON!!323!!A!!Digital Economics!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!16
-ECON!!325!!A!!Islamic Economics!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Ahmed!!EBLOCKE203!!None!!None!!None!!None!!35!!3
+ECON!!325!!A!!Islamic Economics!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Ahmed!!EBLOCKE203!!None!!None!!None!!None!!35!!4
 ECON!!400!!A!!Issues in Pak Econ!!3!!['T', 'R']!!11:00!!12:15!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!7
 ECON!!400!!B!!Issues in Pak Econ!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Tahir!!EBLOCKE202!!None!!None!!None!!None!!35!!26
 ECON!!406!!A!!Intro to Game Theory!!3!!['T', 'R']!!09:30!!10:45!!A Batool!!EBLOCKE202!!None!!None!!None!!None!!35!!26
@@ -691,7 +691,7 @@ PLSC!!101!!F!!Intro to Pol Science!!3!!['T', 'R']!!09:30!!10:45!!S Sindhu!!EBLOC
 PLSC!!101!!H!!Intro to Pol Science!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!I!!Intro to Pol Science!!3!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!J!!Intro to Pol Science!!3!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!1
-PLSC!!101!!K!!Intro to Pol Science!!3!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!19
+PLSC!!101!!K!!Intro to Pol Science!!3!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!18
 PLSC!!102!!A!!Pakistan Government!!3!!['T', 'R']!!11:00!!12:15!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!5
 PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!24
 PLSC!!102!!C!!Pakistan Government!!3!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!28
@@ -756,7 +756,7 @@ PSYC!!340!!A!!Abnormal Psychology!!3!!['M', 'W', 'F']!!11:00!!11:50!!Asajid!!SBL
 PSYC!!340!!B!!Abnormal Psychology!!3!!['T', 'R']!!12:30!!13:45!!U Rizwan!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 PSYC!!350!!A!!Biopsychology!!3!!['T', 'R']!!11:00!!12:15!!S Samuel!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 PSYC!!354!!A!!Cognitive Psychology!!4!!['M']!!10:00!!11:50!!S Jabeen!!EBLOCKE241!!EBLOCKE241!!['T', 'R']!!09:30!!10:45!!35!!33
-PSYC!!354!!B!!Cognitive Psychology!!4!!['T', 'R']!!14:00!!15:15!!N Asif!!EBLOCKE241!!EBLOCKE241!!['W']!!10:00!!11:50!!35!!10
+PSYC!!354!!B!!Cognitive Psychology!!4!!['T', 'R']!!14:00!!15:15!!N Asif!!EBLOCKE241!!EBLOCKE241!!['W']!!10:00!!11:50!!35!!9
 PSYC!!360!!A!!Psych Testing & Mea!!4!!['T', 'R']!!12:30!!13:45!!A Malik!!EBLOCKE241!!EBLOCKE244!!['F']!!14:00!!15:50!!30!!0
 PSYC!!360!!B!!Psych Testing & Mea!!4!!['M', 'W', 'F']!!10:00!!10:50!!U Rizwan!!EBLOCKE137!!EBLOCKE244!!['W']!!14:00!!15:50!!30!!0
 PSYC!!370!!A!!Geriatric Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Shahed!!EBLOCKE213!!None!!None!!None!!None!!35!!0
