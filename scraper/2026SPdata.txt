@@ -173,13 +173,13 @@ BUSN!!625!!A!!BUSINESS ETHICS!!3!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None
 BUSN!!670!!A!!NEW PRODUCT DEVT!!3!!['T', 'R']!!10:00!!11:15!!F Malik!!EBLOCKE301!!None!!None!!None!!None!!35!!34
 BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!34
 BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!A Ibrahim!!EBLOCKE301!!None!!None!!None!!None!!35!!34
-CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Rashida!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!8
+CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Rashida!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!9
 CHEM!!100!!F!!Intro. to Chemistry!!4!!['M']!!09:00!!10:50!!H Abid!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!0
 CHEM!!150!!B!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!14:00!!15:50!!35!!17
 CHEM!!150!!C!!Intro. Inorg. Chem!!4!!['T', 'R']!!14:00!!15:15!!H Abid!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!27
 CHEM!!160!!A!!Intro. Org Biochem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!10!!0
-CHEM!!160!!B!!Intro. Org Biochem!!4!!['T', 'R']!!09:30!!10:45!!S Azeem!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!12
+CHEM!!160!!B!!Intro. Org Biochem!!4!!['T', 'R']!!09:30!!10:45!!S Azeem!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!11
 CHEM!!170!!A!!Inro. Physical Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!AY khan!!SBLOCKS212!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!35
 CHEM!!250!!A!!Chem Main Groups!!4!!['T', 'R']!!09:30!!10:45!!M Iqbal!!SBLOCKS213!!SBLOCKS138!!['R']!!14:00!!16:50!!35!!28
 CHEM!!260!!A!!Prin. Organic Chem!!4!!['M']!!09:00!!10:50!!S Azeem!!SBLOCKS135!!SBLOCKS212!!['T', 'R']!!12:30!!13:45!!35!!33
@@ -226,7 +226,7 @@ COMP!!111!!E!!Programming II!!4!!['M', 'W', 'F']!!15:00!!15:50!!Q Quraishi!!SBLO
 COMP!!113!!A!!Discrete Mathematics!!3!!['T', 'R']!!08:00!!09:15!!S Nasim!!SBLOCKS216!!None!!None!!None!!None!!35!!0
 COMP!!113!!B!!Discrete Mathematics!!3!!['T', 'R']!!11:00!!12:15!!M Chaudhry!!SBLOCKS216!!None!!None!!None!!None!!35!!0
 COMP!!113!!C!!Discrete Mathematics!!3!!['T', 'R']!!12:30!!13:45!!M Mushtaq!!SBLOCKS216!!None!!None!!None!!None!!35!!19
-COMP!!200!!A!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Qureshi!!SBLOCKS317!!SBLOCKS218!!['M']!!14:00!!16:50!!35!!22
+COMP!!200!!A!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Qureshi!!SBLOCKS317!!SBLOCKS218!!['M']!!14:00!!16:50!!35!!21
 COMP!!200!!B!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!09:00!!09:50!!S Qureshi!!SBLOCKS213!!SBLOCKS319!!['W']!!14:00!!16:50!!35!!21
 COMP!!206!!A!!Digital Logic Design!!3!!['T']!!14:00!!15:50!!S Minhas!!SBLOCKS027A!!SBLOCKS215!!['R']!!14:00!!15:50!!35!!0
 COMP!!206!!B!!Digital Logic Design!!3!!['M']!!09:00!!10:50!!S Minhas!!SBLOCKS216!!SBLOCKS027A!!['W']!!09:00!!10:50!!35!!4
@@ -308,8 +308,8 @@ CSCS!!100!!K!!Intro to Computing!!3!!['T', 'R']!!15:30!!16:45!!M Mushtaq!!SBLOCK
 CSCS!!105!!A!!Basic Electronics!!4!!['M']!!08:00!!10:50!!A Atique!!SBLOCKS027A!!SBLOCKS215!!['M', 'W', 'F']!!14:00!!14:50!!25!!19
 CSCS!!105!!B!!Basic Electronics!!4!!['T', 'R']!!12:30!!13:45!!I Iqbal!!SBLOCKS317!!SBLOCKS027A!!['R']!!08:00!!10:50!!35!!10
 CSCS!!105!!C!!Basic Electronics!!4!!['T', 'R']!!15:30!!16:45!!I Iqbal!!SBLOCKS213!!SBLOCKS027A!!['F']!!08:00!!10:50!!35!!22
-CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!8
-CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!19
+CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!7
+CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!20
 CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!35
 CSCS!!202!!A!!Comp Linear Algeb!!3!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!26
 CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!4
@@ -416,14 +416,14 @@ EDUC!!545!!A!!Organizational Theor!!3!!['T']!!16:00!!19:00!!A Khokhar!!EBLOCKE04
 EDUC!!640!!A!!Human Resource Manag!!3!!['F']!!16:00!!19:00!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!25!!25
 EDUC!!645!!A!!Creative Approaches!!3!!['W']!!16:00!!19:00!!M Raza!!EBLOCKE121!!None!!None!!None!!None!!25!!25
 ENGL!!110!!A!!Contemp Short Story!!3!!['M', 'W', 'F']!!09:00!!09:50!!N Ahmad!!EBLOCKE222!!None!!None!!None!!None!!35!!0
-ENGL!!175!!A!!Crit. Think.&Reading!!3!!['T', 'R']!!14:00!!15:15!!A Zia!!EBLOCKE221!!None!!None!!None!!None!!35!!0
+ENGL!!175!!A!!Crit. Think.&Reading!!3!!['T', 'R']!!14:00!!15:15!!A Zia!!EBLOCKE221!!None!!None!!None!!None!!35!!1
 ENGL!!175!!B!!Crit. Think.&Reading!!3!!['T', 'R']!!08:00!!09:15!!S Hanif!!EBLOCKE221!!None!!None!!None!!None!!35!!10
 ENGL!!201!!B!!Intro to English lit!!3!!['T', 'R']!!11:00!!12:15!!R Wasif!!EBLOCKE221!!None!!None!!None!!None!!35!!0
 ENGL!!201!!C!!Intro to English lit!!3!!['M', 'W', 'F']!!10:00!!10:50!!J C Imdad!!EBLOCKE222!!None!!None!!None!!None!!35!!0
 ENGL!!214!!A!!18th Century Novel!!3!!['M', 'W', 'F']!!08:00!!08:50!!I Sayed!!EBLOCKE222!!None!!None!!None!!None!!35!!18
 ENGL!!301!!A!!19th Ctry Engl Novel!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!19
 ENGL!!303!!A!!Science Fiction!!3!!['T', 'R']!!12:30!!13:45!!Quratulaen!!EBLOCKE221!!None!!None!!None!!None!!35!!0
-ENGL!!307!!A!!Classical Drama!!3!!['M', 'W', 'F']!!11:00!!11:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!19
+ENGL!!307!!A!!Classical Drama!!3!!['M', 'W', 'F']!!11:00!!11:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!18
 ENGL!!310!!A!!British Romantic Poe!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Karim!!EBLOCKE222!!None!!None!!None!!None!!35!!18
 ENGL!!315!!A!!Poetry I!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Maqbool!!EBLOCKE227!!None!!None!!None!!None!!35!!11
 ENGL!!323!!A!!Amer. Poetry & dram!!3!!['M', 'W', 'F']!!12:00!!12:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!8
@@ -695,7 +695,7 @@ PLSC!!101!!K!!Intro to Pol Science!!3!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE
 PLSC!!102!!A!!Pakistan Government!!3!!['T', 'R']!!11:00!!12:15!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!4
 PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!24
 PLSC!!102!!C!!Pakistan Government!!3!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!28
-PLSC!!203!!A!!International Relati!!3!!['T', 'R']!!12:30!!13:45!!M Farooqi!!EBLOCKE139!!None!!None!!None!!None!!35!!5
+PLSC!!203!!A!!International Relati!!3!!['T', 'R']!!12:30!!13:45!!M Farooqi!!EBLOCKE139!!None!!None!!None!!None!!35!!4
 PLSC!!203!!B!!International Relati!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Sindhu!!EBLOCKE126!!None!!None!!None!!None!!35!!31
 PLSC!!212!!A!!Theor Comp. Politic!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!17
 PLSC!!301!!A!!Ancnt, Mdvl, Poli Th!!3!!['M', 'W', 'F']!!11:00!!11:50!!K Khan!!EBLOCKE139!!None!!None!!None!!None!!35!!2
@@ -870,7 +870,7 @@ URDU!!101!!N!!Communicative Urdu!!3!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE1
 URDU!!101!!O!!Communicative Urdu!!3!!['T', 'R']!!14:00!!15:15!!N Jamal!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 URDU!!101!!P!!Communicative Urdu!!3!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!104!!A!!Sel Rep Urdu Prose!!3!!['T', 'R']!!11:00!!12:15!!A Samuel!!EBLOCKE246!!None!!None!!None!!None!!35!!32
-URDU!!208!!A!!Script Wr in Urdu!!3!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!28
+URDU!!208!!A!!Script Wr in Urdu!!3!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!27
 URDU!!301!!A!!Modern Urdu Poetry!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE103!!None!!None!!None!!None!!35!!34
 URDU!!303!!A!!Intro Selectd Genres!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!35!!34
 URDU!!402!!A!!Study of Urdu Drama!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!32
