@@ -242,17 +242,17 @@ COMP!!300!!C!!Computer Organizatio!!3!!['M']!!09:00!!10:50!!I Iqbal!!SBLOCKS120!
 COMP!!301!!A!!Operating Systems!!3!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['F']!!09:00!!10:50!!35!!28
 COMP!!301!!B!!Operating Systems!!3!!['M']!!11:00!!12:50!!M Chaudhry!!SBLOCKS319!!SBLOCKS216!!['F']!!11:00!!12:50!!35!!17
 COMP!!301!!C!!Operating Systems!!3!!['T', 'R']!!11:00!!12:50!!M Butt!!SBLOCKS319!!None!!None!!None!!None!!35!!9
-COMP!!302!!A!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!1
+COMP!!302!!A!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!0
 COMP!!302!!B!!Theory of Automata!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!20
 COMP!!302!!C!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Bqa!!SBLOCKS317!!None!!None!!None!!None!!35!!27
 COMP!!303!!A!!D&A of Algorithms!!3!!['M', 'W', 'F']!!09:00!!09:50!!R Bqa!!SBLOCKS316!!None!!None!!None!!None!!35!!0
 COMP!!303!!B!!D&A of Algorithms!!3!!['M', 'W', 'F']!!11:00!!11:50!!R Bqa!!SBLOCKS316!!None!!None!!None!!None!!35!!0
 COMP!!311!!A!!Computer Networks!!3!!['T', 'R']!!11:00!!12:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!0
 COMP!!311!!B!!Computer Networks!!3!!['W', 'F']!!09:00!!10:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!9
-COMP!!311!!C!!Computer Networks!!3!!['M', 'W']!!09:00!!10:50!!A Basharat!!SBLOCKS319!!None!!None!!None!!None!!35!!3
+COMP!!311!!C!!Computer Networks!!3!!['M', 'W']!!09:00!!10:50!!A Basharat!!SBLOCKS319!!None!!None!!None!!None!!35!!2
 COMP!!360!!A!!Introduction to AI!!3!!['T']!!11:00!!12:50!!A Khanum!!SBLOCKS215!!SBLOCKS320!!['R']!!11:00!!12:50!!35!!0
 COMP!!360!!B!!Introduction to AI!!3!!['T']!!14:00!!15:50!!A Khanum!!SBLOCKS120!!SBLOCKS120!!['R']!!14:00!!15:50!!25!!0
-COMP!!360!!C!!Introduction to AI!!3!!['T']!!09:00!!10:50!!U Nisar!!SBLOCKS215!!SBLOCKS319!!['R']!!09:00!!10:50!!35!!24
+COMP!!360!!C!!Introduction to AI!!3!!['T']!!09:00!!10:50!!U Nisar!!SBLOCKS215!!SBLOCKS319!!['R']!!09:00!!10:50!!35!!23
 COMP!!401!!A!!Ethics Comp Professn!!1!!['M']!!15:00!!15:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!6
 COMP!!401!!B!!Ethics Comp Professn!!1!!['W']!!15:00!!15:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!14
 COMP!!401!!C!!Ethics Comp Professn!!1!!['W']!!16:00!!16:50!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!27
@@ -326,7 +326,7 @@ CSCS!!321!!A!!Cyber Security!!3!!['M']!!14:00!!15:50!!M Butt!!SBLOCKS219!!SBLOCK
 CSCS!!342!!A!!Web Application Deve!!3!!['T', 'R']!!13:00!!14:50!!A Yousaf!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!366!!A!!Into.to Nat Language!!3!!['T', 'R']!!15:30!!16:45!!F Ullah!!SBLOCKS216!!None!!None!!None!!None!!35!!8
 CSCS!!367!!A!!Blockchain tech.&app!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS317!!None!!None!!None!!None!!35!!26
-CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!8
+CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!7
 CSCS!!457!!A!!Computer Vision!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Ashraf!!SBLOCKS111!!None!!None!!None!!None!!35!!0
 CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!21
 CSCS!!468!!A!!Mob App Deveolopment!!3!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS216!!SBLOCKS319!!['W']!!11:00!!12:50!!35!!23
@@ -651,7 +651,7 @@ PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLO
 PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!4
 PHYS!!102!!A!!General Physics II!!4!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!20!!2
 PHYS!!102!!B!!General Physics II!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!35!!29
-PHYS!!103!!A!!Mechanics!!4!!['T', 'R']!!11:00!!12:15!!H Latif!!SBLOCKS027A!!SBLOCKS029!!['W']!!11:00!!12:50!!35!!20
+PHYS!!103!!A!!Mechanics!!4!!['T', 'R']!!11:00!!12:15!!H Latif!!SBLOCKS027A!!SBLOCKS029!!['W']!!11:00!!12:50!!35!!19
 PHYS!!103!!B!!Mechanics!!4!!['M']!!14:00!!15:50!!A Rehman!!SBLOCKS029!!SBLOCKS007!!['T', 'R']!!09:30!!10:45!!35!!31
 PHYS!!104!!A!!Wave and Vibrations!!4!!['M']!!14:00!!15:50!!S Zaheer!!SBLOCKS039!!SBLOCKS016A!!['T', 'R']!!09:30!!10:45!!35!!28
 PHYS!!222!!A!!Modern Physics!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Shah!!SBLOCKS039!!SBLOCKS039!!['W']!!14:00!!15:50!!35!!26
@@ -733,7 +733,7 @@ PSYC!!140!!A!!Psychology of leader!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!E
 PSYC!!150!!A!!Dev. Psychology - 1!!3!!['T', 'R']!!14:00!!15:15!!U Ashiq!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!150!!B!!Dev. Psychology - 1!!3!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!160!!A!!Emotional Intelligen!!3!!['M', 'W', 'F']!!08:00!!08:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!4
-PSYC!!165!!A!!AI in psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!10
+PSYC!!165!!A!!AI in psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!9
 PSYC!!220!!A!!Stat. for Psychology!!4!!['T', 'R']!!11:00!!12:15!!K Safdar!!SBLOCKS416!!EBLOCKE241!!['F']!!10:00!!11:50!!30!!0
 PSYC!!220!!B!!Stat. for Psychology!!4!!['T', 'R']!!12:30!!13:45!!U Ilyas!!EBLOCKE137!!EBLOCKE241!!['W']!!14:00!!15:50!!30!!0
 PSYC!!225!!A!!Ethics in Psychology!!3!!['T', 'R']!!15:30!!16:45!!ESchwaiger!!EBLOCKE246!!None!!None!!None!!None!!35!!27
