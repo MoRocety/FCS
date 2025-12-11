@@ -63,7 +63,7 @@ BUSN!!160!!B!!Management Comm!!3!!['T', 'R']!!11:00!!12:15!!R John!!EBLOCKE343!!
 BUSN!!160!!C!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!R John!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!160!!E!!Management Comm!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Mughal!!EBLOCKE331!!None!!None!!None!!None!!35!!17
 BUSN!!160!!F!!Management Comm!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!160!!G!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!1
+BUSN!!160!!G!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Mughal!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!160!!H!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!I Nasir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!160!!I!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!160!!J!!Management Comm!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
@@ -530,7 +530,7 @@ HPED!!107!!A!!Athletics(Boys)!!1!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRAC
 HPED!!111!!A!!Tennis (Girls)!!1!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!14
 HPED!!111!!B!!Tennis for Boys!!1!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!None!!None!!None!!None!!25!!13
 HPED!!112!!A!!Handball (Girls)!!1!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!14
-HPED!!150!!A!!Advanced first Aid!!4!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!22
+HPED!!150!!A!!Advanced first Aid!!4!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!21
 HPED!!150!!B!!Advanced first Aid!!4!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['W']!!15:00!!16:50!!35!!8
 HPED!!151!!A!!Sports Injuries!!2!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!22
 HPED!!151!!B!!Sports Injuries!!2!!['T', 'R']!!09:30!!10:20!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!9
@@ -651,7 +651,7 @@ PHYS!!100!!D!!Intro. to Physics!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBL
 PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!18
 PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!2
 PHYS!!102!!A!!General Physics II!!4!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!20!!0
-PHYS!!102!!B!!General Physics II!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!14
+PHYS!!102!!B!!General Physics II!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!13
 PHYS!!103!!A!!Mechanics!!4!!['T', 'R']!!11:00!!12:15!!H Latif!!SBLOCKS027A!!SBLOCKS029!!['W']!!11:00!!12:50!!35!!19
 PHYS!!103!!B!!Mechanics!!4!!['M']!!14:00!!15:50!!A Rehman!!SBLOCKS029!!SBLOCKS007!!['T', 'R']!!09:30!!10:45!!35!!30
 PHYS!!104!!A!!Wave and Vibrations!!4!!['M']!!14:00!!15:50!!S Zaheer!!SBLOCKS039!!SBLOCKS016A!!['T', 'R']!!09:30!!10:45!!35!!27
@@ -911,8 +911,8 @@ WRCM!!102!!MM!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!N Justin!!SBLO
 WRCM!!102!!N!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!N Justin!!SBLOCKS312!!None!!None!!None!!None!!25!!0
 WRCM!!102!!NN!!Writing&Communic. II!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Saleh!!EBLOCKE214!!None!!None!!None!!None!!25!!22
 WRCM!!102!!O!!Writing&Communic. II!!3!!['T', 'R']!!12:30!!13:45!!R Wasif!!SBLOCKS007!!None!!None!!None!!None!!25!!0
-WRCM!!102!!P!!Writing&Communic. II!!3!!['M', 'W', 'F']!!08:00!!08:50!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!21
-WRCM!!102!!PP!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!18
+WRCM!!102!!P!!Writing&Communic. II!!3!!['M', 'W', 'F']!!08:00!!08:50!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!22
+WRCM!!102!!PP!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!17
 WRCM!!102!!Q!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Saleh!!EBLOCKE205!!None!!None!!None!!None!!25!!25
 WRCM!!102!!QQ!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE203!!None!!None!!None!!None!!25!!24
 WRCM!!102!!R!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!S Pervez!!SBLOCKS008!!None!!None!!None!!None!!25!!1
