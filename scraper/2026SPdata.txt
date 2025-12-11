@@ -19,7 +19,7 @@ BIOL!!212!!A!!Res Design& Biostat!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!S
 BIOL!!313!!A!!Biochemistry!!4!!['M', 'W', 'F']!!08:00!!08:50!!S Ali!!SBLOCKS312!!SBLOCKS329!!['M']!!11:00!!12:50!!35!!0
 BIOL!!315!!A!!Fun of Microbiology!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Mehnaz!!SBLOCKS413!!SBLOCKS321!!['W']!!14:00!!15:50!!35!!0
 BIOL!!331!!A!!Soil Microbiology!!3!!['T', 'R']!!11:00!!12:15!!S Mehnaz!!SBLOCKS321!!SBLOCKS321!!['R']!!14:00!!15:50!!35!!29
-BIOL!!403!!A!!Plant Physiology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!SBLOCKS413!!None!!None!!None!!None!!35!!13
+BIOL!!403!!A!!Plant Physiology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!SBLOCKS413!!None!!None!!None!!None!!35!!12
 BIOL!!412!!A!!Neurobiology!!3!!['M', 'W', 'F']!!08:00!!08:50!!Team!!SBLOCKS313!!None!!None!!None!!None!!35!!26
 BIOL!!415!!A!!Food Micrbio.&Safety!!4!!['M']!!14:00!!15:50!!B Sadiq!!SBLOCKS321!!SBLOCKS329!!['T', 'R']!!09:30!!10:45!!35!!16
 BIOL!!469!!A!!Plant Pathology!!4!!['T', 'R']!!08:00!!09:15!!I Khokhar!!SBLOCKS312!!SBLOCKS329!!['W']!!14:00!!15:50!!35!!30
@@ -358,7 +358,7 @@ ECON!!202!!B!!Macroeconomics II!!3!!['M', 'W', 'F']!!14:00!!14:50!!Z Manzoor!!EB
 ECON!!203!!A!!Statistics for Econ.!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Jalil!!EBLOCKE202!!None!!None!!None!!None!!35!!25
 ECON!!203!!B!!Statistics for Econ.!!3!!['T', 'R']!!09:30!!10:45!!Z Iqbal!!EBLOCKE204!!None!!None!!None!!None!!35!!21
 ECON!!206!!A!!Banking and Finance!!3!!['T', 'R']!!11:00!!12:15!!N Ishtiaq!!EBLOCKE202!!None!!None!!None!!None!!35!!21
-ECON!!210!!A!!Population Economics!!3!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCKE204!!None!!None!!None!!None!!35!!17
+ECON!!210!!A!!Population Economics!!3!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCKE204!!None!!None!!None!!None!!35!!16
 ECON!!210!!B!!Population Economics!!3!!['M', 'W', 'F']!!12:00!!12:50!!R Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!300!!A!!Fundam. of Econometr!!3!!['T', 'R']!!09:30!!10:45!!M Bhatti!!EBLOCKE205!!None!!None!!None!!None!!35!!19
 ECON!!300!!B!!Fundam. of Econometr!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Hanif!!EBLOCKE038!!None!!None!!None!!None!!35!!22
@@ -366,12 +366,12 @@ ECON!!302!!A!!Res Meth. & Com. Ap!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EB
 ECON!!302!!B!!Res Meth. & Com. Ap!!3!!['T', 'R']!!11:00!!12:15!!M Tahir!!EBLOCKE241!!None!!None!!None!!None!!35!!25
 ECON!!304!!A!!Managerial Economics!!3!!['T', 'R']!!14:00!!15:15!!U Hanif!!EBLOCKE202!!None!!None!!None!!None!!35!!15
 ECON!!315!!A!!Advanced Math Econ!!3!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!19
-ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!4
-ECON!!322!!A!!Data Analy for Econo!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!0
+ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!3
+ECON!!322!!A!!Data Analy for Econo!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!1
 ECON!!323!!A!!Digital Economics!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!15
 ECON!!325!!A!!Islamic Economics!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Ahmed!!EBLOCKE203!!None!!None!!None!!None!!35!!0
 ECON!!400!!A!!Issues in Pak Econ!!3!!['T', 'R']!!11:00!!12:15!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!5
-ECON!!400!!B!!Issues in Pak Econ!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Tahir!!EBLOCKE202!!None!!None!!None!!None!!35!!26
+ECON!!400!!B!!Issues in Pak Econ!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Tahir!!EBLOCKE202!!None!!None!!None!!None!!35!!25
 ECON!!406!!A!!Intro to Game Theory!!3!!['T', 'R']!!09:30!!10:45!!A Batool!!EBLOCKE202!!None!!None!!None!!None!!35!!23
 ECON!!411!!A!!Development Policy!!3!!['T', 'R']!!09:30!!10:45!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!24
 ECON!!413!!A!!Monetary Policy!!3!!['T', 'R']!!14:00!!15:15!!M Tahir!!EBLOCKE205!!None!!None!!None!!None!!35!!35
@@ -393,7 +393,7 @@ ECON!!799B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhat
 ECON!!799D!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!34
 EDUC!!110!!A!!Foundations of Educ.!!3!!['T', 'R']!!15:30!!16:45!!J Hassan!!EBLOCKE230!!None!!None!!None!!None!!35!!0
 EDUC!!110!!D!!Foundations of Educ.!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-EDUC!!110!!E!!Foundations of Educ.!!3!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!11
+EDUC!!110!!E!!Foundations of Educ.!!3!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!10
 EDUC!!110!!F!!Foundations of Educ.!!3!!['T', 'R']!!14:00!!15:15!!J Hassan!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 EDUC!!110!!G!!Foundations of Educ.!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Aslam!!EBLOCKE121!!None!!None!!None!!None!!35!!22
 EDUC!!110!!H!!Foundations of Educa!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!22
