@@ -71,14 +71,14 @@ BUSN!!160!!K!!Management Comm!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCK
 BUSN!!206!!A!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!B!!Mgt. Acc. & Control!!3!!['T', 'R']!!12:30!!13:45!!A George!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!C!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A George!!EBLOCKE330!!None!!None!!None!!None!!35!!0
-BUSN!!206!!D!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!17
+BUSN!!206!!D!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!16
 BUSN!!206!!E!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Ali Shah!!EBLOCKE333!!None!!None!!None!!None!!35!!5
 BUSN!!206!!F!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Ali Shah!!EBLOCKE333!!None!!None!!None!!None!!35!!27
 BUSN!!206!!G!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!16:00!!16:50!!A George!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!206!!H!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!I!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!J!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
-BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
+BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!1
 BUSN!!206!!L!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!32
 BUSN!!206!!M!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!28
 BUSN!!225!!A!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE331!!None!!None!!None!!None!!35!!0
@@ -88,7 +88,7 @@ BUSN!!225!!D!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Sharif!!EB
 BUSN!!225!!E!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Habib!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!225!!F!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!10:00!!10:50!!M Habib!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!225!!G!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Habib!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!225!!H!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!22
+BUSN!!225!!H!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!21
 BUSN!!225!!I!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!27
 BUSN!!225!!J!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!32
 BUSN!!225!!K!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!34
@@ -422,7 +422,7 @@ ENGL!!110!!A!!Contemp Short Story!!3!!['M', 'W', 'F']!!09:00!!09:50!!N Ahmad!!EB
 ENGL!!175!!A!!Crit. Think.&Reading!!3!!['T', 'R']!!14:00!!15:15!!A Zia!!EBLOCKE221!!None!!None!!None!!None!!35!!0
 ENGL!!175!!B!!Crit. Think.&Reading!!3!!['T', 'R']!!08:00!!09:15!!S Hanif!!EBLOCKE221!!None!!None!!None!!None!!35!!8
 ENGL!!201!!B!!Intro to English lit!!3!!['T', 'R']!!11:00!!12:15!!R Wasif!!EBLOCKE221!!None!!None!!None!!None!!35!!0
-ENGL!!201!!C!!Intro to English lit!!3!!['M', 'W', 'F']!!10:00!!10:50!!J C Imdad!!EBLOCKE222!!None!!None!!None!!None!!35!!1
+ENGL!!201!!C!!Intro to English lit!!3!!['M', 'W', 'F']!!10:00!!10:50!!J C Imdad!!EBLOCKE222!!None!!None!!None!!None!!35!!0
 ENGL!!214!!A!!18th Century Novel!!3!!['M', 'W', 'F']!!08:00!!08:50!!I Sayed!!EBLOCKE222!!None!!None!!None!!None!!35!!15
 ENGL!!301!!A!!19th Ctry Engl Novel!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!18
 ENGL!!303!!A!!Science Fiction!!3!!['T', 'R']!!12:30!!13:45!!Quratulaen!!EBLOCKE221!!None!!None!!None!!None!!35!!0
@@ -619,7 +619,7 @@ MCOM!!401!!A!!Radio Broadcasting:!!3!!['T', 'R']!!08:00!!09:15!!S. Zehra!!EBLOCK
 MCOM!!403!!A!!Intl. Journalism!!3!!['T', 'R']!!12:30!!13:45!!A Khan!!EBLOCKE040!!None!!None!!None!!None!!35!!0
 MCOM!!409!!A!!Theories of Mass Com!!3!!['T', 'R']!!11:00!!12:15!!F Jabeen!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 MCOM!!410!!A!!Documentary Making!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Amir!!EBLOCKE040!!None!!None!!None!!None!!35!!24
-MCOM!!414!!A!!Research Methodology!!3!!['T', 'R']!!09:30!!10:45!!Dr S Abbas!!EBLOCKE041!!None!!None!!None!!None!!35!!13
+MCOM!!414!!A!!Research Methodology!!3!!['T', 'R']!!09:30!!10:45!!Dr S Abbas!!EBLOCKE041!!None!!None!!None!!None!!35!!12
 MCOM!!414!!B!!Research Methodology!!3!!['T', 'R']!!11:00!!12:15!!Dr S Abbas!!EBLOCKE041!!None!!None!!None!!None!!35!!32
 MCOM!!415!!A!!Comm Campaign Design!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Saleem!!EBLOCKE041!!None!!None!!None!!None!!35!!2
 MCOM!!415!!B!!Comm Campaign Design!!3!!['M', 'W', 'F']!!08:00!!08:50!!Z Masood!!EBLOCKE041!!None!!None!!None!!None!!35!!32
