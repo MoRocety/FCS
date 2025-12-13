@@ -177,7 +177,7 @@ CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Rashida!!
 CHEM!!100!!F!!Intro. to Chemistry!!4!!['M']!!09:00!!10:50!!H Abid!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!1
 CHEM!!150!!B!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!14:00!!15:50!!35!!17
-CHEM!!150!!C!!Intro. Inorg. Chem!!4!!['T', 'R']!!14:00!!15:15!!H Abid!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!25
+CHEM!!150!!C!!Intro. Inorg. Chem!!4!!['T', 'R']!!14:00!!15:15!!H Abid!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!24
 CHEM!!160!!A!!Intro. Org Biochem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!10!!0
 CHEM!!160!!B!!Intro. Org Biochem!!4!!['T', 'R']!!09:30!!10:45!!S Azeem!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!10
 CHEM!!170!!A!!Inro. Physical Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!AY khan!!SBLOCKS212!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!35
@@ -236,7 +236,7 @@ COMP!!213!!C!!Database Systems!!3!!['W']!!09:00!!10:50!!N Sabahat!!SBLOCKS218!!S
 COMP!!220!!A!!Software Engineering!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Toor!!SBLOCKS317!!None!!None!!None!!None!!35!!0
 COMP!!220!!B!!Software Engineering!!3!!['T', 'R']!!09:30!!10:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!10
 COMP!!295!!A!!Introduction to C/C+!!3!!['W']!!11:00!!12:50!!A Khanum!!SBLOCKS216!!SBLOCKS219!!['F']!!11:00!!12:50!!25!!18
-COMP!!300!!A!!Computer Organizatio!!3!!['T']!!09:00!!10:50!!A Khan!!SBLOCKS319!!SBLOCKS317!!['R']!!09:00!!10:50!!35!!4
+COMP!!300!!A!!Computer Organizatio!!3!!['T']!!09:00!!10:50!!A Khan!!SBLOCKS319!!SBLOCKS317!!['R']!!09:00!!10:50!!35!!3
 COMP!!300!!B!!Computer Organizatio!!3!!['T', 'R']!!11:00!!12:50!!A Khan!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 COMP!!300!!C!!Computer Organizatio!!3!!['M']!!09:00!!10:50!!I Iqbal!!SBLOCKS120!!SBLOCKS216!!['W']!!09:00!!10:50!!25!!13
 COMP!!301!!A!!Operating Systems!!3!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['F']!!09:00!!10:50!!35!!29
@@ -500,7 +500,7 @@ GEOG!!325!!A!!Political Geography!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Iqbal!!EB
 GEOG!!326!!A!!Urban Env. Issues!!3!!['T', 'R']!!11:00!!12:15!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!35!!19
 GEOG!!499!!A!!Directed Project!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!10
 GEOG!!499!!B!!Directed Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!10
-GRMN!!101!!A!!German I!!3!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE140!!None!!None!!None!!None!!20!!0
+GRMN!!101!!A!!German I!!3!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE140!!None!!None!!None!!None!!20!!1
 GRMN!!101!!B!!German I!!3!!['T', 'R']!!11:00!!12:15!!H Mahmood!!EBLOCKE345!!None!!None!!None!!None!!20!!0
 GRMN!!101!!C!!German I!!3!!['T', 'R']!!12:30!!13:45!!Qurit U An!!EBLOCKE140!!None!!None!!None!!None!!20!!0
 GRMN!!102!!A!!German II!!3!!['T', 'R']!!14:00!!15:15!!Qurit U An!!EBLOCKE140!!None!!None!!None!!None!!20!!16
@@ -553,7 +553,7 @@ KORN!!101!!A!!Korean I!!3!!['T', 'R']!!09:30!!10:45!!S K Sook!!EBLOCKE222!!None!
 KORN!!101!!B!!Korean I!!3!!['T', 'R']!!11:00!!12:15!!S K Sook!!EBLOCKE140!!None!!None!!None!!None!!20!!0
 KORN!!102!!A!!Korean II!!3!!['T', 'R']!!12:30!!13:45!!J Park!!EBLOCKE230!!None!!None!!None!!None!!20!!18
 LING!!207!!A!!History of Eng. Lang!!3!!['M', 'W', 'F']!!12:00!!12:50!!R John!!EBLOCKE227!!None!!None!!None!!None!!35!!25
-LING!!217!!A!!Introduction to Ling!!3!!['T', 'R']!!12:30!!13:45!!F Aftab!!EBLOCKE041!!None!!None!!None!!None!!35!!1
+LING!!217!!A!!Introduction to Ling!!3!!['T', 'R']!!12:30!!13:45!!F Aftab!!EBLOCKE041!!None!!None!!None!!None!!35!!0
 LING!!217!!B!!Introduction to Ling!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!22
 LING!!304!!A!!Semantics!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Justin!!EBLOCKE140!!None!!None!!None!!None!!35!!30
 LING!!308!!A!!Translation Studies!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Wasim!!EBLOCKE227!!None!!None!!None!!None!!35!!27
