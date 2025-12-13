@@ -176,7 +176,7 @@ BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!A Ibrahim!!EBLOCKE3
 CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Rashida!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!1
 CHEM!!100!!F!!Intro. to Chemistry!!4!!['M']!!09:00!!10:50!!H Abid!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!1
-CHEM!!150!!B!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!14:00!!15:50!!35!!17
+CHEM!!150!!B!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!12:00!!12:50!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!14:00!!15:50!!35!!18
 CHEM!!150!!C!!Intro. Inorg. Chem!!4!!['T', 'R']!!14:00!!15:15!!H Abid!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!24
 CHEM!!160!!A!!Intro. Org Biochem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!10!!0
 CHEM!!160!!B!!Intro. Org Biochem!!4!!['T', 'R']!!09:30!!10:45!!S Azeem!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!10
@@ -187,7 +187,7 @@ CHEM!!261!!A!!Organic Chemistry I!!4!!['T', 'R']!!08:00!!09:15!!M Abbas!!SBLOCKS
 CHEM!!270!!A!!Thermodyna Equilib!!4!!['M', 'W', 'F']!!11:00!!11:50!!M Qamar!!SBLOCKS212!!SBLOCKS148!!['T']!!09:00!!10:50!!35!!34
 CHEM!!271!!A!!Quantum Chemistry!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Hussain!!SBLOCKS215!!None!!None!!None!!None!!35!!33
 CHEM!!311!!A!!Fund Analy. Chem!!4!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS213!!SBLOCKS138!!['W']!!11:00!!12:50!!10!!7
-CHEM!!320!!A!!Industrial Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!M Iqbal!!SBLOCKS213!!SBLOCKS138!!['M']!!11:00!!12:50!!25!!23
+CHEM!!320!!A!!Industrial Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!M Iqbal!!SBLOCKS213!!SBLOCKS138!!['M']!!11:00!!12:50!!25!!22
 CHEM!!330!!A!!Biochemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!D Ahmed!!SBLOCKS212!!SBLOCKS135!!['T']!!14:00!!15:50!!25!!21
 CHEM!!331!!A!!Principals Bio Chem!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Abbas!!SBLOCKS210!!None!!None!!None!!None!!35!!35
 CHEM!!350!!A!!Coordination Chem!!4!!['T', 'R']!!14:00!!15:15!!M Asghar!!SBLOCKS213!!SBLOCKS138!!['W']!!09:00!!10:50!!35!!35
@@ -500,7 +500,7 @@ GEOG!!325!!A!!Political Geography!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Iqbal!!EB
 GEOG!!326!!A!!Urban Env. Issues!!3!!['T', 'R']!!11:00!!12:15!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!35!!19
 GEOG!!499!!A!!Directed Project!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!10
 GEOG!!499!!B!!Directed Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!10
-GRMN!!101!!A!!German I!!3!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE140!!None!!None!!None!!None!!20!!1
+GRMN!!101!!A!!German I!!3!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE140!!None!!None!!None!!None!!20!!0
 GRMN!!101!!B!!German I!!3!!['T', 'R']!!11:00!!12:15!!H Mahmood!!EBLOCKE345!!None!!None!!None!!None!!20!!0
 GRMN!!101!!C!!German I!!3!!['T', 'R']!!12:30!!13:45!!Qurit U An!!EBLOCKE140!!None!!None!!None!!None!!20!!0
 GRMN!!102!!A!!German II!!3!!['T', 'R']!!14:00!!15:15!!Qurit U An!!EBLOCKE140!!None!!None!!None!!None!!20!!16
@@ -648,7 +648,7 @@ PHIL!!331!!A!!Thoeries of Ethics!!3!!['M', 'W', 'F']!!14:00!!14:50!!G Irfan!!EBL
 PHIL!!495K!!A!!Existentialism!!3!!['T', 'R']!!11:00!!12:15!!T Farouk!!EBLOCKE126!!None!!None!!None!!None!!35!!21
 PHYS!!100!!A!!Intro. to Physics!!4!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!0
 PHYS!!100!!D!!Intro. to Physics!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS016!!SBLOCKS029!!['F']!!14:00!!15:50!!35!!0
-PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!14
+PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!13
 PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!2
 PHYS!!102!!A!!General Physics II!!4!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!20!!0
 PHYS!!102!!B!!General Physics II!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!13
@@ -688,7 +688,7 @@ PKST!!101!!C!!Pakistan Studies!!3!!['T', 'R']!!08:00!!09:15!!S Sumbal!!EBLOCKE10
 PKST!!101!!D!!Pakistan Studies!!3!!['M', 'W', 'F']!!08:00!!08:50!!M Shafqat!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 PKST!!101!!E!!Pakistan Studies!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Shafqat!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 PLSC!!101!!B!!Intro to Pol Science!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!20
-PLSC!!101!!E!!Intro to Pol Science!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!EBLOCKE041!!None!!None!!None!!None!!35!!0
+PLSC!!101!!E!!Intro to Pol Science!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!EBLOCKE041!!None!!None!!None!!None!!35!!1
 PLSC!!101!!F!!Intro to Pol Science!!3!!['T', 'R']!!09:30!!10:45!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!H!!Intro to Pol Science!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!I!!Intro to Pol Science!!3!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!0
