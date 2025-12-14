@@ -68,7 +68,7 @@ BUSN!!160!!H!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!I Nasir!!EBLOCKE330!
 BUSN!!160!!I!!Management Comm!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!160!!J!!Management Comm!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!160!!K!!Management Comm!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!26
-BUSN!!206!!A!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!1
+BUSN!!206!!A!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!B!!Mgt. Acc. & Control!!3!!['T', 'R']!!12:30!!13:45!!A George!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!C!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A George!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!D!!Mgt. Acc. & Control!!3!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!16
@@ -80,7 +80,7 @@ BUSN!!206!!I!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Rashid!!E
 BUSN!!206!!J!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!L!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!32
-BUSN!!206!!M!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!29
+BUSN!!206!!M!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!30
 BUSN!!225!!A!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!225!!B!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!15:00!!15:50!!U Sharif!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!225!!C!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!11:00!!11:50!!U Sharif!!EBLOCKE332!!None!!None!!None!!None!!35!!0
@@ -88,7 +88,7 @@ BUSN!!225!!D!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!12:00!!12:50!!U Sharif!!EB
 BUSN!!225!!E!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Habib!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!225!!F!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!10:00!!10:50!!M Habib!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!225!!G!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Habib!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!225!!H!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!18
+BUSN!!225!!H!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!19
 BUSN!!225!!I!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!27
 BUSN!!225!!J!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!33
 BUSN!!225!!K!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!34
@@ -97,13 +97,13 @@ BUSN!!225!!M!!Econ Appl for Busn!!3!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE3
 BUSN!!250!!A!!Indiv & Grp Dynamics!!3!!['T', 'R']!!09:30!!10:45!!S Hussain!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!250!!B!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!S Hussain!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!250!!C!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!S Hussain!!EBLOCKE332!!None!!None!!None!!None!!35!!0
-BUSN!!250!!D!!Indiv & Grp Dynamics!!3!!['T', 'R']!!15:30!!16:45!!A Chughtai!!EBLOCKE343!!None!!None!!None!!None!!35!!34
-BUSN!!250!!E!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!A Chughtai!!EBLOCKE332!!None!!None!!None!!None!!35!!27
+BUSN!!250!!D!!Indiv & Grp Dynamics!!3!!['T', 'R']!!15:30!!16:45!!A Chughtai!!EBLOCKE343!!None!!None!!None!!None!!35!!35
+BUSN!!250!!E!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!A Chughtai!!EBLOCKE332!!None!!None!!None!!None!!35!!28
 BUSN!!250!!F!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE344!!None!!None!!None!!None!!35!!0
-BUSN!!250!!G!!Indiv & Grp Dynamics!!3!!['T', 'R']!!09:30!!10:45!!Afaf k!!EBLOCKE330!!None!!None!!None!!None!!35!!4
+BUSN!!250!!G!!Indiv & Grp Dynamics!!3!!['T', 'R']!!09:30!!10:45!!Afaf k!!EBLOCKE330!!None!!None!!None!!None!!35!!3
 BUSN!!250!!H!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!250!!I!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!0
-BUSN!!250!!J!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!A Fateh!!EBLOCKE331!!None!!None!!None!!None!!35!!1
+BUSN!!250!!J!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!A Fateh!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!250!!K!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!A Fateh!!EBLOCKE346!!None!!None!!None!!None!!35!!21
 BUSN!!250!!L!!Indiv & Grp Dynamics!!3!!['T', 'R']!!15:30!!16:45!!A Fateh!!EBLOCKE330!!None!!None!!None!!None!!35!!26
 BUSN!!250!!M!!Indiv & Grp Dynamics!!3!!['M', 'W', 'F']!!11:00!!11:50!!T Alvi!!EBLOCKE343!!None!!None!!None!!None!!35!!0
@@ -242,7 +242,7 @@ COMP!!300!!C!!Computer Organizatio!!3!!['M']!!09:00!!10:50!!I Iqbal!!SBLOCKS120!
 COMP!!301!!A!!Operating Systems!!3!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['F']!!09:00!!10:50!!35!!29
 COMP!!301!!B!!Operating Systems!!3!!['M']!!11:00!!12:50!!M Chaudhry!!SBLOCKS319!!SBLOCKS216!!['F']!!11:00!!12:50!!35!!14
 COMP!!301!!C!!Operating Systems!!3!!['T', 'R']!!11:00!!12:50!!M Butt!!SBLOCKS319!!None!!None!!None!!None!!35!!10
-COMP!!302!!A!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!1
+COMP!!302!!A!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!0
 COMP!!302!!B!!Theory of Automata!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!17
 COMP!!302!!C!!Theory of Automata!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Bqa!!SBLOCKS317!!None!!None!!None!!None!!35!!28
 COMP!!303!!A!!D&A of Algorithms!!3!!['M', 'W', 'F']!!09:00!!09:50!!R Bqa!!SBLOCKS316!!None!!None!!None!!None!!35!!0
@@ -508,7 +508,7 @@ HIST!!101!!A!!Survey of South Asia!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Masih!!E
 HIST!!102!!A!!Survey of Westrn Civ!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Haider!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 HIST!!201!!A!!Research Methods!!3!!['M', 'W', 'F']!!15:00!!15:50!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!202!!B!!Surv of Modern Europ!!3!!['T', 'R']!!09:30!!10:45!!S Sumbal!!EBLOCKE105!!None!!None!!None!!None!!35!!0
-HIST!!204!!A!!History of the U.S!!3!!['T', 'R']!!11:00!!12:15!!S Hayat!!EBLOCKE039!!None!!None!!None!!None!!35!!1
+HIST!!204!!A!!History of the U.S!!3!!['T', 'R']!!11:00!!12:15!!S Hayat!!EBLOCKE039!!None!!None!!None!!None!!35!!0
 HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EBLOCKE105!!None!!None!!None!!None!!35!!22
 HIST!!255!!A!!The Indus Valley!!3!!['T', 'R']!!15:30!!16:45!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!32
 HIST!!301!!A!!Philoso of History!!3!!['M', 'W', 'F']!!16:00!!16:50!!A Ijaz!!EBLOCKE040!!None!!None!!None!!None!!35!!12
@@ -798,7 +798,7 @@ SOCL!!100!!C!!Intro to Sociology!!3!!['M', 'W', 'F']!!09:00!!09:50!!T Fatima!!EB
 SOCL!!100!!D!!Intro to Sociology!!3!!['M', 'W', 'F']!!10:00!!10:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!E!!Intro to Sociology!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Shahid!!EBLOCKE214!!None!!None!!None!!None!!35!!0
 SOCL!!100!!G!!Intro to Sociology!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
-SOCL!!100!!H!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!5
+SOCL!!100!!H!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!4
 SOCL!!100!!K!!Intro to Sociology!!3!!['T', 'R']!!09:30!!10:45!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!L!!Intro to Sociology!!3!!['T', 'R']!!11:00!!12:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!Q!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!A Yasir!!EBLOCKE104!!None!!None!!None!!None!!35!!7
@@ -828,7 +828,7 @@ STAT!!100!!F!!Basic Statistics!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Hanook!!SBLO
 STAT!!100!!G!!Basic Statistics!!3!!['T', 'R']!!08:00!!09:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!14
 STAT!!100!!H!!Basic Statistics!!3!!['T', 'R']!!09:30!!10:45!!M Raza!!SBLOCKS425!!None!!None!!None!!None!!35!!0
 STAT!!100!!I!!Basic Statistics!!3!!['T', 'R']!!11:00!!12:15!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!35!!0
-STAT!!100!!J!!Basic Statistics!!3!!['T', 'R']!!12:30!!13:45!!S Hanook!!SBLOCKS425!!None!!None!!None!!None!!35!!0
+STAT!!100!!J!!Basic Statistics!!3!!['T', 'R']!!12:30!!13:45!!S Hanook!!SBLOCKS425!!None!!None!!None!!None!!35!!1
 STAT!!100!!K!!Basic Statistics!!3!!['T', 'R']!!14:00!!15:15!!S Samuel!!SBLOCKS420!!None!!None!!None!!None!!35!!0
 STAT!!101!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!13
 STAT!!101!!B!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Hanook!!SBLOCKS417!!None!!None!!None!!None!!15!!15
@@ -898,7 +898,7 @@ WRCM!!102!!BB!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!M Saleh!!SBLOC
 WRCM!!102!!C!!Writing&Communic. II!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Fareed!!EBLOCKE038!!None!!None!!None!!None!!25!!0
 WRCM!!102!!D!!Writing&Communic. II!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Zia!!SBLOCKS008!!None!!None!!None!!None!!25!!0
 WRCM!!102!!E!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!N Ahmad!!EBLOCKE230!!None!!None!!None!!None!!25!!0
-WRCM!!102!!G!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Ahmad!!EBLOCKE230!!None!!None!!None!!None!!25!!1
+WRCM!!102!!G!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Ahmad!!EBLOCKE230!!None!!None!!None!!None!!25!!0
 WRCM!!102!!H!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!25!!0
 WRCM!!102!!I!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Maqbool!!EBLOCKE104!!None!!None!!None!!None!!25!!8
 WRCM!!102!!II!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Wasim!!EBLOCKE205!!None!!None!!None!!None!!25!!7
