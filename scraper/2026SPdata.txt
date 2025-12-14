@@ -345,7 +345,7 @@ ECON!!100!!H!!Principles of Econom!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Ishtiaq!
 ECON!!101!!A!!Microeconomics I!!3!!['T', 'R']!!14:00!!15:15!!A Anwar!!EBLOCKE203!!None!!None!!None!!None!!35!!15
 ECON!!101!!B!!Microeconomics I!!3!!['M', 'W', 'F']!!10:00!!10:50!!T Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!101!!C!!Microeconomics I!!3!!['M', 'W', 'F']!!14:00!!14:50!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!21
-ECON!!102!!A!!Macroeconomics I!!3!!['T', 'R']!!14:00!!15:15!!Z Manzoor!!EBLOCKE204!!None!!None!!None!!None!!35!!0
+ECON!!102!!A!!Macroeconomics I!!3!!['T', 'R']!!14:00!!15:15!!Z Manzoor!!EBLOCKE204!!None!!None!!None!!None!!35!!1
 ECON!!102!!B!!Macroeconomics I!!3!!['M', 'W', 'F']!!12:00!!12:50!!T Numan!!EBLOCKE203!!None!!None!!None!!None!!35!!19
 ECON!!102!!C!!Macroeconomics I!!3!!['M', 'W', 'F']!!12:00!!12:50!!N Ishtiaq!!EBLOCKE202!!None!!None!!None!!None!!35!!28
 ECON!!103!!A!!Mathematics for Econ!!3!!['T', 'R']!!11:00!!12:15!!H Ahsan!!EBLOCKE205!!None!!None!!None!!None!!35!!23
@@ -458,13 +458,13 @@ ENVR!!252!!A!!Environ. Pollution!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Aslam!!SBL
 ENVR!!252!!B!!Environ. Pollution!!3!!['T', 'R']!!09:30!!10:45!!S Ilyas!!SBLOCKS424!!None!!None!!None!!None!!35!!26
 ENVR!!309!!A!!Intro Env. Modeling!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Chung!!SBLOCKS417!!None!!None!!None!!None!!35!!31
 ENVR!!311!!A!!Fund Analy. Chem!!4!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS213!!SBLOCKS138!!['W']!!11:00!!12:50!!25!!18
-ENVR!!323!!A!!Ecology & Evolution!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Akram!!SBLOCKS424!!SBLOCKS029!!['T']!!14:00!!15:50!!35!!12
+ENVR!!323!!A!!Ecology & Evolution!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Akram!!SBLOCKS424!!SBLOCKS029!!['T']!!14:00!!15:50!!35!!13
 ENVR!!330!!A!!Biochemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!D Ahmed!!SBLOCKS212!!SBLOCKS135!!['T']!!14:00!!15:50!!10!!9
-ENVR!!402!!A!!Solid Waste Manag.!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!18
-ENVR!!403!!A!!Occu Health & Safety!!3!!['T', 'R']!!09:30!!10:45!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!21
+ENVR!!402!!A!!Solid Waste Manag.!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!17
+ENVR!!403!!A!!Occu Health & Safety!!3!!['T', 'R']!!09:30!!10:45!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!20
 ENVR!!404!!A!!Air/ Noise Poll. Cnt!!3!!['T', 'R']!!08:00!!09:15!!D Bakker!!SBLOCKS424!!None!!None!!None!!None!!35!!32
 ENVR!!405!!A!!Conservation Biol!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!SBLOCKS417!!None!!None!!None!!None!!35!!25
-ENVR!!413!!A!!Envr. Toxicology!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Shahbaz!!SBLOCKS424!!None!!None!!None!!None!!35!!6
+ENVR!!413!!A!!Envr. Toxicology!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Shahbaz!!SBLOCKS424!!None!!None!!None!!None!!35!!7
 ENVR!!416!!A!!Wastewater treatment!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Chung!!SBLOCKS417!!SBLOCKS341!!['F']!!08:00!!09:50!!35!!30
 ENVR!!499B!!A!!Project/Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!35!!35
 ENVR!!511!!A!!Envr.Appl.Nano.Mater!!3!!['M']!!17:30!!18:45!!M Shahbaz!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!20!!12
@@ -688,7 +688,7 @@ PKST!!101!!C!!Pakistan Studies!!3!!['T', 'R']!!08:00!!09:15!!S Sumbal!!EBLOCKE10
 PKST!!101!!D!!Pakistan Studies!!3!!['M', 'W', 'F']!!08:00!!08:50!!M Shafqat!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 PKST!!101!!E!!Pakistan Studies!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Shafqat!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 PLSC!!101!!B!!Intro to Pol Science!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!20
-PLSC!!101!!E!!Intro to Pol Science!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!EBLOCKE041!!None!!None!!None!!None!!35!!1
+PLSC!!101!!E!!Intro to Pol Science!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!EBLOCKE041!!None!!None!!None!!None!!35!!0
 PLSC!!101!!F!!Intro to Pol Science!!3!!['T', 'R']!!09:30!!10:45!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!H!!Intro to Pol Science!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!I!!Intro to Pol Science!!3!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!0
