@@ -236,7 +236,7 @@ COMP!!213!!C!!Database Systems!!3!!['W']!!09:00!!10:50!!N Sabahat!!SBLOCKS218!!S
 COMP!!220!!A!!Software Engineering!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Toor!!SBLOCKS317!!None!!None!!None!!None!!35!!0
 COMP!!220!!B!!Software Engineering!!3!!['T', 'R']!!09:30!!10:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!10
 COMP!!295!!A!!Introduction to C/C+!!3!!['W']!!11:00!!12:50!!A Khanum!!SBLOCKS216!!SBLOCKS219!!['F']!!11:00!!12:50!!25!!18
-COMP!!300!!A!!Computer Organizatio!!3!!['T']!!09:00!!10:50!!A Khan!!SBLOCKS319!!SBLOCKS317!!['R']!!09:00!!10:50!!35!!3
+COMP!!300!!A!!Computer Organizatio!!3!!['T']!!09:00!!10:50!!A Khan!!SBLOCKS319!!SBLOCKS317!!['R']!!09:00!!10:50!!35!!1
 COMP!!300!!B!!Computer Organizatio!!3!!['T', 'R']!!11:00!!12:50!!A Khan!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 COMP!!300!!C!!Computer Organizatio!!3!!['M']!!09:00!!10:50!!I Iqbal!!SBLOCKS120!!SBLOCKS216!!['W']!!09:00!!10:50!!25!!13
 COMP!!301!!A!!Operating Systems!!3!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['F']!!09:00!!10:50!!35!!29
@@ -279,7 +279,7 @@ CPPG!!677!!A!!Demography and Secur!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R 
 CPPG!!699B!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shafqat!!TBDTBD!!None!!None!!None!!None!!20!!19
 CRIM!!201!!A!!Sociological Researc!!3!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOCKE214!!None!!None!!None!!None!!5!!0
 CRIM!!220!!B!!Intro. to Crimnology!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!5!!0
-CRIM!!310!!A!!Penology and Prison!!3!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!14
+CRIM!!310!!A!!Penology and Prison!!3!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!13
 CRIM!!460!!A!!Comparative Criminal!!3!!['T', 'R']!!12:30!!13:45!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!22
 CRST!!151!!A!!Intro to Chris. Thou!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!20
 CRST!!152!!A!!Christian Ethics!!3!!['M', 'W', 'F']!!09:00!!09:50!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!0
@@ -314,7 +314,7 @@ CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOC
 CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!20
 CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!34
 CSCS!!202!!A!!Comp Linear Algeb!!3!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!26
-CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!4
+CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!3
 CSCS!!202!!C!!Comp Linear Algeb!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS416!!None!!None!!None!!None!!35!!31
 CSCS!!203!!A!!Differential Equatio!!3!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!19
 CSCS!!203!!B!!Diffential Equation!!3!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS410!!None!!None!!None!!None!!35!!19
@@ -439,15 +439,15 @@ ENGL!!408!!A!!Post Modern Fiction!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Mir!!EBLO
 ENGL!!430!!A!!Postcolonial Lit. th!!3!!['T', 'R']!!11:00!!12:15!!F Syeda!!EBLOCKE222!!None!!None!!None!!None!!35!!19
 ENGL!!445!!A!!Literature & Environ!!3!!['T', 'R']!!12:30!!13:45!!S Maqbool!!EBLOCKE222!!None!!None!!None!!None!!35!!35
 ENGL!!499!!A!!Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!35!!17
-ENGL!!516!!A!!Minority Literatures!!3!!['W']!!16:00!!19:00!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!25!!16
+ENGL!!516!!A!!Minority Literatures!!3!!['W']!!16:00!!19:00!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!25!!15
 ENGL!!517!!A!!African Literature!!3!!['R']!!16:00!!19:00!!J C Imdad!!EBLOCKE227!!None!!None!!None!!None!!25!!13
-ENGL!!520!!A!!Critical Theory!!3!!['M']!!16:00!!19:00!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!23
-ENGL!!550!!A!!Muslim Women's Voice!!3!!['T']!!16:00!!19:00!!S Mir!!EBLOCKE227!!None!!None!!None!!None!!35!!33
+ENGL!!520!!A!!Critical Theory!!3!!['M']!!16:00!!19:00!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!22
+ENGL!!550!!A!!Muslim Women's Voice!!3!!['T']!!16:00!!19:00!!S Mir!!EBLOCKE227!!None!!None!!None!!None!!35!!32
 ENGL!!611!!A!!Dystopian Fiction!!3!!['T']!!16:00!!19:00!!Quratulaen!!EBLOCKE222!!None!!None!!None!!None!!35!!25
 ENGL!!618!!A!!Aesthetics & Poetry!!3!!['W']!!16:00!!19:00!!S Maqbool!!EBLOCKE227!!None!!None!!None!!None!!25!!22
 ENVR!!151!!A!!Intro to Sources!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 ENVR!!151!!B!!Intro to Sources!!3!!['T', 'R']!!11:00!!12:15!!S Ilyas!!SBLOCKS424!!None!!None!!None!!None!!35!!0
-ENVR!!160!!A!!Intro. Org Biochem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!25!!0
+ENVR!!160!!A!!Intro. Org Biochem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!25!!1
 ENVR!!201!!A!!Intro Env Sciences!!4!!['M', 'W', 'F']!!10:00!!10:50!!M Shahbaz!!SBLOCKS424!!SBLOCKS341!!['W']!!08:00!!09:50!!35!!0
 ENVR!!201!!B!!Intro Env Sciences!!4!!['T', 'R']!!14:00!!15:15!!D Bakker!!SBLOCKS417!!SBLOCKS027A!!['F']!!14:00!!15:50!!35!!0
 ENVR!!201!!C!!Intro Env Sciences!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Aslam!!SBLOCKS417!!SBLOCKS341!!['T']!!08:00!!09:50!!35!!0
@@ -539,7 +539,7 @@ ISLM!!101!!B!!Islamic Education!!3!!['M', 'W', 'F']!!10:00!!10:50!!H Ahmad!!EBLO
 ISLM!!101!!C!!Islamic Education!!3!!['T', 'R']!!09:30!!10:45!!H Ahmad!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!D!!Islamic Education!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!E!!Islamic Education!!3!!['T', 'R']!!11:00!!12:15!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!35!!0
-ISLM!!101!!F!!Islamic Education!!3!!['T', 'R']!!14:00!!15:15!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!35!!0
+ISLM!!101!!F!!Islamic Education!!3!!['T', 'R']!!14:00!!15:15!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!35!!1
 ISLM!!101!!G!!Islamic Education!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Ahmad!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!I!!Islamic Education!!3!!['M', 'W', 'F']!!12:00!!12:50!!N Ahmad!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!J!!Islamic Education!!3!!['M', 'W', 'F']!!11:00!!11:50!!Z Azam!!EBLOCKE229!!None!!None!!None!!None!!35!!0
@@ -636,7 +636,7 @@ MPGN!!603!!A!!Cellular Signal Tran!!3!!['W']!!16:00!!19:00!!M Yousaf!!SBLOCKS313
 MPGN!!604!!A!!Bioinformatics!!3!!['R']!!16:00!!19:00!!TBD!!SBLOCKS313!!None!!None!!None!!None!!25!!25
 MPGN!!613!!A!!Mole. Patho.&Diag.!!3!!['M']!!16:00!!19:00!!A Arshad!!SBLOCKS313!!None!!None!!None!!None!!25!!25
 MPGN!!699A!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!10!!10
-MPGN!!699B!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!24
+MPGN!!699B!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!23
 MPGN!!699E!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!25
 MUSC!!101!!A!!Musc Pract I - Vocal!!3!!['T', 'R']!!14:00!!15:15!!M Shaggan!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 MUSC!!250!!A!!Music Appreciation!!3!!['T', 'R']!!15:30!!16:45!!M Shaggan!!EBLOCKE137!!None!!None!!None!!None!!35!!20
@@ -803,7 +803,7 @@ SOCL!!100!!K!!Intro to Sociology!!3!!['T', 'R']!!09:30!!10:45!!T Ashraf!!EBLOCKE
 SOCL!!100!!L!!Intro to Sociology!!3!!['T', 'R']!!11:00!!12:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!Q!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!A Yasir!!EBLOCKE104!!None!!None!!None!!None!!35!!6
 SOCL!!101!!A!!Intro. Social Work!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Athar!!EBLOCKE104!!None!!None!!None!!None!!35!!2
-SOCL!!201!!A!!Soc. Research!!3!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOCKE214!!None!!None!!None!!None!!30!!21
+SOCL!!201!!A!!Soc. Research!!3!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOCKE214!!None!!None!!None!!None!!30!!20
 SOCL!!220!!A!!Intr. to Criminology!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!35!!25
 SOCL!!220!!B!!Intr. to Criminology!!3!!['T', 'R']!!09:30!!10:45!!S Athar!!EBLOCKE214!!None!!None!!None!!None!!30!!0
 SOCL!!223!!A!!Sociocultural Anthro!!3!!['T', 'R']!!11:00!!12:15!!S Shahid!!EBLOCKE104!!None!!None!!None!!None!!35!!20
