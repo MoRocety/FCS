@@ -2,7 +2,7 @@ ARTS!!101!!A!!Intro. Art & Design!!3!!['T', 'R']!!15:30!!16:45!!S Kamran!!SBLOCK
 ARTS!!102!!A!!Painting I!!3!!['T', 'R']!!15:30!!16:45!!S Naeem!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 ARTS!!103!!A!!Sculpture I!!3!!['T', 'R']!!15:30!!16:45!!S Ahmad!!SBLOCKS112!!None!!None!!None!!None!!35!!0
 ARTS!!105!!A!!Religious Art!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Kamran!!SBLOCKS109!!None!!None!!None!!None!!35!!26
-ARTS!!106!!A!!Women, Art & Politic!!3!!['T', 'R']!!14:00!!15:15!!S Kamran!!SBLOCKS116!!None!!None!!None!!None!!35!!0
+ARTS!!106!!A!!Women, Art & Politic!!3!!['T', 'R']!!14:00!!15:15!!S Kamran!!SBLOCKS116!!None!!None!!None!!None!!35!!1
 ARTS!!111!!A!!Fundam. of Drawing I!!3!!['T', 'R']!!14:00!!15:15!!S Ahmad!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 ARTS!!121!!A!!Draawing II!!3!!['T', 'R']!!12:30!!13:45!!S Naeem!!SBLOCKS008!!None!!None!!None!!None!!35!!34
 ARTS!!201!!A!!History of Art II!!3!!['T', 'R']!!08:00!!09:15!!S Naeem!!SBLOCKS111!!None!!None!!None!!None!!35!!32
@@ -227,7 +227,7 @@ COMP!!113!!A!!Discrete Mathematics!!3!!['T', 'R']!!08:00!!09:15!!S Nasim!!SBLOCK
 COMP!!113!!B!!Discrete Mathematics!!3!!['T', 'R']!!11:00!!12:15!!M Chaudhry!!SBLOCKS216!!None!!None!!None!!None!!35!!0
 COMP!!113!!C!!Discrete Mathematics!!3!!['T', 'R']!!12:30!!13:45!!M Mushtaq!!SBLOCKS216!!None!!None!!None!!None!!35!!19
 COMP!!200!!A!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Qureshi!!SBLOCKS317!!SBLOCKS218!!['M']!!14:00!!16:50!!35!!22
-COMP!!200!!B!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!09:00!!09:50!!S Qureshi!!SBLOCKS213!!SBLOCKS319!!['W']!!14:00!!16:50!!35!!20
+COMP!!200!!B!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!09:00!!09:50!!S Qureshi!!SBLOCKS213!!SBLOCKS319!!['W']!!14:00!!16:50!!35!!19
 COMP!!206!!A!!Digital Logic Design!!3!!['T']!!14:00!!15:50!!S Minhas!!SBLOCKS027A!!SBLOCKS215!!['R']!!14:00!!15:50!!35!!0
 COMP!!206!!B!!Digital Logic Design!!3!!['M']!!09:00!!10:50!!S Minhas!!SBLOCKS216!!SBLOCKS027A!!['W']!!09:00!!10:50!!35!!2
 COMP!!213!!A!!Database Systems!!3!!['M', 'W']!!10:00!!11:50!!S Abbasi!!SBLOCKS320!!None!!None!!None!!None!!35!!0
@@ -312,9 +312,9 @@ CSCS!!105!!B!!Basic Electronics!!4!!['T', 'R']!!12:30!!13:45!!I Iqbal!!SBLOCKS31
 CSCS!!105!!C!!Basic Electronics!!4!!['T', 'R']!!15:30!!16:45!!I Iqbal!!SBLOCKS213!!SBLOCKS027A!!['F']!!08:00!!10:50!!35!!20
 CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!4
 CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!20
-CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!35
+CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!34
 CSCS!!202!!A!!Comp Linear Algeb!!3!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!26
-CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!5
+CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!4
 CSCS!!202!!C!!Comp Linear Algeb!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS416!!None!!None!!None!!None!!35!!31
 CSCS!!203!!A!!Differential Equatio!!3!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!19
 CSCS!!203!!B!!Diffential Equation!!3!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS410!!None!!None!!None!!None!!35!!19
@@ -453,7 +453,7 @@ ENVR!!201!!B!!Intro Env Sciences!!4!!['T', 'R']!!14:00!!15:15!!D Bakker!!SBLOCKS
 ENVR!!201!!C!!Intro Env Sciences!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Aslam!!SBLOCKS417!!SBLOCKS341!!['T']!!08:00!!09:50!!35!!0
 ENVR!!210!!A!!Earth's Physl Realms!!3!!['M', 'W', 'F']!!12:00!!12:50!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!25!!4
 ENVR!!212!!A!!Res Methds&Stats!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!5!!0
-ENVR!!250!!A!!Environmental Manage!!3!!['T', 'R']!!11:00!!12:15!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!29
+ENVR!!250!!A!!Environmental Manage!!3!!['T', 'R']!!11:00!!12:15!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!28
 ENVR!!252!!A!!Environ. Pollution!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Aslam!!SBLOCKS417!!None!!None!!None!!None!!35!!14
 ENVR!!252!!B!!Environ. Pollution!!3!!['T', 'R']!!09:30!!10:45!!S Ilyas!!SBLOCKS424!!None!!None!!None!!None!!35!!26
 ENVR!!309!!A!!Intro Env. Modeling!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Chung!!SBLOCKS417!!None!!None!!None!!None!!35!!31
@@ -572,7 +572,7 @@ MATH!!101!!C!!Pre-Calc & Trigonom.!!3!!['T', 'R']!!11:00!!12:15!!A Nadeem!!SBLOC
 MATH!!101!!D!!Pre-Calc & Trigonom.!!3!!['T', 'R']!!12:30!!13:45!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!102!!A!!Calculus 1!!3!!['M', 'W', 'F']!!12:00!!12:50!!I Shafique!!SBLOCKS416!!None!!None!!None!!None!!35!!0
 MATH!!102!!B!!Calculus 1!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!19
-MATH!!103!!A!!Intro. Lin. Algebra!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Nadeem!!SBLOCKS412!!None!!None!!None!!None!!35!!24
+MATH!!103!!A!!Intro. Lin. Algebra!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Nadeem!!SBLOCKS412!!None!!None!!None!!None!!35!!23
 MATH!!105!!A!!Prob & Prob. Distrib!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!15!!10
 MATH!!105!!B!!Prob & Prob. Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!5
 MATH!!107!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!20!!11
@@ -646,7 +646,7 @@ PHIL!!221!!A!!Logic How to Think!!3!!['M', 'W', 'F']!!10:00!!10:50!!T Farouk!!EB
 PHIL!!221!!B!!Logic How to Think!!3!!['M', 'W', 'F']!!11:00!!11:50!!T Farouk!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 PHIL!!331!!A!!Thoeries of Ethics!!3!!['M', 'W', 'F']!!14:00!!14:50!!G Irfan!!EBLOCKE122!!None!!None!!None!!None!!35!!18
 PHIL!!495K!!A!!Existentialism!!3!!['T', 'R']!!11:00!!12:15!!T Farouk!!EBLOCKE126!!None!!None!!None!!None!!35!!21
-PHYS!!100!!A!!Intro. to Physics!!4!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!0
+PHYS!!100!!A!!Intro. to Physics!!4!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!1
 PHYS!!100!!D!!Intro. to Physics!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS016!!SBLOCKS029!!['F']!!14:00!!15:50!!35!!0
 PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!16
 PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!2
@@ -695,7 +695,7 @@ PLSC!!101!!I!!Intro to Pol Science!!3!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLO
 PLSC!!101!!J!!Intro to Pol Science!!3!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!K!!Intro to Pol Science!!3!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!13
 PLSC!!102!!A!!Pakistan Government!!3!!['T', 'R']!!11:00!!12:15!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!0
-PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!18
+PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!17
 PLSC!!102!!C!!Pakistan Government!!3!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!25
 PLSC!!203!!A!!International Relati!!3!!['T', 'R']!!12:30!!13:45!!M Farooqi!!EBLOCKE139!!None!!None!!None!!None!!35!!0
 PLSC!!203!!B!!International Relati!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Sindhu!!EBLOCKE126!!None!!None!!None!!None!!35!!27
