@@ -78,7 +78,7 @@ BUSN!!206!!G!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!16:00!!16:50!!A George!!E
 BUSN!!206!!H!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!I!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!J!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
-BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
+BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!L!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!32
 BUSN!!206!!M!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!28
 BUSN!!225!!A!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE331!!None!!None!!None!!None!!35!!0
@@ -161,7 +161,7 @@ BUSN!!522!!A!!MACROECONOMICS!!3!!['M', 'W']!!10:00!!11:15!!M Khalid!!EBLOCKE323!
 BUSN!!522!!B!!MACROECONOMICS!!3!!['M', 'W']!!16:00!!17:15!!M Khalid!!EBLOCKE324!!None!!None!!None!!None!!35!!34
 BUSN!!531!!A!!PRINCIPLES FINANCE!!3!!['M', 'W']!!14:00!!15:15!!A George!!EBLOCKE324!!None!!None!!None!!None!!35!!26
 BUSN!!531!!B!!PRINCIPLES FINANCE!!3!!['M', 'W']!!14:00!!15:15!!M Rao!!EBLOCKE323!!None!!None!!None!!None!!35!!33
-BUSN!!560!!A!!OPERATIONS MGMT!!3!!['M', 'W']!!11:30!!12:45!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!35
+BUSN!!560!!A!!OPERATIONS MGMT!!3!!['T', 'R']!!11:30!!12:45!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!35
 BUSN!!560!!B!!OPERATIONS MGMT!!3!!['M', 'W']!!11:30!!12:45!!I yusuf!!EBLOCKE323!!None!!None!!None!!None!!35!!24
 BUSN!!571!!A!!LOGIC CRITI THINK 2!!3!!['T', 'R']!!14:00!!15:15!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!32
 BUSN!!571!!B!!LOGIC CRITI THINK 2!!3!!['T', 'R']!!14:00!!15:15!!M Q Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!29
@@ -172,7 +172,7 @@ BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE3
 BUSN!!625!!A!!BUSINESS ETHICS!!3!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None!!None!!None!!None!!35!!34
 BUSN!!670!!A!!NEW PRODUCT DEVT!!3!!['T', 'R']!!10:00!!11:15!!F Malik!!EBLOCKE301!!None!!None!!None!!None!!35!!34
 BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!34
-BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!A Ibrahim!!EBLOCKE301!!None!!None!!None!!None!!35!!34
+BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!I Ahmed!!EBLOCKE301!!None!!None!!None!!None!!35!!34
 CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!M Rashida!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!0
 CHEM!!100!!F!!Intro. to Chemistry!!4!!['M']!!09:00!!10:50!!H Abid!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!0
@@ -333,9 +333,9 @@ CSCS!!321!!A!!Cyber Security!!3!!['M']!!14:00!!15:50!!M Butt!!SBLOCKS219!!SBLOCK
 CSCS!!342!!A!!Web Application Deve!!3!!['T', 'R']!!13:00!!14:50!!A Yousaf!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!366!!A!!Into.to Nat Language!!3!!['T', 'R']!!15:30!!16:45!!F Ullah!!SBLOCKS216!!None!!None!!None!!None!!35!!8
 CSCS!!367!!A!!Blockchain tech.&app!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS317!!None!!None!!None!!None!!35!!25
-CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!6
+CSCS!!456!!A!!Introduction to deep!!3!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!7
 CSCS!!457!!A!!Computer Vision!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Ashraf!!SBLOCKS111!!None!!None!!None!!None!!35!!0
-CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!16
+CSCS!!460!!A!!Machine Learning!!3!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!15
 CSCS!!468!!A!!Mob App Deveolopment!!3!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS216!!SBLOCKS319!!['W']!!11:00!!12:50!!35!!23
 CSCS!!470!!A!!Introduction to Game!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Shaheen!!SBLOCKS319!!None!!None!!None!!None!!35!!22
 CSCS!!475!!A!!Tech Entrepreneur!!3!!['T', 'R']!!15:30!!16:45!!Z Malik!!SBLOCKS319!!None!!None!!None!!None!!35!!0
@@ -541,7 +541,7 @@ HPED!!111!!B!!Tennis for Boys!!1!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!
 HPED!!112!!A!!Handball (Girls)!!1!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!13
 HPED!!150!!A!!Advanced first Aid!!4!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!19
 HPED!!150!!B!!Advanced first Aid!!4!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['W']!!15:00!!16:50!!35!!3
-HPED!!151!!A!!Sports Injuries!!2!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!22
+HPED!!151!!A!!Sports Injuries!!2!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!21
 HPED!!151!!B!!Sports Injuries!!2!!['T', 'R']!!09:30!!10:20!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!7
 ISLM!!101!!A!!Islamic Education!!3!!['M', 'W', 'F']!!09:00!!09:50!!H Ahmad!!EBLOCKE230!!None!!None!!None!!None!!35!!0
 ISLM!!101!!B!!Islamic Education!!3!!['M', 'W', 'F']!!10:00!!10:50!!H Ahmad!!EBLOCKE230!!None!!None!!None!!None!!35!!0
@@ -788,11 +788,11 @@ PSYC!!467!!A!!Tele-Mental Health!!3!!['T', 'R']!!08:00!!09:15!!U Ilyas!!EBLOCKE2
 PSYC!!475!!A!!Entrepreneur in psyc!!3!!['T', 'R']!!15:30!!16:45!!A Ateeq!!SBLOCKS111!!None!!None!!None!!None!!35!!33
 PSYC!!490!!A!!Research Project!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!35!!28
 PSYC!!499B!!A!!Senior Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!35!!4
-PSYC!!502!!A!!Adult Psyc.!!3!!['M', 'W']!!14:00!!15:30!!N Habib!!EBLOCKE345!!None!!None!!None!!None!!30!!23
-PSYC!!503!!A!!Pers. & Prof. Study!!0!!['F']!!11:00!!13:00!!S Samuel!!EBLOCKE345!!None!!None!!None!!None!!30!!29
+PSYC!!502!!A!!Adult Psyc.!!3!!['M', 'W']!!14:00!!15:30!!N Habib!!EBLOCKE345!!None!!None!!None!!None!!30!!19
+PSYC!!503!!A!!Pers. & Prof. Study!!0!!['F']!!11:00!!13:00!!S Samuel!!EBLOCKE345!!None!!None!!None!!None!!30!!24
 PSYC!!511!!A!!Psyc. Asses. Adults!!3!!['T', 'R']!!14:00!!15:30!!A Nazim!!EBLOCKE345!!None!!None!!None!!None!!30!!11
 PSYC!!512!!A!!Psychological assess!!0!!['F']!!09:00!!10:00!!A Nazim!!EBLOCKE345!!None!!None!!None!!None!!30!!11
-PSYC!!521!!A!!Therptic. Interven.2!!3!!['M', 'W']!!15:30!!17:00!!U Ashiq!!EBLOCKE345!!EBLOCKE345!!['F']!!14:00!!15:30!!30!!27
+PSYC!!521!!A!!Therptic. Interven.2!!3!!['M', 'W']!!15:30!!17:00!!U Ashiq!!EBLOCKE345!!EBLOCKE345!!['F']!!14:00!!15:30!!30!!22
 PSYC!!540!!A!!Statistics!!3!!['T', 'R']!!15:30!!17:00!!S Majeed!!EBLOCKE345!!None!!None!!None!!None!!30!!11
 PSYC!!580!!A!!Case Conferences!!1!!['F']!!10:00!!11:00!!N Khan!!EBLOCKE345!!None!!None!!None!!None!!30!!12
 PSYC!!620!!A!!Workshop 1!!1!!['F']!!15:30!!17:00!!U Ilyas!!EBLOCKE345!!None!!None!!None!!None!!30!!11
