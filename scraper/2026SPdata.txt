@@ -294,10 +294,10 @@ CRST!!272!!A!!New Test. Greek 2!!3!!['T', 'R']!!12:30!!13:45!!Z West!!EBLOCKE243
 CRST!!281!!A!!Old Testament 1!!3!!['T', 'R']!!08:00!!09:15!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!19
 CRST!!312!!A!!Applied Theology 4!!1!!['F']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!28
 CRST!!332!!A!!Biblical Hebrew 4!!3!!['T', 'R']!!17:00!!18:15!!D Lanz!!XBLOCKX002!!None!!None!!None!!None!!35!!30
-CRST!!372!!A!!New Testament Grk 4!!3!!['M', 'W']!!17:00!!18:15!!W Davey!!XBLOCKX002!!None!!None!!None!!None!!35!!30
+CRST!!372!!A!!New Testament Grk 4!!3!!['M', 'W']!!17:00!!18:15!!W Davey!!XBLOCKX002!!None!!None!!None!!None!!35!!29
 CRST!!412!!A!!Applied Theology 6!!1!!['F']!!11:00!!11:50!!G Calib!!XBLOCKX018!!None!!None!!None!!None!!35!!34
 CRST!!425!!A!!Hebrew Reading!!3!!['T', 'R']!!15:30!!16:45!!Z West!!XBLOCKX002!!None!!None!!None!!None!!35!!35
-CRST!!455A!!A!!Greek Reading : 1 Jo!!3!!['T', 'R']!!15:30!!16:45!!K Pervaiz!!XBLOCKX019!!None!!None!!None!!None!!35!!30
+CRST!!455A!!A!!Greek Reading : 1 Jo!!3!!['T', 'R']!!15:30!!16:45!!K Pervaiz!!XBLOCKX019!!None!!None!!None!!None!!35!!29
 CRST!!471D!!A!!English Bible: James!!3!!['T', 'R']!!11:00!!12:15!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!18
 CRST!!498!!A!!Christian Capstone!!3!!['M', 'W']!!11:00!!11:50!!R Wetmore!!XBLOCKX018!!None!!None!!None!!None!!35!!34
 CRST!!525D!!A!!Bibilical:1&2 Kings!!3!!['W']!!14:00!!17:00!!D Lanz!!XBLOCKX018!!None!!None!!None!!None!!35!!34
@@ -387,9 +387,9 @@ ECON!!417!!B!!International Financ!!3!!['T', 'R']!!12:30!!13:45!!G Shabir!!EBLOC
 ECON!!499A!!A!!Research Prj & Paper!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!35
 ECON!!499B!!A!!Research Prj & Paper!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!32
 ECON!!560!!A!!Research Methods!!3!!['M', 'W']!!11:30!!13:00!!A Anwar!!EBLOCKE201!!None!!None!!None!!None!!30!!30
-ECON!!600!!A!!Topics Inter Econ!!3!!['T', 'R']!!09:30!!11:00!!G Shabir!!EBLOCKE201!!None!!None!!None!!None!!30!!30
-ECON!!620!!A!!ENV-NR ECONOMICS!!3!!['M', 'W']!!10:00!!11:30!!U Hanif!!EBLOCKE201!!None!!None!!None!!None!!25!!25
-ECON!!655!!A!!APPLIED ECONOMICS!!3!!['T', 'R']!!12:30!!14:00!!Z Iqbal!!EBLOCKE201!!None!!None!!None!!None!!25!!25
+ECON!!600!!A!!Topics Inter Econ!!3!!['T', 'R']!!09:30!!11:00!!G Shabir!!EBLOCKE201!!None!!None!!None!!None!!30!!28
+ECON!!620!!A!!ENV-NR ECONOMICS!!3!!['M', 'W']!!10:00!!11:30!!U Hanif!!EBLOCKE201!!None!!None!!None!!None!!25!!23
+ECON!!655!!A!!APPLIED ECONOMICS!!3!!['T', 'R']!!12:30!!14:00!!Z Iqbal!!EBLOCKE201!!None!!None!!None!!None!!25!!23
 ECON!!699A!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!25
 ECON!!699B!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!23
 ECON!!699E!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!24
@@ -497,7 +497,7 @@ GEOG!!101!!A!!Funda of Geography!!3!!['M', 'W', 'F']!!08:00!!08:50!!K Shakrul!!E
 GEOG!!101!!B!!Funda of Geography!!3!!['M', 'W', 'F']!!09:00!!09:50!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!0
 GEOG!!101!!D!!Funda of Geography!!3!!['M', 'W', 'F']!!10:00!!10:50!!K Shafiqu!!EBLOCKE228!!None!!None!!None!!None!!35!!0
 GEOG!!133!!A!!Geog Prof. of Pak.!!3!!['T', 'R']!!08:00!!09:15!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!30
-GEOG!!133!!B!!Geog Prof. of Pak.!!3!!['T', 'R']!!11:00!!12:15!!A Iqbal!!EBLOCKE228!!None!!None!!None!!None!!35!!19
+GEOG!!133!!B!!Geog Prof. of Pak.!!3!!['T', 'R']!!11:00!!12:15!!A Iqbal!!EBLOCKE228!!None!!None!!None!!None!!35!!18
 GEOG!!202!!A!!Fund. Remote Sensing!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Iqbal!!EBLOCKE228!!None!!None!!None!!None!!35!!30
 GEOG!!210!!A!!Earth's Physl Realms!!3!!['M', 'W', 'F']!!12:00!!12:50!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!10!!7
 GEOG!!220!!A!!Hum Doma.of Geograph!!3!!['M', 'W', 'F']!!10:00!!10:50!!K Shakrul!!EBLOCKE242!!None!!None!!None!!None!!35!!30
@@ -551,7 +551,7 @@ ISLM!!101!!G!!Islamic Education!!3!!['M', 'W', 'F']!!16:00!!16:50!!N Ahmad!!EBLO
 ISLM!!101!!I!!Islamic Education!!3!!['M', 'W', 'F']!!12:00!!12:50!!N Ahmad!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!J!!Islamic Education!!3!!['M', 'W', 'F']!!11:00!!11:50!!Z Azam!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 ISLM!!101!!L!!Islamic Education!!3!!['M', 'W', 'F']!!14:00!!14:50!!Z Azam!!EBLOCKE230!!None!!None!!None!!None!!35!!0
-ISLM!!103!!A!!Islamic Ideology!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!20!!1
+ISLM!!103!!A!!Islamic Ideology!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Naeem!!EBLOCKE229!!None!!None!!None!!None!!20!!0
 ISLM!!104!!A!!Arab. Comm. Skills!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Rehman!!EBLOCKE229!!None!!None!!None!!None!!35!!19
 ISLM!!304!!A!!Seerat-Un-Nabi!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rehman!!EBLOCKE229!!None!!None!!None!!None!!35!!8
 ISLM!!305!!A!!Interfaith Dialogue!!3!!['T', 'R']!!11:00!!12:15!!Z Azam!!EBLOCKE230!!None!!None!!None!!None!!20!!0
@@ -656,7 +656,7 @@ PHIL!!495K!!A!!Existentialism!!3!!['T', 'R']!!11:00!!12:15!!T Farouk!!EBLOCKE126
 PHYS!!100!!A!!Intro. to Physics!!4!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!0
 PHYS!!100!!D!!Intro. to Physics!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS016!!SBLOCKS029!!['F']!!14:00!!15:50!!35!!0
 PHYS!!101!!B!!General Physics I!!4!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!16
-PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!1
+PHYS!!101!!C!!General Physics I!!4!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!0
 PHYS!!102!!A!!General Physics II!!4!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!20!!3
 PHYS!!102!!B!!General Physics II!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!12
 PHYS!!103!!A!!Mechanics!!4!!['T', 'R']!!11:00!!12:15!!H Latif!!SBLOCKS027A!!SBLOCKS029!!['W']!!11:00!!12:50!!35!!19
@@ -880,7 +880,7 @@ URDU!!101!!N!!Communicative Urdu!!3!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE1
 URDU!!101!!O!!Communicative Urdu!!3!!['T', 'R']!!14:00!!15:15!!N Jamal!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 URDU!!101!!P!!Communicative Urdu!!3!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!104!!A!!Sel Rep Urdu Prose!!3!!['T', 'R']!!11:00!!12:15!!A Samuel!!EBLOCKE246!!None!!None!!None!!None!!35!!24
-URDU!!208!!A!!Script Wr in Urdu!!3!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!25
+URDU!!208!!A!!Script Wr in Urdu!!3!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!26
 URDU!!301!!A!!Modern Urdu Poetry!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE103!!None!!None!!None!!None!!35!!30
 URDU!!303!!A!!Intro Selectd Genres!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!35!!32
 URDU!!402!!A!!Study of Urdu Drama!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!30
@@ -919,7 +919,7 @@ WRCM!!102!!N!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!N Justin!!SBLOC
 WRCM!!102!!NN!!Writing&Communic. II!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Saleh!!EBLOCKE214!!None!!None!!None!!None!!25!!20
 WRCM!!102!!O!!Writing&Communic. II!!3!!['T', 'R']!!12:30!!13:45!!R Wasif!!SBLOCKS007!!None!!None!!None!!None!!25!!0
 WRCM!!102!!P!!Writing&Communic. II!!3!!['M', 'W', 'F']!!08:00!!08:50!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!21
-WRCM!!102!!PP!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!16
+WRCM!!102!!PP!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!15
 WRCM!!102!!Q!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Saleh!!EBLOCKE205!!None!!None!!None!!None!!25!!24
 WRCM!!102!!QQ!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE203!!None!!None!!None!!None!!25!!24
 WRCM!!102!!R!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!S Pervez!!SBLOCKS008!!None!!None!!None!!None!!25!!0
