@@ -52,13 +52,13 @@ BIOT!!799D!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDT
 BIOT!!799E!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!22
 BUSN!!121!!C!!Microeconomics!!3!!['T', 'R']!!14:00!!15:15!!Ambreen K!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!121!!D!!Microeconomics!!3!!['T', 'R']!!15:30!!16:45!!Ambreen K!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!121!!E!!Microeconomics!!3!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!121!!F!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!12
+BUSN!!121!!E!!Microeconomics!!3!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!2
+BUSN!!121!!F!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!9
 BUSN!!121!!G!!Microeconomics!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!121!!H!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!22
+BUSN!!121!!H!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!23
 BUSN!!121!!I!!Microeconomics!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!121!!J!!Microeconomics!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!121!!K!!Microeconomics!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!6
+BUSN!!121!!K!!Microeconomics!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!4
 BUSN!!160!!B!!Management Comm!!3!!['T', 'R']!!11:00!!12:15!!R John!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!160!!C!!Management Comm!!3!!['T', 'R']!!12:30!!13:45!!R John!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!160!!E!!Management Comm!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Mughal!!EBLOCKE331!!None!!None!!None!!None!!35!!8
@@ -486,10 +486,10 @@ FREN!!101!!A!!French 1!!3!!['T', 'R']!!11:00!!12:15!!A Anwar!!EBLOCKE103!!None!!
 FREN!!101!!B!!French 1!!3!!['T', 'R']!!14:00!!15:15!!P Ludivine!!EBLOCKE103!!None!!None!!None!!None!!20!!0
 FREN!!101!!C!!French 1!!3!!['T', 'R']!!09:30!!10:45!!A Anwar!!EBLOCKE246!!None!!None!!None!!None!!20!!0
 FREN!!102!!A!!French II!!3!!['T', 'R']!!12:30!!13:45!!P Ludivine!!EBLOCKE246!!None!!None!!None!!None!!20!!17
-FSQM!!504!!A!!Public Health & Nutr!!3!!['W']!!16:00!!19:00!!I Ul Haq!!SBLOCKS312!!None!!None!!None!!None!!25!!10
-FSQM!!603!!A!!Consu. Behav. Pref.!!3!!['R']!!16:00!!19:00!!I Nasir!!SBLOCKS312!!None!!None!!None!!None!!25!!10
-FSQM!!606!!A!!Adv. Ana. Tech. f fo!!3!!['M']!!16:00!!19:00!!B Sadiq!!SBLOCKS312!!None!!None!!None!!None!!25!!10
-FSQM!!607!!A!!Food laws, Authentic!!3!!['T']!!16:00!!19:00!!K Muaz!!SBLOCKS312!!None!!None!!None!!None!!25!!10
+FSQM!!504!!A!!Public Health & Nutr!!3!!['W']!!16:00!!19:00!!I Ul Haq!!SBLOCKS312!!None!!None!!None!!None!!25!!9
+FSQM!!603!!A!!Consu. Behav. Pref.!!3!!['R']!!16:00!!19:00!!I Nasir!!SBLOCKS312!!None!!None!!None!!None!!25!!9
+FSQM!!606!!A!!Adv. Ana. Tech. f fo!!3!!['M']!!16:00!!19:00!!B Sadiq!!SBLOCKS312!!None!!None!!None!!None!!25!!9
+FSQM!!607!!A!!Food laws, Authentic!!3!!['T']!!16:00!!19:00!!K Muaz!!SBLOCKS312!!None!!None!!None!!None!!25!!9
 FSQM!!699A!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!20
 FSQM!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!24
 FSQM!!699E!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!25
@@ -516,7 +516,7 @@ HIST!!102!!A!!Survey of Westrn Civ!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Haider!!
 HIST!!201!!A!!Research Methods!!3!!['M', 'W', 'F']!!15:00!!15:50!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!202!!B!!Surv of Modern Europ!!3!!['T', 'R']!!09:30!!10:45!!S Sumbal!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!204!!A!!History of the U.S!!3!!['T', 'R']!!11:00!!12:15!!S Hayat!!EBLOCKE039!!None!!None!!None!!None!!35!!0
-HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EBLOCKE105!!None!!None!!None!!None!!35!!19
+HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EBLOCKE105!!None!!None!!None!!None!!35!!18
 HIST!!255!!A!!The Indus Valley!!3!!['T', 'R']!!15:30!!16:45!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!31
 HIST!!301!!A!!Philoso of History!!3!!['M', 'W', 'F']!!16:00!!16:50!!A Ijaz!!EBLOCKE040!!None!!None!!None!!None!!35!!10
 HIST!!303!!A!!Intl Relations& Dipl!!3!!['M', 'W', 'F']!!16:00!!16:50!!M Haider!!EBLOCKE041!!None!!None!!None!!None!!35!!29
@@ -805,7 +805,7 @@ SOCL!!100!!C!!Intro to Sociology!!3!!['M', 'W', 'F']!!09:00!!09:50!!T Fatima!!EB
 SOCL!!100!!D!!Intro to Sociology!!3!!['M', 'W', 'F']!!10:00!!10:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!E!!Intro to Sociology!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Shahid!!EBLOCKE214!!None!!None!!None!!None!!35!!1
 SOCL!!100!!G!!Intro to Sociology!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
-SOCL!!100!!H!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!1
+SOCL!!100!!H!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!K!!Intro to Sociology!!3!!['T', 'R']!!09:30!!10:45!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!L!!Intro to Sociology!!3!!['T', 'R']!!11:00!!12:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!Q!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!A Yasir!!EBLOCKE104!!None!!None!!None!!None!!35!!0
@@ -899,7 +899,7 @@ WRCM!!102!!A!!Writing&Communic. II!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Javed!!S
 WRCM!!102!!AA!!Writing&Communic. II!!3!!['M', 'W', 'F']!!08:00!!08:50!!F Saeed!!EBLOCKE205!!None!!None!!None!!None!!25!!0
 WRCM!!102!!AB!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!F Saeed!!EBLOCKE104!!None!!None!!None!!None!!25!!1
 WRCM!!102!!AC!!Writing&Communic. II!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Fareed!!SBLOCKS008!!None!!None!!None!!None!!25!!0
-WRCM!!102!!AD!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!M Zia!!SBLOCKS109!!None!!None!!None!!None!!25!!15
+WRCM!!102!!AD!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!M Zia!!SBLOCKS109!!None!!None!!None!!None!!25!!13
 WRCM!!102!!B!!Writing&Communic. II!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Saeed!!EBLOCKE205!!None!!None!!None!!None!!25!!0
 WRCM!!102!!BB!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!M Saleh!!SBLOCKS313!!None!!None!!None!!None!!25!!4
 WRCM!!102!!C!!Writing&Communic. II!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Fareed!!EBLOCKE038!!None!!None!!None!!None!!25!!0
