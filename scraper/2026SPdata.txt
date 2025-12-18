@@ -53,7 +53,7 @@ BIOT!!799E!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDT
 BUSN!!121!!C!!Microeconomics!!3!!['T', 'R']!!14:00!!15:15!!Ambreen K!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!121!!D!!Microeconomics!!3!!['T', 'R']!!15:30!!16:45!!Ambreen K!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!121!!E!!Microeconomics!!3!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!2
-BUSN!!121!!F!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!10
+BUSN!!121!!F!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!9
 BUSN!!121!!G!!Microeconomics!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!121!!H!!Microeconomics!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!26
 BUSN!!121!!I!!Microeconomics!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!0
@@ -147,7 +147,7 @@ BUSN!!490!!B!!Analysis of Inst!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOC
 BUSN!!490!!C!!Analysis of Inst!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!1
 BUSN!!490!!D!!Analysis of Inst!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Khalid!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!490!!E!!Analysis of Inst!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!0
-BUSN!!490!!G!!Analysis of Inst!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!0
+BUSN!!490!!G!!Analysis of Inst!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!1
 BUSN!!498!!A!!Business Strategy!!3!!['M', 'W', 'F']!!09:00!!09:50!!Q Zafar!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 BUSN!!498!!B!!Business Strategy!!3!!['M', 'W', 'F']!!10:00!!10:50!!Q Zafar!!EBLOCKE346!!None!!None!!None!!None!!35!!0
 BUSN!!498!!C!!Business Strategy!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Usman!!EBLOCKE347!!None!!None!!None!!None!!35!!0
@@ -231,7 +231,7 @@ COMP!!200!!B!!Data Struc. & Algor.!!4!!['M', 'W', 'F']!!09:00!!09:50!!S Qureshi!
 COMP!!206!!A!!Digital Logic Design!!3!!['T']!!14:00!!15:50!!S Minhas!!SBLOCKS027A!!SBLOCKS215!!['R']!!14:00!!15:50!!35!!0
 COMP!!206!!B!!Digital Logic Design!!3!!['M']!!09:00!!10:50!!S Minhas!!SBLOCKS216!!SBLOCKS027A!!['W']!!09:00!!10:50!!35!!0
 COMP!!213!!A!!Database Systems!!3!!['M', 'W']!!10:00!!11:50!!S Abbasi!!SBLOCKS320!!None!!None!!None!!None!!35!!0
-COMP!!213!!B!!Database Systems!!3!!['M', 'W']!!14:00!!15:50!!S Abbasi!!SBLOCKS120!!None!!None!!None!!None!!25!!8
+COMP!!213!!B!!Database Systems!!3!!['M', 'W']!!14:00!!15:50!!S Abbasi!!SBLOCKS120!!None!!None!!None!!None!!25!!7
 COMP!!213!!C!!Database Systems!!3!!['W']!!09:00!!10:50!!N Sabahat!!SBLOCKS218!!SBLOCKS219!!['F']!!09:00!!10:50!!35!!18
 COMP!!220!!A!!Software Engineering!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Toor!!SBLOCKS317!!None!!None!!None!!None!!35!!0
 COMP!!220!!B!!Software Engineering!!3!!['T', 'R']!!09:30!!10:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!10
@@ -344,7 +344,7 @@ CSDS!!611!!A!!Info. Retr. & Web Sr!!3!!['W']!!17:30!!20:15!!A Khan!!SBLOCKS316!!
 CSDS!!699A!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!25!!25
 CSDS!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!100!!B!!Principles of Econom!!3!!['M', 'W', 'F']!!09:00!!09:50!!T Ahmed!!EBLOCKE202!!None!!None!!None!!None!!35!!11
-ECON!!100!!C!!Principles of Econom!!3!!['T', 'R']!!08:00!!09:15!!T Numan!!EBLOCKE203!!None!!None!!None!!None!!35!!7
+ECON!!100!!C!!Principles of Econom!!3!!['T', 'R']!!08:00!!09:15!!T Numan!!EBLOCKE203!!None!!None!!None!!None!!35!!6
 ECON!!100!!E!!Principles of Econom!!3!!['T', 'R']!!08:00!!09:15!!M Noor!!EBLOCKE205!!None!!None!!None!!None!!35!!27
 ECON!!100!!F!!Principles of Econom!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Noor!!EBLOCKE203!!None!!None!!None!!None!!35!!14
 ECON!!100!!G!!Principles of Econom!!3!!['T', 'R']!!08:00!!09:15!!S Waqar!!EBLOCKE202!!None!!None!!None!!None!!35!!17
@@ -353,12 +353,12 @@ ECON!!101!!A!!Microeconomics I!!3!!['T', 'R']!!14:00!!15:15!!A Anwar!!EBLOCKE203
 ECON!!101!!B!!Microeconomics I!!3!!['M', 'W', 'F']!!10:00!!10:50!!T Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!101!!C!!Microeconomics I!!3!!['M', 'W', 'F']!!14:00!!14:50!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!19
 ECON!!102!!A!!Macroeconomics I!!3!!['T', 'R']!!14:00!!15:15!!Z Manzoor!!EBLOCKE204!!None!!None!!None!!None!!35!!1
-ECON!!102!!B!!Macroeconomics I!!3!!['M', 'W', 'F']!!12:00!!12:50!!T Numan!!EBLOCKE203!!None!!None!!None!!None!!35!!15
+ECON!!102!!B!!Macroeconomics I!!3!!['M', 'W', 'F']!!12:00!!12:50!!T Numan!!EBLOCKE203!!None!!None!!None!!None!!35!!14
 ECON!!102!!C!!Macroeconomics I!!3!!['M', 'W', 'F']!!12:00!!12:50!!N Ishtiaq!!EBLOCKE202!!None!!None!!None!!None!!35!!28
 ECON!!103!!A!!Mathematics for Econ!!3!!['T', 'R']!!11:00!!12:15!!H Ahsan!!EBLOCKE205!!None!!None!!None!!None!!35!!22
 ECON!!103!!B!!Mathematics for Econ!!3!!['M', 'W', 'F']!!10:00!!10:50!!M Noor!!EBLOCKE203!!None!!None!!None!!None!!35!!25
 ECON!!103!!C!!Mathematics for Econ!!3!!['T', 'R']!!11:00!!12:15!!Z Iqbal!!EBLOCKE204!!None!!None!!None!!None!!35!!13
-ECON!!201!!A!!Microeconomics II!!3!!['T', 'R']!!12:30!!13:45!!A Anwar!!EBLOCKE203!!None!!None!!None!!None!!35!!27
+ECON!!201!!A!!Microeconomics II!!3!!['T', 'R']!!12:30!!13:45!!A Anwar!!EBLOCKE203!!None!!None!!None!!None!!35!!25
 ECON!!201!!B!!Microeconomics II!!3!!['T', 'R']!!12:30!!13:45!!T Ahmed!!EBLOCKE202!!None!!None!!None!!None!!35!!6
 ECON!!202!!A!!Macroeconomics II!!3!!['M', 'W', 'F']!!11:00!!11:50!!Z Manzoor!!EBLOCKE202!!None!!None!!None!!None!!35!!20
 ECON!!202!!B!!Macroeconomics II!!3!!['M', 'W', 'F']!!14:00!!14:50!!Z Manzoor!!EBLOCKE203!!None!!None!!None!!None!!35!!26
@@ -373,16 +373,16 @@ ECON!!302!!A!!Res Meth. & Com. Ap!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EB
 ECON!!302!!B!!Res Meth. & Com. Ap!!3!!['T', 'R']!!11:00!!12:15!!M Tahir!!EBLOCKE241!!None!!None!!None!!None!!35!!25
 ECON!!304!!A!!Managerial Economics!!3!!['T', 'R']!!14:00!!15:15!!U Hanif!!EBLOCKE202!!None!!None!!None!!None!!35!!15
 ECON!!315!!A!!Advanced Math Econ!!3!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!20
-ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!2
+ECON!!320!!A!!Econ.of Invest & Fin!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!1
 ECON!!322!!A!!Data Analy for Econo!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!1
-ECON!!323!!A!!Digital Economics!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!9
+ECON!!323!!A!!Digital Economics!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!8
 ECON!!325!!A!!Islamic Economics!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Ahmed!!EBLOCKE203!!None!!None!!None!!None!!35!!2
 ECON!!400!!A!!Issues in Pak Econ!!3!!['T', 'R']!!11:00!!12:15!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!5
 ECON!!400!!B!!Issues in Pak Econ!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Tahir!!EBLOCKE202!!None!!None!!None!!None!!35!!26
 ECON!!406!!A!!Intro to Game Theory!!3!!['T', 'R']!!09:30!!10:45!!A Batool!!EBLOCKE202!!None!!None!!None!!None!!35!!24
 ECON!!411!!A!!Development Policy!!3!!['T', 'R']!!09:30!!10:45!!M Ayyubi!!EBLOCKE203!!None!!None!!None!!None!!35!!25
 ECON!!413!!A!!Monetary Policy!!3!!['T', 'R']!!14:00!!15:15!!M Tahir!!EBLOCKE205!!None!!None!!None!!None!!35!!35
-ECON!!417!!A!!International Financ!!3!!['M', 'W', 'F']!!14:00!!14:50!!G Shabir!!EBLOCKE205!!None!!None!!None!!None!!35!!20
+ECON!!417!!A!!International Financ!!3!!['M', 'W', 'F']!!14:00!!14:50!!G Shabir!!EBLOCKE205!!None!!None!!None!!None!!35!!19
 ECON!!417!!B!!International Financ!!3!!['T', 'R']!!12:30!!13:45!!G Shabir!!EBLOCKE205!!None!!None!!None!!None!!35!!29
 ECON!!499A!!A!!Research Prj & Paper!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!35
 ECON!!499B!!A!!Research Prj & Paper!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!32
@@ -401,16 +401,16 @@ ECON!!799B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhat
 ECON!!799D!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!35!!34
 EDUC!!110!!A!!Foundations of Educ.!!3!!['T', 'R']!!15:30!!16:45!!J Hassan!!EBLOCKE230!!None!!None!!None!!None!!35!!0
 EDUC!!110!!D!!Foundations of Educ.!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-EDUC!!110!!E!!Foundations of Educ.!!3!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!3
+EDUC!!110!!E!!Foundations of Educ.!!3!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!2
 EDUC!!110!!F!!Foundations of Educ.!!3!!['T', 'R']!!14:00!!15:15!!J Hassan!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 EDUC!!110!!G!!Foundations of Educ.!!3!!['M', 'W', 'F']!!08:00!!08:50!!A Aslam!!EBLOCKE121!!None!!None!!None!!None!!35!!21
-EDUC!!110!!H!!Foundations of Educa!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!20
+EDUC!!110!!H!!Foundations of Educa!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!21
 EDUC!!120!!A!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!M Raza!!EBLOCKE038!!None!!None!!None!!None!!35!!18
 EDUC!!120!!B!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!120!!C!!Educ Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!120!!E!!Educ Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Burhan!!EBLOCKE222!!None!!None!!None!!None!!35!!29
 EDUC!!120!!F!!Educ Psychology!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!35
-EDUC!!120!!G!!Educ Psychology!!3!!['T', 'R']!!15:30!!16:45!!R. Farooq!!EBLOCKE038!!None!!None!!None!!None!!35!!18
+EDUC!!120!!G!!Educ Psychology!!3!!['T', 'R']!!15:30!!16:45!!R. Farooq!!EBLOCKE038!!None!!None!!None!!None!!35!!17
 EDUC!!120!!H!!Educ Psychology!!3!!['T', 'R']!!14:00!!15:15!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!8
 EDUC!!240!!A!!Technology in Educat!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Aslam!!EBLOCKE242!!None!!None!!None!!None!!35!!25
 EDUC!!300!!A!!Inst. Mthds & Strate!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Burhan!!EBLOCKE121!!None!!None!!None!!None!!35!!21
@@ -522,7 +522,7 @@ HIST!!250!!A!!His. salaten-e-delhi!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Ijaz!!EB
 HIST!!255!!A!!The Indus Valley!!3!!['T', 'R']!!15:30!!16:45!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!31
 HIST!!301!!A!!Philoso of History!!3!!['M', 'W', 'F']!!16:00!!16:50!!A Ijaz!!EBLOCKE040!!None!!None!!None!!None!!35!!10
 HIST!!303!!A!!Intl Relations& Dipl!!3!!['M', 'W', 'F']!!16:00!!16:50!!M Haider!!EBLOCKE041!!None!!None!!None!!None!!35!!28
-HIST!!305!!A!!Ancnt Hist Sub-Cont!!3!!['M', 'W', 'F']!!11:00!!11:50!!F Masih!!EBLOCKE105!!None!!None!!None!!None!!35!!9
+HIST!!305!!A!!Ancnt Hist Sub-Cont!!3!!['M', 'W', 'F']!!11:00!!11:50!!F Masih!!EBLOCKE105!!None!!None!!None!!None!!35!!8
 HIST!!306!!A!!Islamic History!!3!!['T', 'R']!!12:30!!13:45!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 HIST!!308!!A!!History of Lahore!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Shafqat!!EBLOCKE242!!None!!None!!None!!None!!35!!35
 HIST!!312!!A!!Modern Muslim World!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Ijaz!!EBLOCKE243!!None!!None!!None!!None!!35!!27
@@ -615,8 +615,8 @@ MCOM!!101!!E!!Intro to Com Studies!!3!!['T', 'R']!!11:00!!12:15!!A Malik!!EBLOCK
 MCOM!!101!!F!!Intro to Com Studies!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Amir!!EBLOCKE040!!None!!None!!None!!None!!35!!0
 MCOM!!200!!A!!Copy Writing!!3!!['T', 'R']!!08:00!!09:15!!Z Masood!!EBLOCKE040!!None!!None!!None!!None!!35!!32
 MCOM!!200!!B!!Copy Writing!!3!!['M', 'W', 'F']!!10:00!!10:50!!Z Masood!!EBLOCKE039!!None!!None!!None!!None!!35!!1
-MCOM!!201!!A!!News Reporting!!3!!['M', 'W', 'F']!!08:00!!08:50!!S A Naeem!!EBLOCKE039!!None!!None!!None!!None!!35!!15
-MCOM!!201!!B!!News Reporting!!3!!['T', 'R']!!08:00!!09:15!!S A Naeem!!EBLOCKE039!!None!!None!!None!!None!!35!!16
+MCOM!!201!!A!!News Reporting!!3!!['M', 'W', 'F']!!08:00!!08:50!!S A Naeem!!EBLOCKE039!!None!!None!!None!!None!!35!!14
+MCOM!!201!!B!!News Reporting!!3!!['T', 'R']!!08:00!!09:15!!S A Naeem!!EBLOCKE039!!None!!None!!None!!None!!35!!17
 MCOM!!290!!A!!Fundamentals of Rese!!3!!['M', 'W', 'F']!!09:00!!09:50!!S. Zehra!!EBLOCKE041!!None!!None!!None!!None!!35!!17
 MCOM!!290!!B!!Fundamentals of Rese!!3!!['M', 'W', 'F']!!15:00!!15:50!!F Jabeen!!EBLOCKE040!!None!!None!!None!!None!!35!!20
 MCOM!!301!!A!!Media Systems!!3!!['T', 'R']!!09:30!!10:45!!A Malik!!EBLOCKE039!!None!!None!!None!!None!!35!!24
@@ -841,11 +841,11 @@ STAT!!100!!H!!Basic Statistics!!3!!['T', 'R']!!09:30!!10:45!!M Raza!!SBLOCKS425!
 STAT!!100!!I!!Basic Statistics!!3!!['T', 'R']!!11:00!!12:15!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!35!!0
 STAT!!100!!J!!Basic Statistics!!3!!['T', 'R']!!12:30!!13:45!!S Hanook!!SBLOCKS425!!None!!None!!None!!None!!35!!0
 STAT!!100!!K!!Basic Statistics!!3!!['T', 'R']!!14:00!!15:15!!S Samuel!!SBLOCKS420!!None!!None!!None!!None!!35!!0
-STAT!!101!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!12
+STAT!!101!!A!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!13
 STAT!!101!!B!!Statistical Methods!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Hanook!!SBLOCKS417!!None!!None!!None!!None!!15!!15
 STAT!!101!!C!!Statistical Methods!!3!!['M', 'W', 'F']!!10:00!!10:50!!R Butt!!SBLOCKS425!!None!!None!!None!!None!!15!!0
 STAT!!101!!D!!Statistical Methods!!3!!['M', 'W', 'F']!!14:00!!14:50!!I Naqvi!!SBLOCKS420!!None!!None!!None!!None!!15!!8
-STAT!!101!!E!!Statistical Methods!!3!!['T', 'R']!!08:00!!09:15!!A Tayyab!!SBLOCKS420!!None!!None!!None!!None!!15!!10
+STAT!!101!!E!!Statistical Methods!!3!!['T', 'R']!!08:00!!09:15!!A Tayyab!!SBLOCKS420!!None!!None!!None!!None!!15!!9
 STAT!!101!!F!!Statistical Methods!!3!!['T', 'R']!!14:00!!15:15!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!15!!12
 STAT!!101!!G!!Statistical Methods!!3!!['T', 'R']!!15:30!!16:45!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!15!!8
 STAT!!102!!A!!Prob & Prob. Distrib!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!20!!0
@@ -912,7 +912,7 @@ WRCM!!102!!E!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!N Ahmad!!EBLOCK
 WRCM!!102!!G!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Ahmad!!EBLOCKE230!!None!!None!!None!!None!!25!!0
 WRCM!!102!!H!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!25!!0
 WRCM!!102!!I!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Maqbool!!EBLOCKE104!!None!!None!!None!!None!!25!!2
-WRCM!!102!!II!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Wasim!!EBLOCKE205!!None!!None!!None!!None!!25!!9
+WRCM!!102!!II!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Wasim!!EBLOCKE205!!None!!None!!None!!None!!25!!8
 WRCM!!102!!J!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!A Wasim!!EBLOCKE241!!None!!None!!None!!None!!25!!1
 WRCM!!102!!JJ!!Writing&Communic. II!!3!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE230!!None!!None!!None!!None!!25!!25
 WRCM!!102!!K!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE230!!None!!None!!None!!None!!25!!25
