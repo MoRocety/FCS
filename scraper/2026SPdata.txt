@@ -470,7 +470,7 @@ ENVR!!309!!A!!Intro Env. Modeling!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Chung!!SB
 ENVR!!311!!A!!Fund Analy. Chem!!4!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS213!!SBLOCKS138!!['W']!!11:00!!12:50!!25!!18
 ENVR!!323!!A!!Ecology & Evolution!!4!!['M', 'W', 'F']!!12:00!!12:50!!S Akram!!SBLOCKS424!!SBLOCKS029!!['T']!!14:00!!15:50!!35!!12
 ENVR!!330!!A!!Biochemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!D Ahmed!!SBLOCKS212!!SBLOCKS135!!['T']!!14:00!!15:50!!10!!9
-ENVR!!402!!A!!Solid Waste Manag.!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!17
+ENVR!!402!!A!!Solid Waste Manag.!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!16
 ENVR!!403!!A!!Occu Health & Safety!!3!!['T', 'R']!!09:30!!10:45!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!19
 ENVR!!404!!A!!Air/ Noise Poll. Cnt!!3!!['T', 'R']!!08:00!!09:15!!D Bakker!!SBLOCKS424!!None!!None!!None!!None!!35!!32
 ENVR!!405!!A!!Conservation Biol!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!SBLOCKS417!!None!!None!!None!!None!!35!!24
@@ -494,7 +494,7 @@ FSQM!!603!!A!!Consu. Behav. Pref.!!3!!['R']!!16:00!!19:00!!I Nasir!!SBLOCKS312!!
 FSQM!!606!!A!!Adv. Ana. Tech. f fo!!3!!['M']!!16:00!!19:00!!B Sadiq!!SBLOCKS312!!None!!None!!None!!None!!25!!6
 FSQM!!607!!A!!Food laws, Authentic!!3!!['T']!!16:00!!19:00!!K Muaz!!SBLOCKS312!!None!!None!!None!!None!!25!!6
 FSQM!!699A!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!20
-FSQM!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!11
+FSQM!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!10
 FSQM!!699E!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!25
 GEOG!!101!!A!!Funda of Geography!!3!!['M', 'W', 'F']!!08:00!!08:50!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!0
 GEOG!!101!!B!!Funda of Geography!!3!!['M', 'W', 'F']!!09:00!!09:50!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!0
@@ -640,7 +640,7 @@ MCOM!!415!!B!!Comm Campaign Design!!3!!['M', 'W', 'F']!!08:00!!08:50!!Z Masood!!
 MCOM!!430!!A!!Media Lab!!4!!['T', 'R']!!11:00!!12:15!!S Saleem!!MCENTE01!!None!!None!!None!!None!!35!!28
 MCOM!!499!!A!!Research Thesis/Proj!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!35!!0
 MCOM!!512!!A!!Comm.Res.MethodsII!!3!!['W']!!16:00!!19:00!!Dr S Abbas!!EBLOCKE039!!None!!None!!None!!None!!35!!34
-MCOM!!517!!A!!M.Debate:Issu.MCOM!!3!!['M']!!16:00!!19:00!!A Muzamil!!SBLOCKS111!!None!!None!!None!!None!!35!!34
+MCOM!!517!!A!!M.Debate:Issu.MCOM!!3!!['M']!!16:00!!19:00!!A Muzamil!!SBLOCKS111!!None!!None!!None!!None!!35!!33
 MCOM!!522!!A!!Inter. Journalism!!3!!['T']!!16:00!!19:00!!A Khan!!EBLOCKE039!!None!!None!!None!!None!!25!!25
 MCOM!!525!!A!!MCOM.Theory II!!3!!['R']!!16:00!!19:00!!F Jabeen!!EBLOCKE040!!None!!None!!None!!None!!35!!34
 MCOM!!526!!A!!Med.&Cul. Change!!3!!['T']!!16:00!!19:00!!S Saleem!!EBLOCKE140!!None!!None!!None!!None!!15!!15
@@ -857,7 +857,7 @@ STAT!!102!!B!!Prob & Prob. Distrib!!3!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLOCKS
 STAT!!115!!A!!Probability & Stat.!!3!!['T', 'R']!!14:00!!15:15!!I Naqvi!!SBLOCKS425!!None!!None!!None!!None!!35!!0
 STAT!!115!!B!!Probability & Stat.!!3!!['M', 'W', 'F']!!08:00!!08:50!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!35!!1
 STAT!!115!!C!!Probability & Stat.!!3!!['T', 'R']!!08:00!!09:15!!A Sarwar!!SBLOCKS425!!None!!None!!None!!None!!35!!21
-STAT!!201!!A!!Statis Inference I!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Mughal!!SBLOCKS421!!None!!None!!None!!None!!35!!23
+STAT!!201!!A!!Statis Inference I!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Mughal!!SBLOCKS421!!None!!None!!None!!None!!35!!24
 STAT!!206!!A!!Intro to Data Analyt!!3!!['T', 'R']!!11:00!!12:15!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!35!!7
 STAT!!206!!B!!Intro to Data Analyt!!3!!['T', 'R']!!09:30!!10:45!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!35!!9
 STAT!!207!!A!!Business Analytics!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!35!!0
