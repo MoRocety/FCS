@@ -304,7 +304,7 @@ CRST!!332!!A!!Biblical Hebrew 4!!3!!['T', 'R']!!17:00!!18:15!!D Lanz!!XBLOCKX002
 CRST!!372!!A!!New Testament Grk 4!!3!!['M', 'W']!!17:00!!18:15!!W Davey!!XBLOCKX002!!None!!None!!None!!None!!35!!28
 CRST!!412!!A!!Applied Theology 6!!1!!['F']!!11:00!!11:50!!G Calib!!XBLOCKX018!!None!!None!!None!!None!!35!!33
 CRST!!425!!A!!Hebrew Reading!!3!!['T', 'R']!!15:30!!16:45!!Z West!!XBLOCKX002!!None!!None!!None!!None!!35!!31
-CRST!!455A!!A!!Greek Reading : 1 Jo!!3!!['T', 'R']!!15:30!!16:45!!K Pervaiz!!XBLOCKX019!!None!!None!!None!!None!!35!!25
+CRST!!455A!!A!!Greek Reading : 1 Jo!!3!!['M', 'W']!!15:30!!16:45!!K Pervaiz!!XBLOCKX002!!None!!None!!None!!None!!35!!25
 CRST!!471D!!A!!English Bible: James!!3!!['T', 'R']!!11:00!!12:15!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!18
 CRST!!498!!A!!Christian Capstone!!3!!['M', 'W']!!11:00!!11:50!!R Wetmore!!XBLOCKX018!!None!!None!!None!!None!!35!!32
 CRST!!525D!!A!!Bibilical:1&2 Kings!!3!!['W']!!14:00!!17:00!!D Lanz!!XBLOCKX018!!None!!None!!None!!None!!35!!34
@@ -482,11 +482,11 @@ ENVR!!405!!A!!Conservation Biol!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!SBLO
 ENVR!!413!!A!!Envr. Toxicology!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Shahbaz!!SBLOCKS424!!None!!None!!None!!None!!35!!5
 ENVR!!416!!A!!Wastewater treatment!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Chung!!SBLOCKS417!!SBLOCKS341!!['F']!!08:00!!09:50!!35!!30
 ENVR!!499B!!A!!Project/Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!35!!34
-ENVR!!511!!A!!Envr.Appl.Nano.Mater!!3!!['M']!!17:30!!18:45!!M Shahbaz!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!20!!12
-ENVR!!602!!A!!Pol Control Techn!!3!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!12
-ENVR!!604!!A!!Eco-Entrepreneurship!!1!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!12
-ENVR!!605!!A!!Research Methods!!3!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!12
-ENVR!!611!!A!!Carb.Sequestrat&Envr!!3!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!12
+ENVR!!511!!A!!Envr.Appl.Nano.Mater!!3!!['M']!!17:30!!18:45!!M Shahbaz!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!20!!11
+ENVR!!602!!A!!Pol Control Techn!!3!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!11
+ENVR!!604!!A!!Eco-Entrepreneurship!!1!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!11
+ENVR!!605!!A!!Research Methods!!3!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!11
+ENVR!!611!!A!!Carb.Sequestrat&Envr!!3!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!11
 ENVR!!699A!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!10!!6
 ENVR!!699B!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!18
 ENVR!!699E!!A!!Research!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!20
@@ -542,7 +542,7 @@ HIST!!410!!A!!Colon Punj 1848-1947!!3!!['T', 'R']!!14:00!!15:15!!S Sumbal!!EBLOC
 HIST!!499!!A!!Independent Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Masih!!TBDTBD!!None!!None!!None!!None!!35!!34
 HPED!!101!!A!!Cricket for Girls!!1!!['M', 'W']!!15:00!!16:00!!S Khaliq!!TBDTBD!!None!!None!!None!!None!!25!!8
 HPED!!105!!A!!Volleyball(Girls)!!1!!['M', 'W']!!16:00!!17:00!!S Khaliq!!VCOURTVCOURT!!None!!None!!None!!None!!25!!15
-HPED!!105!!B!!Volleyball for Boys!!1!!['T', 'R']!!16:00!!17:00!!S Nazir!!VCOURTVCOURT!!None!!None!!None!!None!!25!!12
+HPED!!105!!B!!Volleyball for Boys!!1!!['T', 'R']!!16:00!!17:00!!S Nazir!!VCOURTVCOURT!!None!!None!!None!!None!!25!!11
 HPED!!106!!A!!Physcl. Exercise Boy!!1!!['T', 'R']!!15:00!!16:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!21
 HPED!!107!!A!!Athletics(Boys)!!1!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!14
 HPED!!111!!A!!Tennis (Girls)!!1!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!10
@@ -719,7 +719,7 @@ PLSC!!102!!B!!Pakistan Government!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EB
 PLSC!!102!!C!!Pakistan Government!!3!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!23
 PLSC!!203!!A!!International Relati!!3!!['T', 'R']!!12:30!!13:45!!M Farooqi!!EBLOCKE139!!None!!None!!None!!None!!35!!0
 PLSC!!203!!B!!International Relati!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Sindhu!!EBLOCKE126!!None!!None!!None!!None!!35!!25
-PLSC!!212!!A!!Theor Comp. Politic!!3!!['M', 'W', 'F']!!15:00!!15:50!!M Mirza!!EBLOCKE122!!None!!None!!None!!None!!35!!17
+PLSC!!212!!A!!Theor Comp. Politic!!3!!['M', 'W', 'F']!!16:00!!16:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!17
 PLSC!!301!!A!!Ancnt, Mdvl, Poli Th!!3!!['M', 'W', 'F']!!11:00!!11:50!!K Khan!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!302!!A!!Modern Political The!!3!!['T', 'R']!!11:00!!12:15!!Q Memon!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 PLSC!!303!!A!!Contemp Poli Theory!!3!!['T', 'R']!!12:30!!13:45!!Q Memon!!EBLOCKE126!!None!!None!!None!!None!!35!!17
