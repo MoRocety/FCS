@@ -99,7 +99,7 @@ def scrape_courses(terms=None, auto_detect=True):
     
     # Create a session to maintain cookies across requests
     sess = Session()
-    
+    sess.verify = False
     print("Step 1: Fetching initial page to get session and security tokens...")
     
     # Step 1: Get the initial page to establish session and extract tokens
