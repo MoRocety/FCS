@@ -81,7 +81,7 @@ BUSN!!206!!H!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Rashid!!E
 BUSN!!206!!I!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!J!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!K!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Rashid!!EBLOCKE330!!None!!None!!None!!None!!35!!0
-BUSN!!206!!L!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!20
+BUSN!!206!!L!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE333!!None!!None!!None!!None!!35!!19
 BUSN!!206!!M!!Mgt. Acc. & Control!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!225!!A!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!225!!B!!Econ Appl for Busn!!3!!['M', 'W', 'F']!!15:00!!15:50!!U Sharif!!EBLOCKE330!!None!!None!!None!!None!!35!!0
@@ -101,10 +101,10 @@ BUSN!!250!!B!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!S Hussain!!EBLO
 BUSN!!250!!C!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!S Hussain!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!250!!D!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!A Chughtai!!SBLOCKS111!!None!!None!!None!!None!!35!!11
 BUSN!!250!!E!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!A Chughtai!!EBLOCKE332!!None!!None!!None!!None!!35!!6
-BUSN!!250!!F!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE344!!None!!None!!None!!None!!35!!0
+BUSN!!250!!F!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE344!!None!!None!!None!!None!!35!!1
 BUSN!!250!!G!!Indiv & Grp Dynamics!!3!!['T', 'R']!!09:30!!10:45!!Afaf k!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!250!!H!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!0
-BUSN!!250!!I!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!1
+BUSN!!250!!I!!Indiv & Grp Dynamics!!3!!['T', 'R']!!12:30!!13:45!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!250!!J!!Indiv & Grp Dynamics!!3!!['T', 'R']!!11:00!!12:15!!A Fateh!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!250!!K!!Indiv & Grp Dynamics!!3!!['T', 'R']!!14:00!!15:15!!A Fateh!!EBLOCKE346!!None!!None!!None!!None!!35!!14
 BUSN!!250!!L!!Indiv & Grp Dynamics!!3!!['T', 'R']!!15:30!!16:45!!A Fateh!!EBLOCKE330!!None!!None!!None!!None!!35!!26
@@ -126,7 +126,7 @@ BUSN!!370!!D!!Management Inf Syste!!3!!['T', 'R']!!09:30!!10:45!!S Ahmed!!EBLOCK
 BUSN!!370!!E!!Management Inf Syste!!3!!['T', 'R']!!11:00!!12:15!!S Ahmed!!EBLOCKE347!!None!!None!!None!!None!!35!!0
 BUSN!!370!!F!!Management Inf Syste!!3!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!22
 BUSN!!370!!G!!Management Inf Syste!!3!!['T', 'R']!!12:30!!13:45!!S Nazir!!EBLOCKE346!!None!!None!!None!!None!!35!!0
-BUSN!!370!!H!!Management Inf Syste!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!4
+BUSN!!370!!H!!Management Inf Syste!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!5
 BUSN!!370!!I!!Management Inf Syste!!3!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!370!!J!!Management Inf Syste!!3!!['T', 'R']!!12:30!!13:45!!S Ahmed!!EBLOCKE347!!None!!None!!None!!None!!35!!0
 BUSN!!382!!A!!Marketing Comm!!3!!['M', 'W', 'F']!!09:00!!09:50!!T Alvi!!EBLOCKE346!!None!!None!!None!!None!!35!!0
@@ -242,7 +242,7 @@ COMP!!213!!A!!Database Systems!!3!!['M', 'W']!!10:00!!11:50!!S Abbasi!!SBLOCKS32
 COMP!!213!!B!!Database Systems!!3!!['M', 'W']!!14:00!!15:50!!S Abbasi!!SBLOCKS120!!None!!None!!None!!None!!25!!3
 COMP!!213!!C!!Database Systems!!3!!['W']!!09:00!!10:50!!N Sabahat!!SBLOCKS218!!SBLOCKS219!!['F']!!09:00!!10:50!!35!!16
 COMP!!220!!A!!Software Engineering!!3!!['M', 'W', 'F']!!14:00!!14:50!!S Toor!!SBLOCKS317!!None!!None!!None!!None!!35!!0
-COMP!!220!!B!!Software Engineering!!3!!['T', 'R']!!09:30!!10:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!7
+COMP!!220!!B!!Software Engineering!!3!!['T', 'R']!!09:30!!10:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!6
 COMP!!295!!A!!Introduction to C/C+!!3!!['W']!!11:00!!12:50!!A Khanum!!SBLOCKS216!!SBLOCKS219!!['F']!!11:00!!12:50!!25!!14
 COMP!!300!!A!!Computer Organizatio!!3!!['T']!!09:00!!10:50!!A Khan!!SBLOCKS319!!SBLOCKS317!!['R']!!09:00!!10:50!!35!!0
 COMP!!300!!B!!Computer Organizatio!!3!!['T', 'R']!!11:00!!12:50!!A Khan!!SBLOCKS218!!None!!None!!None!!None!!35!!0
@@ -299,7 +299,7 @@ CRIM!!201!!A!!Sociological Researc!!3!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOC
 CRIM!!220!!B!!Intro. to Crimnology!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!5!!0
 CRIM!!310!!A!!Penology and Prison!!3!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!1
 CRIM!!460!!A!!Comparative Criminal!!3!!['T', 'R']!!12:30!!13:45!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!18
-CRST!!151!!A!!Intro to Chris. Thou!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!6
+CRST!!151!!A!!Intro to Chris. Thou!!3!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!7
 CRST!!152!!A!!Christian Ethics!!3!!['M', 'W', 'F']!!09:00!!09:50!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 CRST!!152!!C!!Christian Ethics!!3!!['M', 'W', 'F']!!11:00!!11:50!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 CRST!!155!!A!!Interpret the Bible!!3!!['T', 'R']!!09:30!!10:45!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!0
@@ -307,7 +307,7 @@ CRST!!211!!A!!Applied Theology 1!!1!!['M']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!
 CRST!!212!!A!!Applied Theology 2!!1!!['W']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!25
 CRST!!232!!A!!Biblical Hebrew 2!!3!!['T', 'R']!!14:00!!15:15!!D Lanz!!EBLOCKE243!!None!!None!!None!!None!!35!!23
 CRST!!272!!A!!New Test. Greek 2!!3!!['T', 'R']!!12:30!!13:45!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!17
-CRST!!281!!A!!Old Testament 1!!3!!['T', 'R']!!08:00!!09:15!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!7
+CRST!!281!!A!!Old Testament 1!!3!!['T', 'R']!!08:00!!09:15!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!6
 CRST!!312!!A!!Applied Theology 4!!1!!['F']!!12:00!!12:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!26
 CRST!!332!!A!!Biblical Hebrew 4!!3!!['T', 'R']!!17:00!!18:15!!D Lanz!!XBLOCKX002!!None!!None!!None!!None!!35!!25
 CRST!!372!!A!!New Testament Grk 4!!3!!['M', 'W']!!17:00!!18:15!!W Davey!!XBLOCKX002!!None!!None!!None!!None!!35!!23
@@ -335,7 +335,7 @@ CSCS!!105!!C!!Basic Electronics!!4!!['T', 'R']!!15:30!!16:45!!I Iqbal!!SBLOCKS21
 CSCS!!105!!D!!Basic Electronics!!4!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!15!!6
 CSCS!!105!!E!!Basic Electronics!!4!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!15!!9
 CSCS!!201!!A!!Multivariate Calculu!!3!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!0
-CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!16
+CSCS!!201!!B!!Multivariate Calculu!!3!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!15
 CSCS!!201!!C!!Multivariate Calculu!!3!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS215!!None!!None!!None!!None!!35!!32
 CSCS!!202!!A!!Comp Linear Algeb!!3!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!21
 CSCS!!202!!B!!Comp Linear Algeb!!3!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!1
