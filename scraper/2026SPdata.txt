@@ -24,7 +24,7 @@ BIOL!!403!!A!!Plant Physiology!!3!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!SBLOCK
 BIOL!!412!!A!!Neurobiology!!3!!['M', 'W', 'F']!!08:00!!08:50!!Team!!SBLOCKS313!!None!!None!!None!!None!!35!!20
 BIOL!!415!!A!!Food Micrbio.&Safety!!4!!['M']!!14:00!!15:50!!B Sadiq!!SBLOCKS321!!SBLOCKS329!!['T', 'R']!!09:30!!10:45!!35!!12
 BIOL!!469!!A!!Plant Pathology!!4!!['T', 'R']!!08:00!!09:15!!I Khokhar!!SBLOCKS312!!SBLOCKS329!!['W']!!14:00!!15:50!!35!!27
-BIOL!!473!!A!!Industrial Micro!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Imran!!SBLOCKS331!!None!!None!!None!!None!!35!!31
+BIOL!!473!!A!!Industrial Micro!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Imran!!SBLOCKS331!!None!!None!!None!!None!!35!!32
 BIOT!!202!!A!!Prot, Cell & Tissue!!4!!['T', 'R']!!09:30!!10:45!!A Maqbool!!SBLOCKS313!!SBLOCKS329!!['W']!!11:00!!12:50!!35!!0
 BIOT!!301!!A!!Anal. Tech. in Biol!!3!!['M', 'W']!!09:00!!09:50!!M Irfan!!SBLOCKS413!!SBLOCKS331!!['M']!!14:00!!15:50!!35!!0
 BIOT!!301!!B!!Anal. Tech. in Biol!!3!!['T', 'R']!!11:00!!12:15!!A Bashir!!SBLOCKS312!!SBLOCKS331!!['W']!!14:00!!15:50!!35!!26
@@ -606,7 +606,7 @@ LING!!308!!A!!Translation Studies!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Wasim!!EB
 LING!!413!!A!!Sociolinguistics!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!12
 LING!!495!!A!!Res.Methods in Ling!!3!!['T', 'R']!!12:30!!13:45!!A Khalid!!EBLOCKE039!!None!!None!!None!!None!!35!!30
 LING!!499!!A!!Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!25!!21
-MATH!!095!!A!!Math Remedial!!0!!['T', 'R']!!15:30!!16:45!!R Malik!!SBLOCKS410!!None!!None!!None!!None!!35!!1
+MATH!!095!!A!!Math Remedial!!0!!['T', 'R']!!15:30!!16:45!!R Malik!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!095!!B!!Math Remedial!!0!!['M', 'W', 'F']!!15:00!!15:50!!R Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!7
 MATH!!100!!A!!Quantitative Skills!!3!!['M', 'W', 'F']!!09:00!!09:50!!F Janjua!!SBLOCKS412!!None!!None!!None!!None!!35!!0
 MATH!!100!!B!!Quantitative Skills!!3!!['M', 'W', 'F']!!12:00!!12:50!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!0
@@ -797,14 +797,14 @@ PSYC!!101!!A!!Life Skills!!3!!['M', 'W', 'F']!!12:00!!12:50!!E Shahid!!EBLOCKE24
 PSYC!!105!!A!!Eff. Communication!!3!!['M', 'W', 'F']!!14:00!!14:50!!N Asif!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 PSYC!!140!!A!!Psychology of leader!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!15
 PSYC!!150!!A!!Dev. Psychology - 1!!3!!['T', 'R']!!14:00!!15:15!!U Ashiq!!EBLOCKE213!!None!!None!!None!!None!!35!!0
-PSYC!!150!!B!!Dev. Psychology - 1!!3!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
+PSYC!!150!!B!!Dev. Psychology - 1!!3!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!1
 PSYC!!150!!C!!Dev. Psychology - 1!!3!!['T', 'R']!!09:30!!10:45!!S Jabeen!!EBLOCKE241!!None!!None!!None!!None!!35!!0
 PSYC!!160!!A!!Emotional Intelligen!!3!!['M', 'W', 'F']!!08:00!!08:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 PSYC!!165!!A!!AI in psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE347!!None!!None!!None!!None!!35!!0
 PSYC!!220!!A!!Stat. for Psychology!!4!!['T', 'R']!!11:00!!12:15!!K Safdar!!SBLOCKS416!!EBLOCKE241!!['F']!!10:00!!11:50!!30!!0
 PSYC!!220!!B!!Stat. for Psychology!!4!!['T', 'R']!!12:30!!13:45!!U Ilyas!!EBLOCKE137!!EBLOCKE241!!['W']!!14:00!!15:50!!30!!0
 PSYC!!220!!C!!Stat. for Psychology!!4!!['M']!!14:00!!15:50!!U Ilyas!!EBLOCKE241!!EBLOCKE230!!['T', 'R']!!08:00!!09:15!!30!!0
-PSYC!!225!!A!!Ethics in Psychology!!3!!['T', 'R']!!15:30!!16:45!!ESchwaiger!!EBLOCKE246!!None!!None!!None!!None!!35!!15
+PSYC!!225!!A!!Ethics in Psychology!!3!!['T', 'R']!!15:30!!16:45!!ESchwaiger!!EBLOCKE246!!None!!None!!None!!None!!35!!14
 PSYC!!245!!A!!Political Psychology!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Niazi!!EBLOCKE246!!None!!None!!None!!None!!35!!27
 PSYC!!275!!A!!Psyc of Peace & conf!!3!!['M', 'W', 'F']!!10:00!!10:50!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!0
 PSYC!!280!!A!!Social Psychology!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Shahed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
@@ -981,9 +981,9 @@ WRCM!!102!!E!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!N Ahmad!!EBLOCK
 WRCM!!102!!G!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!N Ahmad!!EBLOCKE230!!None!!None!!None!!None!!25!!0
 WRCM!!102!!H!!Writing&Communic. II!!3!!['T', 'R']!!09:30!!10:45!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!25!!0
 WRCM!!102!!I!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Maqbool!!EBLOCKE104!!None!!None!!None!!None!!25!!0
-WRCM!!102!!II!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Wasim!!EBLOCKE205!!None!!None!!None!!None!!25!!0
+WRCM!!102!!II!!Writing&Communic. II!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Wasim!!EBLOCKE205!!None!!None!!None!!None!!25!!1
 WRCM!!102!!J!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!A Wasim!!EBLOCKE241!!None!!None!!None!!None!!25!!0
-WRCM!!102!!KK!!Writing&Communic. II!!3!!['T', 'R']!!11:00!!12:15!!S Maqbool!!EBLOCKE227!!None!!None!!None!!None!!25!!0
+WRCM!!102!!KK!!Writing&Communic. II!!3!!['T', 'R']!!11:00!!12:15!!S Maqbool!!EBLOCKE227!!None!!None!!None!!None!!25!!1
 WRCM!!102!!M!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!A Karim!!EBLOCKE227!!None!!None!!None!!None!!25!!1
 WRCM!!102!!MM!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!N Justin!!SBLOCKS412!!None!!None!!None!!None!!25!!0
 WRCM!!102!!N!!Writing&Communic. II!!3!!['T', 'R']!!14:00!!15:15!!N Justin!!SBLOCKS312!!None!!None!!None!!None!!25!!0
@@ -993,7 +993,7 @@ WRCM!!102!!PP!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBL
 WRCM!!102!!Q!!Writing&Communic. II!!3!!['M', 'W', 'F']!!11:00!!11:50!!M Saleh!!EBLOCKE205!!None!!None!!None!!None!!25!!5
 WRCM!!102!!QQ!!Writing&Communic. II!!3!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE203!!None!!None!!None!!None!!25!!16
 WRCM!!102!!R!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!S Pervez!!SBLOCKS008!!None!!None!!None!!None!!25!!0
-WRCM!!102!!RR!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!A Fareed!!SBLOCKS007!!None!!None!!None!!None!!25!!13
+WRCM!!102!!RR!!Writing&Communic. II!!3!!['T', 'R']!!08:00!!09:15!!A Fareed!!SBLOCKS007!!None!!None!!None!!None!!25!!11
 WRCM!!102!!S!!Writing&Communic. II!!3!!['M', 'W', 'F']!!09:00!!09:50!!A Khalid!!SBLOCKS007!!None!!None!!None!!None!!25!!1
 WRCM!!102!!T!!Writing&Communic. II!!3!!['T', 'R']!!12:30!!13:45!!T Bokhari!!SBLOCKS119!!None!!None!!None!!None!!25!!0
 WRCM!!102!!TT!!Writing&Communic. II!!3!!['M', 'W', 'F']!!14:00!!14:50!!M Zia!!SBLOCKS007!!None!!None!!None!!None!!25!!4
