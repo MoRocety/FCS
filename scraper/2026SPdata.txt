@@ -183,7 +183,7 @@ CHEM!!100!!D!!Intro. to Chemistry!!4.00!!['T', 'R']!!09:30!!10:45!!M Asghar!!SBL
 CHEM!!100!!F!!Intro. to Chemistry!!4.00!!['M']!!09:00!!10:50!!TBD!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!0
 CHEM!!150!!B!!Intro. Inorg. Chem!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!H Abid!!SBLOCKS210!!SBLOCKS138!!['F']!!14:00!!15:50!!35!!0
-CHEM!!150!!C!!Intro. Inorg. Chem!!4.00!!['T', 'R']!!14:00!!15:15!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!4
+CHEM!!150!!C!!Intro. Inorg. Chem!!4.00!!['T', 'R']!!14:00!!15:15!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!5
 CHEM!!160!!A!!Intro. Org Biochem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!10!!0
 CHEM!!160!!B!!Intro. Org Biochem!!4.00!!['T', 'R']!!09:30!!10:45!!TBD!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!3
 CHEM!!170!!A!!Inro. Physical Chem!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!AY khan!!SBLOCKS212!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!34
@@ -570,10 +570,10 @@ HPED!!105!!A!!Volleyball(Girls)!!1.00!!['M', 'W']!!16:00!!17:00!!S Khaliq!!VCOUR
 HPED!!105!!B!!Volleyball for Boys!!1.00!!['T', 'R']!!16:00!!17:00!!S Nazir!!VCOURTVCOURT!!None!!None!!None!!None!!25!!8
 HPED!!106!!A!!Physcl. Exercise Boy!!1.00!!['T', 'R']!!15:00!!16:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!18
 HPED!!107!!A!!Athletics(Boys)!!1.00!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!10
-HPED!!111!!A!!Tennis (Girls)!!1.00!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!5
+HPED!!111!!A!!Tennis (Girls)!!1.00!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!4
 HPED!!111!!B!!Tennis for Boys!!1.00!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!None!!None!!None!!None!!25!!1
 HPED!!112!!A!!Handball (Girls)!!1.00!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!10
-HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!1
+HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!0
 HPED!!150!!B!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['W']!!15:00!!16:50!!35!!0
 HPED!!151!!A!!Sports Injuries!!2.00!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!8
 HPED!!151!!B!!Sports Injuries!!2.00!!['T', 'R']!!09:30!!10:20!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!0
@@ -715,7 +715,7 @@ PHYS!!341!!A!!Methods of Math. Phy!!3.00!!['T', 'R']!!14:00!!15:15!!L Kahlon!!SB
 PHYS!!353!!A!!Intr.Nonlinear Metho!!3.00!!['T', 'R']!!15:30!!16:45!!Dr H Shah!!SBLOCKS016A!!None!!None!!None!!None!!35!!34
 PHYS!!422!!A!!Nuclear Physics!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Shah!!SBLOCKS016A!!None!!None!!None!!None!!35!!32
 PHYS!!462!!A!!Quantum Mechanics II!!3.00!!['T', 'R']!!12:30!!13:45!!S Zaheer!!SBLOCKS016A!!None!!None!!None!!None!!20!!11
-PHYS!!483!!A!!Materials Science!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!K Javed!!SBLOCKS016B!!None!!None!!None!!None!!20!!17
+PHYS!!483!!A!!Materials Science!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!K Javed!!SBLOCKS016B!!None!!None!!None!!None!!20!!16
 PHYS!!499!!A!!Senior Thesis Projec!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!35!!35
 PHYS!!499A!!A!!Senior Thesis Proj.!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!35!!33
 PHYS!!499B!!A!!Senior Thesis Projec!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!35!!29
