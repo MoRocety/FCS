@@ -14,7 +14,7 @@ BIOL!!100!!D!!Intro. Biology!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!R Hassan!!SBL
 BIOL!!100!!E!!Intro. Biology!!4.00!!['T', 'R']!!12:30!!13:45!!I Ul Haq!!SBLOCKS312!!SBLOCKS341!!['W']!!14:00!!15:50!!35!!0
 BIOL!!100!!F!!Intro. Biology!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!S Butt!!SBLOCKS312!!SBLOCKS321!!['T']!!08:30!!10:20!!35!!0
 BIOL!!100!!G!!Intro. Biology!!4.00!!['T', 'R']!!09:30!!10:45!!S Dogar!!SBLOCKS312!!SBLOCKS341!!['F']!!14:00!!15:30!!35!!0
-BIOL!!100!!H!!Intro. Biology!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!TBD!!SBLOCKS331!!SBLOCKS329!!['T']!!11:00!!12:50!!35!!0
+BIOL!!100!!H!!Intro. Biology!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!TBD!!SBLOCKS331!!SBLOCKS329!!['T']!!11:00!!12:50!!35!!1
 BIOL!!102!!A!!Intro Plant Biology!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!M Hussain!!SBLOCKS313!!SBLOCKS331!!['R']!!11:00!!12:50!!35!!3
 BIOL!!105!!A!!General Zoology!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!S Butt!!SBLOCKS313!!SBLOCKS341!!['R']!!14:00!!15:50!!35!!0
 BIOL!!201!!A!!Cell Biology!!3.00!!['M', 'W']!!10:00!!10:50!!S Ali!!SBLOCKS313!!SBLOCKS321!!['R']!!08:00!!09:50!!35!!12
@@ -108,8 +108,8 @@ BUSN!!225!!D!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!U Sharif!
 BUSN!!225!!E!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Habib!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!225!!F!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!M Habib!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!225!!G!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Habib!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!225!!H!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!1
-BUSN!!225!!I!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!9
+BUSN!!225!!H!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!EBLOCKE332!!None!!None!!None!!None!!35!!0
+BUSN!!225!!I!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!10
 BUSN!!225!!J!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!27
 BUSN!!225!!K!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!33
 BUSN!!225!!L!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE344!!None!!None!!None!!None!!35!!15
@@ -117,7 +117,7 @@ BUSN!!225!!M!!Econ Appl for Busn!!3.00!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOC
 BUSN!!250!!A!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!09:30!!10:45!!S Hussain!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!250!!B!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!11:00!!12:15!!S Hussain!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!250!!C!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!12:30!!13:45!!S Hussain!!EBLOCKE332!!None!!None!!None!!None!!35!!0
-BUSN!!250!!D!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!12:30!!13:45!!A Chughtai!!SBLOCKS111!!None!!None!!None!!None!!35!!5
+BUSN!!250!!D!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!12:30!!13:45!!A Chughtai!!SBLOCKS111!!None!!None!!None!!None!!35!!4
 BUSN!!250!!E!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!14:00!!15:15!!A Chughtai!!EBLOCKE332!!None!!None!!None!!None!!35!!6
 BUSN!!250!!F!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE344!!None!!None!!None!!None!!35!!2
 BUSN!!250!!G!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!09:30!!10:45!!Afaf k!!EBLOCKE330!!None!!None!!None!!None!!35!!0
@@ -158,7 +158,7 @@ BUSN!!401!!B!!Principles of Auditi!!3.00!!['T', 'R']!!15:30!!16:45!!S Nazir!!EBL
 BUSN!!453!!A!!Change Management!!3.00!!['T', 'R']!!11:00!!12:15!!F Tasneem!!EBLOCKE213!!None!!None!!None!!None!!35!!24
 BUSN!!460!!A!!Business Law!!3.00!!['T', 'R']!!11:00!!12:15!!Naumaan Ch!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!469!!A!!Project Mang Proc!!3.00!!['T', 'R']!!12:30!!13:45!!F Malik!!EBLOCKE213!!None!!None!!None!!None!!35!!0
-BUSN!!469!!B!!Project Mang Proc!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!I yusuf!!EBLOCKE344!!None!!None!!None!!None!!35!!24
+BUSN!!469!!B!!Project Mang Proc!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!I yusuf!!EBLOCKE344!!None!!None!!None!!None!!35!!23
 BUSN!!480!!IS!!Marketing Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Q Khan!!TBDTBD!!None!!None!!None!!None!!2!!0
 BUSN!!484!!A!!Brand Management!!3.00!!['T', 'R']!!15:30!!16:45!!M Q Khan!!EBLOCKE346!!None!!None!!None!!None!!35!!0
 BUSN!!484!!B!!Brand Management!!3.00!!['T', 'R']!!11:00!!12:15!!M Q Khan!!EBLOCKE346!!None!!None!!None!!None!!35!!0
@@ -189,7 +189,7 @@ BUSN!!560!!A!!OPERATIONS MGMT!!3.00!!['T', 'R']!!11:30!!12:45!!A Ramish!!EBLOCKE
 BUSN!!560!!B!!OPERATIONS MGMT!!3.00!!['M', 'W']!!11:30!!12:45!!I yusuf!!EBLOCKE323!!None!!None!!None!!None!!35!!21
 BUSN!!571!!A!!LOGIC CRITI THINK 2!!3.00!!['T', 'R']!!14:00!!15:15!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!31
 BUSN!!571!!B!!LOGIC CRITI THINK 2!!3.00!!['T', 'R']!!14:00!!15:15!!M Q Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!25
-BUSN!!585!!A!!MARKETING RESEARCH!!3.00!!['F']!!09:00!!12:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!24
+BUSN!!585!!A!!MARKETING RESEARCH!!3.00!!['F']!!09:00!!12:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!23
 BUSN!!585!!B!!MARKETING RESEARCH!!3.00!!['F']!!14:00!!17:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!32
 BUSN!!601!!A!!REPORT & GOVERNANCE!!3.00!!['M', 'W']!!09:00!!10:15!!I Ahmed!!EBLOCKE324!!None!!None!!None!!None!!35!!12
 BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3.00!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!12
@@ -243,7 +243,7 @@ CHEM!!799A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A
 CHEM!!799B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799C!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799D!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!20!!20
-CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!25!!24
+CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!25!!23
 CHIN!!101!!A!!Chinese I!!3.00!!['T', 'R']!!09:30!!10:45!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!B!!Chinese I!!3.00!!['T', 'R']!!11:00!!12:15!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!C!!Chinese I!!3.00!!['T', 'R']!!12:30!!13:45!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!0
@@ -348,7 +348,7 @@ CRST!!699B!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None
 CRST!!699E!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
 CSCS!!100!!A!!Intro to Computing!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Toor!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!100!!B!!Intro to Computing!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Saleem!!SBLOCKS320!!None!!None!!None!!None!!35!!0
-CSCS!!100!!C!!Intro to Computing!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Minhas!!SBLOCKS320!!None!!None!!None!!None!!35!!14
+CSCS!!100!!C!!Intro to Computing!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Minhas!!SBLOCKS320!!None!!None!!None!!None!!35!!13
 CSCS!!100!!D!!Intro to Computing!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!Z Malik!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!100!!E!!Intro to Computing!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!R Bqa!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 CSCS!!100!!F!!Intro to Computing!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Minhas!!SBLOCKS219!!None!!None!!None!!None!!35!!0
@@ -424,11 +424,11 @@ ECON!!206!!A!!Banking and Finance!!3.00!!['T', 'R']!!11:00!!12:15!!N Ishtiaq!!EB
 ECON!!210!!A!!Population Economics!!3.00!!['T', 'R']!!08:00!!09:15!!R Ahmed!!EBLOCKE204!!None!!None!!None!!None!!35!!10
 ECON!!210!!B!!Population Economics!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!R Ahmed!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 ECON!!300!!A!!Fundam. of Econometr!!3.00!!['T', 'R']!!09:30!!10:45!!M Bhatti!!EBLOCKE205!!None!!None!!None!!None!!35!!14
-ECON!!300!!B!!Fundam. of Econometr!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!U Hanif!!EBLOCKE038!!None!!None!!None!!None!!35!!20
+ECON!!300!!B!!Fundam. of Econometr!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!U Hanif!!EBLOCKE038!!None!!None!!None!!None!!35!!19
 ECON!!302!!A!!Res Meth. & Com. Ap!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Lodhi!!EBLOCKE204!!None!!None!!None!!None!!35!!18
 ECON!!302!!B!!Res Meth. & Com. Ap!!3.00!!['T', 'R']!!11:00!!12:15!!M Tahir!!EBLOCKE241!!None!!None!!None!!None!!35!!26
-ECON!!304!!A!!Managerial Economics!!3.00!!['T', 'R']!!14:00!!15:15!!U Hanif!!EBLOCKE202!!None!!None!!None!!None!!35!!7
-ECON!!315!!A!!Advanced Math Econ!!3.00!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!18
+ECON!!304!!A!!Managerial Economics!!3.00!!['T', 'R']!!14:00!!15:15!!U Hanif!!EBLOCKE202!!None!!None!!None!!None!!35!!6
+ECON!!315!!A!!Advanced Math Econ!!3.00!!['T', 'R']!!12:30!!13:45!!H Ahsan!!EBLOCKE204!!None!!None!!None!!None!!35!!17
 ECON!!320!!A!!Econ.of Invest & Fin!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Lodhi!!EBLOCKE203!!None!!None!!None!!None!!35!!0
 ECON!!322!!A!!Data Analy for Econo!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Waqar!!EBLOCKE241!!None!!None!!None!!None!!35!!0
 ECON!!323!!A!!Digital Economics!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Jalil!!EBLOCKE204!!None!!None!!None!!None!!35!!1
@@ -477,7 +477,7 @@ EDUC!!240!!A!!Technology in Educat!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Aslam
 EDUC!!300!!A!!Inst. Mthds & Strate!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Burhan!!EBLOCKE121!!None!!None!!None!!None!!35!!16
 EDUC!!315!!IS!!Learning Theories!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Aslam!!TBDTBD!!None!!None!!None!!None!!1!!0
 EDUC!!340!!A!!Early Childhood Educ!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Burhan!!EBLOCKE140!!None!!None!!None!!None!!35!!26
-EDUC!!350!!A!!Classroom Management!!3.00!!['T', 'R']!!12:30!!13:45!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!7
+EDUC!!350!!A!!Classroom Management!!3.00!!['T', 'R']!!12:30!!13:45!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!8
 EDUC!!355!!A!!Teaching English!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!J Hassan!!EBLOCKE140!!None!!None!!None!!None!!35!!18
 EDUC!!370!!A!!Teaching Language!!3.00!!['T', 'R']!!14:00!!15:15!!A Aslam!!EBLOCKE222!!None!!None!!None!!None!!35!!17
 EDUC!!390!!A!!Teaching Social Stud!!3.00!!['T', 'R']!!15:30!!16:45!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!29
@@ -610,7 +610,7 @@ HPED!!111!!B!!Tennis for Boys!!1.00!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTB
 HPED!!112!!A!!Handball (Girls)!!1.00!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!10
 HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!0
 HPED!!150!!B!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['W']!!15:00!!16:50!!35!!0
-HPED!!151!!A!!Sports Injuries!!2.00!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!1
+HPED!!151!!A!!Sports Injuries!!2.00!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 HPED!!151!!B!!Sports Injuries!!2.00!!['T', 'R']!!09:30!!10:20!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 ISLM!!101!!A!!Islamic Education!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!H Ahmad!!EBLOCKE230!!None!!None!!None!!None!!35!!0
 ISLM!!101!!B!!Islamic Education!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!H Ahmad!!EBLOCKE230!!None!!None!!None!!None!!35!!0
@@ -643,7 +643,7 @@ LING!!413!!A!!Sociolinguistics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Alphonce!
 LING!!495!!A!!Res.Methods in Ling!!3.00!!['T', 'R']!!12:30!!13:45!!A Khalid!!EBLOCKE039!!None!!None!!None!!None!!35!!30
 LING!!499!!A!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!25!!21
 MATH!!095!!A!!Math Remedial!!0!!['T', 'R']!!15:30!!16:45!!R Malik!!SBLOCKS410!!None!!None!!None!!None!!35!!0
-MATH!!095!!B!!Math Remedial!!0!!['M', 'W', 'F']!!15:00!!15:50!!R Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!6
+MATH!!095!!B!!Math Remedial!!0!!['M', 'W', 'F']!!15:00!!15:50!!R Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!5
 MATH!!100!!A!!Quantitative Skills!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Janjua!!SBLOCKS412!!None!!None!!None!!None!!35!!0
 MATH!!100!!B!!Quantitative Skills!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!100!!C!!Quantitative Skills!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!0
@@ -738,7 +738,7 @@ PHIL!!331!!A!!Thoeries of Ethics!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!G Irfan!!
 PHIL!!495K!!A!!Existentialism!!3.00!!['T', 'R']!!11:00!!12:15!!T Farouk!!EBLOCKE126!!None!!None!!None!!None!!35!!14
 PHIL!!495P!!IS!!Theme:Phil.of Cultur!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T Farouk!!TBDTBD!!None!!None!!None!!None!!1!!0
 PHIL!!499!!A!!phil.research&semiar!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!G Irfan!!TBDTBD!!None!!None!!None!!None!!35!!34
-PHYS!!100!!A!!Intro. to Physics!!4.00!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!3
+PHYS!!100!!A!!Intro. to Physics!!4.00!!['T', 'R']!!14:00!!15:15!!S Zaheer!!SBLOCKS007!!SBLOCKS029!!['W']!!14:00!!15:50!!35!!4
 PHYS!!100!!B!!Intro. to Physics!!4.00!!['M']!!14:00!!15:50!!Ab Rahman!!SBLOCKS027A!!SBLOCKS007!!['T', 'R']!!11:00!!12:15!!35!!20
 PHYS!!100!!C!!Intro. to Physics!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Zaheer!!SBLOCKS007!!SBLOCKS027A!!['R']!!14:00!!15:50!!35!!0
 PHYS!!100!!D!!Intro. to Physics!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS016!!SBLOCKS029!!['F']!!14:00!!15:50!!35!!0
@@ -746,7 +746,7 @@ PHYS!!101!!A!!General Physics I!!4.00!!['T', 'R']!!11:00!!12:15!!S Shah!!SBLOCKS
 PHYS!!101!!B!!General Physics I!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!K Javed!!SBLOCKS027A!!SBLOCKS029!!['R']!!14:00!!15:50!!35!!2
 PHYS!!101!!C!!General Physics I!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Zaheer!!SBLOCKS027A!!SBLOCKS029!!['T']!!09:00!!10:50!!30!!0
 PHYS!!102!!A!!General Physics II!!4.00!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!20!!0
-PHYS!!102!!B!!General Physics II!!4.00!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!6
+PHYS!!102!!B!!General Physics II!!4.00!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!20!!5
 PHYS!!103!!A!!Mechanics!!4.00!!['T', 'R']!!11:00!!12:15!!H Latif!!SBLOCKS027A!!SBLOCKS029!!['W']!!11:00!!12:50!!35!!15
 PHYS!!103!!B!!Mechanics!!4.00!!['M']!!14:00!!15:50!!A Rehman!!SBLOCKS029!!SBLOCKS007!!['T', 'R']!!09:30!!10:45!!35!!27
 PHYS!!104!!A!!Wave and Vibrations!!4.00!!['M']!!14:00!!15:50!!S Zaheer!!SBLOCKS039!!SBLOCKS016A!!['T', 'R']!!09:30!!10:45!!35!!27
@@ -793,11 +793,11 @@ PKST!!101!!J!!Pakistan Studies!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Haider!!E
 PLSC!!101!!A!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A. Indrias!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 PLSC!!101!!B!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!C!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!K Khan!!EBLOCKE122!!None!!None!!None!!None!!35!!6
-PLSC!!101!!D!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!K Khan!!EBLOCKE122!!None!!None!!None!!None!!35!!11
+PLSC!!101!!D!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!K Khan!!EBLOCKE122!!None!!None!!None!!None!!35!!10
 PLSC!!101!!E!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Sindhu!!EBLOCKE041!!None!!None!!None!!None!!35!!0
 PLSC!!101!!F!!Intro to Pol Science!!3.00!!['T', 'R']!!09:30!!10:45!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!7
 PLSC!!101!!G!!Intro to Pol Science!!3.00!!['T', 'R']!!11:00!!12:15!!S Sindhu!!EBLOCKE122!!None!!None!!None!!None!!35!!0
-PLSC!!101!!H!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!0
+PLSC!!101!!H!!Intro to Pol Science!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!1
 PLSC!!101!!I!!Intro to Pol Science!!3.00!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!101!!J!!Intro to Pol Science!!3.00!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!3
 PLSC!!101!!K!!Intro to Pol Science!!3.00!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!7
@@ -863,7 +863,7 @@ PSYC!!295!!A!!Media Psychology!!3.00!!['T', 'R']!!15:30!!16:45!!Asajid!!EBLOCKE2
 PSYC!!298!!A!!His. & Sys.of Psych!!3.00!!['T', 'R']!!14:00!!15:15!!I Batool!!SBLOCKS115!!None!!None!!None!!None!!35!!0
 PSYC!!298!!B!!His. & Sys.of Psych!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!6
 PSYC!!298!!C!!His. & Sys.of Psych!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!Asajid!!SBLOCKS116!!None!!None!!None!!None!!35!!1
-PSYC!!298!!D!!His. & Sys.of Psych!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Nazim!!EBLOCKE213!!None!!None!!None!!None!!35!!22
+PSYC!!298!!D!!His. & Sys.of Psych!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Nazim!!EBLOCKE213!!None!!None!!None!!None!!35!!21
 PSYC!!300!!A!!Positive Psychology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Ateeq!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!301!!A!!Industrial Org Psyc!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Ateeq!!EBLOCKE137!!None!!None!!None!!None!!35!!0
 PSYC!!305!!A!!Res Meth in Psyc I!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!EBLOCKE213!!None!!None!!None!!None!!35!!3
@@ -881,7 +881,7 @@ PSYC!!370!!A!!Geriatric Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Shahe
 PSYC!!380!!A!!Liberation Psycholog!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!19
 PSYC!!385!!A!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Nazim!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!385!!B!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Majeed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
-PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!0
+PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!1
 PSYC!!415!!A!!Res Meth in Psyc II!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!7
 PSYC!!415!!B!!Res Meth in Psyc II!!3.00!!['T', 'R']!!09:30!!10:45!!M Niazi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 PSYC!!425!!A!!Sports Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!3
@@ -905,12 +905,12 @@ PSYC!!635!!A!!Psyc. & Medic. Rehab!!3.00!!['T', 'R']!!14:00!!15:30!!B M Butt!!EB
 PSYC!!670!!A!!Placements I (Child)!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Nazim!!TBDTBD!!None!!None!!None!!None!!30!!10
 PSYC!!672!!A!!Placement III!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Nazim!!TBDTBD!!None!!None!!None!!None!!30!!16
 PSYC!!699B!!A!!Thesis II!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!30!!16
-SOCL!!100!!A!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Azeem!!EBLOCKE101!!None!!None!!None!!None!!35!!10
+SOCL!!100!!A!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Azeem!!EBLOCKE101!!None!!None!!None!!None!!35!!11
 SOCL!!100!!B!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!3
 SOCL!!100!!C!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!T Fatima!!EBLOCKE214!!None!!None!!None!!None!!35!!6
 SOCL!!100!!D!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!4
 SOCL!!100!!E!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Shahid!!EBLOCKE214!!None!!None!!None!!None!!35!!0
-SOCL!!100!!F!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!10
+SOCL!!100!!F!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!9
 SOCL!!100!!G!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!4
 SOCL!!100!!H!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!I!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Yasir!!EBLOCKE214!!None!!None!!None!!None!!35!!0
@@ -987,14 +987,14 @@ STAT!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S H
 STAT!!699B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699E!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 UNIV!!100!!C!!FOUND UNIV EDUC!!3.00!!['F']!!14:00!!16:00!!S Saleem!!EBLOCKE104!!EBLOCKE103!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!35!!0
-URDU!!101!!A!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!35!!18
+URDU!!101!!A!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!35!!17
 URDU!!101!!B!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!C!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Virk!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 URDU!!101!!D!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Ashraf!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!E!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Ashraf!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!F!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Anwar!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!G!!Communicative Urdu!!3.00!!['T', 'R']!!09:30!!10:45!!A Samuel!!EBLOCKE126!!None!!None!!None!!None!!35!!0
-URDU!!101!!H!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!A Samuel!!EBLOCKE102!!None!!None!!None!!None!!35!!1
+URDU!!101!!H!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!A Samuel!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!I!!Communicative Urdu!!3.00!!['T', 'R']!!11:00!!12:15!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!9
 URDU!!101!!J!!Communicative Urdu!!3.00!!['T', 'R']!!12:30!!13:45!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!K!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!N Khokhar!!EBLOCKE103!!None!!None!!None!!None!!35!!0
@@ -1002,7 +1002,7 @@ URDU!!101!!L!!Communicative Urdu!!3.00!!['T', 'R']!!09:30!!10:45!!S Tahir!!EBLOC
 URDU!!101!!M!!Communicative Urdu!!3.00!!['T', 'R']!!12:30!!13:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!N!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 URDU!!101!!O!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!N Jamal!!EBLOCKE246!!None!!None!!None!!None!!35!!0
-URDU!!101!!P!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE103!!None!!None!!None!!None!!35!!0
+URDU!!101!!P!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE103!!None!!None!!None!!None!!35!!1
 URDU!!104!!A!!Sel Rep Urdu Prose!!3.00!!['T', 'R']!!11:00!!12:15!!A Samuel!!EBLOCKE246!!None!!None!!None!!None!!35!!1
 URDU!!208!!A!!Script Wr in Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!19
 URDU!!301!!A!!Modern Urdu Poetry!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE103!!None!!None!!None!!None!!35!!25
