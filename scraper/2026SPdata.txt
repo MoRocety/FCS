@@ -22,7 +22,7 @@ BIOL!!201!!B!!Cell Biology!!3.00!!['M', 'W']!!12:00!!12:50!!S Dogar!!SBLOCKS313!
 BIOL!!203!!A!!General Genetics!!3.00!!['M', 'W']!!09:00!!09:50!!A Maqbool!!SBLOCKS321!!SBLOCKS331!!['T']!!11:00!!12:50!!35!!1
 BIOL!!212!!A!!Res Design& Biostat!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!10!!0
 BIOL!!221!!IS!!Plant Form & Fun.!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Khokhar!!TBDTBD!!None!!None!!None!!None!!1!!0
-BIOL!!222!!A!!Animal Form & Fun.!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Butt!!SBLOCKS321!!SBLOCKS331!!['R']!!09:00!!10:50!!35!!34
+BIOL!!222!!A!!Animal Form & Fun.!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Butt!!SBLOCKS321!!SBLOCKS331!!['R']!!09:00!!10:50!!35!!31
 BIOL!!313!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!S Ali!!SBLOCKS312!!SBLOCKS329!!['M']!!11:00!!12:50!!35!!0
 BIOL!!315!!A!!Fun of Microbiology!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!S Mehnaz!!SBLOCKS413!!SBLOCKS321!!['W']!!14:00!!15:50!!35!!0
 BIOL!!331!!A!!Soil Microbiology!!3.00!!['T', 'R']!!11:00!!11:50!!S Mehnaz!!SBLOCKS321!!SBLOCKS321!!['R']!!14:00!!15:50!!35!!29
@@ -96,7 +96,7 @@ BUSN!!170!!D!!Principles of Manage!!3.00!!['T', 'R']!!12:30!!13:45!!TBD!!SBLOCKS
 BUSN!!206!!A!!Mgt. Acc. & Control!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!206!!B!!Mgt. Acc. & Control!!3.00!!['T', 'R']!!12:30!!13:45!!A George!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!C!!Mgt. Acc. & Control!!3.00!!['T', 'R']!!14:00!!15:15!!A George!!EBLOCKE330!!None!!None!!None!!None!!35!!0
-BUSN!!206!!D!!Mgt. Acc. & Control!!3.00!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!1
+BUSN!!206!!D!!Mgt. Acc. & Control!!3.00!!['T', 'R']!!14:00!!15:15!!A Ali Shah!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!206!!E!!Mgt. Acc. & Control!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Ali Shah!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!206!!F!!Mgt. Acc. & Control!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!17
 BUSN!!206!!G!!Mgt. Acc. & Control!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A George!!EBLOCKE328!!None!!None!!None!!None!!35!!0
@@ -117,7 +117,7 @@ BUSN!!225!!H!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Nazir!!
 BUSN!!225!!I!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!10
 BUSN!!225!!J!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Nazir!!EBLOCKE330!!None!!None!!None!!None!!35!!26
 BUSN!!225!!K!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Nazir!!EBLOCKE343!!None!!None!!None!!None!!35!!32
-BUSN!!225!!L!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE344!!None!!None!!None!!None!!35!!15
+BUSN!!225!!L!!Econ Appl for Busn!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Nazir!!EBLOCKE344!!None!!None!!None!!None!!35!!16
 BUSN!!225!!M!!Econ Appl for Busn!!3.00!!['T', 'R']!!08:00!!09:15!!S Nazir!!EBLOCKE331!!None!!None!!None!!None!!35!!17
 BUSN!!250!!A!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!09:30!!10:45!!S Hussain!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!250!!B!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!11:00!!12:15!!S Hussain!!EBLOCKE330!!None!!None!!None!!None!!35!!0
@@ -130,7 +130,7 @@ BUSN!!250!!H!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!11:00!!12:15!!Afaf k!!EBLO
 BUSN!!250!!I!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!12:30!!13:45!!Afaf k!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!250!!J!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!11:00!!12:15!!A Fateh!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!250!!K!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!14:00!!15:15!!A Fateh!!EBLOCKE346!!None!!None!!None!!None!!35!!16
-BUSN!!250!!L!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!15:30!!16:45!!A Fateh!!EBLOCKE330!!None!!None!!None!!None!!35!!25
+BUSN!!250!!L!!Indiv & Grp Dynamics!!3.00!!['T', 'R']!!15:30!!16:45!!A Fateh!!EBLOCKE330!!None!!None!!None!!None!!35!!24
 BUSN!!250!!M!!Indiv & Grp Dynamics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!T Alvi!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!305!!A!!Corporate Governance!!3.00!!['T', 'R']!!09:30!!10:45!!Naumaan Ch!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!305!!B!!Corporate Governance!!3.00!!['T', 'R']!!09:30!!10:45!!S Hamid!!EBLOCKE213!!None!!None!!None!!None!!35!!6
@@ -142,7 +142,7 @@ BUSN!!361!!A!!Ops Excellence!!3.00!!['T', 'R']!!12:30!!13:45!!S Bilal!!EBLOCKE33
 BUSN!!361!!B!!Ops Excellence!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!I yusuf!!EBLOCKE038!!None!!None!!None!!None!!35!!3
 BUSN!!368!!A!!Prod & Plant Mangmnt!!3.00!!['T', 'R']!!09:30!!10:45!!S Bilal!!EBLOCKE333!!None!!None!!None!!None!!35!!9
 BUSN!!368!!B!!Prod & Plant Mangmnt!!3.00!!['T', 'R']!!11:00!!12:15!!S Bilal!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!370!!A!!Management Inf Syste!!3.00!!['T', 'R']!!08:00!!09:15!!F Idrees!!EBLOCKE332!!None!!None!!None!!None!!35!!2
+BUSN!!370!!A!!Management Inf Syste!!3.00!!['T', 'R']!!08:00!!09:15!!F Idrees!!EBLOCKE332!!None!!None!!None!!None!!35!!1
 BUSN!!370!!B!!Management Inf Syste!!3.00!!['T', 'R']!!09:30!!10:45!!F Idrees!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!370!!C!!Management Inf Syste!!3.00!!['T', 'R']!!12:30!!13:45!!F Idrees!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 BUSN!!370!!D!!Management Inf Syste!!3.00!!['T', 'R']!!09:30!!10:45!!S Ahmed!!EBLOCKE346!!None!!None!!None!!None!!35!!0
@@ -185,17 +185,17 @@ BUSN!!498!!E!!Business Strategy!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!Q Zafar!!E
 BUSN!!498!!F!!Business Strategy!!3.00!!['T', 'R']!!09:30!!10:45!!M Q Khan!!EBLOCKE347!!None!!None!!None!!None!!35!!0
 BUSN!!498!!G!!Business Strategy!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!506!!A!!MGMT ACCTG!!3.00!!['T', 'R']!!10:00!!11:15!!W Khan!!EBLOCKE324!!None!!None!!None!!None!!35!!29
-BUSN!!506!!B!!MGMT ACCTG!!3.00!!['T', 'R']!!10:00!!11:15!!A Ali Shah!!EBLOCKE323!!None!!None!!None!!None!!35!!14
+BUSN!!506!!B!!MGMT ACCTG!!3.00!!['T', 'R']!!10:00!!11:15!!A Ali Shah!!EBLOCKE323!!None!!None!!None!!None!!35!!13
 BUSN!!522!!A!!MACROECONOMICS!!3.00!!['M', 'W']!!10:00!!11:15!!M Khalid!!EBLOCKE323!!None!!None!!None!!None!!35!!22
-BUSN!!522!!B!!MACROECONOMICS!!3.00!!['M', 'W']!!16:00!!17:15!!M Khalid!!EBLOCKE324!!None!!None!!None!!None!!35!!20
+BUSN!!522!!B!!MACROECONOMICS!!3.00!!['M', 'W']!!16:00!!17:15!!M Khalid!!EBLOCKE324!!None!!None!!None!!None!!35!!19
 BUSN!!531!!A!!PRINCIPLES FINANCE!!3.00!!['M', 'W']!!14:00!!15:15!!A George!!EBLOCKE324!!None!!None!!None!!None!!35!!22
-BUSN!!531!!B!!PRINCIPLES FINANCE!!3.00!!['M', 'W']!!14:00!!15:15!!M Rao!!EBLOCKE323!!None!!None!!None!!None!!35!!17
+BUSN!!531!!B!!PRINCIPLES FINANCE!!3.00!!['M', 'W']!!14:00!!15:15!!M Rao!!EBLOCKE323!!None!!None!!None!!None!!35!!16
 BUSN!!560!!A!!OPERATIONS MGMT!!3.00!!['T', 'R']!!11:30!!12:45!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!28
-BUSN!!560!!B!!OPERATIONS MGMT!!3.00!!['M', 'W']!!11:30!!12:45!!I yusuf!!EBLOCKE323!!None!!None!!None!!None!!35!!11
+BUSN!!560!!B!!OPERATIONS MGMT!!3.00!!['M', 'W']!!11:30!!12:45!!I yusuf!!EBLOCKE323!!None!!None!!None!!None!!35!!10
 BUSN!!571!!A!!LOGIC CRITI THINK 2!!3.00!!['T', 'R']!!14:00!!15:15!!A Ramish!!EBLOCKE324!!None!!None!!None!!None!!35!!30
 BUSN!!571!!B!!LOGIC CRITI THINK 2!!3.00!!['T', 'R']!!14:00!!15:15!!M Q Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!14
 BUSN!!585!!A!!MARKETING RESEARCH!!3.00!!['F']!!09:00!!12:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!23
-BUSN!!585!!B!!MARKETING RESEARCH!!3.00!!['F']!!14:00!!17:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!21
+BUSN!!585!!B!!MARKETING RESEARCH!!3.00!!['F']!!14:00!!17:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!20
 BUSN!!601!!A!!REPORT & GOVERNANCE!!3.00!!['M', 'W']!!09:00!!10:15!!I Ahmed!!EBLOCKE324!!None!!None!!None!!None!!35!!10
 BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3.00!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!10
 BUSN!!625!!A!!BUSINESS ETHICS!!3.00!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None!!None!!None!!None!!35!!10
@@ -326,7 +326,7 @@ CRIM!!201!!A!!Sociological Researc!!3.00!!['T', 'R']!!15:30!!16:45!!T Fatima!!EB
 CRIM!!220!!B!!Intro. to Crimnology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!5!!0
 CRIM!!310!!A!!Penology and Prison!!3.00!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!2
 CRIM!!460!!A!!Comparative Criminal!!3.00!!['T', 'R']!!12:30!!13:45!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!20
-CRST!!151!!A!!Intro to Chris. Thou!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!4
+CRST!!151!!A!!Intro to Chris. Thou!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!R Wetmore!!EBLOCKE243!!None!!None!!None!!None!!35!!3
 CRST!!152!!A!!Christian Ethics!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 CRST!!152!!B!!Christian Ethics!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!19
 CRST!!152!!C!!Christian Ethics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!0
@@ -466,7 +466,7 @@ EDUC!!110!!A!!Foundations of Educ.!!3.00!!['T', 'R']!!15:30!!16:45!!J Hassan!!EB
 EDUC!!110!!B!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!0
 EDUC!!110!!C!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!6
 EDUC!!110!!D!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-EDUC!!110!!E!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!0
+EDUC!!110!!E!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!1
 EDUC!!110!!F!!Foundations of Educ.!!3.00!!['T', 'R']!!14:00!!15:15!!J Hassan!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 EDUC!!110!!G!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Aslam!!EBLOCKE121!!None!!None!!None!!None!!35!!5
 EDUC!!110!!H!!Foundations of Educa!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!0
@@ -849,7 +849,7 @@ PSYC!!100!!G!!Intro to Psychology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Ashiq!
 PSYC!!100!!H!!Intro to Psychology!!3.00!!['T', 'R']!!15:30!!16:45!!A Ateeq!!SBLOCKS111!!None!!None!!None!!None!!35!!0
 PSYC!!101!!A!!Life Skills!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!105!!A!!Eff. Communication!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Asif!!EBLOCKE137!!None!!None!!None!!None!!35!!1
-PSYC!!140!!A!!Psychology of leader!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!12
+PSYC!!140!!A!!Psychology of leader!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!13
 PSYC!!150!!A!!Dev. Psychology - 1!!3.00!!['T', 'R']!!14:00!!15:15!!U Ashiq!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!150!!B!!Dev. Psychology - 1!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!150!!C!!Dev. Psychology - 1!!3.00!!['T', 'R']!!09:30!!10:45!!S Jabeen!!EBLOCKE241!!None!!None!!None!!None!!35!!1
@@ -1067,6 +1067,6 @@ WRCM!!102!!S!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Khali
 WRCM!!102!!T!!Writing&Communic. II!!3.00!!['T', 'R']!!12:30!!13:45!!T Bokhari!!SBLOCKS119!!None!!None!!None!!None!!25!!0
 WRCM!!102!!TT!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!M Zia!!SBLOCKS007!!None!!None!!None!!None!!25!!0
 WRCM!!102!!U!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!R Wasif!!SBLOCKS007!!None!!None!!None!!None!!25!!0
-WRCM!!102!!V!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Javed!!SBLOCKS007!!None!!None!!None!!None!!25!!0
+WRCM!!102!!V!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Javed!!SBLOCKS007!!None!!None!!None!!None!!25!!1
 WRCM!!102!!W!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Javed!!SBLOCKS008!!None!!None!!None!!None!!25!!0
 WRCM!!102!!Y!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Khalid!!SBLOCKS007!!None!!None!!None!!None!!25!!0
