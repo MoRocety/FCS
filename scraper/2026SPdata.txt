@@ -477,7 +477,7 @@ EDUC!!110!!H!!Foundations of Educa!!3!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EB
 EDUC!!120!!A!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!M Raza!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 EDUC!!120!!B!!Educ Psychology!!3!!['T', 'R']!!09:30!!10:45!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!120!!C!!Educ Psychology!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-EDUC!!120!!E!!Educ Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Burhan!!EBLOCKE222!!None!!None!!None!!None!!35!!2
+EDUC!!120!!E!!Educ Psychology!!3!!['M', 'W', 'F']!!16:00!!16:50!!S Burhan!!EBLOCKE222!!None!!None!!None!!None!!35!!1
 EDUC!!120!!F!!Educ Psychology!!3!!['M', 'W', 'F']!!15:00!!15:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!17
 EDUC!!120!!G!!Educ Psychology!!3!!['T', 'R']!!15:30!!16:45!!R. Farooq!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 EDUC!!120!!H!!Educ Psychology!!3!!['T', 'R']!!14:00!!15:15!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!0
@@ -548,6 +548,7 @@ ENVR!!405!!A!!Conservation Biol!!3!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!SBLO
 ENVR!!413!!A!!Envr. Toxicology!!3!!['M', 'W', 'F']!!11:00!!11:50!!A Pennock!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 ENVR!!416!!A!!Wastewater treatment!!4!!['M', 'W', 'F']!!10:00!!10:50!!S Chung!!SBLOCKS417!!SBLOCKS341!!['F']!!08:00!!09:50!!35!!35
 ENVR!!499B!!A!!Project/Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!35!!34
+ENVR!!508!!A!!Applied Environmenta!!3!!['M']!!17:30!!18:45!!A Pennock!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!35!!35
 ENVR!!511!!A!!Envr.Appl.Nano.Mater!!3!!['M']!!17:30!!18:45!!M Shahbaz!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!20!!9
 ENVR!!602!!A!!Pol Control Techn!!3!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!9
 ENVR!!604!!A!!Eco-Entrepreneurship!!1!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!9
@@ -923,11 +924,10 @@ SOCL!!100!!F!!Intro to Sociology!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Athar!!EBL
 SOCL!!100!!G!!Intro to Sociology!!3!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!H!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!I!!Intro to Sociology!!3!!['M', 'W', 'F']!!12:00!!12:50!!A Yasir!!EBLOCKE214!!None!!None!!None!!None!!35!!0
-SOCL!!100!!J!!Intro to Sociology!!3!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE126!!None!!None!!None!!None!!35!!1
+SOCL!!100!!J!!Intro to Sociology!!3!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 SOCL!!100!!K!!Intro to Sociology!!3!!['T', 'R']!!09:30!!10:45!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!L!!Intro to Sociology!!3!!['T', 'R']!!11:00!!12:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!M!!Intro to Sociology!!3!!['T', 'R']!!12:30!!13:45!!T Fatima!!EBLOCKE101!!None!!None!!None!!None!!35!!0
-SOCL!!100!!N!!Intro to Sociology!!3!!['T', 'R']!!15:30!!16:45!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!29
 SOCL!!100!!P!!Intro to Sociology!!3!!['M', 'W', 'F']!!11:00!!11:50!!S Shahid!!EBLOCKE214!!None!!None!!None!!None!!35!!19
 SOCL!!100!!Q!!Intro to Sociology!!3!!['T', 'R']!!14:00!!15:15!!A Yasir!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!101!!A!!Intro. Social Work!!3!!['M', 'W', 'F']!!10:00!!10:50!!S Athar!!EBLOCKE104!!None!!None!!None!!None!!35!!0
