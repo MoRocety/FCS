@@ -202,7 +202,7 @@ BUSN!!601!!A!!REPORT & GOVERNANCE!!3.00!!['M', 'W']!!09:00!!10:15!!I Ahmed!!EBLO
 BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3.00!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!9
 BUSN!!625!!A!!BUSINESS ETHICS!!3.00!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None!!None!!None!!None!!35!!9
 BUSN!!670!!A!!NEW PRODUCT DEVT!!3.00!!['T', 'R']!!10:00!!11:15!!F Malik!!EBLOCKE301!!None!!None!!None!!None!!35!!9
-BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3.00!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!20
+BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3.00!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!19
 BUSN!!695!!A!!MGMT NEGOTIATION!!3.00!!['M', 'W']!!11:30!!12:45!!I Ahmed!!EBLOCKE301!!None!!None!!None!!None!!35!!9
 CHEM!!100!!A!!Intro. to Chemistry!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!H Abid!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!0
 CHEM!!100!!B!!Intro. to Chemistry!!4.00!!['M']!!11:00!!12:50!!TBD!!SBLOCKS148!!SBLOCKS210!!['T', 'R']!!08:00!!09:15!!35!!0
@@ -350,8 +350,8 @@ CRST!!471D!!A!!English Bible: James!!3.00!!['T', 'R']!!11:00!!12:15!!K Pervaiz!!
 CRST!!498!!A!!Christian Capstone!!3.00!!['M', 'W']!!11:00!!11:50!!R Wetmore!!XBLOCKX018!!None!!None!!None!!None!!35!!30
 CRST!!525D!!A!!Bibilical:1&2 Kings!!3.00!!['W']!!14:00!!17:00!!D Lanz!!XBLOCKX018!!None!!None!!None!!None!!35!!30
 CRST!!555A!!A!!NT Greek Read:Marks!!3.00!!['R']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!29
-CRST!!555C!!A!!NT Greek Read:Acts!!3.00!!['T']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!33
-CRST!!585E!!A!!Bibl Theol:Ministry!!3.00!!['T', 'R']!!14:00!!15:15!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!21
+CRST!!555C!!A!!NT Greek Read:Acts!!3.00!!['T']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!34
+CRST!!585E!!A!!Bibl Theol:Ministry!!3.00!!['T', 'R']!!14:00!!15:15!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!20
 CRST!!699A!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
 CRST!!699B!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
 CRST!!699E!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
@@ -646,7 +646,7 @@ LING!!207!!A!!History of Eng. Lang!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!R John!
 LING!!217!!A!!Introduction to Ling!!3.00!!['T', 'R']!!12:30!!13:45!!F Aftab!!EBLOCKE041!!None!!None!!None!!None!!35!!0
 LING!!217!!B!!Introduction to Ling!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!1
 LING!!304!!A!!Semantics!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!N Justin!!EBLOCKE140!!None!!None!!None!!None!!35!!28
-LING!!308!!A!!Translation Studies!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Wasim!!EBLOCKE227!!None!!None!!None!!None!!35!!24
+LING!!308!!A!!Translation Studies!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Wasim!!EBLOCKE227!!None!!None!!None!!None!!35!!23
 LING!!413!!A!!Sociolinguistics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!10
 LING!!495!!A!!Res.Methods in Ling!!3.00!!['T', 'R']!!12:30!!13:45!!A Khalid!!EBLOCKE039!!None!!None!!None!!None!!35!!30
 LING!!499!!A!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!25!!21
@@ -854,7 +854,7 @@ PSYC!!100!!G!!Intro to Psychology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Ashiq!
 PSYC!!100!!H!!Intro to Psychology!!3.00!!['T', 'R']!!15:30!!16:45!!A Ateeq!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 PSYC!!101!!A!!Life Skills!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!105!!A!!Eff. Communication!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Asif!!EBLOCKE137!!None!!None!!None!!None!!35!!0
-PSYC!!140!!A!!Psychology of leader!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!13
+PSYC!!140!!A!!Psychology of leader!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Munir!!EBLOCKE246!!None!!None!!None!!None!!35!!12
 PSYC!!150!!A!!Dev. Psychology - 1!!3.00!!['T', 'R']!!14:00!!15:15!!U Ashiq!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!150!!B!!Dev. Psychology - 1!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!E Shahid!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!150!!C!!Dev. Psychology - 1!!3.00!!['T', 'R']!!09:30!!10:45!!S Jabeen!!EBLOCKE241!!None!!None!!None!!None!!35!!0
@@ -894,7 +894,7 @@ PSYC!!385!!B!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Majeed
 PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!0
 PSYC!!415!!A!!Res Meth in Psyc II!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!6
 PSYC!!415!!B!!Res Meth in Psyc II!!3.00!!['T', 'R']!!09:30!!10:45!!M Niazi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
-PSYC!!425!!A!!Sports Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!1
+PSYC!!425!!A!!Sports Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 PSYC!!430!!A!!Health Psychology!!3.00!!['T', 'R']!!15:30!!16:45!!S Shahed!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 PSYC!!440!!A!!Counseling Psycholog!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Ateeq!!EBLOCKE214!!None!!None!!None!!None!!35!!23
 PSYC!!440!!B!!Counseling Psycholog!!3.00!!['T', 'R']!!15:30!!16:45!!N Asif!!SBLOCKS416!!None!!None!!None!!None!!35!!0
