@@ -281,7 +281,8 @@ def submit_selected_courses():
         not in found_course_keys
     ]
 
-    shortlist = [[*sublist[:4], int(sublist[4]), *sublist[5:]] for sublist in shortlist]
+    shortlist = [[*sublist[:4], int(float(sublist[4])), *sublist[5:]] for sublist in shortlist]
+
 
     min_credit = int(data['minCredit'])
     max_credit = int(data['maxCredit'])
