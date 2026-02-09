@@ -345,8 +345,8 @@ CRST!!455A!!A!!Greek Reading : 1 Jo!!3.00!!['M', 'W']!!15:30!!16:45!!K Pervaiz!!
 CRST!!471D!!A!!English Bible: James!!3.00!!['T', 'R']!!11:00!!12:15!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!7
 CRST!!498!!A!!Christian Capstone!!3.00!!['M', 'W']!!11:00!!11:50!!R Wetmore!!XBLOCKX018!!None!!None!!None!!None!!35!!30
 CRST!!525D!!A!!Bibilical:1&2 Kings!!3.00!!['W']!!14:00!!17:00!!D Lanz!!XBLOCKX018!!None!!None!!None!!None!!35!!30
-CRST!!555A!!A!!NT Greek Read:Marks!!3.00!!['R']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!29
-CRST!!555C!!A!!NT Greek Read:Acts!!3.00!!['T']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!34
+CRST!!555A!!A!!NT Greek Read:Marks!!3.00!!['R']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!31
+CRST!!555C!!A!!NT Greek Read:Acts!!3.00!!['T']!!15:30!!18:30!!W Davey!!XBLOCKX020!!None!!None!!None!!None!!35!!30
 CRST!!585E!!A!!Bibl Theol:Ministry!!3.00!!['T', 'R']!!14:00!!15:15!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!20
 CRST!!699A!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
 CRST!!699B!!A!!Research Dissertatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Davey!!TBDTBD!!None!!None!!None!!None!!25!!25
@@ -494,7 +494,7 @@ EDUC!!545!!A!!Organizational Theor!!3.00!!['T']!!16:00!!19:00!!A Khokhar!!EBLOCK
 EDUC!!640!!A!!Human Resource Manag!!3.00!!['F']!!16:00!!19:00!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!25!!6
 EDUC!!645!!A!!Creative Approaches!!3.00!!['W']!!16:00!!19:00!!M Raza!!EBLOCKE101!!None!!None!!None!!None!!25!!6
 EDUC!!699A!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!31
-EDUC!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khokhar!!TBDTBD!!None!!None!!None!!None!!25!!16
+EDUC!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khokhar!!TBDTBD!!None!!None!!None!!None!!25!!15
 EDUC!!699E!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khokhar!!TBDTBD!!None!!None!!None!!None!!25!!25
 ENGL!!110!!A!!Contemp Short Story!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!N Ahmad!!EBLOCKE222!!None!!None!!None!!None!!35!!0
 ENGL!!175!!A!!Crit. Think.&Reading!!3.00!!['T', 'R']!!14:00!!15:15!!A Zia!!EBLOCKE221!!None!!None!!None!!None!!35!!0
@@ -613,9 +613,9 @@ HPED!!101!!A!!Cricket for Girls!!1.00!!['M', 'W']!!15:00!!16:00!!S Khaliq!!TBDTB
 HPED!!105!!A!!Volleyball(Girls)!!1.00!!['M', 'W']!!16:00!!17:00!!S Khaliq!!VCOURTVCOURT!!None!!None!!None!!None!!25!!7
 HPED!!105!!B!!Volleyball for Boys!!1.00!!['T', 'R']!!16:00!!17:00!!S Nazir!!VCOURTVCOURT!!None!!None!!None!!None!!25!!1
 HPED!!106!!A!!Physcl. Exercise Boy!!1.00!!['T', 'R']!!15:00!!16:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!18
-HPED!!107!!A!!Athletics(Boys)!!1.00!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!3
+HPED!!107!!A!!Athletics(Boys)!!1.00!!['M', 'W']!!16:00!!17:00!!S Nazir!!ATRACKATRACK!!None!!None!!None!!None!!25!!2
 HPED!!111!!A!!Tennis (Girls)!!1.00!!['T', 'R']!!15:00!!16:00!!S Khaliq!!TTENISTBD!!None!!None!!None!!None!!20!!7
-HPED!!111!!B!!Tennis for Boys!!1.00!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!None!!None!!None!!None!!25!!0
+HPED!!111!!B!!Tennis for Boys!!1.00!!['M', 'W']!!15:00!!16:00!!S Nazir!!TTENISTBD!!None!!None!!None!!None!!25!!1
 HPED!!112!!A!!Handball (Girls)!!1.00!!['T', 'R']!!16:00!!17:00!!S Khaliq!!HCOURTHCOURT!!None!!None!!None!!None!!20!!9
 HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!1
 HPED!!150!!B!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['W']!!15:00!!16:50!!35!!0
@@ -990,6 +990,7 @@ STAT!!207!!B!!Business Analytics!!3.00!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLO
 STAT!!208!!A!!Survey Methodologies!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!35!!30
 STAT!!212!!A!!Res. Meth. & Statis!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!20!!13
 STAT!!301!!A!!Sampling Tech. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!N Mushtaq!!SBLOCKS421!!None!!None!!None!!None!!35!!26
+STAT!!305!!A!!Stat Quality Control!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!I Naqvi!!SBLOCKS123!!None!!None!!None!!None!!35!!35
 STAT!!313!!A!!Operation Research!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!15!!7
 STAT!!317!!A!!Data Visualization R!!3.00!!['T', 'R']!!12:30!!13:45!!I Naqvi!!SBLOCKS421!!None!!None!!None!!None!!35!!0
 STAT!!403!!A!!Point Estimation!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!35!!31
