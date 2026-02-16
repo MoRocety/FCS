@@ -299,14 +299,14 @@ COMP!!664!!A!!Info. Retr. & Web Sr!!3.00!!['W']!!17:30!!20:15!!A Khan!!SBLOCKS31
 COMP!!699A!!A!!Research thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!10!!10
 COMP!!699B!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!15!!13
 COMP!!699E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!25!!24
-CPPG!!603!!A!!ICT Concepts & tools!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!18
-CPPG!!604!!A!!RESEARCH METHODS!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!18
-CPPG!!606!!A!!Poli Analy: Poli Des!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!18
-CPPG!!616!!A!!Research Methodology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!20!!4
-CPPG!!618!!A!!S Leadership & Gov.!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!4
-CPPG!!642!!A!!Water Policy and Gov!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!4
-CPPG!!656!!A!!Info Econ, Urban Dev!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!4
-CPPG!!677!!A!!Demography and Secur!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!18
+CPPG!!603!!A!!ICT Concepts & tools!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!15
+CPPG!!604!!A!!RESEARCH METHODS!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!15
+CPPG!!606!!A!!Poli Analy: Poli Des!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!15
+CPPG!!616!!A!!Research Methodology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!20!!3
+CPPG!!618!!A!!S Leadership & Gov.!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!3
+CPPG!!642!!A!!Water Policy and Gov!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!3
+CPPG!!656!!A!!Info Econ, Urban Dev!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!3
+CPPG!!677!!A!!Demography and Secur!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!15
 CPPG!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!35
 CPPG!!699B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!20!!16
 CPPG!!699E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shafqat!!TBDTBD!!None!!None!!None!!None!!25!!25
@@ -364,7 +364,7 @@ CSCS!!105!!C!!Basic Electronics!!4.00!!['T', 'R']!!15:30!!16:45!!I Iqbal!!SBLOCK
 CSCS!!105!!D!!Basic Electronics!!4.00!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!15!!4
 CSCS!!105!!E!!Basic Electronics!!4.00!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!15!!7
 CSCS!!201!!A!!Multivariate Calculu!!3.00!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!0
-CSCS!!201!!B!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!11
+CSCS!!201!!B!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!12
 CSCS!!201!!IS!!Multivariate Calculu!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Janjua!!TBDTBD!!None!!None!!None!!None!!1!!0
 CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!19
 CSCS!!202!!B!!Comp Linear Algeb!!3.00!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!1
@@ -820,7 +820,7 @@ PLSC!!203!!B!!International Relati!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!Z Naeem
 PLSC!!212!!A!!Theor Comp. Politic!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!5
 PLSC!!301!!A!!Ancnt, Mdvl, Poli Th!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!K Khan!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!302!!A!!Modern Political The!!3.00!!['T', 'R']!!11:00!!12:15!!Q Memon!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-PLSC!!303!!A!!Contemp Poli Theory!!3.00!!['T', 'R']!!12:30!!13:45!!Q Memon!!EBLOCKE126!!None!!None!!None!!None!!35!!8
+PLSC!!303!!A!!Contemp Poli Theory!!3.00!!['T', 'R']!!12:30!!13:45!!Q Memon!!EBLOCKE126!!None!!None!!None!!None!!35!!9
 PLSC!!304!!A!!Research Methodology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Qureshi!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 PLSC!!310!!A!!Politics Middle East!!3.00!!['T', 'R']!!14:00!!15:15!!M A Imran!!EBLOCKE139!!None!!None!!None!!None!!35!!0
 PLSC!!321!!A!!Pakistan Foreign Pol!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!Z Naeem!!EBLOCKE126!!None!!None!!None!!None!!35!!6
