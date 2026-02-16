@@ -542,10 +542,10 @@ ENVR!!405!!A!!Conservation Biol!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!S
 ENVR!!413!!A!!Envr. Toxicology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Pennock!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 ENVR!!499B!!A!!Project/Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!35!!34
 ENVR!!508!!A!!Applied Environmenta!!3.00!!['M']!!17:30!!18:45!!A Pennock!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!35!!22
-ENVR!!602!!A!!Pol Control Techn!!3.00!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!7
-ENVR!!604!!A!!Eco-Entrepreneurship!!1.00!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!7
-ENVR!!605!!A!!Research Methods!!3.00!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!7
-ENVR!!611!!A!!Carb.Sequestrat&Envr!!3.00!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!7
+ENVR!!602!!A!!Pol Control Techn!!3.00!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!6
+ENVR!!604!!A!!Eco-Entrepreneurship!!1.00!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!6
+ENVR!!605!!A!!Research Methods!!3.00!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!6
+ENVR!!611!!A!!Carb.Sequestrat&Envr!!3.00!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!6
 ENVR!!699A!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!10!!6
 ENVR!!699B!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!13
 ENVR!!699E!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!20
@@ -909,11 +909,11 @@ PSYC!!521!!A!!Therptic. Interven.2!!3.00!!['M', 'W']!!15:30!!17:00!!U Ashiq!!EBL
 PSYC!!540!!A!!Statistics!!3.00!!['T', 'R']!!15:30!!17:00!!S Majeed!!EBLOCKE345!!None!!None!!None!!None!!30!!10
 PSYC!!580!!A!!Case Conferences!!1.00!!['F']!!10:00!!11:00!!N Khan!!EBLOCKE345!!None!!None!!None!!None!!30!!10
 PSYC!!620!!A!!Workshop 1!!1.00!!['F']!!15:30!!17:00!!U Ilyas!!EBLOCKE345!!None!!None!!None!!None!!30!!10
-PSYC!!630!!A!!Community Wellness!!3.00!!['M', 'W']!!14:00!!15:30!!S Shahed!!EBLOCKE346!!None!!None!!None!!None!!30!!12
-PSYC!!635!!A!!Psyc. & Medic. Rehab!!3.00!!['T', 'R']!!14:00!!15:30!!B M Butt!!EBLOCKE333!!None!!None!!None!!None!!30!!12
+PSYC!!630!!A!!Community Wellness!!3.00!!['M', 'W']!!14:00!!15:30!!S Shahed!!EBLOCKE346!!None!!None!!None!!None!!30!!10
+PSYC!!635!!A!!Psyc. & Medic. Rehab!!3.00!!['T', 'R']!!14:00!!15:30!!B M Butt!!EBLOCKE333!!None!!None!!None!!None!!30!!10
 PSYC!!670!!A!!Placements I (Child)!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Nazim!!TBDTBD!!None!!None!!None!!None!!30!!9
-PSYC!!672!!A!!Placement III!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Nazim!!TBDTBD!!None!!None!!None!!None!!30!!12
-PSYC!!699B!!A!!Thesis II!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!30!!12
+PSYC!!672!!A!!Placement III!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Nazim!!TBDTBD!!None!!None!!None!!None!!30!!10
+PSYC!!699B!!A!!Thesis II!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!30!!10
 SOCL!!100!!A!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Azeem!!EBLOCKE101!!None!!None!!None!!None!!35!!13
 SOCL!!100!!B!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!C!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Athar!!EBLOCKE214!!None!!None!!None!!None!!35!!0
