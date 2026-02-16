@@ -194,12 +194,12 @@ BUSN!!571!!A!!LOGIC CRITI THINK 2!!3!!['T', 'R']!!14:00!!15:15!!A Ramish!!EBLOCK
 BUSN!!571!!B!!LOGIC CRITI THINK 2!!3!!['T', 'R']!!14:00!!15:15!!M Q Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!17
 BUSN!!585!!A!!MARKETING RESEARCH!!3!!['F']!!09:00!!12:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!18
 BUSN!!585!!B!!MARKETING RESEARCH!!3!!['F']!!14:00!!17:00!!A Nawaz!!EBLOCKE324!!None!!None!!None!!None!!35!!17
-BUSN!!601!!A!!REPORT & GOVERNANCE!!3!!['M', 'W']!!09:00!!10:15!!I Ahmed!!EBLOCKE324!!None!!None!!None!!None!!35!!9
-BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!9
-BUSN!!625!!A!!BUSINESS ETHICS!!3!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None!!None!!None!!None!!35!!9
-BUSN!!670!!A!!NEW PRODUCT DEVT!!3!!['T', 'R']!!10:00!!11:15!!F Malik!!EBLOCKE301!!None!!None!!None!!None!!35!!9
-BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!12
-BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!I Ahmed!!EBLOCKE301!!None!!None!!None!!None!!35!!9
+BUSN!!601!!A!!REPORT & GOVERNANCE!!3!!['M', 'W']!!09:00!!10:15!!I Ahmed!!EBLOCKE324!!None!!None!!None!!None!!35!!5
+BUSN!!605!!A!!MGMT CONTROL SYSTEM!!3!!['T', 'R']!!11:30!!12:45!!W Khan!!EBLOCKE323!!None!!None!!None!!None!!35!!5
+BUSN!!625!!A!!BUSINESS ETHICS!!3!!['F']!!14:00!!17:00!!B Usman!!EBLOCKE323!!None!!None!!None!!None!!35!!5
+BUSN!!670!!A!!NEW PRODUCT DEVT!!3!!['T', 'R']!!10:00!!11:15!!F Malik!!EBLOCKE301!!None!!None!!None!!None!!35!!5
+BUSN!!692!!A!!LEAD, CHANGE&STRAT2!!3!!['T', 'R']!!14:00!!15:15!!W Khan!!EBLOCKE301!!None!!None!!None!!None!!35!!8
+BUSN!!695!!A!!MGMT NEGOTIATION!!3!!['M', 'W']!!11:30!!12:45!!I Ahmed!!EBLOCKE301!!None!!None!!None!!None!!35!!5
 CHEM!!100!!A!!Intro. to Chemistry!!4!!['M', 'W', 'F']!!09:00!!09:50!!H Abid!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!0
 CHEM!!100!!B!!Intro. to Chemistry!!4!!['M']!!11:00!!12:50!!TBD!!SBLOCKS148!!SBLOCKS210!!['T', 'R']!!08:00!!09:15!!35!!2
 CHEM!!100!!C!!Intro. to Chemistry!!4!!['T', 'R']!!12:30!!13:45!!A Hussain!!SBLOCKS210!!SBLOCKS148!!['F']!!11:00!!12:50!!35!!0
@@ -299,14 +299,14 @@ COMP!!664!!A!!Info. Retr. & Web Sr!!3!!['W']!!17:30!!20:15!!A Khan!!SBLOCKS316!!
 COMP!!699A!!A!!Research thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!10!!10
 COMP!!699B!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!15!!13
 COMP!!699E!!A!!Research Thesis!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!25!!24
-CPPG!!603!!A!!ICT Concepts & tools!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!19
-CPPG!!604!!A!!RESEARCH METHODS!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!19
-CPPG!!606!!A!!Poli Analy: Poli Des!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!19
+CPPG!!603!!A!!ICT Concepts & tools!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!18
+CPPG!!604!!A!!RESEARCH METHODS!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!18
+CPPG!!606!!A!!Poli Analy: Poli Des!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!18
 CPPG!!616!!A!!Research Methodology!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!20!!4
 CPPG!!618!!A!!S Leadership & Gov.!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!4
 CPPG!!642!!A!!Water Policy and Gov!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!4
 CPPG!!656!!A!!Info Econ, Urban Dev!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!4
-CPPG!!677!!A!!Demography and Secur!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!19
+CPPG!!677!!A!!Demography and Secur!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!18
 CPPG!!699A!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!35
 CPPG!!699B!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!20!!16
 CPPG!!699E!!A!!Research!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shafqat!!TBDTBD!!None!!None!!None!!None!!25!!25
@@ -576,7 +576,7 @@ GEOG!!270!!IS!!Maps & their Interpr!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A
 GEOG!!312!!IS!!Meteo & Climatology!!4!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!1!!0
 GEOG!!313!!A!!Geodyn and Geomorph!!3!!['T', 'R']!!09:30!!10:45!!K Shakrul!!EBLOCKE242!!None!!None!!None!!None!!35!!35
 GEOG!!325!!A!!Political Geography!!3!!['M', 'W', 'F']!!14:00!!14:50!!A Iqbal!!EBLOCKE243!!None!!None!!None!!None!!35!!17
-GEOG!!326!!A!!Urban Env. Issues!!3!!['T', 'R']!!11:00!!12:15!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!35!!5
+GEOG!!326!!A!!Urban Env. Issues!!3!!['T', 'R']!!11:00!!12:15!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!35!!6
 GEOG!!371!!IS!!Digital Cartography!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Iqbal!!TBDTBD!!None!!None!!None!!None!!1!!0
 GEOG!!416!!IS!!Nat Haz & Mgmt Issue!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shafiqu!!TBDTBD!!None!!None!!None!!None!!1!!0
 GEOG!!471!!IS!!Qual & Quan Techniq!!4!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Iqbal!!TBDTBD!!None!!None!!None!!None!!2!!0
@@ -840,8 +840,8 @@ PLSC!!405!!IS!!Challenges of Pak!!3!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Si
 PLSC!!502!!A!!Comparative Politics!!3!!['M']!!16:00!!17:00!!S Sindhu!!EBLOCKE202!!None!!None!!None!!None!!25!!6
 PLSC!!504!!A!!Political Thought!!3!!['T']!!16:00!!19:00!!W Ranjha!!EBLOCKE202!!None!!None!!None!!None!!25!!6
 PLSC!!513!!A!!Ad.Stud.Intl.Relatio!!3!!['R']!!16:00!!19:00!!A Qureshi!!EBLOCKE202!!None!!None!!None!!None!!25!!8
-PLSC!!517!!A!!Plsc Strat. Dynam SA!!3!!['F']!!16:00!!19:00!!A. Indrias!!EBLOCKE202!!None!!None!!None!!None!!35!!30
-PLSC!!519!!A!!Local Govt. Sys Pak.!!3!!['W']!!16:00!!19:00!!M Younis!!EBLOCKE202!!None!!None!!None!!None!!25!!7
+PLSC!!517!!A!!Plsc Strat. Dynam SA!!3!!['F']!!16:00!!19:00!!A. Indrias!!EBLOCKE202!!None!!None!!None!!None!!35!!29
+PLSC!!519!!A!!Local Govt. Sys Pak.!!3!!['W']!!16:00!!19:00!!M Younis!!EBLOCKE202!!None!!None!!None!!None!!25!!8
 PLSC!!699A!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Sindhu!!TBDTBD!!None!!None!!None!!None!!25!!14
 PLSC!!699B!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Sindhu!!TBDTBD!!None!!None!!None!!None!!25!!19
 PLSC!!699E!!A!!Research Thesis!!6!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Sindhu!!TBDTBD!!None!!None!!None!!None!!25!!22
