@@ -221,6 +221,8 @@ CHEM!!330!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!D Ahmed!!SBLOCK
 CHEM!!350!!A!!Coordination Chem!!4.00!!['T', 'R']!!14:00!!15:15!!M Asghar!!SBLOCKS213!!SBLOCKS138!!['W']!!09:00!!10:50!!35!!33
 CHEM!!361!!A!!Organic Chem II!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!S Jelani!!SBLOCKS210!!SBLOCKS135!!['F']!!11:00!!12:50!!35!!27
 CHEM!!370!!A!!Kinetic & Mechanism!!4.00!!['T', 'R']!!08:00!!09:15!!M Qamar!!SBLOCKS213!!SBLOCKS148!!['F']!!09:00!!10:50!!35!!32
+CHEM!!413!!IS!!Instrument Meth Ana!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Asghar!!TBDTBD!!None!!None!!None!!None!!1!!0
+CHEM!!464!!IS!!Advanced Org. Chem!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Abbas!!TBDTBD!!None!!None!!None!!None!!1!!0
 CHEM!!465!!A!!Nat Prods & Med Chem!!4.00!!['M']!!11:00!!12:50!!D Ahmed!!SBLOCKS135!!SBLOCKS213!!['T', 'R']!!12:30!!13:45!!35!!34
 CHEM!!471!!A!!Adv. Physical Chem.!!3.00!!['T', 'R']!!11:00!!12:15!!AY khan!!SBLOCKS126!!None!!None!!None!!None!!35!!34
 CHEM!!473!!A!!Surf, Sld Stat Chem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!A Hussain!!SBLOCKS126!!SBLOCKS148!!['R']!!14:00!!15:50!!35!!31
@@ -509,7 +511,7 @@ ENGL!!323!!A!!Amer. Poetry & dram!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!I Sayed!
 ENGL!!328!!A!!Trauma Lit.&Theory!!3.00!!['T', 'R']!!09:30!!10:45!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!35!!8
 ENGL!!331!!A!!Research Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Mir!!EBLOCKE222!!None!!None!!None!!None!!35!!11
 ENGL!!350!!IS!!Adv. Creative Writin!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Shahid!!TBDTBD!!None!!None!!None!!None!!1!!0
-ENGL!!400!!A!!Shakespearean Drama!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!13
+ENGL!!400!!A!!Shakespearean Drama!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!12
 ENGL!!403!!A!!Cont Liter. Criticis!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!Quratulaen!!EBLOCKE222!!None!!None!!None!!None!!35!!24
 ENGL!!430!!A!!Postcolonial Lit. th!!3.00!!['T', 'R']!!11:00!!12:15!!F Syeda!!EBLOCKE222!!None!!None!!None!!None!!35!!19
 ENGL!!499!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!35!!14
@@ -893,7 +895,7 @@ PSYC!!370!!A!!Geriatric Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Shahe
 PSYC!!380!!A!!Liberation Psycholog!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!19
 PSYC!!385!!A!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Nazim!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!385!!B!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Majeed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
-PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!2
+PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!4
 PSYC!!415!!A!!Res Meth in Psyc II!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!6
 PSYC!!415!!B!!Res Meth in Psyc II!!3.00!!['T', 'R']!!09:30!!10:45!!M Niazi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 PSYC!!425!!A!!Sports Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!0
