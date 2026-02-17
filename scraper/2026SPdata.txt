@@ -543,11 +543,11 @@ ENVR!!404!!A!!Air/ Noise Poll. Cnt!!3.00!!['T', 'R']!!08:00!!09:15!!D Bakker!!SB
 ENVR!!405!!A!!Conservation Biol!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Aslam!!SBLOCKS417!!None!!None!!None!!None!!35!!19
 ENVR!!413!!A!!Envr. Toxicology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Pennock!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 ENVR!!499B!!A!!Project/Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!35!!34
-ENVR!!508!!A!!Applied Environmenta!!3.00!!['M']!!17:30!!18:45!!A Pennock!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!35!!22
-ENVR!!602!!A!!Pol Control Techn!!3.00!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!6
-ENVR!!604!!A!!Eco-Entrepreneurship!!1.00!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!6
-ENVR!!605!!A!!Research Methods!!3.00!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!6
-ENVR!!611!!A!!Carb.Sequestrat&Envr!!3.00!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!6
+ENVR!!508!!A!!Applied Environmenta!!3.00!!['M']!!17:30!!18:45!!A Pennock!!SBLOCKS417!!SBLOCKS417!!['W']!!16:00!!17:15!!35!!21
+ENVR!!602!!A!!Pol Control Techn!!3.00!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SBLOCKS417!!['R']!!16:00!!17:15!!20!!5
+ENVR!!604!!A!!Eco-Entrepreneurship!!1.00!!['F']!!16:00!!17:15!!B Usman!!SBLOCKS417!!None!!None!!None!!None!!20!!5
+ENVR!!605!!A!!Research Methods!!3.00!!['T']!!16:00!!17:15!!Team!!SBLOCKS417!!SBLOCKS417!!['R']!!17:30!!18:45!!20!!5
+ENVR!!611!!A!!Carb.Sequestrat&Envr!!3.00!!['T']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!SBLOCKS417!!['W']!!17:30!!18:45!!20!!5
 ENVR!!699A!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!10!!6
 ENVR!!699B!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!13
 ENVR!!699E!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!20!!20
@@ -726,9 +726,9 @@ MCOM!!430!!A!!Media Lab!!4.00!!['T', 'R']!!11:00!!12:15!!S Saleem!!MCENTE01!!Non
 MCOM!!499!!A!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!35!!0
 MCOM!!512!!A!!Comm.Res.MethodsII!!3.00!!['W']!!16:00!!19:00!!Dr S Abbas!!EBLOCKE039!!None!!None!!None!!None!!35!!24
 MCOM!!517!!A!!M.Debate:Issu.MCOM!!3.00!!['M']!!16:00!!19:00!!A Muzamil!!SBLOCKS111!!None!!None!!None!!None!!35!!24
-MCOM!!522!!A!!Inter. Journalism!!3.00!!['T']!!16:00!!19:00!!A Khan!!EBLOCKE039!!None!!None!!None!!None!!25!!15
+MCOM!!522!!A!!Inter. Journalism!!3.00!!['T']!!16:00!!19:00!!A Khan!!EBLOCKE039!!None!!None!!None!!None!!25!!21
 MCOM!!525!!A!!MCOM.Theory II!!3.00!!['R']!!16:00!!19:00!!F Jabeen!!EBLOCKE040!!None!!None!!None!!None!!35!!24
-MCOM!!526!!A!!Med.&Cul. Change!!3.00!!['T']!!16:00!!19:00!!S Saleem!!EBLOCKE140!!None!!None!!None!!None!!15!!14
+MCOM!!526!!A!!Med.&Cul. Change!!3.00!!['T']!!16:00!!19:00!!S Saleem!!EBLOCKE140!!None!!None!!None!!None!!15!!8
 MCOM!!699A!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!35
 MCOM!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!16
 MCOM!!699E!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!25!!23
