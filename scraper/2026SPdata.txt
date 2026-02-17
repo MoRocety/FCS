@@ -211,10 +211,11 @@ CHEM!!150!!B!!Intro. Inorg. Chem!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!H Abid!!S
 CHEM!!150!!C!!Intro. Inorg. Chem!!4.00!!['T', 'R']!!14:00!!15:15!!M Rashida!!SBLOCKS210!!SBLOCKS138!!['F']!!09:00!!10:50!!35!!7
 CHEM!!160!!A!!Intro. Org Biochem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Jelani!!SBLOCKS212!!SBLOCKS135!!['T']!!09:00!!10:50!!10!!0
 CHEM!!160!!B!!Intro. Org Biochem!!4.00!!['T', 'R']!!09:30!!10:45!!M Abbas!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!25!!3
-CHEM!!170!!A!!Inro. Physical Chem!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!AY khan!!SBLOCKS212!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!33
+CHEM!!170!!IS!!Inro. Physical Chem!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!AY khan!!TBDTBD!!None!!None!!None!!None!!1!!0
 CHEM!!250!!A!!Chem Main Groups!!4.00!!['T', 'R']!!09:30!!10:45!!M Iqbal!!SBLOCKS213!!SBLOCKS138!!['R']!!14:00!!16:50!!35!!24
 CHEM!!261!!A!!Organic Chemistry I!!4.00!!['T', 'R']!!08:00!!09:15!!M Abbas!!SBLOCKS212!!SBLOCKS135!!['W']!!11:00!!12:50!!35!!25
-CHEM!!270!!A!!Thermodyna Equilib!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!M Qamar!!SBLOCKS212!!SBLOCKS148!!['T']!!09:00!!10:50!!35!!34
+CHEM!!270!!A!!Thermodyna Equilib!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!M Qamar!!SBLOCKS212!!SBLOCKS148!!['T']!!09:00!!10:50!!35!!35
+CHEM!!270!!IS!!Thermodyna Equilib!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Qamar!!TBDTBD!!None!!None!!None!!None!!1!!0
 CHEM!!311!!A!!Fund Analy. Chem!!4.00!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS112!!SBLOCKS138!!['W']!!11:00!!12:50!!10!!1
 CHEM!!320!!A!!Industrial Chem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!H Abid!!SBLOCKS213!!SBLOCKS138!!['M']!!11:00!!12:50!!25!!19
 CHEM!!330!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!D Ahmed!!SBLOCKS212!!SBLOCKS135!!['T']!!14:00!!15:50!!25!!19
@@ -223,8 +224,9 @@ CHEM!!361!!A!!Organic Chem II!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!S Jelani!!SB
 CHEM!!370!!A!!Kinetic & Mechanism!!4.00!!['T', 'R']!!08:00!!09:15!!M Qamar!!SBLOCKS213!!SBLOCKS148!!['F']!!09:00!!10:50!!35!!32
 CHEM!!413!!IS!!Instrument Meth Ana!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Asghar!!TBDTBD!!None!!None!!None!!None!!1!!0
 CHEM!!464!!IS!!Advanced Org. Chem!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Abbas!!TBDTBD!!None!!None!!None!!None!!1!!0
-CHEM!!465!!A!!Nat Prods & Med Chem!!4.00!!['M']!!11:00!!12:50!!D Ahmed!!SBLOCKS135!!SBLOCKS213!!['T', 'R']!!12:30!!13:45!!35!!34
-CHEM!!471!!A!!Adv. Physical Chem.!!3.00!!['T', 'R']!!11:00!!12:15!!AY khan!!SBLOCKS126!!None!!None!!None!!None!!35!!34
+CHEM!!465!!A!!Nat Prods & Med Chem!!4.00!!['M']!!11:00!!12:50!!D Ahmed!!SBLOCKS135!!SBLOCKS213!!['T', 'R']!!12:30!!13:45!!35!!35
+CHEM!!465!!IS!!Nat Prods & Med Chem!!4.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Ahmed!!TBDTBD!!None!!None!!None!!None!!1!!0
+CHEM!!471!!IS!!Adv. Physical Chem.!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!AY khan!!TBDTBD!!None!!None!!None!!None!!2!!2
 CHEM!!473!!A!!Surf, Sld Stat Chem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!A Hussain!!SBLOCKS126!!SBLOCKS148!!['R']!!14:00!!15:50!!35!!31
 CHEM!!499A!!A!!Research Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!34
 CHEM!!499B!!A!!Research Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!32
