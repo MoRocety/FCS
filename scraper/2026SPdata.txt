@@ -607,7 +607,7 @@ FSQM!!699A!!D!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Muaz!!TB
 FSQM!!699A!!E!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Imran!!TBDTBD!!None!!None!!None!!None!!20!!20
 FSQM!!699B!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!0
 FSQM!!699B!!B!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Ul Haq!!TBDTBD!!None!!None!!None!!None!!35!!35
-FSQM!!699B!!C!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!35
+FSQM!!699B!!C!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!34
 FSQM!!699B!!D!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Muaz!!TBDTBD!!None!!None!!None!!None!!35!!35
 FSQM!!699B!!E!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Imran!!TBDTBD!!None!!None!!None!!None!!35!!35
 FSQM!!699B!!F!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ali!!TBDTBD!!None!!None!!None!!None!!35!!35
@@ -796,7 +796,10 @@ MPGN!!505!!A!!Genetic Basis of Hum!!3.00!!['T']!!16:00!!19:00!!N Asghar!!SBLOCKS
 MPGN!!603!!A!!Cellular Signal Tran!!3.00!!['W']!!16:00!!19:00!!M Yousaf!!SBLOCKS313!!None!!None!!None!!None!!25!!6
 MPGN!!604!!A!!Bioinformatics!!3.00!!['R']!!16:00!!19:00!!R Hassan!!SBLOCKS313!!None!!None!!None!!None!!25!!6
 MPGN!!613!!A!!Mole. Patho.&Diag.!!3.00!!['M']!!16:00!!19:00!!A Arshad!!SBLOCKS313!!None!!None!!None!!None!!25!!3
-MPGN!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!10!!2
+MPGN!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Yousaf!!TBDTBD!!None!!None!!None!!None!!10!!2
+MPGN!!699A!!B!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Arshad!!TBDTBD!!None!!None!!None!!None!!25!!25
+MPGN!!699A!!C!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Hassan!!TBDTBD!!None!!None!!None!!None!!25!!25
+MPGN!!699A!!D!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Asghar!!TBDTBD!!None!!None!!None!!None!!25!!25
 MPGN!!699B!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!16
 MPGN!!699E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!23
 MUSC!!101!!A!!Musc Pract I - Vocal!!3.00!!['T', 'R']!!14:00!!15:15!!M Shaggan!!EBLOCKE137!!None!!None!!None!!None!!35!!0
