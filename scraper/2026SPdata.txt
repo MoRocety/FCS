@@ -319,9 +319,15 @@ CPPG!!704!!A!!Pltcl Econ&Pub. Budg!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!
 CPPG!!727!!A!!Inter. of South Asia!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!35!!31
 CPPG!!799A!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!15!!15
 CPPG!!799B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!10!!9
+CPPG!!799B!!D!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!10!!10
+CPPG!!799B!!F!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!10!!10
 CPPG!!799C!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!15!!15
 CPPG!!799D!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!15!!15
 CPPG!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shafqat!!TBDTBD!!None!!None!!None!!None!!25!!24
+CPPG!!799E!!B!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!25!!25
+CPPG!!799E!!C!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hayat!!TBDTBD!!None!!None!!None!!None!!25!!25
+CPPG!!799E!!D!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!25!!25
+CPPG!!799E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!25!!25
 CRIM!!201!!A!!Sociological Researc!!3.00!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOCKE214!!None!!None!!None!!None!!5!!0
 CRIM!!220!!B!!Intro. to Crimnology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!5!!1
 CRIM!!310!!A!!Penology and Prison!!3.00!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE214!!None!!None!!None!!None!!35!!0
@@ -368,9 +374,9 @@ CSCS!!105!!C!!Basic Electronics!!4.00!!['T', 'R']!!15:30!!16:45!!I Iqbal!!SBLOCK
 CSCS!!105!!D!!Basic Electronics!!4.00!!['T', 'R']!!12:30!!13:45!!H Latif!!SBLOCKS027A!!SBLOCKS027A!!['W']!!14:00!!15:50!!15!!4
 CSCS!!105!!E!!Basic Electronics!!4.00!!['T', 'R']!!11:00!!12:15!!A Rehman!!SBLOCKS029!!SBLOCKS027B!!['T']!!14:00!!15:50!!15!!7
 CSCS!!201!!A!!Multivariate Calculu!!3.00!!['T', 'R']!!12:30!!13:45!!F Janjua!!SBLOCKS424!!None!!None!!None!!None!!35!!0
-CSCS!!201!!B!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!12
+CSCS!!201!!B!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS424!!None!!None!!None!!None!!35!!11
 CSCS!!201!!IS!!Multivariate Calculu!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Janjua!!TBDTBD!!None!!None!!None!!None!!1!!0
-CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!19
+CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS317!!None!!None!!None!!None!!35!!18
 CSCS!!202!!B!!Comp Linear Algeb!!3.00!!['T', 'R']!!14:00!!15:15!!G Mehak!!SBLOCKS424!!None!!None!!None!!None!!35!!1
 CSCS!!202!!C!!Comp Linear Algeb!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS416!!None!!None!!None!!None!!35!!27
 CSCS!!203!!A!!Differential Equatio!!3.00!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!9
@@ -531,7 +537,13 @@ ENGL!!699A!!B!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S M
 ENGL!!699A!!C!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mir!!TBDTBD!!None!!None!!None!!None!!30!!30
 ENGL!!699A!!D!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Zaheer!!TBDTBD!!None!!None!!None!!None!!30!!30
 ENGL!!699A!!E!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Quratulaen!!TBDTBD!!None!!None!!None!!None!!30!!30
-ENGL!!699B!!A!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!35!!14
+ENGL!!699A!!F!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Sayed!!TBDTBD!!None!!None!!None!!None!!30!!30
+ENGL!!699B!!A!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!35!!31
+ENGL!!699B!!B!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Maqbool!!TBDTBD!!None!!None!!None!!None!!20!!15
+ENGL!!699B!!C!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mir!!TBDTBD!!None!!None!!None!!None!!20!!16
+ENGL!!699B!!D!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Zaheer!!TBDTBD!!None!!None!!None!!None!!20!!19
+ENGL!!699B!!E!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Quratulaen!!TBDTBD!!None!!None!!None!!None!!20!!14
+ENGL!!699B!!F!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Sayed!!TBDTBD!!None!!None!!None!!None!!20!!18
 ENGL!!699E!!A!!Thesis and Viva!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!25!!24
 ENVR!!151!!A!!Intro to Sources!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 ENVR!!151!!B!!Intro to Sources!!3.00!!['T', 'R']!!11:00!!12:15!!S Ilyas!!SBLOCKS424!!None!!None!!None!!None!!35!!0
@@ -1010,7 +1022,7 @@ STAT!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S H
 STAT!!699A!!B!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699B!!B!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!24
-STAT!!699E!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!23
+STAT!!699E!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!20
 STAT!!699E!!B!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!25
 UNIV!!100!!C!!FOUND UNIV EDUC!!3.00!!['F']!!14:00!!16:00!!S Saleem!!EBLOCKE104!!EBLOCKE103!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!35!!0
 URDU!!101!!A!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!35!!0
