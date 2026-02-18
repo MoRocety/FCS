@@ -40,7 +40,7 @@ BIOT!!411!!A!!Agri. Biotechnology!!3.00!!['T', 'R']!!11:00!!12:15!!M Irfan!!SBLO
 BIOT!!411!!IS!!Agri. Biotechnology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!1!!0
 BIOT!!412!!A!!Medi. Biotechnology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!B Sadiq!!SBLOCKS321!!None!!None!!None!!None!!35!!0
 BIOT!!506!!A!!Biostatistics!!3.00!!['M', 'W']!!14:00!!15:15!!S Hanook!!SBLOCKS312!!None!!None!!None!!None!!25!!7
-BIOT!!511!!A!!JOURNAL CLUB!!2.00!!['W']!!09:00!!11:00!!Team!!SBLOCKS329!!None!!None!!None!!None!!25!!6
+BIOT!!511!!A!!JOURNAL CLUB!!2.00!!['W']!!09:00!!11:00!!Team!!SBLOCKS329!!None!!None!!None!!None!!25!!7
 BIOT!!605!!A!!BUS ENTREPRENEURSHIP!!1.00!!['F']!!11:00!!11:50!!B Usman!!SBLOCKS331!!None!!None!!None!!None!!25!!7
 BIOT!!609!!A!!ADV. HEALTH BIOT!!3.00!!['T', 'R']!!12:30!!13:45!!A Arshad!!SBLOCKS417!!None!!None!!None!!None!!25!!7
 BIOT!!611!!A!!Omics!!3.00!!['W', 'F']!!12:00!!01:15!!R Hassan!!SBLOCKS331!!None!!None!!None!!None!!25!!6
@@ -477,7 +477,7 @@ EDUC!!110!!D!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Khan!
 EDUC!!110!!E!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M. Thomas!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!110!!F!!Foundations of Educ.!!3.00!!['T', 'R']!!14:00!!15:15!!J Hassan!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 EDUC!!110!!G!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Aslam!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-EDUC!!110!!H!!Foundations of Educa!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!1
+EDUC!!110!!H!!Foundations of Educa!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Raza!!EBLOCKE140!!None!!None!!None!!None!!35!!2
 EDUC!!120!!A!!Educ Psychology!!3.00!!['T', 'R']!!09:30!!10:45!!M Raza!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 EDUC!!120!!B!!Educ Psychology!!3.00!!['T', 'R']!!09:30!!10:45!!R. Farooq!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 EDUC!!120!!C!!Educ Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Khan!!EBLOCKE121!!None!!None!!None!!None!!35!!0
@@ -525,7 +525,19 @@ ENGL!!350!!IS!!Adv. Creative Writin!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None
 ENGL!!400!!A!!Shakespearean Drama!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!12
 ENGL!!403!!A!!Cont Liter. Criticis!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!Quratulaen!!EBLOCKE222!!None!!None!!None!!None!!35!!24
 ENGL!!430!!A!!Postcolonial Lit. th!!3.00!!['T', 'R']!!11:00!!12:15!!F Syeda!!EBLOCKE222!!None!!None!!None!!None!!35!!19
-ENGL!!499!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!35!!14
+ENGL!!499!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Zaheer!!TBDTBD!!None!!None!!None!!None!!35!!14
+ENGL!!499!!B!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mir!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!C!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Quratulaen!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!D!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Aftab!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!E!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!J C Imdad!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!F!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Sayed!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!G!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanif!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!H!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Pervez!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!I!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Zia!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!J!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Wasif!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!K!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Maqbool!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!L!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T Bokhari!!TBDTBD!!None!!None!!None!!None!!25!!25
+ENGL!!499!!M!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Saleh!!TBDTBD!!None!!None!!None!!None!!25!!25
 ENGL!!516!!A!!Minority Literatures!!3.00!!['W']!!16:00!!19:00!!F Syeda!!EBLOCKE221!!None!!None!!None!!None!!25!!6
 ENGL!!517!!A!!African Literature!!3.00!!['R']!!16:00!!19:00!!J C Imdad!!EBLOCKE227!!None!!None!!None!!None!!25!!0
 ENGL!!520!!A!!Critical Theory!!3.00!!['M']!!16:00!!19:00!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!10
@@ -674,11 +686,11 @@ LING!!340!!IS!!Language and Gender!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!
 LING!!370!!IS!!Language,Culture&Ide!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Javed!!TBDTBD!!None!!None!!None!!None!!1!!0
 LING!!413!!A!!Sociolinguistics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!10
 LING!!495!!A!!Res.Methods in Ling!!3.00!!['T', 'R']!!12:30!!13:45!!A Khalid!!EBLOCKE039!!None!!None!!None!!None!!35!!30
-LING!!499!!A!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDTBD!!None!!None!!None!!None!!25!!21
-LING!!499!!B!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Justin!!TBDTBD!!None!!None!!None!!None!!35!!35
-LING!!499!!C!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Wasim!!TBDTBD!!None!!None!!None!!None!!35!!35
-LING!!499!!D!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Alphonce!!TBDTBD!!None!!None!!None!!None!!35!!35
-LING!!499!!E!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Aftab!!TBDTBD!!None!!None!!None!!None!!35!!35
+LING!!499!!A!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khalid!!TBDTBD!!None!!None!!None!!None!!25!!24
+LING!!499!!B!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Justin!!TBDTBD!!None!!None!!None!!None!!35!!34
+LING!!499!!C!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Wasim!!TBDTBD!!None!!None!!None!!None!!35!!34
+LING!!499!!D!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Alphonce!!TBDTBD!!None!!None!!None!!None!!35!!34
+LING!!499!!E!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Aftab!!TBDTBD!!None!!None!!None!!None!!35!!34
 MATH!!095!!A!!Math Remedial!!0!!['T', 'R']!!15:30!!16:45!!R Malik!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!095!!B!!Math Remedial!!0!!['M', 'W', 'F']!!15:00!!15:50!!R Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!0
 MATH!!100!!A!!Quantitative Skills!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Janjua!!SBLOCKS412!!None!!None!!None!!None!!35!!0
