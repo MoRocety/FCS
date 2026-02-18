@@ -376,16 +376,19 @@ CSCS!!202!!C!!Comp Linear Algeb!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!S
 CSCS!!203!!A!!Differential Equatio!!3.00!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!9
 CSCS!!203!!B!!Diffential Equation!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS410!!None!!None!!None!!None!!35!!20
 CSCS!!203!!C!!Differential Equatio!!3.00!!['T', 'R']!!09:30!!10:45!!S Iqbal!!SBLOCKS413!!None!!None!!None!!None!!35!!0
+CSCS!!203!!IS!!Differential Equatio!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!1!!0
 CSCS!!313!!A!!Software Requir Eng!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Toor!!SBLOCKS215!!None!!None!!None!!None!!35!!0
 CSCS!!320!!A!!Numerical Computing!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!K Azhar!!SBLOCKS216!!None!!None!!None!!None!!35!!0
 CSCS!!320!!B!!Numerical Computing!!3.00!!['T', 'R']!!09:30!!10:45!!A Nadeem!!SBLOCKS216!!None!!None!!None!!None!!35!!1
 CSCS!!320!!C!!Numerical Computing!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Iqbal!!SBLOCKS316!!None!!None!!None!!None!!35!!0
+CSCS!!320!!IS!!Numerical Computing!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!1!!0
 CSCS!!321!!A!!Cyber Security!!3.00!!['M']!!14:00!!15:50!!M Butt!!SBLOCKS219!!SBLOCKS119!!['W']!!14:00!!15:50!!35!!0
 CSCS!!342!!A!!Web Application Deve!!3.00!!['T', 'R']!!13:00!!14:50!!A Yousaf!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!366!!A!!Into.to Nat Language!!3.00!!['T', 'R']!!15:30!!16:45!!F Ullah!!SBLOCKS216!!None!!None!!None!!None!!35!!4
 CSCS!!367!!A!!Blockchain tech.&app!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS317!!None!!None!!None!!None!!35!!19
 CSCS!!456!!A!!Introduction to deep!!3.00!!['T', 'R']!!12:30!!13:45!!F Ullah!!SBLOCKS316!!None!!None!!None!!None!!35!!6
 CSCS!!457!!A!!Computer Vision!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Ashraf!!SBLOCKS111!!None!!None!!None!!None!!35!!0
+CSCS!!457!!IS!!Computer Vision!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!1!!0
 CSCS!!460!!A!!Machine Learning!!3.00!!['T', 'R']!!14:00!!15:15!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!15
 CSCS!!468!!A!!Mob App Deveolopment!!3.00!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS216!!SBLOCKS319!!['W']!!11:00!!12:50!!35!!17
 CSCS!!470!!A!!Introduction to Game!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Shaheen!!SBLOCKS319!!None!!None!!None!!None!!35!!17
@@ -1000,8 +1003,11 @@ STAT!!508!!A!!Advanced Survey Samp!!3.00!!['M']!!16:00!!19:00!!S Ayub!!SBLOCKS42
 STAT!!509!!A!!Survival Analysis!!3.00!!['T']!!16:00!!19:00!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!15!!11
 STAT!!513!!A!!Bayesian Inference!!3.00!!['W']!!16:00!!19:00!!M Raza!!SBLOCKS421!!None!!None!!None!!None!!15!!11
 STAT!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
+STAT!!699A!!B!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!25
 STAT!!699B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!25
-STAT!!699E!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!24
+STAT!!699B!!B!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!24
+STAT!!699E!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hanook!!TBDTBD!!None!!None!!None!!None!!25!!23
+STAT!!699E!!B!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bashir!!TBDTBD!!None!!None!!None!!None!!25!!25
 UNIV!!100!!C!!FOUND UNIV EDUC!!3.00!!['F']!!14:00!!16:00!!S Saleem!!EBLOCKE104!!EBLOCKE103!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!35!!0
 URDU!!101!!A!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!B!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!35!!0
