@@ -62,6 +62,15 @@ BIOT!!605!!A!!BUS ENTREPRENEURSHIP!!1.00!!['F']!!11:00!!11:50!!B Usman!!SBLOCKS3
 BIOT!!609!!A!!ADV. HEALTH BIOT!!3.00!!['T', 'R']!!12:30!!13:45!!A Arshad!!SBLOCKS417!!None!!None!!None!!None!!25!!7
 BIOT!!611!!A!!Omics!!3.00!!['W', 'F']!!12:00!!01:15!!R Hassan!!SBLOCKS331!!None!!None!!None!!None!!25!!6
 BIOT!!699A!!A!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!10!!2
+BIOT!!699A!!B!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mehnaz!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!C!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Maqbool!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!D!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!E!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Yousaf!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!F!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Imran!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!G!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ali!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!H!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Khokhar!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!I!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Hassan!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!699A!!J!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Asghar!!TBDTBD!!None!!None!!None!!None!!25!!25
 BIOT!!699B!!A!!RESEARCH!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!11
 BIOT!!699E!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!24
 BIOT!!710!!A!!Trends in Microbial!!3.00!!['T', 'R']!!11:00!!12:15!!S Mehnaz!!SBLOCKTBD!!None!!None!!None!!None!!25!!20
@@ -1024,10 +1033,10 @@ PSYC!!440!!B!!Counseling Psycholog!!3.00!!['T', 'R']!!15:30!!16:45!!N Asif!!SBLO
 PSYC!!465!!A!!Clinical Psyc!!4.00!!['M']!!14:00!!15:50!!A aziz!!EBLOCKE244!!EBLOCKE244!!['T', 'R']!!08:00!!09:15!!30!!3
 PSYC!!465!!B!!Clinical Psyc!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!N Khan!!EBLOCKE137!!EBLOCKE346!!['F']!!14:00!!15:50!!35!!0
 PSYC!!490!!A!!Research Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Samuel!!TBDTBD!!None!!None!!None!!None!!35!!24
-PSYC!!499B!!A!!Senior Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!U Ilyas!!TBDTBD!!None!!None!!None!!None!!35!!4
-PSYC!!499B!!B!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!U Rizwan!!TBDTBD!!None!!None!!None!!None!!35!!35
-PSYC!!499B!!C!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Asajid!!TBDTBD!!None!!None!!None!!None!!35!!35
-PSYC!!499B!!D!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Safdar!!TBDTBD!!None!!None!!None!!None!!35!!35
+PSYC!!499B!!A!!Senior Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!U Ilyas!!TBDTBD!!None!!None!!None!!None!!35!!11
+PSYC!!499B!!B!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!U Rizwan!!TBDTBD!!None!!None!!None!!None!!35!!31
+PSYC!!499B!!C!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Asajid!!TBDTBD!!None!!None!!None!!None!!35!!32
+PSYC!!499B!!D!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Safdar!!TBDTBD!!None!!None!!None!!None!!35!!34
 PSYC!!499B!!E!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!35
 PSYC!!499B!!F!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Niazi!!TBDTBD!!None!!None!!None!!None!!35!!35
 PSYC!!499B!!G!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!E Shahid!!TBDTBD!!None!!None!!None!!None!!35!!35
