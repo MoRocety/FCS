@@ -42,7 +42,7 @@ BIOT!!412!!A!!Medi. Biotechnology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!N Asghar
 BIOT!!499A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!35!!34
 BIOT!!499A!!B!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Malik!!TBDTBD!!None!!None!!None!!None!!35!!34
 BIOT!!499A!!C!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mehnaz!!TBDTBD!!None!!None!!None!!None!!35!!35
-BIOT!!499A!!D!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Bashir!!TBDTBD!!None!!None!!None!!None!!35!!35
+BIOT!!499A!!D!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Bashir!!TBDTBD!!None!!None!!None!!None!!35!!34
 BIOT!!499A!!E!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Maqbool!!TBDTBD!!None!!None!!None!!None!!35!!35
 BIOT!!499A!!F!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!35!!35
 BIOT!!499A!!G!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Yousaf!!TBDTBD!!None!!None!!None!!None!!35!!35
@@ -368,14 +368,14 @@ COMP!!664!!A!!Info. Retr. & Web Sr!!3.00!!['W']!!17:30!!20:15!!A Khan!!SBLOCKS31
 COMP!!699A!!A!!Research thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!10!!10
 COMP!!699B!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!15!!13
 COMP!!699E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!25!!24
-CPPG!!603!!A!!ICT Concepts & tools!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!15
-CPPG!!604!!A!!RESEARCH METHODS!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!15
-CPPG!!606!!A!!Poli Analy: Poli Des!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!15
+CPPG!!603!!A!!ICT Concepts & tools!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!13
+CPPG!!604!!A!!RESEARCH METHODS!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!13
+CPPG!!606!!A!!Poli Analy: Poli Des!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!20!!13
 CPPG!!616!!A!!Research Methodology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!20!!2
 CPPG!!618!!A!!S Leadership & Gov.!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!2
 CPPG!!642!!A!!Water Policy and Gov!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!2
 CPPG!!656!!A!!Info Econ, Urban Dev!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!20!!2
-CPPG!!677!!A!!Demography and Secur!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!15
+CPPG!!677!!A!!Demography and Secur!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!13
 CPPG!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!35
 CPPG!!699B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!20!!16
 CPPG!!699B!!B!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!20!!18
@@ -865,28 +865,28 @@ MCOM!!414!!B!!Research Methodology!!3.00!!['T', 'R']!!11:00!!12:15!!Dr S Abbas!!
 MCOM!!415!!A!!Comm Campaign Design!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Saleem!!EBLOCKE041!!None!!None!!None!!None!!35!!1
 MCOM!!415!!B!!Comm Campaign Design!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Masood!!EBLOCKE041!!None!!None!!None!!None!!35!!21
 MCOM!!430!!A!!Media Lab!!4.00!!['T', 'R']!!11:00!!12:15!!S Saleem!!MCENTE01!!None!!None!!None!!None!!35!!18
-MCOM!!499!!A!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!0
-MCOM!!499!!B!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr S Abbas!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!C!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!D!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Muzamil!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!E!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Z Masood!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!F!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Amir!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!G!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Malik!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!H!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Batool!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!I!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S. Zehra!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!499!!J!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A Naeem!!TBDTBD!!None!!None!!None!!None!!35!!35
+MCOM!!499!!A!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!32
+MCOM!!499!!B!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr S Abbas!!TBDTBD!!None!!None!!None!!None!!35!!32
+MCOM!!499!!C!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!35!!31
+MCOM!!499!!D!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Muzamil!!TBDTBD!!None!!None!!None!!None!!35!!33
+MCOM!!499!!E!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Z Masood!!TBDTBD!!None!!None!!None!!None!!35!!29
+MCOM!!499!!F!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Amir!!TBDTBD!!None!!None!!None!!None!!35!!33
+MCOM!!499!!G!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Malik!!TBDTBD!!None!!None!!None!!None!!35!!29
+MCOM!!499!!H!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Batool!!TBDTBD!!None!!None!!None!!None!!35!!29
+MCOM!!499!!I!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S. Zehra!!TBDTBD!!None!!None!!None!!None!!35!!29
+MCOM!!499!!J!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A Naeem!!TBDTBD!!None!!None!!None!!None!!35!!29
 MCOM!!512!!A!!Comm.Res.MethodsII!!3.00!!['W']!!16:00!!19:00!!Dr S Abbas!!EBLOCKE039!!None!!None!!None!!None!!35!!24
 MCOM!!517!!A!!M.Debate:Issu.MCOM!!3.00!!['M']!!16:00!!19:00!!A Muzamil!!SBLOCKS111!!None!!None!!None!!None!!35!!24
 MCOM!!522!!A!!Inter. Journalism!!3.00!!['T']!!16:00!!19:00!!A Khan!!EBLOCKE039!!None!!None!!None!!None!!25!!21
 MCOM!!525!!A!!MCOM.Theory II!!3.00!!['R']!!16:00!!19:00!!F Jabeen!!EBLOCKE040!!None!!None!!None!!None!!35!!24
 MCOM!!526!!A!!Med.&Cul. Change!!3.00!!['T']!!16:00!!19:00!!S Saleem!!EBLOCKE140!!None!!None!!None!!None!!15!!8
 MCOM!!699A!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!35!!35
-MCOM!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Amir!!TBDTBD!!None!!None!!None!!None!!35!!16
-MCOM!!699B!!B!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khan!!TBDTBD!!None!!None!!None!!None!!25!!25
-MCOM!!699B!!C!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Muzamil!!TBDTBD!!None!!None!!None!!None!!25!!25
-MCOM!!699B!!D!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!25!!25
-MCOM!!699B!!E!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr S Abbas!!TBDTBD!!None!!None!!None!!None!!25!!25
-MCOM!!699B!!F!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!25!!25
+MCOM!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Amir!!TBDTBD!!None!!None!!None!!None!!35!!31
+MCOM!!699B!!B!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khan!!TBDTBD!!None!!None!!None!!None!!25!!22
+MCOM!!699B!!C!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Muzamil!!TBDTBD!!None!!None!!None!!None!!25!!21
+MCOM!!699B!!D!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!25!!22
+MCOM!!699B!!E!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr S Abbas!!TBDTBD!!None!!None!!None!!None!!25!!22
+MCOM!!699B!!F!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!25!!22
 MCOM!!699E!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Jabeen!!TBDTBD!!None!!None!!None!!None!!25!!23
 MPGN!!505!!A!!Genetic Basis of Hum!!3.00!!['T']!!16:00!!19:00!!N Asghar!!SBLOCKS313!!None!!None!!None!!None!!25!!6
 MPGN!!603!!A!!Cellular Signal Tran!!3.00!!['W']!!16:00!!19:00!!M Yousaf!!SBLOCKS313!!None!!None!!None!!None!!25!!6
