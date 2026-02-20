@@ -39,8 +39,8 @@ BIOT!!409!!A!!Food & Dairy Tech.!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!K Muaz!!S
 BIOT!!411!!A!!Agri. Biotechnology!!3.00!!['T', 'R']!!11:00!!12:15!!M Irfan!!SBLOCKS341!!None!!None!!None!!None!!35!!0
 BIOT!!411!!IS!!Agri. Biotechnology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!1!!0
 BIOT!!412!!A!!Medi. Biotechnology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!N Asghar!!SBLOCKS321!!None!!None!!None!!None!!35!!0
-BIOT!!499A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!35!!35
-BIOT!!499A!!B!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Malik!!TBDTBD!!None!!None!!None!!None!!35!!35
+BIOT!!499A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!35!!34
+BIOT!!499A!!B!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Malik!!TBDTBD!!None!!None!!None!!None!!35!!34
 BIOT!!499A!!C!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Mehnaz!!TBDTBD!!None!!None!!None!!None!!35!!35
 BIOT!!499A!!D!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Bashir!!TBDTBD!!None!!None!!None!!None!!35!!35
 BIOT!!499A!!E!!Research I!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Maqbool!!TBDTBD!!None!!None!!None!!None!!35!!35
@@ -88,13 +88,13 @@ BIOT!!713!!A!!Food Biotechnology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T
 BIOT!!799A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!20
 BIOT!!799B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Malik!!TBDTBD!!None!!None!!None!!None!!20!!18
 BIOT!!799B!!B!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Bashir!!TBDTBD!!None!!None!!None!!None!!20!!20
-BIOT!!799B!!C!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Yousaf!!TBDTBD!!None!!None!!None!!None!!20!!20
+BIOT!!799B!!C!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Yousaf!!TBDTBD!!None!!None!!None!!None!!20!!19
 BIOT!!799C!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!20
 BIOT!!799D!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!10!!10
-BIOT!!799E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!20
+BIOT!!799E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!25!!22
 BIOT!!799E!!B!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Maqbool!!TBDTBD!!None!!None!!None!!None!!25!!25
-BIOT!!799E!!C!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!25!!25
-BIOT!!799E!!D!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!25!!25
+BIOT!!799E!!C!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!25!!23
+BIOT!!799E!!D!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!25!!24
 BUSN!!101!!A!!Principles of Acc.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Shahzad!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!101!!B!!Principles of Acc.!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!H Walter!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!101!!C!!Principles of Acc.!!3.00!!['T', 'R']!!12:30!!13:45!!S Ehsan!!SBLOCKS313!!None!!None!!None!!None!!35!!0
@@ -287,9 +287,9 @@ CHEM!!699B!!F!!Research Thesis!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Q
 CHEM!!699B!!G!!Research Thesis!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!H Abid!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!699B!!H!!Research Thesis!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Abbas!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!699E!!A!!Research Thesis!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!25!!25
-CHEM!!705!!A!!Ch Coord Complex!!3.00!!['M', 'W']!!14:00!!15:15!!M Iqbal!!SBLOCKS138!!None!!None!!None!!None!!35!!28
-CHEM!!745!!A!!Medicinal Chemistry!!3.00!!['T', 'R']!!15:30!!16:45!!M Abbas!!SBLOCKS126!!None!!None!!None!!None!!25!!18
-CHEM!!763!!A!!Electroana Techniq!!3.00!!['T', 'R']!!14:00!!15:15!!AY khan!!SBLOCKS126!!None!!None!!None!!None!!10!!3
+CHEM!!705!!A!!Ch Coord Complex!!3.00!!['M', 'W']!!14:00!!15:15!!M Iqbal!!SBLOCKS138!!None!!None!!None!!None!!35!!27
+CHEM!!745!!A!!Medicinal Chemistry!!3.00!!['T', 'R']!!15:30!!16:45!!M Abbas!!SBLOCKS126!!None!!None!!None!!None!!25!!17
+CHEM!!763!!A!!Electroana Techniq!!3.00!!['T', 'R']!!14:00!!15:15!!AY khan!!SBLOCKS126!!None!!None!!None!!None!!10!!2
 CHEM!!799A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799C!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
@@ -344,18 +344,18 @@ COMP!!421!!C!!Information Security!!3.00!!['T', 'R']!!14:00!!15:15!!M Butt!!SBLO
 COMP!!451!!A!!Compiler Constructio!!3.00!!['T']!!09:00!!10:50!!A Basharat!!SBLOCKS317!!SBLOCKS320!!['R']!!09:00!!10:50!!35!!0
 COMP!!451!!B!!Compiler Constructio!!3.00!!['M']!!11:00!!12:50!!M Butt!!SBLOCKS219!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!0
 COMP!!497A!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!150!!120
-COMP!!497B!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Yousaf!!TBDTBD!!None!!None!!None!!None!!150!!28
-COMP!!497B!!B!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Basharat!!TBDTBD!!None!!None!!None!!None!!150!!150
-COMP!!497B!!C!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!D!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Sabahat!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!E!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!F!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Minhas!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!G!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Ullah!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!H!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Shaheen!!TBDTBD!!None!!None!!None!!None!!40!!40
+COMP!!497B!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Yousaf!!TBDTBD!!None!!None!!None!!None!!150!!86
+COMP!!497B!!B!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Basharat!!TBDTBD!!None!!None!!None!!None!!150!!141
+COMP!!497B!!C!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!40!!29
+COMP!!497B!!D!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Sabahat!!TBDTBD!!None!!None!!None!!None!!40!!27
+COMP!!497B!!E!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Saleem!!TBDTBD!!None!!None!!None!!None!!40!!38
+COMP!!497B!!F!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Minhas!!TBDTBD!!None!!None!!None!!None!!40!!36
+COMP!!497B!!G!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Ullah!!TBDTBD!!None!!None!!None!!None!!40!!26
+COMP!!497B!!H!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Shaheen!!TBDTBD!!None!!None!!None!!None!!40!!39
 COMP!!497B!!I!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Butt!!TBDTBD!!None!!None!!None!!None!!40!!40
 COMP!!497B!!J!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Bqa!!TBDTBD!!None!!None!!None!!None!!40!!40
 COMP!!497B!!K!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Qureshi!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!L!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Nasim!!TBDTBD!!None!!None!!None!!None!!40!!40
+COMP!!497B!!L!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Nasim!!TBDTBD!!None!!None!!None!!None!!40!!36
 COMP!!504!!A!!Adv. Oprtng. Systems!!3.00!!['T']!!17:30!!20:15!!TBD!!SBLOCKS316!!None!!None!!None!!None!!20!!18
 COMP!!552!!A!!Advanced Machine Lea!!3.00!!['F']!!17:30!!20:15!!Q Quraishi!!SBLOCKS316!!None!!None!!None!!None!!10!!10
 COMP!!664!!A!!Info. Retr. & Web Sr!!3.00!!['W']!!17:30!!20:15!!A Khan!!SBLOCKS316!!None!!None!!None!!None!!10!!9
@@ -1051,7 +1051,7 @@ PSYC!!370!!A!!Geriatric Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Shahe
 PSYC!!380!!A!!Liberation Psycholog!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A aziz!!EBLOCKE244!!None!!None!!None!!None!!35!!19
 PSYC!!385!!A!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Nazim!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 PSYC!!385!!B!!Forensic Psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Majeed!!EBLOCKE244!!None!!None!!None!!None!!35!!0
-PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!6
+PSYC!!395!!A!!Correctional Psyc!!3.00!!['T', 'R']!!12:30!!13:45!!S Majeed!!SBLOCKS416!!None!!None!!None!!None!!35!!7
 PSYC!!415!!A!!Res Meth in Psyc II!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Jabeen!!EBLOCKE344!!None!!None!!None!!None!!35!!6
 PSYC!!415!!B!!Res Meth in Psyc II!!3.00!!['T', 'R']!!09:30!!10:45!!M Niazi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 PSYC!!425!!A!!Sports Psychology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Niazi!!EBLOCKE243!!None!!None!!None!!None!!35!!0
