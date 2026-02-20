@@ -292,9 +292,14 @@ CHEM!!745!!A!!Medicinal Chemistry!!3.00!!['T', 'R']!!15:30!!16:45!!M Abbas!!SBLO
 CHEM!!763!!A!!Electroana Techniq!!3.00!!['T', 'R']!!14:00!!15:15!!AY khan!!SBLOCKS126!!None!!None!!None!!None!!10!!2
 CHEM!!799A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
+CHEM!!799B!!C!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Qamar!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799C!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799D!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!20!!20
-CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!25!!21
+CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!AY khan!!TBDTBD!!None!!None!!None!!None!!25!!23
+CHEM!!799E!!B!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!24
+CHEM!!799E!!C!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Qamar!!TBDTBD!!None!!None!!None!!None!!25!!25
+CHEM!!799E!!D!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rashida!!TBDTBD!!None!!None!!None!!None!!25!!25
+CHEM!!799E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Team!!TBDTBD!!None!!None!!None!!None!!25!!24
 CHIN!!101!!A!!Chinese I!!3.00!!['T', 'R']!!09:30!!10:45!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!B!!Chinese I!!3.00!!['T', 'R']!!11:00!!12:15!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!C!!Chinese I!!3.00!!['T', 'R']!!12:30!!13:45!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!0
@@ -344,7 +349,7 @@ COMP!!421!!C!!Information Security!!3.00!!['T', 'R']!!14:00!!15:15!!M Butt!!SBLO
 COMP!!451!!A!!Compiler Constructio!!3.00!!['T']!!09:00!!10:50!!A Basharat!!SBLOCKS317!!SBLOCKS320!!['R']!!09:00!!10:50!!35!!0
 COMP!!451!!B!!Compiler Constructio!!3.00!!['M']!!11:00!!12:50!!M Butt!!SBLOCKS219!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!0
 COMP!!497A!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Mushtaq!!TBDTBD!!None!!None!!None!!None!!150!!120
-COMP!!497B!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Yousaf!!TBDTBD!!None!!None!!None!!None!!150!!86
+COMP!!497B!!A!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Yousaf!!TBDTBD!!None!!None!!None!!None!!150!!91
 COMP!!497B!!B!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Basharat!!TBDTBD!!None!!None!!None!!None!!150!!141
 COMP!!497B!!C!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Ashraf!!TBDTBD!!None!!None!!None!!None!!40!!29
 COMP!!497B!!D!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Sabahat!!TBDTBD!!None!!None!!None!!None!!40!!27
@@ -354,7 +359,7 @@ COMP!!497B!!G!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Ul
 COMP!!497B!!H!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Shaheen!!TBDTBD!!None!!None!!None!!None!!40!!39
 COMP!!497B!!I!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Butt!!TBDTBD!!None!!None!!None!!None!!40!!40
 COMP!!497B!!J!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Bqa!!TBDTBD!!None!!None!!None!!None!!40!!40
-COMP!!497B!!K!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Qureshi!!TBDTBD!!None!!None!!None!!None!!40!!40
+COMP!!497B!!K!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Qureshi!!TBDTBD!!None!!None!!None!!None!!40!!35
 COMP!!497B!!L!!Senior Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Nasim!!TBDTBD!!None!!None!!None!!None!!40!!36
 COMP!!504!!A!!Adv. Oprtng. Systems!!3.00!!['T']!!17:30!!20:15!!TBD!!SBLOCKS316!!None!!None!!None!!None!!20!!18
 COMP!!552!!A!!Advanced Machine Lea!!3.00!!['F']!!17:30!!20:15!!Q Quraishi!!SBLOCKS316!!None!!None!!None!!None!!10!!10
