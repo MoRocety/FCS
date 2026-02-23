@@ -945,9 +945,9 @@ PHYS!!524!!A!!Non-Linear Physics!!3.00!!['M', 'W']!!17:15!!18:30!!Dr H Shah!!SBL
 PHYS!!696A!!A!!Seminar!!1.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!30!!30
 PHYS!!696B!!A!!Seminar!!1.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!30!!30
 PHYS!!699A!!A!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!10!!10
-PHYS!!699B!!A!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Javed!!TBDTBD!!None!!None!!None!!None!!30!!28
-PHYS!!699B!!B!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!H Latif!!TBDTBD!!None!!None!!None!!None!!30!!30
-PHYS!!699E!!A!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!!TBDTBD!!None!!None!!None!!None!!25!!25
+PHYS!!699B!!A!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Javed!!TBDTBD!!None!!None!!None!!None!!30!!29
+PHYS!!699B!!B!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!H Latif!!TBDTBD!!None!!None!!None!!None!!30!!29
+PHYS!!699E!!A!!Research Project!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!!TBDTBD!!None!!None!!None!!None!!25!!23
 PHYS!!701!!A!!Adv. Nonlinear Phys!!3.00!!['T', 'R']!!17:00!!18:15!!Dr H Shah!!SBLOCKS016!!None!!None!!None!!None!!30!!30
 PHYS!!709!!A!!Magnetic materials!!3.00!!['T', 'R']!!18:30!!19:45!!S Shah!!SBLOCKS016A!!None!!None!!None!!None!!20!!20
 PHYS!!717!!A!!Adv.Fluid Dynamics!!3.00!!['M', 'W']!!14:00!!15:15!!L Kahlon!!SBLOCKS016!!None!!None!!None!!None!!30!!30
@@ -955,10 +955,10 @@ PHYS!!799A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!
 PHYS!!799B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!20!!20
 PHYS!!799C!!A!!PhD Thesis Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!20!!19
 PHYS!!799D!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!H Latif!!TBDTBD!!None!!None!!None!!None!!20!!19
-PHYS!!799E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shabbir!!TBDTBD!!None!!None!!None!!None!!20!!16
-PHYS!!799E!!B!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!25!!25
-PHYS!!799E!!C!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!!TBDTBD!!None!!None!!None!!None!!25!!25
-PHYS!!799E!!D!!Reserach!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Team!!TBDTBD!!None!!None!!None!!None!!25!!25
+PHYS!!799E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Shabbir!!TBDTBD!!None!!None!!None!!None!!20!!19
+PHYS!!799E!!B!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Zaheer!!TBDTBD!!None!!None!!None!!None!!25!!24
+PHYS!!799E!!C!!Reserach!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!!TBDTBD!!None!!None!!None!!None!!25!!23
+PHYS!!799E!!D!!Reserach!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Team!!TBDTBD!!None!!None!!None!!None!!25!!24
 PKST!!101!!A!!Pakistan Studies!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Masih!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 PKST!!101!!B!!Pakistan Studies!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!U Ibad!!EBLOCKE105!!None!!None!!None!!None!!35!!0
 PKST!!101!!C!!Pakistan Studies!!3.00!!['T', 'R']!!08:00!!09:15!!S Sumbal!!EBLOCKE105!!None!!None!!None!!None!!35!!0
@@ -1226,8 +1226,12 @@ URDU!!503!!A!!Tran: Theo. & Prac.!!3.00!!['W']!!16:00!!19:00!!M Tahir!!EBLOCKE10
 URDU!!504!!A!!Lit. of the Minor.!!3.00!!['F']!!16:00!!19:00!!A Samuel!!EBLOCKE104!!None!!None!!None!!None!!25!!24
 URDU!!512!!A!!Modern Poetry!!3.00!!['W']!!16:00!!19:00!!A Anwar!!EBLOCKE104!!None!!None!!None!!None!!25!!25
 URDU!!517!!A!!Urdu Novel!!3.00!!['R']!!16:00!!19:00!!N Khokhar!!EBLOCKE140!!None!!None!!None!!None!!25!!25
-URDU!!699A!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Samuel!!TBDTBD!!None!!None!!None!!None!!20!!20
-URDU!!699B!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Samuel!!TBDTBD!!None!!None!!None!!None!!20!!17
+URDU!!699A!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Samuel!!TBDTBD!!None!!None!!None!!None!!20!!18
+URDU!!699B!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Virk!!TBDTBD!!None!!None!!None!!None!!20!!19
+URDU!!699B!!B!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!20!!19
+URDU!!699B!!C!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Anwar!!TBDTBD!!None!!None!!None!!None!!20!!19
+URDU!!699B!!D!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Tahir!!TBDTBD!!None!!None!!None!!None!!20!!19
+URDU!!699B!!E!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ashraf!!TBDTBD!!None!!None!!None!!None!!20!!19
 URDU!!699E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!25!!25
 WRCM!!101!!A!!Writing&Communica. I!!3.00!!['T', 'R']!!08:00!!09:15!!F Aftab!!EBLOCKE103!!None!!None!!None!!None!!25!!0
 WRCM!!101!!B!!Writing&Communica. I!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Hanif!!EBLOCKE103!!None!!None!!None!!None!!25!!0
