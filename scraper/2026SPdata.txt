@@ -245,7 +245,7 @@ BUSN!!695!!A!!MGMT NEGOTIATION!!3.00!!['M', 'W']!!11:30!!12:45!!I Ahmed!!EBLOCKE
 CHEM!!100!!A!!Intro. to Chemistry!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!H Abid!!SBLOCKS210!!SBLOCKS148!!['W']!!14:00!!16:00!!35!!0
 CHEM!!100!!B!!Intro. to Chemistry!!4.00!!['M']!!11:00!!12:50!!M Rashida!!SBLOCKS148!!SBLOCKS210!!['T', 'R']!!08:00!!09:15!!35!!2
 CHEM!!100!!C!!Intro. to Chemistry!!4.00!!['T', 'R']!!12:30!!13:45!!A Hussain!!SBLOCKS210!!SBLOCKS148!!['F']!!11:00!!12:50!!35!!0
-CHEM!!100!!D!!Intro. to Chemistry!!4.00!!['T', 'R']!!09:30!!10:45!!M Asghar!!SBLOCKS210!!SBLOCKS135!!['F']!!09:00!!10:50!!35!!0
+CHEM!!100!!D!!Intro. to Chemistry!!4.00!!['T', 'R']!!09:30!!10:45!!M Asghar!!SBLOCKS210!!SBLOCKS135!!['F']!!09:00!!10:50!!35!!1
 CHEM!!100!!E!!Intro. to Chemistry!!4.00!!['T', 'R']!!11:00!!12:15!!A Hussain!!SBLOCKS210!!SBLOCKS148!!['T']!!14:00!!15:50!!35!!1
 CHEM!!100!!F!!Intro. to Chemistry!!4.00!!['M']!!09:00!!10:50!!M Asghar!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!11:00!!11:50!!35!!0
 CHEM!!150!!A!!Intro. Inorg. Chem!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!S Azeem!!SBLOCKS112!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!1
@@ -984,7 +984,7 @@ PLSC!!101!!J!!Intro to Pol Science!!3.00!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLO
 PLSC!!101!!K!!Intro to Pol Science!!3.00!!['T', 'R']!!15:30!!16:45!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!0
 PLSC!!102!!A!!Pakistan Government!!3.00!!['T', 'R']!!11:00!!12:15!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!1
 PLSC!!102!!B!!Pakistan Government!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!0
-PLSC!!102!!C!!Pakistan Government!!3.00!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!1
+PLSC!!102!!C!!Pakistan Government!!3.00!!['T', 'R']!!09:30!!10:45!!S Awan!!EBLOCKE139!!None!!None!!None!!None!!35!!2
 PLSC!!202!!IS!!Gov. of Dev. Countri!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M A Imran!!TBDTBD!!None!!None!!None!!None!!1!!0
 PLSC!!203!!A!!International Relati!!3.00!!['T', 'R']!!12:30!!13:45!!M Farooqi!!EBLOCKE139!!None!!None!!None!!None!!35!!0
 PLSC!!203!!B!!International Relati!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!Z Naeem!!EBLOCKE126!!None!!None!!None!!None!!35!!7
@@ -1115,7 +1115,7 @@ SOCL!!100!!F!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Athar!!
 SOCL!!100!!G!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!H!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!A Amjad!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!I!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Yasir!!EBLOCKE214!!None!!None!!None!!None!!35!!1
-SOCL!!100!!J!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE126!!None!!None!!None!!None!!35!!0
+SOCL!!100!!J!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE126!!None!!None!!None!!None!!35!!1
 SOCL!!100!!K!!Intro to Sociology!!3.00!!['T', 'R']!!09:30!!10:45!!T Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!L!!Intro to Sociology!!3.00!!['T', 'R']!!11:00!!12:15!!S Athar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 SOCL!!100!!M!!Intro to Sociology!!3.00!!['T', 'R']!!12:30!!13:45!!T Fatima!!EBLOCKE101!!None!!None!!None!!None!!35!!0
@@ -1271,7 +1271,7 @@ WRCM!!102!!N!!Writing&Communic. II!!3.00!!['T', 'R']!!14:00!!15:15!!N Justin!!SB
 WRCM!!102!!O!!Writing&Communic. II!!3.00!!['T', 'R']!!12:30!!13:45!!R Wasif!!SBLOCKS007!!None!!None!!None!!None!!25!!0
 WRCM!!102!!P!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!11
 WRCM!!102!!PP!!Writing&Communic. II!!3.00!!['T', 'R']!!08:00!!09:15!!T Bokhari!!EBLOCKE214!!None!!None!!None!!None!!25!!6
-WRCM!!102!!Q!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Saleh!!EBLOCKE205!!None!!None!!None!!None!!25!!0
+WRCM!!102!!Q!!Writing&Communic. II!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Khan!!EBLOCKE205!!None!!None!!None!!None!!25!!0
 WRCM!!102!!QQ!!Writing&Communic. II!!3.00!!['T', 'R']!!15:30!!16:45!!A Khan!!EBLOCKE203!!None!!None!!None!!None!!25!!10
 WRCM!!102!!R!!Writing&Communic. II!!3.00!!['T', 'R']!!08:00!!09:15!!S Pervez!!SBLOCKS008!!None!!None!!None!!None!!25!!0
 WRCM!!102!!RR!!Writing&Communic. II!!3.00!!['T', 'R']!!08:00!!09:15!!A Fareed!!SBLOCKS007!!None!!None!!None!!None!!25!!2
