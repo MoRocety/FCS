@@ -1,0 +1,5 @@
+{
+    "MSG": "Load Data Successfully",
+    "SUCCESS": true,
+    "html": "\r\n\t\t\t\t<div class=\"ui-grid-row\">\r\n\t\t\t\t\t<div class=\"ui-grid-col-12\" align=\"center\">\r\n\t\t\t\t\t<font color=\"red\">No Courses Matched Your Criteria.</font>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\r\n\t\t\t<script language=\"JavaScript\">\r\n\t\t\t\t$('#pdf').puibutton({\r\n\t\t\t\t\ticon: 'fa-file-pdf-o',\r\n\t\t\t\t\tclick: function(e) {\r\n\t\t\t\t\te.preventDefault();\r\n\t\t\t\t\t$(\"input[name='pdf_flag']\").val('T');\r\n\t\t\t\t\t}\r\n\t\t\t\t});\r\n\r\n\t\t\t\t$('#excel').puibutton({\r\n\t\t\t\t\ticon: 'fa-file-excel-o',\r\n\t\t\t\t\tclick: function(e) {\r\n\t\t\t\t\te.preventDefault();\r\n\t\t\t\t\t$(\"input[name='excel_flag']\").val('T');\r\n\t\t\t\t\t}\r\n\t\t\t\t});\r\n\t\t\t</script>\r\n\t\t"
+}
