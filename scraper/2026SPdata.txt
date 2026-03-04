@@ -935,6 +935,7 @@ PHYS!!234!!A!!Heat & Thermodynamic!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Z Iqbal
 PHYS!!301!!A!!Classical Mechanics!!3.00!!['T', 'R']!!09:30!!10:45!!L Kahlon!!SBLOCKS039!!None!!None!!None!!None!!35!!26
 PHYS!!321!!A!!Electrodynamics!!4.00!!['M']!!08:00!!10:00!!L Kahlon!!SBLOCKS016B!!SBLOCKS016A!!['T', 'R']!!11:00!!12:15!!35!!30
 PHYS!!341!!A!!Methods of Math. Phy!!3.00!!['T', 'R']!!14:00!!15:15!!L Kahlon!!SBLOCKS039!!None!!None!!None!!None!!20!!13
+PHYS!!353!!IS!!Intr.Nonlinear Metho!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Dr H Shah!!TBDTBD!!None!!None!!None!!None!!1!!0
 PHYS!!422!!A!!Nuclear Physics!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Shah!!SBLOCKS016A!!None!!None!!None!!None!!35!!31
 PHYS!!462!!A!!Quantum Mechanics II!!3.00!!['T', 'R']!!12:30!!13:45!!S Zaheer!!SBLOCKS016A!!None!!None!!None!!None!!20!!9
 PHYS!!483!!A!!Materials Science!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!K Javed!!SBLOCKS016B!!None!!None!!None!!None!!20!!16
@@ -1008,9 +1009,9 @@ PLSC!!403!!A!!Sem Majr Poli Scienc!!3.00!!['T', 'R']!!15:30!!16:45!!M Younis!!EB
 PLSC!!403!!B!!Sem Majr Poli Scienc!!3.00!!['T', 'R']!!15:30!!16:45!!Q Memon!!EBLOCKE126!!None!!None!!None!!None!!15!!0
 PLSC!!403!!C!!Sem Majr Poli Scienc!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Sindhu!!EBLOCKE038!!None!!None!!None!!None!!15!!5
 PLSC!!405!!IS!!Challenges of Pak!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Sindhu!!TBDTBD!!None!!None!!None!!None!!1!!0
-PLSC!!502!!A!!Comparative Politics!!3.00!!['M']!!16:00!!17:00!!S Sindhu!!EBLOCKE202!!None!!None!!None!!None!!25!!6
+PLSC!!502!!A!!Comparative Politics!!3.00!!['R']!!16:00!!19:00!!S Sindhu!!EBLOCKE202!!None!!None!!None!!None!!25!!6
 PLSC!!504!!A!!Political Thought!!3.00!!['T']!!16:00!!19:00!!W Ranjha!!EBLOCKE202!!None!!None!!None!!None!!25!!6
-PLSC!!513!!A!!Ad.Stud.Intl.Relatio!!3.00!!['R']!!16:00!!19:00!!A Qureshi!!EBLOCKE202!!None!!None!!None!!None!!25!!8
+PLSC!!513!!A!!Ad.Stud.Intl.Relatio!!3.00!!['M']!!16:00!!17:00!!A Qureshi!!EBLOCKE202!!None!!None!!None!!None!!25!!8
 PLSC!!517!!A!!Plsc Strat. Dynam SA!!3.00!!['F']!!16:00!!19:00!!A. Indrias!!EBLOCKE202!!None!!None!!None!!None!!35!!29
 PLSC!!519!!A!!Local Govt. Sys Pak.!!3.00!!['W']!!16:00!!19:00!!M Younis!!EBLOCKE202!!None!!None!!None!!None!!25!!8
 PLSC!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A. Indrias!!TBDTBD!!None!!None!!None!!None!!25!!14
@@ -1238,7 +1239,7 @@ URDU!!699E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N K
 WRCM!!101!!A!!Writing&Communica. I!!3.00!!['T', 'R']!!08:00!!09:15!!F Aftab!!EBLOCKE103!!None!!None!!None!!None!!25!!0
 WRCM!!101!!B!!Writing&Communica. I!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Hanif!!EBLOCKE103!!None!!None!!None!!None!!25!!0
 WRCM!!101!!C!!Writing&Communica. I!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Aftab!!EBLOCKE040!!None!!None!!None!!None!!25!!0
-WRCM!!101!!D!!Writing&Communica. I!!3.00!!['T', 'R']!!15:30!!16:45!!Dewah!!SBLOCKS119!!None!!None!!None!!None!!25!!0
+WRCM!!101!!D!!Writing&Communica. I!!3.00!!['T', 'R']!!15:30!!16:45!!N Rehman!!SBLOCKS119!!None!!None!!None!!None!!25!!0
 WRCM!!101!!E!!Writing&Communica. I!!3.00!!['T', 'R']!!11:00!!12:15!!S Hanif!!SBLOCKS008!!None!!None!!None!!None!!25!!0
 WRCM!!101!!G!!Writing&Communica. I!!3.00!!['T', 'R']!!12:30!!13:45!!J C Imdad!!EBLOCKE242!!None!!None!!None!!None!!25!!0
 WRCM!!101!!H!!Writing&Communica. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!J C Imdad!!EBLOCKE227!!None!!None!!None!!None!!25!!0
