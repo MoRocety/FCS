@@ -15,12 +15,12 @@ BIOL!!222!!A!!Animal Form & Fun.!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Butt!!S
 BIOL!!313!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!10:00!!10:50!!M Hussain!!SBLOCKS312!!SBLOCKS329!!['W']!!14:00!!15:50!!35!!35
 BIOL!!315!!A!!Fun of Microbiology!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Mehnaz!!SBLOCKS413!!SBLOCKS321!!['R']!!14:00!!15:50!!35!!35
 BIOL!!319!!A!!Mycology!!4.00!!['T', 'R']!!09:30!!10:45!!I Khokhar!!SBLOCKS329!!SBLOCKS329!!['T']!!14:00!!15:50!!35!!35
-BIOL!!325!!A!!Human Physiology!!3.00!!['T', 'R']!!12:30!!13:45!!S Butt!!SBLOCKS413!!None!!None!!None!!None!!35!!35
+BIOL!!325!!A!!Human Physiology!!3.00!!['T', 'R']!!12:30!!13:45!!S Butt!!SBLOCKS416!!None!!None!!None!!None!!35!!35
 BIOL!!330!!A!!Radiobiology!!3.00!!['T', 'R']!!08:00!!09:15!!A Arshad!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 BIOT!!201!!A!!Intro. to biotech.!!3.00!!['M', 'W']!!10:00!!10:50!!M Imran!!SBLOCKS341!!SBLOCKS341!!['F']!!09:00!!10:50!!35!!35
 BIOT!!201!!B!!Intro. to biotech.!!3.00!!['T', 'R']!!12:30!!13:45!!N Asghar!!SBLOCKS313!!SBLOCKS321!!['W']!!14:00!!15:50!!35!!35
 BIOT!!202!!A!!Prot, Cell & Tissue!!4.00!!['T', 'R']!!09:30!!10:45!!A Maqbool!!SBLOCKS321!!SBLOCKS329!!['W']!!11:00!!12:50!!35!!35
-BIOT!!211!!A!!BioSaf. & BioSec!!3.00!!['M', 'W']!!12:00!!12:50!!M Imran!!SBLOCKS413!!SBLOCKS321!!['T']!!14:00!!15:50!!35!!35
+BIOT!!211!!A!!BioSaf. & BioSec!!3.00!!['M', 'W']!!12:00!!12:50!!M Imran!!SBLOCKS312!!SBLOCKS321!!['T']!!14:00!!15:50!!35!!35
 BIOT!!301!!A!!Anal. Tech. in Biol!!3.00!!['M', 'W']!!09:00!!09:50!!S Ali!!SBLOCKS321!!SBLOCKS331!!['W']!!14:00!!15:50!!35!!35
 BIOT!!302!!A!!Fund. of Enzymology!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!S Ali!!SBLOCKS312!!SBLOCKS329!!['R']!!11:00!!12:50!!35!!35
 BIOT!!305!!A!!Commercial Biot Prod!!3.00!!['T', 'R']!!11:00!!12:15!!I John!!SBLOCKS413!!None!!None!!None!!None!!35!!35
@@ -244,9 +244,9 @@ CHEM!!799D!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A
 CHIN!!101!!A!!Chinese I!!3.00!!['T', 'R']!!09:30!!10:45!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!20
 CHIN!!101!!B!!Chinese I!!3.00!!['T', 'R']!!08:00!!09:15!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!20
 COMP!!102!!A!!Programming Fundamen!!4.00!!['M']!!14:00!!16:50!!F Shaheen!!SBLOCKS219!!SBLOCKS219!!['T', 'R']!!08:00!!09:15!!35!!35
-COMP!!102!!B!!Programming Fundamen!!4.00!!['T', 'R']!!11:00!!12:15!!N Ashraf!!SBLOCKS218!!SBLOCKS219!!['W']!!14:00!!16:50!!35!!35
+COMP!!102!!B!!Programming Fundamen!!4.00!!['T', 'R']!!11:00!!12:15!!F Shaheen!!SBLOCKS218!!SBLOCKS219!!['W']!!14:00!!16:50!!35!!35
 COMP!!102!!C!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!U Nisar!!SBLOCKS218!!SBLOCKS218!!['W']!!14:00!!16:50!!35!!35
-COMP!!102!!D!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!Q Quraishi!!SBLOCKS216!!SBLOCKS218!!['F']!!14:00!!16:50!!35!!35
+COMP!!102!!D!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!N Ashraf!!SBLOCKS216!!SBLOCKS218!!['F']!!14:00!!16:50!!35!!35
 COMP!!102!!E!!Programming Fundamen!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!Q Quraishi!!SBLOCKS316!!SBLOCKS218!!['F']!!08:00!!10:50!!35!!35
 COMP!!111!!A!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS218!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!35
 COMP!!111!!B!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!Q Quraishi!!SBLOCKS317!!SBLOCKS319!!['M']!!15:00!!17:50!!35!!35
@@ -273,7 +273,7 @@ COMP!!302!!B!!Theory of Automata!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Yousaf!
 COMP!!302!!C!!Theory of Automata!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!R Bqa!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 COMP!!303!!A!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!R Bqa!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 COMP!!303!!B!!D&A of Algorithms!!3.00!!['T', 'R']!!08:00!!09:15!!R Bqa!!SBLOCKS320!!None!!None!!None!!None!!35!!35
-COMP!!303!!C!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Saleem!!SBLOCKS219!!None!!None!!None!!None!!35!!35
+COMP!!303!!C!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Nasim!!SBLOCKS219!!None!!None!!None!!None!!35!!35
 COMP!!311!!A!!Computer Networks!!3.00!!['M', 'W']!!11:00!!12:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!311!!B!!Computer Networks!!3.00!!['T', 'R']!!11:00!!12:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!311!!C!!Computer Networks!!3.00!!['W']!!09:00!!10:50!!A Basharat!!SBLOCKS218!!SBLOCKS216!!['F']!!09:00!!10:50!!35!!35
@@ -343,7 +343,7 @@ CSCS!!201!!C!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!K Azhar
 CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS416!!None!!None!!None!!None!!35!!35
 CSCS!!202!!B!!Comp Linear Algeb!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS416!!None!!None!!None!!None!!35!!35
 CSCS!!202!!C!!Comp Linear Algeb!!3.00!!['T', 'R']!!08:00!!09:15!!G Mehak!!SBLOCKS316!!None!!None!!None!!None!!35!!35
-CSCS!!203!!A!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!W Hussain!!SBLOCKS312!!None!!None!!None!!None!!35!!35
+CSCS!!203!!A!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 CSCS!!203!!B!!Differential Equatio!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 CSCS!!203!!C!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!B Haq!!SBLOCKS416!!None!!None!!None!!None!!35!!35
 CSCS!!290!!A!!Intro to JAVA Prog.!!3.00!!['T', 'R']!!15:00!!16:50!!A Atique!!SBLOCKS320!!None!!None!!None!!None!!35!!35
@@ -681,11 +681,13 @@ MATH!!101!!A!!Pre-Calc & Trigonom.!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Iqbal
 MATH!!101!!D!!Pre-Calc & Trigonom.!!3.00!!['T', 'R']!!09:30!!10:45!!G Mehak!!SBLOCKS412!!None!!None!!None!!None!!35!!35
 MATH!!102!!A!!Calculus 1!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Shahid!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!102!!B!!Calculus 1!!3.00!!['T', 'R']!!12:30!!13:45!!S Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!35
+MATH!!102!!C!!Calculus 1!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!103!!A!!Intro. Lin. Algebra!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!108!!A!!QR-I (Basic)!!3.00!!['T', 'R']!!12:30!!13:45!!A Nadeem!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 MATH!!108!!B!!QR-I (Basic)!!3.00!!['T', 'R']!!09:30!!10:45!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!108!!C!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!35
 MATH!!108!!D!!QR-I (Basic)!!3.00!!['T', 'R']!!12:30!!13:45!!B Haq!!SBLOCKS410!!None!!None!!None!!None!!35!!35
+MATH!!108!!E!!QR-I (Basic)!!3.00!!['T', 'R']!!11:00!!12:15!!A Nadeem!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!109!!A!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!G Mehak!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!109!!B!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Jamil!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!109!!C!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!G Mehak!!SBLOCKS410!!None!!None!!None!!None!!35!!35
@@ -693,11 +695,9 @@ MATH!!111!!A!!Calc & Analy Geom!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Nadeem!!
 MATH!!111!!B!!Calc & Analy Geom!!3.00!!['T', 'R']!!14:00!!15:15!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!111!!C!!Calc & Analy Geom!!3.00!!['T', 'R']!!08:00!!09:15!!B Haq!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!111!!D!!Calc & Analy Geom!!3.00!!['T', 'R']!!11:00!!12:15!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!35
-MATH!!112!!B!!QR-II (Basic)!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!35
-MATH!!112!!C!!QR-II (Basic)!!3.00!!['T', 'R']!!11:00!!12:15!!A Nadeem!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!201!!A!!Calculus II!!3.00!!['T', 'R']!!11:00!!12:15!!A Qureshi!!SBLOCKS212!!None!!None!!None!!None!!35!!35
 MATH!!203!!A!!Vector Analysis!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!35
-MATH!!209!!A!!Linear Algebra!!3.00!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS416!!None!!None!!None!!None!!35!!35
+MATH!!209!!A!!Linear Algebra!!3.00!!['T', 'R']!!12:30!!13:45!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 MATH!!212!!A!!Elem. Number Theory!!3.00!!['T', 'R']!!14:00!!15:15!!A Qureshi!!SBLOCKS212!!None!!None!!None!!None!!35!!35
 MATH!!213!!A!!Scientific Computing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!F Ibraheem!!SBLOCKS410!!None!!None!!None!!None!!35!!35
 MATH!!309!!A!!Real Analysis!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!I Shafique!!SBLOCKS416!!None!!None!!None!!None!!35!!35
