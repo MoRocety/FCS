@@ -135,10 +135,10 @@ BUSN!!385!!A!!Consumer Behavior!!3.00!!['T', 'R']!!12:30!!13:45!!I Nasir!!EBLOCK
 BUSN!!385!!B!!Consumer Behavior!!3.00!!['T', 'R']!!15:30!!16:45!!I Nasir!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!385!!C!!Consumer Behavior!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!T Alvi!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!385!!D!!Consumer Behavior!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Javaid!!EBLOCKE332!!None!!None!!None!!None!!35!!0
-BUSN!!385!!E!!Consumer Behavior!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE229!!None!!None!!None!!None!!35!!26
+BUSN!!385!!E!!Consumer Behavior!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE229!!None!!None!!None!!None!!35!!25
 BUSN!!404!!A!!Taxation!!3.00!!['T', 'R']!!09:30!!10:45!!I Ahmed!!EBLOCKE345!!None!!None!!None!!None!!35!!10
 BUSN!!404!!B!!Taxation!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!14
-BUSN!!410!!A!!Account Info Sys!!3.00!!['T', 'R']!!15:30!!16:45!!J Akhtar!!EBLOCKE038!!None!!None!!None!!None!!35!!1
+BUSN!!410!!A!!Account Info Sys!!3.00!!['T', 'R']!!15:30!!16:45!!J Akhtar!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 BUSN!!410!!B!!Account Info Sys!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Ali Shah!!EBLOCKE346!!None!!None!!None!!None!!35!!21
 BUSN!!450!!A!!Labor Law!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!29
 BUSN!!451!!A!!Strategic HRM!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!F Tasneem!!EBLOCKE343!!None!!None!!None!!None!!35!!29
@@ -246,7 +246,7 @@ COMP!!300!!B!!Computer Organizatio!!3.00!!['T']!!11:00!!12:50!!A Khan!!SBLOCKS32
 COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['W']!!09:00!!10:50!!35!!4
 COMP!!301!!B!!Operating Systems!!3.00!!['T', 'R']!!13:00!!14:50!!M Chaudhry!!SBLOCKS319!!None!!None!!None!!None!!35!!1
 COMP!!301!!C!!Operating Systems!!3.00!!['T']!!11:00!!12:50!!M Butt!!SBLOCKS319!!SBLOCKS319!!['R']!!11:00!!12:50!!35!!28
-COMP!!302!!A!!Theory of Automata!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!5
+COMP!!302!!A!!Theory of Automata!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!4
 COMP!!302!!B!!Theory of Automata!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!10
 COMP!!302!!C!!Theory of Automata!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!SBLOCKS316!!None!!None!!None!!None!!35!!25
 COMP!!303!!A!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS316!!None!!None!!None!!None!!35!!13
@@ -334,7 +334,7 @@ CSCS!!468!!A!!Mob App Deveolopment!!3.00!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS3
 DATA!!101!!A!!Statistical Methods!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Tayyab!!SBLOCKS424!!None!!None!!None!!None!!5!!0
 DATA!!101!!B!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!SBLOCKS421!!None!!None!!None!!None!!5!!0
 DATA!!101!!C!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Tayyab!!SBLOCKS115!!None!!None!!None!!None!!5!!0
-DATA!!101!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!5!!0
+DATA!!101!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!5!!1
 DATA!!101!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!5!!0
 DATA!!102!!A!!Prob & Prob Distribu!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!15!!10
 DATA!!102!!B!!Prob & Prob Distribu!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!5
