@@ -121,7 +121,7 @@ BUSN!!360!!G!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBL
 BUSN!!360!!H!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE331!!None!!None!!None!!None!!35!!22
 BUSN!!360!!I!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE332!!None!!None!!None!!None!!35!!32
 BUSN!!360!!J!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Bilal!!EBLOCKE330!!None!!None!!None!!None!!35!!1
-BUSN!!360!!K!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Bilal!!EBLOCKE332!!None!!None!!None!!None!!35!!1
+BUSN!!360!!K!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Bilal!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!360!!L!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Bilal!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!360!!M!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Bilal!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!364!!A!!Prod Plan & Control!!3.00!!['T', 'R']!!08:00!!09:15!!A Mughal!!EBLOCKE346!!None!!None!!None!!None!!35!!5
@@ -431,7 +431,7 @@ EDUC!!380!!A!!Teaching Mathematics!!3.00!!['T', 'R']!!14:00!!15:15!!J Hassan!!EB
 EDUC!!390!!A!!Teaching Social Stud!!3.00!!['T', 'R']!!12:30!!13:45!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!35
 EDUC!!515!!A!!Research Methods!!3.00!!['F']!!16:00!!19:00!!M. Thomas!!EBLOCKE140!!None!!None!!None!!None!!25!!18
 EDUC!!520!!A!!Qualitative Research!!3.00!!['T']!!16:00!!19:00!!M. Thomas!!EBLOCKE140!!None!!None!!None!!None!!25!!18
-ENGL!!106!!A!!Functional English!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE227!!None!!None!!None!!None!!25!!11
+ENGL!!106!!A!!Functional English!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE227!!None!!None!!None!!None!!25!!10
 ENGL!!106!!II!!Functional English!!3.00!!['T', 'R']!!12:30!!13:45!!R John!!EBLOCKE241!!None!!None!!None!!None!!25!!0
 ENGL!!106!!J!!Functional English!!3.00!!['T', 'R']!!08:00!!09:15!!S Pervez!!EBLOCKE222!!None!!None!!None!!None!!25!!0
 ENGL!!108!!A!!Expository Writing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Saleh!!EBLOCKE039!!None!!None!!None!!None!!25!!2
@@ -532,10 +532,10 @@ GRMN!!102!!A!!German II!!3.00!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE244!!
 HIST!!101!!A!!Survey of South Asia!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Masih!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 HIST!!102!!A!!Survey of Westrn Civ!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Haider!!EBLOCKE202!!None!!None!!None!!None!!35!!0
 HIST!!103!!A!!Intro. to Archaeolog!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!F Masih!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-HIST!!202!!B!!Surv of Modern Europ!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Ijaz!!EBLOCKE205!!None!!None!!None!!None!!35!!2
+HIST!!202!!B!!Surv of Modern Europ!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Ijaz!!EBLOCKE205!!None!!None!!None!!None!!35!!1
 HIST!!204!!A!!History of the U.S!!3.00!!['T', 'R']!!11:00!!12:15!!D C Norman!!EBLOCKE121!!None!!None!!None!!None!!35!!24
 HIST!!207!!A!!British History!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!M Shafqat!!EBLOCKE040!!None!!None!!None!!None!!35!!33
-HIST!!255!!A!!The Indus Valley!!3.00!!['T', 'R']!!12:30!!13:45!!M Shafqat!!EBLOCKE041!!None!!None!!None!!None!!35!!25
+HIST!!255!!A!!The Indus Valley!!3.00!!['T', 'R']!!12:30!!13:45!!M Shafqat!!EBLOCKE041!!None!!None!!None!!None!!35!!26
 HIST!!301!!A!!Philosophy of Hist.!!3.00!!['T', 'R']!!09:30!!10:45!!U Ibad!!SBLOCKS008!!None!!None!!None!!None!!35!!0
 HIST!!302!!A!!Mughal Rule in India!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!M Haider!!EBLOCKE202!!None!!None!!None!!None!!35!!34
 HIST!!302!!B!!Mughal Rule in India!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Ijaz!!SBLOCKS008!!None!!None!!None!!None!!35!!35
