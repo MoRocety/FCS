@@ -107,7 +107,7 @@ BUSN!!321!!F!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Rao!!EBLO
 BUSN!!321!!G!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!321!!H!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Rao!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!321!!I!!Financial Mgt. I!!3.00!!['T', 'R']!!09:30!!10:45!!A George!!EBLOCKE343!!None!!None!!None!!None!!35!!0
-BUSN!!321!!J!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!A George!!EBLOCKE343!!None!!None!!None!!None!!35!!1
+BUSN!!321!!J!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!A George!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!321!!K!!Financial Mgt. I!!3.00!!['T', 'R']!!12:30!!13:45!!A George!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!321!!L!!Financial Mgt. I!!3.00!!['T', 'R']!!14:00!!15:15!!A George!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!321!!M!!Financial Mgt. I!!3.00!!['T', 'R']!!14:00!!15:15!!Q Zafar!!EBLOCKE345!!None!!None!!None!!None!!35!!24
@@ -226,7 +226,7 @@ CHEM!!799C!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A
 CHEM!!799D!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!25!!24
 CHIN!!101!!A!!Chinese I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
-CHIN!!101!!B!!Chinese I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!1
+CHIN!!101!!B!!Chinese I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 COMP!!111!!A!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS218!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!25
 COMP!!111!!B!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!Q Quraishi!!SBLOCKS317!!SBLOCKS319!!['M']!!15:00!!17:50!!35!!32
 COMP!!113!!A!!Discrete Mathematics!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Atique!!SBLOCKS215!!None!!None!!None!!None!!35!!16
