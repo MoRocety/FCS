@@ -59,7 +59,7 @@ BUSN!!201!!B!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EB
 BUSN!!201!!C!!Intermediate Account!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Sharif!!EBLOCKE346!!None!!None!!None!!None!!35!!0
 BUSN!!201!!D!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE213!!None!!None!!None!!None!!35!!11
 BUSN!!201!!E!!Intermediate Account!!3.00!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!201!!F!!Intermediate Account!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE328!!None!!None!!None!!None!!35!!0
+BUSN!!201!!F!!Intermediate Account!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE328!!None!!None!!None!!None!!35!!1
 BUSN!!201!!G!!Intermediate Account!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!17
 BUSN!!201!!H!!Intermediate Account!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE346!!None!!None!!None!!None!!35!!32
 BUSN!!201!!I!!Intermediate Account!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!U Sharif!!EBLOCKE345!!None!!None!!None!!None!!35!!0
@@ -138,6 +138,7 @@ BUSN!!385!!B!!Consumer Behavior!!3.00!!['T', 'R']!!15:30!!16:45!!I Nasir!!EBLOCK
 BUSN!!385!!C!!Consumer Behavior!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!T Alvi!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!385!!D!!Consumer Behavior!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Javaid!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!385!!E!!Consumer Behavior!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE229!!None!!None!!None!!None!!35!!12
+BUSN!!401!!IS!!Principles of Auditi!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Ali Shah!!TBDTBD!!None!!None!!None!!None!!1!!0
 BUSN!!404!!A!!Taxation!!3.00!!['T', 'R']!!09:30!!10:45!!I Ahmed!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 BUSN!!404!!B!!Taxation!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!10
 BUSN!!410!!A!!Account Info Sys!!3.00!!['T', 'R']!!15:30!!16:45!!J Akhtar!!EBLOCKE038!!None!!None!!None!!None!!35!!0
@@ -885,7 +886,7 @@ URDU!!101!!C!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Virk!!E
 URDU!!101!!D!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Virk!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 URDU!!101!!E!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Ashraf!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 URDU!!101!!F!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Anwar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
-URDU!!101!!G!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE101!!None!!None!!None!!None!!35!!0
+URDU!!101!!G!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!EBLOCKE101!!None!!None!!None!!None!!35!!1
 URDU!!101!!H!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Anwar!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!I!!Communicative Urdu!!3.00!!['T', 'R']!!09:30!!10:45!!A Samuel!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 URDU!!101!!K!!Communicative Urdu!!3.00!!['T', 'R']!!08:00!!09:15!!A Samuel!!EBLOCKE101!!None!!None!!None!!None!!35!!0
