@@ -158,6 +158,7 @@ BUSN!!461!!A!!New Prod.Development!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EB
 BUSN!!461!!B!!New Prod.Development!!3.00!!['T', 'R']!!09:30!!10:45!!TBD!!EBLOCKE346!!None!!None!!None!!None!!35!!1
 BUSN!!464!!A!!Total Quality Manage!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!I yusuf!!EBLOCKE328!!None!!None!!None!!None!!35!!6
 BUSN!!464!!B!!Total Quality Manage!!3.00!!['T', 'R']!!11:00!!12:15!!TBD!!EBLOCKE331!!None!!None!!None!!None!!35!!13
+BUSN!!469!!IS!!Project Mang Proc!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Bilal!!TBDTBD!!None!!None!!None!!None!!1!!0
 BUSN!!480!!A!!Marketing Research!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE240!!None!!None!!None!!None!!35!!0
 BUSN!!480!!B!!Marketing Research!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!21
 BUSN!!480!!C!!Marketing Research!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!0
@@ -229,7 +230,7 @@ CHEM!!799E!!A!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S A
 CHIN!!101!!A!!Chinese I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 CHIN!!101!!B!!Chinese I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Z Kexin!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 COMP!!111!!A!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS218!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!23
-COMP!!111!!B!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!Q Quraishi!!SBLOCKS317!!SBLOCKS319!!['M']!!15:00!!17:50!!35!!30
+COMP!!111!!B!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!Q Quraishi!!SBLOCKS317!!SBLOCKS319!!['M']!!15:00!!17:50!!35!!31
 COMP!!113!!A!!Discrete Mathematics!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Atique!!SBLOCKS215!!None!!None!!None!!None!!35!!15
 COMP!!113!!B!!Discrete Mathematics!!3.00!!['T', 'R']!!11:00!!12:15!!M Chaudhry!!SBLOCKS216!!None!!None!!None!!None!!35!!24
 COMP!!200!!A!!Data Struc. & Algor.!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!N Ashraf!!SBLOCKS317!!SBLOCKS218!!['M']!!14:00!!16:50!!35!!0
@@ -243,7 +244,7 @@ COMP!!213!!B!!Database Systems!!3.00!!['M', 'W']!!14:00!!15:50!!S Abbasi!!SBLOCK
 COMP!!213!!C!!Database Systems!!3.00!!['W', 'F']!!11:00!!12:50!!N Sabahat!!SBLOCKS319!!None!!None!!None!!None!!35!!24
 COMP!!220!!A!!Software Engineering!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Toor!!SBLOCKS215!!None!!None!!None!!None!!35!!11
 COMP!!220!!B!!Software Engineering!!3.00!!['T', 'R']!!12:30!!13:45!!N Sabahat!!SBLOCKS316!!None!!None!!None!!None!!35!!21
-COMP!!300!!A!!Computer Organizatio!!3.00!!['M', 'W']!!09:00!!10:50!!A Khan!!SBLOCKS319!!None!!None!!None!!None!!35!!8
+COMP!!300!!A!!Computer Organizatio!!3.00!!['M', 'W']!!09:00!!10:50!!A Khan!!SBLOCKS319!!None!!None!!None!!None!!35!!7
 COMP!!300!!B!!Computer Organizatio!!3.00!!['T']!!11:00!!12:50!!A Khan!!SBLOCKS320!!SBLOCKS215!!['R']!!11:00!!12:50!!35!!2
 COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['W']!!09:00!!10:50!!35!!0
 COMP!!301!!B!!Operating Systems!!3.00!!['T', 'R']!!13:00!!14:50!!M Chaudhry!!SBLOCKS319!!None!!None!!None!!None!!35!!0
@@ -310,7 +311,7 @@ CSCS!!100!!D!!Applications of ICT!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Q Qurais
 CSCS!!100!!G!!Applications of ICT!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!0
 CSCS!!105!!A!!Basic Electronics!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!A Atique!!SBLOCKS215!!SBLOCKS027!!['F']!!08:00!!10:50!!35!!33
 CSCS!!105!!C!!Basic Electronics!!4.00!!['M']!!14:00!!15:50!!H Latif!!SBLOCKS039!!SBLOCKS007!!['T', 'R']!!11:00!!12:15!!25!!13
-CSCS!!105!!D!!Basic Electronics!!4.00!!['T', 'R']!!12:30!!13:45!!A Rehman!!SBLOCKS007!!SBLOCKS039!!['W']!!14:00!!15:50!!25!!9
+CSCS!!105!!D!!Basic Electronics!!4.00!!['T', 'R']!!12:30!!13:45!!A Rehman!!SBLOCKS007!!SBLOCKS039!!['W']!!14:00!!15:50!!25!!10
 CSCS!!201!!A!!Multivariate Calculu!!3.00!!['T', 'R']!!11:00!!12:15!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 CSCS!!201!!B!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!0
 CSCS!!201!!C!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!K Azhar!!SBLOCKS416!!None!!None!!None!!None!!35!!26
