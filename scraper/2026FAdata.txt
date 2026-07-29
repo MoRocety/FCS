@@ -24,7 +24,7 @@ BIOL!!330!!A!!Radiobiology!!3.00!!['T', 'R']!!08:00!!09:15!!A Arshad!!SBLOCKS413
 BIOT!!201!!A!!Intro. to biotech.!!3.00!!['M', 'W']!!10:00!!10:50!!M Imran!!SBLOCKS341!!SBLOCKS341!!['F']!!09:00!!10:50!!35!!16
 BIOT!!201!!B!!Intro. to biotech.!!3.00!!['T', 'R']!!12:30!!13:45!!N Asghar!!SBLOCKS313!!SBLOCKS321!!['W']!!14:00!!15:50!!35!!32
 BIOT!!202!!A!!Prot, Cell & Tissue!!4.00!!['T', 'R']!!09:30!!10:45!!A Maqbool!!SBLOCKS321!!SBLOCKS329!!['W']!!11:00!!12:50!!35!!1
-BIOT!!211!!A!!BioSaf. & BioSec!!3.00!!['M', 'W']!!12:00!!12:50!!M Imran!!SBLOCKS312!!SBLOCKS321!!['T']!!14:00!!15:50!!35!!35
+BIOT!!211!!A!!BioSaf. & BioSec!!3.00!!['M', 'W']!!12:00!!12:50!!M Imran!!SBLOCKS413!!SBLOCKS321!!['T']!!14:00!!15:50!!35!!35
 BIOT!!301!!A!!Anal. Tech. in Biol!!3.00!!['M', 'W']!!09:00!!09:50!!S Ali!!SBLOCKS321!!SBLOCKS331!!['W']!!14:00!!15:50!!35!!27
 BIOT!!302!!A!!Fund. of Enzymology!!4.00!!['M', 'W', 'F']!!12:00!!12:50!!S Ali!!SBLOCKS312!!SBLOCKS329!!['R']!!11:00!!12:50!!35!!0
 BIOT!!305!!A!!Commercial Biot Prod!!3.00!!['T', 'R']!!11:00!!12:15!!I John!!SBLOCKS413!!None!!None!!None!!None!!35!!18
@@ -206,7 +206,7 @@ CHEM!!261!!A!!Organic Chemistry I!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!S Jelani
 CHEM!!270!!A!!Thermodyna Equilib!!4.00!!['T', 'R']!!14:00!!15:15!!TBD!!SBLOCKS213!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!31
 CHEM!!311!!A!!Fund Analy. Chem!!4.00!!['T', 'R']!!08:00!!09:15!!M Asghar!!SBLOCKS212!!SBLOCKS138!!['R']!!14:00!!15:50!!25!!17
 CHEM!!330!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!M Abbas!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!35!!33
-CHEM!!350!!A!!Coordination Chem!!4.00!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS112!!SBLOCKS138!!['W']!!11:00!!12:50!!35!!28
+CHEM!!350!!A!!Coordination Chem!!4.00!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS213!!SBLOCKS138!!['W']!!11:00!!12:50!!35!!28
 CHEM!!361!!A!!Organic Chem II!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!M Abbas!!SBLOCKS210!!SBLOCKS135!!['T']!!14:00!!15:50!!35!!31
 CHEM!!370!!A!!Kinetic & Mechanism!!4.00!!['M']!!11:00!!12:50!!TBD!!SBLOCKS148!!SBLOCKS210!!['M', 'W', 'F']!!15:00!!15:50!!35!!31
 CHEM!!413!!A!!Instrument Meth Ana!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!M Iqbal!!SBLOCKS210!!SBLOCKS138!!['F']!!11:00!!12:50!!35!!35
@@ -313,7 +313,7 @@ CRST!!691!!A!!Research Methods!!3.00!!['M']!!15:00!!18:00!!K Pervaiz!!XBLOCKX018
 CSCS!!100!!A!!Applications of ICT!!3.00!!['T', 'R']!!08:00!!09:15!!A Khan!!SBLOCKS218!!None!!None!!None!!None!!35!!0
 CSCS!!100!!D!!Applications of ICT!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Q Quraishi!!SBLOCKS320!!None!!None!!None!!None!!35!!0
 CSCS!!100!!G!!Applications of ICT!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!0
-CSCS!!105!!A!!Basic Electronics!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!A Atique!!SBLOCKS215!!SBLOCKS027!!['F']!!08:00!!10:50!!35!!33
+CSCS!!105!!A!!Basic Electronics!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!A Atique!!SBLOCKS215!!SBLOCKS027B!!['F']!!08:00!!10:50!!35!!33
 CSCS!!105!!C!!Basic Electronics!!4.00!!['M']!!14:00!!15:50!!H Latif!!SBLOCKS039!!SBLOCKS007!!['T', 'R']!!11:00!!12:15!!25!!13
 CSCS!!105!!D!!Basic Electronics!!4.00!!['T', 'R']!!12:30!!13:45!!A Rehman!!SBLOCKS007!!SBLOCKS039!!['W']!!14:00!!15:50!!25!!10
 CSCS!!201!!A!!Multivariate Calculu!!3.00!!['T', 'R']!!11:00!!12:15!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!0
@@ -322,7 +322,7 @@ CSCS!!201!!C!!Multivariate Calculu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!K Azhar
 CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS416!!None!!None!!None!!None!!35!!19
 CSCS!!202!!B!!Comp Linear Algeb!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!B Haq!!SBLOCKS416!!None!!None!!None!!None!!35!!22
 CSCS!!202!!C!!Comp Linear Algeb!!3.00!!['T', 'R']!!08:00!!09:15!!G Mehak!!SBLOCKS316!!None!!None!!None!!None!!35!!0
-CSCS!!203!!A!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!11
+CSCS!!203!!A!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!W Hussain!!SBLOCKS312!!None!!None!!None!!None!!35!!11
 CSCS!!203!!B!!Differential Equatio!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!W Hussain!!SBLOCKS413!!None!!None!!None!!None!!35!!19
 CSCS!!203!!C!!Differential Equatio!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!B Haq!!SBLOCKS416!!None!!None!!None!!None!!35!!27
 CSCS!!290!!A!!Intro to JAVA Prog.!!3.00!!['T', 'R']!!15:00!!16:50!!A Atique!!SBLOCKS320!!None!!None!!None!!None!!35!!29
@@ -859,7 +859,7 @@ STAT!!101!!B!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel
 STAT!!101!!C!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Tayyab!!SBLOCKS115!!None!!None!!None!!None!!15!!0
 STAT!!101!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!11
 STAT!!101!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!15!!6
-STAT!!102!!A!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS420!!None!!None!!None!!None!!15!!0
+STAT!!102!!A!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!15!!0
 STAT!!102!!B!!Prob & Prob. Distrib!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!0
 STAT!!102!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!15!!8
 STAT!!103!!A!!Quan Meth. in Scl.Sc!!3.00!!['T', 'R']!!09:30!!10:45!!A Sarwar!!SBLOCKS320!!None!!None!!None!!None!!35!!33
