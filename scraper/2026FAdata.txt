@@ -84,7 +84,7 @@ BUSN!!230!!M!!Entrepreneurship!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!B Usman!!EB
 BUSN!!230!!N!!Entrepreneurship!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!B Usman!!EBLOCKE332!!None!!None!!None!!None!!35!!0
 BUSN!!280!!A!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!T Alvi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 BUSN!!280!!B!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!U Javaid!!EBLOCKE343!!None!!None!!None!!None!!35!!0
-BUSN!!280!!C!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE331!!None!!None!!None!!None!!35!!25
+BUSN!!280!!C!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE331!!None!!None!!None!!None!!35!!24
 BUSN!!280!!D!!Mark. & Selling Skil!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE330!!None!!None!!None!!None!!35!!11
 BUSN!!280!!E!!Mark. & Selling Skil!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE343!!None!!None!!None!!None!!35!!25
 BUSN!!280!!F!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!0
@@ -291,7 +291,7 @@ CRIM!!230!!A!!Mass Media and Crime!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Ali!!
 CRST!!151!!A!!Intro to Chris. Thou!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!R Wetmore!!XBLOCKX002!!None!!None!!None!!None!!35!!12
 CRST!!152!!A!!Christian Ethics!!2.00!!['M', 'W']!!09:00!!09:50!!D Ephraim!!EBLOCKE243!!None!!None!!None!!None!!35!!0
 CRST!!152!!C!!Christian Ethics!!2.00!!['M', 'W']!!11:00!!11:50!!Z West!!EBLOCKE243!!None!!None!!None!!None!!25!!0
-CRST!!155!!A!!Interpret the Bible!!3.00!!['T', 'R']!!09:30!!10:45!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!18
+CRST!!155!!A!!Interpret the Bible!!3.00!!['T', 'R']!!09:30!!10:45!!K Pervaiz!!EBLOCKE243!!None!!None!!None!!None!!35!!17
 CRST!!211!!A!!Applied Theology 1!!1.00!!['M']!!12:00!!12:50!!D Ephraim!!XBLOCKX002!!None!!None!!None!!None!!35!!19
 CRST!!212!!A!!Applied Theology 2!!1.00!!['W']!!12:00!!12:50!!D Ephraim!!XBLOCKX002!!None!!None!!None!!None!!35!!29
 CRST!!231!!A!!Biblical Hebrew 1!!3.00!!['T', 'R']!!16:45!!18:00!!Z West!!EBLOCKE243!!None!!None!!None!!None!!35!!30
@@ -537,7 +537,7 @@ GEOG!!133!!B!!Geog Prof. of Pak.!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE22
 GEOG!!201!!A!!Intro to GIS & Tech.!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE242!!None!!None!!None!!None!!35!!33
 GEOG!!210!!A!!Earth's Physl Realms!!3.00!!['T', 'R']!!12:30!!13:45!!K Shafiqu!!EBLOCKE228!!None!!None!!None!!None!!10!!1
 GEOG!!240!!A!!Global Envr Issues!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!10!!4
-GEOG!!323!!A!!Population Geography!!3.00!!['T', 'R']!!11:00!!12:15!!K Shakrul!!EBLOCKE242!!None!!None!!None!!None!!35!!29
+GEOG!!323!!A!!Population Geography!!3.00!!['T', 'R']!!11:00!!12:15!!K Shakrul!!EBLOCKE242!!None!!None!!None!!None!!35!!28
 GEOG!!371!!A!!Digital Cartography!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE242!!None!!None!!None!!None!!35!!35
 GEOG!!499!!A!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!9
 GEOG!!499!!B!!Directed Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Shakrul!!TBDTBD!!None!!None!!None!!None!!10!!10
@@ -827,7 +827,7 @@ PSYC!!740!!A!!Advanced Quantitativ!!3.00!!['M', 'W']!!14:00!!15:30!!S Shahed!!EB
 PSYC!!741!!A!!Advanced Statistics!!3.00!!['M', 'W']!!15:30!!17:00!!S Majeed!!EBLOCKE104!!None!!None!!None!!None!!20!!20
 PSYC!!745!!A!!Advanced Qualitative!!3.00!!['T', 'R']!!14:00!!15:30!!I Batool!!EBLOCKE104!!None!!None!!None!!None!!20!!20
 PSYC!!750!!A!!Indigenous Instrumen!!3.00!!['T', 'R']!!15:30!!17:00!!A Nazim!!EBLOCKE104!!None!!None!!None!!None!!20!!20
-SOCL!!100!!E!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Shahid!!EBLOCKE105!!None!!None!!None!!None!!35!!1
+SOCL!!100!!E!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Shahid!!EBLOCKE105!!None!!None!!None!!None!!35!!2
 SOCL!!100!!F!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Yasir!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 SOCL!!100!!G!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!T Ashraf!!EBLOCKE244!!None!!None!!None!!None!!35!!0
 SOCL!!100!!I!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!T Fatima!!SBLOCKS215!!None!!None!!None!!None!!35!!2
