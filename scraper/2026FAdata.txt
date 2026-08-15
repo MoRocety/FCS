@@ -531,7 +531,7 @@ FSQM!!505!!A!!safe food & sup. mgt!!3.00!!['M']!!16:00!!19:00!!K Muaz!!SBLOCKS31
 FSQM!!506!!A!!Res. Meth & Biostat!!3.00!!['W']!!16:00!!19:00!!S Hanook!!SBLOCKS312!!None!!None!!None!!None!!20!!20
 FSQM!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!08:00!!16:00!!B Sadiq!!SBLOCKS445!!None!!None!!None!!None!!20!!20
 GEOG!!101!!A!!Funda of Geography!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!0
-GEOG!!101!!F!!Funda of Geography!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!0
+GEOG!!101!!F!!Funda of Geography!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!1
 GEOG!!133!!A!!Geog Prof. of Pak.!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!3
 GEOG!!133!!B!!Geog Prof. of Pak.!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!34
 GEOG!!201!!A!!Intro to GIS & Tech.!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE242!!None!!None!!None!!None!!35!!33
@@ -584,7 +584,7 @@ ISLM!!306!!A!!Religion and Science!!3.00!!['T', 'R']!!12:30!!13:45!!H Ghani!!EBL
 KORN!!101!!A!!Korean I!!3.00!!['T', 'R']!!14:00!!15:15!!S K Sook!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 KORN!!102!!A!!Korean II!!3.00!!['T', 'R']!!15:30!!16:45!!S K Sook!!EBLOCKE244!!None!!None!!None!!None!!20!!13
 LING!!207!!A!!History of Eng. Lang!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!R John!!EBLOCKE227!!None!!None!!None!!None!!35!!26
-LING!!217!!A!!Introduction to Ling!!3.00!!['T', 'R']!!11:00!!12:15!!A Javed!!EBLOCKE227!!None!!None!!None!!None!!35!!17
+LING!!217!!A!!Introduction to Ling!!3.00!!['T', 'R']!!11:00!!12:15!!A Javed!!EBLOCKE227!!None!!None!!None!!None!!35!!16
 LING!!217!!B!!Introduction to Ling!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Alphonce!!EBLOCKE227!!None!!None!!None!!None!!35!!16
 LING!!301!!A!!Phonetics and Phonol!!3.00!!['T', 'R']!!08:00!!09:15!!A Alphonce!!EBLOCKE221!!None!!None!!None!!None!!35!!28
 LING!!302!!A!!Morphology and Synta!!3.00!!['T', 'R']!!12:30!!13:45!!A Khalid!!EBLOCKE227!!None!!None!!None!!None!!35!!31
@@ -835,7 +835,7 @@ SOCL!!100!!K!!Intro to Sociology!!3.00!!['T', 'R']!!11:00!!12:15!!A Azeem!!EBLOC
 SOCL!!100!!N!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!S Shahid!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!100!!O!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE103!!None!!None!!None!!None!!35!!0
 SOCL!!100!!Q!!Intro to Sociology!!3.00!!['T', 'R']!!15:30!!16:45!!A Yasir!!SBLOCKS215!!None!!None!!None!!None!!35!!0
-SOCL!!118!!A!!Law and Human Rights!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!T Fatima!!EBLOCKE104!!None!!None!!None!!None!!35!!1
+SOCL!!118!!A!!Law and Human Rights!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!T Fatima!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!170!!A!!Environmental Sociol!!3.00!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE105!!None!!None!!None!!None!!35!!31
 SOCL!!201!!A!!Soc. Research!!3.00!!['T', 'R']!!15:30!!16:45!!T Fatima!!EBLOCKE105!!None!!None!!None!!None!!35!!17
 SOCL!!220!!A!!Intr. to Criminology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Azeem!!EBLOCKE105!!None!!None!!None!!None!!35!!0
