@@ -251,7 +251,7 @@ COMP!!300!!B!!Computer Organizatio!!3.00!!['T']!!11:00!!12:50!!A Khan!!SBLOCKS32
 COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS218!!SBLOCKS216!!['W']!!09:00!!10:50!!35!!1
 COMP!!301!!B!!Operating Systems!!3.00!!['T', 'R']!!13:00!!14:50!!M Chaudhry!!SBLOCKS319!!None!!None!!None!!None!!35!!0
 COMP!!301!!C!!Operating Systems!!3.00!!['T']!!11:00!!12:50!!M Butt!!SBLOCKS319!!SBLOCKS319!!['R']!!11:00!!12:50!!35!!26
-COMP!!302!!A!!Theory of Automata!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!1
+COMP!!302!!A!!Theory of Automata!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!0
 COMP!!302!!B!!Theory of Automata!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!6
 COMP!!302!!C!!Theory of Automata!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!SBLOCKS316!!None!!None!!None!!None!!35!!22
 COMP!!303!!A!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS316!!None!!None!!None!!None!!35!!10
@@ -477,7 +477,7 @@ ENGL!!301!!A!!19th Ctry Engl Novel!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!I Sayed
 ENGL!!307!!A!!Classical Drama!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!10
 ENGL!!308!!A!!Elizabethan Drama!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!I Sayed!!EBLOCKE221!!None!!None!!None!!None!!35!!28
 ENGL!!315!!A!!Poetry I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Maqbool!!EBLOCKE221!!None!!None!!None!!None!!35!!14
-ENGL!!318!!A!!Creative Nonfiction!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!N Rehman!!EBLOCKE222!!None!!None!!None!!None!!35!!32
+ENGL!!318!!A!!Creative Nonfiction!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!N Rehman!!EBLOCKE222!!None!!None!!None!!None!!35!!31
 ENGL!!322!!A!!American Prose & Fic!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE221!!None!!None!!None!!None!!35!!30
 ENGL!!325!!A!!American Drama!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!F Zaheer!!EBLOCKE221!!None!!None!!None!!None!!35!!25
 ENGL!!331!!A!!Research Methods!!3.00!!['T', 'R']!!12:30!!13:45!!S Mir!!EBLOCKE222!!None!!None!!None!!None!!35!!22
@@ -598,7 +598,7 @@ LING!!499!!A!!Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!F Syeda!!TBDT
 MATH!!095!!A!!Math Remedial!!0!!['M', 'W', 'F']!!15:00!!15:50!!R Malik!!SBLOCKS420!!None!!None!!None!!None!!35!!0
 MATH!!095!!B!!Math Remedial!!0!!['T', 'R']!!15:30!!16:45!!R Malik!!SBLOCKS420!!None!!None!!None!!None!!35!!0
 MATH!!102!!A!!Calculus 1!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Shahid!!SBLOCKS410!!None!!None!!None!!None!!35!!27
-MATH!!102!!B!!Calculus 1!!3.00!!['T', 'R']!!12:30!!13:45!!S Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!5
+MATH!!102!!B!!Calculus 1!!3.00!!['T', 'R']!!12:30!!13:45!!S Malik!!SBLOCKS412!!None!!None!!None!!None!!35!!4
 MATH!!102!!C!!Calculus 1!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!103!!A!!Intro. Lin. Algebra!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!19
 MATH!!105!!A!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!5!!0
@@ -829,8 +829,8 @@ PSYC!!745!!A!!Advanced Qualitative!!3.00!!['T', 'R']!!14:00!!15:30!!I Batool!!EB
 PSYC!!750!!A!!Indigenous Instrumen!!3.00!!['T', 'R']!!15:30!!17:00!!A Nazim!!EBLOCKE104!!None!!None!!None!!None!!20!!20
 SOCL!!100!!E!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Shahid!!EBLOCKE105!!None!!None!!None!!None!!35!!2
 SOCL!!100!!F!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Yasir!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-SOCL!!100!!G!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!T Ashraf!!EBLOCKE244!!None!!None!!None!!None!!35!!1
-SOCL!!100!!I!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!T Fatima!!SBLOCKS215!!None!!None!!None!!None!!35!!0
+SOCL!!100!!G!!Intro to Sociology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!T Ashraf!!EBLOCKE244!!None!!None!!None!!None!!35!!0
+SOCL!!100!!I!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!T Fatima!!SBLOCKS215!!None!!None!!None!!None!!35!!1
 SOCL!!100!!K!!Intro to Sociology!!3.00!!['T', 'R']!!11:00!!12:15!!A Azeem!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!100!!N!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!S Shahid!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!100!!O!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE103!!None!!None!!None!!None!!35!!0
@@ -871,7 +871,7 @@ STAT!!206!!B!!Intro to Data Analyt!!3.00!!['T', 'R']!!11:00!!12:15!!S Bashir!!SB
 STAT!!206!!C!!Intro to Data Analyt!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!20!!0
 STAT!!207!!A!!Business Analytics!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Mughal!!SBLOCKS421!!None!!None!!None!!None!!20!!0
 STAT!!207!!B!!Business Analytics!!3.00!!['T', 'R']!!12:30!!13:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!20!!0
-STAT!!212!!A!!Research Methods and!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!10!!6
+STAT!!212!!A!!Research Methods and!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!SBLOCKS320!!None!!None!!None!!None!!10!!7
 STAT!!317!!A!!Data Visualization R!!3.00!!['T', 'R']!!12:30!!13:45!!I Naqvi!!SBLOCKS421!!None!!None!!None!!None!!25!!4
 STAT!!317!!B!!Data Visualization R!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Samuel!!SBLOCKS425!!None!!None!!None!!None!!25!!0
 STAT!!414!!A!!Statistical Learning!!3.00!!['T', 'R']!!11:00!!12:15!!N Mushtaq!!SBLOCKS420!!None!!None!!None!!None!!25!!8
