@@ -206,7 +206,7 @@ CHEM!!160!!B!!Intro. Org Biochem!!4.00!!['T', 'R']!!12:30!!13:45!!S Jelani!!SBLO
 CHEM!!170!!A!!Inro. Physical Chem!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!M Qamar!!SBLOCKS212!!SBLOCKS148!!['T']!!14:00!!15:50!!35!!31
 CHEM!!250!!A!!Chem Main Groups!!4.00!!['M']!!09:00!!10:50!!M Iqbal!!SBLOCKS138!!SBLOCKS212!!['M', 'W', 'F']!!11:00!!11:50!!35!!30
 CHEM!!270!!A!!Thermodyna Equilib!!4.00!!['T', 'R']!!14:00!!15:15!!A Hussain!!SBLOCKS213!!SBLOCKS148!!['R']!!09:00!!10:50!!35!!31
-CHEM!!311!!A!!Fund Analy. Chem!!4.00!!['T', 'R']!!08:00!!09:15!!M Asghar!!SBLOCKS212!!SBLOCKS138!!['R']!!14:00!!15:50!!25!!17
+CHEM!!311!!A!!Fund Analy. Chem!!4.00!!['T', 'R']!!08:00!!09:15!!M Asghar!!SBLOCKS212!!SBLOCKS138!!['R']!!14:00!!15:50!!25!!16
 CHEM!!330!!A!!Biochemistry!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!M Abbas!!SBLOCKS212!!SBLOCKS135!!['R']!!14:00!!15:50!!35!!33
 CHEM!!350!!A!!Coordination Chem!!4.00!!['T', 'R']!!11:00!!12:15!!S Azeem!!SBLOCKS213!!SBLOCKS138!!['W']!!11:00!!12:50!!35!!27
 CHEM!!361!!A!!Organic Chem II!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!M Abbas!!SBLOCKS210!!SBLOCKS135!!['T']!!14:00!!15:50!!35!!31
@@ -508,7 +508,7 @@ ENVR!!252!!A!!Environ. Pollution!!3.00!!['T', 'R']!!11:00!!12:15!!S Aslam!!SBLOC
 ENVR!!305!!A!!Pop. Dynamics & Urbn!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!SBLOCKS424!!None!!None!!None!!None!!35!!24
 ENVR!!323!!A!!Applied Ecology!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Akram!!SBLOCKS417!!SBLOCKS135!!['W']!!14:00!!15:50!!35!!4
 ENVR!!340!!A!!Envr. Chem. Funda.!!3.00!!['M', 'W']!!09:00!!09:50!!D Bakker!!SBLOCKS417!!SBLOCKS135!!['F']!!09:00!!10:50!!35!!16
-ENVR!!345!!A!!Strategic and Env. Impact Assessmen!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Machado!!SBLOCKS424!!None!!None!!None!!None!!35!!16
+ENVR!!345!!A!!Strategic and Env. Impact Assessmen!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Machado!!SBLOCKS424!!None!!None!!None!!None!!35!!15
 ENVR!!406!!A!!Climate Change Adaptation and Mitig!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Ilyas!!SBLOCKS417!!None!!None!!None!!None!!35!!3
 ENVR!!411!!A!!Envr. Microbiology!!3.00!!['T', 'R']!!09:00!!10:50!!S Aslam!!SBLOCKS417!!None!!None!!None!!None!!35!!8
 ENVR!!414!!A!!Sustainable Development in a Changi!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!22
@@ -610,7 +610,7 @@ MATH!!107!!B!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel
 MATH!!107!!C!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Tayyab!!SBLOCKS115!!None!!None!!None!!None!!15!!0
 MATH!!107!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!1
 MATH!!107!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!15!!0
-MATH!!108!!C!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!6
+MATH!!108!!C!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!5
 MATH!!108!!D!!QR-I (Basic)!!3.00!!['T', 'R']!!12:30!!13:45!!B Haq!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!109!!B!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Jamil!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!111!!B!!Calc & Analy Geom!!3.00!!['T', 'R']!!14:00!!15:15!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!8
@@ -844,7 +844,7 @@ SOCL!!290!!A!!Political Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!T Ashraf!!EBL
 SOCL!!291!!A!!Economic Sociology!!3.00!!['T', 'R']!!11:00!!12:15!!S Jafree!!EBLOCKE105!!None!!None!!None!!None!!35!!19
 SOCL!!301!!A!!Theol Pers. in Socl.!!3.00!!['T', 'R']!!14:00!!15:15!!A Yasir!!EBLOCKE105!!None!!None!!None!!None!!35!!4
 SOCL!!325!!A!!Sociology of Gender!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Amjad!!EBLOCKE103!!None!!None!!None!!None!!35!!11
-SOCL!!350!!A!!Sociology of Develop!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE214!!None!!None!!None!!None!!35!!26
+SOCL!!350!!A!!Sociology of Develop!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Azeem!!EBLOCKE214!!None!!None!!None!!None!!35!!27
 SOCL!!425!!A!!Sociology of Work!!3.00!!['T', 'R']!!12:30!!13:45!!S Shahid!!EBLOCKE104!!None!!None!!None!!None!!35!!14
 SOCL!!465!!A!!Socl of Sport/Leisur!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!T Ashraf!!EBLOCKE104!!None!!None!!None!!None!!35!!17
 SOCL!!494!!A!!Research Proposal!!3.00!!['M', 'W', 'F']!!13:00!!13:50!!S Athar!!EBLOCKTBD!!None!!None!!None!!None!!25!!17
@@ -898,7 +898,7 @@ URDU!!101!!O!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!N Jamal!!EBLOC
 URDU!!101!!P!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE101!!None!!None!!None!!None!!35!!0
 URDU!!101!!Q!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!0
 URDU!!101!!R!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE244!!None!!None!!None!!None!!35!!0
-URDU!!104!!A!!Sel Rep Urdu Prose!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Ashraf!!EBLOCKE102!!None!!None!!None!!None!!35!!8
+URDU!!104!!A!!Sel Rep Urdu Prose!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Ashraf!!EBLOCKE102!!None!!None!!None!!None!!35!!7
 URDU!!105!!A!!Intro to Genres!!3.00!!['T', 'R']!!14:00!!15:15!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!31
 URDU!!201!!A!!A brf. Hist.of Urdu!!3.00!!['T', 'R']!!09:30!!10:45!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!35!!28
 URDU!!212!!A!!Urdu Drama!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!33
