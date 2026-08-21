@@ -86,7 +86,7 @@ BUSN!!230!!N!!Entrepreneurship!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!B Usman!!EB
 BUSN!!280!!A!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!T Alvi!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 BUSN!!280!!B!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!U Javaid!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!280!!C!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE331!!None!!None!!None!!None!!35!!17
-BUSN!!280!!D!!Mark. & Selling Skil!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE330!!None!!None!!None!!None!!35!!5
+BUSN!!280!!D!!Mark. & Selling Skil!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE330!!None!!None!!None!!None!!35!!3
 BUSN!!280!!E!!Mark. & Selling Skil!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE343!!None!!None!!None!!None!!35!!22
 BUSN!!280!!F!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!280!!G!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!TBD!!EBLOCKE240!!None!!None!!None!!None!!33!!0
@@ -423,7 +423,7 @@ ECON!!799A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M B
 ECON!!799B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!25
 ECON!!799E!!A!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!799E!!B!!Research Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!23
-EDUC!!110!!A!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!M. Thomas!!EBLOCKE140!!None!!None!!None!!None!!35!!1
+EDUC!!110!!A!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!M. Thomas!!EBLOCKE140!!None!!None!!None!!None!!35!!0
 EDUC!!110!!F!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE140!!None!!None!!None!!None!!35!!1
 EDUC!!110!!G!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!J Hassan!!EBLOCKE242!!None!!None!!None!!None!!35!!0
 EDUC!!110!!H!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!J Hassan!!EBLOCKE344!!None!!None!!None!!None!!35!!0
@@ -567,7 +567,7 @@ HIST!!313!!B!!British Rule in Ind.!!3.00!!['T', 'R']!!15:30!!16:45!!S Sumbal!!EB
 HIST!!400!!A!!Research Methodology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Hayat!!TBDTBD!!None!!None!!None!!None!!35!!34
 HPED!!101!!A!!Cricket (Girls)!!1.00!!['M', 'W']!!15:00!!16:00!!S Khaliq!!TBDTBD!!None!!None!!None!!None!!25!!2
 HPED!!101!!B!!Cricket for Boys!!1.00!!['M', 'W']!!16:00!!17:00!!B Kamil!!TBDTBD!!None!!None!!None!!None!!25!!0
-HPED!!102!!A!!Football (Boys)!!1.00!!['T', 'R']!!16:00!!17:00!!B Kamil!!GROUNDGROUND!!None!!None!!None!!None!!25!!0
+HPED!!102!!A!!Football (Boys)!!1.00!!['T', 'R']!!16:00!!17:00!!B Kamil!!GROUNDGROUND!!None!!None!!None!!None!!25!!2
 HPED!!105!!A!!Volleyball(Boys)!!1.00!!['T', 'R']!!15:00!!16:00!!S Khaliq!!VCOURTVCOURT!!None!!None!!None!!None!!25!!1
 HPED!!112!!A!!Handball (Girls)!!1.00!!['M', 'W']!!15:00!!16:00!!B Kamil!!TBDTBD!!None!!None!!None!!None!!25!!18
 HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!10
@@ -723,8 +723,8 @@ PLSC!!102!!B!!Pakistan Government!!3.00!!['T', 'R']!!11:00!!12:15!!M A Imran!!EB
 PLSC!!202!!A!!Gov. of Dev. Countri!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Farooqi!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 PLSC!!203!!A!!International Relati!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!M Farooqi!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 PLSC!!203!!B!!International Relati!!3.00!!['T', 'R']!!14:00!!15:15!!M U Farooq!!EBLOCKE139!!None!!None!!None!!None!!35!!20
-PLSC!!204!!A!!Pak. Gov.-Prv./local!!3.00!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!12
-PLSC!!212!!A!!Theor Comp. Politic!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!18
+PLSC!!204!!A!!Pak. Gov.-Prv./local!!3.00!!['T', 'R']!!14:00!!15:15!!S Awan!!EBLOCKE122!!None!!None!!None!!None!!35!!11
+PLSC!!212!!A!!Theor Comp. Politic!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!M Mirza!!EBLOCKE139!!None!!None!!None!!None!!35!!17
 PLSC!!301!!A!!Ancnt, Mdvl, Poli Th!!3.00!!['T', 'R']!!09:30!!10:45!!K Khan!!EBLOCKE126!!None!!None!!None!!None!!35!!0
 PLSC!!301!!B!!Ancnt, Mdvl, Poli Th!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE122!!None!!None!!None!!None!!35!!22
 PLSC!!302!!A!!Modern Political The!!3.00!!['T', 'R']!!12:30!!13:45!!K Khan!!EBLOCKE126!!None!!None!!None!!None!!35!!0
@@ -763,7 +763,7 @@ PSYC!!105!!A!!Eff. Communication!!3.00!!['T', 'R']!!14:00!!15:15!!N Asif!!EBLOCK
 PSYC!!150!!A!!Dev. Psychology - 1!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!E Shahid!!SBLOCKS112!!None!!None!!None!!None!!35!!0
 PSYC!!150!!B!!Dev. Psychology - 1!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!U Ashiq!!SBLOCKS424!!None!!None!!None!!None!!35!!0
 PSYC!!160!!A!!Emotional Intelligen!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A aziz!!EBLOCKE246!!None!!None!!None!!None!!35!!0
-PSYC!!165!!A!!AI in psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE229!!None!!None!!None!!None!!35!!11
+PSYC!!165!!A!!AI in psychology!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!U Rizwan!!EBLOCKE229!!None!!None!!None!!None!!35!!10
 PSYC!!175!!A!!Educational Psyc.!!3.00!!['T', 'R']!!12:30!!13:45!!A Ateeq!!EBLOCKE230!!None!!None!!None!!None!!35!!17
 PSYC!!180!!A!!Psyc of Art & Aesthe!!3.00!!['T', 'R']!!12:30!!13:45!!A Nazim!!EBLOCKE246!!None!!None!!None!!None!!35!!0
 PSYC!!220!!A!!Stat. for Psychology!!4.00!!['T', 'R']!!14:00!!15:15!!U Ilyas!!SBLOCKS417!!EBLOCKE241!!['F']!!13:00!!14:50!!30!!0
