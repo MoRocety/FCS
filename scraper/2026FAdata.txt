@@ -141,7 +141,7 @@ BUSN!!385!!D!!Consumer Behavior!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Javaid!!
 BUSN!!385!!E!!Consumer Behavior!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE229!!None!!None!!None!!None!!35!!0
 BUSN!!401!!IS!!Principles of Auditi!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Ali Shah!!TBDTBD!!None!!None!!None!!None!!1!!0
 BUSN!!404!!A!!Taxation!!3.00!!['T', 'R']!!09:30!!10:45!!I Ahmed!!EBLOCKE345!!None!!None!!None!!None!!35!!0
-BUSN!!404!!B!!Taxation!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!8
+BUSN!!404!!B!!Taxation!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!9
 BUSN!!410!!A!!Account Info Sys!!3.00!!['T', 'R']!!15:30!!16:45!!J Akhtar!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 BUSN!!410!!B!!Account Info Sys!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Ali Shah!!EBLOCKE346!!None!!None!!None!!None!!35!!9
 BUSN!!450!!A!!Labor Law!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!28
@@ -463,7 +463,7 @@ ENGL!!108!!I!!Expository Writing!!3.00!!['T', 'R']!!14:00!!15:15!!A Khalid!!SBLO
 ENGL!!108!!J!!Expository Writing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!N Langah!!EBLOCKE122!!None!!None!!None!!None!!25!!1
 ENGL!!108!!K!!Expository Writing!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE121!!None!!None!!None!!None!!25!!0
 ENGL!!108!!M!!Expository Writing!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Zaheer!!EBLOCKE244!!None!!None!!None!!None!!25!!0
-ENGL!!108!!N!!Expository Writing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Hanif!!EBLOCKE103!!None!!None!!None!!None!!25!!1
+ENGL!!108!!N!!Expository Writing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Hanif!!EBLOCKE103!!None!!None!!None!!None!!25!!0
 ENGL!!108!!P!!Expository Writing!!3.00!!['T', 'R']!!15:30!!16:45!!S Hanif!!SBLOCKS412!!None!!None!!None!!None!!25!!0
 ENGL!!108!!Q!!Expository Writing!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Maqbool!!EBLOCKE103!!None!!None!!None!!None!!25!!0
 ENGL!!108!!R!!Expository Writing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Javed!!SBLOCKS312!!None!!None!!None!!None!!25!!0
@@ -552,7 +552,7 @@ GRMN!!102!!A!!German II!!3.00!!['T', 'R']!!09:30!!10:45!!H Mahmood!!EBLOCKE244!!
 HIST!!101!!A!!Survey of South Asia!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!F Masih!!EBLOCKE121!!None!!None!!None!!None!!35!!0
 HIST!!102!!A!!Survey of Westrn Civ!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Haider!!EBLOCKE202!!None!!None!!None!!None!!35!!0
 HIST!!103!!A!!Intro. to Archaeolog!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!F Masih!!EBLOCKE121!!None!!None!!None!!None!!35!!0
-HIST!!202!!B!!Surv of Modern Europ!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Ijaz!!EBLOCKE205!!None!!None!!None!!None!!35!!1
+HIST!!202!!B!!Surv of Modern Europ!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Ijaz!!EBLOCKE205!!None!!None!!None!!None!!35!!0
 HIST!!204!!A!!History of the U.S!!3.00!!['T', 'R']!!11:00!!12:15!!S Hayat!!EBLOCKE039!!None!!None!!None!!None!!35!!0
 HIST!!207!!A!!British History!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!M Shafqat!!EBLOCKE040!!None!!None!!None!!None!!35!!22
 HIST!!255!!A!!The Indus Valley!!3.00!!['T', 'R']!!12:30!!13:45!!M Shafqat!!EBLOCKE041!!None!!None!!None!!None!!35!!6
@@ -603,7 +603,7 @@ MATH!!102!!C!!Calculus 1!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!S Iqbal!!SBLOCKS4
 MATH!!103!!A!!Intro. Lin. Algebra!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Azhar!!SBLOCKS410!!None!!None!!None!!None!!35!!16
 MATH!!105!!A!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!5!!0
 MATH!!105!!B!!Prob & Prob. Distrib!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!5!!0
-MATH!!105!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!5!!3
+MATH!!105!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!5!!4
 MATH!!107!!A!!Statistical Methods!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Tayyab!!SBLOCKS424!!None!!None!!None!!None!!15!!0
 MATH!!107!!B!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!SBLOCKS421!!None!!None!!None!!None!!15!!0
 MATH!!107!!C!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Tayyab!!SBLOCKS115!!None!!None!!None!!None!!15!!0
