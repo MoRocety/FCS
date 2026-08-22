@@ -59,7 +59,7 @@ BUSN!!201!!A!!Intermediate Account!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EB
 BUSN!!201!!B!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE240!!None!!None!!None!!None!!33!!0
 BUSN!!201!!C!!Intermediate Account!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Sharif!!EBLOCKE346!!None!!None!!None!!None!!35!!0
 BUSN!!201!!D!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE213!!None!!None!!None!!None!!35!!0
-BUSN!!201!!E!!Intermediate Account!!3.00!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!1
+BUSN!!201!!E!!Intermediate Account!!3.00!!['T', 'R']!!14:00!!15:15!!TBD!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!201!!F!!Intermediate Account!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE328!!None!!None!!None!!None!!35!!0
 BUSN!!201!!G!!Intermediate Account!!3.00!!['T', 'R']!!15:30!!16:45!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!5
 BUSN!!201!!H!!Intermediate Account!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE346!!None!!None!!None!!None!!35!!32
@@ -520,8 +520,8 @@ ENVR!!502!!A!!WWW Management!!3.00!!['M']!!16:00!!17:15!!S Ilyas!!SBLOCKS417!!SB
 ENVR!!503!!A!!Adv Env Analyt Tec!!3.00!!['M']!!17:30!!18:45!!TBD!!SBLOCKS417!!SBLOCKS417!!['F']!!17:30!!18:45!!15!!15
 ENVR!!504!!A!!RS and GIS app.!!3.00!!['W']!!16:00!!18:45!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!15!!15
 ENVR!!505!!A!!E&H Risk Assess.!!3.00!!['T', 'R']!!17:30!!18:45!!D Bakker!!SBLOCKS417!!None!!None!!None!!None!!15!!15
-ENVR!!696!!A!!Seminar!!1.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ilyas!!TBDTBD!!None!!None!!None!!None!!25!!7
-ENVR!!699A!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!25!!15
+ENVR!!696!!A!!Seminar!!1.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ilyas!!TBDTBD!!None!!None!!None!!None!!25!!6
+ENVR!!699A!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!25!!14
 ENVR!!699B!!A!!Research!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!D Bakker!!TBDTBD!!None!!None!!None!!None!!25!!17
 FREN!!101!!A!!French 1!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE244!!None!!None!!None!!None!!20!!0
 FREN!!101!!B!!French 1!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE244!!None!!None!!None!!None!!20!!0
