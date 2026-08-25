@@ -86,10 +86,10 @@ BUSN!!170!!P!!Principles of Manage!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Habib
 BUSN!!201!!A!!Intermediate Account!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Bashir!!EBLOCKE330!!None!!None!!None!!None!!35!!11
 BUSN!!201!!B!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ehsan!!EBLOCKE240!!None!!None!!None!!None!!33!!0
 BUSN!!201!!C!!Intermediate Account!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Sharif!!EBLOCKE346!!None!!None!!None!!None!!35!!0
-BUSN!!201!!D!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE213!!None!!None!!None!!None!!35!!1
+BUSN!!201!!D!!Intermediate Account!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE213!!None!!None!!None!!None!!35!!0
 BUSN!!201!!E!!Intermediate Account!!3.00!!['T', 'R']!!14:00!!15:15!!A Saddiqa!!EBLOCKE333!!None!!None!!None!!None!!35!!0
 BUSN!!201!!F!!Intermediate Account!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!U Sharif!!EBLOCKE328!!None!!None!!None!!None!!35!!0
-BUSN!!201!!G!!Intermediate Account!!3.00!!['T', 'R']!!15:30!!16:45!!K AMAD!!EBLOCKE228!!None!!None!!None!!None!!35!!0
+BUSN!!201!!G!!Intermediate Account!!3.00!!['T', 'R']!!15:30!!16:45!!K AMAD!!EBLOCKE228!!None!!None!!None!!None!!35!!1
 BUSN!!201!!I!!Intermediate Account!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!U Sharif!!EBLOCKE345!!None!!None!!None!!None!!35!!0
 BUSN!!201!!J!!Intermediate Account!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!U Sharif!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!201!!L!!Intermediate Account!!3.00!!['T', 'R']!!09:30!!10:45!!A Rashid!!EBLOCKE331!!None!!None!!None!!None!!35!!0
@@ -120,7 +120,7 @@ BUSN!!280!!H!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Mehdi
 BUSN!!280!!I!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!280!!J!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!280!!K!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!T Alvi!!EBLOCKE333!!None!!None!!None!!None!!35!!0
-BUSN!!280!!L!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Ibrahim!!EBLOCKE331!!None!!None!!None!!None!!35!!1
+BUSN!!280!!L!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Ibrahim!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!280!!M!!Mark. & Selling Skil!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Ibrahim!!EBLOCKE332!!None!!None!!None!!None!!35!!20
 BUSN!!280!!N!!Mark. & Selling Skil!!3.00!!['T', 'R']!!14:00!!15:15!!I Nasir!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!301!!A!!Financial Reporting!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Ali Shah!!EBLOCKE332!!None!!None!!None!!None!!35!!1
@@ -128,7 +128,7 @@ BUSN!!301!!B!!Financial Reporting!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Ali Sh
 BUSN!!301!!C!!Financial Reporting!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!9
 BUSN!!321!!B!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE240!!None!!None!!None!!None!!33!!0
 BUSN!!321!!C!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Ehsan!!EBLOCKE328!!None!!None!!None!!None!!35!!27
-BUSN!!321!!D!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!Q Zafar!!EBLOCKE344!!None!!None!!None!!None!!35!!1
+BUSN!!321!!D!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!Q Zafar!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!321!!E!!Financial Mgt. I!!3.00!!['T', 'R']!!08:00!!09:15!!Q Zafar!!EBLOCKE345!!None!!None!!None!!None!!35!!29
 BUSN!!321!!F!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!321!!G!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE344!!None!!None!!None!!None!!35!!0
@@ -145,7 +145,7 @@ BUSN!!360!!C!!Ope. & Proj. Mgt. I!!3.00!!['T', 'R']!!12:30!!13:45!!S Nazir!!EBLO
 BUSN!!360!!D!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!I yusuf!!EBLOCKE331!!None!!None!!None!!None!!35!!0
 BUSN!!360!!E!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!I yusuf!!EBLOCKE343!!None!!None!!None!!None!!35!!0
 BUSN!!360!!F!!Ope. & Proj. Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!S Nazir!!EBLOCKE345!!None!!None!!None!!None!!35!!0
-BUSN!!360!!G!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE343!!None!!None!!None!!None!!35!!17
+BUSN!!360!!G!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE343!!None!!None!!None!!None!!35!!16
 BUSN!!360!!H!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!K Kamran!!EBLOCKE331!!None!!None!!None!!None!!35!!3
 BUSN!!360!!I!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!TBD!!EBLOCKE332!!None!!None!!None!!None!!35!!26
 BUSN!!360!!J!!Ope. & Proj. Mgt. I!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Bilal!!EBLOCKE332!!None!!None!!None!!None!!35!!0
@@ -395,7 +395,7 @@ DATA!!101!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOC
 DATA!!101!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!5!!0
 DATA!!102!!A!!Prob & Prob Distribu!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!15!!2
 DATA!!102!!B!!Prob & Prob Distribu!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!1
-DATA!!102!!C!!Prob & Prob Distribu!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!15!!5
+DATA!!102!!C!!Prob & Prob Distribu!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!15!!6
 DATA!!201!!A!!Statistical Inferenc!!3.00!!['T', 'R']!!09:30!!10:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!15!!7
 DATA!!202!!B!!Python for Data Anal!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Sarwar!!SBLOCKS420!!None!!None!!None!!None!!35!!17
 DATA!!206!!A!!Fundamentals of Data!!3.00!!['T', 'R']!!09:30!!10:45!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!15!!0
@@ -672,13 +672,13 @@ MATH!!105!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLO
 MATH!!107!!A!!Statistical Methods!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Tayyab!!SBLOCKS424!!None!!None!!None!!None!!15!!0
 MATH!!107!!B!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Samuel!!SBLOCKS421!!None!!None!!None!!None!!15!!0
 MATH!!107!!C!!Statistical Methods!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Tayyab!!SBLOCKS115!!None!!None!!None!!None!!15!!0
-MATH!!107!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!2
+MATH!!107!!D!!Statistical Methods!!3.00!!['T', 'R']!!08:00!!09:15!!R Butt!!SBLOCKS421!!None!!None!!None!!None!!15!!1
 MATH!!107!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOCKS420!!None!!None!!None!!None!!15!!0
 MATH!!108!!A!!QR-I (Basic)!!3.00!!['T', 'R']!!11:00!!12:15!!A Nadeem!!SBLOCKS412!!None!!None!!None!!None!!35!!0
 MATH!!108!!B!!QR-I (Basic)!!3.00!!['T', 'R']!!09:30!!10:45!!S Iqbal!!SBLOCKS410!!None!!None!!None!!None!!35!!12
 MATH!!108!!C!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!F Jamil!!SBLOCKS412!!None!!None!!None!!None!!35!!4
 MATH!!108!!D!!QR-I (Basic)!!3.00!!['T', 'R']!!12:30!!13:45!!B Haq!!SBLOCKS410!!None!!None!!None!!None!!35!!0
-MATH!!108!!E!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Nadeem!!SBLOCKS413!!None!!None!!None!!None!!35!!21
+MATH!!108!!E!!QR-I (Basic)!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Nadeem!!SBLOCKS413!!None!!None!!None!!None!!35!!20
 MATH!!109!!A!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!G Mehak!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!109!!B!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Jamil!!SBLOCKS410!!None!!None!!None!!None!!35!!0
 MATH!!109!!C!!QR-I (Advanced)!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!G Mehak!!SBLOCKS410!!None!!None!!None!!None!!35!!0
