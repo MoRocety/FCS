@@ -126,7 +126,7 @@ BUSN!!301!!B!!Financial Reporting!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!A Ali Sh
 BUSN!!301!!C!!Financial Reporting!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!TBD!!EBLOCKE345!!None!!None!!None!!None!!35!!7
 BUSN!!321!!B!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!TBD!!EBLOCKE240!!None!!None!!None!!None!!33!!0
 BUSN!!321!!C!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Ehsan!!EBLOCKE328!!None!!None!!None!!None!!35!!17
-BUSN!!321!!D!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!Q Zafar!!EBLOCKE344!!None!!None!!None!!None!!35!!1
+BUSN!!321!!D!!Financial Mgt. I!!3.00!!['T', 'R']!!11:00!!12:15!!Q Zafar!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!321!!F!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!M Rao!!EBLOCKE330!!None!!None!!None!!None!!35!!0
 BUSN!!321!!G!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Rao!!EBLOCKE344!!None!!None!!None!!None!!35!!0
 BUSN!!321!!H!!Financial Mgt. I!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Rao!!EBLOCKE333!!None!!None!!None!!None!!35!!0
@@ -479,7 +479,7 @@ ECON!!799A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M B
 ECON!!799B!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!25
 ECON!!799E!!A!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!799E!!B!!Research Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!23
-ECON!!799E!!C!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!25
+ECON!!799E!!C!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!799E!!D!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Tahir!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!799E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!G Shabbir!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!COMP!!A!!Comprehensive Exam!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!10!!6
