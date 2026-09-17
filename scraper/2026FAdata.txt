@@ -240,8 +240,8 @@ CHEM!!499A!!A!!Research Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S 
 CHEM!!499B!!A!!Research Project!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!34
 CHEM!!525!!A!!BIOINORGANIC CHEM!!3.00!!['T', 'R']!!15:30!!16:45!!M Rashida!!SBLOCKS210!!None!!None!!None!!None!!35!!27
 CHEM!!526!!A!!ANA. TECHNIQUES!!3.00!!['M', 'W']!!15:30!!16:45!!M Iqbal!!SBLOCKS138!!None!!None!!None!!None!!35!!20
-CHEM!!543!!A!!Name R. Synt. Appl!!3.00!!['T', 'R']!!14:00!!15:15!!D Ahmed!!SBLOCKS126!!None!!None!!None!!None!!35!!25
-CHEM!!562!!A!!Chemistry of Advance!!3.00!!['M', 'W']!!14:00!!15:15!!M Qamar!!SBLOCKS138!!None!!None!!None!!None!!25!!14
+CHEM!!543!!A!!Name R. Synt. Appl!!3.00!!['T', 'R']!!14:00!!15:15!!D Ahmed!!SBLOCKS126!!None!!None!!None!!None!!35!!24
+CHEM!!562!!A!!Chemistry of Advance!!3.00!!['M', 'W']!!14:00!!15:15!!M Qamar!!SBLOCKS138!!None!!None!!None!!None!!25!!15
 CHEM!!566!!A!!Topics in Phys, Chem!!3.00!!['T', 'R']!!17:00!!18:15!!A Hussain!!SBLOCKS210!!None!!None!!None!!None!!30!!16
 CHEM!!696!!A!!Seminar!!2.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!35
 CHEM!!699A!!A!!Research Thesis!!7.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Azeem!!TBDTBD!!None!!None!!None!!None!!35!!22
@@ -649,7 +649,7 @@ HPED!!112!!A!!Handball (Girls)!!1.00!!['M', 'W']!!15:00!!16:00!!B Kamil!!TBDTBD!
 HPED!!150!!A!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!EBLOCKE137!!['M']!!15:00!!16:50!!35!!3
 HPED!!150!!B!!Advanced first Aid!!4.00!!['M', 'W', 'F']!!09:00!!09:50!!Z Nisa!!EBLOCKE102!!EBLOCKE038!!['W']!!15:00!!16:50!!35!!0
 HPED!!151!!A!!Sports Injuries!!2.00!!['T', 'R']!!08:00!!08:50!!Z Nisa!!EBLOCKE102!!None!!None!!None!!None!!35!!0
-ISEP!!200!!A!!Int. Stu. Exch. Prog!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!35!!32
+ISEP!!200!!A!!z!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!35!!29
 ISLM!!100A!!A!!Fehm-e-Quran I!!1.00!!['F']!!15:00!!15:50!!H Ahmad!!EBLOCKE038!!None!!None!!None!!None!!35!!12
 ISLM!!100A!!B!!Fehm-e-Quran I!!1.00!!['F']!!15:00!!15:50!!H Ahmad!!EBLOCKE038!!None!!None!!None!!None!!35!!0
 ISLM!!100A!!C!!Fehm-e-Quran I!!1.00!!['F']!!15:00!!15:50!!H Ahmad!!EBLOCKE038!!None!!None!!None!!None!!35!!17
@@ -1121,7 +1121,7 @@ UNIV!!100!!N!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!R 
 UNIV!!100!!NN!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!M Kabir!!EBLOCKE244!!SBLOCKS213!!['W']!!14:00!!16:00!!35!!9
 UNIV!!100!!QQ!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!Saman Ali!!EBLOCKE246!!SBLOCKS216!!['F']!!14:00!!16:00!!35!!0
 UNIV!!100!!R!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!M Affan!!EBLOCKE328!!SBLOCKS416!!['M']!!14:00!!16:00!!35!!1
-UNIV!!100!!S!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!N Khan!!EBLOCKE330!!SBLOCKS416!!['W']!!14:00!!16:00!!35!!5
+UNIV!!100!!S!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!N Khan!!EBLOCKE330!!SBLOCKS416!!['W']!!14:00!!16:00!!35!!6
 UNIV!!100!!T!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S. Zehra!!EBLOCKE331!!SBLOCKS416!!['F']!!14:00!!16:00!!35!!0
 UNIV!!100!!U!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Samson!!EBLOCKE332!!EBLOCKE205!!['M']!!14:00!!16:00!!35!!0
 UNIV!!100!!V!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Kamran!!EBLOCKE333!!EBLOCKE205!!['W']!!14:00!!16:00!!35!!0
