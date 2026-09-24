@@ -267,7 +267,7 @@ CHIN!!101!!A!!Chinese I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!Z Kexin!!EBLOCKE13
 CHIN!!101!!B!!Chinese I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Z Kexin!!EBLOCKE139!!None!!None!!None!!None!!20!!0
 COMP!!102!!A!!Programming Fundamen!!4.00!!['M']!!14:00!!16:50!!F Shaheen!!SBLOCKS219!!SBLOCKS219!!['T', 'R']!!08:00!!09:15!!35!!2
 COMP!!102!!B!!Programming Fundamen!!4.00!!['T', 'R']!!11:00!!12:15!!F Shaheen!!SBLOCKS317!!SBLOCKS219!!['W']!!14:00!!16:50!!35!!0
-COMP!!102!!C!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!U Nisar!!SBLOCKS218!!SBLOCKS218!!['W']!!14:00!!16:50!!35!!0
+COMP!!102!!C!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!U Nisar!!SBLOCKS218!!SBLOCKS218!!['W']!!14:00!!16:50!!35!!1
 COMP!!102!!D!!Programming Fundamen!!4.00!!['T', 'R']!!12:30!!13:45!!N Ashraf!!SBLOCKS216!!SBLOCKS218!!['F']!!14:00!!16:50!!35!!3
 COMP!!102!!E!!Programming Fundamen!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!Q Quraishi!!SBLOCKS316!!SBLOCKS218!!['F']!!08:00!!10:50!!35!!25
 COMP!!111!!A!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS218!!SBLOCKS219!!['F']!!14:00!!16:50!!35!!10
@@ -1107,7 +1107,7 @@ SOCL!!100!!M!!Intro to Sociology!!3.00!!['T', 'R']!!12:30!!13:45!!S Rasheed!!EBL
 SOCL!!100!!N!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!S Shahid!!EBLOCKE104!!None!!None!!None!!None!!35!!3
 SOCL!!100!!O!!Intro to Sociology!!3.00!!['T', 'R']!!14:00!!15:15!!M Ali!!EBLOCKE103!!None!!None!!None!!None!!35!!1
 SOCL!!100!!Q!!Intro to Sociology!!3.00!!['T', 'R']!!15:30!!16:45!!A Yasir!!SBLOCKS410!!None!!None!!None!!None!!35!!1
-SOCL!!100!!R!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE105!!None!!None!!None!!None!!35!!1
+SOCL!!100!!R!!Intro to Sociology!!3.00!!['T', 'R']!!08:00!!09:15!!A Azeem!!EBLOCKE105!!None!!None!!None!!None!!35!!2
 SOCL!!104!!A!!Civics & Community!!2.00!!['M', 'W']!!08:00!!08:50!!A Amjad!!EBLOCKE104!!None!!None!!None!!None!!35!!0
 SOCL!!104!!B!!Civics & Community!!2.00!!['M']!!08:00!!08:50!!T Ashraf!!EBLOCKE105!!EBLOCKE104!!['F']!!08:00!!08:50!!35!!0
 SOCL!!104!!C!!Civics & Community!!2.00!!['W', 'F']!!08:00!!08:50!!S Iqbal!!EBLOCKE105!!None!!None!!None!!None!!35!!0
@@ -1151,7 +1151,7 @@ STAT!!102!!A!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SB
 STAT!!102!!B!!Prob & Prob. Distrib!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!0
 STAT!!102!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!15!!0
 STAT!!115!!A!!Probability & Stat.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!N Mushtaq!!SBLOCKS421!!None!!None!!None!!None!!35!!0
-STAT!!115!!B!!Probability & Stat.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Sarwar!!SBLOCKS420!!None!!None!!None!!None!!35!!2
+STAT!!115!!B!!Probability & Stat.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Sarwar!!SBLOCKS420!!None!!None!!None!!None!!35!!3
 STAT!!115!!C!!Probability & Stat.!!3.00!!['T', 'R']!!14:00!!15:15!!S Samuel!!SBLOCKS421!!None!!None!!None!!None!!35!!0
 STAT!!201!!A!!Statis Inference I!!3.00!!['T', 'R']!!09:30!!10:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!20!!8
 STAT!!202!!A!!Statisl Inference II!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Mughal!!SBLOCKS425!!None!!None!!None!!None!!35!!30
@@ -1208,7 +1208,7 @@ UNIV!!100!!T!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S.
 UNIV!!100!!U!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!H Samson!!EBLOCKE332!!EBLOCKE205!!['M']!!14:00!!16:00!!35!!0
 UNIV!!100!!V!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!S Kamran!!EBLOCKE333!!EBLOCKE205!!['W']!!14:00!!16:00!!35!!0
 UNIV!!100!!W!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!I YAQOOB!!EBLOCKE343!!EBLOCKE205!!['F']!!14:00!!16:00!!35!!3
-UNIV!!100!!X!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Nadeem!!EBLOCKE344!!EBLOCKE102!!['F']!!14:00!!16:00!!35!!7
+UNIV!!100!!X!!FOUND UNIV EDUC!!3.00!!['M', 'T', 'W', 'R', 'F']!!10:00!!13:00!!A Nadeem!!EBLOCKE344!!EBLOCKE102!!['F']!!14:00!!16:00!!35!!8
 UNIV!!200!!A!!Critical Thinking!!3.00!!['T', 'R']!!14:00!!15:15!!S Khalid!!SBLOCKS119!!None!!None!!None!!None!!35!!0
 UNIV!!200!!B!!Critical Thinking!!3.00!!['T', 'R']!!15:30!!16:45!!S Khalid!!SBLOCKS119!!None!!None!!None!!None!!35!!0
 URDU!!101!!A!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Virk!!EBLOCKE101!!None!!None!!None!!None!!35!!0
