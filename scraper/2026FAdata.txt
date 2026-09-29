@@ -59,6 +59,7 @@ BIOT!!799A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!T
 BIOT!!799B!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!20
 BIOT!!799C!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!20!!18
 BIOT!!799D!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!B Sadiq!!TBDTBD!!None!!None!!None!!None!!10!!10
+BIOT!!799E!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Irfan!!TBDTBD!!None!!None!!None!!None!!25!!24
 BUSN!!101!!A!!Principles of Acc.!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Gul!!EBLOCKE328!!None!!None!!None!!None!!35!!19
 BUSN!!101!!B!!Principles of Acc.!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Gul!!EBLOCKE328!!None!!None!!None!!None!!35!!19
 BUSN!!101!!C!!Principles of Acc.!!3.00!!['T', 'R']!!08:00!!09:15!!A Saddiqa!!EBLOCKE328!!None!!None!!None!!None!!35!!0
@@ -329,12 +330,12 @@ CPPG!!630!!A!!FEDERALISM, PROVINCI!!3.00!!['M']!!11:30!!15:30!!A Khoso!!EBLOCKE0
 CPPG!!631!!A!!locgov & cdev!!3.00!!['T']!!11:30!!15:30!!R Haque!!EBLOCKE024!!None!!None!!None!!None!!25!!0
 CPPG!!645!!A!!Envr. Issues & Pu Pl!!3.00!!['R']!!11:30!!15:30!!M Rovidad!!EBLOCKE024!!None!!None!!None!!None!!25!!25
 CPPG!!650!!A!!FEDERALISM!!3.00!!['T']!!17:00!!20:00!!A Khoso!!EBLOCKE024!!None!!None!!None!!None!!15!!1
-CPPG!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!35!!35
-CPPG!!699A!!B!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!35!!35
+CPPG!!699A!!A!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Chaudhry!!TBDTBD!!None!!None!!None!!None!!35!!34
+CPPG!!699A!!B!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khoso!!TBDTBD!!None!!None!!None!!None!!35!!34
 CPPG!!699A!!C!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!35!!35
 CPPG!!699A!!D!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!N Khokhar!!TBDTBD!!None!!None!!None!!None!!35!!35
-CPPG!!699A!!E!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!35!!35
-CPPG!!699A!!F!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!35!!35
+CPPG!!699A!!E!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!W Azim!!TBDTBD!!None!!None!!None!!None!!35!!34
+CPPG!!699A!!F!!Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Haque!!TBDTBD!!None!!None!!None!!None!!35!!34
 CPPG!!701!!A!!PP, Politics & Soci.!!3.00!!['M']!!17:00!!20:00!!R Chaudhry!!EBLOCKE002!!None!!None!!None!!None!!10!!10
 CPPG!!703!!A!!Human Development!!3.00!!['W']!!17:00!!20:00!!W Azim!!EBLOCKE002!!None!!None!!None!!None!!10!!0
 CPPG!!705!!A!!Research Methodology!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Rovidad!!TBDTBD!!None!!None!!None!!None!!15!!4
@@ -427,7 +428,7 @@ DATA!!101!!E!!Statistical Methods!!3.00!!['T', 'R']!!14:00!!15:15!!M Raza!!SBLOC
 DATA!!102!!A!!Prob & Prob Distribu!!3.00!!['T', 'R']!!14:00!!15:15!!S Bashir!!SBLOCKS425!!None!!None!!None!!None!!15!!1
 DATA!!102!!B!!Prob & Prob Distribu!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ayub!!SBLOCKS420!!None!!None!!None!!None!!15!!0
 DATA!!102!!C!!Prob & Prob Distribu!!3.00!!['T', 'R']!!08:00!!09:15!!S Ayub!!SBLOCKS425!!None!!None!!None!!None!!15!!1
-DATA!!201!!A!!Statistical Inferenc!!3.00!!['T', 'R']!!09:30!!10:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!15!!8
+DATA!!201!!A!!Statistical Inferenc!!3.00!!['T', 'R']!!09:30!!10:45!!M Mughal!!SBLOCKS420!!None!!None!!None!!None!!15!!9
 DATA!!202!!B!!Python for Data Anal!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A Sarwar!!SBLOCKS420!!None!!None!!None!!None!!35!!8
 DATA!!206!!A!!Fundamentals of Data!!3.00!!['T', 'R']!!09:30!!10:45!!S Hanook!!SBLOCKS421!!None!!None!!None!!None!!15!!0
 DATA!!206!!B!!Fundamentals of Data!!3.00!!['T', 'R']!!11:00!!12:15!!S Bashir!!SBLOCKS421!!None!!None!!None!!None!!15!!2
@@ -511,7 +512,7 @@ ECON!!799E!!A!!Reserach Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M B
 ECON!!799E!!B!!Research Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!T Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!22
 ECON!!799E!!C!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!R Ahmed!!TBDTBD!!None!!None!!None!!None!!25!!24
 ECON!!799E!!D!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Tahir!!TBDTBD!!None!!None!!None!!None!!25!!24
-ECON!!799E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!G Shabbir!!TBDTBD!!None!!None!!None!!None!!25!!24
+ECON!!799E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!G Shabbir!!TBDTBD!!None!!None!!None!!None!!25!!23
 ECON!!COMP!!A!!Comprehensive Exam!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Bhatti!!TBDTBD!!None!!None!!None!!None!!10!!6
 EDUC!!110!!A!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!M. Thomas!!EBLOCKE140!!None!!None!!None!!None!!35!!1
 EDUC!!110!!B!!Foundations of Educ.!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Khokhar!!EBLOCKE140!!None!!None!!None!!None!!35!!0
@@ -658,10 +659,10 @@ FREN!!101!!A!!French 1!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!A Anwar!!EBLOCKE139
 FREN!!101!!B!!French 1!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Anwar!!EBLOCKE139!!None!!None!!None!!None!!20!!0
 FREN!!101!!C!!French 1!!3.00!!['T', 'R']!!12:30!!13:45!!A Anwar!!EBLOCKE139!!None!!None!!None!!None!!20!!0
 FREN!!101!!D!!French 1!!3.00!!['T', 'R']!!15:30!!16:45!!A Anwar!!EBLOCKE139!!None!!None!!None!!None!!20!!0
-FSQM!!501!!A!!Food Saf Ql Mang!!3.00!!['R']!!16:00!!19:00!!Team!!SBLOCKS312!!None!!None!!None!!None!!30!!6
-FSQM!!502!!A!!Food Microb Toxi!!3.00!!['T']!!16:00!!19:00!!B Sadiq!!SBLOCKS312!!None!!None!!None!!None!!30!!6
-FSQM!!505!!A!!safe food & sup. mgt!!3.00!!['M']!!16:00!!19:00!!K Muaz!!SBLOCKS312!!None!!None!!None!!None!!30!!6
-FSQM!!506!!A!!Res. Meth & Biostat!!3.00!!['W']!!16:00!!19:00!!S Hanook!!SBLOCKS312!!None!!None!!None!!None!!30!!6
+FSQM!!501!!A!!Food Saf Ql Mang!!3.00!!['R']!!16:00!!19:00!!Team!!SBLOCKS312!!None!!None!!None!!None!!30!!7
+FSQM!!502!!A!!Food Microb Toxi!!3.00!!['T']!!16:00!!19:00!!B Sadiq!!SBLOCKS312!!None!!None!!None!!None!!30!!7
+FSQM!!505!!A!!safe food & sup. mgt!!3.00!!['M']!!16:00!!19:00!!K Muaz!!SBLOCKS312!!None!!None!!None!!None!!30!!7
+FSQM!!506!!A!!Res. Meth & Biostat!!3.00!!['W']!!16:00!!19:00!!S Hanook!!SBLOCKS312!!None!!None!!None!!None!!30!!7
 FSQM!!699A!!A!!Research Thesis!!6.00!!['M', 'T', 'W', 'R', 'F']!!08:00!!16:00!!B Sadiq!!SBLOCKS445!!None!!None!!None!!None!!20!!15
 FSQM!!699A!!B!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Arshad!!TBDTBD!!None!!None!!None!!None!!20!!19
 FSQM!!699A!!C!!Research Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Khan!!TBDTBD!!None!!None!!None!!None!!20!!19
