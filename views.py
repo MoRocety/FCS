@@ -142,7 +142,7 @@ def submit():
 def update_courses_webhook():
     secret = os.environ.get('WEBHOOK_SECRET')
     token = request.headers.get('X-Webhook-Token')
-    if not secret or not token or not hmac.compare_digest(token, secret):
+    if not secret or not token or not hmac.compare_digest(token.encode("utf-8"), secret.encode("utf-8")):
         return jsonify(error='Unauthorized'), 401
     data = request.get_json(silent=True)
     if not isinstance(data, dict):
@@ -163,6 +163,8 @@ def update_courses_webhook():
         temporary.replace(destination)
         temporary = None
         set_active_term(term)
+        from fcs.availability import observe_catalog
+        observe_catalog(catalog())
         return jsonify(success=True, term_code=term, term_name=decode_term_code(term),
                        courses_loaded=len(sections), departments_count=len({s['department'] for s in sections}))
     except OSError:

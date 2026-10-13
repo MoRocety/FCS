@@ -1,6 +1,6 @@
 # FCS
 
-A course planner for FCCU. Browse undergraduate sections, build a weekly timetable, compare schedules, and keep a draft on your device.
+A course planner and student campus app for FCCU. Plan a week anonymously, or create an account to keep drafts, share schedules, watch seats, and participate in course conversations.
 
 ## Run locally
 
@@ -11,57 +11,81 @@ pip install -r requirements.txt
 flask --app app run --port 5050
 ```
 
-Open http://127.0.0.1:5050. Python 3.11 or later is recommended. The app also exposes `app:app` for existing WSGI deployments, plus `create_app()` for tests and configuration.
+Open [the planner](http://127.0.0.1:5050) or [Campus](http://127.0.0.1:5050/campus). The app exposes `app:app` for WSGI and `create_app()` for isolated tests. Python 3.11 or later is supported by the CI configuration.
 
-## What works
+## Implemented journeys
 
-- Search by course title, code, section, or instructor; filter by department and open seats.
-- Add sections to a week or shortlist alternative sections. Adding another section of the same course replaces it in your week while preserving alternatives in your shortlist.
-- Display all lecture and lab meetings, including weekends and evening times. Overlapping events appear side by side and are marked as conflicts.
-- Show credits, unique course count, conflicts, and unannounced meeting times.
-- Build nested AND/OR/NOT course rules and generate up to 50 schedule options from at most 60 shortlisted sections. A bounded search prevents unmanageable enumeration; results disclose when a limit is reached.
-- Save drafts locally per term. Export/import versioned JSON; print either the weekly or list view.
+- **Plan a semester:** search sections, see lectures/labs and weekend/evening meetings, shortlist alternatives, inspect conflicts, and generate bounded schedule options using nested Boolean course rules.
+- **Keep possibilities:** per-term device drafts plus private named schedules in an account. Open, update, rename, copy, or delete saved drafts. Optimistic versions prevent silently overwriting another save.
+- **Share a week:** deliberately create a revocable, read-only snapshot link. It contains the schedule name and selected course metadata; private shortlist, rules, credit range, and account identity are excluded. Later edits do not alter the snapshot.
+- **Take it elsewhere:** versioned JSON import/export, printing, and weekly ICS calendar export using explicit semester dates and Asia/Karachi time.
+- **Understand courses and teachers:** searchable profiles with overall/difficulty ratings, sample counts, and term-labelled student reviews. One review per subject per term per account; republishing edits it.
+- **Talk and study together:** course discussions, comments, study-group posts, opt-in membership, author removal, and content reporting.
+- **Watch availability:** account seat watches and in-app alerts when a watched section changes from full to open in an observed catalog snapshot. Repeat observations do not duplicate alerts; a new reopening can notify again.
+- **Moderate:** an authorized report queue with hide/dismiss decisions and an audit trail. Hiding a review prevents its author from republishing it through an edit/delete cycle.
 
-Local storage is specific to this browser and device. Export a draft for backup. An import replaces the current draft; sections no longer in the catalog are reported and skipped. The catalog is a snapshot, not registration or a seat reservation. File modification time is not presented as the time course availability was captured.
+The local instance starts without seed accounts or fabricated community content. Account registration does not verify university identity or enrollment. Seat counts remain snapshots and do not reserve seats. Email, push, institutional sign-in, and enrollment verification are not connected.
 
-## Course data
+## Persistence and configuration
 
-`ACTIVE_TERM` identifies the term. The repository searches for `<term>data.txt` in the root first, then `scraper/`, matching both deployed webhook data and the scheduled scraping workflow. The checked-in Spring 2027 data lives in `scraper/2027SPdata.txt`. Undergraduate course numbers below 500 are included, matching the original scope. Comprehensive exams and graduate courses are excluded.
+SQLite lives in `instance/fcs.sqlite3`, with schema version 2. Version 1 heads are upgraded additively at startup. Local state and the session secret are ignored by Git. A persistent random session secret is created in `instance/.session-secret` unless `SECRET_KEY` is configured. Database and secret files use restricted filesystem permissions.
 
-Changes to the active term or the data file automatically invalidate the process-local catalog cache. Parsing validates the data before it is served. If the catalog is missing, the page still opens and reports that data is unavailable.
+| Environment variable | Purpose |
+| --- | --- |
+| `SECRET_KEY` | Stable session-signing secret for the deployment |
+| `FCS_DATABASE` | SQLite path; defaults to the application instance directory |
+| `FCS_COOKIE_NAME` | Cookie name, useful for isolated local test instances |
+| `FCS_SECURE_COOKIES=1` | Secure session cookies on an HTTPS deployment |
+| `WEBHOOK_SECRET` | Required authentication for course-data ingestion |
+| `PORT` | Direct `python app.py` port; Flask CLI uses `--port` |
 
-The existing GitHub workflow scrapes on a schedule and sends data to `/webhook/update-courses`. Configure `WEBHOOK_SECRET` and `WEBHOOK_URL` in the deployment and repository secrets. No default webhook secret is accepted. Term codes and rows are validated before an atomic data-file replacement. Request bodies are limited to 2 MB.
+Promote an existing account for local moderation:
 
-The scraper is preserved; this work does not fetch new institutional data or change registration records. Capture-time metadata, ingestion history, and stale-data monitoring are planned next.
+```sh
+flask --app app promote-user existing_username
+```
+
+There is no public role-change endpoint. This command is for a trusted operator with access to the application filesystem. Back up the SQLite database and session secret before moving hosts. Run behind a production WSGI server and HTTPS when deploying; no deployment or remote publication is performed by this iteration.
+
+## Catalog and ingestion
+
+`ACTIVE_TERM` identifies the active term. Catalog files are found in the root first, then `scraper/`, matching deployed webhook updates and the existing scraping workflow. The checked-in Spring 2027 data is in `scraper/2027SPdata.txt`. Undergraduate course numbers below 500 are included; comprehensive exams and graduate courses are excluded.
+
+The catalog repository validates rows and invalidates its cache on file changes. Capture time is unavailable for the bundled data; local file modification time is not presented as scrape freshness. The webhook requires `X-Webhook-Token`, validates term/content before replacement, updates the active term atomically, and observes the new revision for seat transitions. Signed-in watch/notification reads also observe changed local files. Observation timestamps say when FCS noticed a revision, not when the university captured it.
+
+The scraping workflow is preserved. This work does not fetch new institutional data or change registration records. Source capture metadata, ingestion completeness monitoring, a durable notification worker, and multi-host PostgreSQL operation remain later steps.
 
 ## Structure
 
 ```text
-app.py                   application factory and WSGI entry point
-fcs/catalog.py           validated text adapter and catalog repository
-fcs/scheduling.py        conflict rules and bounded backtracking
-fcs/api.py               /api/v1 catalog and generation endpoints
-views.py                 pages, webhook, and legacy HTTP adapters
-static/planner.js        browser state, rendering, draft import/export
-static/planner.css       responsive planner and print styles
-static/rule-builder.js   nested Boolean block editor and rule validation
-fcs/rules.py             rule validation and partial evaluation
-templates/planner.html   accessible page structure
-tests/                   scheduling, catalog, and API regression tests
-docs/                    product and architecture plans
-scraper/                 existing course ingestion pipeline
+app.py                      application factory, configuration, administrative CLI
+fcs/catalog.py              validated course-data adapter and cache
+fcs/scheduling.py            bounded schedule search
+fcs/rules.py                 Boolean rule validation and partial evaluation
+fcs/database.py              schema and transaction management
+fcs/identity.py              hashed passwords, sessions, CSRF, sign-in throttling
+fcs/services.py              shared catalog identities and ownership helpers
+fcs/library.py               private schedules, snapshot sharing, calendar endpoint
+fcs/calendar_export.py       recurring calendar serialization
+fcs/community.py             reviews, discussions, groups, reporting, moderation
+fcs/availability.py          observations, watches, and notifications
+static/account.js           shared browser session client and account dialog
+static/campus.js            campus journeys and dialogs
+static/planner.js           planner state, rendering, persistence integration
+static/rule-builder.js      nested expression editor
+static/shared.js            read-only shared schedule view
+views.py                    original-page compatibility and ingestion webhook
 ```
-
-The original interface remains at `/old`, and its filtering/generation endpoints remain available. `/submit` now uses the bounded scheduling service and includes `limited` in its response. Historical `trying.html`, `dataread.py`, and `combcheck.py` remain for reference and compatibility; the new planner does not depend on them.
 
 ## Verification
 
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
+node --test tests/*.test.mjs
 node --check static/planner.js
-node --test tests/rules.test.mjs
+node --check static/campus.js
+node --check static/account.js
+node --check static/shared.js
 ```
 
-Read [the implementation roadmap](docs/ROADMAP.md) and [the architecture decisions](docs/ARCHITECTURE.md) for the path to shared schedules, reviews, discussions, and seat alerts. Those platform features are planned, not implemented in this iteration.
-
-See [nested schedule rules](docs/RULES.md) for examples, JSON format, and migration behavior.
+See [the platform plan](docs/PLATFORM_PLAN.md), [delivery roadmap](docs/ROADMAP.md), [architecture decisions](docs/ARCHITECTURE.md), [Boolean rules](docs/RULES.md), and [verification record](docs/VERIFICATION.md). GitHub Actions runs the backend and JavaScript checks; local success does not imply a remote CI run.

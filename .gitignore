@@ -68,3 +68,10 @@ vintage/
 .vscode
 
 
+
+# Local application state and session credentials
+instance/
+*.sqlite3
+*.sqlite3-journal
+*.sqlite3-wal
+*.sqlite3-shm

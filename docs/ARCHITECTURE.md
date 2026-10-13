@@ -1,8 +1,18 @@
 # FCS architecture decisions
 
+## Campus feature implementation
+
+The application now persists account and community state in SQLite (schema version 2). Feature blueprints are separated into identity, library, community, and availability modules, with shared catalog identity/ownership helpers. The browser session client is shared by the planner and campus pages. No additional web framework or external service is required to run the local app.
+
+Schedules are owned resources with atomic version-checked updates. Share tokens expose immutable selected-section snapshots and can be revoked. Reviews are unique per owner/subject/term; hiding them is separate from ordinary author withdrawal. Study-group membership is idempotent. Reports and moderation decisions have their own records.
+
+Catalog observation is transactional: a changed revision creates a sequence ID, compares previous availability, writes per-watch opening notifications, and replaces the current seat map. The sequence distinguishes separate reopenings even when an older content hash recurs. First observation, already-open watches, and missing sections do not fabricate opening alerts. The existing ingestion webhook and signed-in watch/notification requests trigger observations; there is no external delivery worker yet.
+
+Session cookies are HTTP-only and same-site. Stateful JSON writes require a session CSRF header. Passwords are hashed; sign-in attempts are throttled. No public moderator-promotion API exists. A local CLI command handles operator-authorized role changes. Test accounts use a separate database and cookie name. Filesystem state and credentials are excluded from Git.
+
 ## 1. Keep Flask and build a modular monolith
 
-Flask already fits the current hosting setup. Replacing the entire stack would combine a migration with product discovery. Keep one application, separate domain services, and add persistence when it becomes necessary. Use `create_app()` for isolated tests and retain `app:app` for WSGI.
+Flask already fits the current hosting setup. Replacing the entire stack would combine a migration with product discovery. Keep one application and separate services; SQLite now handles the persisted journeys. Use `create_app()` for isolated tests and retain `app:app` for WSGI.
 
 ```mermaid
 flowchart LR
@@ -41,9 +51,9 @@ Next: blocked personal time, travel buffers, section locks, preferred-day rankin
 
 The new planner uses one template, one stylesheet, and separate planner and rule-builder JavaScript modules. It has no CDN runtime dependencies. Data-derived HTML is escaped. The UI uses native inputs, semantic regions, focus indicators, modal dialog behavior, and live status messages. Responsive layout stacks the catalog above the calendar on small screens; the calendar can scroll horizontally. Print rules retain the chosen view.
 
-The JavaScript module currently combines state transitions and rendering. As features grow, extract pure planner state operations, persistence adapters, API client, and calendar/catalog components before adding accounts or collaboration. A framework becomes useful if measured interface complexity warrants it; it is not required for this iteration.
+The planner module combines its state transitions and rendering; account, campus, shared-view, and rule-builder modules have distinct responsibilities. As features grow, extract pure planner state operations, persistence adapters, API client, and calendar/catalog components before adding accounts or collaboration. A framework becomes useful if measured interface complexity warrants it; it is not required for this iteration.
 
-## 5. Device drafts now; server schedules later
+## 5. Device drafts and owned server schedules
 
 Current exports use version 2 with a nested `rules` expression, described in [RULES.md](RULES.md). Version 1 remains importable and migrates automatically. Historical version 1 JSON format:
 
@@ -59,7 +69,7 @@ Current exports use version 2 with a nested `rules` expression, described in [RU
 
 Only catalog references are imported. Unknown sections are reported, the term must match, input size is limited, IDs are deduplicated, and required keys must remain in the shortlist. The draft is saved under `fcs:planner:v1:<term>`. Imports replace current state. Clear-shortlist leaves the displayed week intact. Export is a backup, not a public share link.
 
-Future server schedules need versioned writes and conflict responses for concurrent edits. Shared schedules need independent read-only tokens and explicit revocation. Do not turn local draft IDs into access tokens.
+Server schedules now use versioned writes and conflict responses for concurrent edits. Shared schedules use independent read-only tokens and explicit revocation. Do not turn local draft IDs into access tokens.
 
 ## 6. Harden ingestion while preserving deployment
 
@@ -101,3 +111,8 @@ Use authentication and ownership checks on every persisted user resource. Pagina
 Unit tests cover scheduling parity against exhaustive enumeration on a small dataset, alternate meetings, adjacency, decimal credits, and limits. API tests cover invalid input, missing catalogs, legacy adapters, and webhook rejection. CI runs these checks on supported Python versions and checks JavaScript syntax.
 
 Before production expansion: add structured ingestion logs, monitoring for stale snapshots, concurrency tests, real browser regression tests in CI, source parser fixtures, backup/recovery verification, and deployment health checks. Before social publishing: authorization tests, moderation tooling, reporting, rate limits, and deletion policies.
+
+
+## Remaining operational scope
+
+SQLite is suitable for this single-host local iteration; distributed deployment, migration upgrades, backup automation, notification delivery/outbox workers, password recovery, account deletion/export tooling, enrollment verification, and moderation appeals are not implemented. Reviews are explicitly labelled unverified and show their sample counts. No seed content is used in the real instance. These boundaries do not disable the implemented local journeys.

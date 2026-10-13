@@ -1,3 +1,5 @@
+import { readCreditRange } from "./draft-state.js";
+import { api, signedIn } from "./account.js";
 import {
   emptyRules,
   fromRequired,
@@ -14,6 +16,8 @@ const state = {
   rules: emptyRules(),
   visible: 30,
   results: [],
+  library: null,
+  creditRange: { min: 12, max: 18 },
 };
 const palette = [
   ["#e7eedb", "#8aa563", "#425632"],
@@ -68,16 +72,7 @@ function notify(message, error = false) {
 }
 function save() {
   try {
-    localStorage.setItem(
-      draftKey(),
-      JSON.stringify({
-        version: 2,
-        term: state.catalog.term,
-        section_ids: state.selected,
-        shortlist_ids: state.shortlist,
-        rules: state.rules,
-      }),
-    );
+    localStorage.setItem(draftKey(), JSON.stringify(currentDraft()));
     $("save-status").textContent = "Saved on this device";
   } catch {
     $("save-status").textContent =
@@ -92,6 +87,9 @@ function restore() {
     state.selected = data.selected;
     state.shortlist = data.shortlist;
     state.rules = data.rules;
+    state.creditRange = { ...data.credit_range };
+    $("min-credits").value = data.credit_range.min;
+    $("max-credits").value = data.credit_range.max;
     if (data.missing)
       notify(
         `${data.missing} saved section(s) are no longer available and were removed.`,
@@ -124,6 +122,18 @@ function validateDraft(data) {
     throw new Error(
       "Use an FCS JSON export from the current term. Imports allow up to 60 sections.",
     );
+  const credit_range = data.credit_range || { min: 12, max: 18 };
+  if (
+    !credit_range ||
+    typeof credit_range.min !== "number" ||
+    typeof credit_range.max !== "number" ||
+    !Number.isFinite(credit_range.min) ||
+    !Number.isFinite(credit_range.max) ||
+    credit_range.min < 0 ||
+    credit_range.max > 30 ||
+    credit_range.min > credit_range.max
+  )
+    throw new Error("Invalid saved credit range.");
   const map = lookup();
   const selected = [...new Set(data.section_ids)].filter((id) => map.has(id));
   const shortlist = [...new Set(data.shortlist_ids)].filter((id) =>
@@ -135,6 +145,7 @@ function validateDraft(data) {
   return {
     selected,
     shortlist,
+    credit_range,
     rules:
       data.version === 1
         ? fromRequired(
@@ -173,7 +184,7 @@ function renderCatalog() {
       .slice(0, state.visible)
       .map(
         (s) =>
-          `<article class="course-card"><div class="course-meta"><span class="course-code">${esc(code(s))} <span class="muted">/ ${esc(s.section)}</span></span><span class="seat-badge ${s.available_seats <= 0 ? "closed" : ""}">${s.available_seats > 0 ? `${s.available_seats} seats open` : "Full"} · ${s.credits} cr</span></div><h3>${esc(s.name)}</h3><div class="course-details">${esc(s.instructor)}<br>${s.meetings.length ? s.meetings.map((m) => esc(meetingLabel(m))).join("<br>") : "Meeting time to be announced"}</div><div class="course-actions"><button class="add-button ${state.selected.includes(s.id) ? "selected" : ""}" data-action="select" data-id="${esc(s.id)}">${state.selected.includes(s.id) ? "✓ In your week" : "+ Add to week"}</button><button class="shortlist-button ${state.shortlist.includes(s.id) ? "selected" : ""}" data-action="shortlist" data-id="${esc(s.id)}">${state.shortlist.includes(s.id) ? "✓ Shortlisted" : "+ Shortlist"}</button></div></article>`,
+          `<article class="course-card"><div class="course-meta"><span class="course-code">${esc(code(s))} <span class="muted">/ ${esc(s.section)}</span></span><span class="seat-badge ${s.available_seats <= 0 ? "closed" : ""}">${s.available_seats > 0 ? `${s.available_seats} seats open` : "Full"} · ${s.credits} cr</span></div><h3>${esc(s.name)}</h3><div class="course-details">${esc(s.instructor)}<br>${s.meetings.length ? s.meetings.map((m) => esc(meetingLabel(m))).join("<br>") : "Meeting time to be announced"}</div><div class="course-actions"><a class="text-button" href="/campus?kind=course&subject=${encodeURIComponent(s.course_key)}">Details ↗</a><button data-watch="${esc(s.id)}" class="text-button">Watch seats</button><button class="add-button ${state.selected.includes(s.id) ? "selected" : ""}" data-action="select" data-id="${esc(s.id)}">${state.selected.includes(s.id) ? "✓ In your week" : "+ Add to week"}</button><button class="shortlist-button ${state.shortlist.includes(s.id) ? "selected" : ""}" data-action="shortlist" data-id="${esc(s.id)}">${state.shortlist.includes(s.id) ? "✓ Shortlisted" : "+ Shortlist"}</button></div></article>`,
       )
       .join("") ||
     '<div class="empty-state">No sections match these filters.<br>Try another search or turn off “Open seats only.”</div>';
@@ -474,7 +485,157 @@ function download(name, content, type) {
   a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
+function currentDraft() {
+  const range = readCreditRange($("min-credits").value, $("max-credits").value);
+  if (range) state.creditRange = range;
+  return {
+    version: 2,
+    term: state.catalog.term,
+    section_ids: state.selected,
+    shortlist_ids: state.shortlist,
+    rules: state.rules,
+    credit_range: { ...state.creditRange },
+  };
+}
 function bind() {
+  $("course-list").addEventListener("click", async (event) => {
+    const button = event.target.closest("[data-watch]");
+    if (!button || !(await signedIn())) return;
+    button.disabled = true;
+    try {
+      await api("/watches", {
+        method: "POST",
+        data: { term: state.catalog.term, section_id: button.dataset.watch },
+      });
+      notify(
+        "Seat watch saved. Open Campus → Seat watches to manage it. Alerts appear in the app when an observed snapshot changes from full to open.",
+      );
+    } catch (error) {
+      notify(error.message, true);
+    } finally {
+      button.disabled = false;
+    }
+  });
+  async function saveNamed(copy = false) {
+    if (!(await signedIn())) return;
+    let dialog = $("save-draft-dialog");
+    if (!dialog) {
+      dialog = document.createElement("dialog");
+      dialog.id = "save-draft-dialog";
+      dialog.className = "library-dialog";
+      dialog.innerHTML =
+        '<button class="dialog-close" data-close-save aria-label="Close save dialog">×</button><h2>Keep this possibility.</h2><p class="muted small">Your draft, shortlist, rules, and credit range stay private in your account. Share a selected schedule separately from Campus.</p><form class="platform-form"><label>Schedule name<input name="name" maxlength="80" required></label><p class="form-error" role="status"></p><button class="primary-button">Save draft ↗</button></form>';
+      document.body.append(dialog);
+      dialog
+        .querySelector("[data-close-save]")
+        .addEventListener("click", () => dialog.close());
+      dialog.querySelector("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const form = event.target,
+          button = form.querySelector("button"),
+          name = form.elements.name.value.trim();
+        button.disabled = true;
+        try {
+          if (!readCreditRange($("min-credits").value, $("max-credits").value))
+            throw new Error(
+              "Choose a valid credit range before saving this named draft.",
+            );
+          const updating = state.library && dialog.dataset.copy !== "true";
+          const saved = await api(
+            updating ? `/library/${state.library.id}` : "/library",
+            {
+              method: updating ? "PUT" : "POST",
+              data: {
+                name,
+                draft: currentDraft(),
+                ...(updating ? { version: state.library.version } : {}),
+              },
+            },
+          );
+          state.library = { id: saved.id, version: saved.version, name };
+          $("save-library").textContent = "Save changes";
+          $("save-copy").hidden = false;
+          dialog.close();
+          notify(
+            "Named draft saved to your account. Open Campus → My schedules to view or share it.",
+          );
+        } catch (error) {
+          form.querySelector(".form-error").textContent = error.message;
+        } finally {
+          button.disabled = false;
+        }
+      });
+    }
+    dialog.dataset.copy = String(copy);
+    dialog.querySelector("input").value = state.library?.name || "My semester";
+    dialog.querySelector(".form-error").textContent = "";
+    dialog.showModal();
+  }
+  $("save-library").addEventListener("click", () => saveNamed());
+  $("save-copy").addEventListener("click", () => saveNamed(true));
+  $("calendar-export").addEventListener("click", () => {
+    let dialog = $("calendar-dialog");
+    if (!dialog) {
+      dialog = document.createElement("dialog");
+      dialog.id = "calendar-dialog";
+      dialog.innerHTML =
+        '<button class="dialog-close" data-close-calendar aria-label="Close">×</button><h2>Take your week with you.</h2><p class="muted small">Choose your semester dates. Events repeat weekly in Asia/Karachi time. Confirm dates with your university.</p><form class="calendar-dates"><label>First day<input name="start" type="date" required></label><label>Last day<input name="end" type="date" required></label><p class="form-error" role="status"></p><button class="primary-button">Download calendar ↗</button></form>';
+      document.body.append(dialog);
+      dialog
+        .querySelector("[data-close-calendar]")
+        .addEventListener("click", () => dialog.close());
+      dialog.querySelector("form").addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        try {
+          const dates = Object.fromEntries(new FormData(form));
+          const response = await api("/calendar-export", {
+            method: "POST",
+            data: { draft: currentDraft(), ...dates },
+            raw: true,
+          });
+          download(
+            `fcs-${state.catalog.term}.ics`,
+            await response.text(),
+            "text/calendar",
+          );
+          dialog.close();
+          notify(
+            "Calendar exported. Classes with unannounced meeting times are omitted.",
+          );
+        } catch (error) {
+          form.querySelector(".form-error").textContent = error.message;
+        }
+      });
+    }
+    dialog.showModal();
+  });
+  const savedId = new URLSearchParams(location.search).get("saved");
+  if (savedId)
+    api(`/library/${encodeURIComponent(savedId)}`)
+      .then((saved) => {
+        const draft = validateDraft(saved.draft);
+        state.selected = draft.selected;
+        state.shortlist = draft.shortlist;
+        state.rules = draft.rules;
+        state.creditRange = { ...draft.credit_range };
+        state.library = {
+          id: saved.id,
+          version: saved.version,
+          name: saved.name,
+        };
+        $("save-library").textContent = "Save changes";
+        $("save-copy").hidden = false;
+        $("min-credits").value = draft.credit_range.min;
+        $("max-credits").value = draft.credit_range.max;
+        renderAll();
+        save();
+        notify(
+          `Opened “${saved.name}”. Use Save changes to update this draft, or Save a copy for another option.`,
+        );
+      })
+      .catch((error) => notify(error.message, true));
+
   ruleBuilder = mountRuleBuilder({
     element: $("rule-builder"),
     getRules: () => state.rules,
@@ -519,7 +680,10 @@ function bind() {
     save();
   });
   ["min-credits", "max-credits"].forEach((id) =>
-    $(id).addEventListener("input", invalidateResults),
+    $(id).addEventListener("input", () => {
+      invalidateResults();
+      save();
+    }),
   );
   $("generate-button").addEventListener("click", generate);
   $("generated-results").addEventListener("click", (event) => {
@@ -543,17 +707,7 @@ function bind() {
   $("export-button").addEventListener("click", () =>
     download(
       `fcs-${state.catalog.term}-schedule.json`,
-      JSON.stringify(
-        {
-          version: 2,
-          term: state.catalog.term,
-          section_ids: state.selected,
-          shortlist_ids: state.shortlist,
-          rules: state.rules,
-        },
-        null,
-        2,
-      ),
+      JSON.stringify(currentDraft(), null, 2),
       "application/json",
     ),
   );
@@ -568,6 +722,12 @@ function bind() {
       state.selected = draft.selected;
       state.shortlist = draft.shortlist;
       state.rules = draft.rules;
+      state.creditRange = { ...draft.credit_range };
+      $("min-credits").value = draft.credit_range.min;
+      $("max-credits").value = draft.credit_range.max;
+      state.library = null;
+      $("save-library").textContent = "Save named draft";
+      $("save-copy").hidden = true;
       invalidateResults();
       renderAll();
       save();
@@ -582,10 +742,6 @@ function bind() {
   });
   $("print-button").addEventListener("click", () => window.print());
 }
-$("roadmap-button").addEventListener("click", () =>
-  $("roadmap-dialog").showModal(),
-);
-$("close-roadmap").addEventListener("click", () => $("roadmap-dialog").close());
 async function init() {
   try {
     const response = await fetch("/api/v1/catalog");
@@ -603,6 +759,8 @@ async function init() {
         .map((d) => `<option value="${esc(d)}">${esc(d)}</option>`)
         .join("");
     restore();
+    const requestedCourse = new URLSearchParams(location.search).get("course");
+    if (requestedCourse) $("search").value = requestedCourse;
     bind();
     renderAll();
   } catch (error) {

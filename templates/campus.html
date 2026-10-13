@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>FCS · Your campus</title>
+    <link rel="icon" href="{{ url_for('static',filename='favicon.png') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='planner.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='platform.css') }}"
+    />
+    <script
+      type="module"
+      src="{{ url_for('static',filename='campus.js') }}"
+    ></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"
+        ><span class="brand-mark">f</span> FCS<span class="brand-caption"
+          >YOUR CAMPUS, CONNECTED</span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="/" class="campus-nav-link">Schedule planner</a
+        ><span class="nav-active">Campus</span>
+      </nav>
+      <a class="campus-nav-link mobile-visible" href="/">Planner ↗</a
+      ><button class="account-button" data-account-button>Sign in</button>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">YOUR SEMESTER HAS A COMMUNITY.</p>
+          <h1>A little more <em>connected.</em></h1>
+          <p class="intro-copy">
+            Course conversations, shared experiences, and the plans you’re
+            making next.
+          </p>
+        </div>
+        <div class="intro-aside">
+          <span id="campus-term">Loading catalog…</span
+          ><small
+            >Student feedback is unverified. Seat counts are catalog
+            snapshots.</small
+          >
+        </div>
+      </section>
+      <div class="campus-tabs" role="tablist" aria-label="Campus features">
+        <button data-tab="explore" role="tab" aria-selected="true">
+          Explore courses & teachers</button
+        ><button data-tab="schedules" role="tab" aria-selected="false">
+          My schedules</button
+        ><button data-tab="watches" role="tab" aria-selected="false">
+          Seat watches</button
+        ><button data-tab="alerts" role="tab" aria-selected="false">
+          Alerts
+          <span
+            id="alert-badge"
+            class="notifications-badge"
+            hidden
+          ></span></button
+        ><button
+          data-tab="moderation"
+          role="tab"
+          aria-selected="false"
+          id="moderation-tab"
+          hidden
+        >
+          Moderation
+        </button>
+      </div>
+      <div
+        id="campus-notice"
+        class="notice platform-notice"
+        role="status"
+        aria-live="polite"
+      ></div>
+      <section id="campus-content" role="tabpanel">
+        <div class="hub-empty">Loading your campus…</div>
+      </section>
+      <footer>
+        <span><strong>FCS</strong> &nbsp; A better way to navigate campus.</span
+        ><span
+          >Planning is just the beginning.
+          <span class="footer-star">✳</span></span
+        >
+      </footer>
+    </main>
+    <dialog id="subject-dialog" class="subject-dialog">
+      <button
+        class="dialog-close"
+        data-close-subject
+        aria-label="Close course details"
+      >
+        ×
+      </button>
+      <div id="subject-body"></div>
+    </dialog>
+    <dialog id="library-dialog" class="library-dialog">
+      <button
+        class="dialog-close"
+        data-close-library
+        aria-label="Close saved schedule"
+      >
+        ×
+      </button>
+      <div id="library-body"></div>
+    </dialog>
+  </body>
+</html>

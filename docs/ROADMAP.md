@@ -1,10 +1,16 @@
 # FCS product and delivery plan
 
+## Current implementation status — October 13, 2026
+
+The local app now includes accounts, private named/versioned schedules, read-only revocable shares, ICS calendar export, course and teacher reviews, course discussions, study-group membership, comments, reporting/moderation, seat watches, and in-app opening alerts. Persistence uses SQLite on one host, with separate API modules for identity, library, community, and availability. See PLATFORM_PLAN.md for the implemented journeys and boundaries.
+
+Institutional sign-in, enrollment verification, email/push delivery, an ingestion worker/outbox, multi-host PostgreSQL, source capture-time metadata, and actual student usability testing remain future work. Historical phase descriptions below describe the larger direction; the local implementation has delivered the first slices of phases 2–5.
+
 ## Direction
 
 Make FCS the place students use to plan a semester, understand their options, and connect around courses. The first useful outcome is a workable week. Community features should make course decisions more informed without making schedule planning harder.
 
-Start with FCCU and one active term. Preserve the scraper and Flask deployment while separating the domain logic from page routes. Do not introduce a new frontend framework, a database, accounts, or distributed services until a feature needs them. A useful planner should work before a student signs in.
+Start with FCCU and one active term. Preserve the scraper and Flask deployment while separating the domain logic from page routes. Introduce persistence and accounts for features that need ownership and cross-visit state; keep the planner independent of sign-in. A useful planner should work before a student signs in.
 
 ## Current system audit
 
@@ -35,7 +41,7 @@ Delivered:
 
 ## Phase 2 — persistence and schedule sharing
 
-Introduce PostgreSQL and migrations when accounts or cross-device saving are built. Add an identity provider, private schedules, named draft versions, and explicit share links. Keep anonymous device drafts and offer a one-time import after sign-in.
+SQLite implements local account persistence now. Move to PostgreSQL and formal migration tooling when multi-host deployment is needed. Add an identity provider, private schedules, named draft versions, and explicit share links. Keep anonymous device drafts and offer a one-time import after sign-in.
 
 Core entities: User, Term, Course, Section, Meeting, Instructor, Schedule, ScheduleItem, ShareLink, and CatalogRevision. Distinguish a durable course from a term-specific section. Store snapshot references so changing catalogs can be reconciled without silently deleting a student's plan. Share links should be random, revocable, and read-only by default; private schedules remain private.
 

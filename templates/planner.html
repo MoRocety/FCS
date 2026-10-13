@@ -10,6 +10,10 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='planner.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='platform.css') }}"
+    />
     <script
       type="module"
       src="{{ url_for('static', filename='planner.js') }}"
@@ -24,9 +28,11 @@
       >
       <nav aria-label="Main navigation">
         <span class="nav-active">Schedule planner</span
-        ><button id="roadmap-button" class="nav-link">What’s next ↗</button>
+        ><a href="/campus" class="campus-nav-link">Campus ↗</a>
       </nav>
-      <span class="term-badge" id="term-label">{{ active_term }}</span>
+      <a href="/campus" class="campus-nav-link mobile-visible">Campus ↗</a
+      ><button class="account-button" data-account-button>Sign in</button
+      ><span class="term-badge" id="term-label">{{ active_term }}</span>
     </header>
     <main>
       <section class="intro">
@@ -132,7 +138,12 @@
           <div class="schedule-toolbar">
             <span id="save-status">Drafts save on this device</span>
             <div>
-              <button id="import-button" class="text-button">↑ Import</button
+              <button id="save-library" class="text-button">
+                Save named draft</button
+              ><button id="save-copy" class="text-button" hidden>
+                Save a copy</button
+              ><button id="calendar-export" class="text-button">Calendar</button
+              ><button id="import-button" class="text-button">↑ Import</button
               ><button id="export-button" class="text-button">↓ Export</button
               ><button id="print-button" class="text-button">Print</button>
             </div>
@@ -264,37 +275,5 @@
         >
       </footer>
     </main>
-    <dialog id="roadmap-dialog">
-      <button id="close-roadmap" class="dialog-close" aria-label="Close">
-        ×
-      </button>
-      <p class="eyebrow">THE NEXT CHAPTER</p>
-      <h2>More than a timetable.</h2>
-      <p>
-        We’re starting with a better planner. These are planned next steps, and
-        aren’t available yet.
-      </p>
-      <div class="roadmap-item">
-        <strong>Course & teacher reviews</strong
-        ><span
-          >Useful context from students, with moderation and verified
-          enrollment.</span
-        >
-      </div>
-      <div class="roadmap-item">
-        <strong>Your campus community</strong
-        ><span>Course discussions, shared schedules, and study groups.</span>
-      </div>
-      <div class="roadmap-item">
-        <strong>Seat alerts</strong
-        ><span
-          >Watch a section and get notified when availability changes.</span
-        >
-      </div>
-      <div class="roadmap-item">
-        <strong>Take your schedule anywhere</strong
-        ><span>Account sync, share links, and calendar integration.</span>
-      </div>
-    </dialog>
   </body>
 </html>

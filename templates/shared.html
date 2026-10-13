@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>{{ schedule.name }} · FCS shared schedule</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='planner.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='platform.css') }}"
+    />
+    <script
+      type="module"
+      src="{{ url_for('static',filename='shared.js') }}"
+    ></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/"><span class="brand-mark">f</span> FCS</a
+      ><span class="term-badge">{{ schedule.term }} · shared snapshot</span>
+    </header>
+    <main>
+      <section class="shared-intro">
+        <p class="eyebrow">A WEEK WORTH SHARING</p>
+        <h1>{{ schedule.name }}</h1>
+        <p class="snapshot-note">
+          This is a read-only snapshot. Availability and class times may have
+          changed since it was shared. Private shortlist and rule preferences
+          are not included.
+        </p>
+      </section>
+      <div id="shared-week" class="shared-grid"></div>
+      <div id="shared-unknown" class="snapshot-note"></div>
+      <div class="shared-tools">
+        <a class="primary-button button-link" href="/"
+          >Build my own schedule ↗</a
+        ><button id="shared-download" class="text-button">
+          Download planner JSON</button
+        ><button id="shared-print" class="text-button">Print</button>
+      </div>
+      <footer>
+        <span><strong>FCS</strong> &nbsp; Your campus, connected.</span>
+      </footer>
+    </main>
+    <script id="shared-data" type="application/json">
+      {{ schedule | tojson }}
+    </script>
+  </body>
+</html>

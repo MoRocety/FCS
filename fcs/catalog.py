@@ -86,6 +86,7 @@ class CatalogRepository:
             content = path.read_text(encoding='utf-8')
             sections = parse_rows(content)
             self._catalog = {'term': term, 'term_name': decode_term_code(term),
+                'source_mtime_ns': stat.st_mtime_ns,
                 'file_modified_at': datetime.fromtimestamp(stat.st_mtime, timezone.utc).isoformat(),
                 'revision': hashlib.sha256(content.encode('utf-8')).hexdigest(),
                 'departments': sorted({s['department'] for s in sections}), 'sections': sections}

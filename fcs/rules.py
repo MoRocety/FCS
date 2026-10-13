@@ -3,7 +3,7 @@ MAX_DEPTH = 8
 MAX_NODES = 80
 
 
-def validate_rule(rule, course_keys):
+def validate_rule(rule, course_keys, allow_incomplete=False):
     count = 0
 
     def visit(node, depth, root=False):
@@ -17,15 +17,15 @@ def validate_rule(rule, course_keys):
         if op == 'course':
             if set(node) != {'op', 'course_key', 'present'} or not isinstance(node['course_key'], str) or type(node['present']) is not bool:
                 raise ValueError('Invalid course predicate')
-            if node['course_key'] not in course_keys:
+            if node['course_key'] not in course_keys and not (allow_incomplete and node['course_key'] == ''):
                 raise ValueError('Every rule course must have a section in your shortlist')
             return dict(node)
         if op not in ('and', 'or', 'not') or set(node) != {'op', 'children'} or not isinstance(node['children'], list):
             raise ValueError('Use AND, OR, NOT, or a course predicate')
         children = node['children']
-        if op == 'not' and len(children) != 1:
+        if op == 'not' and (len(children)>1 or (not allow_incomplete and len(children)!=1)):
             raise ValueError('NOT must contain exactly one expression')
-        if not children and not (root and op == 'and'):
+        if not allow_incomplete and not children and not (root and op == 'and'):
             raise ValueError('Add a rule to each group, or remove the empty group')
         return {'op': op, 'children': [visit(child, depth + 1) for child in children]}
 

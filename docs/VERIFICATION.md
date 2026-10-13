@@ -28,3 +28,13 @@ Preview: [nested rule builder](assets/rule-builder.jpg). New drafts use version 
 22 backend tests and 11 JavaScript logic tests pass. Browser checks verified unfinished course placeholders, Undo/Redo, moving a condition into another group through the keyboard-accessible menu, negative condition feedback, wrapping the entire expression in NOT, and undoing those changes. Existing saved expressions retained their meaning. Current-week match badges are distinct from rule validation. The 390-pixel document width remains within its viewport.
 
 The editor preserves the original inner AND/OR scope when switching an existing multi-condition group to NOT. Live preview and subtree movement have pure regression tests. Actual student comprehension testing remains future work; see RULE_EDITOR_DESIGN.md.
+
+## Persisted campus features — October 13, 2026
+
+41 backend tests and 14 JavaScript logic tests pass. Coverage includes session/CSRF boundaries, account and content ownership, login/logout, schedule version conflicts, immutable share snapshots and revocation, calendar dates/recurrence/escaping, course and instructor reviews, review uniqueness, moderation audit and republishing protection, thread/comment visibility, group membership, watch ownership, repeated seat-opening cycles, alert deduplication, persistent database accounts, and keeping the last valid credit range during partial edits.
+
+Browser tests ran against `localhost:5051` with a separate disposable SQLite database and session-cookie name. Verified account registration/sign-in, course review submission, study-group creation/joining, posting a reply, adding a seat watch, saving a named draft, reopening/updating that draft, creating a read-only snapshot, and rendering its lecture and lab meetings. The real local database remains empty of seed accounts, reviews, discussions, schedules, and watches.
+
+ICS response content and recurrence are verified by tests. In-app browser file-download completion remains unverified, as in the earlier planner iteration. Moderator decisions and seat transitions were exercised in backend tests; no actual university seat change or external notification was simulated in the real instance. Email/push delivery, institution identity verification, remote deployment, and a remote CI run remain outside this local implementation.
+
+Catalog observation also checks source-file modification order, preventing a stale concurrent reader from rolling back the head and fabricating a second reopening. Tests cover this case and the additive schema upgrade. This ordering watermark is not presented as university capture time.
