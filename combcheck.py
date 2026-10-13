@@ -95,11 +95,7 @@ def clash_check(courses):
 
             if course1_days.intersection(course2_days):
                 
-                if (course1_start <= course2_start <= course1_end)\
-                    or (course1_start <= course2_end <= course1_end)\
-                    or (course2_start <= course1_start <= course2_end)\
-                    or (course2_start <= course1_end <= course2_end):
-                        
+                if course1_start < course2_end and course2_start < course1_end:
                         return True
 
     return False

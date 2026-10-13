@@ -1,407 +1,180 @@
-from flask import render_template, Blueprint, request, jsonify
-from flask_cors import CORS
-import json
+"""Page routes and compatibility adapters for the original FCS interface."""
+import hmac
 import os
+import tempfile
 from pathlib import Path
-from dataread import fileread, cap_first_preserve_case
-from combcheck import *
-from datetime import datetime, timedelta, timezone
-from config import get_active_term, decode_term_code, get_active_term_human, set_active_term
+from flask import Blueprint, current_app, jsonify, render_template, request
+from config import BASE_DIR, decode_term_code, set_active_term
+from fcs.catalog import TERM, parse_rows
+from fcs.scheduling import generate
 
 my_blueprint = Blueprint('my_blueprint', __name__)
-CORS(my_blueprint)
-
-# Load data for the active term (defaults to ACTIVE_TERM file or env variable)
-course_data, departments, courses, sections = fileread()
-
-@my_blueprint.route('/old', methods=['GET', 'POST'])
-def indexOld():
-    return render_template("New_index.html")
 
 
-@my_blueprint.route('/test', methods=['GET', 'POST'])
-def indexOld2():
-    return render_template("tester.html")
+def catalog():
+    return current_app.extensions['catalog'].load()
 
-@my_blueprint.route('/paginationClick', methods=['POST'])
-def paginator():
-    page = int(request.form['page'])
-    items_per_page = 20
-    start_index = (page - 1) * items_per_page
-    end_index = start_index + items_per_page
 
-    dropdown_value = request.form['dropdown'].upper()
-    dropdown2_value = request.form['dropdown2'].upper()
-    dropdown3_value = request.form['dropdown3'].upper()
+def legacy(s):
+    meetings = s['meetings']
+    primary = meetings[0] if meetings else {}
+    alternate = meetings[1] if len(meetings) > 1 else {}
+    return {'department_id': s['department'], 'course_id': s['number'], 'section': s['section'],
+        'name': s['name'], 'credits': s['credits'], 'instructor_name': s['instructor'],
+        'days': ''.join(primary.get('days', [])), 'start_time': primary.get('start', 'None'),
+        'end_time': primary.get('end', 'None'), 'classroom': primary.get('room', 'TBD'),
+        'alternate_days': ''.join(alternate.get('days', [])),
+        'alternate_start_time': alternate.get('start', 'None'),
+        'alternate_end_time': alternate.get('end', 'None'), 'alternate_classroom': alternate.get('room', 'None'),
+        'total_seats': s['total_seats'], 'available_seats': s['available_seats']}
 
-    filtered_sections = []
 
-    for x in course_data:
-        if dropdown_value == "ALL" or dropdown_value == "" or x[0].upper() == dropdown_value:
-            if dropdown2_value == "ALL" or dropdown2_value == "" or x[3].upper() == dropdown2_value:
-                if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
-                    filtered_sections.append(x)
+def filtered(department='', course='', instructor=''):
+    return [s for s in catalog()['sections'] if all(
+        not value or value.upper() == 'ALL' or s[field].upper() == value.upper()
+        for field, value in [('department', department), ('name', course), ('instructor', instructor)])]
 
-    sections_json = []
 
-    for section in filtered_sections[start_index:end_index]:
-        
-        if section[8] != "TBD":
-            instructor = section[8].title()
-        
-        else:
-            instructor = section[8]
-
-        sections_json.append({
-            'department_id': section[0],
-            'course_id': section[1],
-            'section': section[2],
-            'name': cap_first_preserve_case(section[3]),
-            'credits': section[4],
-            'days': "".join(filter(str.isalpha, section[5])),
-            'start_time': section[6],
-            'end_time': section[7],
-            'instructor_name': instructor,
-            'classroom': section[9],
-            'alternate_classroom': section[10],
-            'alternate_days': "".join(filter(str.isalpha, section[11])),
-            'alternate_start_time': section[12],
-            'alternate_end_time': section[13],
-            'total_seats': section[14],
-            'available_seats': section[15]
-        })
-    return json.dumps(sections_json, indent=2)
+def options(values):
+    return [{'label': value, 'value': value} for value in sorted(set(values))]
 
 
 @my_blueprint.route('/', methods=['GET', 'POST'])
 def index():
-    
     if request.method == 'POST':
-        dropdown_value = request.form['dropdown'].upper()
-        dropdown2_value = request.form['dropdown2'].upper()
-        dropdown3_value = request.form['dropdown3'].upper()
-
-        filtered_sections = []
-
-        for x in course_data:
-            if dropdown_value == "ALL" or dropdown_value == "" or x[0].upper() == dropdown_value:
-                if dropdown2_value == "ALL" or dropdown2_value == "" or x[3].upper() == dropdown2_value:
-                    if dropdown3_value == "ALL" or dropdown3_value == "" or x[8].upper() == dropdown3_value:
-                        filtered_sections.append(x)
-
-        # Convert sections to JSON format
-        sections_json = []
-
-        # Showing simon else
-        for section in filtered_sections[0:20]:
-        
-            if section[8] != "TBD":
-                instructor = section[8].title()
-            
-            else:
-                instructor = section[8]
-
-            sections_json.append({
-                'department_id': section[0],
-                'course_id': section[1],
-                'section': section[2],
-                'name': cap_first_preserve_case(section[3]),
-                'credits': section[4],
-                'days': "".join(filter(str.isalpha, section[5])),
-                'start_time': section[6],
-                'end_time': section[7],
-                'instructor_name': instructor,
-                'classroom': section[9],
-                'alternate_classroom': section[10],
-                'alternate_days': "".join(filter(str.isalpha, section[11])),
-                'alternate_start_time': section[12],
-                'alternate_end_time': section[13],
-                'total_seats': section[14],
-                'available_seats': section[15]
-            })
-
-        return json.dumps({"data" : sections_json, "size": len(filtered_sections)}, indent=2)
-    
-    # Get active term info
-    active_term_code = get_active_term()
-    active_term_name = get_active_term_human()
-    
-    # Get last modified time of the course data file
-    from pathlib import Path
-    data_filename = f"{active_term_code}data.txt"
-    data_filepath = Path(__file__).parent / data_filename
-    
-    # Get file modification time and convert to PKT
-    file_mtime = data_filepath.stat().st_mtime
-    file_mtime_utc = datetime.fromtimestamp(file_mtime, tz=timezone.utc)
-    pst_timezone = timezone(timedelta(hours=5))
-    file_mtime_pkt = file_mtime_utc.astimezone(pst_timezone)
-    
-    # Format as time only
-    formatted_current_time = file_mtime_pkt.strftime("%I:%M %p")
-    
-    return render_template('trying.html', 
-                         current_time=formatted_current_time,
-                         active_term=active_term_name,
-                         active_term_code=active_term_code)
-
-
-@my_blueprint.route('/updateTerm', methods=['POST'])
-def update_term():
-    global course_data, departments, courses, sections
-
-    course_data, departments, courses, sections = fileread()
-
-    return "Data updated successfully"
-
-
-@my_blueprint.route('/departments', methods=['GET'])
-def get_departments():
-    departments.sort()
-    departments_ = [{'label': department, 'value': department} for department in departments]
-    return json.dumps(departments_)
-
-
-@my_blueprint.route('/courses', methods=['GET'])
-def get_courses():
-    courses_ = list(set([course[2] for course in courses]))
-    courses_.sort()
-    courses_ = [{'label': cap_first_preserve_case(course), 'value': cap_first_preserve_case(course)} for course in courses_]
-    return json.dumps(courses_)
-
-
-@my_blueprint.route('/instructors', methods=['GET'])
-def get_instructors():
-    instructors = list(set([x[6] for x in sections]))
-    instructors.sort()
-    unique_instructors = [{'label': instructor, 'value': instructor} for instructor in instructors]
-    return json.dumps(unique_instructors)
-
-
-@my_blueprint.route('/updateDepartment', methods=['POST'])
-def update_department():
-    data = request.get_json()['data'].upper()  # Extract 'data' from the request JSON
-    instructors_ = list(set([x[6] for x in sections if x[0] == data]))
-    courses_ = list(set(course[2] for course in courses if course[0] == data))
-    
-    instructors_ = [
-    {'label': instructor.title(), 'value': instructor.title()} if instructor != 'TBD'
-      else {'label': instructor.upper(), 'value': instructor.upper()}
-    for instructor in instructors_
-    ]
-
-    courses_.sort()
-    courses_ = [{'label': cap_first_preserve_case(course), 'value': cap_first_preserve_case(course)} for course in courses_]
-
-    response_data = {
-        'courses': courses_,
-        'instructors': instructors_
-    }
-
-    return json.dumps(response_data)
-
-
-@my_blueprint.route('/updateInstructor', methods=['POST'])
-def update_instructor():
-    data = request.get_json()['data'].upper()
-    department = request.get_json()['department'].upper()
-
-    filtered_courses = []
-
-    for x in course_data:
-        if (department == "ALL" or department == "" or x[0].upper() == department) and \
-        (data == "ALL" or data == "" or x[8].upper() == data):
-            filtered_courses.append(x[3])
-
-    courses_ = list(set(filtered_courses))    
-    courses_.sort()
-
-    courses_ = [
-    {'label': course.title(), 'value': course.title()} if course != 'TBD'
-      else {'label': course.upper(), 'value': course.upper()}
-    for course in courses_
-    ]
-
-    response_data = {
-        'courses': courses_
-    }
-
-    return json.dumps(response_data)
-
-
-@my_blueprint.route('/updateCourse', methods=['POST'])
-def update_course():
-    data = request.get_json()['data'].upper()
-    department = request.get_json()['department'].upper()
-
-    filtered_instructors = []
-
-    for x in course_data:
-        if (department == "ALL" or department == "" or x[0].upper() == department) and \
-        (data == "ALL" or data == "" or x[3].upper() == data):
-            filtered_instructors.append(x[8])
-
-    instructors_ = list(set(filtered_instructors))    
-    instructors_.sort()
-
-    instructors_ = [
-    {'label': instructor.title(), 'value': instructor.title()} if instructor != 'TBD'
-      else {'label': instructor.upper(), 'value': instructor.upper()}
-    for instructor in instructors_
-    ]
-
-    response_data = {
-        'instructors': instructors_
-    }
-
-    return json.dumps(response_data)
-
-
-@my_blueprint.route('/submit', methods=['POST'])
-def submit_selected_courses():
-    data = request.json
-    selected_courses = data['selectedCourses']
-
-    # After building shortlist and detecting missing courses (after line 279)
-    shortlist = [course for short_course in selected_courses for course in course_data
-                 if (short_course['department_id'] == course[0])
-                 and (short_course['course_id'] == course[1])
-                 and (short_course['section'] == course[2])]
-
-    # Use shortlist, not selected_courses
-    crucial_courses = [x for x in data['checkedCrucials']
-                        if x['department_id']+x['course_id'] in 
-                        [course[0]+course[1] for course in shortlist]]
-
-    # Detect missing courses
-    found_course_keys = {(course[0], course[1], course[2]) for course in shortlist}
-    missing_courses = [
-        short_course for short_course in selected_courses
-        if (short_course['department_id'], short_course['course_id'], short_course['section']) 
-        not in found_course_keys
-    ]
-
-    shortlist = [[*sublist[:4], int(float(sublist[4])), *sublist[5:]] for sublist in shortlist]
-
-
-    min_credit = int(data['minCredit'])
-    max_credit = int(data['maxCredit'])
-
-    credit_filtered_combinations = credit_check(shortlist, min_credit, max_credit)
-    
-    filtered_combinations = [filtered_comb for filtered_comb in credit_filtered_combinations
-                             if duplicate_checker(filtered_comb) is False
-                             and clash_check(filtered_comb) is False]
-
-    filtered_combinations = [filtered_comb for filtered_comb in filtered_combinations
-                          if crucial(filtered_comb, [course["department_id"] + course["course_id"] for course in crucial_courses])]
-
-    combinations_lst = []
-    for combination in filtered_combinations:
-        combination_data = []
-        for section in combination:
-            # Format instructor name
-            if section[8] != "TBD":
-                instructor = section[8].title()
-            else:
-                instructor = section[8]
-            
-            course_data_ = {
-                'department_id': section[0],
-                'course_id': section[1],
-                'section': section[2],
-                'name': cap_first_preserve_case(section[3]),
-                'credits': section[4],
-                'days': "".join(filter(str.isalpha, section[5])),
-                'start_time': section[6],
-                'end_time': section[7],
-                'instructor_name': instructor,
-                'classroom': section[9],
-                'alternate_classroom': section[10],
-                'alternate_days': "".join(filter(str.isalpha, section[11])),
-                'alternate_start_time': section[12],
-                'alternate_end_time': section[13],
-                #'total_seats': section[14],
-                #'available_seats': section[15]
-            }
-            combination_data.append(course_data_)
-
-        combinations_lst.append(combination_data)
- 
-    # Return response with schedules and missing courses info
-    response = {
-        'schedules': combinations_lst,
-        'missing_courses': missing_courses
-    }
-    return json.dumps(response)
-
-
-@my_blueprint.route('/webhook/update-courses', methods=['POST'])
-def update_courses_webhook():
-    # Auth check
-    auth_token = request.headers.get('X-Webhook-Token')
-    webhook_secret = os.environ.get('WEBHOOK_SECRET', 'change_this_in_production')
-    
-    if auth_token != webhook_secret:
-        return jsonify({'error': 'Unauthorized', 'message': 'Invalid webhook token'}), 401
-    
+        sections = filtered(request.form.get('dropdown', ''), request.form.get('dropdown2', ''), request.form.get('dropdown3', ''))
+        return jsonify(data=[legacy(s) for s in sections[:20]], size=len(sections))
     try:
-        data = request.json
-        term_code = data.get('term_code')
-        content = data.get('content')
-        
-        if not term_code or not content:
-            return jsonify({
-                'error': 'Bad Request',
-                'message': 'Missing term_code or content in request body'
-            }), 400
-        
-        # Save the data file
-        filename = f"{term_code}data.txt"
-        filepath = Path(__file__).parent / filename
-        
-        with open(filepath, 'w', encoding='utf-8') as f:
-            f.write(content)
-        
-        print(f"Saved course data to {filepath}")
-        
-        # Update ACTIVE_TERM file
-        set_active_term(term_code)
-        print(f"Updated ACTIVE_TERM file to {term_code}")
-        
-        # Reload the course data globally
-        global course_data, departments, courses, sections
-        course_data, departments, courses, sections = fileread()
-        
-        human_readable = decode_term_code(term_code)
-        
-        return jsonify({
-            'success': True,
-            'message': f'Successfully updated course data for {human_readable}',
-            'term_code': term_code,
-            'term_name': human_readable,
-            'courses_loaded': len(course_data),
-            'departments_count': len(departments)
-        }), 200
-        
-    except Exception as e:
-        print(f"Error in webhook: {e}")
-        import traceback
-        traceback.print_exc()
-        return jsonify({
-            'error': 'Internal Server Error',
-            'message': str(e)
-        }), 500
+        data = catalog()
+    except (ValueError, FileNotFoundError):
+        data = {'term_name': 'Catalog unavailable'}
+    return render_template('planner.html', active_term=data['term_name'])
 
 
-@my_blueprint.route('/api/active-term', methods=['GET'])
-def get_active_term_info():
-    term_code = get_active_term()
-    term_human = get_active_term_human()
-    
-    return jsonify({
-        'term_code': term_code,
-        'term_name': term_human,
-        'courses_count': len(course_data),
-        'departments_count': len(departments)
-    })
+@my_blueprint.get('/old')
+def index_old():
+    return render_template('New_index.html')
+
+
+@my_blueprint.get('/test')
+def index_test():
+    return render_template('tester.html')
+
+
+@my_blueprint.post('/paginationClick')
+def paginator():
+    try:
+        page = int(request.form.get('page', 1))
+        if page < 1:
+            raise ValueError()
+    except ValueError:
+        return jsonify(error='Invalid page'), 400
+    sections = filtered(request.form.get('dropdown', ''), request.form.get('dropdown2', ''), request.form.get('dropdown3', ''))
+    return jsonify([legacy(s) for s in sections[(page - 1) * 20:page * 20]])
+
+
+@my_blueprint.post('/updateTerm')
+def update_term():
+    catalog()
+    return 'Data updated successfully'
+
+
+@my_blueprint.get('/departments')
+def departments():
+    return jsonify(options(catalog()['departments']))
+
+
+@my_blueprint.get('/courses')
+def courses():
+    return jsonify(options(s['name'] for s in catalog()['sections']))
+
+
+@my_blueprint.get('/instructors')
+def instructors():
+    return jsonify(options(s['instructor'] for s in catalog()['sections']))
+
+
+@my_blueprint.post('/updateDepartment')
+@my_blueprint.post('/updateInstructor')
+@my_blueprint.post('/updateCourse')
+def update_filters():
+    data = request.get_json(silent=True) or {}
+    if not isinstance(data, dict) or any(not isinstance(v, str) for v in data.values()):
+        return jsonify(error='Invalid filter'), 400
+    department = data.get('data', '') if request.path == '/updateDepartment' else data.get('department', '')
+    course = data.get('data', '') if request.path == '/updateCourse' else ''
+    instructor = data.get('data', '') if request.path == '/updateInstructor' else ''
+    sections = filtered(department, course, instructor)
+    return jsonify(courses=options(s['name'] for s in sections), instructors=options(s['instructor'] for s in sections))
+
+
+@my_blueprint.post('/submit')
+def submit():
+    """Bounded adapter for older clients; all values are resolved against the catalog."""
+    data = request.get_json(silent=True)
+    try:
+        if not isinstance(data, dict):
+            raise ValueError('Expected a JSON object')
+        selected = data.get('selectedCourses', [])
+        crucial = data.get('checkedCrucials', [])
+        if not isinstance(selected, list) or not 1 <= len(selected) <= 60 or not isinstance(crucial, list) or len(crucial) > 60:
+            raise ValueError('Select between 1 and 60 sections')
+        def identity(s):
+            return ':'.join(str(s[k]) for k in ('department_id', 'course_id', 'section'))
+        lookup = {s['id']: s for s in catalog()['sections']}
+        ids = list(dict.fromkeys(identity(s) for s in selected))
+        missing = [s for s in selected if identity(s) not in lookup]
+        sections = [lookup[s] for s in ids if s in lookup]
+        required = {f"{s['department_id']}:{s['course_id']}" for s in crucial}
+        if not required <= {s['course_key'] for s in sections}:
+            raise ValueError('A required course is missing from the catalog')
+        minimum, maximum = float(data.get('minCredit', 0)), float(data.get('maxCredit', 22))
+        if not 0 <= minimum <= maximum <= 30:
+            raise ValueError('Invalid credit range')
+        result = generate(sections, minimum, maximum, required)
+        return jsonify(schedules=[[legacy(lookup[s]) for s in schedule] for schedule in result['schedules']],
+                       missing_courses=missing, limited=result['limited'])
+    except (ValueError, TypeError, KeyError) as exc:
+        return jsonify(error=str(exc)), 400
+
+
+@my_blueprint.post('/webhook/update-courses')
+def update_courses_webhook():
+    secret = os.environ.get('WEBHOOK_SECRET')
+    token = request.headers.get('X-Webhook-Token')
+    if not secret or not token or not hmac.compare_digest(token, secret):
+        return jsonify(error='Unauthorized'), 401
+    data = request.get_json(silent=True)
+    if not isinstance(data, dict):
+        return jsonify(error='Expected a JSON object'), 400
+    term, content = data.get('term_code'), data.get('content')
+    if not isinstance(term, str) or not TERM.fullmatch(term) or not isinstance(content, str) or not content:
+        return jsonify(error='Invalid term_code or content'), 400
+    try:
+        sections = parse_rows(content)
+    except ValueError as exc:
+        return jsonify(error=str(exc)), 400
+    destination = BASE_DIR / f'{term}data.txt'
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=BASE_DIR, delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(content)
+        temporary.replace(destination)
+        temporary = None
+        set_active_term(term)
+        return jsonify(success=True, term_code=term, term_name=decode_term_code(term),
+                       courses_loaded=len(sections), departments_count=len({s['department'] for s in sections}))
+    except OSError:
+        current_app.logger.exception('Could not persist catalog update')
+        return jsonify(error='Could not persist catalog update'), 500
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+@my_blueprint.get('/api/active-term')
+def active_term():
+    data = catalog()
+    return jsonify(term_code=data['term'], term_name=data['term_name'],
+                   courses_count=len(data['sections']), departments_count=len(data['departments']))

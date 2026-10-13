@@ -10,7 +10,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).parent
 
 # Load WEBHOOK_SECRET from environment
-WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET', 'change_this_in_production')
+WEBHOOK_SECRET = os.getenv('WEBHOOK_SECRET')
 
 # ACTIVE_TERM is always read from file, never cached
 
@@ -88,5 +88,15 @@ def set_active_term(term_code):
         term_code (str): Term code like '2026SP'
     """
     active_term_file = BASE_DIR / 'ACTIVE_TERM'
-    active_term_file.write_text(term_code)
+    from fcs.catalog import TERM
+    import tempfile
+    if not isinstance(term_code, str) or not TERM.fullmatch(term_code):
+        raise ValueError('Invalid term code')
+    with tempfile.NamedTemporaryFile(mode='w', dir=BASE_DIR, delete=False) as stream:
+        stream.write(term_code)
+        temporary = Path(stream.name)
+    try:
+        temporary.replace(active_term_file)
+    finally:
+        temporary.unlink(missing_ok=True)
 

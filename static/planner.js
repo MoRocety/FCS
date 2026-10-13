@@ -1,0 +1,545 @@
+const $ = (id) => document.getElementById(id);
+const state = {
+  catalog: null,
+  selected: [],
+  shortlist: [],
+  required: [],
+  visible: 30,
+  results: [],
+};
+const palette = [
+  ["#e7eedb", "#8aa563", "#425632"],
+  ["#e3edf2", "#80a4b5", "#375568"],
+  ["#f4e8db", "#c49e6f", "#745c3d"],
+  ["#eee5f3", "#aa8ab9", "#685179"],
+  ["#f4e4e3", "#c68b86", "#85534e"],
+  ["#e0eeea", "#70a69c", "#3c655d"],
+];
+const dayNames = {
+  M: "Monday",
+  T: "Tuesday",
+  W: "Wednesday",
+  R: "Thursday",
+  F: "Friday",
+  S: "Saturday",
+  U: "Sunday",
+};
+const esc = (value) =>
+  String(value).replace(
+    /[&<>"']/g,
+    (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[
+        c
+      ],
+  );
+const code = (s) => `${s.department} ${s.number}`;
+const lookup = () => new Map(state.catalog.sections.map((s) => [s.id, s]));
+const resolve = (ids) => ids.map((id) => lookup().get(id)).filter(Boolean);
+const minutes = (time) =>
+  Number(time.split(":")[0]) * 60 + Number(time.split(":")[1]);
+const clock = (time) => {
+  const [h, m] = time.split(":").map(Number);
+  return `${h % 12 || 12}:${String(m).padStart(2, "0")}${h < 12 ? "am" : "pm"}`;
+};
+const meetingLabel = (m) =>
+  `${m.days.map((d) => ({ M: "Mon", T: "Tue", W: "Wed", R: "Thu", F: "Fri", S: "Sat", U: "Sun" })[d]).join(" / ")} · ${clock(m.start)}–${clock(m.end)} · ${m.room}`;
+const clashes = (a, b) =>
+  a.meetings.some((x) =>
+    b.meetings.some(
+      (y) =>
+        x.days.some((d) => y.days.includes(d)) &&
+        x.start < y.end &&
+        y.start < x.end,
+    ),
+  );
+const draftKey = () => `fcs:planner:v1:${state.catalog.term}`;
+function notify(message, error = false) {
+  $("notice").hidden = false;
+  $("notice").className = `notice${error ? " error" : ""}`;
+  $("notice").textContent = message;
+}
+function save() {
+  try {
+    localStorage.setItem(
+      draftKey(),
+      JSON.stringify({
+        version: 1,
+        term: state.catalog.term,
+        section_ids: state.selected,
+        shortlist_ids: state.shortlist,
+        required_course_keys: state.required,
+      }),
+    );
+    $("save-status").textContent = "Saved on this device";
+  } catch {
+    $("save-status").textContent =
+      "Device storage unavailable — export your draft";
+  }
+}
+function restore() {
+  try {
+    const raw = localStorage.getItem(draftKey());
+    if (!raw) return;
+    const data = validateDraft(JSON.parse(raw));
+    state.selected = data.selected;
+    state.shortlist = data.shortlist;
+    state.required = data.required;
+    if (data.missing)
+      notify(
+        `${data.missing} saved section(s) are no longer available and were removed.`,
+      );
+  } catch {
+    notify(
+      "Your saved draft could not be restored. You can start a new one.",
+      true,
+    );
+  }
+}
+function validateDraft(data) {
+  if (
+    !data ||
+    data.version !== 1 ||
+    data.term !== state.catalog.term ||
+    !Array.isArray(data.section_ids) ||
+    data.section_ids.length > 60 ||
+    !Array.isArray(data.shortlist_ids) ||
+    data.shortlist_ids.length > 60 ||
+    !Array.isArray(data.required_course_keys) ||
+    data.required_course_keys.length > 60 ||
+    [
+      ...data.section_ids,
+      ...data.shortlist_ids,
+      ...data.required_course_keys,
+    ].some((x) => typeof x !== "string")
+  )
+    throw new Error(
+      "Use an FCS JSON export from the current term. Imports allow up to 60 sections.",
+    );
+  const map = lookup();
+  const selected = [...new Set(data.section_ids)].filter((id) => map.has(id));
+  const shortlist = [...new Set(data.shortlist_ids)].filter((id) =>
+    map.has(id),
+  );
+  if (shortlist.length > 60)
+    throw new Error("This import exceeds the 60-section shortlist limit.");
+  const keys = new Set(resolve(shortlist).map((s) => s.course_key));
+  return {
+    selected,
+    shortlist,
+    required: [...new Set(data.required_course_keys)].filter((k) =>
+      keys.has(k),
+    ),
+    missing: new Set(
+      [...data.section_ids, ...data.shortlist_ids].filter((id) => !map.has(id)),
+    ).size,
+  };
+}
+function invalidateResults() {
+  state.results = [];
+  $("generated-results").replaceChildren();
+}
+function renderCatalog() {
+  if (!state.catalog) return;
+  const query = $("search").value.trim().toLowerCase();
+  const department = $("department").value;
+  const sections = state.catalog.sections.filter(
+    (s) =>
+      (!department || s.department === department) &&
+      (!$("open-only").checked || s.available_seats > 0) &&
+      (!query ||
+        `${code(s)} ${s.section} ${s.name} ${s.instructor}`
+          .toLowerCase()
+          .includes(query)),
+  );
+  $("catalog-count").textContent = `${sections.length} sections`;
+  $("course-list").innerHTML =
+    sections
+      .slice(0, state.visible)
+      .map(
+        (s) =>
+          `<article class="course-card"><div class="course-meta"><span class="course-code">${esc(code(s))} <span class="muted">/ ${esc(s.section)}</span></span><span class="seat-badge ${s.available_seats <= 0 ? "closed" : ""}">${s.available_seats > 0 ? `${s.available_seats} seats open` : "Full"} · ${s.credits} cr</span></div><h3>${esc(s.name)}</h3><div class="course-details">${esc(s.instructor)}<br>${s.meetings.length ? s.meetings.map((m) => esc(meetingLabel(m))).join("<br>") : "Meeting time to be announced"}</div><div class="course-actions"><button class="add-button ${state.selected.includes(s.id) ? "selected" : ""}" data-action="select" data-id="${esc(s.id)}">${state.selected.includes(s.id) ? "✓ In your week" : "+ Add to week"}</button><button class="shortlist-button ${state.shortlist.includes(s.id) ? "selected" : ""}" data-action="shortlist" data-id="${esc(s.id)}">${state.shortlist.includes(s.id) ? "✓ Shortlisted" : "+ Shortlist"}</button></div></article>`,
+      )
+      .join("") ||
+    '<div class="empty-state">No sections match these filters.<br>Try another search or turn off “Open seats only.”</div>';
+  $("load-more").hidden = state.visible >= sections.length;
+  $("results-label").textContent =
+    `Showing ${Math.min(state.visible, sections.length)} of ${sections.length}`;
+}
+function renderSchedule() {
+  const sections = resolve(state.selected);
+  const conflicting = new Set();
+  let duplicates = false;
+  sections.forEach((a, i) =>
+    sections.slice(i + 1).forEach((b) => {
+      if (clashes(a, b)) {
+        conflicting.add(a.id);
+        conflicting.add(b.id);
+      }
+      if (a.course_key === b.course_key) duplicates = true;
+    }),
+  );
+  $("credit-count").textContent = sections.reduce((n, s) => n + s.credits, 0);
+  $("course-count").textContent = new Set(
+    sections.map((s) => s.course_key),
+  ).size;
+  const status = $("conflict-status");
+  status.classList.toggle("has-conflict", conflicting.size > 0 || duplicates);
+  status.textContent = duplicates
+    ? "Multiple sections of one course"
+    : conflicting.size
+      ? `${conflicting.size} sections clash`
+      : sections.some((s) => !s.meetings.length)
+        ? "Check unannounced times"
+        : sections.length
+          ? "✓ No time clashes"
+          : "Ready when you are";
+  $("schedule-empty").hidden = sections.length > 0;
+  const meetings = sections.flatMap((s) => s.meetings.map((m) => ({ s, m })));
+  const days = [
+    "M",
+    "T",
+    "W",
+    "R",
+    "F",
+    ...["S", "U"].filter((d) => meetings.some(({ m }) => m.days.includes(d))),
+  ];
+  const start = Math.min(
+    8 * 60,
+    ...meetings.map(({ m }) => Math.floor(minutes(m.start) / 60) * 60),
+  );
+  const end = Math.max(
+    18 * 60,
+    ...meetings.map(({ m }) => Math.ceil(minutes(m.end) / 60) * 60),
+  );
+  const height = (end - start) * 0.8;
+  let html = `<div class="calendar-grid" style="--day-count:${days.length}"><div class="day-header"></div>${days.map((d) => `<div class="day-header">${dayNames[d].slice(0, 3).toUpperCase()}</div>`).join("")}<div class="time-column" style="height:${height}px">`;
+  for (let t = start; t < end; t += 60)
+    html += `<span class="time-label" style="top:${(t - start) * 0.8}px">${(t / 60) % 12 || 12}${t < 720 ? "am" : "pm"}</span>`;
+  html += "</div>";
+  days.forEach((d) => {
+    html += `<div class="day-column" style="height:${height}px">`;
+    const entries = meetings
+      .filter(({ m }) => m.days.includes(d))
+      .sort((a, b) => a.m.start.localeCompare(b.m.start));
+    // Partition overlapping intervals into clusters, then allocate columns within each cluster.
+    const clusters = [];
+    let cluster = [];
+    let clusterEnd = -1;
+    entries.forEach((entry) => {
+      const begins = minutes(entry.m.start);
+      if (begins >= clusterEnd && cluster.length) {
+        clusters.push(cluster);
+        cluster = [];
+        clusterEnd = -1;
+      }
+      cluster.push(entry);
+      clusterEnd = Math.max(clusterEnd, minutes(entry.m.end));
+    });
+    if (cluster.length) clusters.push(cluster);
+    clusters.forEach((group) => {
+      const columnEnds = [];
+      const placed = group.map((entry) => {
+        let column = columnEnds.findIndex((t) => t <= minutes(entry.m.start));
+        if (column === -1) column = columnEnds.length;
+        columnEnds[column] = minutes(entry.m.end);
+        return { ...entry, column };
+      });
+      placed.forEach(({ s, m, column }) => {
+        const color = palette[sections.indexOf(s) % palette.length];
+        const width = 100 / columnEnds.length;
+        html += `<button class="calendar-event ${conflicting.has(s.id) ? "conflicting" : ""}" data-action="remove" data-id="${esc(s.id)}" style="top:${(minutes(m.start) - start) * 0.8}px;height:${Math.max(22, (minutes(m.end) - minutes(m.start)) * 0.8 - 3)}px;left:calc(${column * width}% + 3px);width:calc(${width}% - 6px);--event-bg:${color[0]};--event-border:${color[1]};--event-ink:${color[2]}" title="${esc(`${code(s)} ${s.section} · ${s.name} · ${meetingLabel(m)}. Click to remove.`)}" aria-label="${esc(`Remove ${code(s)} section ${s.section} from your week`)}"><strong>${esc(code(s))} / ${esc(s.section)}</strong><span>${esc(s.name)}</span><span>${clock(m.start)}–${clock(m.end)}</span><span>${esc(m.room)}</span></button>`;
+      });
+    });
+    html += "</div>";
+  });
+  html += "</div>";
+  $("calendar").innerHTML = html;
+  $("schedule-list").innerHTML =
+    sections
+      .map(
+        (s) =>
+          `<div class="schedule-row"><div><h3>${esc(code(s))} / ${esc(s.section)} · ${esc(s.name)}</h3><p>${esc(s.instructor)} · ${s.credits} credits${conflicting.has(s.id) ? " · Time clash" : ""}</p>${s.meetings.map((m) => `<p>${esc(meetingLabel(m))}</p>`).join("") || "<p>Meeting time to be announced — confirm before registering.</p>"}</div><button class="text-button" data-action="remove" data-id="${esc(s.id)}" aria-label="${esc(`Remove ${code(s)} section ${s.section}`)}">Remove</button></div>`,
+      )
+      .join("") ||
+    '<div class="empty-state">Your schedule is empty. Add a section to get started.</div>';
+}
+function renderShortlist() {
+  const grouped = new Map();
+  resolve(state.shortlist).forEach((s) => {
+    if (!grouped.has(s.course_key)) grouped.set(s.course_key, []);
+    grouped.get(s.course_key).push(s);
+  });
+  $("shortlist-count").textContent = state.shortlist.length;
+  $("shortlist").innerHTML =
+    [...grouped]
+      .map(
+        ([key, sections]) =>
+          `<div class="shortlist-chip"><label><input type="checkbox" data-required="${esc(key)}" ${state.required.includes(key) ? "checked" : ""}> ${esc(code(sections[0]))} <span class="muted">${sections.map((s) => esc(s.section)).join(", ")}</span><span class="sr-only"> Require this course in every generated schedule</span></label><button data-action="unshortlist" data-key="${esc(key)}" aria-label="${esc(`Remove ${code(sections[0])} from shortlist`)}">×</button></div>`,
+      )
+      .join("") ||
+    '<span class="muted">Use “Shortlist” on a course to keep your options open.</span>';
+}
+function renderAll() {
+  renderCatalog();
+  renderSchedule();
+  renderShortlist();
+}
+function handleAction(event) {
+  const button = event.target.closest("[data-action]");
+  if (!button) return;
+  const { action, id, key } = button.dataset;
+  if (action === "select") {
+    if (state.selected.includes(id))
+      state.selected = state.selected.filter((x) => x !== id);
+    else {
+      if (!state.shortlist.includes(id) && state.shortlist.length >= 60) {
+        notify(
+          "Your shortlist can hold 60 sections. Remove an option before adding more.",
+          true,
+        );
+        return;
+      }
+      const section = lookup().get(id);
+      const existing = resolve(state.selected).filter(
+        (s) => s.course_key !== section.course_key,
+      );
+      const conflicts = existing.filter((s) => clashes(section, s));
+      state.selected = [...existing.map((s) => s.id), id];
+      if (!state.shortlist.includes(id)) state.shortlist.push(id);
+      notify(
+        conflicts.length
+          ? `${code(section)} overlaps ${conflicts.map(code).join(", ")}. Both remain visible so you can compare.`
+          : `${code(section)} section ${section.section} added to your week.`,
+        Boolean(conflicts.length),
+      );
+    }
+  } else if (action === "remove")
+    state.selected = state.selected.filter((x) => x !== id);
+  else if (action === "shortlist") {
+    if (state.shortlist.includes(id)) {
+      state.shortlist = state.shortlist.filter((x) => x !== id);
+    } else {
+      if (state.shortlist.length >= 60) {
+        notify("Your shortlist can hold 60 sections.", true);
+        return;
+      }
+      state.shortlist.push(id);
+    }
+  } else if (action === "unshortlist")
+    state.shortlist = state.shortlist.filter(
+      (id) => lookup().get(id).course_key !== key,
+    );
+  const available = new Set(resolve(state.shortlist).map((s) => s.course_key));
+  state.required = state.required.filter((k) => available.has(k));
+  invalidateResults();
+  renderAll();
+  save();
+}
+async function generate() {
+  const button = $("generate-button");
+  const min = Number($("min-credits").value),
+    max = Number($("max-credits").value);
+  if (
+    !$("min-credits").value ||
+    !$("max-credits").value ||
+    min < 0 ||
+    max > 30 ||
+    min > max
+  ) {
+    notify(
+      "Choose a credit range between 0 and 30, with minimum at or below maximum.",
+      true,
+    );
+    return;
+  }
+  if (!state.shortlist.length) {
+    notify("Shortlist some sections before finding schedules.", true);
+    return;
+  }
+  button.disabled = true;
+  button.textContent = "Finding schedules…";
+  const snapshot = JSON.stringify([state.shortlist, state.required, min, max]);
+  try {
+    const response = await fetch("/api/v1/schedules/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        term: state.catalog.term,
+        catalog_revision: state.catalog.revision,
+        section_ids: state.shortlist,
+        required_course_keys: state.required,
+        min_credits: min,
+        max_credits: max,
+      }),
+    });
+    const data = await response.json();
+    if (!response.ok)
+      throw new Error(data.error || "Could not generate schedules");
+    if (
+      snapshot !==
+      JSON.stringify([
+        state.shortlist,
+        state.required,
+        Number($("min-credits").value),
+        Number($("max-credits").value),
+      ])
+    ) {
+      notify(
+        "Your shortlist changed during the search. Find schedules again to use your latest choices.",
+      );
+      return;
+    }
+    state.results = data.schedules;
+    const unknown = resolve(state.shortlist).some((s) => !s.meetings.length);
+    $("generated-results").innerHTML =
+      `<p class="result-note">${data.schedules.length ? `${data.schedules.length} possibilities found${data.limited ? " · Search limit reached; narrow your shortlist for more focused results." : "."}` : "No schedules fit yet. Add more sections, lower your minimum credits, or uncheck a required course."}${unknown ? " Some meeting times are unannounced. Confirm them before registering." : ""}</p>` +
+      data.schedules
+        .map((ids, i) => {
+          const sections = resolve(ids);
+          return `<article class="result-card"><strong>Option ${i + 1} · ${sections.reduce((n, s) => n + s.credits, 0)} credits</strong><p>${sections.map((s) => `${esc(code(s))} / ${esc(s.section)}`).join(" · ")}</p><button class="text-button" data-result="${i}">Use this schedule ↗</button></article>`;
+        })
+        .join("");
+  } catch (error) {
+    notify(error.message, true);
+  } finally {
+    button.disabled = false;
+    button.innerHTML = "Find schedules <span>↗</span>";
+  }
+}
+function download(name, content, type) {
+  const url = URL.createObjectURL(new Blob([content], { type }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+function bind() {
+  ["search", "department", "open-only"].forEach((id) =>
+    $(id).addEventListener(id === "search" ? "input" : "change", () => {
+      state.visible = 30;
+      renderCatalog();
+    }),
+  );
+  $("load-more").addEventListener("click", () => {
+    state.visible += 30;
+    renderCatalog();
+  });
+  ["course-list", "calendar", "schedule-list", "shortlist"].forEach((id) =>
+    $(id).addEventListener("click", handleAction),
+  );
+  $("shortlist").addEventListener("change", (event) => {
+    const key = event.target.dataset.required;
+    if (!key) return;
+    state.required = event.target.checked
+      ? [...new Set([...state.required, key])]
+      : state.required.filter((k) => k !== key);
+    invalidateResults();
+    save();
+  });
+  $("clear-shortlist").addEventListener("click", () => {
+    state.shortlist = [];
+    state.required = [];
+    invalidateResults();
+    renderShortlist();
+    renderCatalog();
+    save();
+  });
+  ["min-credits", "max-credits"].forEach((id) =>
+    $(id).addEventListener("input", invalidateResults),
+  );
+  $("generate-button").addEventListener("click", generate);
+  $("generated-results").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-result]");
+    if (!button) return;
+    state.selected = [...state.results[Number(button.dataset.result)]];
+    renderAll();
+    save();
+    notify(
+      "This option is now in your week. Your shortlist is still available.",
+    );
+  });
+  const changeView = (list) => {
+    $("calendar").hidden = list;
+    $("schedule-list").hidden = !list;
+    $("week-view").setAttribute("aria-pressed", String(!list));
+    $("list-view").setAttribute("aria-pressed", String(list));
+  };
+  $("week-view").addEventListener("click", () => changeView(false));
+  $("list-view").addEventListener("click", () => changeView(true));
+  $("export-button").addEventListener("click", () =>
+    download(
+      `fcs-${state.catalog.term}-schedule.json`,
+      JSON.stringify(
+        {
+          version: 1,
+          term: state.catalog.term,
+          section_ids: state.selected,
+          shortlist_ids: state.shortlist,
+          required_course_keys: state.required,
+        },
+        null,
+        2,
+      ),
+      "application/json",
+    ),
+  );
+  $("import-button").addEventListener("click", () => $("import-file").click());
+  $("import-file").addEventListener("change", async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+    try {
+      if (file.size > 256000)
+        throw new Error("Schedule files must be smaller than 256 KB.");
+      const draft = validateDraft(JSON.parse(await file.text()));
+      state.selected = draft.selected;
+      state.shortlist = draft.shortlist;
+      state.required = draft.required;
+      invalidateResults();
+      renderAll();
+      save();
+      notify(
+        `Schedule imported.${draft.missing ? ` ${draft.missing} unavailable section(s) were skipped.` : ""}`,
+      );
+    } catch (error) {
+      notify(error.message, true);
+    } finally {
+      event.target.value = "";
+    }
+  });
+  $("print-button").addEventListener("click", () => window.print());
+}
+$("roadmap-button").addEventListener("click", () =>
+  $("roadmap-dialog").showModal(),
+);
+$("close-roadmap").addEventListener("click", () => $("roadmap-dialog").close());
+async function init() {
+  try {
+    const response = await fetch("/api/v1/catalog");
+    const catalog = await response.json();
+    if (!response.ok) throw new Error(catalog.error || "Catalog unavailable");
+    state.catalog = catalog;
+    $("term-label").textContent = catalog.term_name;
+    $("data-status").textContent =
+      "Local catalog snapshot · capture time unavailable";
+    $("data-status").title =
+      `Local file modified ${new Date(catalog.file_modified_at).toLocaleString("en-PK", { timeZone: "Asia/Karachi" })} PKT. This is not the scrape timestamp.`;
+    $("department").innerHTML =
+      '<option value="">All departments</option>' +
+      catalog.departments
+        .map((d) => `<option value="${esc(d)}">${esc(d)}</option>`)
+        .join("");
+    restore();
+    bind();
+    renderAll();
+  } catch (error) {
+    $("data-status").textContent = "Catalog unavailable";
+    $("course-list").innerHTML =
+      '<div class="empty-state">Unable to load the catalog. Reload the page to try again.</div>';
+    notify(error.message, true);
+    ["generate-button", "import-button", "export-button"].forEach(
+      (id) => ($(id).disabled = true),
+    );
+  }
+}
+init();

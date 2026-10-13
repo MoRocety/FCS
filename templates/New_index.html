@@ -146,7 +146,7 @@
             url: url,
             type: "GET",
             success: function (response) {
-              const options = JSON.parse(response);
+              const options = typeof response === "string" ? JSON.parse(response) : response;
               options.unshift({ label: "All", value: "all" });
               dropdown.empty();
               options.forEach((option) => {
@@ -172,8 +172,8 @@
               dropdown3: selectedInstructor,
             },
             success: function (response) {
-              const courses = JSON.parse(response);
-              displayCourses(courses);
+              const courses = typeof response === "string" ? JSON.parse(response) : response;
+              displayCourses(courses.data || courses);
             },
           });
         }
@@ -448,7 +448,8 @@
             data: JSON.stringify(data),
             contentType: "application/json",
             success: function (response) {
-              displayCombinations(JSON.parse(response));
+              const result = typeof response === "string" ? JSON.parse(response) : response;
+              displayCombinations(result.schedules || result);
             },
           });
         }

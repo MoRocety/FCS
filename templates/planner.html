@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#153d32" />
+    <title>FCS · Build your week</title>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='planner.css') }}"
+    />
+    <script
+      type="module"
+      src="{{ url_for('static', filename='planner.js') }}"
+    ></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="FCS home"
+        ><span class="brand-mark">f</span> FCS<span class="brand-caption"
+          >YOUR CAMPUS, CONNECTED</span
+        ></a
+      >
+      <nav aria-label="Main navigation">
+        <span class="nav-active">Schedule planner</span
+        ><button id="roadmap-button" class="nav-link">What’s next ↗</button>
+      </nav>
+      <span class="term-badge" id="term-label">{{ active_term }}</span>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">A LITTLE PLANNING. A BETTER SEMESTER.</p>
+          <h1>Make room for <em>your life.</em></h1>
+          <p class="intro-copy">
+            Find your courses, try a few possibilities, and build a week that
+            works for you.
+          </p>
+        </div>
+        <div class="intro-aside">
+          <span class="status-dot"></span
+          ><span id="data-status">Loading course catalog…</span
+          ><small
+            >Seat counts are a snapshot. Confirm in your registration
+            portal.</small
+          >
+        </div>
+      </section>
+      <div
+        id="notice"
+        class="notice"
+        role="status"
+        aria-live="polite"
+        hidden
+      ></div>
+      <div class="workspace">
+        <section class="catalog panel" aria-labelledby="catalog-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">01 / EXPLORE</p>
+              <h2 id="catalog-heading">Find your courses</h2>
+            </div>
+            <span id="catalog-count" class="count-pill">—</span>
+          </div>
+          <div class="filters">
+            <label class="search-label"
+              ><span class="sr-only">Search courses, codes, or instructors</span
+              ><span aria-hidden="true">⌕</span
+              ><input
+                id="search"
+                type="search"
+                placeholder="Course, code, or instructor…"
+                autocomplete="off"
+            /></label>
+            <div class="filter-row">
+              <label
+                ><span class="sr-only">Department</span
+                ><select id="department">
+                  <option value="">All departments</option>
+                </select></label
+              ><label class="check-label"
+                ><input id="open-only" type="checkbox" /> Open seats only</label
+              >
+            </div>
+          </div>
+          <div id="course-list" class="course-list" aria-live="polite">
+            <div class="empty-state">Loading your course catalog…</div>
+          </div>
+          <div class="catalog-footer">
+            <button id="load-more" class="text-button" hidden>
+              Show more sections ↓</button
+            ><span id="results-label"></span>
+          </div>
+        </section>
+        <section class="planner panel" aria-labelledby="planner-heading">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">02 / BUILD YOUR WEEK</p>
+              <h2 id="planner-heading">
+                My semester <span class="small-dot"></span>
+              </h2>
+            </div>
+            <div class="view-switch" role="group" aria-label="Schedule view">
+              <button id="week-view" aria-pressed="true">Week</button
+              ><button id="list-view" aria-pressed="false">List</button>
+            </div>
+          </div>
+          <div class="schedule-summary">
+            <span><strong id="credit-count">0</strong> credits</span
+            ><span><strong id="course-count">0</strong> courses</span
+            ><span id="conflict-status" class="conflict-status"
+              >Ready when you are</span
+            >
+          </div>
+          <div
+            id="calendar"
+            class="calendar"
+            aria-label="Weekly timetable"
+          ></div>
+          <div id="schedule-list" class="schedule-list" hidden></div>
+          <div id="schedule-empty" class="schedule-hint">
+            <span class="hint-icon">↖</span>
+            <div>
+              <strong>Your week starts with one course.</strong>
+              <p>
+                Add a section from the catalog. We’ll check for clashes as you
+                go.
+              </p>
+            </div>
+          </div>
+          <div class="schedule-toolbar">
+            <span id="save-status">Drafts save on this device</span>
+            <div>
+              <button id="import-button" class="text-button">↑ Import</button
+              ><button id="export-button" class="text-button">↓ Export</button
+              ><button id="print-button" class="text-button">Print</button>
+            </div>
+            <input
+              id="import-file"
+              type="file"
+              accept=".json,application/json"
+              hidden
+            />
+          </div>
+        </section>
+      </div>
+      <section class="possibilities panel">
+        <div class="possibility-intro">
+          <p class="eyebrow">03 / FIND YOUR FIT</p>
+          <h2>A few good possibilities.</h2>
+          <p>
+            Add alternative sections to your shortlist, set your credit range,
+            and let FCS find schedules without time clashes.
+          </p>
+        </div>
+        <div class="generator-controls">
+          <div class="credit-inputs">
+            <label
+              >Minimum credits<input
+                id="min-credits"
+                type="number"
+                min="0"
+                max="30"
+                value="12"
+                step="0.5" /></label
+            ><span>–</span
+            ><label
+              >Maximum credits<input
+                id="max-credits"
+                type="number"
+                min="0"
+                max="30"
+                value="18"
+                step="0.5"
+            /></label>
+          </div>
+          <button id="generate-button" class="primary-button">
+            Find schedules <span>↗</span>
+          </button>
+        </div>
+        <div class="shortlist-area">
+          <div class="shortlist-heading">
+            <strong>Your shortlist <span id="shortlist-count">0</span></strong
+            ><button id="clear-shortlist" class="text-button">
+              Clear shortlist
+            </button>
+          </div>
+          <p class="muted small">
+            Check a course to require it in every result. Adding a section to
+            your week also shortlists it.
+          </p>
+          <div id="shortlist" class="shortlist">
+            <span class="muted"
+              >Use “Shortlist” on a course to keep your options open.</span
+            >
+          </div>
+        </div>
+        <div
+          id="generated-results"
+          class="generated-results"
+          aria-live="polite"
+        ></div>
+      </section>
+      <footer>
+        <span><strong>FCS</strong> &nbsp; A better way to navigate campus.</span
+        ><span
+          >Made for the weeks ahead. <span class="footer-star">✳</span></span
+        >
+      </footer>
+    </main>
+    <dialog id="roadmap-dialog">
+      <button id="close-roadmap" class="dialog-close" aria-label="Close">
+        ×
+      </button>
+      <p class="eyebrow">THE NEXT CHAPTER</p>
+      <h2>More than a timetable.</h2>
+      <p>
+        We’re starting with a better planner. These are planned next steps, and
+        aren’t available yet.
+      </p>
+      <div class="roadmap-item">
+        <strong>Course & teacher reviews</strong
+        ><span
+          >Useful context from students, with moderation and verified
+          enrollment.</span
+        >
+      </div>
+      <div class="roadmap-item">
+        <strong>Your campus community</strong
+        ><span>Course discussions, shared schedules, and study groups.</span>
+      </div>
+      <div class="roadmap-item">
+        <strong>Seat alerts</strong
+        ><span
+          >Watch a section and get notified when availability changes.</span
+        >
+      </div>
+      <div class="roadmap-item">
+        <strong>Take your schedule anywhere</strong
+        ><span>Account sync, share links, and calendar integration.</span>
+      </div>
+    </dialog>
+  </body>
+</html>

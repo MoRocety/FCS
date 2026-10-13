@@ -1,34 +1,30 @@
-from flask import Flask
-from views import my_blueprint
+"""Flask entry point; compatible with app:app and PythonAnywhere."""
 import os
 from pathlib import Path
+from flask import Flask
 
-# Load environment variables from .env file if it exists
-env_file = Path(__file__).parent / '.env'
-if env_file.exists():
-    print(f"Loading environment from: {env_file}")
-    with open(env_file) as f:
-        for line in f:
-            line = line.strip()
-            # Skip empty lines and comments
-            if line and not line.startswith('#'):
-                # Split on first = only
-                if '=' in line:
-                    key, value = line.split('=', 1)
-                    os.environ[key.strip()] = value.strip()
-                    print(f"  Set: {key.strip()}")
-else:
-    print("No .env file found, using system environment variables")
 
-# Create the Flask application instance
-app = Flask(__name__)
+def create_app(test_config=None):
+    env_file = Path(__file__).parent / '.env'
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            if line.strip() and not line.lstrip().startswith('#') and '=' in line:
+                key, value = line.split('=', 1)
+                os.environ.setdefault(key.strip(), value.strip())
+    app = Flask(__name__)
+    app.config.update(SECRET_KEY=os.getenv('SECRET_KEY'), MAX_CONTENT_LENGTH=2 * 1024 * 1024)
+    if test_config:
+        app.config.update(test_config)
+    from fcs.catalog import CatalogRepository
+    from fcs.api import api
+    from views import my_blueprint
+    app.extensions['catalog'] = CatalogRepository()
+    app.register_blueprint(api)
+    app.register_blueprint(my_blueprint)
+    return app
 
-# Configure the Flask app
-app.config['SECRET_KEY'] = 'your_secret_key'
 
-# Register blueprints
-app.register_blueprint(my_blueprint)
+app = create_app()
 
-# Start the Flask application
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='127.0.0.1', port=int(os.getenv('PORT', '5000')), debug=os.getenv('FLASK_DEBUG') == '1')

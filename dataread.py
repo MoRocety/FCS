@@ -19,7 +19,8 @@ def fileread():
     filename = get_data_filename(term_code)
     
     # Build full path - use current file's directory
-    filepath = Path(__file__).parent / filename
+    from fcs.catalog import data_path
+    filepath = data_path(term_code)
     
     try:
         infile = open(filepath, "r", encoding="utf-8")
