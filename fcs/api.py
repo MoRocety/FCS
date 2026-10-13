@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request, current_app
 from .scheduling import generate
+from .rules import validate_rule
 
 api = Blueprint('planner_api', __name__, url_prefix='/api/v1')
 
@@ -37,7 +38,9 @@ def schedules():
         sections = [lookup[identity] for identity in dict.fromkeys(ids)]
         if not set(required) <= {s['course_key'] for s in sections}:
             raise ValueError('Required courses must be in your shortlist')
-        return jsonify(generate(sections, minimum, maximum, set(required)))
+        rules = validate_rule(data.get("rules", {"op": "and", "children": []}),
+                              {s["course_key"] for s in sections})
+        return jsonify(generate(sections, minimum, maximum, set(required), rules=rules))
     except (ValueError, TypeError) as exc:
         return jsonify(error=str(exc)), 400
     except FileNotFoundError as exc:

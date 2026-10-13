@@ -31,7 +31,7 @@ File modification time is exposed as `file_modified_at`, not a scrape timestamp.
 
 ## 3. Search with pruning and explicit limits
 
-The new generator groups alternative sections by course and chooses at most one per group. It prunes time clashes and excess credits during recursion, includes required courses, and uses a remaining-credit upper bound to stop impossible branches. Adjacent time intervals are allowed: overlap is `start_a < end_b && start_b < end_a` on a shared day.
+The new generator groups alternative sections by course and chooses at most one per group. It prunes time clashes and excess credits during recursion, evaluates nested Boolean course rules, and uses a remaining-credit upper bound to stop impossible branches. Adjacent time intervals are allowed: overlap is `start_a < end_b && start_b < end_a` on a shared day.
 
 Limits: at most 60 input sections, 50 returned schedules, and 100,000 visited search nodes. A `limited` result is not proof that every option was found. Ordering is deterministic by required status, alternative count, and course key; it is not a quality ranking. Fractional and zero credits are preserved. Unannounced times cannot be verified and are disclosed in the UI.
 
@@ -39,13 +39,13 @@ Next: blocked personal time, travel buffers, section locks, preferred-day rankin
 
 ## 4. Separate page structure, styling, and behavior
 
-The new planner uses one template, one stylesheet, and one JavaScript module. It has no CDN runtime dependencies. Data-derived HTML is escaped. The UI uses native inputs, semantic regions, focus indicators, modal dialog behavior, and live status messages. Responsive layout stacks the catalog above the calendar on small screens; the calendar can scroll horizontally. Print rules retain the chosen view.
+The new planner uses one template, one stylesheet, and separate planner and rule-builder JavaScript modules. It has no CDN runtime dependencies. Data-derived HTML is escaped. The UI uses native inputs, semantic regions, focus indicators, modal dialog behavior, and live status messages. Responsive layout stacks the catalog above the calendar on small screens; the calendar can scroll horizontally. Print rules retain the chosen view.
 
 The JavaScript module currently combines state transitions and rendering. As features grow, extract pure planner state operations, persistence adapters, API client, and calendar/catalog components before adding accounts or collaboration. A framework becomes useful if measured interface complexity warrants it; it is not required for this iteration.
 
 ## 5. Device drafts now; server schedules later
 
-JSON format:
+Current exports use version 2 with a nested `rules` expression, described in [RULES.md](RULES.md). Version 1 remains importable and migrates automatically. Historical version 1 JSON format:
 
 ```json
 {

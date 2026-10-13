@@ -1,9 +1,16 @@
+import {
+  emptyRules,
+  fromRequired,
+  validateRules,
+  ruleText,
+  mountRuleBuilder,
+} from "./rule-builder.js";
 const $ = (id) => document.getElementById(id);
 const state = {
   catalog: null,
   selected: [],
   shortlist: [],
-  required: [],
+  rules: emptyRules(),
   visible: 30,
   results: [],
 };
@@ -63,11 +70,11 @@ function save() {
     localStorage.setItem(
       draftKey(),
       JSON.stringify({
-        version: 1,
+        version: 2,
         term: state.catalog.term,
         section_ids: state.selected,
         shortlist_ids: state.shortlist,
-        required_course_keys: state.required,
+        rules: state.rules,
       }),
     );
     $("save-status").textContent = "Saved on this device";
@@ -83,7 +90,7 @@ function restore() {
     const data = validateDraft(JSON.parse(raw));
     state.selected = data.selected;
     state.shortlist = data.shortlist;
-    state.required = data.required;
+    state.rules = data.rules;
     if (data.missing)
       notify(
         `${data.missing} saved section(s) are no longer available and were removed.`,
@@ -98,18 +105,19 @@ function restore() {
 function validateDraft(data) {
   if (
     !data ||
-    data.version !== 1 ||
+    ![1, 2].includes(data.version) ||
     data.term !== state.catalog.term ||
     !Array.isArray(data.section_ids) ||
     data.section_ids.length > 60 ||
     !Array.isArray(data.shortlist_ids) ||
     data.shortlist_ids.length > 60 ||
-    !Array.isArray(data.required_course_keys) ||
-    data.required_course_keys.length > 60 ||
+    (data.version === 1 &&
+      (!Array.isArray(data.required_course_keys) ||
+        data.required_course_keys.length > 60)) ||
     [
       ...data.section_ids,
       ...data.shortlist_ids,
-      ...data.required_course_keys,
+      ...(data.version === 1 ? data.required_course_keys || [] : []),
     ].some((x) => typeof x !== "string")
   )
     throw new Error(
@@ -126,9 +134,16 @@ function validateDraft(data) {
   return {
     selected,
     shortlist,
-    required: [...new Set(data.required_course_keys)].filter((k) =>
-      keys.has(k),
-    ),
+    rules:
+      data.version === 1
+        ? fromRequired(
+            [...new Set(data.required_course_keys)].filter((k) => keys.has(k)),
+          )
+        : validateRules(
+            data.rules,
+            new Set(state.catalog.sections.map((s) => s.course_key)),
+            true,
+          ),
     missing: new Set(
       [...data.section_ids, ...data.shortlist_ids].filter((id) => !map.has(id)),
     ).size,
@@ -274,15 +289,37 @@ function renderShortlist() {
     [...grouped]
       .map(
         ([key, sections]) =>
-          `<div class="shortlist-chip"><label><input type="checkbox" data-required="${esc(key)}" ${state.required.includes(key) ? "checked" : ""}> ${esc(code(sections[0]))} <span class="muted">${sections.map((s) => esc(s.section)).join(", ")}</span><span class="sr-only"> Require this course in every generated schedule</span></label><button data-action="unshortlist" data-key="${esc(key)}" aria-label="${esc(`Remove ${code(sections[0])} from shortlist`)}">×</button></div>`,
+          `<div class="shortlist-chip"><span> ${esc(code(sections[0]))} <span class="muted">${sections.map((s) => esc(s.section)).join(", ")}</span></span><button data-action="unshortlist" data-key="${esc(key)}" aria-label="${esc(`Remove ${code(sections[0])} from shortlist`)}">×</button></div>`,
       )
       .join("") ||
     '<span class="muted">Use “Shortlist” on a course to keep your options open.</span>';
+}
+let ruleBuilder;
+function ruleCourses() {
+  return [
+    ...new Map(
+      resolve(state.shortlist).map((s) => [
+        s.course_key,
+        { key: s.course_key, label: `${code(s)} · ${s.name}` },
+      ]),
+    ).values(),
+  ];
+}
+function renderRules() {
+  ruleBuilder?.render();
+  $("rule-summary").textContent = ruleText(state.rules);
+  try {
+    validateRules(state.rules, new Set(ruleCourses().map((c) => c.key)));
+    $("rule-validation").textContent = "";
+  } catch (error) {
+    $("rule-validation").textContent = error.message;
+  }
 }
 function renderAll() {
   renderCatalog();
   renderSchedule();
   renderShortlist();
+  renderRules();
 }
 function handleAction(event) {
   const button = event.target.closest("[data-action]");
@@ -329,8 +366,7 @@ function handleAction(event) {
     state.shortlist = state.shortlist.filter(
       (id) => lookup().get(id).course_key !== key,
     );
-  const available = new Set(resolve(state.shortlist).map((s) => s.course_key));
-  state.required = state.required.filter((k) => available.has(k));
+
   invalidateResults();
   renderAll();
   save();
@@ -358,7 +394,18 @@ async function generate() {
   }
   button.disabled = true;
   button.textContent = "Finding schedules…";
-  const snapshot = JSON.stringify([state.shortlist, state.required, min, max]);
+  try {
+    validateRules(
+      state.rules,
+      new Set(resolve(state.shortlist).map((s) => s.course_key)),
+    );
+  } catch (error) {
+    button.disabled = false;
+    button.innerHTML = "Find schedules <span>↗</span>";
+    notify(error.message, true);
+    return;
+  }
+  const snapshot = JSON.stringify([state.shortlist, state.rules, min, max]);
   try {
     const response = await fetch("/api/v1/schedules/generate", {
       method: "POST",
@@ -367,7 +414,7 @@ async function generate() {
         term: state.catalog.term,
         catalog_revision: state.catalog.revision,
         section_ids: state.shortlist,
-        required_course_keys: state.required,
+        rules: state.rules,
         min_credits: min,
         max_credits: max,
       }),
@@ -379,7 +426,7 @@ async function generate() {
       snapshot !==
       JSON.stringify([
         state.shortlist,
-        state.required,
+        state.rules,
         Number($("min-credits").value),
         Number($("max-credits").value),
       ])
@@ -392,7 +439,7 @@ async function generate() {
     state.results = data.schedules;
     const unknown = resolve(state.shortlist).some((s) => !s.meetings.length);
     $("generated-results").innerHTML =
-      `<p class="result-note">${data.schedules.length ? `${data.schedules.length} possibilities found${data.limited ? " · Search limit reached; narrow your shortlist for more focused results." : "."}` : "No schedules fit yet. Add more sections, lower your minimum credits, or uncheck a required course."}${unknown ? " Some meeting times are unannounced. Confirm them before registering." : ""}</p>` +
+      `<p class="result-note">${data.schedules.length ? `${data.schedules.length} possibilities found${data.limited ? " · Search limit reached; narrow your shortlist for more focused results." : "."}` : "No schedules fit yet. Add more sections, lower your minimum credits, or adjust your schedule rules."}${unknown ? " Some meeting times are unannounced. Confirm them before registering." : ""}</p>` +
       data.schedules
         .map((ids, i) => {
           const sections = resolve(ids);
@@ -415,6 +462,29 @@ function download(name, content, type) {
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 function bind() {
+  ruleBuilder = mountRuleBuilder({
+    element: $("rule-builder"),
+    getRules: () => state.rules,
+    setRules: (rules) => {
+      state.rules = rules;
+    },
+    getCourses: ruleCourses,
+    onChange: () => {
+      invalidateResults();
+      renderRules();
+      save();
+    },
+  });
+  $("rule-builder").addEventListener("rule-error", (event) =>
+    notify(event.detail, true),
+  );
+  $("reset-rules").addEventListener("click", () => {
+    state.rules = emptyRules();
+    invalidateResults();
+    renderRules();
+    save();
+  });
+
   ["search", "department", "open-only"].forEach((id) =>
     $(id).addEventListener(id === "search" ? "input" : "change", () => {
       state.visible = 30;
@@ -428,21 +498,13 @@ function bind() {
   ["course-list", "calendar", "schedule-list", "shortlist"].forEach((id) =>
     $(id).addEventListener("click", handleAction),
   );
-  $("shortlist").addEventListener("change", (event) => {
-    const key = event.target.dataset.required;
-    if (!key) return;
-    state.required = event.target.checked
-      ? [...new Set([...state.required, key])]
-      : state.required.filter((k) => k !== key);
-    invalidateResults();
-    save();
-  });
   $("clear-shortlist").addEventListener("click", () => {
     state.shortlist = [];
-    state.required = [];
+
     invalidateResults();
     renderShortlist();
     renderCatalog();
+    renderRules();
     save();
   });
   ["min-credits", "max-credits"].forEach((id) =>
@@ -472,11 +534,11 @@ function bind() {
       `fcs-${state.catalog.term}-schedule.json`,
       JSON.stringify(
         {
-          version: 1,
+          version: 2,
           term: state.catalog.term,
           section_ids: state.selected,
           shortlist_ids: state.shortlist,
-          required_course_keys: state.required,
+          rules: state.rules,
         },
         null,
         2,
@@ -494,7 +556,7 @@ function bind() {
       const draft = validateDraft(JSON.parse(await file.text()));
       state.selected = draft.selected;
       state.shortlist = draft.shortlist;
-      state.required = draft.required;
+      state.rules = draft.rules;
       invalidateResults();
       renderAll();
       save();

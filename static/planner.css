@@ -875,3 +875,219 @@ dialog > p:not(.eyebrow) {
     min-height: 0;
   }
 }
+/* Scratch-inspired boolean expression blocks. */
+.rules-area {
+  grid-column: 1/-1;
+  border-top: 1px solid var(--line);
+  padding-top: 24px;
+  min-width: 0;
+}
+.rules-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+.rules-heading h3 {
+  font-size: 18px;
+  margin: 0;
+  letter-spacing: -0.4px;
+}
+.rules-heading .eyebrow {
+  margin-bottom: 7px;
+}
+.rule-builder {
+  margin-top: 18px;
+}
+.rule-group {
+  border: 2px solid #91b29b;
+  border-radius: 12px;
+  background: #f0f6ed;
+  min-width: 0;
+  padding: 10px;
+  position: relative;
+}
+.rule-group.rule-or {
+  border-color: #b4a0d0;
+  background: #f4effb;
+}
+.rule-group.rule-not {
+  border-color: #d2ae7d;
+  background: #fff6e9;
+}
+.rule-group-heading {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 2px 3px 10px;
+}
+.rule-group-heading > select {
+  font-weight: 700;
+  border: 0;
+  background: #d9e9d5;
+  color: #365c40;
+  border-radius: 6px;
+  padding: 9px 12px;
+  font-size: 12px;
+}
+.rule-or > .rule-group-heading > select {
+  background: #e3d8f1;
+  color: #654982;
+}
+.rule-not > .rule-group-heading > select {
+  background: #f1dfc4;
+  color: #8c6532;
+}
+.rule-children {
+  padding: 6px 0 6px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-left: 3px solid #a9bea4;
+  margin-left: 7px;
+}
+.rule-or > .rule-children {
+  border-color: #c6b4dd;
+}
+.rule-not > .rule-children {
+  border-color: #ddc095;
+}
+.course-rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 12px;
+  background: #e4eef9;
+  border: 1px solid #adcae4;
+  border-radius: 8px;
+  box-shadow: 0 2px 0 #adcae4;
+}
+.block-kind {
+  font-size: 8px;
+  font-weight: 750;
+  color: #46739a;
+  letter-spacing: 1px;
+}
+.course-rule select {
+  border: 1px solid #bfd4e7;
+  background: #f8fbff;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 11px;
+  color: #365d7e;
+  max-width: 100%;
+  min-width: 0;
+}
+.course-rule select[data-rule-field="course"] {
+  flex: 1;
+  min-width: 140px;
+  max-width: 360px;
+}
+.block-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.block-icon {
+  border: 0;
+  background: #ffffff85;
+  color: #5b6c75;
+  border-radius: 4px;
+  width: 25px;
+  height: 25px;
+  font-size: 14px;
+}
+.block-handle {
+  font-size: 20px;
+  cursor: grab;
+  color: #718998;
+}
+.root-label {
+  font-size: 8px;
+  letter-spacing: 1.1px;
+  color: #71876a;
+}
+.rule-group-footer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 3px 0;
+}
+.rule-group-footer button {
+  border: 1px dashed #abbfa4;
+  background: #ffffff80;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 10px;
+  color: var(--ink);
+}
+.rule-group-footer button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}
+.rule-group-footer span,
+.rule-placeholder {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 5px;
+}
+.rule-reading {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #fafbf8;
+  margin-top: 15px;
+}
+.rule-reading > span {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  color: var(--muted);
+}
+.rule-reading p {
+  font-size: 12px;
+  line-height: 1.8;
+  margin: 5px 0 0;
+  overflow-wrap: anywhere;
+}
+.rule-validation {
+  color: #a5513b;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 10px 0 0;
+}
+.rule-validation:empty {
+  display: none;
+}
+@media (max-width: 760px) {
+  .rule-children {
+    padding-left: 8px;
+    margin-left: 2px;
+  }
+  .rule-group {
+    padding: 7px;
+  }
+  .course-rule {
+    padding: 8px;
+  }
+  .root-label {
+    display: none;
+  }
+  .course-rule select[data-rule-field="course"] {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .rules-area {
+    grid-column: auto;
+  }
+}
+@media print {
+  .rules-area {
+    display: none;
+  }
+}

@@ -19,7 +19,7 @@ Open http://127.0.0.1:5050. Python 3.11 or later is recommended. The app also ex
 - Add sections to a week or shortlist alternative sections. Adding another section of the same course replaces it in your week while preserving alternatives in your shortlist.
 - Display all lecture and lab meetings, including weekends and evening times. Overlapping events appear side by side and are marked as conflicts.
 - Show credits, unique course count, conflicts, and unannounced meeting times.
-- Require specific courses and generate up to 50 schedule options from at most 60 shortlisted sections. A bounded search prevents unmanageable enumeration; results disclose when a limit is reached.
+- Build nested AND/OR/NOT course rules and generate up to 50 schedule options from at most 60 shortlisted sections. A bounded search prevents unmanageable enumeration; results disclose when a limit is reached.
 - Save drafts locally per term. Export/import versioned JSON; print either the weekly or list view.
 
 Local storage is specific to this browser and device. Export a draft for backup. An import replaces the current draft; sections no longer in the catalog are reported and skipped. The catalog is a snapshot, not registration or a seat reservation. File modification time is not presented as the time course availability was captured.
@@ -44,6 +44,8 @@ fcs/api.py               /api/v1 catalog and generation endpoints
 views.py                 pages, webhook, and legacy HTTP adapters
 static/planner.js        browser state, rendering, draft import/export
 static/planner.css       responsive planner and print styles
+static/rule-builder.js   nested Boolean block editor and rule validation
+fcs/rules.py             rule validation and partial evaluation
 templates/planner.html   accessible page structure
 tests/                   scheduling, catalog, and API regression tests
 docs/                    product and architecture plans
@@ -57,6 +59,9 @@ The original interface remains at `/old`, and its filtering/generation endpoints
 ```sh
 .venv/bin/python -m unittest discover -s tests -v
 node --check static/planner.js
+node --test tests/rules.test.mjs
 ```
 
 Read [the implementation roadmap](docs/ROADMAP.md) and [the architecture decisions](docs/ARCHITECTURE.md) for the path to shared schedules, reviews, discussions, and seat alerts. Those platform features are planned, not implemented in this iteration.
+
+See [nested schedule rules](docs/RULES.md) for examples, JSON format, and migration behavior.

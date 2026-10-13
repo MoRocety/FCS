@@ -16,3 +16,9 @@ Browser checks:
 The JSON export action was invoked, but the in-app browser download event timed out, so the downloaded file was not independently inspected. Export uses the standard Blob/download-link browser flow. File import and per-device restoration were verified. Print stylesheet behavior was implemented but not verified in a print preview. No production deployment or remote CI run was performed.
 
 Screenshots: [desktop](assets/planner-desktop.jpg), [phone](assets/planner-mobile.jpg).
+
+## Nested rules update
+
+22 backend tests and 6 JavaScript logic tests pass. Browser verification covered migration of the existing required-course draft, course pickers, nested OR and NOT groups, validation of empty groups, generation of two matching 16-credit options, and expression restoration after reload. The 390-pixel phone layout remains within its viewport. Drag-and-drop movement is implemented, but was not separately exercised in this browser test; sibling arrows and direct nested creation are alternative controls.
+
+Preview: [nested rule builder](assets/rule-builder.jpg). New drafts use version 2; historical version 1 drafts remain importable.
