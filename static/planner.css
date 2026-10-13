@@ -1284,3 +1284,26 @@ dialog > p:not(.eyebrow) {
   white-space: nowrap;
   padding: 0 4px;
 }
+
+.result-search-actions {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-top: 12px;
+}
+.result-search-actions .primary-button {
+  font-size: 11px;
+  white-space: nowrap;
+}
+.result-search-actions p {
+  font-size: 11px;
+  line-height: 1.7;
+}
+@media (max-width: 550px) {
+  .result-search-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

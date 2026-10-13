@@ -6,7 +6,7 @@ from pathlib import Path
 from flask import Blueprint, current_app, jsonify, render_template, request
 from config import BASE_DIR, decode_term_code, set_active_term
 from fcs.catalog import TERM, parse_rows
-from fcs.scheduling import generate
+from fcs.search_sessions import generate_batch
 
 my_blueprint = Blueprint('my_blueprint', __name__)
 
@@ -121,7 +121,8 @@ def submit():
             raise ValueError('Select between 1 and 60 sections')
         def identity(s):
             return ':'.join(str(s[k]) for k in ('department_id', 'course_id', 'section'))
-        lookup = {s['id']: s for s in catalog()['sections']}
+        source = catalog()
+        lookup = {s['id']: s for s in source['sections']}
         ids = list(dict.fromkeys(identity(s) for s in selected))
         missing = [s for s in selected if identity(s) not in lookup]
         sections = [lookup[s] for s in ids if s in lookup]
@@ -131,9 +132,10 @@ def submit():
         minimum, maximum = float(data.get('minCredit', 0)), float(data.get('maxCredit', 22))
         if not 0 <= minimum <= maximum <= 30:
             raise ValueError('Invalid credit range')
-        result = generate(sections, minimum, maximum, required)
+        result = generate_batch(sections, minimum, maximum, required,
+                                {"op": "and", "children": []}, source['revision'], data.get('continuation'))
         return jsonify(schedules=[[legacy(lookup[s]) for s in schedule] for schedule in result['schedules']],
-                       missing_courses=missing, limited=result['limited'])
+                       missing_courses=missing, limited=result['limited'], continuation=result['continuation'])
     except (ValueError, TypeError, KeyError) as exc:
         return jsonify(error=str(exc)), 400
 

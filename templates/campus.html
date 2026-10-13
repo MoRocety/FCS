@@ -13,6 +13,10 @@
       rel="stylesheet"
       href="{{ url_for('static',filename='platform.css') }}"
     />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='media.css') }}"
+    />
     <script
       type="module"
       src="{{ url_for('static',filename='campus.js') }}"
@@ -53,6 +57,8 @@
       <div class="campus-tabs" role="tablist" aria-label="Campus features">
         <button data-tab="explore" role="tab" aria-selected="true">
           Explore courses & teachers</button
+        ><button data-tab="feed" role="tab" aria-selected="false">
+          Campus feed</button
         ><button data-tab="schedules" role="tab" aria-selected="false">
           My schedules</button
         ><button data-tab="watches" role="tab" aria-selected="false">

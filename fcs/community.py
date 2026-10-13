@@ -13,6 +13,13 @@ from .identity import (
 from .services import catalog, subjects, subject, owned
 
 community_api = Blueprint("community", __name__)
+REPORT_TARGETS = {
+    "review": "reviews",
+    "thread": "threads",
+    "comment": "comments",
+    "media_post": "media_posts",
+    "media_comment": "media_comments",
+}
 
 
 def limited_posts():
@@ -257,13 +264,7 @@ def report():
     limited_posts()
     data = json_body()
     target_type, identity = data.get("target_type"), data.get("target_id")
-    table = (
-        {"review": "reviews", "thread": "threads", "comment": "comments"}.get(
-            target_type
-        )
-        if isinstance(target_type, str)
-        else None
-    )
+    table = REPORT_TARGETS.get(target_type) if isinstance(target_type, str) else None
     if not table or type(identity) is not int:
         raise ValueError("Invalid report target")
     reason = text_field(data, "reason", 5, 500)
@@ -296,13 +297,23 @@ def moderation_reports():
             )
         ]
         for row in rows:
-            table = {"review": "reviews", "thread": "threads", "comment": "comments"}[
-                row["target_type"]
-            ]
+            table = REPORT_TARGETS[row["target_type"]]
             target = connection.execute(
                 f"SELECT * FROM {table} WHERE id=?", (row["target_id"],)
             ).fetchone()
             row["target"] = dict(target) if target else None
+            if target and row["target_type"] == "media_post":
+                row["target"]["assets"] = [
+                    {
+                        "url": f"/api/v1/media/assets/{asset['id']}",
+                        "kind": asset["kind"],
+                        "description": asset["description"],
+                    }
+                    for asset in connection.execute(
+                        "SELECT id,kind,description FROM media_assets WHERE post_id=? ORDER BY position",
+                        (target["id"],),
+                    )
+                ]
     return jsonify(reports=rows)
 
 
@@ -322,9 +333,7 @@ def moderate(identity):
         if not row:
             abort(404)
         if action == "hide":
-            table = {"review": "reviews", "thread": "threads", "comment": "comments"}[
-                row["target_type"]
-            ]
+            table = REPORT_TARGETS[row["target_type"]]
             connection.execute(
                 f"UPDATE {table} SET status='hidden' WHERE id=?", (row["target_id"],)
             )

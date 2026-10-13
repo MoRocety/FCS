@@ -451,7 +451,7 @@ class PlatformTests(unittest.TestCase):
             database = Database(path)
             with database.connect() as connection:
                 self.assertEqual(
-                    connection.execute("PRAGMA user_version").fetchone()[0], 2
+                    connection.execute("PRAGMA user_version").fetchone()[0], 3
                 )
                 self.assertEqual(
                     connection.execute("SELECT revision FROM catalog_heads").fetchone()[

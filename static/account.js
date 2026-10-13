@@ -25,15 +25,16 @@ function applyAccount(data) {
 }
 export async function api(path, { method = "GET", data, raw = false } = {}) {
   await ready;
+  const multipart = data instanceof FormData;
   const response = await fetch(`/api/v1${path}`, {
     method,
     headers: {
-      ...(data ? { "Content-Type": "application/json" } : {}),
+      ...(data && !multipart ? { "Content-Type": "application/json" } : {}),
       ...(["POST", "PUT", "PATCH", "DELETE"].includes(method)
         ? { "X-CSRF-Token": account.csrf }
         : {}),
     },
-    ...(data ? { body: JSON.stringify(data) } : {}),
+    ...(data ? { body: multipart ? data : JSON.stringify(data) } : {}),
   });
   if (!response.ok) {
     const error = await response

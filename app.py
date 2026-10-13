@@ -24,6 +24,8 @@ def create_app(test_config=None):
         DATABASE=os.getenv(
             "FCS_DATABASE", str(Path(app.instance_path) / "fcs.sqlite3")
         ),
+        MEDIA_ROOT=os.getenv("FCS_MEDIA_ROOT", str(Path(app.instance_path) / "media")),
+        MEDIA_USER_QUOTA=200 * 1024 * 1024,
         SESSION_COOKIE_NAME=os.getenv("FCS_COOKIE_NAME", "fcs_session"),
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",
@@ -81,6 +83,7 @@ def create_app(test_config=None):
     from fcs.community import community_api
     from fcs.library import library_api
     from fcs.availability import availability_api
+    from fcs.media import media_api, prepare_upload
 
     app.extensions["catalog"] = CatalogRepository()
     app.register_blueprint(api)
@@ -88,6 +91,8 @@ def create_app(test_config=None):
     app.register_blueprint(community_api)
     app.register_blueprint(library_api)
     app.register_blueprint(availability_api)
+    app.register_blueprint(media_api)
+    app.before_request(prepare_upload)
 
     @app.errorhandler(HTTPException)
     def http_error(error):

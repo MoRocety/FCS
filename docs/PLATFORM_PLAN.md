@@ -11,6 +11,7 @@
 | Course community | Start a discussion → reply → report inappropriate content | Course and term scope; no private messaging |
 | Study groups | Create a study-group post → join or leave → see participants | Membership is opt-in; no private contact details exposed |
 | Seat availability | Watch a section → ingest a changed catalog → receive an in-app alert when it opens | Snapshot-based, no reservation, no implied live university feed |
+| Campus media | Browse by category/course → upload photos or a clip → comment/like → report or withdraw | Public posts, accessible descriptions, bounded decoding, no recommendation algorithm |
 | Moderation | Report content → moderator examines it → dismiss or hide with an audit trail | Moderator promotion is a local administrative CLI operation |
 
 ## Architecture and data
@@ -44,4 +45,10 @@ Next product slices, in order:
 5. Personal assignment/deadline tracking and calendar account sync.
 6. Textbook/resource exchange with reporting and explicit contact/privacy controls.
 
-Implement these as independent complete flows. Direct messages, a global recommendation feed, marketplace payments, and unofficial grade predictions are deferred. The current course-linked conversations and study groups provide a useful social surface before those broader features.
+Implement these as independent complete flows. A chronological campus media feed is now implemented at the user’s request. Direct messages, recommendation algorithms, marketplace payments, and unofficial grade predictions are deferred. The current course-linked conversations and study groups provide a useful social surface before those broader features.
+
+## Media feed design decisions
+
+Campus feed sits beside course exploration, rather than replacing the planning workflow. The composer asks for media, a caption, a plain-language description of each asset, a category, and an optional course link. File previews can be removed before publishing. The published result is a complete post with author identity, media, course context, likes, and an expandable conversation. Browsing does not require an account. Posting clearly discloses public visibility before submission.
+
+Keep the first feed chronological and filterable. Do not introduce popularity ranking, follows, private messages, or autoplay until moderation and operational ownership are established. Next slices are upload jobs/object storage, retention/deletion policy, closed-caption support, organizer-owned events, and opt-in following with explicit visibility controls.

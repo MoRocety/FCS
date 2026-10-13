@@ -16,6 +16,8 @@ const state = {
   rules: emptyRules(),
   visible: 30,
   results: [],
+  searchRequest: null,
+  searchCursor: null,
   library: null,
   creditRange: { min: 12, max: 18 },
 };
@@ -161,7 +163,12 @@ function validateDraft(data) {
     ).size,
   };
 }
+let searchEpoch = 0;
+let searchBusy = false;
 function invalidateResults() {
+  searchEpoch++;
+  state.searchRequest = null;
+  state.searchCursor = null;
   state.results = [];
   $("generated-results").replaceChildren();
 }
@@ -194,7 +201,22 @@ function renderCatalog() {
 }
 function renderSchedule() {
   const sections = resolve(state.selected);
-  const conflicting = new Set();
+  const conflicting = new Set(
+    sections
+      .filter((section) =>
+        section.meetings.some((a, i) =>
+          section.meetings
+            .slice(i + 1)
+            .some(
+              (b) =>
+                a.days.some((day) => b.days.includes(day)) &&
+                a.start < b.end &&
+                b.start < a.end,
+            ),
+        ),
+      )
+      .map((section) => section.id),
+  );
   let duplicates = false;
   sections.forEach((a, i) =>
     sections.slice(i + 1).forEach((b) => {
@@ -395,8 +417,41 @@ function handleAction(event) {
   renderAll();
   save();
 }
-async function generate() {
-  const button = $("generate-button");
+function searchSnapshot() {
+  return JSON.stringify([
+    state.shortlist,
+    state.rules,
+    Number($("min-credits").value),
+    Number($("max-credits").value),
+  ]);
+}
+function renderSearchResults() {
+  const count = state.results.length,
+    more = Boolean(state.searchCursor);
+  const unknown = resolve(state.shortlist).some((s) => !s.meetings.length);
+  const summary = count
+    ? `${count} possibilities found. ${more ? "There are still combinations to explore." : "Search complete — these are all matching combinations."}`
+    : more
+      ? "No matching schedule in this batch yet. Continue searching the remaining combinations."
+      : "Search complete. No combinations fit. Add sections, adjust your credit range, or revise your rules.";
+  $("generated-results").innerHTML =
+    `<p class="result-note" role="status">${summary}${unknown ? " Some meeting times are unannounced. Confirm them before registering." : ""}</p>` +
+    state.results
+      .map((ids, i) => {
+        const sections = resolve(ids);
+        return `<article class="result-card"><strong>Option ${i + 1} · ${sections.reduce((n, s) => n + s.credits, 0)} credits</strong><p>${sections.map((s) => `${esc(code(s))} / ${esc(s.section)}`).join(" · ")}</p><button class="text-button" data-result="${i}">Use this schedule ↗</button></article>`;
+      })
+      .join("") +
+    (more
+      ? `<div class="result-search-actions"><button class="primary-button" data-continue-search>${count ? "Find more schedules" : "Continue search"} ↓</button><p class="muted small">Continues where this search paused. Your current options stay available.</p></div>`
+      : "");
+}
+async function generate(more = false) {
+  if (searchBusy) return;
+  const button = $("generate-button"),
+    continuationButton = $("generated-results").querySelector(
+      "[data-continue-search]",
+    );
   const min = Number($("min-credits").value),
     max = Number($("max-credits").value);
   if (
@@ -416,25 +471,20 @@ async function generate() {
     notify("Shortlist some sections before finding schedules.", true);
     return;
   }
-  button.disabled = true;
-  button.textContent = "Finding schedules…";
   try {
     validateRules(
       state.rules,
       new Set(resolve(state.shortlist).map((s) => s.course_key)),
     );
   } catch (error) {
-    button.disabled = false;
-    button.innerHTML = "Find schedules <span>↗</span>";
     notify(error.message, true);
     return;
   }
-  const snapshot = JSON.stringify([state.shortlist, state.rules, min, max]);
-  try {
-    const response = await fetch("/api/v1/schedules/generate", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+  if (more && (!state.searchCursor || !state.searchRequest)) return;
+  if (!more) {
+    invalidateResults();
+    state.searchRequest = JSON.parse(
+      JSON.stringify({
         term: state.catalog.term,
         catalog_revision: state.catalog.revision,
         section_ids: state.shortlist,
@@ -442,39 +492,48 @@ async function generate() {
         min_credits: min,
         max_credits: max,
       }),
+    );
+  }
+  const snapshot = searchSnapshot(),
+    token = searchEpoch;
+  searchBusy = true;
+  button.disabled = true;
+  button.textContent = "Finding schedules…";
+  if (continuationButton) {
+    continuationButton.disabled = true;
+    continuationButton.textContent = "Searching…";
+  }
+  try {
+    const response = await fetch("/api/v1/schedules/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...state.searchRequest,
+        ...(more ? { continuation: state.searchCursor } : {}),
+      }),
     });
     const data = await response.json();
     if (!response.ok)
       throw new Error(data.error || "Could not generate schedules");
-    if (
-      snapshot !==
-      JSON.stringify([
-        state.shortlist,
-        state.rules,
-        Number($("min-credits").value),
-        Number($("max-credits").value),
-      ])
-    ) {
+    if (token !== searchEpoch || snapshot !== searchSnapshot()) {
       notify(
-        "Your shortlist changed during the search. Find schedules again to use your latest choices.",
+        "Your search inputs changed. Find schedules again to use your latest choices.",
       );
       return;
     }
-    state.results = data.schedules;
-    const unknown = resolve(state.shortlist).some((s) => !s.meetings.length);
-    $("generated-results").innerHTML =
-      `<p class="result-note">${data.schedules.length ? `${data.schedules.length} possibilities found${data.limited ? " · Search limit reached; narrow your shortlist for more focused results." : "."}` : "No schedules fit yet. Add more sections, lower your minimum credits, or adjust your schedule rules."}${unknown ? " Some meeting times are unannounced. Confirm them before registering." : ""}</p>` +
-      data.schedules
-        .map((ids, i) => {
-          const sections = resolve(ids);
-          return `<article class="result-card"><strong>Option ${i + 1} · ${sections.reduce((n, s) => n + s.credits, 0)} credits</strong><p>${sections.map((s) => `${esc(code(s))} / ${esc(s.section)}`).join(" · ")}</p><button class="text-button" data-result="${i}">Use this schedule ↗</button></article>`;
-        })
-        .join("");
+    state.results.push(...data.schedules);
+    state.searchCursor = data.continuation;
+    renderSearchResults();
   } catch (error) {
     notify(error.message, true);
   } finally {
+    searchBusy = false;
     button.disabled = false;
     button.innerHTML = "Find schedules <span>↗</span>";
+    if (continuationButton) {
+      continuationButton.disabled = false;
+      continuationButton.textContent = "Continue search ↓";
+    }
   }
 }
 function download(name, content, type) {
@@ -685,8 +744,12 @@ function bind() {
       save();
     }),
   );
-  $("generate-button").addEventListener("click", generate);
+  $("generate-button").addEventListener("click", () => generate());
   $("generated-results").addEventListener("click", (event) => {
+    if (event.target.closest("[data-continue-search]")) {
+      generate(true);
+      return;
+    }
     const button = event.target.closest("[data-result]");
     if (!button) return;
     state.selected = [...state.results[Number(button.dataset.result)]];

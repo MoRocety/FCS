@@ -67,7 +67,7 @@ Start with structured dimensions and a short optional narrative: workload, clari
 
 ## Phase 5 — a campus community
 
-Start with discussions scoped to courses and terms, then study groups and opt-in schedule sharing. Defer a global feed, direct messages, and recommendation algorithms until there is demonstrated demand and moderation capacity.
+Start with discussions scoped to courses and terms, then study groups and opt-in schedule sharing. At the user’s request, a chronological campus media feed now supports photos, short clips, course/category filters, comments, likes, and the shared report/moderation flow. Direct messages and recommendation algorithms remain deferred until demand and moderation capacity justify them.
 
 Entities: Discussion, Comment, Membership, Reaction, Report, and ModerationAction. Use pagination, authorization, rate limits, soft deletion, and threading limits. Keep moderation ownership clear and provide blocking before adding private messaging.
 

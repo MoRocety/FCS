@@ -1,4 +1,5 @@
 import { api, account, signedIn } from "./account.js";
+import { renderFeed, leaveFeed } from "./media-feed.js";
 const $ = (id) => document.getElementById(id);
 const esc = (v) =>
   String(v ?? "").replace(
@@ -72,6 +73,7 @@ async function loadTab() {
   const token = ++generation;
   state.tab = [
     "explore",
+    "feed",
     "schedules",
     "watches",
     "alerts",
@@ -88,6 +90,11 @@ async function loadTab() {
       ),
     );
   $("moderation-tab").hidden = account.user?.role !== "moderator";
+  leaveFeed();
+  if (state.tab === "feed") {
+    await renderFeed($("campus-content"), state.subjects?.course || []);
+    return;
+  }
   if (!state.subjects) return;
   if (state.tab === "explore") {
     renderExplore();
@@ -126,7 +133,7 @@ async function loadTab() {
       const data = await api("/moderation/reports");
       if (token !== generation) return;
       $("campus-content").innerHTML =
-        `<div class="campus-heading-row"><h2>Reported content</h2></div><div class="campus-grid">${data.reports.map((r) => `<article class="moderation-card"><span class="eyebrow">${esc(r.target_type)} #${r.target_id}</span><p class="entry-body">${esc(r.target?.body || "Content unavailable")}</p><p class="muted small">Reported by ${esc(r.display_name)}: ${esc(r.reason)}</p><div class="subject-card-actions"><button class="text-button action-danger" data-moderate="${r.id}" data-action="hide">Hide content</button><button class="text-button" data-moderate="${r.id}" data-action="dismiss">Dismiss report</button></div></article>`).join("") || empty("No reports need attention.", "New reports will appear here, along with the content and report reason.")}</div>`;
+        `<div class="campus-heading-row"><h2>Reported content</h2></div><div class="campus-grid">${data.reports.map((r) => `<article class="moderation-card"><span class="eyebrow">${esc(r.target_type)} #${r.target_id}</span><p class="entry-body">${esc(r.target?.body || "Content unavailable")}</p>${(r.target?.assets || []).map((a) => (a.kind === "image" ? `<img class="moderation-media" src="${esc(a.url)}" alt="${esc(a.description)}" loading="lazy">` : `<video class="moderation-media" src="${esc(a.url)}" controls preload="none" aria-label="${esc(a.description)}"></video>`)).join("")}<p class="muted small">Reported by ${esc(r.display_name)}: ${esc(r.reason)}</p><div class="subject-card-actions"><button class="text-button action-danger" data-moderate="${r.id}" data-action="hide">Hide content</button><button class="text-button" data-moderate="${r.id}" data-action="dismiss">Dismiss report</button></div></article>`).join("") || empty("No reports need attention.", "New reports will appear here, along with the content and report reason.")}</div>`;
     }
   } catch (error) {
     if (token === generation) {

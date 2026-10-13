@@ -27,3 +27,4 @@ jobs:
       - run: node --check static/campus.js
       - run: node --check static/shared.js
       - run: node --check static/draft-state.js
+      - run: node --check static/media-feed.js

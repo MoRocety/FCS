@@ -1,3 +1,5 @@
 Flask>=3.1,<4
 requests>=2.32,<3
 beautifulsoup4>=4.12,<5
+Pillow>=12.0,<13
+imageio-ffmpeg>=0.6,<0.7

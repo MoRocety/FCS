@@ -56,6 +56,25 @@ CREATE TABLE IF NOT EXISTS notifications (
  created_at TEXT NOT NULL, read_at TEXT, UNIQUE(owner_id,section_id,run_id));
 CREATE TABLE IF NOT EXISTS throttle (
  key TEXT PRIMARY KEY, count INTEGER NOT NULL, started REAL NOT NULL);
+CREATE TABLE IF NOT EXISTS media_posts (
+ id INTEGER PRIMARY KEY, owner_id INTEGER NOT NULL REFERENCES users(id), body TEXT NOT NULL,
+ category TEXT NOT NULL, course_key TEXT, course_name TEXT, term TEXT NOT NULL,
+ status TEXT NOT NULL DEFAULT 'published', created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS media_assets (
+ id INTEGER PRIMARY KEY, post_id INTEGER NOT NULL REFERENCES media_posts(id),
+ filename TEXT NOT NULL UNIQUE, kind TEXT NOT NULL, mime TEXT NOT NULL,
+ description TEXT NOT NULL, bytes INTEGER NOT NULL, width INTEGER, height INTEGER,
+ duration REAL, position INTEGER NOT NULL);
+CREATE TABLE IF NOT EXISTS media_comments (
+ id INTEGER PRIMARY KEY, post_id INTEGER NOT NULL REFERENCES media_posts(id),
+ owner_id INTEGER NOT NULL REFERENCES users(id), body TEXT NOT NULL,
+ status TEXT NOT NULL DEFAULT 'published', created_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS media_likes (
+ post_id INTEGER NOT NULL REFERENCES media_posts(id), user_id INTEGER NOT NULL REFERENCES users(id),
+ PRIMARY KEY(post_id,user_id));
+CREATE INDEX IF NOT EXISTS media_feed ON media_posts(status,id);
+CREATE INDEX IF NOT EXISTS media_asset_post ON media_assets(post_id,position);
+CREATE INDEX IF NOT EXISTS media_comment_post ON media_comments(post_id,status,id);
 CREATE INDEX IF NOT EXISTS review_subject ON reviews(kind,subject_key,status);
 CREATE INDEX IF NOT EXISTS thread_course ON threads(course_key,term,status);
 CREATE INDEX IF NOT EXISTS comments_thread ON comments(thread_id,status);
@@ -74,7 +93,7 @@ class Database:
         else:
             Path(self.path).parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as connection:
-            if connection.execute("PRAGMA user_version").fetchone()[0] > 2:
+            if connection.execute("PRAGMA user_version").fetchone()[0] > 3:
                 raise ValueError("This database was created by a newer FCS version")
             connection.executescript(SCHEMA)
             columns = {
@@ -85,7 +104,7 @@ class Database:
                 connection.execute(
                     "ALTER TABLE catalog_heads ADD COLUMN source_mtime_ns INTEGER NOT NULL DEFAULT 0"
                 )
-            connection.execute("PRAGMA user_version=2")
+            connection.execute("PRAGMA user_version=3")
         if not self.memory:
             Path(self.path).chmod(0o600)
 
