@@ -22,3 +22,9 @@ Screenshots: [desktop](assets/planner-desktop.jpg), [phone](assets/planner-mobil
 22 backend tests and 6 JavaScript logic tests pass. Browser verification covered migration of the existing required-course draft, course pickers, nested OR and NOT groups, validation of empty groups, generation of two matching 16-credit options, and expression restoration after reload. The 390-pixel phone layout remains within its viewport. Drag-and-drop movement is implemented, but was not separately exercised in this browser test; sibling arrows and direct nested creation are alternative controls.
 
 Preview: [nested rule builder](assets/rule-builder.jpg). New drafts use version 2; historical version 1 drafts remain importable.
+
+## Usability refinement
+
+22 backend tests and 11 JavaScript logic tests pass. Browser checks verified unfinished course placeholders, Undo/Redo, moving a condition into another group through the keyboard-accessible menu, negative condition feedback, wrapping the entire expression in NOT, and undoing those changes. Existing saved expressions retained their meaning. Current-week match badges are distinct from rule validation. The 390-pixel document width remains within its viewport.
+
+The editor preserves the original inner AND/OR scope when switching an existing multi-condition group to NOT. Live preview and subtree movement have pure regression tests. Actual student comprehension testing remains future work; see RULE_EDITOR_DESIGN.md.

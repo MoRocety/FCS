@@ -5,6 +5,10 @@ import {
   fromRequired,
   validateRules,
   ruleText,
+  logicText,
+  changeOperator,
+  matchesRules,
+  moveRule,
 } from "../static/rule-builder.js";
 const keys = new Set(["CS:101", "CS:102"]);
 const course = (key, present = true) => ({
@@ -73,4 +77,75 @@ test("imported predicates must be typed data, with no executable fields", () => 
     () => validateRules({ ...course("CS:101"), script: "x" }, keys),
     /predicate/,
   );
+});
+
+test("live draft preview follows nested logic without changing it", () => {
+  const rule = {
+    op: "and",
+    children: [
+      { op: "or", children: [course("CS:101"), course("CS:102")] },
+      {
+        op: "not",
+        children: [
+          { op: "and", children: [course("CS:101"), course("CS:102")] },
+        ],
+      },
+    ],
+  };
+  assert.equal(matchesRules(rule, new Set(["CS:101"])), true);
+  assert.equal(matchesRules(rule, new Set(["CS:101", "CS:102"])), false);
+  assert.equal(matchesRules(rule, new Set()), false);
+});
+test("moving an existing subtree preserves its meaning and prevents cycles", () => {
+  const rule = {
+    op: "and",
+    children: [course("CS:101"), { op: "or", children: [course("CS:102")] }],
+  };
+  const moved = moveRule(rule, [0], [1]);
+  assert.deepEqual(moved, {
+    op: "and",
+    children: [{ op: "or", children: [course("CS:102"), course("CS:101")] }],
+  });
+  assert.equal(rule.children.length, 2);
+  assert.throws(() => moveRule(rule, [1], [1]), /inside itself/);
+  assert.throws(
+    () =>
+      moveRule(
+        {
+          op: "and",
+          children: [
+            course("CS:101"),
+            { op: "not", children: [course("CS:102")] },
+          ],
+        },
+        [0],
+        [1],
+      ),
+    /another expression/,
+  );
+});
+test("blank course pickers can save but cannot generate accidental constraints", () => {
+  const draft = course("");
+  assert.deepEqual(validateRules(draft, keys, true), draft);
+  assert.throws(() => validateRules(draft, keys), /Choose a course/);
+});
+
+test("compact notation keeps nested grouping explicit", () => {
+  const rule = {
+    op: "and",
+    children: [
+      { op: "or", children: [course("CS:101"), course("CS:102")] },
+      course("CS:101", false),
+    ],
+  };
+  assert.equal(logicText(rule), "((CS 101 OR CS 102) AND NOT CS 101)");
+});
+
+test("negating an existing OR group preserves its original scope", () => {
+  const original = { op: "or", children: [course("CS:101"), course("CS:102")] };
+  const excluded = changeOperator(original, "not");
+  assert.deepEqual(excluded, { op: "not", children: [original] });
+  assert.equal(matchesRules(excluded, new Set(["CS:101"])), false);
+  assert.equal(matchesRules(excluded, new Set()), true);
+  assert.equal(original.op, "or");
 });

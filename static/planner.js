@@ -2,8 +2,9 @@ import {
   emptyRules,
   fromRequired,
   validateRules,
-  ruleText,
+  logicText,
   mountRuleBuilder,
+  matchesRules,
 } from "./rule-builder.js";
 const $ = (id) => document.getElementById(id);
 const state = {
@@ -307,12 +308,24 @@ function ruleCourses() {
 }
 function renderRules() {
   ruleBuilder?.render();
-  $("rule-summary").textContent = ruleText(state.rules);
+  $("rule-summary").textContent = logicText(state.rules);
   try {
     validateRules(state.rules, new Set(ruleCourses().map((c) => c.key)));
     $("rule-validation").textContent = "";
+    const matched = matchesRules(
+      state.rules,
+      new Set(resolve(state.selected).map((s) => s.course_key)),
+    );
+    $("rule-preview").className =
+      `rule-preview ${matched ? "matches" : "differs"}`;
+    $("rule-preview").textContent = matched
+      ? "✓ Your current week matches these rules"
+      : "Your current week does not match these rules yet";
   } catch (error) {
     $("rule-validation").textContent = error.message;
+    $("rule-preview").className = "rule-preview";
+    $("rule-preview").textContent =
+      "Finish your rules to preview your current week";
   }
 }
 function renderAll() {
@@ -469,6 +482,8 @@ function bind() {
       state.rules = rules;
     },
     getCourses: ruleCourses,
+    getPreviewKeys: () =>
+      new Set(resolve(state.selected).map((s) => s.course_key)),
     onChange: () => {
       invalidateResults();
       renderRules();
@@ -478,13 +493,9 @@ function bind() {
   $("rule-builder").addEventListener("rule-error", (event) =>
     notify(event.detail, true),
   );
-  $("reset-rules").addEventListener("click", () => {
-    state.rules = emptyRules();
-    invalidateResults();
-    renderRules();
-    save();
-  });
-
+  $("reset-rules").addEventListener("click", () =>
+    ruleBuilder.replace(emptyRules()),
+  );
   ["search", "department", "open-only"].forEach((id) =>
     $(id).addEventListener(id === "search" ? "input" : "change", () => {
       state.visible = 30;

@@ -7,7 +7,7 @@ The shortlist is the pool of possible sections. Rules describe which courses a g
 - Add a course condition, choose a shortlisted course, and choose “is in schedule” or “is not in schedule.” A course predicate matches any shortlisted section of that course.
 - AND requires all child expressions to match.
 - OR requires at least one child expression to match. It permits both; exactly one is expressible as `(A OR B) AND NOT (A AND B)`.
-- NOT reverses one expression. To negate several conditions, put an AND or OR group inside it. Switching a multi-condition group to NOT automatically wraps its existing children in AND, preserving them.
+- NOT reverses one expression. To negate several conditions, put an AND or OR group inside it. Switching a multi-condition group to NOT keeps its previous AND/OR operator inside the negation, so the whole original pattern is inverted.
 - Add nested groups at any group level. Drag blocks into another group to move them, or use arrows to reorder siblings. Touch/keyboard users can create conditions directly inside the desired group.
 - “Reads as” shows the expression with parentheses. Empty groups show an error and cannot be used for generation. An empty root AND means no additional course rules.
 
@@ -39,3 +39,5 @@ The solver uses three-valued evaluation during backtracking: true, false, or und
 Browser storage retains its existing per-term key so prior drafts can be found. Version 1 drafts migrate their required courses into an AND group. New exports and saved drafts use version 2 and preserve the expression tree under `rules`. Incomplete editor groups can be saved and restored but cannot be submitted for generation.
 
 The leaf type currently covers course membership. Future predicate types can cover specific sections, instructors, time windows, or workload without replacing the Boolean group model. Each new leaf type will need matching validation, UI, and scheduling semantics.
+
+The refined editor includes explicit course placeholders, live current-week matching, compact notation, Undo/Redo, named destination groups, and a keyboard move menu. See [the UI design rationale](RULE_EDITOR_DESIGN.md).

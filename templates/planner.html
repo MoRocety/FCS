@@ -205,10 +205,40 @@
             <button id="reset-rules" class="text-button">Reset rules</button>
           </div>
           <p class="muted small">
-            Pick course conditions and connect them with AND, OR, and NOT. Nest
-            groups to express choices within choices. Drag blocks between
-            groups, or use the arrows to reorder them.
+            Each row is a condition. A group decides how its rows connect. Put a
+            group inside another to combine choices.
           </p>
+          <details class="rule-guide">
+            <summary>How groups work · with examples</summary>
+            <div class="rule-guide-grid">
+              <div>
+                <strong>All of these · AND</strong>
+                <p>Take A and B. Both conditions must match.</p>
+              </div>
+              <div>
+                <strong>At least one · OR</strong>
+                <p>Take A, B, or both. Taking neither fails this group.</p>
+              </div>
+              <div>
+                <strong>Exclude a pattern · NOT</strong>
+                <p>
+                  Exclude (A AND B) to allow A alone or B alone, but reject both
+                  together.
+                </p>
+              </div>
+            </div>
+            <p>
+              For exactly one of A and B: combine (A OR B) with NOT (A AND B).
+              Reorder or move blocks using their ••• menu. Undo restores your
+              previous edit.
+            </p>
+          </details>
+          <p
+            id="rule-preview"
+            class="rule-preview"
+            role="status"
+            aria-live="polite"
+          ></p>
           <div id="rule-builder" class="rule-builder"></div>
           <p
             id="rule-validation"
@@ -217,7 +247,7 @@
             aria-live="polite"
           ></p>
           <div class="rule-reading">
-            <span>READS AS</span>
+            <span>EXACT LOGIC</span>
             <p id="rule-summary"></p>
           </div>
         </section>
