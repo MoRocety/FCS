@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCS V3 — Degree Planning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { 'inter': ['Inter', 'sans-serif'] }, colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } } } } }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .view-hidden { display: none; }
+        .view-active { display: block; }
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .tree-line { stroke: #e5e7eb; stroke-width: 2; }
+        .tree-node { transition: all 0.2s; cursor: pointer; }
+        .tree-node:hover { transform: scale(1.05); }
+        .semester-col { min-height: 200px; }
+        .drag-item { cursor: grab; transition: all 0.15s; }
+        .drag-item:active { cursor: grabbing; opacity: 0.8; }
+        .progress-fill { transition: width 0.8s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                    <span class="text-xl font-bold text-gray-900">FCS</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="switchView('history')" id="tab-history" class="px-4 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600">Course History</button>
+                    <button onclick="switchView('progress')" id="tab-progress" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Degree Progress</button>
+                    <button onclick="switchView('planner')" id="tab-planner" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Semester Planner</button>
+                    <button onclick="switchView('substitute')" id="tab-substitute" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Substitutions</button>
+                    <button onclick="switchView('transcript')" id="tab-transcript" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Transcript</button>
+                </div>
+            </div>
+            <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center"><span class="text-sm font-semibold text-brand-700">JD</span></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== VIEW: COURSE HISTORY INPUT ==================== -->
+<div id="view-history" class="view-active">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Progress Bar -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm mb-6">
+            <div class="flex items-center justify-between mb-3">
+                <h2 class="text-lg font-bold text-gray-900">Degree Progress</h2>
+                <span class="text-sm text-gray-500">Biology (Pre-Med) · 120 credits required</span>
+            </div>
+            <div class="flex items-center gap-4 mb-2">
+                <div class="flex-1 bg-gray-100 rounded-full h-4 overflow-hidden">
+                    <div class="progress-fill bg-gradient-to-r from-brand-500 to-brand-600 h-4 rounded-full flex items-center justify-end pr-2" style="width:60%"><span class="text-[10px] font-bold text-white">72</span></div>
+                </div>
+                <span class="text-sm font-semibold text-gray-900">72 / 120 credits</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-gray-500">
+                <span class="font-semibold text-gray-700">GPA: 3.4</span><span>·</span><span>48 credits remaining</span><span>·</span><span>Est. graduation: Spring 2029</span>
+            </div>
+        </div>
+
+        <!-- Add Course -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
+            <h3 class="text-sm font-semibold text-gray-900 mb-3">Add Completed Course</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3">
+                <div class="relative">
+                    <input type="text" placeholder="Search course..." class="w-full px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                </div>
+                <select class="px-3 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option>A</option><option>A-</option><option>B+</option><option selected>B</option><option>B-</option><option>C+</option><option>C</option><option>D</option><option>F</option>
+                </select>
+                <select class="px-3 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option>Fall 2024</option><option selected>Spring 2025</option><option>Fall 2025</option><option>Spring 2026</option>
+                </select>
+                <button class="px-4 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Add</button>
+            </div>
+            <button class="mt-3 text-sm text-brand-600 hover:text-brand-700 font-medium flex items-center gap-1">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"/></svg>
+                Import from transcript (PDF/CSV)
+            </button>
+        </div>
+
+        <!-- Completed Courses Table -->
+        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+            <table class="w-full">
+                <thead><tr class="bg-gray-50 border-b border-gray-200">
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Course</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Name</th>
+                    <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Credits</th>
+                    <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Grade</th>
+                    <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase">Term</th>
+                    <th class="w-10"></th>
+                </tr></thead>
+                <tbody class="divide-y divide-gray-100">
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">CHEM101</td><td class="px-4 py-3 text-sm text-gray-600">General Chemistry I</td><td class="px-4 py-3 text-center text-sm">4</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">B+</span></td><td class="px-4 py-3 text-sm text-gray-500">Fall 2024</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">CHEM101L</td><td class="px-4 py-3 text-sm text-gray-600">General Chemistry I Lab</td><td class="px-4 py-3 text-center text-sm">1</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">A-</span></td><td class="px-4 py-3 text-sm text-gray-500">Fall 2024</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">BIOL101</td><td class="px-4 py-3 text-sm text-gray-600">Intro to Biology</td><td class="px-4 py-3 text-center text-sm">4</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">A</span></td><td class="px-4 py-3 text-sm text-gray-500">Fall 2024</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">MATH101</td><td class="px-4 py-3 text-sm text-gray-600">Calculus I</td><td class="px-4 py-3 text-center text-sm">4</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">B</span></td><td class="px-4 py-3 text-sm text-gray-500">Spring 2025</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">ENGL101</td><td class="px-4 py-3 text-sm text-gray-600">English Composition</td><td class="px-4 py-3 text-center text-sm">3</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-semibold rounded-full">A-</span></td><td class="px-4 py-3 text-sm text-gray-500">Spring 2025</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                    <tr><td class="px-4 py-3 text-sm font-medium text-gray-900">CS101</td><td class="px-4 py-3 text-sm text-gray-600">Intro to Computer Science</td><td class="px-4 py-3 text-center text-sm">4</td><td class="px-4 py-3 text-center"><span class="px-2 py-0.5 bg-amber-50 text-amber-700 text-xs font-semibold rounded-full">B-</span></td><td class="px-4 py-3 text-sm text-gray-500">Spring 2025</td><td class="px-4 py-3"><button class="text-gray-400 hover:text-red-500"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button></td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: DEGREE PROGRESS ==================== -->
+<div id="view-progress" class="view-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Degree Progress</h2>
+        <p class="text-sm text-gray-500 mb-6">Biology (Pre-Med) · 120 credits required · You need 3 more science electives</p>
+
+        <!-- Prerequisite Tree -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <h3 class="text-sm font-semibold text-gray-900 mb-4">Prerequisite Chains</h3>
+            <div class="overflow-x-auto">
+                <svg viewBox="0 0 900 300" class="w-full min-w-[700px]">
+                    <!-- Chemistry Chain -->
+                    <text x="10" y="30" fill="#6b7280" font-size="11" font-weight="600">Chemistry</text>
+                    <rect x="10" y="40" width="80" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="50" y="65" text-anchor="middle" fill="#166534" font-size="10" font-weight="600">CHEM101 ✓</text>
+                    <line x1="90" y1="60" x2="120" y2="60" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="120" y="40" width="80" height="40" rx="8" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                    <text x="160" y="65" text-anchor="middle" fill="#92400e" font-size="10" font-weight="600">CHEM201 ●</text>
+                    <line x1="200" y1="60" x2="230" y2="60" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="230" y="40" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="270" y="65" text-anchor="middle" fill="#9ca3af" font-size="10">CHEM301</text>
+
+                    <!-- Biology Chain -->
+                    <text x="10" y="110" fill="#6b7280" font-size="11" font-weight="600">Biology</text>
+                    <rect x="10" y="120" width="80" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="50" y="145" text-anchor="middle" fill="#166534" font-size="10" font-weight="600">BIOL101 ✓</text>
+                    <line x1="90" y1="140" x2="120" y2="140" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="120" y="120" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="160" y="145" text-anchor="middle" fill="#9ca3af" font-size="10">BIOL210</text>
+                    <line x1="200" y1="140" x2="230" y2="140" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="230" y="120" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="270" y="145" text-anchor="middle" fill="#9ca3af" font-size="10">BIOL310</text>
+                    <line x1="310" y1="140" x2="340" y2="140" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="340" y="120" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="380" y="145" text-anchor="middle" fill="#9ca3af" font-size="10">BIOL410</text>
+
+                    <!-- Math Chain -->
+                    <text x="10" y="190" fill="#6b7280" font-size="11" font-weight="600">Math</text>
+                    <rect x="10" y="200" width="80" height="40" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="50" y="225" text-anchor="middle" fill="#166534" font-size="10" font-weight="600">MATH101 ✓</text>
+                    <line x1="90" y1="220" x2="120" y2="220" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="120" y="200" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="160" y="225" text-anchor="middle" fill="#9ca3af" font-size="10">MATH201</text>
+                    <line x1="200" y1="220" x2="230" y2="220" class="tree-line" stroke-dasharray="4"/>
+                    <rect x="230" y="200" width="80" height="40" rx="8" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="270" y="225" text-anchor="middle" fill="#9ca3af" font-size="10">MATH301</text>
+
+                    <!-- Legend -->
+                    <rect x="500" y="40" width="16" height="16" rx="4" fill="#dcfce7" stroke="#16a34a" stroke-width="2"/>
+                    <text x="522" y="52" fill="#374151" font-size="10">Completed</text>
+                    <rect x="500" y="65" width="16" height="16" rx="4" fill="#fef3c7" stroke="#d97706" stroke-width="2"/>
+                    <text x="522" y="77" fill="#374151" font-size="10">In Progress</text>
+                    <rect x="500" y="90" width="16" height="16" rx="4" fill="#f3f4f6" stroke="#d1d5db" stroke-width="2"/>
+                    <text x="522" y="102" fill="#374151" font-size="10">Remaining</text>
+
+                    <!-- Alerts -->
+                    <rect x="500" y="130" width="350" height="50" rx="8" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
+                    <text x="515" y="150" fill="#92400e" font-size="10" font-weight="600">⚠ BIOL310 is only offered Fall — take it now or wait a year</text>
+                    <text x="515" y="168" fill="#b45309" font-size="9">Next offering: Fall 2026 (1 year wait)</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SEMESTER PLANNER ==================== -->
+<div id="view-planner" class="view-hidden">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex items-center justify-between mb-6">
+            <div>
+                <h2 class="text-xl font-bold text-gray-900">Semester Path Planner</h2>
+                <p class="text-sm text-gray-500">Drag courses between semesters. Graduation: Spring 2029 (on track)</p>
+            </div>
+            <button class="px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Auto-Optimize</button>
+        </div>
+
+        <div class="grid grid-cols-4 gap-4">
+            <!-- Spring 2026 -->
+            <div class="semester-col bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-bold text-gray-900">Spring 2026</h3>
+                    <span class="text-xs px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full font-medium">15 cr</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="drag-item p-2 bg-blue-50 border border-blue-200 rounded-lg text-xs font-medium text-blue-800">CHEM201 · 4 cr</div>
+                    <div class="drag-item p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-xs font-medium text-emerald-800">BIOL210 · 4 cr</div>
+                    <div class="drag-item p-2 bg-amber-50 border border-amber-200 rounded-lg text-xs font-medium text-amber-800">MATH201 · 4 cr</div>
+                    <div class="drag-item p-2 bg-rose-50 border border-rose-200 rounded-lg text-xs font-medium text-rose-800">ENGL102 · 3 cr</div>
+                </div>
+                <div class="mt-3 pt-2 border-t border-gray-100"><div class="h-2 bg-gray-100 rounded-full"><div class="h-2 bg-emerald-400 rounded-full" style="width:83%"></div></div><div class="text-[10px] text-gray-400 mt-1">Difficulty: Moderate</div></div>
+            </div>
+            <!-- Fall 2026 -->
+            <div class="semester-col bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-bold text-gray-900">Fall 2026</h3>
+                    <span class="text-xs px-2 py-0.5 bg-amber-50 text-amber-700 rounded-full font-medium">16 cr</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="drag-item p-2 bg-blue-50 border border-blue-200 rounded-lg text-xs font-medium text-blue-800">CHEM301 · 3 cr</div>
+                    <div class="drag-item p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-xs font-medium text-emerald-800">BIOL310 · 3 cr</div>
+                    <div class="drag-item p-2 bg-purple-50 border border-purple-200 rounded-lg text-xs font-medium text-purple-800">CS201 · 4 cr</div>
+                    <div class="drag-item p-2 bg-teal-50 border border-teal-200 rounded-lg text-xs font-medium text-teal-800">PHYS101 · 4 cr</div>
+                    <div class="drag-item p-2 bg-orange-50 border border-orange-200 rounded-lg text-xs font-medium text-orange-800">HIST101 · 3 cr</div>
+                </div>
+                <div class="mt-3 pt-2 border-t border-gray-100"><div class="h-2 bg-gray-100 rounded-full"><div class="h-2 bg-amber-400 rounded-full" style="width:89%"></div></div><div class="text-[10px] text-gray-400 mt-1">Difficulty: Heavy</div></div>
+            </div>
+            <!-- Spring 2027 -->
+            <div class="semester-col bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-bold text-gray-900">Spring 2027</h3>
+                    <span class="text-xs px-2 py-0.5 bg-emerald-50 text-emerald-700 rounded-full font-medium">14 cr</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="drag-item p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-xs font-medium text-emerald-800">BIOL410 · 3 cr</div>
+                    <div class="drag-item p-2 bg-purple-50 border border-purple-200 rounded-lg text-xs font-medium text-purple-800">CS301 · 3 cr</div>
+                    <div class="drag-item p-2 bg-teal-50 border border-teal-200 rounded-lg text-xs font-medium text-teal-800">PHYS201 · 4 cr</div>
+                    <div class="drag-item p-2 bg-rose-50 border border-rose-200 rounded-lg text-xs font-medium text-rose-800">ENGL202 · 3 cr</div>
+                    <div class="drag-item p-2 bg-orange-50 border border-orange-200 rounded-lg text-xs font-medium text-orange-800">HIST201 · 3 cr</div>
+                </div>
+                <div class="mt-3 pt-2 border-t border-gray-100"><div class="h-2 bg-gray-100 rounded-full"><div class="h-2 bg-emerald-400 rounded-full" style="width:78%"></div></div><div class="text-[10px] text-gray-400 mt-1">Difficulty: Moderate</div></div>
+            </div>
+            <!-- Fall 2027 -->
+            <div class="semester-col bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-bold text-gray-900">Fall 2027</h3>
+                    <span class="text-xs px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full font-medium">3 cr</span>
+                </div>
+                <div class="space-y-2">
+                    <div class="drag-item p-2 bg-purple-50 border border-purple-200 rounded-lg text-xs font-medium text-purple-800">CS301 · 3 cr</div>
+                </div>
+                <div class="mt-3 pt-2 border-t border-gray-100"><div class="h-2 bg-gray-100 rounded-full"><div class="h-2 bg-gray-300 rounded-full" style="width:17%"></div></div><div class="text-[10px] text-gray-400 mt-1">Remaining: 3 credits</div></div>
+            </div>
+        </div>
+
+        <!-- Course Substitution Finder -->
+        <div class="mt-8 bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+            <h3 class="text-sm font-semibold text-gray-900 mb-3">Need a humanities elective?</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-brand-300 transition-colors cursor-pointer">
+                    <div class="text-sm font-semibold text-gray-900">HIST201</div>
+                    <div class="text-xs text-gray-500">American History · 3 cr</div>
+                    <div class="flex items-center gap-3 text-[10px] text-gray-400 mt-1"><span>Difficulty: 2.8</span><span>Rating: 4.1</span><span>Seats: 21</span></div>
+                    <button class="mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium">+ Add to Builder</button>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-brand-300 transition-colors cursor-pointer">
+                    <div class="text-sm font-semibold text-gray-900">HIST301</div>
+                    <div class="text-xs text-gray-500">Modern Europe · 3 cr</div>
+                    <div class="flex items-center gap-3 text-[10px] text-gray-400 mt-1"><span>Difficulty: 3.2</span><span>Rating: 4.4</span><span>Seats: 15</span></div>
+                    <button class="mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium">+ Add to Builder</button>
+                </div>
+                <div class="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:border-brand-300 transition-colors cursor-pointer">
+                    <div class="text-sm font-semibold text-gray-900">ENGL202</div>
+                    <div class="text-xs text-gray-500">Creative Writing · 3 cr</div>
+                    <div class="flex items-center gap-3 text-[10px] text-gray-400 mt-1"><span>Difficulty: 2.5</span><span>Rating: 4.6</span><span>Seats: 8</span></div>
+                    <button class="mt-2 text-xs text-brand-600 hover:text-brand-700 font-medium">+ Add to Builder</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SUBSTITUTIONS ==================== -->
+<div id="view-substitute" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Course Substitution Finder</h2>
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
+            <div class="flex gap-3">
+                <input type="text" placeholder='e.g. "I need a science elective"' class="flex-1 px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <button class="px-5 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Find</button>
+            </div>
+        </div>
+        <div class="space-y-3">
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex items-center justify-between hover:border-brand-300 transition-colors">
+                <div><div class="text-sm font-semibold text-gray-900">BIOL310 — Genetics</div><div class="text-xs text-gray-500">3 credits · Meets: Science Elective</div></div>
+                <button class="px-3 py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Add to Builder</button>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex items-center justify-between hover:border-brand-300 transition-colors">
+                <div><div class="text-sm font-semibold text-gray-900">PHYS101 — General Physics I</div><div class="text-xs text-gray-500">4 credits · Meets: Science Elective + Lab</div></div>
+                <button class="px-3 py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Add to Builder</button>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm flex items-center justify-between hover:border-brand-300 transition-colors">
+                <div><div class="text-sm font-semibold text-gray-900">CHEM301 — Biochemistry</div><div class="text-xs text-gray-500">3 credits · Meets: Science Elective + Major Req</div></div>
+                <button class="px-3 py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Add to Builder</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: TRANSCRIPT IMPORT ==================== -->
+<div id="view-transcript" class="view-hidden">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Import Transcript</h2>
+        <div class="bg-white rounded-2xl border-2 border-dashed border-gray-300 p-12 text-center hover:border-brand-400 transition-colors cursor-pointer">
+            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/></svg>
+            <p class="text-sm font-medium text-gray-700 mb-1">Drop your PDF or CSV here, or click to browse</p>
+            <p class="text-xs text-gray-400">Supports FCC official transcript format</p>
+        </div>
+        <!-- Preview (hidden by default, shown after upload) -->
+        <div class="mt-6 bg-white rounded-xl border border-gray-200 p-5 shadow-sm hidden">
+            <div class="flex items-center justify-between mb-3">
+                <h3 class="text-sm font-semibold text-gray-900">Preview — Found 24 courses</h3>
+                <span class="text-xs text-gray-500">Is this correct?</span>
+            </div>
+            <div class="space-y-2 max-h-60 overflow-y-auto">
+                <div class="flex items-center justify-between p-2 bg-emerald-50 rounded text-xs"><span>CHEM101 — A</span><span class="text-emerald-600">✓</span></div>
+                <div class="flex items-center justify-between p-2 bg-emerald-50 rounded text-xs"><span>BIOL101 — A</span><span class="text-emerald-600">✓</span></div>
+                <div class="flex items-center justify-between p-2 bg-emerald-50 rounded text-xs"><span>MATH101 — B</span><span class="text-emerald-600">✓</span></div>
+                <div class="flex items-center justify-between p-2 bg-emerald-50 rounded text-xs"><span>ENGL101 — A-</span><span class="text-emerald-600">✓</span></div>
+                <div class="flex items-center justify-between p-2 bg-emerald-50 rounded text-xs"><span>CS101 — B-</span><span class="text-emerald-600">✓</span></div>
+            </div>
+            <div class="flex gap-2 mt-4">
+                <button class="flex-1 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Confirm & Import</button>
+                <button class="px-4 py-2.5 text-gray-500 text-sm font-medium border border-gray-200 rounded-lg hover:bg-gray-50">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchView(view) {
+    ['history','progress','planner','substitute','transcript'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('view-hidden');
+        document.getElementById(`view-${v}`).classList.remove('view-active');
+        document.getElementById(`tab-${v}`).classList.remove('tab-active','text-brand-600','border-brand-600');
+        document.getElementById(`tab-${v}`).classList.add('text-gray-500','border-transparent');
+    });
+    document.getElementById(`view-${view}`).classList.remove('view-hidden');
+    document.getElementById(`view-${view}`).classList.add('view-active');
+    document.getElementById(`tab-${view}`).classList.add('tab-active','text-brand-600','border-brand-600');
+    document.getElementById(`tab-${view}`).classList.remove('text-gray-500','border-transparent');
+}
+</script>
+</body>
+</html>

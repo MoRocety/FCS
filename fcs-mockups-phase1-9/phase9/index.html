@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCS V3 — AI Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { 'inter': ['Inter', 'sans-serif'] }, colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } } } } }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .view-hidden { display: none; }
+        .view-active { display: block; }
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .msg-user { background: linear-gradient(135deg, #2563eb, #1d4ed8); }
+        .ai-msg { background: linear-gradient(135deg, #f8fafc, #f1f5f9); border: 1px solid #e2e8f0; }
+        @keyframes typing { 0%,60%{opacity:0.3} 30%{opacity:1} }
+        .typing-dot { animation: typing 1.4s infinite; }
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+        .recommendation-card { transition: all 0.2s; }
+        .recommendation-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        .career-node { transition: all 0.2s; }
+        .career-node:hover { transform: scale(1.05); }
+        .schedule-mini { transition: all 0.15s; }
+        .schedule-mini:hover { border-color: #2563eb; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                    <span class="text-xl font-bold text-gray-900">FCS</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="switchView('chat')" id="tab-chat" class="px-4 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600">Chat</button>
+                    <button onclick="switchView('recommend')" id="tab-recommend" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Recommendations</button>
+                    <button onclick="switchView('optimizer')" id="tab-optimizer" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Optimizer</button>
+                    <button onclick="switchView('buddy')" id="tab-buddy" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Study Buddy</button>
+                    <button onclick="switchView('career')" id="tab-career" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Career Path</button>
+                </div>
+            </div>
+            <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center"><span class="text-sm font-semibold text-brand-700">JD</span></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== VIEW: FULL-PAGE CHAT ==================== -->
+<div id="view-chat" class="view-active">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden" style="height: calc(100vh - 140px);">
+            <!-- Chat Header -->
+            <div class="flex items-center gap-3 p-4 border-b border-gray-200 bg-gray-50">
+                <div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center"><svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                <div>
+                    <div class="text-sm font-semibold text-gray-900">FCS AI Assistant</div>
+                    <div class="text-[10px] text-emerald-500 flex items-center gap-1"><span class="w-1.5 h-1.5 bg-emerald-500 rounded-full"></span> Online · Has access to all platform data</div>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div id="chat-messages" class="flex-1 overflow-y-auto p-4 space-y-4" style="height: calc(100% - 130px);">
+                <!-- Welcome -->
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-[8px] font-bold text-brand-700">AI</span></div>
+                    <div class="ai-msg rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                        <p class="text-sm text-gray-700">Hi Jordan! Based on your profile (Biology major, 3.4 GPA, sophomore), here's what I can help with:</p>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1 list-disc list-inside">
+                            <li>Build optimized schedules</li>
+                            <li>Recommend courses for your path</li>
+                            <li>Compare instructors</li>
+                            <li>Find study partners</li>
+                            <li>Plan your degree path</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- User message -->
+                <div class="flex justify-end">
+                    <div class="msg-user text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]"><p class="text-sm">What courses should I take next semester for pre-med?</p></div>
+                </div>
+
+                <!-- AI Response with rich content -->
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-[8px] font-bold text-brand-700">AI</span></div>
+                    <div class="ai-msg rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                        <p class="text-sm text-gray-700 mb-3">Great question! Based on your completed courses and med school requirements, here are my recommendations:</p>
+                        
+                        <!-- Recommendation Cards -->
+                        <div class="space-y-2 mb-3">
+                            <div class="bg-white rounded-lg p-3 border border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="text-sm font-semibold text-gray-900">CHEM201 — Organic Chemistry</div>
+                                        <div class="text-xs text-gray-500">Required for med school · 4 credits</div>
+                                    </div>
+                                    <span class="px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-semibold rounded-full">2 seats left!</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Students with your GPA avg <strong class="text-gray-700">B+</strong> here. Dr. Smith has 4.3 quality rating.</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 border border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="text-sm font-semibold text-gray-900">BIOL310 — Genetics</div>
+                                        <div class="text-xs text-gray-500">Prerequisite for BIOL410 · 3 credits</div>
+                                    </div>
+                                    <span class="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-semibold rounded-full">3 seats left</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">Dr. Chen is excellent (4.7 rating). Only offered <strong class="text-amber-600">Fall</strong> — take it now!</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 border border-gray-200">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <div class="text-sm font-semibold text-gray-900">MATH201 — Calculus II</div>
+                                        <div class="text-xs text-gray-500">Required for physics sequence · 4 credits</div>
+                                    </div>
+                                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-semibold rounded-full">6 seats</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-1">You got B in MATH101. You'll do well here — Dr. Patel is consistent.</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-400">Want me to generate a schedule with these courses?</p>
+                    </div>
+                </div>
+
+                <!-- User -->
+                <div class="flex justify-end">
+                    <div class="msg-user text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]"><p class="text-sm">Yes, generate schedules!</p></div>
+                </div>
+
+                <!-- AI with tool call -->
+                <div class="flex gap-3">
+                    <div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-[8px] font-bold text-brand-700">AI</span></div>
+                    <div class="ai-msg rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]">
+                        <div class="flex items-center gap-2 mb-2 text-xs text-brand-600"><svg class="w-3 h-3 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg> Called: generate_schedules(constraints)</div>
+                        <p class="text-sm text-gray-700 mb-3">Found 12 schedules! Here are the top 3:</p>
+                        <div class="space-y-2">
+                            <div class="schedule-mini bg-white rounded-lg p-3 border border-gray-200 cursor-pointer">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-900">Schedule A — Balanced</span>
+                                    <span class="text-sm font-bold text-brand-600">82/100</span>
+                                </div>
+                                <div class="text-xs text-gray-500">MWF focus · 15 credits · 19 hrs/wk · No Fridays</div>
+                            </div>
+                            <div class="schedule-mini bg-white rounded-lg p-3 border border-gray-200 cursor-pointer">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-900">Schedule B — Morning Bird</span>
+                                    <span class="text-sm font-bold text-gray-600">79/100</span>
+                                </div>
+                                <div class="text-xs text-gray-500">Done by 1PM · 15 credits · 18 hrs/wk</div>
+                            </div>
+                            <div class="schedule-mini bg-white rounded-lg p-3 border border-gray-200 cursor-pointer">
+                                <div class="flex items-center justify-between mb-1">
+                                    <span class="text-sm font-semibold text-gray-900">Schedule C — Compact</span>
+                                    <span class="text-sm font-bold text-gray-600">76/100</span>
+                                </div>
+                                <div class="text-xs text-gray-500">TTh heavy · 15 credits · 16 hrs/wk</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-2 mt-3">
+                            <button class="px-3 py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Save Schedule A</button>
+                            <button class="px-3 py-1.5 text-gray-500 text-xs font-medium border border-gray-200 rounded-lg hover:bg-gray-50">Show All 12</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input -->
+            <div class="p-4 border-t border-gray-200 bg-white">
+                <div class="flex gap-2">
+                    <input id="chat-input" type="text" placeholder="Ask me anything about your schedule, courses, or degree..." class="flex-1 px-4 py-3 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500" onkeydown="if(event.key==='Enter')sendMessage()">
+                    <button onclick="sendMessage()" class="w-11 h-11 bg-brand-600 text-white rounded-xl hover:bg-brand-700 flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: AI COURSE RECOMMENDATIONS ==================== -->
+<div id="view-recommend" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">AI Course Recommendations</h2>
+        <p class="text-sm text-gray-500 mb-6">Based on your completed courses, major requirements, and career goals</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="recommendation-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-2 py-0.5 bg-red-100 text-red-700 text-[10px] font-semibold rounded-full">HIGH PRIORITY</span>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">CHEM201 — Organic Chemistry</h3>
+                <p class="text-xs text-gray-500 mb-3">Required for med school · 4 credits · Spring 2027</p>
+                <div class="p-3 bg-brand-50 rounded-lg mb-3">
+                    <p class="text-xs text-brand-700"><strong>Why:</strong> You need this for BIOL310 and it's a med school prerequisite. Students with your GPA avg B+.</p>
+                </div>
+                <div class="flex items-center gap-4 text-[10px] text-gray-400">
+                    <span>Difficulty: 3.4</span><span>Rating: 4.3</span><span class="text-red-500 font-semibold">2 seats left</span>
+                </div>
+            </div>
+            <div class="recommendation-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-semibold rounded-full">RECOMMENDED</span>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">BIOL310 — Genetics</h3>
+                <p class="text-xs text-gray-500 mb-3">Prerequisite for BIOL410 · 3 credits · Spring 2027</p>
+                <div class="p-3 bg-brand-50 rounded-lg mb-3">
+                    <p class="text-xs text-brand-700"><strong>Why:</strong> Only offered Fall — take it now or wait a year. Dr. Chen is top-rated (4.7).</p>
+                </div>
+                <div class="flex items-center gap-4 text-[10px] text-gray-400">
+                    <span>Difficulty: 2.8</span><span>Rating: 4.7</span><span class="text-amber-500 font-semibold">3 seats left</span>
+                </div>
+            </div>
+            <div class="recommendation-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-[10px] font-semibold rounded-full">ELECTIVE</span>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">PHYS101 — General Physics</h3>
+                <p class="text-xs text-gray-500 mb-3">Med school requirement · 4 credits · Spring 2027</p>
+                <div class="p-3 bg-brand-50 rounded-lg mb-3">
+                    <p class="text-xs text-brand-700"><strong>Why:</strong> Physics is required for MCAT. Dr. Kumar is fair (3.9 difficulty).</p>
+                </div>
+                <div class="flex items-center gap-4 text-[10px] text-gray-400">
+                    <span>Difficulty: 3.5</span><span>Rating: 3.9</span><span>11 seats</span>
+                </div>
+            </div>
+            <div class="recommendation-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-semibold rounded-full">SAFE CHOICE</span>
+                </div>
+                <h3 class="text-sm font-bold text-gray-900 mb-1">ENGL102 — Literature & Ideas</h3>
+                <p class="text-xs text-gray-500 mb-3">Humanities requirement · 3 credits · Spring 2027</p>
+                <div class="p-3 bg-brand-50 rounded-lg mb-3">
+                    <p class="text-xs text-brand-700"><strong>Why:</strong> Easy A potential (4.1 difficulty). Dr. Garcia is well-liked. Lightens your load.</p>
+                </div>
+                <div class="flex items-center gap-4 text-[10px] text-gray-400">
+                    <span>Difficulty: 2.5</span><span>Rating: 4.3</span><span>19 seats</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: AI SCHEDULE OPTIMIZER ==================== -->
+<div id="view-optimizer" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">AI Schedule Optimizer</h2>
+        <!-- Before/After -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-500">Your Current Schedule</h3>
+                    <span class="text-sm font-bold text-gray-600">78/100</span>
+                </div>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-blue-400"></span>CHEM201 — Dr. Smith (4.3)</div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>BIOL310 — Dr. Chen (4.7)</div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-amber-400"></span>MATH201 — Dr. Patel (4.2)</div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-purple-400"></span>CS101 — Prof. Lee (4.6)</div>
+                    <div class="flex items-center gap-2 p-2 bg-gray-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-rose-400"></span>ENGL102 — Dr. Garcia (4.3)</div>
+                </div>
+                <div class="text-xs text-gray-400">15 credits · 19 hrs/wk · MWF heavy</div>
+            </div>
+            <div class="bg-white rounded-xl border-2 border-emerald-300 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-emerald-700">AI-Optimized Schedule</h3>
+                    <span class="text-sm font-bold text-emerald-600">89/100</span>
+                </div>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-blue-400"></span>CHEM201 — Dr. Smith (4.3)</div>
+                    <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-emerald-400"></span>BIOL310 — Dr. Chen (4.7)</div>
+                    <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-amber-400"></span>MATH201 — Dr. Patel (4.2)</div>
+                    <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-teal-400"></span>PHYS101 — Dr. Kumar (3.9) <span class="text-emerald-600 font-semibold">swapped</span></div>
+                    <div class="flex items-center gap-2 p-2 bg-emerald-50 rounded text-xs"><span class="w-2 h-2 rounded-full bg-rose-400"></span>ENGL102 — Dr. Garcia (4.3)</div>
+                </div>
+                <div class="text-xs text-emerald-600">15 credits · 17 hrs/wk · Better instructor ratings</div>
+            </div>
+        </div>
+        <div class="mt-6 bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+            <h3 class="text-sm font-semibold text-gray-900 mb-3">What Changed</h3>
+            <div class="space-y-2">
+                <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded-lg text-xs"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700">Swapped CS101 → PHYS101: Better for pre-med path, saves 2 hrs/wk</span></div>
+                <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded-lg text-xs"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700">Moved one class to TTh: Reduces daily load, improves commute</span></div>
+                <div class="flex items-start gap-2 p-2 bg-emerald-50 rounded-lg text-xs"><svg class="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-emerald-700">Health score improved: 78 → 89 (+11 points)</span></div>
+            </div>
+            <div class="flex gap-2 mt-4">
+                <button class="px-5 py-2.5 bg-emerald-600 text-white text-sm font-semibold rounded-lg hover:bg-emerald-700">Apply Optimization</button>
+                <button class="px-4 py-2.5 text-gray-500 text-sm font-medium border border-gray-200 rounded-lg hover:bg-gray-50">Keep Current</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: STUDY BUDDY ==================== -->
+<div id="view-buddy" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">AI Study Buddy Match</h2>
+        <p class="text-sm text-gray-500 mb-6">Find study partners in your courses</p>
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-xs font-bold text-blue-700">CHEM</span></div>
+                <div><div class="text-sm font-semibold text-gray-900">CHEM201-A</div><div class="text-xs text-gray-500">3 students looking for study partners</div></div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center mx-auto mb-2"><span class="text-sm font-bold text-brand-700">S1</span></div>
+                    <div class="text-center text-sm font-medium text-gray-900 mb-1">Student 1</div>
+                    <div class="text-center text-[10px] text-gray-500 mb-2">Prefers evenings · Likes group study</div>
+                    <div class="flex flex-wrap gap-1 justify-center mb-3">
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] rounded-full">3.5 GPA</span>
+                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] rounded-full">Morning</span>
+                    </div>
+                    <button class="w-full py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Connect</button>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2"><span class="text-sm font-bold text-purple-700">S2</span></div>
+                    <div class="text-center text-sm font-medium text-gray-900 mb-1">Student 2</div>
+                    <div class="text-center text-[10px] text-gray-500 mb-2">Prefers afternoons · Flashcards fan</div>
+                    <div class="flex flex-wrap gap-1 justify-center mb-3">
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] rounded-full">3.2 GPA</span>
+                        <span class="px-2 py-0.5 bg-amber-50 text-amber-600 text-[10px] rounded-full">Afternoon</span>
+                    </div>
+                    <button class="w-full py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Connect</button>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div class="w-10 h-10 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2"><span class="text-sm font-bold text-emerald-700">S3</span></div>
+                    <div class="text-center text-sm font-medium text-gray-900 mb-1">Student 3</div>
+                    <div class="text-center text-[10px] text-gray-500 mb-2">Flexible schedule · Practice problems</div>
+                    <div class="flex flex-wrap gap-1 justify-center mb-3">
+                        <span class="px-2 py-0.5 bg-emerald-50 text-emerald-600 text-[10px] rounded-full">3.8 GPA</span>
+                        <span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] rounded-full">Flexible</span>
+                    </div>
+                    <button class="w-full py-1.5 bg-brand-600 text-white text-xs font-medium rounded-lg hover:bg-brand-700">Connect</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: CAREER PATH ==================== -->
+<div id="view-career" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">AI Career Path Advisor</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Med School Path -->
+            <div class="bg-white rounded-2xl border-2 border-brand-300 p-6 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-brand-100 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">Medical School</h3>
+                        <div class="flex items-center gap-2"><span class="text-xs text-gray-500">Your path aligns</span><span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-semibold rounded-full">ON TRACK</span></div>
+                    </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm text-emerald-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>General Chemistry ✓</div>
+                    <div class="flex items-center gap-2 text-sm text-emerald-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Biology I ✓</div>
+                    <div class="flex items-center gap-2 text-sm text-amber-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Organic Chemistry — Next</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Physics I</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Biochemistry</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Genetics</div>
+                </div>
+                <div class="p-3 bg-brand-50 rounded-lg">
+                    <p class="text-xs text-brand-700">Your current path aligns with <strong>87% of med school requirements</strong>. Complete physics and organic chem by junior year.</p>
+                </div>
+            </div>
+
+            <!-- Industry Path -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center"><svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900">Industry (Biotech)</h3>
+                        <div class="text-xs text-gray-500">Alternative path</div>
+                    </div>
+                </div>
+                <div class="space-y-2 mb-4">
+                    <div class="flex items-center gap-2 text-sm text-emerald-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Biology ✓</div>
+                    <div class="flex items-center gap-2 text-sm text-emerald-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Chemistry ✓</div>
+                    <div class="flex items-center gap-2 text-sm text-emerald-600"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>CS Basics ✓</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Molecular Biology</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Bioinformatics</div>
+                    <div class="flex items-center gap-2 text-sm text-gray-400">○ Research Methods</div>
+                </div>
+                <div class="p-3 bg-purple-50 rounded-lg">
+                    <p class="text-xs text-purple-700">Consider adding <strong>CS201</strong> and <strong>BIO410</strong> for biotech. Your CS background gives you an edge.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchView(view) {
+    ['chat','recommend','optimizer','buddy','career'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('view-hidden');
+        document.getElementById(`view-${v}`).classList.remove('view-active');
+        document.getElementById(`tab-${v}`).classList.remove('tab-active','text-brand-600','border-brand-600');
+        document.getElementById(`tab-${v}`).classList.add('text-gray-500','border-transparent');
+    });
+    document.getElementById(`view-${view}`).classList.remove('view-hidden');
+    document.getElementById(`view-${view}`).classList.add('view-active');
+    document.getElementById(`tab-${view}`).classList.add('tab-active','text-brand-600','border-brand-600');
+    document.getElementById(`tab-${view}`).classList.remove('text-gray-500','border-transparent');
+}
+
+function sendMessage() {
+    const input = document.getElementById('chat-input');
+    const msg = input.value.trim();
+    if (!msg) return;
+    const container = document.getElementById('chat-messages');
+    container.innerHTML += `<div class="flex justify-end"><div class="msg-user text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[85%]"><p class="text-sm">${msg}</p></div></div>`;
+    input.value = '';
+    container.innerHTML += `<div id="typing" class="flex gap-3"><div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-[8px] font-bold text-brand-700">AI</span></div><div class="ai-msg rounded-2xl rounded-tl-sm px-4 py-3"><div class="flex items-center gap-2 text-gray-400 text-xs"><div class="flex gap-1"><div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div><div class="w-1.5 h-1.5 bg-gray-400 rounded-full typing-dot"></div></div> Thinking...</div></div></div>`;
+    container.scrollTop = container.scrollHeight;
+    setTimeout(() => {
+        document.getElementById('typing')?.remove();
+        container.innerHTML += `<div class="flex gap-3"><div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center flex-shrink-0"><span class="text-[8px] font-bold text-brand-700">AI</span></div><div class="ai-msg rounded-2xl rounded-tl-sm px-4 py-3 max-w-[85%]"><p class="text-sm text-gray-700">I can help with that! Based on your profile and current courses, I'd recommend focusing on completing your pre-med prerequisites. Would you like me to generate an optimized schedule?</p></div></div>`;
+        container.scrollTop = container.scrollHeight;
+    }, 1500);
+}
+</script>
+</body>
+</html>

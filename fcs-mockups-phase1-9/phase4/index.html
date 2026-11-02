@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCS V3 — Data Layer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { 'inter': ['Inter', 'sans-serif'] }, colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } } } } }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .view-hidden { display: none; }
+        .view-active { display: block; }
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .grade-bar { height: 20px; border-radius: 4px; transition: width 0.5s ease; }
+        .heatmap-cell { transition: all 0.15s; cursor: pointer; }
+        .heatmap-cell:hover { transform: scale(1.1); z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+        .seat-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+        .chart-line { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawLine 2s forwards; }
+        @keyframes drawLine { to { stroke-dashoffset: 0; } }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                    <span class="text-xl font-bold text-gray-900">FCS</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="switchView('detail')" id="tab-detail" class="px-4 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600">Course Detail</button>
+                    <button onclick="switchView('predict')" id="tab-predict" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Will It Fill?</button>
+                    <button onclick="switchView('seat')" id="tab-seat" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Seat History</button>
+                    <button onclick="switchView('heatmap')" id="tab-heatmap" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent">Heatmap</button>
+                </div>
+            </div>
+            <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center"><span class="text-sm font-semibold text-brand-700">JD</span></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== VIEW: COURSE DETAIL ==================== -->
+<div id="view-detail" class="view-active">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Course Header -->
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm mb-6">
+            <div class="flex items-start justify-between">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <h1 class="text-2xl font-bold text-gray-900">CHEM 201</h1>
+                        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full">4 Credits</span>
+                    </div>
+                    <h2 class="text-lg text-gray-600 mt-1">Organic Chemistry</h2>
+                    <p class="text-sm text-gray-500 mt-2">Dr. Sarah Smith · MWF 8:00-9:50 AM · Spring 2027</p>
+                </div>
+                <button class="px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Add to Schedule</button>
+            </div>
+            <p class="text-sm text-gray-600 mt-4 leading-relaxed">Introduction to organic chemistry principles including structure, bonding, reactions, and stereochemistry. Laboratory component emphasizes techniques in organic synthesis and characterization.</p>
+            <div class="flex flex-wrap gap-2 mt-3">
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">Prerequisite: CHEM101</span>
+                <span class="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">Lab Required</span>
+                <span class="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">2 seats left</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Grade Distribution -->
+            <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <h3 class="text-sm font-semibold text-gray-900 mb-4">Grade Distribution <span class="text-gray-400 font-normal">· 47 students</span></h3>
+                <div class="space-y-3">
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">A</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-emerald-500 flex items-center justify-end pr-2" style="width:22%"><span class="text-[10px] font-semibold text-white">22%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">10</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">B+</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-emerald-400 flex items-center justify-end pr-2" style="width:19%"><span class="text-[10px] font-semibold text-white">19%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">9</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">B</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-blue-400 flex items-center justify-end pr-2" style="width:24%"><span class="text-[10px] font-semibold text-white">24%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">11</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">C+</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-amber-400 flex items-center justify-end pr-2" style="width:17%"><span class="text-[10px] font-semibold text-white">17%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">8</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">C</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-orange-400 flex items-center justify-end pr-2" style="width:11%"><span class="text-[10px] font-semibold text-white">11%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">5</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">D</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-red-400 flex items-center justify-end pr-2" style="width:5%"><span class="text-[10px] font-semibold text-white">5%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">2</span></div>
+                    <div class="flex items-center gap-3"><span class="w-8 text-xs font-medium text-gray-600 text-right">F</span><div class="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden"><div class="grade-bar bg-red-600 flex items-center justify-end pr-2" style="width:2%"><span class="text-[10px] font-semibold text-white">2%</span></div></div><span class="w-10 text-xs text-gray-500 text-right">1</span></div>
+                </div>
+                <p class="text-xs text-gray-400 mt-3">Source: <span class="text-amber-600 font-medium">47 self-reported grades</span> · Confidence: Medium</p>
+            </div>
+
+            <!-- Course Metrics -->
+            <div class="space-y-5">
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-4">Course Metrics</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-3 bg-gray-50 rounded-lg text-center">
+                            <div class="text-lg font-bold text-gray-900">3.4</div>
+                            <div class="text-[10px] text-gray-500 uppercase">Avg Difficulty</div>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg text-center">
+                            <div class="text-lg font-bold text-gray-900">18 hrs</div>
+                            <div class="text-[10px] text-gray-500 uppercase">Workload/Wk</div>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg text-center">
+                            <div class="text-lg font-bold text-amber-600">28%</div>
+                            <div class="text-[10px] text-gray-500 uppercase">Retake Rate</div>
+                        </div>
+                        <div class="p-3 bg-gray-50 rounded-lg text-center">
+                            <div class="text-lg font-bold text-emerald-600">3.1</div>
+                            <div class="text-[10px] text-gray-500 uppercase">Avg GPA</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trend Indicators -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-3">Trends</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span class="text-sm text-gray-600">Difficulty Trend</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">3.1 → 3.8</span>
+                                <span class="text-xs font-semibold text-red-600 flex items-center gap-0.5">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                                    +0.7
+                                </span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <span class="text-sm text-gray-600">Workload Trend</span>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">15 → 22 hrs/wk</span>
+                                <span class="text-xs font-semibold text-red-600 flex items-center gap-0.5">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                                    +7 hrs
+                                </span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-amber-600 bg-amber-50 p-2 rounded">Difficulty increased from 3.1 to 3.8 after 2024 curriculum change</p>
+                    </div>
+                </div>
+
+                <!-- Related Courses -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-3">Prerequisite Chain</h3>
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-lg">CHEM101</span>
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <span class="px-3 py-1.5 bg-blue-100 text-blue-700 text-xs font-semibold rounded-lg border-2 border-blue-300">CHEM201</span>
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-lg">CHEM301</span>
+                    </div>
+                    <div class="mt-2 flex items-center gap-2">
+                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        <span class="text-xs text-gray-500">Leads to: CHEM301, CHEM401, BIOL310</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: WILL IT FILL? ==================== -->
+<div id="view-predict" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Will It Fill?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Prediction Card -->
+            <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center"><span class="text-sm font-bold text-blue-700">CHEM</span></div>
+                    <div>
+                        <h3 class="text-sm font-bold text-gray-900">CHEM201-A</h3>
+                        <p class="text-xs text-gray-500">Dr. Smith · MWF 8:00-9:50</p>
+                    </div>
+                </div>
+                <div class="text-center py-6">
+                    <div class="text-5xl font-bold text-gray-900 mb-1">4<span class="text-lg font-normal text-gray-400">/28</span></div>
+                    <p class="text-sm text-gray-500">seats remaining</p>
+                </div>
+                <div class="space-y-3 mb-4">
+                    <div class="flex items-center justify-between text-sm"><span class="text-gray-500">Velocity</span><span class="font-medium text-red-600">Losing ~1 seat/day</span></div>
+                    <div class="flex items-center justify-between text-sm"><span class="text-gray-500">Prediction</span><span class="font-bold text-red-600">78% chance full by Thursday</span></div>
+                    <div class="flex items-center justify-between text-sm"><span class="text-gray-500">Historical</span><span class="font-medium text-gray-700">Filled in 3 days last year</span></div>
+                </div>
+                <!-- Confidence Interval -->
+                <div class="bg-gray-50 rounded-lg p-4">
+                    <div class="text-xs text-gray-500 mb-2">Confidence Interval</div>
+                    <div class="relative h-8 bg-gray-200 rounded-full overflow-hidden">
+                        <div class="absolute left-0 top-0 h-full bg-gradient-to-r from-emerald-400 via-amber-400 to-red-400 rounded-full" style="width:100%"></div>
+                        <div class="absolute top-0 h-full w-1 bg-gray-900 rounded" style="left:78%"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-gray-400 mt-1"><span>0%</span><span>50%</span><span>100%</span></div>
+                </div>
+            </div>
+
+            <!-- Safe Alternatives -->
+            <div class="space-y-4">
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-3">Safe Alternatives</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                            <div>
+                                <div class="text-sm font-semibold text-gray-900">CHEM201-B</div>
+                                <div class="text-xs text-gray-500">Dr. Williams · TTh 1:00-2:30</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-bold text-emerald-600">12 seats</div>
+                                <div class="text-[10px] text-gray-400">Safe</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-emerald-50 rounded-lg border border-emerald-100">
+                            <div>
+                                <div class="text-sm font-semibold text-gray-900">CHEM201-C</div>
+                                <div class="text-xs text-gray-500">Dr. Smith · TTh 3:00-4:30</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm font-bold text-emerald-600">8 seats</div>
+                                <div class="text-[10px] text-gray-400">Safe</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-3">Other At-Risk Sections</h3>
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm">
+                            <span class="text-gray-700">BIOL310-A</span>
+                            <span class="text-red-600 font-semibold">3 seats · Filling fast</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm">
+                            <span class="text-gray-700">CS101-A</span>
+                            <span class="text-amber-600 font-semibold">5 seats · Moderate</span>
+                        </div>
+                        <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm">
+                            <span class="text-gray-700">MATH201-A</span>
+                            <span class="text-amber-600 font-semibold">6 seats · Moderate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SEAT HISTORY ==================== -->
+<div id="view-seat" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Seat History — CHEM201-A</h2>
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <!-- Line Chart (SVG) -->
+            <div class="mb-6">
+                <svg viewBox="0 0 800 300" class="w-full h-64">
+                    <!-- Grid -->
+                    <line x1="60" y1="20" x2="60" y2="260" stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="60" y1="260" x2="780" y2="260" stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="60" y1="200" x2="780" y2="200" stroke="#f3f4f6" stroke-width="1" stroke-dasharray="4"/>
+                    <line x1="60" y1="140" x2="780" y2="140" stroke="#f3f4f6" stroke-width="1" stroke-dasharray="4"/>
+                    <line x1="60" y1="80" x2="780" y2="80" stroke="#f3f4f6" stroke-width="1" stroke-dasharray="4"/>
+                    <line x1="60" y1="20" x2="780" y2="20" stroke="#f3f4f6" stroke-width="1" stroke-dasharray="4"/>
+                    <!-- Y labels -->
+                    <text x="50" y="265" text-anchor="end" fill="#9ca3af" font-size="10">0</text>
+                    <text x="50" y="205" text-anchor="end" fill="#9ca3af" font-size="10">7</text>
+                    <text x="50" y="145" text-anchor="end" fill="#9ca3af" font-size="10">14</text>
+                    <text x="50" y="85" text-anchor="end" fill="#9ca3af" font-size="10">21</text>
+                    <text x="50" y="25" text-anchor="end" fill="#9ca3af" font-size="10">28</text>
+                    <!-- X labels -->
+                    <text x="60" y="280" fill="#9ca3af" font-size="10" text-anchor="middle">Day 1</text>
+                    <text x="240" y="280" fill="#9ca3af" font-size="10" text-anchor="middle">Day 4</text>
+                    <text x="420" y="280" fill="#9ca3af" font-size="10" text-anchor="middle">Day 7</text>
+                    <text x="600" y="280" fill="#9ca3af" font-size="10" text-anchor="middle">Day 10</text>
+                    <text x="780" y="280" fill="#9ca3af" font-size="10" text-anchor="middle">Day 13</text>
+                    <!-- Area fill -->
+                    <path d="M60,20 L180,40 L300,80 L420,100 L540,160 L660,200 L780,220 L780,260 L60,260 Z" fill="url(#areaGrad)" opacity="0.3"/>
+                    <defs><linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0"/></linearGradient></defs>
+                    <!-- Line -->
+                    <polyline points="60,20 180,40 300,80 420,100 540,160 660,200 780,220" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="chart-line"/>
+                    <!-- Data points -->
+                    <circle cx="60" cy="20" r="5" fill="#3b82f6"/>
+                    <circle cx="180" cy="40" r="5" fill="#3b82f6"/>
+                    <circle cx="300" cy="80" r="5" fill="#3b82f6"/>
+                    <circle cx="420" cy="100" r="5" fill="#3b82f6"/>
+                    <circle cx="540" cy="160" r="5" fill="#3b82f6"/>
+                    <circle cx="660" cy="200" r="5" fill="#3b82f6"/>
+                    <circle cx="780" cy="220" r="5" fill="#3b82f6"/>
+                    <!-- Trend line projection -->
+                    <line x1="660" y1="200" x2="780" y2="220" stroke="#ef4444" stroke-width="2" stroke-dasharray="6"/>
+                    <line x1="780" y1="220" x2="900" y2="260" stroke="#ef4444" stroke-width="2" stroke-dasharray="6" opacity="0.5"/>
+                    <!-- Annotations -->
+                    <rect x="55" y="5" width="120" height="20" rx="4" fill="#dbeafe"/>
+                    <text x="60" y="18" fill="#1e40af" font-size="9" font-weight="600">Registration opened</text>
+                    <rect x="535" y="145" width="100" height="20" rx="4" fill="#fef3c7"/>
+                    <text x="540" y="158" fill="#92400e" font-size="9" font-weight="600">Add/drop deadline</text>
+                </svg>
+            </div>
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4">
+                <div class="text-center p-3 bg-gray-50 rounded-lg"><div class="text-lg font-bold text-gray-900">1.8</div><div class="text-[10px] text-gray-500 uppercase">Seats Lost/Day</div></div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg"><div class="text-lg font-bold text-red-600">Thu</div><div class="text-[10px] text-gray-500 uppercase">Predicted Fill Date</div></div>
+                <div class="text-center p-3 bg-gray-50 rounded-lg"><div class="text-lg font-bold text-gray-900">3 days</div><div class="text-[10px] text-gray-500 uppercase">Time Left (est)</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: HEATMAP ==================== -->
+<div id="view-heatmap" class="view-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Course Difficulty Heatmap</h2>
+        <p class="text-sm text-gray-500 mb-6">4-year calendar view of CHEM201 difficulty across semesters</p>
+
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <!-- Legend -->
+            <div class="flex items-center gap-4 mb-6">
+                <span class="text-xs text-gray-500">Difficulty:</span>
+                <div class="flex items-center gap-1"><div class="w-4 h-4 bg-emerald-300 rounded"></div><span class="text-[10px] text-gray-500">Easy (1-2)</span></div>
+                <div class="flex items-center gap-1"><div class="w-4 h-4 bg-amber-300 rounded"></div><span class="text-[10px] text-gray-500">Moderate (2-3)</span></div>
+                <div class="flex items-center gap-1"><div class="w-4 h-4 bg-orange-400 rounded"></div><span class="text-[10px] text-gray-500">Hard (3-4)</span></div>
+                <div class="flex items-center gap-1"><div class="w-4 h-4 bg-red-500 rounded"></div><span class="text-[10px] text-gray-500">Very Hard (4-5)</span></div>
+            </div>
+
+            <!-- Heatmap Grid -->
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr>
+                            <th class="text-left text-xs font-semibold text-gray-500 pb-3 pr-4">Course</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Fall '22</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Spring '23</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Fall '23</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Spring '24</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Fall '24</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Spring '25</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Fall '25</th>
+                            <th class="text-center text-xs font-semibold text-gray-500 pb-3 px-2">Spring '26</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr>
+                            <td class="py-2 pr-4 text-sm font-medium text-gray-700">CHEM101</td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-emerald-300 rounded flex items-center justify-center text-[10px] font-semibold text-emerald-900" title="Difficulty: 2.1 | GPA: 3.4 | n=42">2.1</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-emerald-300 rounded flex items-center justify-center text-[10px] font-semibold text-emerald-900" title="Difficulty: 2.3 | GPA: 3.3 | n=38">2.3</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900" title="Difficulty: 2.8 | GPA: 3.1 | n=45">2.8</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900" title="Difficulty: 2.6 | GPA: 3.2 | n=41">2.6</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900" title="Difficulty: 2.9 | GPA: 3.0 | n=47">2.9</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900" title="Difficulty: 3.0 | GPA: 2.9 | n=44">3.0</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900" title="Difficulty: 3.2 | GPA: 2.8 | n=50">3.2</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900" title="Difficulty: 3.1 | GPA: 2.9 | n=46">3.1</div></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 pr-4 text-sm font-medium text-gray-700">CHEM201</td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900">2.9</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-amber-300 rounded flex items-center justify-center text-[10px] font-semibold text-amber-900">3.0</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.2</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.1</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.5</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.4</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">3.8</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.6</div></td>
+                        </tr>
+                        <tr>
+                            <td class="py-2 pr-4 text-sm font-medium text-gray-700">CHEM301</td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.3</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.5</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">3.8</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-orange-400 rounded flex items-center justify-center text-[10px] font-semibold text-orange-900">3.6</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">4.0</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">3.9</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">4.1</div></td>
+                            <td class="px-2 py-2"><div class="heatmap-cell w-full h-10 bg-red-500 rounded flex items-center justify-center text-[10px] font-semibold text-white">4.0</div></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Hover Detail Card -->
+            <div id="heatmap-detail" class="mt-4 p-4 bg-gray-50 rounded-xl hidden">
+                <div class="flex items-center gap-4">
+                    <div>
+                        <div class="text-sm font-semibold text-gray-900">CHEM201 · Fall 2025</div>
+                        <div class="text-xs text-gray-500 mt-1">Difficulty: <span class="font-semibold text-red-600">3.8</span> · Avg GPA: <span class="font-semibold">2.7</span> · 50 students</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchView(view) {
+    ['detail','predict','seat','heatmap'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('view-hidden');
+        document.getElementById(`view-${v}`).classList.remove('view-active');
+        document.getElementById(`tab-${v}`).classList.remove('tab-active','text-brand-600','border-brand-600');
+        document.getElementById(`tab-${v}`).classList.add('text-gray-500','border-transparent');
+    });
+    document.getElementById(`view-${view}`).classList.remove('view-hidden');
+    document.getElementById(`view-${view}`).classList.add('view-active');
+    document.getElementById(`tab-${view}`).classList.add('tab-active','text-brand-600','border-brand-600');
+    document.getElementById(`tab-${view}`).classList.remove('text-gray-500','border-transparent');
+}
+
+document.querySelectorAll('.heatmap-cell').forEach(cell => {
+    cell.addEventListener('mouseenter', () => {
+        document.getElementById('heatmap-detail').classList.remove('hidden');
+    });
+    cell.addEventListener('mouseleave', () => {
+        document.getElementById('heatmap-detail').classList.add('hidden');
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+{
+  "instructors": [
+    {
+      "id": "dr_smith",
+      "name": "Dr. Elena Smith",
+      "dept": "CS",
+      "effectiveness": 92,
+      "quality": 4.7,
+      "difficulty": 3.2,
+      "passRate": 94,
+      "avgGrade": "A-",
+      "gradeDistribution": [22, 38, 25, 10, 5],
+      "style": ["project-based", "feedback-rich", "approachable"],
+      "officeHours": "Tue / Thu 2:00 - 4:00 PM",
+      "courseHistory": ["CS 101", "CS 201", "CS 301"],
+      "reviews": [
+        {"author": "Alex 25", "rating": 5, "text": "Best lectures I have attended. Projects actually feel useful."},
+        {"author": "Jordan 24", "rating": 4, "text": "Tough projects but fair grading and great office hours."}
+      ]
+    },
+    {
+      "id": "dr_ali",
+      "name": "Dr. Omar Ali",
+      "dept": "CS",
+      "effectiveness": 84,
+      "quality": 4.2,
+      "difficulty": 3.8,
+      "passRate": 88,
+      "avgGrade": "B+",
+      "gradeDistribution": [15, 30, 32, 15, 8],
+      "style": ["theory-heavy", "challenging", "witty"],
+      "officeHours": "Mon / Wed 10:00 - 11:30 AM",
+      "courseHistory": ["CS 101", "CS 201", "CS 401"],
+      "reviews": [
+        {"author": "Sam 26", "rating": 4, "text": "Hard exams but you learn a ton."},
+        {"author": "Taylor 25", "rating": 3, "text": "Moves fast; be ready to read ahead."}
+      ]
+    },
+    {
+      "id": "prof_chen",
+      "name": "Prof. Lin Chen",
+      "dept": "Math",
+      "effectiveness": 90,
+      "quality": 4.6,
+      "difficulty": 3.5,
+      "passRate": 91,
+      "avgGrade": "B+",
+      "gradeDistribution": [18, 35, 30, 12, 5],
+      "style": ["clear explanations", "visual", "organized"],
+      "officeHours": "Mon / Wed / Fri 1:00 - 2:00 PM",
+      "courseHistory": ["MATH 201", "MATH 250", "MATH 310"],
+      "reviews": [
+        {"author": "Riley 25", "rating": 5, "text": "Makes calculus intuitive with sketches."}
+      ]
+    },
+    {
+      "id": "dr_rodriguez",
+      "name": "Dr. Sofia Rodriguez",
+      "dept": "Physics",
+      "effectiveness": 87,
+      "quality": 4.4,
+      "difficulty": 3.6,
+      "passRate": 89,
+      "avgGrade": "B+",
+      "gradeDistribution": [16, 33, 31, 14, 6],
+      "style": ["lab-focused", "enthusiastic", "rigorous"],
+      "officeHours": "Tue / Thu 11:00 AM - 12:30 PM",
+      "courseHistory": ["PHYS 101", "PHYS 201"],
+      "reviews": [
+        {"author": "Morgan 24", "rating": 5, "text": "Labs are the highlight of the week."}
+      ]
+    },
+    {
+      "id": "prof_kim",
+      "name": "Prof. Daniel Kim",
+      "dept": "English",
+      "effectiveness": 89,
+      "quality": 4.5,
+      "difficulty": 2.4,
+      "passRate": 96,
+      "avgGrade": "A-",
+      "gradeDistribution": [28, 40, 22, 7, 3],
+      "style": ["discussion-based", "supportive", "reading-intensive"],
+      "officeHours": "Tue / Thu 3:00 - 4:30 PM",
+      "courseHistory": ["ENG 102", "ENG 220"],
+      "reviews": [
+        {"author": "Casey 26", "rating": 5, "text": "Class discussions changed how I write."}
+      ]
+    },
+    {
+      "id": "dr_okonkwo",
+      "name": "Dr. Amara Okonkwo",
+      "dept": "History",
+      "effectiveness": 88,
+      "quality": 4.5,
+      "difficulty": 2.7,
+      "passRate": 95,
+      "avgGrade": "A-",
+      "gradeDistribution": [26, 42, 20, 8, 4],
+      "style": ["storytelling", "essay-focused", "engaging"],
+      "officeHours": "Mon / Wed 3:00 - 4:00 PM",
+      "courseHistory": ["HIST 150", "HIST 210"],
+      "reviews": [
+        {"author": "Quinn 25", "rating": 5, "text": "I actually looked forward to lectures."}
+      ]
+    },
+    {
+      "id": "prof_davis",
+      "name": "Prof. Marcus Davis",
+      "dept": "Econ",
+      "effectiveness": 85,
+      "quality": 4.1,
+      "difficulty": 2.9,
+      "passRate": 92,
+      "avgGrade": "B+",
+      "gradeDistribution": [18, 36, 30, 12, 4],
+      "style": ["case-study", "quantitative", "practical"],
+      "officeHours": "Wed / Fri 10:00 - 11:30 AM",
+      "courseHistory": ["ECON 101", "ECON 201"],
+      "reviews": [
+        {"author": "Avery 26", "rating": 4, "text": "Real world examples make the theory click."}
+      ]
+    },
+    {
+      "id": "dr_adams",
+      "name": "Dr. Priya Adams",
+      "dept": "Philosophy",
+      "effectiveness": 86,
+      "quality": 4.3,
+      "difficulty": 2.6,
+      "passRate": 94,
+      "avgGrade": "A-",
+      "gradeDistribution": [24, 40, 24, 8, 4],
+      "style": ["socratic", "writing-heavy", "thoughtful"],
+      "officeHours": "Tue / Thu 1:00 - 2:30 PM",
+      "courseHistory": ["PHIL 120", "PHIL 210"],
+      "reviews": [
+        {"author": "Rin 25", "rating": 5, "text": "She makes ethics feel urgent and modern."}
+      ]
+    }
+  ],
+  "courses": [
+    {
+      "id": "cs101",
+      "code": "CS 101",
+      "title": "Intro to Computer Science",
+      "dept": "CS",
+      "credits": 4,
+      "description": "Foundations of programming, algorithms, and computational thinking using Python.",
+      "tags": ["core", "programming", "beginner"],
+      "prereqs": [],
+      "retakeRate": 8,
+      "gradeDistribution": [20, 35, 30, 10, 5],
+      "difficultyTrend": [2.6, 2.8, 3.0, 3.2],
+      "workloadTrend": [5, 6, 7, 7],
+      "textbook": 120,
+      "sections": [
+        {"id": "cs101-01", "instructor": "dr_smith", "days": "MWF", "start": 9.0, "duration": 1.333, "seats": 12, "capacity": 60, "rating": 4.7, "location": "ENG Hall 101"},
+        {"id": "cs101-02", "instructor": "dr_ali", "days": "TTh", "start": 10.0, "duration": 1.5, "seats": 45, "capacity": 60, "rating": 4.2, "location": "SCI Lab 3"},
+        {"id": "cs101-03", "instructor": "dr_smith", "days": "MWF", "start": 13.0, "duration": 1.333, "seats": 8, "capacity": 60, "rating": 4.7, "location": "ENG Hall 102"}
+      ]
+    },
+    {
+      "id": "cs201",
+      "code": "CS 201",
+      "title": "Data Structures",
+      "dept": "CS",
+      "credits": 4,
+      "description": "Arrays, lists, trees, graphs, hash tables, and algorithmic analysis.",
+      "tags": ["core", "programming"],
+      "prereqs": ["CS 101"],
+      "retakeRate": 12,
+      "gradeDistribution": [18, 32, 28, 15, 7],
+      "difficultyTrend": [3.1, 3.3, 3.4, 3.5],
+      "workloadTrend": [7, 8, 9, 9],
+      "textbook": 95,
+      "sections": [
+        {"id": "cs201-01", "instructor": "dr_smith", "days": "MWF", "start": 10.5, "duration": 1.333, "seats": 22, "capacity": 50, "rating": 4.6, "location": "SCI Lab 2"},
+        {"id": "cs201-02", "instructor": "dr_ali", "days": "TTh", "start": 13.0, "duration": 1.5, "seats": 38, "capacity": 50, "rating": 4.1, "location": "SCI Lab 1"},
+        {"id": "cs201-03", "instructor": "dr_smith", "days": "MWF", "start": 15.0, "duration": 1.333, "seats": 15, "capacity": 50, "rating": 4.6, "location": "ENG Hall 101"}
+      ]
+    },
+    {
+      "id": "cs301",
+      "code": "CS 301",
+      "title": "Algorithms",
+      "dept": "CS",
+      "credits": 3,
+      "description": "Design and analysis of algorithms: sorting, searching, dynamic programming, NP.",
+      "tags": ["core", "theory"],
+      "prereqs": ["CS 201"],
+      "retakeRate": 15,
+      "gradeDistribution": [15, 30, 30, 18, 7],
+      "difficultyTrend": [3.3, 3.5, 3.6, 3.7],
+      "workloadTrend": [8, 9, 10, 10],
+      "textbook": 110,
+      "sections": [
+        {"id": "cs301-01", "instructor": "dr_ali", "days": "MWF", "start": 11.0, "duration": 1.333, "seats": 10, "capacity": 40, "rating": 4.0, "location": "ENG Hall 201"},
+        {"id": "cs301-02", "instructor": "dr_smith", "days": "TTh", "start": 9.0, "duration": 1.5, "seats": 30, "capacity": 40, "rating": 4.7, "location": "SCI Lab 1"}
+      ]
+    },
+    {
+      "id": "math201",
+      "code": "MATH 201",
+      "title": "Calculus II",
+      "dept": "Math",
+      "credits": 4,
+      "description": "Techniques of integration, sequences and series, parametric equations.",
+      "tags": ["core", "quantitative"],
+      "prereqs": [],
+      "retakeRate": 18,
+      "gradeDistribution": [14, 28, 32, 18, 8],
+      "difficultyTrend": [3.2, 3.3, 3.4, 3.5],
+      "workloadTrend": [6, 7, 8, 8],
+      "textbook": 140,
+      "sections": [
+        {"id": "math201-01", "instructor": "prof_chen", "days": "MWF", "start": 9.0, "duration": 1.333, "seats": 30, "capacity": 80, "rating": 4.6, "location": "MATH Bldg 201"},
+        {"id": "math201-02", "instructor": "prof_chen", "days": "TTh", "start": 9.0, "duration": 1.5, "seats": 55, "capacity": 80, "rating": 4.6, "location": "MATH Bldg 202"},
+        {"id": "math201-03", "instructor": "prof_chen", "days": "MWF", "start": 11.0, "duration": 1.333, "seats": 20, "capacity": 80, "rating": 4.6, "location": "MATH Bldg 201"}
+      ]
+    },
+    {
+      "id": "math250",
+      "code": "MATH 250",
+      "title": "Linear Algebra",
+      "dept": "Math",
+      "credits": 3,
+      "description": "Vector spaces, matrices, linear transformations, eigenvalues, applications.",
+      "tags": ["core", "quantitative"],
+      "prereqs": ["MATH 201"],
+      "retakeRate": 10,
+      "gradeDistribution": [20, 35, 28, 12, 5],
+      "difficultyTrend": [3.0, 3.1, 3.2, 3.2],
+      "workloadTrend": [6, 6, 7, 7],
+      "textbook": 105,
+      "sections": [
+        {"id": "math250-01", "instructor": "prof_chen", "days": "MWF", "start": 13.0, "duration": 1.333, "seats": 18, "capacity": 45, "rating": 4.5, "location": "MATH Bldg 203"},
+        {"id": "math250-02", "instructor": "prof_chen", "days": "TTh", "start": 10.5, "duration": 1.5, "seats": 42, "capacity": 45, "rating": 4.5, "location": "MATH Bldg 203"}
+      ]
+    },
+    {
+      "id": "phys101",
+      "code": "PHYS 101",
+      "title": "Mechanics",
+      "dept": "Physics",
+      "credits": 4,
+      "description": "Classical mechanics, Newtons laws, energy, momentum, rotations.",
+      "tags": ["core", "lab"],
+      "prereqs": [],
+      "retakeRate": 14,
+      "gradeDistribution": [16, 30, 30, 16, 8],
+      "difficultyTrend": [3.1, 3.2, 3.4, 3.5],
+      "workloadTrend": [6, 7, 8, 8],
+      "textbook": 130,
+      "sections": [
+        {"id": "phys101-01", "instructor": "dr_rodriguez", "days": "MWF", "start": 10.0, "duration": 1.333, "seats": 25, "capacity": 70, "rating": 4.4, "location": "SCI Hall A"},
+        {"id": "phys101-02", "instructor": "dr_rodriguez", "days": "TTh", "start": 11.0, "duration": 1.5, "seats": 60, "capacity": 70, "rating": 4.4, "location": "SCI Hall B"},
+        {"id": "phys101-03", "instructor": "dr_rodriguez", "days": "MWF", "start": 14.0, "duration": 1.333, "seats": 10, "capacity": 70, "rating": 4.4, "location": "SCI Hall A"}
+      ]
+    },
+    {
+      "id": "eng102",
+      "code": "ENG 102",
+      "title": "Composition & Rhetoric",
+      "dept": "English",
+      "credits": 3,
+      "description": "Critical reading, argumentation, research, and academic writing.",
+      "tags": ["writing", "elective"],
+      "prereqs": [],
+      "retakeRate": 4,
+      "gradeDistribution": [32, 40, 20, 6, 2],
+      "difficultyTrend": [2.2, 2.3, 2.4, 2.4],
+      "workloadTrend": [4, 4, 5, 5],
+      "textbook": 75,
+      "sections": [
+        {"id": "eng102-01", "instructor": "prof_kim", "days": "MWF", "start": 11.0, "duration": 1.333, "seats": 15, "capacity": 40, "rating": 4.5, "location": "LIT Hall 10"},
+        {"id": "eng102-02", "instructor": "prof_kim", "days": "TTh", "start": 13.5, "duration": 1.5, "seats": 34, "capacity": 40, "rating": 4.5, "location": "LIT Hall 11"}
+      ]
+    },
+    {
+      "id": "hist150",
+      "code": "HIST 150",
+      "title": "World History",
+      "dept": "History",
+      "credits": 3,
+      "description": "Major global developments from 1500 to the present.",
+      "tags": ["humanities", "elective"],
+      "prereqs": [],
+      "retakeRate": 3,
+      "gradeDistribution": [30, 42, 20, 6, 2],
+      "difficultyTrend": [2.3, 2.4, 2.5, 2.5],
+      "workloadTrend": [4, 5, 5, 5],
+      "textbook": 60,
+      "sections": [
+        {"id": "hist150-01", "instructor": "dr_okonkwo", "days": "TTh", "start": 10.0, "duration": 1.5, "seats": 20, "capacity": 50, "rating": 4.6, "location": "HIST Hall 5"},
+        {"id": "hist150-02", "instructor": "dr_okonkwo", "days": "MWF", "start": 14.0, "duration": 1.333, "seats": 40, "capacity": 50, "rating": 4.6, "location": "HIST Hall 5"}
+      ]
+    },
+    {
+      "id": "econ101",
+      "code": "ECON 101",
+      "title": "Microeconomics",
+      "dept": "Econ",
+      "credits": 3,
+      "description": "Supply and demand, market structures, consumer theory, game theory.",
+      "tags": ["social science", "elective"],
+      "prereqs": [],
+      "retakeRate": 7,
+      "gradeDistribution": [22, 38, 26, 10, 4],
+      "difficultyTrend": [2.6, 2.7, 2.8, 2.9],
+      "workloadTrend": [5, 5, 6, 6],
+      "textbook": 90,
+      "sections": [
+        {"id": "econ101-01", "instructor": "prof_davis", "days": "MWF", "start": 9.0, "duration": 1.333, "seats": 12, "capacity": 90, "rating": 4.1, "location": "BUS Hall 100"},
+        {"id": "econ101-02", "instructor": "prof_davis", "days": "TTh", "start": 14.0, "duration": 1.5, "seats": 75, "capacity": 90, "rating": 4.1, "location": "BUS Hall 101"}
+      ]
+    },
+    {
+      "id": "phil120",
+      "code": "PHIL 120",
+      "title": "Intro to Ethics",
+      "dept": "Philosophy",
+      "credits": 3,
+      "description": "Classic and contemporary moral theory applied to real cases.",
+      "tags": ["humanities", "elective"],
+      "prereqs": [],
+      "retakeRate": 2,
+      "gradeDistribution": [28, 42, 22, 6, 2],
+      "difficultyTrend": [2.4, 2.4, 2.5, 2.5],
+      "workloadTrend": [4, 4, 5, 5],
+      "textbook": 55,
+      "sections": [
+        {"id": "phil120-01", "instructor": "dr_adams", "days": "MWF", "start": 10.0, "duration": 1.333, "seats": 18, "capacity": 40, "rating": 4.4, "location": "PHIL Hall 2"},
+        {"id": "phil120-02", "instructor": "dr_adams", "days": "TTh", "start": 11.0, "duration": 1.5, "seats": 28, "capacity": 40, "rating": 4.4, "location": "PHIL Hall 2"}
+      ]
+    }
+  ],
+  "walkMatrix": {
+    "ENG": {"SCI": 4, "MATH": 6, "LIT": 3, "HIST": 5, "BUS": 7, "PHIL": 4},
+    "SCI": {"ENG": 4, "MATH": 5, "LIT": 6, "HIST": 7, "BUS": 8, "PHIL": 5},
+    "MATH": {"ENG": 6, "SCI": 5, "LIT": 7, "HIST": 4, "BUS": 6, "PHIL": 6},
+    "LIT": {"ENG": 3, "SCI": 6, "MATH": 7, "HIST": 4, "BUS": 8, "PHIL": 3},
+    "HIST": {"ENG": 5, "SCI": 7, "MATH": 4, "LIT": 4, "BUS": 5, "PHIL": 4},
+    "BUS": {"ENG": 7, "SCI": 8, "MATH": 6, "LIT": 8, "HIST": 5, "PHIL": 7},
+    "PHIL": {"ENG": 4, "SCI": 5, "MATH": 6, "LIT": 3, "HIST": 4, "BUS": 7}
+  },
+  "published": [
+    {"id": "p1", "author": "Maya P", "term": "Fall 2025", "courses": ["CS 201", "MATH 250", "PHYS 101"], "votes": 42, "forks": 7, "comments": 12},
+    {"id": "p2", "author": "Leo T", "term": "Fall 2025", "courses": ["CS 101", "ENG 102", "ECON 101"], "votes": 28, "forks": 4, "comments": 5},
+    {"id": "p3", "author": "Sofia R", "term": "Spring 2026", "courses": ["CS 301", "HIST 150", "PHIL 120"], "votes": 56, "forks": 11, "comments": 19},
+    {"id": "p4", "author": "Noah K", "term": "Fall 2025", "courses": ["MATH 201", "PHYS 101", "ENG 102"], "votes": 15, "forks": 2, "comments": 3}
+  ],
+  "career": {
+    "med": ["Pre-Med", "MCAT", "Med School", "Residency", "Physician"],
+    "industry": ["BS CS", "Internship", "Full-time SWE", "Senior Engineer", "Staff Engineer"],
+    "grad": ["BS", "Research", "MS/PhD", "Postdoc", "Professor"]
+  }
+}

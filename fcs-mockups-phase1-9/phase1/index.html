@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCS V3 — Course Catalog</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 'inter': ['Inter', 'sans-serif'] },
+                    colors: {
+                        brand: { 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 300:'#93c5fd', 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af', 900:'#1e3a8a' }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .chip-active { background-color: #2563eb; color: white; }
+        .view-hidden { display: none; }
+        .view-active { display: block; }
+        .course-row:hover { background-color: #f8fafc; }
+        .course-row.selected { background-color: #eff6ff; }
+        .seat-low { color: #dc2626; }
+        .seat-mid { color: #d97706; }
+        .seat-high { color: #16a34a; }
+        .schedule-block { position: absolute; border-radius: 6px; padding: 4px 8px; font-size: 11px; font-weight: 500; overflow: hidden; cursor: pointer; transition: transform 0.15s; }
+        .schedule-block:hover { transform: scale(1.02); z-index: 10; }
+        .saved-card { transition: box-shadow 0.2s, transform 0.2s; }
+        .saved-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); transform: translateY(-2px); }
+        .slider-track { -webkit-appearance: none; height: 6px; border-radius: 3px; background: #e2e8f0; }
+        .slider-track::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; }
+        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #2563eb; cursor: pointer; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.3s ease-out; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- NAVBAR -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <span class="text-xl font-bold text-gray-900">FCS</span>
+                </div>
+                <div class="flex items-center gap-1">
+                    <button onclick="switchView('catalog')" id="tab-catalog" class="px-4 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600 transition-colors">Courses</button>
+                    <button onclick="switchView('builder')" id="tab-builder" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent transition-colors">Schedule Builder</button>
+                    <button onclick="switchView('saved')" id="tab-saved" class="px-4 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent transition-colors">Saved</button>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <input type="text" placeholder="Search courses, instructors..." class="w-72 pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center">
+                    <span class="text-sm font-semibold text-brand-700">JD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== VIEW: COURSE CATALOG ==================== -->
+<div id="view-catalog" class="view-active">
+    <!-- Filter Bar -->
+    <div class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-wrap items-center gap-3">
+                <div class="relative flex-1 min-w-[200px] max-w-md">
+                    <input type="text" id="course-search" placeholder="Search by name, code, or instructor..." class="w-full pl-10 pr-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <svg class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <div class="flex flex-wrap gap-2" id="dept-chips">
+                    <button onclick="filterDept('All')" class="dept-chip chip-active px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 transition-all">All</button>
+                    <button onclick="filterDept('BIOL')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">BIOL</button>
+                    <button onclick="filterDept('CHEM')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">CHEM</button>
+                    <button onclick="filterDept('MATH')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">MATH</button>
+                    <button onclick="filterDept('CS')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">CS</button>
+                    <button onclick="filterDept('ENGL')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">ENGL</button>
+                    <button onclick="filterDept('PHYS')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">PHYS</button>
+                    <button onclick="filterDept('HIST')" class="dept-chip px-3 py-1.5 text-xs font-medium rounded-full border border-gray-200 text-gray-600 hover:border-brand-300 transition-all">HIST</button>
+                </div>
+                <select id="credit-filter" onchange="applyFilters()" class="px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                    <option value="all">All Credits</option>
+                    <option value="1">1 Credit</option>
+                    <option value="2">2 Credits</option>
+                    <option value="3">3 Credits</option>
+                    <option value="4">4 Credits</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center gap-4 text-sm text-gray-500">
+                <span>Showing <strong id="showing-count" class="text-gray-900">24</strong> courses</span>
+                <span class="text-gray-300">|</span>
+                <span><strong id="selected-count" class="text-brand-600">0</strong> selected</span>
+            </div>
+            <button onclick="switchView('builder')" id="build-btn" class="inline-flex items-center gap-2 px-5 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                Build Schedule
+            </button>
+        </div>
+    </div>
+
+    <!-- Course Table -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gray-50 border-b border-gray-200">
+                        <th class="w-12 px-4 py-3"><input type="checkbox" id="select-all" onchange="toggleAll(this)" class="rounded border-gray-300 text-brand-600 focus:ring-brand-500"></th>
+                        <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Course</th>
+                        <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Instructor</th>
+                        <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Schedule</th>
+                        <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Credits</th>
+                        <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Seats</th>
+                        <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Rating</th>
+                    </tr>
+                </thead>
+                <tbody id="course-table-body" class="divide-y divide-gray-100">
+                </tbody>
+            </table>
+        </div>
+        <!-- Pagination -->
+        <div class="flex items-center justify-between mt-4">
+            <span class="text-sm text-gray-500">Page 1 of 3</span>
+            <div class="flex gap-2">
+                <button class="px-4 py-2 text-sm font-medium text-gray-400 bg-white border border-gray-200 rounded-lg cursor-not-allowed">Previous</button>
+                <button class="px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg">1</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">2</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">3</button>
+                <button class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-lg hover:bg-gray-50">Next</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SCHEDULE BUILDER ==================== -->
+<div id="view-builder" class="view-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Left Panel: Controls -->
+            <div class="lg:col-span-4 space-y-5">
+                <!-- Selected Courses -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-3">Selected Courses</h3>
+                    <div id="selected-courses-list" class="space-y-2">
+                        <p class="text-sm text-gray-400 italic">No courses selected</p>
+                    </div>
+                </div>
+
+                <!-- Constraints -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-4">Constraints</h3>
+                    
+                    <!-- Credit Range -->
+                    <div class="mb-5">
+                        <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Credit Range</label>
+                        <div class="flex items-center gap-3 mt-2">
+                            <input type="range" id="credit-min" min="6" max="21" value="12" class="flex-1 slider-track" oninput="updateCreditLabels()">
+                            <span class="text-sm font-mono text-gray-600 w-16 text-center" id="credit-min-val">12</span>
+                            <span class="text-gray-300">—</span>
+                            <span class="text-sm font-mono text-gray-600 w-16 text-center" id="credit-max-val">18</span>
+                            <input type="range" id="credit-max" min="6" max="21" value="18" class="flex-1 slider-track" oninput="updateCreditLabels()">
+                        </div>
+                    </div>
+
+                    <!-- Day Exclusion -->
+                    <div class="mb-5">
+                        <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Exclude Days</label>
+                        <div class="flex gap-2 mt-2">
+                            <button onclick="toggleDay(this)" class="day-toggle w-10 h-10 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:border-brand-300 transition-all">M</button>
+                            <button onclick="toggleDay(this)" class="day-toggle w-10 h-10 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:border-brand-300 transition-all">T</button>
+                            <button onclick="toggleDay(this)" class="day-toggle w-10 h-10 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:border-brand-300 transition-all">W</button>
+                            <button onclick="toggleDay(this)" class="day-toggle w-10 h-10 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:border-brand-300 transition-all">R</button>
+                            <button onclick="toggleDay(this)" class="day-toggle w-10 h-10 rounded-lg border border-gray-200 text-sm font-medium text-gray-600 hover:border-brand-300 transition-all">F</button>
+                        </div>
+                    </div>
+
+                    <!-- Max Courses -->
+                    <div class="mb-5">
+                        <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Max Courses</label>
+                        <select class="w-full mt-2 px-3 py-2 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            <option>4 courses</option>
+                            <option selected>5 courses</option>
+                            <option>6 courses</option>
+                            <option>7 courses</option>
+                        </select>
+                    </div>
+
+                    <!-- Crucial Courses -->
+                    <div class="mb-5">
+                        <label class="text-xs font-medium text-gray-500 uppercase tracking-wider">Must Include</label>
+                        <div id="crucial-chips" class="flex flex-wrap gap-2 mt-2">
+                            <span class="inline-flex items-center gap-1 px-3 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full">
+                                CHEM201
+                                <button class="hover:text-brand-900">&times;</button>
+                            </span>
+                            <button class="inline-flex items-center gap-1 px-3 py-1 bg-gray-100 text-gray-500 text-xs font-medium rounded-full hover:bg-gray-200 transition-colors">
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+                    <button onclick="generateSchedules()" class="w-full py-3 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition-colors flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        Generate Schedules
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Panel: Timetable -->
+            <div class="lg:col-span-8 space-y-5">
+                <!-- Timetable Grid -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-sm font-semibold text-gray-900">Schedule Preview</h3>
+                        <div class="flex items-center gap-3">
+                            <span class="text-xs text-gray-500">Combo <strong class="text-gray-900">1</strong> of <strong class="text-gray-900">12</strong></span>
+                            <div class="flex gap-1">
+                                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-400 cursor-not-allowed">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                </button>
+                                <button class="w-8 h-8 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-50">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Grid -->
+                    <div class="relative overflow-x-auto">
+                        <div class="min-w-[600px]">
+                            <!-- Header -->
+                            <div class="grid grid-cols-6 gap-0 mb-1">
+                                <div class="w-16"></div>
+                                <div class="text-center text-xs font-semibold text-gray-500 py-2">Mon</div>
+                                <div class="text-center text-xs font-semibold text-gray-500 py-2">Tue</div>
+                                <div class="text-center text-xs font-semibold text-gray-500 py-2">Wed</div>
+                                <div class="text-center text-xs font-semibold text-gray-500 py-2">Thu</div>
+                                <div class="text-center text-xs font-semibold text-gray-500 py-2">Fri</div>
+                            </div>
+                            <!-- Time Grid -->
+                            <div id="timetable-grid" class="relative" style="height: 560px;">
+                                <!-- Time labels -->
+                                <div class="absolute left-0 top-0 w-16 h-full">
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">8 AM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">9 AM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">10 AM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">11 AM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">12 PM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">1 PM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">2 PM</span></div>
+                                    <div class="h-[70px] flex items-start justify-end pr-2 -mt-2"><span class="text-xs text-gray-400">3 PM</span></div>
+                                </div>
+                                <!-- Grid lines -->
+                                <div class="absolute left-16 right-0 top-0 bottom-0 grid grid-cols-5 gap-px bg-gray-100">
+                                    <div class="bg-white"></div>
+                                    <div class="bg-white"></div>
+                                    <div class="bg-white"></div>
+                                    <div class="bg-white"></div>
+                                    <div class="bg-white"></div>
+                                </div>
+                                <!-- Hour lines -->
+                                <div class="absolute left-16 right-0 top-[70px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[140px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[210px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[280px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[350px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[420px] border-t border-gray-100"></div>
+                                <div class="absolute left-16 right-0 top-[490px] border-t border-gray-100"></div>
+
+                                <!-- Schedule blocks -->
+                                <div class="schedule-block bg-blue-100 border border-blue-300 text-blue-800" style="left: calc(16.67% + 4px); width: calc(16.67% - 8px); top: 0px; height: 140px;">
+                                    <div class="font-semibold text-[11px]">CHEM201</div>
+                                    <div class="text-[10px] opacity-75">Dr. Smith</div>
+                                    <div class="text-[10px] opacity-75">8:00-10:00</div>
+                                </div>
+                                <div class="schedule-block bg-blue-100 border border-blue-300 text-blue-800" style="left: calc(50% + 4px); width: calc(16.67% - 8px); top: 0px; height: 140px;">
+                                    <div class="font-semibold text-[11px]">CHEM201</div>
+                                    <div class="text-[10px] opacity-75">Dr. Smith</div>
+                                    <div class="text-[10px] opacity-75">8:00-10:00</div>
+                                </div>
+                                <div class="schedule-block bg-emerald-100 border border-emerald-300 text-emerald-800" style="left: calc(33.33% + 4px); width: calc(16.67% - 8px); top: 175px; height: 105px;">
+                                    <div class="font-semibold text-[11px]">BIOL310</div>
+                                    <div class="text-[10px] opacity-75">Dr. Chen</div>
+                                    <div class="text-[10px] opacity-75">10:30-12:00</div>
+                                </div>
+                                <div class="schedule-block bg-emerald-100 border border-emerald-300 text-emerald-800" style="left: calc(66.67% + 4px); width: calc(16.67% - 8px); top: 175px; height: 105px;">
+                                    <div class="font-semibold text-[11px]">BIOL310</div>
+                                    <div class="text-[10px] opacity-75">Dr. Chen</div>
+                                    <div class="text-[10px] opacity-75">10:30-12:00</div>
+                                </div>
+                                <div class="schedule-block bg-amber-100 border border-amber-300 text-amber-800" style="left: calc(16.67% + 4px); width: calc(16.67% - 8px); top: 315px; height: 105px;">
+                                    <div class="font-semibold text-[11px]">MATH201</div>
+                                    <div class="text-[10px] opacity-75">Dr. Patel</div>
+                                    <div class="text-[10px] opacity-75">12:30-2:00</div>
+                                </div>
+                                <div class="schedule-block bg-amber-100 border border-amber-300 text-amber-800" style="left: calc(50% + 4px); width: calc(16.67% - 8px); top: 315px; height: 105px;">
+                                    <div class="font-semibold text-[11px]">MATH201</div>
+                                    <div class="text-[10px] opacity-75">Dr. Patel</div>
+                                    <div class="text-[10px] opacity-75">12:30-2:00</div>
+                                </div>
+                                <div class="schedule-block bg-purple-100 border border-purple-300 text-purple-800" style="left: calc(83.33% + 4px); width: calc(16.67% - 8px); top: 350px; height: 140px;">
+                                    <div class="font-semibold text-[11px]">CS101</div>
+                                    <div class="text-[10px] opacity-75">Prof. Lee</div>
+                                    <div class="text-[10px] opacity-75">1:00-3:00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Stats -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                    <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+                        <div class="text-2xl font-bold text-brand-600">15</div>
+                        <div class="text-xs text-gray-500 mt-1">Total Credits</div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+                        <div class="text-2xl font-bold text-emerald-600">5</div>
+                        <div class="text-xs text-gray-500 mt-1">Courses</div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+                        <div class="text-2xl font-bold text-amber-600">19</div>
+                        <div class="text-xs text-gray-500 mt-1">Hours/Week</div>
+                    </div>
+                    <div class="bg-white rounded-xl border border-gray-200 p-4 text-center shadow-sm">
+                        <div class="text-2xl font-bold text-emerald-600">82<span class="text-sm font-normal">/100</span></div>
+                        <div class="text-xs text-gray-500 mt-1">Health Score</div>
+                    </div>
+                </div>
+
+                <!-- Ranked Schedules -->
+                <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                    <h3 class="text-sm font-semibold text-gray-900 mb-4">Generated Schedules</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-4 p-3 bg-brand-50 border border-brand-200 rounded-lg cursor-pointer">
+                            <div class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold text-sm">1</div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900">Schedule A — Balanced</div>
+                                <div class="text-xs text-gray-500">5 courses · 15 credits · 19 hrs/wk</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-brand-600">82</div>
+                                <div class="text-[10px] text-gray-400">score</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-brand-300 transition-colors">
+                            <div class="w-10 h-10 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">2</div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900">Schedule B — Morning Heavy</div>
+                                <div class="text-xs text-gray-500">5 courses · 15 credits · 17 hrs/wk</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-600">76</div>
+                                <div class="text-[10px] text-gray-400">score</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 p-3 bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-brand-300 transition-colors">
+                            <div class="w-10 h-10 bg-gray-100 text-gray-600 rounded-full flex items-center justify-center font-bold text-sm">3</div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold text-gray-900">Schedule C — Compact</div>
+                                <div class="text-xs text-gray-500">5 courses · 15 credits · 16 hrs/wk</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-lg font-bold text-gray-600">71</div>
+                                <div class="text-[10px] text-gray-400">score</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SAVED SCHEDULES ==================== -->
+<div id="view-saved" class="view-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900">Saved Schedules</h2>
+            <button onclick="switchView('builder')" class="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700 transition-colors">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg>
+                New Schedule
+            </button>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <!-- Saved Card 1 -->
+            <div class="saved-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-gray-900">Spring 2027 Plan A</h3>
+                    <span class="px-2 py-0.5 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full">82/100</span>
+                </div>
+                <div class="space-y-1.5 mb-4">
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>CHEM201 — Dr. Smith
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>BIOL310 — Dr. Chen
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>MATH201 — Dr. Patel
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>CS101 — Prof. Lee
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-rose-400"></span>ENGL102 — Dr. Garcia
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    <span>15 credits · 5 courses</span>
+                    <span>19 hrs/wk</span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 text-xs font-medium text-brand-600 border border-brand-200 rounded-lg hover:bg-brand-50 transition-colors">Load</button>
+                    <button class="py-2 px-3 text-xs font-medium text-gray-400 border border-gray-200 rounded-lg hover:text-red-500 hover:border-red-200 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Saved Card 2 -->
+            <div class="saved-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-gray-900">Spring 2027 Plan B</h3>
+                    <span class="px-2 py-0.5 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">76/100</span>
+                </div>
+                <div class="space-y-1.5 mb-4">
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>CHEM201 — Dr. Williams
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>BIOL310 — Dr. Chen
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>MATH201 — Dr. Patel
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>PHYS101 — Dr. Kumar
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    <span>14 credits · 4 courses</span>
+                    <span>17 hrs/wk</span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 text-xs font-medium text-brand-600 border border-brand-200 rounded-lg hover:bg-brand-50 transition-colors">Load</button>
+                    <button class="py-2 px-3 text-xs font-medium text-gray-400 border border-gray-200 rounded-lg hover:text-red-500 hover:border-red-200 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Saved Card 3 -->
+            <div class="saved-card bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-sm font-semibold text-gray-900">Fall 2027 Draft</h3>
+                    <span class="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">68/100</span>
+                </div>
+                <div class="space-y-1.5 mb-4">
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>CHEM301 — Dr. Smith
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>BIOL410 — Dr. Chen
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-amber-400"></span>MATH301 — Dr. Patel
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>CS201 — Prof. Lee
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-rose-400"></span>HIST201 — Dr. Johnson
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-gray-600">
+                        <span class="w-2 h-2 rounded-full bg-teal-400"></span>ENGL202 — Dr. Garcia
+                    </div>
+                </div>
+                <div class="flex items-center justify-between text-xs text-gray-500 mb-4">
+                    <span>18 credits · 6 courses</span>
+                    <span>24 hrs/wk</span>
+                </div>
+                <div class="flex gap-2">
+                    <button class="flex-1 py-2 text-xs font-medium text-brand-600 border border-brand-200 rounded-lg hover:bg-brand-50 transition-colors">Load</button>
+                    <button class="py-2 px-3 text-xs font-medium text-gray-400 border border-gray-200 rounded-lg hover:text-red-500 hover:border-red-200 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Course data
+const courses = [
+    { code: 'BIOL101', name: 'Intro to Biology', instructor: 'Dr. Chen', days: 'MWF', time: '9:00-9:50 AM', credits: 4, seats: 8, totalSeats: 30, rating: 4.5, dept: 'BIOL', color: 'emerald' },
+    { code: 'BIOL210', name: 'Cell Biology', instructor: 'Dr. Patel', days: 'TTh', time: '10:30-12:00 PM', credits: 4, seats: 22, totalSeats: 28, rating: 4.2, dept: 'BIOL', color: 'emerald' },
+    { code: 'BIOL310', name: 'Genetics', instructor: 'Dr. Chen', days: 'MWF', time: '10:30-11:20 AM', credits: 3, seats: 3, totalSeats: 25, rating: 4.7, dept: 'BIOL', color: 'emerald' },
+    { code: 'CHEM101', name: 'General Chemistry I', instructor: 'Dr. Smith', days: 'MWF', time: '8:00-8:50 AM', credits: 4, seats: 15, totalSeats: 35, rating: 3.8, dept: 'CHEM', color: 'blue' },
+    { code: 'CHEM201', name: 'Organic Chemistry', instructor: 'Dr. Smith', days: 'MWF', time: '8:00-9:50 AM', credits: 4, seats: 2, totalSeats: 28, rating: 4.1, dept: 'CHEM', color: 'blue' },
+    { code: 'CHEM301', name: 'Biochemistry', instructor: 'Dr. Williams', days: 'TTh', time: '1:00-2:30 PM', credits: 3, seats: 18, totalSeats: 24, rating: 4.3, dept: 'CHEM', color: 'blue' },
+    { code: 'MATH101', name: 'Calculus I', instructor: 'Dr. Patel', days: 'MWF', time: '9:00-9:50 AM', credits: 4, seats: 12, totalSeats: 32, rating: 4.0, dept: 'MATH', color: 'amber' },
+    { code: 'MATH201', name: 'Calculus II', instructor: 'Dr. Patel', days: 'MWF', time: '12:30-1:20 PM', credits: 4, seats: 6, totalSeats: 28, rating: 4.2, dept: 'MATH', color: 'amber' },
+    { code: 'MATH301', name: 'Linear Algebra', instructor: 'Dr. Kumar', days: 'TTh', time: '9:00-10:30 AM', credits: 3, seats: 20, totalSeats: 25, rating: 4.4, dept: 'MATH', color: 'amber' },
+    { code: 'CS101', name: 'Intro to Computer Science', instructor: 'Prof. Lee', days: 'F', time: '1:00-3:50 PM', credits: 4, seats: 5, totalSeats: 30, rating: 4.6, dept: 'CS', color: 'purple' },
+    { code: 'CS201', name: 'Data Structures', instructor: 'Prof. Lee', days: 'TTh', time: '3:00-4:30 PM', credits: 4, seats: 10, totalSeats: 28, rating: 4.5, dept: 'CS', color: 'purple' },
+    { code: 'CS301', name: 'Algorithms', instructor: 'Dr. Zhang', days: 'MWF', time: '2:00-2:50 PM', credits: 3, seats: 14, totalSeats: 22, rating: 4.3, dept: 'CS', color: 'purple' },
+    { code: 'ENGL101', name: 'English Composition', instructor: 'Dr. Garcia', days: 'MWF', time: '11:00-11:50 AM', credits: 3, seats: 25, totalSeats: 30, rating: 4.1, dept: 'ENGL', color: 'rose' },
+    { code: 'ENGL102', name: 'Literature & Ideas', instructor: 'Dr. Garcia', days: 'TTh', time: '11:00-12:30 PM', credits: 3, seats: 19, totalSeats: 25, rating: 4.3, dept: 'ENGL', color: 'rose' },
+    { code: 'ENGL202', name: 'Creative Writing', instructor: 'Dr. Johnson', days: 'MW', time: '3:00-4:30 PM', credits: 3, seats: 8, totalSeats: 20, rating: 4.6, dept: 'ENGL', color: 'rose' },
+    { code: 'PHYS101', name: 'General Physics I', instructor: 'Dr. Kumar', days: 'MWF', time: '1:00-1:50 PM', credits: 4, seats: 11, totalSeats: 30, rating: 3.9, dept: 'PHYS', color: 'teal' },
+    { code: 'PHYS201', name: 'Electricity & Magnetism', instructor: 'Dr. Kumar', days: 'TTh', time: '2:00-3:30 PM', credits: 4, seats: 16, totalSeats: 25, rating: 4.0, dept: 'PHYS', color: 'teal' },
+    { code: 'PHYS301', name: 'Quantum Mechanics', instructor: 'Dr. Zhang', days: 'MWF', time: '3:00-3:50 PM', credits: 3, seats: 9, totalSeats: 20, rating: 4.2, dept: 'PHYS', color: 'teal' },
+    { code: 'HIST101', name: 'World History', instructor: 'Dr. Johnson', days: 'TTh', time: '9:00-10:30 AM', credits: 3, seats: 28, totalSeats: 35, rating: 4.0, dept: 'HIST', color: 'orange' },
+    { code: 'HIST201', name: 'American History', instructor: 'Dr. Johnson', days: 'MW', time: '10:00-11:30 AM', credits: 3, seats: 21, totalSeats: 30, rating: 4.1, dept: 'HIST', color: 'orange' },
+    { code: 'HIST301', name: 'Modern Europe', instructor: 'Dr. Brown', days: 'F', time: '10:00-12:50 PM', credits: 3, seats: 15, totalSeats: 25, rating: 4.4, dept: 'HIST', color: 'orange' },
+    { code: 'BIOL410', name: 'Molecular Biology', instructor: 'Dr. Chen', days: 'TTh', time: '1:00-2:30 PM', credits: 3, seats: 7, totalSeats: 20, rating: 4.8, dept: 'BIOL', color: 'emerald' },
+    { code: 'CHEM401', name: 'Physical Chemistry', instructor: 'Dr. Williams', days: 'MWF', time: '4:00-4:50 PM', credits: 3, seats: 13, totalSeats: 22, rating: 3.7, dept: 'CHEM', color: 'blue' },
+    { code: 'MATH401', name: 'Differential Equations', instructor: 'Dr. Kumar', days: 'MWF', time: '11:00-11:50 AM', credits: 3, seats: 17, totalSeats: 25, rating: 4.1, dept: 'MATH', color: 'amber' },
+];
+
+let selectedCourses = new Set();
+let currentDept = 'All';
+
+function renderCourses(filtered) {
+    const tbody = document.getElementById('course-table-body');
+    tbody.innerHTML = '';
+    filtered.forEach((c, i) => {
+        const seatClass = c.seats <= 5 ? 'seat-low' : c.seats <= 12 ? 'seat-mid' : 'seat-high';
+        const isSelected = selectedCourses.has(c.code);
+        tbody.innerHTML += `
+            <tr class="course-row cursor-pointer transition-colors ${isSelected ? 'selected' : ''}" onclick="toggleCourse('${c.code}')">
+                <td class="px-4 py-3"><input type="checkbox" ${isSelected ? 'checked' : ''} class="rounded border-gray-300 text-brand-600 focus:ring-brand-500 pointer-events-none"></td>
+                <td class="px-4 py-3">
+                    <div class="text-sm font-semibold text-gray-900">${c.code}</div>
+                    <div class="text-xs text-gray-500">${c.name}</div>
+                </td>
+                <td class="px-4 py-3 text-sm text-gray-600">${c.instructor}</td>
+                <td class="px-4 py-3">
+                    <div class="text-sm text-gray-900">${c.days}</div>
+                    <div class="text-xs text-gray-500">${c.time}</div>
+                </td>
+                <td class="px-4 py-3 text-center text-sm font-medium text-gray-700">${c.credits}</td>
+                <td class="px-4 py-3 text-center"><span class="text-sm font-semibold ${seatClass}">${c.seats}/${c.totalSeats}</span></td>
+                <td class="px-4 py-3 text-center">
+                    <div class="inline-flex items-center gap-1">
+                        <svg class="w-3.5 h-3.5 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <span class="text-sm font-medium text-gray-700">${c.rating}</span>
+                    </div>
+                </td>
+            </tr>`;
+    });
+    document.getElementById('showing-count').textContent = filtered.length;
+}
+
+function toggleCourse(code) {
+    if (selectedCourses.has(code)) selectedCourses.delete(code);
+    else selectedCourses.add(code);
+    document.getElementById('selected-count').textContent = selectedCourses.size;
+    document.getElementById('build-btn').disabled = selectedCourses.size === 0;
+    applyFilters();
+    updateSelectedCoursesList();
+}
+
+function toggleAll(cb) {
+    const filtered = getFilteredCourses();
+    if (cb.checked) filtered.forEach(c => selectedCourses.add(c.code));
+    else filtered.forEach(c => selectedCourses.delete(c.code));
+    document.getElementById('selected-count').textContent = selectedCourses.size;
+    document.getElementById('build-btn').disabled = selectedCourses.size === 0;
+    applyFilters();
+    updateSelectedCoursesList();
+}
+
+function filterDept(dept) {
+    currentDept = dept;
+    document.querySelectorAll('.dept-chip').forEach(chip => {
+        chip.classList.remove('chip-active');
+        if (chip.textContent.trim() === dept) chip.classList.add('chip-active');
+    });
+    applyFilters();
+}
+
+function getFilteredCourses() {
+    const search = document.getElementById('course-search').value.toLowerCase();
+    const creditFilter = document.getElementById('credit-filter').value;
+    return courses.filter(c => {
+        const matchDept = currentDept === 'All' || c.dept === currentDept;
+        const matchSearch = !search || c.code.toLowerCase().includes(search) || c.name.toLowerCase().includes(search) || c.instructor.toLowerCase().includes(search);
+        const matchCredit = creditFilter === 'all' || c.credits === parseInt(creditFilter);
+        return matchDept && matchSearch && matchCredit;
+    });
+}
+
+function applyFilters() {
+    renderCourses(getFilteredCourses());
+}
+
+function switchView(view) {
+    ['catalog', 'builder', 'saved'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('view-hidden');
+        document.getElementById(`view-${v}`).classList.remove('view-active');
+        document.getElementById(`tab-${v}`).classList.remove('tab-active', 'text-brand-600', 'border-brand-600');
+        document.getElementById(`tab-${v}`).classList.add('text-gray-500', 'border-transparent');
+    });
+    document.getElementById(`view-${view}`).classList.remove('view-hidden');
+    document.getElementById(`view-${view}`).classList.add('view-active');
+    document.getElementById(`tab-${view}`).classList.add('tab-active', 'text-brand-600', 'border-brand-600');
+    document.getElementById(`tab-${view}`).classList.remove('text-gray-500', 'border-transparent');
+}
+
+function updateSelectedCoursesList() {
+    const list = document.getElementById('selected-courses-list');
+    if (selectedCourses.size === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-400 italic">No courses selected</p>';
+        return;
+    }
+    list.innerHTML = '';
+    selectedCourses.forEach(code => {
+        const c = courses.find(x => x.code === code);
+        if (c) {
+            list.innerHTML += `
+                <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                    <div class="flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-${c.color}-400"></span>
+                        <span class="text-sm font-medium text-gray-700">${c.code}</span>
+                    </div>
+                    <button onclick="event.stopPropagation(); toggleCourse('${c.code}')" class="text-gray-400 hover:text-red-500 transition-colors">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>`;
+        }
+    });
+}
+
+function updateCreditLabels() {
+    const min = document.getElementById('credit-min').value;
+    const max = document.getElementById('credit-max').value;
+    document.getElementById('credit-min-val').textContent = min;
+    document.getElementById('credit-max-val').textContent = max;
+}
+
+function toggleDay(btn) {
+    btn.classList.toggle('bg-red-100');
+    btn.classList.toggle('border-red-300');
+    btn.classList.toggle('text-red-600');
+}
+
+function generateSchedules() {
+    switchView('builder');
+}
+
+// Init
+renderCourses(courses);
+</script>
+</body>
+</html>

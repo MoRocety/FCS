@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-gray-50">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCS — Forman Course Scheduler</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { 50:'#eff6ff', 100:'#dbeafe', 200:'#bfdbfe', 300:'#93c5fd', 400:'#60a5fa', 500:'#3b82f6', 600:'#2563eb', 700:'#1d4ed8', 800:'#1e40af', 900:'#1e3a8a' },
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+    .chip { @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium cursor-pointer transition-all; }
+    .chip-default { @apply bg-gray-100 text-gray-700 hover:bg-gray-200; }
+    .chip-active { @apply bg-brand-100 text-brand-700 ring-1 ring-brand-300; }
+    .schedule-cell { @apply absolute rounded-md text-xs font-medium flex items-center justify-center shadow-sm transition-all hover:shadow-md hover:scale-[1.02] cursor-pointer; }
+    .view-hidden { display: none; }
+    input[type=range]::-webkit-slider-thumb { @apply appearance-none w-5 h-5 bg-brand-600 rounded-full cursor-pointer shadow; }
+    input[type=range]::-webkit-slider-runnable-track { @apply h-2 bg-gray-200 rounded-full; }
+  </style>
+</head>
+<body class="h-full font-sans text-gray-900 antialiased">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center gap-8">
+          <a href="#" class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <span class="text-lg font-bold text-gray-900">FCS <span class="text-brand-600">v3</span></span>
+          </a>
+          <div class="hidden md:flex items-center gap-1">
+            <button onclick="showView('catalog')" id="nav-catalog" class="px-3 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600">Courses</button>
+            <button onclick="showView('builder')" id="nav-builder" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Schedule Builder</button>
+            <button onclick="showView('saved')" id="nav-saved" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700">Saved</button>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <span class="text-xs text-gray-400 hidden sm:inline">Spring 2027</span>
+          <button class="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-3 py-1.5 text-sm font-medium hover:bg-gray-50 transition">
+            <svg class="w-4 h-5 text-gray-400" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span class="text-gray-500">Search...</span>
+            <kbd class="hidden sm:inline text-[10px] bg-gray-100 text-gray-400 px-1.5 py-0.5 rounded border">⌘K</kbd>
+          </button>
+          <div class="w-8 h-8 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-sm font-semibold">RA</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ===== VIEW: COURSE CATALOG ===== -->
+    <div id="view-catalog">
+      <!-- Header -->
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-gray-900">Course Catalog</h1>
+        <p class="text-sm text-gray-500 mt-1">Browse courses for Spring 2027. Select courses to build your schedule.</p>
+      </div>
+
+      <!-- Filters -->
+      <div class="bg-white rounded-xl border border-gray-200 p-4 mb-6">
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Search -->
+          <div class="relative flex-1 min-w-[200px]">
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <input type="text" placeholder="Search courses, instructors..." class="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent">
+          </div>
+          <!-- Department Chips -->
+          <div class="flex flex-wrap gap-2">
+            <button class="chip chip-active">All</button>
+            <button class="chip chip-default">BIOL</button>
+            <button class="chip chip-default">CHEM</button>
+            <button class="chip chip-default">MATH</button>
+            <button class="chip chip-default">CS</button>
+            <button class="chip chip-default">ENGL</button>
+            <button class="chip chip-default">PHYS</button>
+            <button class="chip chip-default">HIST</button>
+          </div>
+          <!-- Credit Filter -->
+          <div class="flex items-center gap-2 ml-auto">
+            <span class="text-xs text-gray-500">Credits:</span>
+            <select class="text-sm border border-gray-200 rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500">
+              <option>Any</option>
+              <option>1-2</option>
+              <option selected>3-4</option>
+              <option>5+</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Bar -->
+      <div class="flex items-center justify-between mb-4">
+        <p class="text-sm text-gray-500">Showing <span class="font-semibold text-gray-900">127</span> courses</p>
+        <div class="flex items-center gap-2">
+          <span class="text-xs text-gray-400">Selected: <span id="selected-count" class="font-semibold text-brand-600">0</span></span>
+          <button onclick="showView('builder')" class="inline-flex items-center gap-1.5 bg-brand-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-brand-700 transition disabled:opacity-50 disabled:cursor-not-allowed" id="build-btn" disabled>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Build Schedule
+          </button>
+        </div>
+      </div>
+
+      <!-- Course Table -->
+      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-gray-100 bg-gray-50/50">
+              <th class="w-10 px-4 py-3"><input type="checkbox" class="rounded border-gray-300 text-brand-600 focus:ring-brand-500"></th>
+              <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Course</th>
+              <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden sm:table-cell">Instructor</th>
+              <th class="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Schedule</th>
+              <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Credits</th>
+              <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Seats</th>
+              <th class="text-center px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Rating</th>
+            </tr>
+          </thead>
+          <tbody id="course-table-body" class="divide-y divide-gray-50">
+            <!-- Rows injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-between mt-4">
+        <p class="text-sm text-gray-500">Page 1 of 7</p>
+        <div class="flex items-center gap-1">
+          <button class="px-3 py-1.5 text-sm text-gray-400 cursor-not-allowed">Previous</button>
+          <button class="px-3 py-1.5 text-sm bg-brand-600 text-white rounded-lg font-medium">1</button>
+          <button class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">2</button>
+          <button class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">3</button>
+          <span class="px-2 text-gray-400">...</span>
+          <button class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">7</button>
+          <button class="px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded-lg">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== VIEW: SCHEDULE BUILDER ===== -->
+    <div id="view-builder" class="view-hidden">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+        <!-- Left Panel: Controls -->
+        <div class="lg:col-span-1 space-y-4">
+          <!-- Selected Courses -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <h2 class="text-sm font-semibold text-gray-900 mb-3">Selected Courses</h2>
+            <div id="selected-courses-list" class="space-y-2">
+              <!-- Injected by JS -->
+            </div>
+            <button onclick="showView('catalog')" class="mt-3 text-sm text-brand-600 hover:text-brand-700 font-medium">+ Add more courses</button>
+          </div>
+
+          <!-- Credit Range -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <h2 class="text-sm font-semibold text-gray-900 mb-3">Credit Range</h2>
+            <div class="flex items-center gap-3 mb-2">
+              <span id="credit-min-label" class="text-2xl font-bold text-brand-600">15</span>
+              <span class="text-gray-400">—</span>
+              <span id="credit-max-label" class="text-2xl font-bold text-brand-600">17</span>
+            </div>
+            <div class="space-y-3">
+              <div>
+                <label class="text-xs text-gray-500">Minimum</label>
+                <input type="range" min="6" max="22" value="15" class="w-full" id="credit-min" oninput="updateCreditLabels()">
+              </div>
+              <div>
+                <label class="text-xs text-gray-500">Maximum</label>
+                <input type="range" min="6" max="22" value="17" class="w-full" id="credit-max" oninput="updateCreditLabels()">
+              </div>
+            </div>
+          </div>
+
+          <!-- Filters -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <h2 class="text-sm font-semibold text-gray-900 mb-3">Filters</h2>
+            <div class="space-y-3">
+              <div>
+                <label class="text-xs text-gray-500 mb-1 block">Exclude days</label>
+                <div class="flex gap-1.5">
+                  <button class="chip chip-default text-xs">M</button>
+                  <button class="chip chip-default text-xs">T</button>
+                  <button class="chip chip-default text-xs">W</button>
+                  <button class="chip chip-default text-xs">R</button>
+                  <button class="chip chip-default text-xs">F</button>
+                </div>
+              </div>
+              <div>
+                <label class="text-xs text-gray-500 mb-1 block">Max courses</label>
+                <select class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                  <option>No limit</option>
+                  <option>4</option>
+                  <option selected>5</option>
+                  <option>6</option>
+                </select>
+              </div>
+              <div>
+                <label class="text-xs text-gray-500 mb-1 block">Must-have courses</label>
+                <div class="flex flex-wrap gap-1.5" id="crucial-chips">
+                  <!-- Injected by JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generate Button -->
+          <button onclick="generateSchedules()" class="w-full bg-brand-600 text-white font-semibold py-3 rounded-xl hover:bg-brand-700 transition flex items-center justify-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Generate Schedules
+          </button>
+        </div>
+
+        <!-- Right Panel: Schedule Grid + Results -->
+        <div class="lg:col-span-2 space-y-4">
+          <!-- Schedule Grid -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-sm font-semibold text-gray-900">Schedule Preview</h2>
+              <div class="flex items-center gap-2">
+                <button class="text-xs text-gray-400 hover:text-gray-600" id="combo-nav-prev" onclick="prevCombo()">← Prev</button>
+                <span class="text-xs font-medium text-gray-600" id="combo-counter">0 / 0</span>
+                <button class="text-xs text-gray-400 hover:text-gray-600" id="combo-nav-next" onclick="nextCombo()">Next →</button>
+              </div>
+            </div>
+            <!-- Timetable Grid -->
+            <div class="relative overflow-x-auto">
+              <div class="min-w-[600px]">
+                <!-- Day Headers -->
+                <div class="grid grid-cols-5 mb-2">
+                  <div class="text-center text-xs font-semibold text-gray-500 py-2">Monday</div>
+                  <div class="text-center text-xs font-semibold text-gray-500 py-2">Tuesday</div>
+                  <div class="text-center text-xs font-semibold text-gray-500 py-2">Wednesday</div>
+                  <div class="text-center text-xs font-semibold text-gray-500 py-2">Thursday</div>
+                  <div class="text-center text-xs font-semibold text-gray-500 py-2">Friday</div>
+                </div>
+                <!-- Time Grid -->
+                <div class="relative border border-gray-100 rounded-lg" style="height: 600px;">
+                  <!-- Hour labels -->
+                  <div class="absolute left-0 top-0 bottom-0 w-12 border-r border-gray-100">
+                    <div class="absolute top-[0%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">8AM</div>
+                    <div class="absolute top-[12.5%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">9AM</div>
+                    <div class="absolute top-[25%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">10AM</div>
+                    <div class="absolute top-[37.5%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">11AM</div>
+                    <div class="absolute top-[50%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">12PM</div>
+                    <div class="absolute top-[62.5%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">1PM</div>
+                    <div class="absolute top-[75%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">2PM</div>
+                    <div class="absolute top-[87.5%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">3PM</div>
+                    <div class="absolute top-[100%] -translate-y-1/2 text-[10px] text-gray-400 pr-2 text-right w-full">4PM</div>
+                  </div>
+                  <!-- Horizontal lines -->
+                  <div class="absolute left-12 right-0 top-0 border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[12.5%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[25%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[37.5%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[50%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[62.5%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[75%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[87.5%] border-t border-gray-100"></div>
+                  <div class="absolute left-12 right-0 top-[100%] border-t border-gray-100"></div>
+                  <!-- Vertical lines -->
+                  <div class="absolute left-[20%] top-0 bottom-0 border-l border-gray-100"></div>
+                  <div class="absolute left-[40%] top-0 bottom-0 border-l border-gray-100"></div>
+                  <div class="absolute left-[60%] top-0 bottom-0 border-l border-gray-100"></div>
+                  <div class="absolute left-[80%] top-0 bottom-0 border-l border-gray-100"></div>
+
+                  <!-- Schedule Blocks (example: Schedule 1) -->
+                  <div id="schedule-blocks" class="absolute left-12 right-0 top-0 bottom-0">
+                    <!-- BIOL201 — MWF 9:00-9:50 -->
+                    <div class="schedule-cell bg-blue-100 text-blue-800 border border-blue-200" style="left:0%; width:19.5%; top:12.5%; height:10.4%;">BIOL201-A<br><span class="text-[9px] opacity-75">9:00–9:50</span></div>
+                    <div class="schedule-cell bg-blue-100 text-blue-800 border border-blue-200" style="left:40%; width:19.5%; top:12.5%; height:10.4%;">BIOL201-A<br><span class="text-[9px] opacity-75">9:00–9:50</span></div>
+                    <div class="schedule-cell bg-blue-100 text-blue-800 border border-blue-200" style="left:80%; width:19.5%; top:12.5%; height:10.4%;">BIOL201-A<br><span class="text-[9px] opacity-75">9:00–9:50</span></div>
+
+                    <!-- CHEM201 — T/Th 10:00-11:15 -->
+                    <div class="schedule-cell bg-emerald-100 text-emerald-800 border border-emerald-200" style="left:20%; width:19.5%; top:25%; height:14.6%;">CHEM201-B<br><span class="text-[9px] opacity-75">10:00–11:15</span></div>
+                    <div class="schedule-cell bg-emerald-100 text-emerald-800 border border-emerald-200" style="left:60%; width:19.5%; top:25%; height:14.6%;">CHEM201-B<br><span class="text-[9px] opacity-75">10:00–11:15</span></div>
+
+                    <!-- MATH301 — MWF 11:00-11:50 -->
+                    <div class="schedule-cell bg-amber-100 text-amber-800 border border-amber-200" style="left:0%; width:19.5%; top:37.5%; height:10.4%;">MATH301<br><span class="text-[9px] opacity-75">11:00–11:50</span></div>
+                    <div class="schedule-cell bg-amber-100 text-amber-800 border border-amber-200" style="left:40%; width:19.5%; top:37.5%; height:10.4%;">MATH301<br><span class="text-[9px] opacity-75">11:00–11:50</span></div>
+                    <div class="schedule-cell bg-amber-100 text-amber-800 border border-amber-200" style="left:80%; width:19.5%; top:37.5%; height:10.4%;">MATH301<br><span class="text-[9px] opacity-75">11:00–11:50</span></div>
+
+                    <!-- ENGL201 — T/Th 1:00-2:15 -->
+                    <div class="schedule-cell bg-purple-100 text-purple-800 border border-purple-200" style="left:20%; width:19.5%; top:62.5%; height:14.6%;">ENGL201<br><span class="text-[9px] opacity-75">1:00–2:15</span></div>
+                    <div class="schedule-cell bg-purple-100 text-purple-800 border border-purple-200" style="left:60%; width:19.5%; top:62.5%; height:14.6%;">ENGL201<br><span class="text-[9px] opacity-75">1:00–2:15</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Schedule Stats -->
+          <div class="grid grid-cols-4 gap-3" id="schedule-stats">
+            <div class="bg-white rounded-xl border border-gray-200 p-4 text-center">
+              <p class="text-2xl font-bold text-brand-600">16</p>
+              <p class="text-xs text-gray-500 mt-1">Credits</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 text-center">
+              <p class="text-2xl font-bold text-emerald-600">4</p>
+              <p class="text-xs text-gray-500 mt-1">Courses</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 text-center">
+              <p class="text-2xl font-bold text-amber-600">18h</p>
+              <p class="text-xs text-gray-500 mt-1">In Class/Week</p>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 text-center">
+              <p class="text-2xl font-bold text-gray-900">87<span class="text-sm text-gray-400">/100</span></p>
+              <p class="text-xs text-gray-500 mt-1">Health Score</p>
+            </div>
+          </div>
+
+          <!-- Generated Schedules List -->
+          <div class="bg-white rounded-xl border border-gray-200 p-5">
+            <div class="flex items-center justify-between mb-4">
+              <h2 class="text-sm font-semibold text-gray-900">Generated Schedules <span class="text-gray-400 font-normal">(12 found)</span></h2>
+              <select class="text-xs border border-gray-200 rounded-lg px-2 py-1 focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <option>Sort by: Health Score</option>
+                <option>Sort by: Credits</option>
+                <option>Sort by: Free Days</option>
+              </select>
+            </div>
+            <div class="space-y-2" id="schedules-list">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== VIEW: SAVED SCHEDULES ===== -->
+    <div id="view-saved" class="view-hidden">
+      <div class="mb-6">
+        <h1 class="text-2xl font-bold text-gray-900">Saved Schedules</h1>
+        <p class="text-sm text-gray-500 mt-1">Your saved schedule plans for upcoming semesters.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="saved-grid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+  </main>
+
+  <!-- AI AGENT SIDEBAR (collapsed by default) -->
+  <button onclick="toggleAgent()" id="agent-toggle" class="fixed bottom-6 right-6 z-50 bg-brand-600 text-white w-14 h-14 rounded-full shadow-lg hover:bg-brand-700 transition flex items-center justify-center">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+  </button>
+  <div id="agent-panel" class="fixed bottom-0 right-0 z-50 w-96 h-[500px] bg-white border border-gray-200 rounded-tl-xl shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300">
+    <div class="flex items-center justify-between p-4 border-b border-gray-100">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 bg-brand-100 rounded-full flex items-center justify-center">
+          <svg class="w-4 h-4 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        </div>
+        <div>
+          <p class="text-sm font-semibold text-gray-900">FCS Agent</p>
+          <p class="text-xs text-gray-400">Ask me anything about your schedule</p>
+        </div>
+      </div>
+      <button onclick="toggleAgent()" class="text-gray-400 hover:text-gray-600">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-4 space-y-4" id="agent-messages">
+      <div class="bg-gray-50 rounded-xl p-3 text-sm text-gray-700 max-w-[85%]">
+        Hey! I'm your scheduling agent. I can help you build schedules, compare instructors, check seat availability, and plan your semester. What do you need?
+      </div>
+    </div>
+    <div class="p-4 border-t border-gray-100">
+      <div class="flex items-center gap-2">
+        <input type="text" placeholder="Ask about schedules, courses, instructors..." class="flex-1 text-sm border border-gray-200 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500" id="agent-input" onkeydown="if(event.key==='Enter')sendAgentMessage()">
+        <button onclick="sendAgentMessage()" class="bg-brand-600 text-white p-2 rounded-lg hover:bg-brand-700 transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ===== DATA =====
+    const courses = [
+      { dept:'BIOL', code:'201', name:'Cell Biology', instructor:'Dr. Sarah Khan', days:'MWF', time:'9:00–9:50', credits:4, seats:32, total:35, rating:4.3, color:'blue' },
+      { dept:'BIOL', code:'310', name:'Genetics', instructor:'Dr. Ahmed Raza', days:'T/Th', time:'10:00–11:15', credits:3, seats:8, total:30, rating:4.1, color:'blue' },
+      { dept:'CHEM', code:'201', name:'Organic Chemistry', instructor:'Dr. James Wilson', days:'T/Th', time:'10:00–11:15', credits:3, seats:2, total:28, rating:3.8, color:'emerald' },
+      { dept:'CHEM', code:'201', name:'Organic Chemistry', instructor:'Dr. Fatima Noor', days:'MWF', time:'11:00–11:50', credits:3, seats:15, total:28, rating:4.5, color:'emerald' },
+      { dept:'MATH', code:'301', name:'Statistics', instructor:'Dr. Chen Wei', days:'MWF', time:'11:00–11:50', credits:3, seats:22, total:35, rating:4.0, color:'amber' },
+      { dept:'MATH', code:'301', name:'Statistics', instructor:'Dr. Michael Brown', days:'T/Th', time:'1:00–2:15', credits:3, seats:5, total:35, rating:3.6, color:'amber' },
+      { dept:'CS', code:'201', name:'Data Structures', instructor:'Dr. Ali Hassan', days:'MWF', time:'1:00–1:50', credits:3, seats:12, total:30, rating:4.7, color:'rose' },
+      { dept:'ENGL', code:'201', name:'Academic Writing', instructor:'Prof. Lisa Martin', days:'T/Th', time:'1:00–2:15', credits:3, seats:20, total:25, rating:4.2, color:'purple' },
+      { dept:'PHYS', code:'201', name:'Physics II', instructor:'Dr. Robert Taylor', days:'MWF', time:'2:00–2:50', credits:4, seats:18, total:30, rating:3.9, color:'cyan' },
+      { dept:'HIST', code:'101', name:'World History', instructor:'Prof. Anna Clark', days:'T/Th', time:'11:30–12:45', credits:3, seats:30, total:40, rating:4.4, color:'orange' },
+      { dept:'BIOL', code:'101', name:'Intro to Biology', instructor:'Dr. Sarah Khan', days:'MWF', time:'9:00–9:50', credits:3, seats:0, total:35, rating:4.3, color:'blue' },
+      { dept:'CS', code:'301', name:'Algorithms', instructor:'Dr. Priya Sharma', days:'T/Th', time:'3:00–4:15', credits:3, seats:7, total:25, rating:4.6, color:'rose' },
+    ];
+
+    const savedSchedules = [
+      { name:'Spring 2027 — Plan A', courses:['BIOL201','CHEM201','MATH301','ENGL201'], credits:16, score:87, date:'2 hours ago' },
+      { name:'Spring 2027 — Backup', courses:['BIOL201','CHEM201','MATH301','HIST101'], credits:15, score:82, date:'1 day ago' },
+      { name:'Fall 2027 — Draft', courses:['BIOL310','PHYS201','CS201'], credits:10, score:74, date:'3 days ago' },
+    ];
+
+    let selectedCourses = [];
+    let currentCombo = 0;
+
+    // ===== INIT =====
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCourseTable();
+      renderSavedSchedules();
+    });
+
+    // ===== NAVIGATION =====
+    function showView(view) {
+      document.querySelectorAll('[id^="view-"]').forEach(el => el.classList.add('view-hidden'));
+      document.getElementById('view-' + view).classList.remove('view-hidden');
+      document.querySelectorAll('[id^="nav-"]').forEach(el => {
+        el.classList.remove('text-brand-600', 'border-b-2', 'border-brand-600', 'font-semibold');
+        el.classList.add('text-gray-500');
+      });
+      const nav = document.getElementById('nav-' + view);
+      nav.classList.add('text-brand-600', 'border-b-2', 'border-brand-600', 'font-semibold');
+      nav.classList.remove('text-gray-500');
+    }
+
+    // ===== COURSE TABLE =====
+    function renderCourseTable() {
+      const tbody = document.getElementById('course-table-body');
+      tbody.innerHTML = courses.map((c, i) => {
+        const seatColor = c.seats === 0 ? 'text-red-600' : c.seats <= 5 ? 'text-amber-600' : 'text-gray-600';
+        const seatLabel = c.seats === 0 ? 'Full' : c.seats + ' left';
+        const checked = selectedCourses.includes(i) ? 'checked' : '';
+        const stars = '★'.repeat(Math.floor(c.rating)) + (c.rating % 1 >= 0.5 ? '½' : '');
+        return `
+          <tr class="hover:bg-gray-50/50 transition cursor-pointer ${selectedCourses.includes(i) ? 'bg-brand-50/50' : ''}" onclick="toggleCourse(${i})">
+            <td class="px-4 py-3"><input type="checkbox" ${checked} class="rounded border-gray-300 text-brand-600 focus:ring-brand-500" onclick="event.stopPropagation(); toggleCourse(${i})"></td>
+            <td class="px-4 py-3">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-${c.color}-100 text-${c.color}-700 flex items-center justify-center text-xs font-bold">${c.dept.slice(0,3)}</div>
+                <div>
+                  <p class="text-sm font-semibold text-gray-900">${c.dept} ${c.code} <span class="text-gray-400 font-normal">— ${c.name}</span></p>
+                  <p class="text-xs text-gray-500 sm:hidden">${c.instructor}</p>
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 hidden sm:table-cell">
+              <p class="text-sm text-gray-700">${c.instructor}</p>
+            </td>
+            <td class="px-4 py-3 hidden md:table-cell">
+              <div class="flex items-center gap-1.5">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">${c.days}</span>
+                <span class="text-xs text-gray-500">${c.time}</span>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-center">
+              <span class="text-sm font-semibold text-gray-900">${c.credits}</span>
+            </td>
+            <td class="px-4 py-3 text-center">
+              <span class="text-sm font-medium ${seatColor}">${seatLabel}</span>
+            </td>
+            <td class="px-4 py-3 text-center">
+              <span class="text-sm text-amber-500">${stars}</span>
+              <span class="text-xs text-gray-400 ml-1">${c.rating}</span>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function toggleCourse(index) {
+      if (selectedCourses.includes(index)) {
+        selectedCourses = selectedCourses.filter(i => i !== index);
+      } else {
+        selectedCourses.push(index);
+      }
+      document.getElementById('selected-count').textContent = selectedCourses.length;
+      document.getElementById('build-btn').disabled = selectedCourses.length === 0;
+      renderCourseTable();
+      renderSelectedCourses();
+    }
+
+    function renderSelectedCourses() {
+      const list = document.getElementById('selected-courses-list');
+      if (selectedCourses.length === 0) {
+        list.innerHTML = '<p class="text-sm text-gray-400 italic">No courses selected yet</p>';
+        return;
+      }
+      list.innerHTML = selectedCourses.map(i => {
+        const c = courses[i];
+        return `
+          <div class="flex items-center justify-between bg-gray-50 rounded-lg px-3 py-2">
+            <div class="flex items-center gap-2">
+              <div class="w-6 h-6 rounded bg-${c.color}-100 text-${c.color}-700 flex items-center justify-center text-[10px] font-bold">${c.dept.slice(0,2)}</div>
+              <span class="text-sm font-medium text-gray-700">${c.dept} ${c.code}</span>
+            </div>
+            <button onclick="toggleCourse(${i})" class="text-gray-400 hover:text-red-500 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ===== CREDIT SLIDER =====
+    function updateCreditLabels() {
+      document.getElementById('credit-min-label').textContent = document.getElementById('credit-min').value;
+      document.getElementById('credit-max-label').textContent = document.getElementById('credit-max').value;
+    }
+
+    // ===== SCHEDULE GENERATION =====
+    function generateSchedules() {
+      showView('builder');
+      renderSelectedCourses();
+      renderCrucialChips();
+      renderSchedulesList();
+    }
+
+    function renderCrucialChips() {
+      const container = document.getElementById('crucial-chips');
+      container.innerHTML = selectedCourses.map(i => {
+        const c = courses[i];
+        return `<button class="chip chip-default text-xs">${c.dept} ${c.code}</button>`;
+      }).join('');
+    }
+
+    function renderSchedulesList() {
+      const list = document.getElementById('schedules-list');
+      const schedules = [
+        { name:'Schedule 1', courses:['BIOL201-A','CHEM201-B','MATH301','ENGL201'], credits:16, score:87, free:'Friday', badge:'Top Pick' },
+        { name:'Schedule 2', courses:['BIOL201-A','CHEM201-B','MATH301','HIST101'], credits:15, score:82, free:'Friday', badge:null },
+        { name:'Schedule 3', courses:['BIOL201-A','CHEM201-F','MATH301','ENGL201'], credits:16, score:79, free:'None', badge:null },
+        { name:'Schedule 4', courses:['BIOL201-A','CHEM201-B','MATH301-C','ENGL201'], credits:16, score:76, free:'Friday', badge:'Later Start' },
+      ];
+      list.innerHTML = schedules.map((s, i) => `
+        <div class="flex items-center justify-between p-3 rounded-lg border ${i === 0 ? 'border-brand-200 bg-brand-50/30' : 'border-gray-100 hover:bg-gray-50'} cursor-pointer transition">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg ${i === 0 ? 'bg-brand-100 text-brand-700' : 'bg-gray-100 text-gray-600'} flex items-center justify-center text-sm font-bold">${s.score}</div>
+            <div>
+              <div class="flex items-center gap-2">
+                <p class="text-sm font-semibold text-gray-900">${s.name}</p>
+                ${s.badge ? `<span class="text-[10px] font-medium bg-brand-100 text-brand-700 px-1.5 py-0.5 rounded">${s.badge}</span>` : ''}
+              </div>
+              <p class="text-xs text-gray-500">${s.courses.join(' · ')} — ${s.credits} credits</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="text-xs text-gray-400">Free: ${s.free}</span>
+            <button class="text-gray-400 hover:text-brand-600 transition" title="Save">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+            </button>
+            <button class="text-gray-400 hover:text-brand-600 transition" title="Share">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function prevCombo() { if (currentCombo > 0) currentCombo--; updateComboCounter(); }
+    function nextCombo() { if (currentCombo < 11) currentCombo++; updateComboCounter(); }
+    function updateComboCounter() {
+      document.getElementById('combo-counter').textContent = `${currentCombo + 1} / 12`;
+    }
+
+    // ===== SAVED SCHEDULES =====
+    function renderSavedSchedules() {
+      const grid = document.getElementById('saved-grid');
+      grid.innerHTML = savedSchedules.map(s => `
+        <div class="bg-white rounded-xl border border-gray-200 p-5 hover:shadow-md transition cursor-pointer">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-semibold text-gray-900">${s.name}</h3>
+            <span class="text-xs text-gray-400">${s.date}</span>
+          </div>
+          <div class="space-y-1.5 mb-4">
+            ${s.courses.map(c => `<p class="text-sm text-gray-600">${c}</p>`).join('')}
+          </div>
+          <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+            <span class="text-xs text-gray-500">${s.credits} credits</span>
+            <span class="text-sm font-bold text-brand-600">${s.score}/100</span>
+          </div>
+          <div class="flex gap-2 mt-3">
+            <button class="flex-1 text-xs font-medium text-brand-600 bg-brand-50 rounded-lg py-2 hover:bg-brand-100 transition">Load</button>
+            <button class="text-xs text-gray-400 hover:text-red-500 px-3 py-2 rounded-lg hover:bg-red-50 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // ===== AI AGENT =====
+    function toggleAgent() {
+      const panel = document.getElementById('agent-panel');
+      panel.classList.toggle('translate-x-full');
+    }
+
+    const agentResponses = {
+      'best schedule': "Based on your selections, here's the top-rated schedule:\n\n**Schedule 1** — Score 87/100\n• BIOL201-A (MWF 9:00)\n• CHEM201-B (T/Th 10:00)\n• MATH301 (MWF 11:00)\n• ENGL201 (T/Th 1:00)\n\n16 credits. Friday is free. Avg instructor rating 4.3/5. Want me to save it?",
+      'instructor': "Dr. Fatima Noor teaches CHEM201 on MWF. Here's the breakdown:\n\n• Quality: 4.5/5 (from 89 reviews)\n• Difficulty: 3.2/5 (easier than average)\n• First-time pass rate: 91%\n• Avg grade: B+\n\nDr. Wilson's section is harder (3.8/5 difficulty, 78% pass rate). Noor is the better pick if you want a smoother experience.",
+      'seats': "Current seat availability:\n\n• BIOL201-A: 32/35 (plenty)\n• CHEM201-B: 2/28 (almost full!)\n• MATH301: 22/35 (safe)\n• ENGL201: 20/25 (safe)\n\n⚠️ CHEM201-B is filling fast. Want me to add it to your watchlist?",
+      'default': "I can help with that! Try asking me about:\n• \"What's the best schedule for my courses?\"\n• \"Compare instructors for CHEM201\"\n• \"How many seats are left in BIOL201?\"\n• \"Can I handle 16 credits?\""
+    };
+
+    function sendAgentMessage() {
+      const input = document.getElementById('agent-input');
+      const msg = input.value.trim();
+      if (!msg) return;
+
+      const messages = document.getElementById('agent-messages');
+      messages.innerHTML += `<div class="bg-brand-600 text-white rounded-xl p-3 text-sm max-w-[85%] ml-auto">${msg}</div>`;
+      input.value = '';
+
+      setTimeout(() => {
+        let response = agentResponses['default'];
+        const lower = msg.toLowerCase();
+        if (lower.includes('best') || lower.includes('schedule') || lower.includes('recommend')) response = agentResponses['best schedule'];
+        else if (lower.includes('instructor') || lower.includes('professor') || lower.includes('who')) response = agentResponses['instructor'];
+        else if (lower.includes('seat') || lower.includes('available') || lower.includes('full')) response = agentResponses['seats'];
+
+        messages.innerHTML += `<div class="bg-gray-50 rounded-xl p-3 text-sm text-gray-700 max-w-[85%] whitespace-pre-line">${response}</div>`;
+        messages.scrollTop = messages.scrollHeight;
+      }, 800);
+    }
+  </script>
+</body>
+</html>

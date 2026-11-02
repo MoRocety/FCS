@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCS V3 — Game Day</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = { theme: { extend: { fontFamily: { 'inter': ['Inter', 'sans-serif'] }, colors: { brand: { 50:'#eff6ff',100:'#dbeafe',200:'#bfdbfe',300:'#93c5fd',400:'#60a5fa',500:'#3b82f6',600:'#2563eb',700:'#1d4ed8',800:'#1e40af',900:'#1e3a8a' } } } } }
+    </script>
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+        .view-hidden { display: none; }
+        .view-active { display: block; }
+        .tab-active { border-bottom: 2px solid #2563eb; color: #2563eb; font-weight: 600; }
+        .seat-pulse { animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
+        .protected-block { cursor: move; }
+        .toggle-switch { transition: background-color 0.2s; }
+        .toggle-switch .dot { transition: transform 0.2s; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+                    <span class="text-xl font-bold text-gray-900">FCS</span>
+                </div>
+                <div class="flex items-center gap-1 overflow-x-auto">
+                    <button onclick="switchView('waitlist')" id="tab-waitlist" class="px-3 py-2 text-sm font-medium text-brand-600 border-b-2 border-brand-600 whitespace-nowrap">Waitlist</button>
+                    <button onclick="switchView('monitor')" id="tab-monitor" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent whitespace-nowrap">Seat Monitor</button>
+                    <button onclick="switchView('protector')" id="tab-protector" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent whitespace-nowrap">Time Protector</button>
+                    <button onclick="switchView('trading')" id="tab-trading" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent whitespace-nowrap">Trading</button>
+                    <button onclick="switchView('textbook')" id="tab-textbook" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent whitespace-nowrap">Textbooks</button>
+                    <button onclick="switchView('commute')" id="tab-commute" class="px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-700 border-b-2 border-transparent whitespace-nowrap">Commute</button>
+                </div>
+            </div>
+            <div class="w-9 h-9 bg-brand-100 rounded-full flex items-center justify-center"><span class="text-sm font-semibold text-brand-700">JD</span></div>
+        </div>
+    </div>
+</nav>
+
+<!-- ==================== VIEW: WAITLIST STRATEGY ==================== -->
+<div id="view-waitlist" class="view-active">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Waitlist Strategy</h2>
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <div class="flex items-start justify-between mb-5">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <h3 class="text-lg font-bold text-gray-900">CHEM201-A</h3>
+                        <span class="px-2 py-0.5 bg-amber-100 text-amber-700 text-xs font-semibold rounded-full">Waitlisted</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-1">Dr. Smith · MWF 8:00-9:50 AM · Spring 2027</p>
+                </div>
+                <div class="text-right">
+                    <div class="text-2xl font-bold text-gray-900">#3</div>
+                    <div class="text-xs text-gray-500">of 8 on waitlist</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-5">
+                <div class="p-3 bg-emerald-50 rounded-lg text-center">
+                    <div class="text-lg font-bold text-emerald-600">60%</div>
+                    <div class="text-[10px] text-gray-500 uppercase">Odds of Getting In</div>
+                </div>
+                <div class="p-3 bg-red-50 rounded-lg text-center">
+                    <div class="text-lg font-bold text-red-600 seat-pulse">2</div>
+                    <div class="text-[10px] text-gray-500 uppercase">Seats Remaining</div>
+                </div>
+                <div class="p-3 bg-amber-50 rounded-lg text-center">
+                    <div class="text-lg font-bold text-amber-600">~1/day</div>
+                    <div class="text-[10px] text-gray-500 uppercase">Seat Velocity</div>
+                </div>
+                <div class="p-3 bg-blue-50 rounded-lg text-center">
+                    <div class="text-lg font-bold text-blue-600">3 days</div>
+                    <div class="text-[10px] text-gray-500 uppercase">Est. Wait Time</div>
+                </div>
+            </div>
+
+            <!-- Safe Alternative -->
+            <div class="p-4 bg-emerald-50 rounded-xl border border-emerald-100 mb-5">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <div class="text-sm font-semibold text-emerald-800">Safe Alternative: CHEM201-B</div>
+                        <div class="text-xs text-emerald-600 mt-0.5">Dr. Williams · TTh 1:00-2:30 · 12 seats available</div>
+                    </div>
+                    <button class="px-3 py-1.5 bg-emerald-600 text-white text-xs font-medium rounded-lg hover:bg-emerald-700">Switch to B</button>
+                </div>
+            </div>
+
+            <!-- Auto-Swap Toggle -->
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                <div>
+                    <div class="text-sm font-semibold text-gray-900">Auto-Swap</div>
+                    <div class="text-xs text-gray-500">If a seat opens, automatically register you</div>
+                </div>
+                <button onclick="this.querySelector('.dot').classList.toggle('translate-x-6'); this.classList.toggle('bg-emerald-500')" class="toggle-switch w-12 h-6 bg-gray-300 rounded-full relative"><div class="dot w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5 shadow"></div></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SEAT MONITOR ==================== -->
+<div id="view-monitor" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-bold text-gray-900">Seat Monitor Dashboard</h2>
+            <button class="px-4 py-2 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700 flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/></svg> Add Section</button>
+        </div>
+        <div class="space-y-3">
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center"><span class="text-xs font-bold text-blue-700">CHEM</span></div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-900">CHEM201-A</div>
+                            <div class="text-xs text-gray-500">Dr. Smith · MWF 8:00-9:50</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="text-right"><div class="text-lg font-bold text-red-600">2</div><div class="text-[10px] text-gray-400">seats</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-red-600 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg> -1/day</div><div class="text-[10px] text-gray-400">velocity</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-amber-600">Thu</div><div class="text-[10px] text-gray-400">fills by</div></div>
+                        <div class="text-xs text-gray-400">Checked 2m ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center"><span class="text-xs font-bold text-emerald-700">BIOL</span></div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-900">BIOL310-A</div>
+                            <div class="text-xs text-gray-500">Dr. Chen · MWF 10:30-11:20</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="text-right"><div class="text-lg font-bold text-red-600">3</div><div class="text-[10px] text-gray-400">seats</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-red-600 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg> -2/day</div><div class="text-[10px] text-gray-400">velocity</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-red-600">Wed</div><div class="text-[10px] text-gray-400">fills by</div></div>
+                        <div class="text-xs text-gray-400">Checked 5m ago</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center"><span class="text-xs font-bold text-purple-700">CS</span></div>
+                        <div>
+                            <div class="text-sm font-semibold text-gray-900">CS101-A</div>
+                            <div class="text-xs text-gray-500">Prof. Lee · F 1:00-3:50</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6">
+                        <div class="text-right"><div class="text-lg font-bold text-amber-600">5</div><div class="text-[10px] text-gray-400">seats</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-amber-600 flex items-center gap-1"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/></svg> -1/day</div><div class="text-[10px] text-gray-400">velocity</div></div>
+                        <div class="text-right"><div class="text-sm font-medium text-emerald-600">Fri</div><div class="text-[10px] text-gray-400">fills by</div></div>
+                        <div class="text-xs text-gray-400">Checked 8m ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: TIME PROTECTOR ==================== -->
+<div id="view-protector" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Time Protector</h2>
+        <p class="text-sm text-gray-500 mb-6">Drag to create protected time blocks. Schedules that violate these will be flagged.</p>
+        <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+            <div class="grid grid-cols-6 gap-0 text-center text-xs font-semibold text-gray-500 mb-2">
+                <div class="w-14"></div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div>
+            </div>
+            <div class="relative" style="height:400px;">
+                <div class="absolute left-0 top-0 w-14 h-full text-[10px] text-gray-400">
+                    <div class="h-[50px] text-right pr-2">8 AM</div>
+                    <div class="h-[50px] text-right pr-2">9 AM</div>
+                    <div class="h-[50px] text-right pr-2">10 AM</div>
+                    <div class="h-[50px] text-right pr-2">11 AM</div>
+                    <div class="h-[50px] text-right pr-2">12 PM</div>
+                    <div class="h-[50px] text-right pr-2">1 PM</div>
+                    <div class="h-[50px] text-right pr-2">2 PM</div>
+                    <div class="h-[50px] text-right pr-2">3 PM</div>
+                </div>
+                <div class="absolute left-14 right-0 top-0 bottom-0 grid grid-cols-5 gap-px bg-gray-200"><div class="bg-gray-50"></div><div class="bg-gray-50"></div><div class="bg-gray-50"></div><div class="bg-gray-50"></div><div class="bg-gray-50"></div></div>
+                <!-- Protected Blocks -->
+                <div class="protected-block absolute bg-amber-200 border-2 border-amber-400 rounded-lg flex items-center justify-center text-xs font-semibold text-amber-800" style="left:calc(16.67% + 2px);width:calc(66.67% - 4px);top:200px;height:50px">
+                    🍽️ Lunch 12-1PM
+                </div>
+                <div class="protected-block absolute bg-purple-200 border-2 border-purple-400 rounded-lg flex items-center justify-center text-xs font-semibold text-purple-800" style="left:calc(83.33% + 2px);width:calc(16.67% - 4px);top:300px;height:100px">
+                    🕌 Jummah 1-2PM
+                </div>
+                <div class="protected-block absolute bg-emerald-200 border-2 border-emerald-400 rounded-lg flex items-center justify-center text-xs font-semibold text-emerald-800" style="left:calc(16.67% + 2px);width:calc(66.67% - 4px);top:350px;height:50px">
+                    🏋️ Gym 4-6PM (implied)
+                </div>
+            </div>
+            <!-- Violation Alert -->
+            <div class="mt-4 p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3">
+                <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+                <div class="text-sm text-red-700"><strong>Warning:</strong> Current schedule conflicts with your lunch block (CHEM201 extends to 9:50 AM, but BIOL310 starts at 10:30 — no conflict). However, MATH201 at 12:30 <strong>does</strong> conflict with lunch.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: SCHEDULE TRADING ==================== -->
+<div id="view-trading" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Schedule Trading</h2>
+        <!-- Karma Card -->
+        <div class="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-6 text-white mb-6">
+            <div class="flex items-center justify-between">
+                <div>
+                    <div class="text-sm text-amber-100">Your Karma</div>
+                    <div class="text-4xl font-bold mt-1">+150</div>
+                    <div class="text-sm text-amber-100 mt-1">You helped 3 students get into courses</div>
+                </div>
+                <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center"><svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg></div>
+            </div>
+        </div>
+        <!-- Actions -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+            <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:border-brand-300 transition-colors cursor-pointer">
+                <h3 class="text-sm font-bold text-gray-900 mb-2">Offer Your Seat</h3>
+                <p class="text-xs text-gray-500 mb-3">Drop a seat to help waitlisted students. Earn +50 karma per seat.</p>
+                <button class="w-full py-2 bg-brand-600 text-white text-sm font-medium rounded-lg hover:bg-brand-700">Offer CHEM201-A Seat</button>
+            </div>
+            <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm hover:border-emerald-300 transition-colors cursor-pointer">
+                <h3 class="text-sm font-bold text-gray-900 mb-2">Claim a Seat</h3>
+                <p class="text-xs text-gray-500 mb-3">Find students willing to trade. Browse available seats.</p>
+                <button class="w-full py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700">Browse Available</button>
+            </div>
+        </div>
+        <!-- Recent Trades -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+            <h3 class="text-sm font-semibold text-gray-900 mb-3">Recent Trades</h3>
+            <div class="space-y-2">
+                <div class="flex items-center gap-3 p-2 bg-emerald-50 rounded-lg text-xs"><span class="text-emerald-600 font-semibold">+50 karma</span><span class="text-gray-600">You dropped CHEM201-A and helped 2 students get in</span><span class="text-gray-400 ml-auto">2 days ago</span></div>
+                <div class="flex items-center gap-3 p-2 bg-gray-50 rounded-lg text-xs"><span class="text-gray-600 font-semibold">+25 karma</span><span class="text-gray-600">You swapped BIOL310 sections to free a seat</span><span class="text-gray-400 ml-auto">1 week ago</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: TEXTBOOK COST ==================== -->
+<div id="view-textbook" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Textbook Cost Calculator</h2>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Current Schedule -->
+            <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-gray-900">Your Schedule</h3>
+                    <span class="text-lg font-bold text-red-600">$410</span>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">CHEM201 — Organic Chemistry</span><span class="font-medium">$145</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">BIOL310 — Genetics</span><span class="font-medium">$95</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">MATH201 — Calculus II</span><span class="font-medium">$85</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">CS101 — Intro to CS</span><span class="font-medium">$55</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">ENGL102 — Literature</span><span class="font-medium">$30</span></div>
+                </div>
+            </div>
+            <!-- Alternative -->
+            <div class="bg-white rounded-xl border border-emerald-200 p-5 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-sm font-semibold text-emerald-800">Cheaper Alternative</h3>
+                    <span class="text-lg font-bold text-emerald-600">$165</span>
+                </div>
+                <div class="p-3 bg-emerald-50 rounded-lg mb-3">
+                    <p class="text-xs text-emerald-700">Save <strong>$245</strong> by using older editions and open-source materials</p>
+                </div>
+                <div class="space-y-3">
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">CHEM201 — 3rd Ed (used)</span><span class="font-medium text-emerald-600">$45</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">BIOL310 — OpenStax (free)</span><span class="font-medium text-emerald-600">$0</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">MATH201 — Rental</span><span class="font-medium text-emerald-600">$35</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">CS101 — Free PDF</span><span class="font-medium text-emerald-600">$0</span></div>
+                    <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg text-sm"><span class="text-gray-700">ENGL102 — Library reserve</span><span class="font-medium text-emerald-600">$0</span></div>
+                </div>
+                <button class="w-full mt-3 py-2 bg-emerald-600 text-white text-sm font-medium rounded-lg hover:bg-emerald-700">View All Options</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== VIEW: COMMUTE-AWARE ==================== -->
+<div id="view-commute" class="view-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-xl font-bold text-gray-900 mb-6">Commute-Aware Scheduling</h2>
+        <!-- Location Input -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm mb-6">
+            <label class="text-sm font-medium text-gray-700 block mb-2">Your Location</label>
+            <div class="flex gap-3">
+                <input type="text" value="North Residence Hall" class="flex-1 px-4 py-2.5 text-sm border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <button class="px-4 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-lg hover:bg-brand-700">Calculate</button>
+            </div>
+        </div>
+        <!-- Commute Details -->
+        <div class="bg-white rounded-xl border border-gray-200 p-5 shadow-sm">
+            <h3 class="text-sm font-semibold text-gray-900 mb-4">Walking Routes</h3>
+            <div class="space-y-3">
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-700"><span class="font-medium">North Hall</span> → <span class="font-medium">Chemistry Bldg</span></div>
+                    <div class="flex items-center gap-2"><div class="w-24 bg-gray-200 rounded-full h-2"><div class="bg-emerald-400 h-2 rounded-full" style="width:35%"></div></div><span class="text-xs font-medium text-emerald-600">4 min</span></div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-700"><span class="font-medium">Chemistry Bldg</span> → <span class="font-medium">Biology Lab</span></div>
+                    <div class="flex items-center gap-2"><div class="w-24 bg-gray-200 rounded-full h-2"><div class="bg-emerald-400 h-2 rounded-full" style="width:40%"></div></div><span class="text-xs font-medium text-emerald-600">5 min</span></div>
+                </div>
+                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <div class="text-sm text-gray-700"><span class="font-medium">Biology Lab</span> → <span class="font-medium">Math Hall</span></div>
+                    <div class="flex items-center gap-2"><div class="w-24 bg-gray-200 rounded-full h-2"><div class="bg-emerald-400 h-2 rounded-full" style="width:25%"></div></div><span class="text-xs font-medium text-emerald-600">3 min</span></div>
+                </div>
+                <div class="p-3 bg-red-50 rounded-lg border border-red-200">
+                    <div class="flex items-center justify-between">
+                        <div class="text-sm text-red-700"><span class="font-semibold">Math Hall</span> → <span class="font-semibold">CS Building</span></div>
+                        <div class="flex items-center gap-2"><div class="w-24 bg-gray-200 rounded-full h-2"><div class="bg-red-400 h-2 rounded-full" style="width:90%"></div></div><span class="text-xs font-medium text-red-600">14 min!</span></div>
+                    </div>
+                    <p class="text-xs text-red-600 mt-1">This 10-minute gap isn't enough — it's a 14-minute walk. Consider swapping sections.</p>
+                </div>
+            </div>
+            <!-- Map Placeholder -->
+            <div class="mt-4 bg-gray-100 rounded-xl h-48 flex items-center justify-center">
+                <div class="text-center text-gray-400">
+                    <svg class="w-8 h-8 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    <span class="text-sm">Interactive map</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function switchView(view) {
+    ['waitlist','monitor','protector','trading','textbook','commute'].forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('view-hidden');
+        document.getElementById(`view-${v}`).classList.remove('view-active');
+        document.getElementById(`tab-${v}`).classList.remove('tab-active','text-brand-600','border-brand-600');
+        document.getElementById(`tab-${v}`).classList.add('text-gray-500','border-transparent');
+    });
+    document.getElementById(`view-${view}`).classList.remove('view-hidden');
+    document.getElementById(`view-${view}`).classList.add('view-active');
+    document.getElementById(`tab-${view}`).classList.add('tab-active','text-brand-600','border-brand-600');
+    document.getElementById(`tab-${view}`).classList.remove('text-gray-500','border-transparent');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FCS V3 — Phase C: Community + Game Day</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --brand: #2563eb;
+    --brand-dark: #1d4ed8;
+    --brand-light: #dbeafe;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+  }
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  body { background: var(--slate-50); color: var(--slate-900); }
+
+  .tab-btn { transition: all 0.15s ease; border-bottom: 2px solid transparent; }
+  .tab-btn.active { color: var(--brand); border-color: var(--brand); }
+  .tab-btn:hover:not(.active) { color: var(--slate-700); }
+
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .chip-blue { background: var(--brand-light); color: var(--brand-dark); }
+  .chip-green { background: #d1fae5; color: #065f46; }
+  .chip-amber { background: #fef3c7; color: #92400e; }
+  .chip-red { background: #fee2e2; color: #991b1b; }
+  .chip-slate { background: var(--slate-100); color: var(--slate-700); }
+  .chip-purple { background: #ede9fe; color: #5b21b6; }
+
+  .card { background: white; border: 1px solid var(--slate-200); border-radius: 12px; transition: all 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.15s ease; cursor: pointer; border: 1px solid transparent; }
+  .btn-primary { background: var(--brand); color: white; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary { background: white; color: var(--slate-700); border-color: var(--slate-300); }
+  .btn-secondary:hover { background: var(--slate-50); }
+  .btn-ghost { background: transparent; color: var(--slate-600); }
+  .btn-ghost:hover { background: var(--slate-100); }
+  .btn-danger { background: white; color: var(--red); border-color: var(--red); }
+  .btn-danger:hover { background: #fef2f2; }
+
+  .vote-btn { display: flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; border: 1px solid var(--slate-200); background: white; cursor: pointer; transition: all 0.1s; font-weight: 500; }
+  .vote-btn:hover { background: var(--slate-50); }
+  .vote-up.active { background: #d1fae5; color: #065f46; border-color: #10b981; }
+  .vote-down.active { background: #fee2e2; color: #991b1b; border-color: #ef4444; }
+
+  .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 13px; color: white; flex-shrink: 0; }
+  .avatar.lg { width: 48px; height: 48px; font-size: 16px; }
+
+  .star { color: #fbbf24; }
+  .star-empty { color: #e2e8f0; }
+
+  .timeline { position: relative; padding-left: 20px; }
+  .timeline::before { content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px; width: 2px; background: var(--slate-200); }
+  .timeline-item { position: relative; padding-bottom: 16px; }
+  .timeline-item::before { content: ''; position: absolute; left: -19px; top: 4px; width: 12px; height: 12px; border-radius: 50%; background: white; border: 2px solid var(--brand); }
+  .timeline-item.green::before { border-color: var(--green); }
+  .timeline-item.amber::before { border-color: var(--amber); }
+  .timeline-item.red::before { border-color: var(--red); }
+
+  .progress { height: 8px; background: var(--slate-100); border-radius: 999px; overflow: hidden; }
+  .progress-bar { height: 100%; border-radius: 999px; transition: width 0.3s; }
+
+  .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .modal-backdrop { background: rgba(15,23,42,0.5); backdrop-filter: blur(2px); }
+  .modal { background: white; border-radius: 16px; max-width: 600px; width: 90%; max-height: 88vh; overflow-y: auto; }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: var(--slate-900); color: white; border-radius: 10px; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .star-input { display: inline-flex; gap: 2px; cursor: pointer; }
+  .star-input svg { width: 24px; height: 24px; transition: all 0.1s; }
+  .star-input svg:hover { transform: scale(1.15); }
+
+  .block-grid { display: grid; grid-template-columns: 60px repeat(5, 1fr); gap: 1px; background: var(--slate-200); border: 1px solid var(--slate-200); border-radius: 8px; overflow: hidden; }
+  .block-grid > div { background: white; min-height: 28px; }
+  .block-grid .time-col { background: var(--slate-50); text-align: right; padding: 2px 4px; font-size: 10px; color: var(--slate-500); }
+  .block-grid .day-header { background: var(--slate-50); text-align: center; font-size: 11px; font-weight: 600; padding: 4px 0; color: var(--slate-600); }
+
+  .protected-block { background: #dbeafe; border: 2px solid #2563eb; border-radius: 4px; }
+
+  .share-card { background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #ec4899 100%); border-radius: 16px; padding: 24px; color: white; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">F</div>
+      <div>
+        <div class="font-bold text-slate-900 leading-tight">FCS V3</div>
+        <div class="text-xs text-slate-500">Community + Game Day</div>
+      </div>
+    </div>
+    <nav class="flex gap-1 overflow-x-auto">
+      <button class="tab-btn active px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="feed">Community</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="review">Write Review</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="wrapped">Wrapped</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="waitlist">Waitlist</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="monitor">Seat Monitor</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="protector">Time Protector</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="textbook">Textbook</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="commute">Commute</button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <span class="pulse"></span>
+      <span class="text-xs text-slate-500">Live</span>
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center text-sm font-semibold ml-2">RB</div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6">
+
+  <!-- ============================================================
+       COMMUNITY FEED
+       ============================================================ -->
+  <section id="view-feed" class="view">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Published Schedules</h1>
+        <p class="text-sm text-slate-500 mt-1">Schedules shared by students. Fork one to customize it as your own.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary !py-1.5 text-sm">⭐ Following (12)</button>
+        <button class="btn btn-primary !py-1.5 text-sm">+ Publish mine</button>
+      </div>
+    </div>
+
+    <!-- Filter chips -->
+    <div class="flex flex-wrap gap-1.5 mb-4">
+      <button class="chip chip-blue">All</button>
+      <button class="chip chip-slate">CS Major</button>
+      <button class="chip chip-slate">Light Load (≤14cr)</button>
+      <button class="chip chip-slate">Morning Classes</button>
+      <button class="chip chip-slate">No Friday</button>
+      <button class="chip chip-slate">Top Voted</button>
+      <button class="chip chip-slate">Recent</button>
+    </div>
+
+    <!-- Schedule card 1 -->
+    <div class="card p-5 mb-3">
+      <div class="flex items-start gap-3 mb-3">
+        <div class="avatar lg" style="background:linear-gradient(135deg,#3b82f6,#8b5cf6)">AK</div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <div class="font-semibold text-slate-900">Aisha Khan</div>
+            <span class="text-xs text-slate-400">•</span>
+            <span class="text-xs text-slate-500">CS Junior, 3rd semester</span>
+            <span class="chip chip-green !py-0">Verified</span>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mt-0.5">"Light Load, High Impact" — 14 credits</h3>
+          <p class="text-sm text-slate-600 mt-1">Focused on getting A's in 4 key courses instead of spreading thin. Two free days for internships.</p>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-500">Score</div>
+          <div class="font-bold text-green-600 text-2xl">91</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        <span class="chip" style="background:#dbeafe;color:#1e40af">CS 201 (Smith)</span>
+        <span class="chip" style="background:#d1fae5;color:#065f46">MATH 220 (Mueller)</span>
+        <span class="chip" style="background:#ede9fe;color:#5b21b6">PHYS 101 (Pierce)</span>
+        <span class="chip" style="background:#fce7f3;color:#9d174d">ENG 110 (Austen)</span>
+      </div>
+
+      <!-- Mini timetable -->
+      <div class="mb-3 p-3 bg-slate-50 rounded-lg">
+        <div class="grid grid-cols-6 gap-1 text-xs">
+          <div></div>
+          <div class="text-center font-semibold text-slate-600">M</div>
+          <div class="text-center font-semibold text-slate-600">T</div>
+          <div class="text-center font-semibold text-slate-600">W</div>
+          <div class="text-center font-semibold text-slate-600">R</div>
+          <div class="text-center font-semibold text-slate-600">F</div>
+          <div class="text-slate-500">9 AM</div>
+          <div class="bg-blue-100 text-blue-700 rounded p-1 text-center font-semibold">CS201</div>
+          <div class="bg-slate-100 rounded"></div>
+          <div class="bg-blue-100 text-blue-700 rounded p-1 text-center font-semibold">CS201</div>
+          <div class="bg-slate-100 rounded"></div>
+          <div class="bg-blue-100 text-blue-700 rounded p-1 text-center font-semibold">CS201</div>
+          <div class="text-slate-500">11 AM</div>
+          <div class="bg-green-100 text-green-700 rounded p-1 text-center font-semibold">MATH</div>
+          <div class="bg-purple-100 text-purple-700 rounded p-1 text-center font-semibold">PHYS</div>
+          <div class="bg-green-100 text-green-700 rounded p-1 text-center font-semibold">MATH</div>
+          <div class="bg-purple-100 text-purple-700 rounded p-1 text-center font-semibold">PHYS</div>
+          <div class="bg-green-100 text-green-700 rounded p-1 text-center font-semibold">MATH</div>
+          <div class="text-slate-500">2 PM</div>
+          <div class="bg-slate-100 rounded"></div>
+          <div class="bg-pink-100 text-pink-700 rounded p-1 text-center font-semibold">ENG</div>
+          <div class="bg-slate-100 rounded"></div>
+          <div class="bg-pink-100 text-pink-700 rounded p-1 text-center font-semibold">ENG</div>
+          <div class="bg-slate-100 rounded"></div>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center gap-3">
+          <button class="vote-btn vote-up active" data-vote="1" data-dir="up">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M3.293 9.707a1 1 0 011.414 0L9 13.999V3a1 1 0 112 0v10.999l4.293-4.292a1 1 0 011.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"/></svg>
+            247
+          </button>
+          <button class="vote-btn" data-vote="1" data-dir="down">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 011.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z"/></svg>
+          </button>
+          <button class="vote-btn">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            18
+          </button>
+          <button class="vote-btn" style="border-color:var(--green);color:#065f46">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v10M12 7v10M16 7v10M4 4h16l-1 16H5L4 4z"/></svg>
+            Fork (47)
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span>2 hours ago</span>
+        </div>
+      </div>
+
+      <!-- Comments -->
+      <div class="mt-3 pt-3 border-t border-slate-100 space-y-2">
+        <div class="flex gap-2">
+          <div class="avatar" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">MJ</div>
+          <div class="flex-1 bg-slate-50 rounded-lg p-2.5">
+            <div class="text-xs">
+              <span class="font-semibold">Maya Johnson</span> <span class="text-slate-400">• 1h ago</span>
+            </div>
+            <p class="text-sm text-slate-700 mt-0.5">I forked this and added CS 380 — the spacing works perfectly. Thanks Aisha!</p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <div class="avatar" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">RP</div>
+          <div class="flex-1 bg-slate-50 rounded-lg p-2.5">
+            <div class="text-xs">
+              <span class="font-semibold">Robert Park</span> <span class="text-slate-400">• 30m ago</span>
+            </div>
+            <p class="text-sm text-slate-700 mt-0.5">Wait Smith at 9 AM? Isn't that the section with cold calling? 😅</p>
+          </div>
+        </div>
+        <button class="text-sm text-blue-600 font-medium">+ Add comment</button>
+      </div>
+    </div>
+
+    <!-- Schedule card 2 -->
+    <div class="card p-5 mb-3">
+      <div class="flex items-start gap-3 mb-3">
+        <div class="avatar lg" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">RP</div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <div class="font-semibold text-slate-900">Robert Park</div>
+            <span class="text-xs text-slate-400">•</span>
+            <span class="text-xs text-slate-500">CS Senior, pre-med</span>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mt-0.5">"Pre-Med Beast Mode" — 18 credits</h3>
+          <p class="text-sm text-slate-600 mt-1">All the hard stuff on MWF to leave TR for lab work. Includes orgo and biochem back-to-back.</p>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-500">Score</div>
+          <div class="font-bold text-amber-600 text-2xl">76</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        <span class="chip" style="background:#dbeafe;color:#1e40af">CS 301 (Park)</span>
+        <span class="chip" style="background:#fef3c7;color:#92400e">CHEM 201 (Wells)</span>
+        <span class="chip" style="background:#fef3c7;color:#92400e">CHEM 301 (Crick)</span>
+        <span class="chip" style="background:#dbeafe;color:#1e40af">CS 305 (Khan)</span>
+        <span class="chip" style="background:#ecfdf5;color:#065f46">BIO 220 (Kim)</span>
+      </div>
+
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center gap-3">
+          <button class="vote-btn vote-up" data-vote="2" data-dir="up">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M3.293 9.707a1 1 0 011.414 0L9 13.999V3a1 1 0 112 0v10.999l4.293-4.292a1 1 0 011.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"/></svg>
+            189
+          </button>
+          <button class="vote-btn" data-vote="2" data-dir="down">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 011.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z"/></svg>
+          </button>
+          <button class="vote-btn">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            7
+          </button>
+          <button class="vote-btn" style="border-color:var(--green);color:#065f46">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v10M12 7v10M16 7v10M4 4h16l-1 16H5L4 4z"/></svg>
+            Fork (22)
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span>5 hours ago</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Schedule card 3 -->
+    <div class="card p-5 mb-3">
+      <div class="flex items-start gap-3 mb-3">
+        <div class="avatar lg" style="background:linear-gradient(135deg,#10b981,#0ea5e9)">MJ</div>
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2">
+            <div class="font-semibold text-slate-900">Maya Johnson</div>
+            <span class="text-xs text-slate-400">•</span>
+            <span class="text-xs text-slate-500">Math + CS double major</span>
+          </div>
+          <h3 class="font-bold text-lg text-slate-900 mt-0.5">"Math + CS, No Friday" — 16 credits</h3>
+          <p class="text-sm text-slate-600 mt-1">Three-day week. Friday = internship + research. Long days but worth it for the 3-day weekend.</p>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-500">Score</div>
+          <div class="font-bold text-green-600 text-2xl">85</div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 mb-3">
+        <span class="chip" style="background:#d1fae5;color:#065f46">MATH 220</span>
+        <span class="chip" style="background:#d1fae5;color:#065f46">MATH 240</span>
+        <span class="chip" style="background:#dbeafe;color:#1e40af">CS 201 (Lee)</span>
+        <span class="chip" style="background:#dbeafe;color:#1e40af">CS 210 (Chen)</span>
+      </div>
+
+      <div class="flex items-center justify-between text-sm">
+        <div class="flex items-center gap-3">
+          <button class="vote-btn vote-up" data-vote="3" data-dir="up">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M3.293 9.707a1 1 0 011.414 0L9 13.999V3a1 1 0 112 0v10.999l4.293-4.292a1 1 0 011.414 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414z"/></svg>
+            134
+          </button>
+          <button class="vote-btn" data-vote="3" data-dir="down">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 10.293a1 1 0 010 1.414l-6 6a1 1 0 01-1.414 0l-6-6a1 1 0 011.414-1.414L9 14.586V3a1 1 0 012 0v11.586l4.293-4.293a1 1 0 011.414 0z"/></svg>
+          </button>
+          <button class="vote-btn">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            11
+          </button>
+          <button class="vote-btn" style="border-color:var(--green);color:#065f46">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v10M12 7v10M16 7v10M4 4h16l-1 16H5L4 4z"/></svg>
+            Fork (18)
+          </button>
+        </div>
+        <div class="flex items-center gap-2 text-xs text-slate-500">
+          <span>1 day ago</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WRITE REVIEW
+       ============================================================ -->
+  <section id="view-review" class="view hidden">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-2xl font-bold text-slate-900 mb-1">Write a Review</h1>
+      <p class="text-sm text-slate-500 mb-4">Help future students. Your review can be anonymous.</p>
+
+      <div class="card p-6 mb-4">
+        <div class="flex items-center gap-3 mb-4 pb-4 border-b border-slate-100">
+          <div class="instructor-avatar">SS</div>
+          <div>
+            <div class="font-semibold text-slate-900">Dr. Sarah Smith</div>
+            <div class="text-xs text-slate-500">CS 201 — Data Structures • Sp 2025</div>
+          </div>
+        </div>
+
+        <!-- Overall rating -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Overall Rating</label>
+          <div class="star-input" id="star-input">
+            <svg data-star="1" class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg data-star="2" class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg data-star="3" class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg data-star="4" class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <svg data-star="5" class="star" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+          </div>
+          <div class="text-xs text-slate-500 mt-1">Hover and click to rate</div>
+        </div>
+
+        <!-- Sub-ratings -->
+        <div class="grid grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Clarity</label>
+            <div class="star-input" data-sub="clarity">
+              <svg class="star" data-v="1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-empty" data-v="5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Fairness</label>
+            <div class="star-input" data-sub="fairness">
+              <svg class="star" data-v="1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-empty" data-v="5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Engagement</label>
+            <div class="star-input" data-sub="engagement">
+              <svg class="star" data-v="1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Workload</label>
+            <div class="star-input" data-sub="workload">
+              <svg class="star" data-v="1" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="2" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star" data-v="3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-empty" data-v="4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="star-empty" data-v="5" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grade received -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Grade Received</label>
+          <div class="flex gap-2">
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">A</button>
+            <button class="px-3 py-1.5 rounded border border-blue-500 bg-blue-50 text-blue-700 text-sm font-semibold">A-</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">B+</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">B</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">B-</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">C+</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">C</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">Drop/Withdrew</button>
+            <button class="px-3 py-1.5 rounded border border-slate-300 text-sm hover:border-blue-500 hover:bg-blue-50">Audit/Pass</button>
+          </div>
+        </div>
+
+        <!-- Text review -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Your Review</label>
+          <textarea class="w-full p-3 border border-slate-300 rounded-lg text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100" rows="5" placeholder="What did the instructor do well? What could be better? Be specific and constructive.">Dr. Smith is amazing. Her lectures are super clear and she always ties concepts back to real-world applications. The projects were tough but I learned more in this class than any other. Office hours saved me before the final.</textarea>
+          <div class="text-xs text-slate-500 mt-1">2/500 words</div>
+        </div>
+
+        <!-- Tags -->
+        <div class="mb-5">
+          <label class="block text-sm font-semibold text-slate-700 mb-2">Tags (optional)</label>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="chip chip-green cursor-pointer">Helpful office hours ✓</span>
+            <span class="chip chip-green cursor-pointer">Clear lectures ✓</span>
+            <span class="chip chip-amber cursor-pointer">Tough grader ✓</span>
+            <span class="chip chip-blue cursor-pointer">Lots of homework ✓</span>
+            <span class="chip chip-slate cursor-pointer">+ Add tag</span>
+          </div>
+        </div>
+
+        <!-- Recommend + anonymous -->
+        <div class="mb-5 space-y-3">
+          <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+            <div>
+              <div class="font-semibold text-sm">Would you recommend this instructor?</div>
+              <div class="text-xs text-slate-500">Helps other students decide</div>
+            </div>
+            <div class="flex gap-2">
+              <button class="px-4 py-1.5 rounded-lg bg-green-600 text-white text-sm font-semibold">👍 Yes</button>
+              <button class="px-4 py-1.5 rounded-lg border border-slate-300 text-sm text-slate-600">👎 No</button>
+            </div>
+          </div>
+          <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+            <div>
+              <div class="font-semibold text-sm">Post anonymously</div>
+              <div class="text-xs text-slate-500">Your name won't be shown, but we still verify you're a student</div>
+            </div>
+            <button class="relative w-11 h-6 bg-blue-600 rounded-full">
+              <span class="absolute top-0.5 right-0.5 w-5 h-5 bg-white rounded-full"></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <button class="btn btn-primary flex-1">Submit Review</button>
+          <button class="btn btn-secondary">Save draft</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEMESTER WRAPPED
+       ============================================================ -->
+  <section id="view-wrapped" class="view hidden">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-6">
+        <div class="text-xs text-slate-500 uppercase tracking-widest font-semibold">Your Fall 2025</div>
+        <h1 class="text-4xl font-bold text-slate-900 mt-1">Semester Wrapped</h1>
+        <p class="text-sm text-slate-500 mt-1">A look back at your academic journey</p>
+      </div>
+
+      <!-- Card 1 -->
+      <div class="share-card mb-4 text-center">
+        <div class="text-sm opacity-80 uppercase tracking-wider">You took</div>
+        <div class="text-7xl font-bold my-2">5</div>
+        <div class="text-2xl font-semibold">courses</div>
+        <div class="text-sm opacity-80 mt-1">across 14 credits</div>
+        <div class="flex justify-center gap-2 mt-4">
+          <span class="chip" style="background:rgba(255,255,255,0.2);color:white">CS 201</span>
+          <span class="chip" style="background:rgba(255,255,255,0.2);color:white">MATH 220</span>
+          <span class="chip" style="background:rgba(255,255,255,0.2);color:white">ENG 110</span>
+          <span class="chip" style="background:rgba(255,255,255,0.2);color:white">PHYS 101</span>
+          <span class="chip" style="background:rgba(255,255,255,0.2);color:white">PSYC 101</span>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card p-6 mb-4">
+        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold mb-2">Your GPA</div>
+        <div class="flex items-baseline gap-3">
+          <div class="text-6xl font-bold text-blue-600">3.6</div>
+          <div class="text-sm text-slate-500">/4.0</div>
+          <div class="ml-auto chip chip-green">+0.2 vs Sp25</div>
+        </div>
+        <div class="mt-3 text-sm text-slate-600">You outperformed <span class="font-semibold text-slate-900">78%</span> of CS majors this semester.</div>
+      </div>
+
+      <!-- Card 3: stats grid -->
+      <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="card p-4">
+          <div class="text-xs text-slate-500">Hours in class</div>
+          <div class="text-2xl font-bold text-slate-900">180</div>
+        </div>
+        <div class="card p-4">
+          <div class="text-xs text-slate-500">Hours studying</div>
+          <div class="text-2xl font-bold text-slate-900">312</div>
+        </div>
+        <div class="card p-4">
+          <div class="text-xs text-slate-500">Earliest class</div>
+          <div class="text-2xl font-bold text-slate-900">8 AM</div>
+          <div class="text-xs text-slate-500">17 times</div>
+        </div>
+        <div class="card p-4">
+          <div class="text-xs text-slate-500">Coffee count</div>
+          <div class="text-2xl font-bold text-slate-900">89 ☕</div>
+        </div>
+      </div>
+
+      <!-- Card 4: best/worst -->
+      <div class="card p-5 mb-4">
+        <h3 class="font-semibold text-slate-900 mb-3">The Highlights</h3>
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-3">
+            <div class="text-2xl">🏆</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">Best grade</div>
+              <div class="text-xs text-slate-500">CS 201 — A-</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-2xl">🌅</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">Earliest morning</div>
+              <div class="text-xs text-slate-500">7:30 AM study grind, 12 times</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-2xl">📚</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">Most studied</div>
+              <div class="text-xs text-slate-500">PHYS 101 — 98 hours (3x class time)</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-2xl">💪</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">Hardest class</div>
+              <div class="text-xs text-slate-500">MATH 220 — 8.4 hr/wk average</div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-2xl">🎯</div>
+            <div class="flex-1">
+              <div class="text-sm font-semibold">Best attendance</div>
+              <div class="text-xs text-slate-500">100% in PSYC 101</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="card p-5 mb-4 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Your Word</div>
+        <div class="text-4xl font-bold text-blue-600 my-1">"Determined"</div>
+        <p class="text-sm text-slate-700">You started with 47 TODOs and closed 94% of them. You never missed a Friday deadline.</p>
+      </div>
+
+      <!-- Share -->
+      <div class="card p-5">
+        <h3 class="font-semibold text-slate-900 mb-3">Share your wrapped</h3>
+        <div class="flex gap-2">
+          <button class="btn btn-primary flex-1">📱 Share as image</button>
+          <button class="btn btn-secondary flex-1">🔗 Get link</button>
+        </div>
+        <p class="text-xs text-slate-500 mt-2 text-center">Sharing is optional and doesn't include personal data.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WAITLIST STRATEGY
+       ============================================================ -->
+  <section id="view-waitlist" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Waitlist Strategy</h1>
+      <p class="text-sm text-slate-500 mt-1">Get a plan B ready before you need it.</p>
+    </div>
+
+    <div class="card p-5 mb-4 border-amber-300 border-2">
+      <div class="flex items-start gap-3">
+        <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center text-2xl">⏳</div>
+        <div class="flex-1">
+          <div class="text-xs text-slate-500 uppercase tracking-wider font-semibold">Waitlisted for</div>
+          <div class="font-bold text-lg text-slate-900">CS 380-A — Machine Learning (Dr. Foster)</div>
+          <div class="text-sm text-slate-600 mt-1">You're <span class="font-bold text-amber-700">#5 in line</span>. Last semester 3 of 7 got off the waitlist.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Odds of Getting In</div>
+        <div class="text-4xl font-bold text-amber-600 my-1">43%</div>
+        <div class="text-xs text-slate-500">Based on historical data</div>
+      </div>
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Position</div>
+        <div class="text-4xl font-bold text-slate-700 my-1">5<span class="text-xl text-slate-400">/7</span></div>
+        <div class="text-xs text-slate-500">3 ahead of you</div>
+      </div>
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Section Velocity</div>
+        <div class="text-4xl font-bold text-red-600 my-1">↑</div>
+        <div class="text-xs text-slate-500">Drop rate increasing</div>
+      </div>
+    </div>
+
+    <!-- Auto swap -->
+    <div class="card p-5 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-semibold text-slate-900">Auto-Swap</h3>
+        <button class="relative w-12 h-7 bg-blue-600 rounded-full">
+          <span class="absolute top-1 right-1 w-5 h-5 bg-white rounded-full"></span>
+        </button>
+      </div>
+      <p class="text-sm text-slate-600 mb-3">If you don't get off the waitlist by day 5, automatically switch to a backup section. You'll get a notification before the swap happens.</p>
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 text-sm">
+        <div class="font-semibold text-blue-900 mb-1">Current backup plan</div>
+        <div class="text-blue-800">CS 380-B (Dr. Patel) — TR 3:00–4:30 PM • 28/40 seats available</div>
+      </div>
+    </div>
+
+    <!-- Safe alternative -->
+    <div class="card p-5 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Safer Alternatives</h3>
+      <div class="space-y-2">
+        <div class="flex items-center justify-between p-3 rounded-lg border-2 border-green-300 bg-green-50">
+          <div>
+            <div class="font-semibold text-slate-900">CS 380-B — Machine Learning</div>
+            <div class="text-xs text-slate-600">Dr. Patel • TR 3:00–4:30 PM</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-xs text-green-700 font-semibold">✓ 28 seats available</span>
+              <span class="text-xs text-slate-500">• Lower fill risk</span>
+            </div>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <button class="btn btn-primary !py-1 text-xs whitespace-nowrap">Switch now</button>
+            <button class="btn btn-secondary !py-1 text-xs">As backup</button>
+          </div>
+        </div>
+        <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+          <div>
+            <div class="font-semibold text-slate-900">CS 380-C — ML (Honors)</div>
+            <div class="text-xs text-slate-600">Dr. Foster • TR 3:00–4:30 PM</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-xs text-green-700 font-semibold">✓ 22 seats available</span>
+              <span class="text-xs text-slate-500">• Smaller, more intense</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary !py-1 text-xs whitespace-nowrap">As backup</button>
+        </div>
+        <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+          <div>
+            <div class="font-semibold text-slate-900">CS 481 — Applied ML (next semester)</div>
+            <div class="text-xs text-slate-600">Dr. Park • MWF 11:00 AM</div>
+            <div class="flex items-center gap-2 mt-1">
+              <span class="text-xs text-blue-700">Push to next semester</span>
+            </div>
+          </div>
+          <button class="btn btn-secondary !py-1 text-xs whitespace-nowrap">Defer</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- History -->
+    <div class="card p-5">
+      <h3 class="font-semibold text-slate-900 mb-3">Waitlist History (CS 380, last 4 semesters)</h3>
+      <div class="space-y-2 text-sm">
+        <div class="flex items-center justify-between p-2.5 rounded bg-green-50">
+          <span class="font-semibold">Sp 2025</span>
+          <span class="text-slate-600">5 of 7 got in</span>
+          <span class="chip chip-green">71%</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded bg-amber-50">
+          <span class="font-semibold">Fa 2024</span>
+          <span class="text-slate-600">3 of 8 got in</span>
+          <span class="chip chip-amber">38%</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded bg-amber-50">
+          <span class="font-semibold">Sp 2024</span>
+          <span class="text-slate-600">4 of 6 got in</span>
+          <span class="chip chip-amber">67%</span>
+        </div>
+        <div class="flex items-center justify-between p-2.5 rounded bg-red-50">
+          <span class="font-semibold">Fa 2023</span>
+          <span class="text-slate-600">2 of 9 got in</span>
+          <span class="chip chip-red">22%</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SEAT MONITOR
+       ============================================================ -->
+  <section id="view-monitor" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Seat Monitor</h1>
+        <p class="text-sm text-slate-500 mt-1">Watched sections, real-time updates.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary !py-1.5 text-sm">+ Add section</button>
+        <button class="btn btn-primary !py-1.5 text-sm">⚙ Alert settings</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+      <div class="stat-tile">
+        <div class="label">Watching</div>
+        <div class="value">5 <span class="text-sm text-slate-400 font-normal">sections</span></div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Critical</div>
+        <div class="value text-red-600">2</div>
+        <div class="sub">Filling fast</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Safe</div>
+        <div class="value text-green-600">3</div>
+        <div class="sub">Plenty of seats</div>
+      </div>
+    </div>
+
+    <!-- Watched sections -->
+    <div class="space-y-3">
+      <div class="card p-4 border-2 border-red-300">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="pulse" style="background:var(--red)"></span>
+              <span class="text-xs font-semibold text-red-600 uppercase tracking-wider">Critical</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">CS 380-A — Machine Learning</div>
+            <div class="text-xs text-slate-500">Dr. Foster • MWF 2:00–2:50 PM</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-3">
+          <div>
+            <div class="text-xs text-slate-500">Seats</div>
+            <div class="font-bold text-red-600">12/40</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Velocity</div>
+            <div class="font-bold">3.2/day</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">24h change</div>
+            <div class="font-bold text-red-600">-3</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Predicted full</div>
+            <div class="font-bold">3.7 days</div>
+          </div>
+        </div>
+        <div class="progress mb-2"><div class="progress-bar bg-red-500" style="width:30%"></div></div>
+        <div class="flex gap-1.5 text-xs">
+          <span class="chip chip-red">+ Join waitlist</span>
+          <span class="chip chip-slate">+ Add alternate</span>
+        </div>
+      </div>
+
+      <div class="card p-4 border-2 border-amber-300">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="pulse" style="background:var(--amber)"></span>
+              <span class="text-xs font-semibold text-amber-600 uppercase tracking-wider">Warning</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">CS 301-A — Algorithms</div>
+            <div class="text-xs text-slate-500">Dr. Park • TR 9:00–10:50 AM</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-3">
+          <div>
+            <div class="text-xs text-slate-500">Seats</div>
+            <div class="font-bold text-amber-600">22/50</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Velocity</div>
+            <div class="font-bold">1.4/day</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">24h change</div>
+            <div class="font-bold text-red-600">-2</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Predicted full</div>
+            <div class="font-bold">~16 days</div>
+          </div>
+        </div>
+        <div class="progress mb-2"><div class="progress-bar bg-amber-500" style="width:56%"></div></div>
+        <div class="flex gap-1.5 text-xs">
+          <span class="chip chip-amber">+ Register now</span>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="pulse"></span>
+              <span class="text-xs font-semibold text-green-600 uppercase tracking-wider">Stable</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">MATH 220-B — Linear Algebra</div>
+            <div class="text-xs text-slate-500">Dr. Mueller • MWF 10:00–10:50 AM</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-3">
+          <div>
+            <div class="text-xs text-slate-500">Seats</div>
+            <div class="font-bold text-green-600">52/80</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Velocity</div>
+            <div class="font-bold">0.4/day</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">24h change</div>
+            <div class="font-bold">-1</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Predicted full</div>
+            <div class="font-bold text-slate-400">No risk</div>
+          </div>
+        </div>
+        <div class="progress mb-2"><div class="progress-bar bg-green-500" style="width:35%"></div></div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="pulse"></span>
+              <span class="text-xs font-semibold text-green-600 uppercase tracking-wider">Stable</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">ENG 110-A — Composition</div>
+            <div class="text-xs text-slate-500">Dr. Austen • MWF 9:00–9:50 AM</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-3">
+          <div>
+            <div class="text-xs text-slate-500">Seats</div>
+            <div class="font-bold text-green-600">14/25</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Velocity</div>
+            <div class="font-bold">0.8/day</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">24h change</div>
+            <div class="font-bold">-1</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Predicted full</div>
+            <div class="font-bold text-slate-400">No risk</div>
+          </div>
+        </div>
+        <div class="progress mb-2"><div class="progress-bar bg-green-500" style="width:44%"></div></div>
+      </div>
+
+      <div class="card p-4 border-2 border-red-300">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="pulse" style="background:var(--red)"></span>
+              <span class="text-xs font-semibold text-red-600 uppercase tracking-wider">Critical</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">PSYC 305-A — Abnormal Psych</div>
+            <div class="text-xs text-slate-500">Dr. Jung • MWF 12:00–12:50 PM</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+        </div>
+        <div class="grid grid-cols-4 gap-3 mb-3">
+          <div>
+            <div class="text-xs text-slate-500">Seats</div>
+            <div class="font-bold text-red-600">3/60</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Velocity</div>
+            <div class="font-bold">4.1/day</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">24h change</div>
+            <div class="font-bold text-red-600">-5</div>
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Predicted full</div>
+            <div class="font-bold text-red-600">~18 hrs</div>
+          </div>
+        </div>
+        <div class="progress mb-2"><div class="progress-bar bg-red-500" style="width:95%"></div></div>
+        <div class="flex gap-1.5 text-xs">
+          <span class="chip chip-red">+ Add to schedule now</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TIME PROTECTOR
+       ============================================================ -->
+  <section id="view-protector" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Time Protector</h1>
+      <p class="text-sm text-slate-500 mt-1">Block out time for work, family, or self-care. FCS will avoid scheduling classes during these windows.</p>
+    </div>
+
+    <div class="card p-4 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-semibold text-slate-900">Protected Blocks</h3>
+        <button class="btn btn-primary !py-1.5 text-sm">+ New block</button>
+      </div>
+      <p class="text-xs text-slate-500 mb-3">Click and drag on the grid below to create a new block. Click a block to edit or remove.</p>
+
+      <div class="block-grid" id="protector-grid">
+        <!-- built by JS -->
+      </div>
+    </div>
+
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Current Blocks</h3>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-blue-200 bg-blue-50">
+          <div class="w-2 h-10 rounded bg-blue-600"></div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">Work Shift</div>
+            <div class="text-xs text-slate-600">Mon, Wed, Fri • 6:00 PM – 10:00 PM</div>
+            <div class="text-xs text-blue-700 mt-0.5">Hard block — no classes scheduled</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-500">Edit</button>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-green-200 bg-green-50">
+          <div class="w-2 h-10 rounded bg-green-600"></div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">Gym / Wellness</div>
+            <div class="text-xs text-slate-600">Tue, Thu • 5:00 PM – 7:00 PM</div>
+            <div class="text-xs text-green-700 mt-0.5">Soft block — try to avoid, not strict</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-500">Edit</button>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-purple-200 bg-purple-50">
+          <div class="w-2 h-10 rounded bg-purple-600"></div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">Family Dinner</div>
+            <div class="text-xs text-slate-600">Sun • 5:00 PM – 8:00 PM</div>
+            <div class="text-xs text-purple-700 mt-0.5">Hard block — no classes scheduled</div>
+          </div>
+          <button class="btn btn-ghost !p-1 text-slate-500">Edit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4 border-green-300 border-2 bg-green-50">
+      <div class="flex items-start gap-3">
+        <div class="text-green-600 text-2xl">✓</div>
+        <div>
+          <div class="font-semibold text-green-900">No conflicts detected</div>
+          <p class="text-sm text-green-800 mt-1">All current schedule options respect your protected blocks. <span class="font-bold">12 of 14</span> candidate schedules are clean.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TEXTBOOK COSTS
+       ============================================================ -->
+  <section id="view-textbook" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Textbook Cost Calculator</h1>
+      <p class="text-sm text-slate-500 mt-1">Total cost of ownership for your schedule.</p>
+    </div>
+
+    <div class="card p-5 mb-4 bg-gradient-to-br from-blue-600 to-purple-600 text-white">
+      <div class="flex items-baseline justify-between">
+        <div>
+          <div class="text-sm opacity-80 uppercase tracking-wider font-semibold">Total Cost</div>
+          <div class="text-5xl font-bold my-1">$487.20</div>
+          <div class="text-sm opacity-80">5 textbooks + 2 access codes</div>
+        </div>
+        <div class="text-right">
+          <div class="text-sm opacity-80">You could save</div>
+          <div class="text-3xl font-bold">$168</div>
+          <div class="text-xs opacity-80">with used + rentals</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Per-Course Breakdown</h3>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">CS</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm">CS 201 — Data Structures</div>
+            <div class="text-xs text-slate-500">"Data Structures and Algorithms in Java" — 3rd ed.</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-slate-900">$89.00</div>
+            <div class="text-xs text-green-600">Used: $45</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold text-sm">CS</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm">CS 301 — Algorithms</div>
+            <div class="text-xs text-slate-500">"Introduction to Algorithms" — CLRS 4th ed.</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-slate-900">$120.00</div>
+            <div class="text-xs text-green-600">Rental: $48</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-green-100 text-green-700 flex items-center justify-center font-bold text-sm">MT</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm">MATH 220 — Linear Algebra</div>
+            <div class="text-xs text-slate-500">"Linear Algebra Done Right" — 3rd ed.</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-slate-900">$78.50</div>
+            <div class="text-xs text-green-600">Used: $42</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-pink-100 text-pink-700 flex items-center justify-center font-bold text-sm">EN</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm">ENG 110 — Composition</div>
+            <div class="text-xs text-slate-500">No textbook required (open educational resources)</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-green-600">$0.00</div>
+            <div class="text-xs text-slate-500">OER</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-lg border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-sm">PS</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-semibold text-sm">PSYC 101 — Intro Psychology</div>
+            <div class="text-xs text-slate-500">"Psychology" — OpenStax (free PDF) + access code $99</div>
+          </div>
+          <div class="text-right">
+            <div class="font-bold text-slate-900">$99.00</div>
+            <div class="text-xs text-green-600">Skip code: $0</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Smart Suggestions</h3>
+      <div class="space-y-2">
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-green-50 border border-green-200">
+          <div class="text-green-600 text-lg">💡</div>
+          <div class="text-sm">
+            <span class="font-semibold text-green-900">Rent CLRS for $48</span> — save $72. You only need it for one semester, no resale hassle.
+          </div>
+        </div>
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-200">
+          <div class="text-blue-600 text-lg">📚</div>
+          <div class="text-sm">
+            <span class="font-semibold text-blue-900">Check library reserves</span> — 3 of 5 textbooks are on 2-hour reserve. Free if you plan ahead.
+          </div>
+        </div>
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-purple-50 border border-purple-200">
+          <div class="text-purple-600 text-lg">🤝</div>
+          <div class="text-sm">
+            <span class="font-semibold text-purple-900">Join the class Facebook group</span> — students often sell last semester's copies for 50% off.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMMUTE
+       ============================================================ -->
+  <section id="view-commute" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Commute-Aware Planning</h1>
+      <p class="text-sm text-slate-500 mt-1">Walking time between buildings visualized on your schedule.</p>
+    </div>
+
+    <div class="card p-5 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Your Daily Routes</h3>
+
+      <!-- Monday -->
+      <div class="mb-4">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Monday</div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <div class="px-3 py-2 rounded-lg bg-blue-100 border border-blue-300">
+            <div class="text-xs text-blue-700 font-semibold">CS 201</div>
+            <div class="text-xs text-slate-600">Tech 305</div>
+            <div class="text-xs text-slate-500">9:00 AM</div>
+          </div>
+          <div class="flex flex-col items-center text-xs text-slate-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+            <span>4 min walk</span>
+          </div>
+          <div class="px-3 py-2 rounded-lg bg-amber-100 border-2 border-amber-300">
+            <div class="text-xs text-amber-700 font-semibold">MATH 220</div>
+            <div class="text-xs text-slate-600">Math 110</div>
+            <div class="text-xs text-slate-500">10:00 AM</div>
+          </div>
+          <div class="flex flex-col items-center text-xs text-slate-500">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+            <span>12 min walk</span>
+          </div>
+          <div class="px-3 py-2 rounded-lg bg-pink-100 border border-pink-300">
+            <div class="text-xs text-pink-700 font-semibold">ENG 110</div>
+            <div class="text-xs text-slate-600">Hum 220</div>
+            <div class="text-xs text-slate-500">2:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tuesday -->
+      <div class="mb-4">
+        <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Tuesday</div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <div class="px-3 py-2 rounded-lg bg-purple-100 border border-purple-300">
+            <div class="text-xs text-purple-700 font-semibold">PHYS 101</div>
+            <div class="text-xs text-slate-600">Phys 100</div>
+            <div class="text-xs text-slate-500">11:00 AM</div>
+          </div>
+          <div class="flex flex-col items-center text-xs text-red-600 font-semibold">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/></svg>
+            <span>18 min walk ⚠️</span>
+          </div>
+          <div class="px-3 py-2 rounded-lg bg-green-100 border border-green-300">
+            <div class="text-xs text-green-700 font-semibold">CHEM 101</div>
+            <div class="text-xs text-slate-600">Chem 201</div>
+            <div class="text-xs text-slate-500">12:00 PM</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Map visualization -->
+    <div class="card p-5 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Campus Map</h3>
+      <div class="relative h-80 bg-slate-100 rounded-lg overflow-hidden">
+        <!-- roads -->
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 800 320" preserveAspectRatio="none">
+          <rect x="0" y="0" width="800" height="320" fill="#f1f5f9"/>
+          <line x1="0" y1="160" x2="800" y2="160" stroke="#cbd5e1" stroke-width="3"/>
+          <line x1="400" y1="0" x2="400" y2="320" stroke="#cbd5e1" stroke-width="3"/>
+          <line x1="200" y1="0" x2="200" y2="320" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="600" y1="0" x2="600" y2="320" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="0" y1="80" x2="800" y2="80" stroke="#e2e8f0" stroke-width="1"/>
+          <line x1="0" y1="240" x2="800" y2="240" stroke="#e2e8f0" stroke-width="1"/>
+          <!-- route lines -->
+          <path d="M 150 80 L 200 130 L 350 200 L 500 250" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3" fill="none" opacity="0.6"/>
+          <path d="M 500 80 L 600 130 L 700 200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3" fill="none" opacity="0.6"/>
+          <text x="150" y="70" font-size="9" fill="#64748b">→ 9 AM</text>
+          <text x="350" y="190" font-size="9" fill="#64748b">→ 10 AM</text>
+          <text x="500" y="240" font-size="9" fill="#64748b">→ 2 PM</text>
+        </svg>
+        <!-- building markers -->
+        <div class="absolute" style="top:15%;left:18%">
+          <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-blue-200">CS</div>
+          <div class="text-xs text-center mt-1 font-semibold">Tech</div>
+        </div>
+        <div class="absolute" style="top:35%;left:43%">
+          <div class="w-10 h-10 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-amber-200">MT</div>
+          <div class="text-xs text-center mt-1 font-semibold">Math</div>
+        </div>
+        <div class="absolute" style="top:60%;left:62%">
+          <div class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-pink-200">EN</div>
+          <div class="text-xs text-center mt-1 font-semibold">Hum</div>
+        </div>
+        <div class="absolute" style="top:18%;left:62%">
+          <div class="w-10 h-10 rounded-full bg-purple-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-purple-200">PH</div>
+          <div class="text-xs text-center mt-1 font-semibold">Phys</div>
+        </div>
+        <div class="absolute" style="top:60%;left:85%">
+          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center text-xs font-bold ring-4 ring-green-200">CH</div>
+          <div class="text-xs text-center mt-1 font-semibold">Chem</div>
+        </div>
+      </div>
+      <div class="mt-3 flex flex-wrap gap-3 text-xs">
+        <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-blue-600" style="border-top:2px dashed"></span> Monday route</div>
+        <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-amber-600" style="border-top:2px dashed"></span> Tuesday route</div>
+        <div class="flex items-center gap-1.5 text-red-600 font-semibold">⚠ Long walks (>15 min) eat into study time</div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-4">
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Total weekly walks</div>
+        <div class="text-2xl font-bold text-slate-900">68 min</div>
+      </div>
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Longest single walk</div>
+        <div class="text-2xl font-bold text-amber-600">18 min</div>
+      </div>
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Tight transitions</div>
+        <div class="text-2xl font-bold text-red-600">2</div>
+      </div>
+      <div class="card p-4 text-center">
+        <div class="text-xs text-slate-500">Avg gap between classes</div>
+        <div class="text-2xl font-bold text-green-600">12 min</div>
+      </div>
+    </div>
+
+    <div class="card p-4 border-amber-300 border-2 bg-amber-50">
+      <div class="flex items-start gap-3">
+        <div class="text-amber-600 text-2xl">💡</div>
+        <div>
+          <div class="font-semibold text-amber-900">Suggestion: Swap Tuesday CHEM to a later section</div>
+          <p class="text-sm text-amber-800 mt-1">Your 18-min walk between PHYS and CHEM is risky. Moving CHEM to 1:00 PM would give you 28 min between classes. A 4-credit difference and you gain 10 min of breathing room.</p>
+          <button class="btn btn-primary !py-1 mt-2 text-xs">Show alternatives</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
+      document.getElementById("view-" + btn.dataset.tab).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // Vote buttons
+  document.querySelectorAll("[data-vote]").forEach(b => b.addEventListener("click", () => {
+    const dir = b.dataset.dir;
+    const parent = b.parentElement;
+    parent.querySelectorAll(".vote-up, .vote-down").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+  }));
+
+  // Star input
+  document.querySelectorAll(".star-input").forEach(si => {
+    const stars = si.querySelectorAll("svg");
+    stars.forEach((s, i) => {
+      s.addEventListener("mouseenter", () => {
+        stars.forEach((x, j) => {
+          if (j <= i) { x.classList.add("star"); x.classList.remove("star-empty"); }
+          else { x.classList.remove("star"); x.classList.add("star-empty"); }
+        });
+      });
+      s.addEventListener("click", () => {
+        stars.forEach((x, j) => {
+          if (j <= i) { x.classList.add("star"); x.classList.remove("star-empty"); }
+          else { x.classList.remove("star"); x.classList.add("star-empty"); }
+        });
+      });
+    });
+    si.addEventListener("mouseleave", () => {
+      // restore (in real app would store selected value)
+    });
+  });
+
+  // Time protector grid
+  const grid = document.getElementById("protector-grid");
+  if (grid) {
+    const days = ["M","T","W","R","F","S","U"];
+    const startMin = 8 * 60, endMin = 22 * 60;
+    const rowH = 28;
+
+    let html = "<div></div>";
+    days.forEach(d => html += `<div class="day-header">${d}</div>`);
+
+    for (let m = startMin; m < endMin; m += 60) {
+      const h = m / 60;
+      const period = h >= 12 ? "PM" : "AM";
+      const h12 = h === 0 || h === 12 ? 12 : h > 12 ? h - 12 : h;
+      html += `<div class="time-col">${h12}${period}</div>`;
+      for (let d = 0; d < 7; d++) {
+        html += `<div class="cell" style="height:${rowH}px" data-day="${d}" data-time="${m}"></div>`;
+      }
+    }
+    grid.innerHTML = html;
+
+    // add protected blocks visualization
+    setTimeout(() => {
+      // Mon/Wed/Fri 6-10 PM work
+      ["M","W","F"].forEach(d => {
+        const idx = days.indexOf(d);
+        const cellStart = grid.querySelector(`[data-day="${idx}"][data-time="1080"]`);
+        if (cellStart) {
+          const block = document.createElement("div");
+          block.className = "protected-block";
+          block.style.position = "absolute";
+          block.style.inset = "0";
+          block.style.background = "rgba(37,99,235,0.3)";
+          block.style.border = "2px solid #2563eb";
+          block.style.borderRadius = "4px";
+          block.style.zIndex = "2";
+          cellStart.style.position = "relative";
+          cellStart.appendChild(block);
+        }
+      });
+      // Tue/Thu 5-7 PM gym
+      ["T","R"].forEach(d => {
+        const idx = days.indexOf(d);
+        const cellStart = grid.querySelector(`[data-day="${idx}"][data-time="1020"]`);
+        if (cellStart) {
+          const block = document.createElement("div");
+          block.style.position = "absolute";
+          block.style.inset = "0";
+          block.style.background = "rgba(16,185,129,0.3)";
+          block.style.border = "2px solid #10b981";
+          block.style.borderRadius = "4px";
+          block.style.zIndex = "2";
+          cellStart.style.position = "relative";
+          cellStart.appendChild(block);
+        }
+      });
+    }, 50);
+  }
+</script>
+</body>
+</html>

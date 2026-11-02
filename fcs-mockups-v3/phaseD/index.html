@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FCS V3 — Phase D: Agent + Degree Planning</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --brand: #2563eb;
+    --brand-dark: #1d4ed8;
+    --brand-light: #dbeafe;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+  }
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  body { background: var(--slate-50); color: var(--slate-900); }
+
+  .tab-btn { transition: all 0.15s ease; border-bottom: 2px solid transparent; }
+  .tab-btn.active { color: var(--brand); border-color: var(--brand); }
+  .tab-btn:hover:not(.active) { color: var(--slate-700); }
+
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .chip-blue { background: var(--brand-light); color: var(--brand-dark); }
+  .chip-green { background: #d1fae5; color: #065f46; }
+  .chip-amber { background: #fef3c7; color: #92400e; }
+  .chip-red { background: #fee2e2; color: #991b1b; }
+  .chip-slate { background: var(--slate-100); color: var(--slate-700); }
+  .chip-purple { background: #ede9fe; color: #5b21b6; }
+  .chip-pink { background: #fce7f3; color: #9d174d; }
+
+  .card { background: white; border: 1px solid var(--slate-200); border-radius: 12px; transition: all 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.15s ease; cursor: pointer; border: 1px solid transparent; }
+  .btn-primary { background: var(--brand); color: white; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary { background: white; color: var(--slate-700); border-color: var(--slate-300); }
+  .btn-secondary:hover { background: var(--slate-50); }
+  .btn-ghost { background: transparent; color: var(--slate-600); }
+  .btn-ghost:hover { background: var(--slate-100); }
+
+  /* Agent sidebar */
+  .agent-panel { position: fixed; right: 0; top: 0; bottom: 0; width: 420px; background: white; border-left: 1px solid var(--slate-200); box-shadow: -10px 0 30px rgba(0,0,0,0.05); transform: translateX(100%); transition: transform 0.3s ease; z-index: 50; display: flex; flex-direction: column; }
+  .agent-panel.open { transform: translateX(0); }
+
+  .agent-msg { max-width: 85%; padding: 10px 14px; border-radius: 14px; font-size: 14px; line-height: 1.5; }
+  .agent-msg.user { background: var(--brand); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .agent-msg.bot { background: var(--slate-100); color: var(--slate-900); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .agent-msg.bot.tool { background: white; border: 1px solid var(--slate-200); border-left: 3px solid var(--brand); }
+
+  .tool-call { background: #f8fafc; border: 1px solid var(--slate-200); border-radius: 8px; padding: 8px 10px; font-family: 'SF Mono', monospace; font-size: 12px; }
+  .tool-call .tool-name { color: var(--brand); font-weight: 600; }
+  .tool-call .tool-result { color: var(--green); }
+
+  .pulse { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 1.5s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* Suggestion toast */
+  .suggestion { position: fixed; bottom: 24px; right: 24px; max-width: 360px; background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 40; animation: slideUp 0.4s ease; }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+  /* Prereq tree */
+  .prereq-node { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: 600; border: 2px solid; }
+  .prereq-node.completed { background: #d1fae5; border-color: var(--green); color: #065f46; }
+  .prereq-node.in-progress { background: var(--brand-light); border-color: var(--brand); color: var(--brand-dark); }
+  .prereq-node.remaining { background: white; border-color: var(--slate-300); color: var(--slate-600); }
+  .prereq-node.locked { background: var(--slate-100); border-color: var(--slate-200); color: var(--slate-400); }
+
+  .prereq-arrow { color: var(--slate-400); }
+
+  /* Path planner */
+  .planner-grid { display: grid; grid-template-columns: repeat(8, minmax(140px, 1fr)); gap: 8px; overflow-x: auto; padding-bottom: 8px; }
+  .planner-col { background: var(--slate-50); border-radius: 8px; padding: 8px; min-height: 400px; }
+  .planner-col h4 { font-size: 12px; font-weight: 700; color: var(--slate-600); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
+  .planner-card { background: white; border: 1px solid var(--slate-200); border-radius: 6px; padding: 6px 8px; margin-bottom: 4px; cursor: grab; font-size: 12px; }
+  .planner-card:active { cursor: grabbing; }
+  .planner-card .code { font-weight: 700; color: var(--slate-900); }
+  .planner-card .credits { color: var(--slate-500); font-size: 10px; }
+  .planner-card.diff-1 { border-left: 3px solid var(--green); }
+  .planner-card.diff-2 { border-left: 3px solid #84cc16; }
+  .planner-card.diff-3 { border-left: 3px solid var(--amber); }
+  .planner-card.diff-4 { border-left: 3px solid #f97316; }
+  .planner-card.diff-5 { border-left: 3px solid var(--red); }
+
+  /* Career tree */
+  .career-node { padding: 12px 16px; border-radius: 12px; text-align: center; cursor: pointer; transition: all 0.15s; }
+  .career-node:hover { transform: translateY(-2px); }
+  .career-node.root { background: var(--brand); color: white; }
+  .career-node.path { background: var(--brand-light); color: var(--brand-dark); border: 2px solid var(--brand); }
+  .career-node.alt { background: white; color: var(--slate-700); border: 1px solid var(--slate-300); }
+  .career-node.locked { background: var(--slate-100); color: var(--slate-400); border: 1px dashed var(--slate-300); }
+
+  /* Chat full page */
+  .chat-full { max-width: 800px; margin: 0 auto; }
+  .chat-bubble { padding: 14px 18px; border-radius: 16px; max-width: 85%; }
+  .chat-bubble.user { background: var(--brand); color: white; margin-left: auto; border-bottom-right-radius: 4px; }
+  .chat-bubble.bot { background: white; border: 1px solid var(--slate-200); border-bottom-left-radius: 4px; }
+
+  .typing { display: inline-flex; gap: 3px; padding: 4px 0; }
+  .typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--slate-400); animation: typing 1.4s ease-in-out infinite; }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typing { 0%, 60%, 100% { transform: translateY(0); opacity: 0.4; } 30% { transform: translateY(-4px); opacity: 1; } }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: var(--slate-900); color: white; border-radius: 10px; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .search-input { width: 100%; padding: 8px 12px 8px 36px; border: 1px solid var(--slate-300); border-radius: 8px; font-size: 14px; }
+  .search-input:focus { outline: none; border-color: var(--brand); }
+
+  .modal-backdrop { background: rgba(15,23,42,0.5); backdrop-filter: blur(2px); }
+  .modal { background: white; border-radius: 16px; max-width: 720px; width: 90%; max-height: 88vh; overflow-y: auto; }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: 999px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">F</div>
+      <div>
+        <div class="font-bold text-slate-900 leading-tight">FCS V3</div>
+        <div class="text-xs text-slate-500">Agent + Degree Planning</div>
+      </div>
+    </div>
+    <nav class="flex gap-1 overflow-x-auto">
+      <button class="tab-btn active px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="agent">Agent</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="memory">Memory</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="proactive">Suggestions</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="history">Course History</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="progress">Degree Progress</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="planner">Path Planner</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="substitute">Substitutions</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="chatbot">Chat</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="career">Career Path</button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <span class="pulse"></span>
+      <span class="text-xs text-slate-500">Agent online</span>
+      <button id="open-agent" class="btn btn-primary !py-1.5 text-sm ml-2">💬 Open Agent</button>
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center text-sm font-semibold">RB</div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6">
+
+  <!-- ============================================================
+       AGENT
+       ============================================================ -->
+  <section id="view-agent" class="view">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">FCS Agent</h1>
+      <p class="text-sm text-slate-500 mt-1">Your AI-powered schedule assistant. Ask in natural language, get proactive suggestions.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      <div class="lg:col-span-2">
+        <div class="card p-5">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="pulse"></span>
+            <span class="font-semibold text-sm">Agent is online and aware of your context</span>
+          </div>
+          <div class="space-y-2 mb-4">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Try asking</h3>
+            <div class="flex flex-wrap gap-1.5">
+              <button class="chip chip-slate hover:bg-slate-200 cursor-pointer">"Build me a schedule with CS 201 and MATH 220"</button>
+              <button class="chip chip-slate hover:bg-slate-200 cursor-pointer">"What's my graduation path?"</button>
+              <button class="chip chip-slate hover:bg-slate-200 cursor-pointer">"Find me a humanities elective"</button>
+              <button class="chip chip-slate hover:bg-slate-200 cursor-pointer">"Should I take Dr. Smith or Prof. Lee?"</button>
+              <button class="chip chip-slate hover:bg-slate-200 cursor-pointer">"When does registration open?"</button>
+            </div>
+          </div>
+          <div class="space-y-2 mb-4">
+            <h3 class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Or do something</h3>
+            <div class="grid grid-cols-2 gap-2">
+              <button class="card p-3 text-left hover:border-blue-300">
+                <div class="font-semibold text-sm">🔍 Browse catalog</div>
+                <div class="text-xs text-slate-500">Search 247 sections</div>
+              </button>
+              <button class="card p-3 text-left hover:border-blue-300">
+                <div class="font-semibold text-sm">🗓 Plan next semester</div>
+                <div class="text-xs text-slate-500">Path planner + degree check</div>
+              </button>
+              <button class="card p-3 text-left hover:border-blue-300">
+                <div class="font-semibold text-sm">📊 Show my progress</div>
+                <div class="text-xs text-slate-500">What's left for graduation</div>
+              </button>
+              <button class="card p-3 text-left hover:border-blue-300">
+                <div class="font-semibold text-sm">⚖ Compare instructors</div>
+                <div class="text-xs text-slate-500">Side-by-side analysis</div>
+              </button>
+            </div>
+          </div>
+          <button id="open-agent-2" class="btn btn-primary w-full !py-3 text-base">
+            💬 Open Agent Panel →
+          </button>
+        </div>
+      </div>
+
+      <div class="lg:col-span-1">
+        <div class="card p-4">
+          <h3 class="font-semibold text-slate-900 mb-3">Recent Agent Activity</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex gap-2">
+              <div class="w-2 h-2 rounded-full bg-green-500 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-xs text-slate-500">2h ago</div>
+                <div class="text-slate-700">Built a 16-credit schedule with CS 201, MATH 220, ENG 110</div>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <div class="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-xs text-slate-500">1d ago</div>
+                <div class="text-slate-700">Flagged that Dr. Smith's 9 AM section has cold calling</div>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <div class="w-2 h-2 rounded-full bg-amber-500 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-xs text-slate-500">3d ago</div>
+                <div class="text-slate-700">Suggested 3 alternate sections for CS 380 waitlist</div>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <div class="w-2 h-2 rounded-full bg-purple-500 mt-1.5 flex-shrink-0"></div>
+              <div>
+                <div class="text-xs text-slate-500">1w ago</div>
+                <div class="text-slate-700">Updated degree progress: 18 of 32 courses done</div>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-secondary w-full mt-3 text-xs">View full audit log →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MEMORY
+       ============================================================ -->
+  <section id="view-memory" class="view hidden">
+    <div class="mb-4 flex items-center justify-between">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Agent Memory</h1>
+        <p class="text-sm text-slate-500 mt-1">Everything the agent knows about you. Edit anytime to improve recommendations.</p>
+      </div>
+      <button class="btn btn-primary !py-1.5 text-sm">+ Teach agent</button>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-slate-900">👤 Profile</h3>
+          <button class="text-xs text-blue-600 font-medium">Edit</button>
+        </div>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Name</span><span class="font-semibold">Raza Bhatti</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Major</span><span class="font-semibold">Computer Science, BS</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Minor</span><span class="font-semibold">Mathematics</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Year</span><span class="font-semibold">Junior (3rd year)</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Standing</span><span class="font-semibold">Good (3.6 GPA)</span>
+          </div>
+          <div class="flex justify-between py-1.5 border-b border-slate-100">
+            <span class="text-slate-500">Graduation target</span><span class="font-semibold">Spring 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-slate-900">⚙️ Preferences</h3>
+          <button class="text-xs text-blue-600 font-medium">Edit</button>
+        </div>
+        <div class="space-y-2.5 text-sm">
+          <div>
+            <div class="text-slate-500 mb-1">Preferred class times</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-blue">Morning (9–12)</span>
+              <span class="chip chip-blue">No 8 AMs</span>
+              <span class="chip chip-slate">No Friday</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Credit load preference</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-blue">15–17 credits</span>
+              <span class="chip chip-slate">Max 18</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Course difficulty tolerance</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-amber">Up to 2 hard classes/sem</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Teaching style preferences</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-blue">Prefer project-based</span>
+              <span class="chip chip-slate">Avoid heavy reading</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Time blocks</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-purple">Work M/W/F 6–10 PM</span>
+              <span class="chip chip-green">Gym T/Th 5–7 PM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-slate-900">🎓 Academic History</h3>
+          <button class="text-xs text-blue-600 font-medium">Edit</button>
+        </div>
+        <div class="space-y-2.5 text-sm">
+          <div>
+            <div class="text-slate-500 mb-1">Strong subjects</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-green">CS</span>
+              <span class="chip chip-green">Math</span>
+              <span class="chip chip-green">Logic</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Struggling subjects</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-red">Physics</span>
+              <span class="chip chip-amber">Writing-heavy</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Grades so far (CS courses)</div>
+            <div class="flex flex-wrap gap-1">
+              <span class="chip chip-slate">CS 101: A-</span>
+              <span class="chip chip-slate">CS 210: A</span>
+              <span class="chip chip-slate">CS 305: B+</span>
+            </div>
+          </div>
+          <div>
+            <div class="text-slate-500 mb-1">Predicted GPA in next course</div>
+            <div class="text-2xl font-bold text-blue-600">3.4</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-slate-900">💡 Agent Insights</h3>
+        </div>
+        <div class="space-y-2.5 text-sm">
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <div class="font-semibold text-blue-900 text-xs uppercase tracking-wider">Pattern detected</div>
+            <p class="text-blue-800 mt-1">You perform 0.4 GPA points better in MWF classes vs TR blocks. Consider MWF format for technical courses.</p>
+          </div>
+          <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <div class="font-semibold text-amber-900 text-xs uppercase tracking-wider">Heads up</div>
+            <p class="text-amber-800 mt-1">Your MATH trajectory suggests you could skip MATH 230 and take MATH 320 next semester. Want me to verify?</p>
+          </div>
+          <div class="p-3 bg-green-50 border border-green-200 rounded-lg">
+            <div class="font-semibold text-green-900 text-xs uppercase tracking-wider">Saved you time</div>
+            <p class="text-green-800 mt-1">I auto-swapped your CS 305 lecture to a section with no textbook required. Saved you $89.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-4 mt-4 bg-slate-50">
+      <h3 class="font-semibold text-slate-900 mb-3 text-sm">Audit Log (last 7 days)</h3>
+      <div class="space-y-1 text-xs font-mono text-slate-600">
+        <div><span class="text-slate-400">2026-06-14 14:32:18</span> • agent.read "MEMORY:profile.major"</div>
+        <div><span class="text-slate-400">2026-06-14 14:32:20</span> • agent.read "MEMORY:preferences.class_times"</div>
+        <div><span class="text-slate-400">2026-06-14 14:32:45</span> • tool.call "generate_schedule(courses=['CS201','MATH220','ENG110'], credits=16)"</div>
+        <div><span class="text-slate-400">2026-06-14 14:32:46</span> • tool.result "8 schedules found, 3 conflict-free"</div>
+        <div><span class="text-slate-400">2026-06-14 14:33:02</span> • agent.action "saved Schedule #1 to library"</div>
+        <div><span class="text-slate-400">2026-06-14 09:15:11</span> • agent.read "MEMORY:academic.strong_subjects"</div>
+        <div><span class="text-slate-400">2026-06-14 09:15:14</span> • tool.call "substitute_finder(subject='humanities')"</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROACTIVE SUGGESTIONS
+       ============================================================ -->
+  <section id="view-proactive" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Proactive Suggestions</h1>
+      <p class="text-sm text-slate-500 mt-1">Contextual hints that the agent surfaces automatically based on what you're doing.</p>
+    </div>
+
+    <!-- Settings -->
+    <div class="card p-4 mb-4 flex items-center gap-3 flex-wrap">
+      <span class="text-sm text-slate-600 font-semibold">Channels:</span>
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" checked class="rounded"> In-app banner</label>
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" checked class="rounded"> Email digest</label>
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="rounded"> SMS (urgent only)</label>
+      <label class="flex items-center gap-2 text-sm"><input type="checkbox" checked class="rounded"> Push notification</label>
+      <div class="ml-auto"><span class="text-xs text-slate-500">Currently showing</span> <span class="font-semibold text-sm">3 suggestions</span></div>
+    </div>
+
+    <div class="space-y-3">
+      <div class="card p-4 border-2 border-amber-300 bg-amber-50">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center text-xl">⏰</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="chip chip-amber text-xs">URGENT</span>
+              <span class="text-xs text-slate-500">2 minutes ago</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">Registration opens in 3 days (Nov 18, 9:00 AM)</div>
+            <p class="text-sm text-slate-700 mt-1">You haven't finalized your schedule. <span class="font-semibold">CS 380 fills in ~3.7 days at current velocity</span> — register the moment your window opens or you may not get in. Want me to set a reminder and pre-build a backup?</p>
+            <div class="flex gap-2 mt-3">
+              <button class="btn btn-primary !py-1 text-xs">Set reminder</button>
+              <button class="btn btn-secondary !py-1 text-xs">Pre-build backup</button>
+              <button class="btn btn-ghost !py-1 text-xs">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4 border-2 border-green-300 bg-green-50">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center text-xl">✓</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="chip chip-green text-xs">Opportunity</span>
+              <span class="text-xs text-slate-500">15 minutes ago</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">CHEM 201-A just opened (8 seats freed from drops)</div>
+            <p class="text-sm text-slate-700 mt-1">You've been waitlisted for CHEM 201. Dr. Carbon Wells has a rare opening. I can auto-register you the moment your window opens.</p>
+            <div class="flex gap-2 mt-3">
+              <button class="btn btn-primary !py-1 text-xs">Auto-register</button>
+              <button class="btn btn-secondary !py-1 text-xs">View section</button>
+              <button class="btn btn-ghost !py-1 text-xs">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4 border border-slate-200">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center text-xl">💡</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="chip chip-blue text-xs">Tip</span>
+              <span class="text-xs text-slate-500">1 hour ago</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">You could graduate a semester early</div>
+            <p class="text-sm text-slate-700 mt-1">Based on your AP credits and current pace, you're 6 credits ahead. Taking 18 credits in Spring 2027 instead of Fall 2026 would let you finish in December 2026.</p>
+            <div class="flex gap-2 mt-3">
+              <button class="btn btn-primary !py-1 text-xs">Show me how</button>
+              <button class="btn btn-ghost !py-1 text-xs">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4 border border-slate-200 opacity-60">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-slate-100 text-slate-500 flex items-center justify-center text-xl">📚</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <span class="chip chip-slate text-xs">Reminder</span>
+              <span class="text-xs text-slate-500">2 days ago</span>
+            </div>
+            <div class="font-bold text-slate-900 mt-1">MATH 220 textbook due back at library</div>
+            <p class="text-sm text-slate-700 mt-1">Reserved copy expires in 3 days. You can return it or extend online.</p>
+            <div class="flex gap-2 mt-3">
+              <button class="btn btn-ghost !py-1 text-xs">Dismissed</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COURSE HISTORY
+       ============================================================ -->
+  <section id="view-history" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Course History</h1>
+        <p class="text-sm text-slate-500 mt-1">Add the courses you've completed so FCS can plan your remaining semesters accurately.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary !py-1.5 text-sm">📥 Import transcript</button>
+        <button class="btn btn-primary !py-1.5 text-sm">+ Add course</button>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+      <div class="card p-3">
+        <div class="text-xs text-slate-500">Total Credits</div>
+        <div class="text-2xl font-bold">68 / 120</div>
+      </div>
+      <div class="card p-3">
+        <div class="text-xs text-slate-500">GPA</div>
+        <div class="text-2xl font-bold text-blue-600">3.6</div>
+      </div>
+      <div class="card p-3">
+        <div class="text-xs text-slate-500">Major Reqs</div>
+        <div class="text-2xl font-bold">14 / 22</div>
+      </div>
+      <div class="card p-3">
+        <div class="text-xs text-slate-500">Gen Eds</div>
+        <div class="text-2xl font-bold">8 / 10</div>
+      </div>
+      <div class="card p-3">
+        <div class="text-xs text-slate-500">Electives</div>
+        <div class="text-2xl font-bold">2 / 8</div>
+      </div>
+    </div>
+
+    <!-- Search and add -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Add Completed Course</h3>
+      <div class="relative">
+        <input type="text" class="search-input" placeholder="Search course code, title, or department..." />
+        <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+      </div>
+      <div class="mt-2 max-h-40 overflow-y-auto">
+        <div class="space-y-1 text-sm">
+          <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 cursor-pointer">
+            <div>
+              <div class="font-semibold">CS 101 — Intro to Programming</div>
+              <div class="text-xs text-slate-500">3 credits • CS dept</div>
+            </div>
+            <button class="btn btn-ghost !py-1 text-xs text-blue-600">+ Add</button>
+          </div>
+          <div class="flex items-center justify-between p-2 rounded hover:bg-slate-50 cursor-pointer">
+            <div>
+              <div class="font-semibold">MATH 220 — Linear Algebra</div>
+              <div class="text-xs text-slate-500">3 credits • MATH dept</div>
+            </div>
+            <button class="btn btn-ghost !py-1 text-xs text-blue-600">+ Add</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Transcript -->
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Your Transcript</h3>
+      <div class="space-y-3">
+        <div>
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Fall 2024</div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">A-</div>
+              <div class="flex-1"><div class="font-semibold text-sm">CS 101 — Intro to Programming</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">B+</div>
+              <div class="flex-1"><div class="font-semibold text-sm">MATH 130 — Discrete Math</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-green-600">A</div>
+              <div class="flex-1"><div class="font-semibold text-sm">ENG 100 — College Writing</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Spring 2025</div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">A</div>
+              <div class="flex-1"><div class="font-semibold text-sm">CS 210 — Discrete Math II</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">A-</div>
+              <div class="flex-1"><div class="font-semibold text-sm">MATH 220 — Linear Algebra</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-amber-600">B+</div>
+              <div class="flex-1"><div class="font-semibold text-sm">PHYS 101 — Classical Mechanics</div><div class="text-xs text-slate-500">4 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">A-</div>
+              <div class="flex-1"><div class="font-semibold text-sm">PSYC 101 — Intro Psychology</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1.5">Fall 2025</div>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">B+</div>
+              <div class="flex-1"><div class="font-semibold text-sm">CS 305 — Computer Architecture</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-blue-600">A-</div>
+              <div class="flex-1"><div class="font-semibold text-sm">CS 340 — Database Systems</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-green-600">A</div>
+              <div class="flex-1"><div class="font-semibold text-sm">MATH 240 — Differential Equations</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+            <div class="flex items-center gap-3 p-2.5 rounded-lg border border-slate-200">
+              <div class="w-12 text-center font-bold text-amber-600">B</div>
+              <div class="flex-1"><div class="font-semibold text-sm">ECON 101 — Microeconomics</div><div class="text-xs text-slate-500">3 credits</div></div>
+              <button class="btn btn-ghost !p-1 text-slate-400">×</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       DEGREE PROGRESS
+       ============================================================ -->
+  <section id="view-progress" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Degree Progress</h1>
+        <p class="text-sm text-slate-500 mt-1">BS in Computer Science • Expected graduation: Spring 2027</p>
+      </div>
+      <div class="text-right">
+        <div class="text-xs text-slate-500">Overall progress</div>
+        <div class="text-3xl font-bold text-blue-600">68%</div>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="card p-5 mb-4">
+      <div class="flex justify-between text-sm mb-2">
+        <span class="font-semibold">68 of 120 credits</span>
+        <span class="text-slate-500">52 remaining</span>
+      </div>
+      <div class="h-3 bg-slate-100 rounded-full overflow-hidden mb-4">
+        <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full" style="width:68%"></div>
+      </div>
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <div class="text-xs text-slate-500">Major requirements</div>
+          <div class="text-sm font-semibold">14 / 22 courses</div>
+          <div class="progress mt-1"><div class="progress-bar bg-blue-500" style="width:64%"></div></div>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500">General education</div>
+          <div class="text-sm font-semibold">8 / 10 courses</div>
+          <div class="progress mt-1"><div class="progress-bar bg-green-500" style="width:80%"></div></div>
+        </div>
+        <div>
+          <div class="text-xs text-slate-500">Free electives</div>
+          <div class="text-sm font-semibold">2 / 8 courses</div>
+          <div class="progress mt-1"><div class="progress-bar bg-purple-500" style="width:25%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prereq tree -->
+    <div class="card p-5 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Prerequisite Tree</h3>
+      <p class="text-xs text-slate-500 mb-4">Click any course to see details and plan when to take it.</p>
+      <div class="overflow-x-auto">
+        <div class="flex items-center gap-3 min-w-max pb-2">
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node completed">CS 101</div>
+            <div class="prereq-node completed">MATH 130</div>
+          </div>
+          <div class="prereq-arrow">→</div>
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node completed">CS 210</div>
+            <div class="prereq-node completed">MATH 220</div>
+          </div>
+          <div class="prereq-arrow">→</div>
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node in-progress">CS 201</div>
+            <div class="prereq-node in-progress">CS 305</div>
+            <div class="prereq-node completed">CS 340</div>
+          </div>
+          <div class="prereq-arrow">→</div>
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node remaining">CS 301</div>
+            <div class="prereq-node remaining">CS 320</div>
+            <div class="prereq-node remaining">CS 350</div>
+            <div class="prereq-node remaining">CS 360</div>
+          </div>
+          <div class="prereq-arrow">→</div>
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node remaining">CS 401</div>
+            <div class="prereq-node remaining">CS 410</div>
+            <div class="prereq-node remaining">CS 480</div>
+          </div>
+          <div class="prereq-arrow">→</div>
+          <div class="flex flex-col gap-2">
+            <div class="prereq-node locked">CS 510</div>
+            <div class="prereq-node locked">CS 590</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline -->
+    <div class="card p-5">
+      <h3 class="font-semibold text-slate-900 mb-3">Graduation Timeline</h3>
+      <div class="space-y-3">
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <div class="text-sm text-slate-500">Fa 2024</div>
+          <div class="flex-1 font-semibold text-sm">12 credits • 3.6 GPA</div>
+          <span class="chip chip-green">✓ Done</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <div class="text-sm text-slate-500">Sp 2025</div>
+          <div class="flex-1 font-semibold text-sm">13 credits • 3.5 GPA</div>
+          <span class="chip chip-green">✓ Done</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full bg-green-500"></div>
+          <div class="text-sm text-slate-500">Fa 2025</div>
+          <div class="flex-1 font-semibold text-sm">12 credits • 3.7 GPA</div>
+          <span class="chip chip-green">✓ Done</span>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-3 h-3 rounded-full bg-blue-500 animate-pulse"></div>
+          <div class="text-sm text-slate-500">Sp 2026</div>
+          <div class="flex-1 font-semibold text-sm">15 credits planned • In progress</div>
+          <span class="chip chip-blue">Current</span>
+        </div>
+        <div class="flex items-center gap-3 opacity-60">
+          <div class="w-3 h-3 rounded-full bg-slate-300 border-2 border-slate-400 border-dashed"></div>
+          <div class="text-sm text-slate-500">Fa 2026</div>
+          <div class="flex-1 font-semibold text-sm">15 credits planned</div>
+          <span class="chip chip-slate">Planned</span>
+        </div>
+        <div class="flex items-center gap-3 opacity-60">
+          <div class="w-3 h-3 rounded-full bg-slate-300 border-2 border-slate-400 border-dashed"></div>
+          <div class="text-sm text-slate-500">Sp 2027</div>
+          <div class="flex-1 font-semibold text-sm">13 credits planned</div>
+          <span class="chip chip-slate">Planned</span>
+        </div>
+        <div class="flex items-center gap-3 mt-4 p-3 rounded-lg bg-blue-50 border-2 border-blue-300">
+          <div class="text-2xl">🎓</div>
+          <div>
+            <div class="font-bold text-slate-900">May 2027 — Graduation</div>
+            <div class="text-xs text-slate-600">On track • 3.6 GPA projected</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PATH PLANNER
+       ============================================================ -->
+  <section id="view-planner" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Semester Path Planner</h1>
+        <p class="text-sm text-slate-500 mt-1">Drag courses across semesters. The heatmap shows difficulty concentration.</p>
+      </div>
+      <div class="flex gap-2">
+        <button class="btn btn-secondary !py-1.5 text-sm">Auto-balance</button>
+        <button class="btn btn-primary !py-1.5 text-sm">Save plan</button>
+      </div>
+    </div>
+
+    <!-- Heatmap legend -->
+    <div class="card p-3 mb-3 flex items-center gap-3 flex-wrap text-xs">
+      <span class="text-slate-500">Difficulty:</span>
+      <div class="flex items-center gap-1.5"><div class="w-4 h-4 rounded" style="background:#d1fae5"></div> Easy</div>
+      <div class="flex items-center gap-1.5"><div class="w-4 h-4 rounded" style="background:#84cc16"></div> Moderate</div>
+      <div class="flex items-center gap-1.5"><div class="w-4 h-4 rounded" style="background:#fbbf24"></div> Hard</div>
+      <div class="flex items-center gap-1.5"><div class="w-4 h-4 rounded" style="background:#f97316"></div> Very Hard</div>
+      <div class="flex items-center gap-1.5"><div class="w-4 h-4 rounded" style="background:#ef4444"></div> Brutal</div>
+      <div class="ml-auto text-slate-500">Drag courses between columns. Heatmap intensity = difficulty × credits.</div>
+    </div>
+
+    <!-- Planner grid -->
+    <div class="planner-grid scrollbar-thin">
+      <div class="planner-col">
+        <h4>Sp 2025 ✓</h4>
+        <div class="planner-card diff-2">
+          <div class="code">CS 210</div>
+          <div class="credits">3cr • Discrete II</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">MATH 220</div>
+          <div class="credits">3cr • Linear Alg</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">PHYS 101</div>
+          <div class="credits">4cr • Mechanics</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">PSYC 101</div>
+          <div class="credits">3cr</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-2 text-center">13cr • 3.5 GPA</div>
+      </div>
+      <div class="planner-col">
+        <h4>Fa 2025 ✓</h4>
+        <div class="planner-card diff-4">
+          <div class="code">CS 305</div>
+          <div class="credits">3cr • Architecture</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">CS 340</div>
+          <div class="credits">3cr • Databases</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">MATH 240</div>
+          <div class="credits">3cr • Diff Eq</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">ECON 101</div>
+          <div class="credits">3cr</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-2 text-center">12cr • 3.7 GPA</div>
+      </div>
+      <div class="planner-col" style="background:#dbeafe">
+        <h4>Sp 2026 ●</h4>
+        <div class="planner-card diff-3">
+          <div class="code">CS 201</div>
+          <div class="credits">3cr • Data Struct</div>
+        </div>
+        <div class="planner-card diff-4">
+          <div class="code">MATH 320</div>
+          <div class="credits">3cr • Real Analysis</div>
+        </div>
+        <div class="planner-card diff-2">
+          <div class="code">PHYS 102</div>
+          <div class="credits">4cr • E&M</div>
+        </div>
+        <div class="planner-card diff-2">
+          <div class="code">ENG 220</div>
+          <div class="credits">3cr • Am Lit</div>
+        </div>
+        <div class="text-xs text-blue-700 mt-2 text-center font-semibold">13cr • Current</div>
+      </div>
+      <div class="planner-col">
+        <h4>Fa 2026</h4>
+        <div class="planner-card diff-5">
+          <div class="code">CS 301</div>
+          <div class="credits">3cr • Algorithms</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">CS 350</div>
+          <div class="credits">3cr • Soft Eng</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">CS 320</div>
+          <div class="credits">4cr • OS</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">PHIL 105</div>
+          <div class="credits">3cr • Ethics</div>
+        </div>
+        <div class="planner-card diff-2">
+          <div class="code">MATH 310</div>
+          <div class="credits">3cr • Prob/Stat</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-2 text-center">16cr • Hard semester</div>
+      </div>
+      <div class="planner-col">
+        <h4>Sp 2027</h4>
+        <div class="planner-card diff-4">
+          <div class="code">CS 360</div>
+          <div class="credits">3cr • Networks</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">CS 380</div>
+          <div class="credits">3cr • ML</div>
+        </div>
+        <div class="planner-card diff-3">
+          <div class="code">CS 401</div>
+          <div class="credits">3cr • Adv Alg</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">MUS 110</div>
+          <div class="credits">3cr</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-2 text-center">12cr • Light load</div>
+      </div>
+      <div class="planner-col" style="background:linear-gradient(180deg,#dbeafe,#fce7f3);border:2px dashed #2563eb">
+        <h4>🎓 Graduate</h4>
+        <div class="text-center py-12">
+          <div class="text-4xl">🎉</div>
+          <div class="font-bold mt-2">May 2027</div>
+          <div class="text-xs text-slate-500 mt-1">120 credits</div>
+        </div>
+      </div>
+      <div class="planner-col" style="background:#f1f5f9">
+        <h4>📚 Unscheduled</h4>
+        <div class="planner-card diff-3">
+          <div class="code">CS 410</div>
+          <div class="credits">3cr • Compilers</div>
+        </div>
+        <div class="planner-card diff-4">
+          <div class="code">CS 480</div>
+          <div class="credits">3cr • AI</div>
+        </div>
+        <div class="planner-card diff-2">
+          <div class="code">CS 460</div>
+          <div class="credits">3cr • Security</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">ART 101</div>
+          <div class="credits">3cr</div>
+        </div>
+        <div class="planner-card diff-1">
+          <div class="code">HIST 220</div>
+          <div class="credits">3cr</div>
+        </div>
+        <div class="text-xs text-slate-500 mt-2 text-center">15 credits unscheduled</div>
+      </div>
+    </div>
+
+    <!-- Warnings -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mt-4">
+      <div class="card p-3 border-2 border-red-300 bg-red-50">
+        <div class="text-xs font-semibold text-red-700 uppercase tracking-wider">⚠ Warning</div>
+        <div class="text-sm font-semibold mt-1">Fa 2026 is overloaded</div>
+        <p class="text-xs text-slate-700 mt-1">3 hard classes (CS 301, 350, 320) + 16 credits. Predicted GPA: 3.0</p>
+        <button class="btn btn-secondary !py-1 !px-2 text-xs mt-2">Auto-balance</button>
+      </div>
+      <div class="card p-3 border-2 border-amber-300 bg-amber-50">
+        <div class="text-xs font-semibold text-amber-700 uppercase tracking-wider">⚠ Heads up</div>
+        <div class="text-sm font-semibold mt-1">Sp 2027 looks light</div>
+        <p class="text-xs text-slate-700 mt-1">12 credits leaves 4 credits unused. You could graduate early or add an elective.</p>
+        <button class="btn btn-secondary !py-1 !px-2 text-xs mt-2">+ Add course</button>
+      </div>
+      <div class="card p-3 border-2 border-blue-300 bg-blue-50">
+        <div class="text-xs font-semibold text-blue-700 uppercase tracking-wider">💡 Suggestion</div>
+        <div class="text-sm font-semibold mt-1">Move CS 320 to Sp 2027</div>
+        <p class="text-xs text-slate-700 mt-1">Balances load, lets you take CS 480 in Fa 2026 for AI specialization.</p>
+        <button class="btn btn-secondary !py-1 !px-2 text-xs mt-2">Apply</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SUBSTITUTIONS
+       ============================================================ -->
+  <section id="view-substitute" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Course Substitution Finder</h1>
+      <p class="text-sm text-slate-500 mt-1">Describe what you need in plain English. Get ranked course suggestions.</p>
+    </div>
+
+    <!-- Query input -->
+    <div class="card p-5 mb-4">
+      <label class="text-xs font-semibold text-slate-500 uppercase tracking-wider">What are you looking for?</label>
+      <div class="mt-2 flex gap-2">
+        <input type="text" class="search-input flex-1" style="padding-left:12px" value="I need a humanities elective" />
+        <button class="btn btn-primary">🔍 Find</button>
+      </div>
+      <div class="flex flex-wrap gap-1.5 mt-3">
+        <span class="chip chip-slate">Easy gen-ed</span>
+        <span class="chip chip-slate">Writing-intensive</span>
+        <span class="chip chip-slate">300-level CS elective</span>
+        <span class="chip chip-slate">Statistics for ML</span>
+        <span class="chip chip-slate">Creative arts</span>
+        <span class="chip chip-slate">+ More</span>
+      </div>
+    </div>
+
+    <!-- AI summary -->
+    <div class="card p-4 mb-4 border-blue-200 border-2 bg-blue-50">
+      <div class="flex items-start gap-3">
+        <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center">🤖</div>
+        <div class="text-sm">
+          <span class="font-semibold">Agent:</span> Based on your interest in writing-light courses and humanities breadth requirements, I found <span class="font-semibold">5 strong options</span> for Spring 2026. The top 2 are both taught by well-rated instructors with manageable workloads.
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div class="space-y-3">
+      <div class="card p-4 border-2 border-blue-400">
+        <div class="flex items-start gap-3">
+          <div class="rank-badge w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-bold text-slate-900">ENG 240 — Shakespeare Studies</div>
+              <span class="chip chip-green">98% match</span>
+              <span class="chip chip-blue">Counts: Humanities</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1">Close reading of major plays and sonnets. Engaging professor, project-based grading (no busywork essays).</p>
+            <div class="grid grid-cols-4 gap-2 mt-2 text-xs">
+              <div><span class="text-slate-500">Rating:</span> <span class="font-semibold text-amber-500">4.8 ★</span></div>
+              <div><span class="text-slate-500">Difficulty:</span> <span class="font-semibold">2.4/5</span></div>
+              <div><span class="text-slate-500">Workload:</span> <span class="font-semibold">4.2 hrs/wk</span></div>
+              <div><span class="text-slate-500">Predict:</span> <span class="font-semibold text-blue-600">A</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary !py-1.5 text-sm whitespace-nowrap">Add to schedule</button>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start gap-3">
+          <div class="rank-badge w-10 h-10 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold">2</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-bold text-slate-900">PHIL 105 — Ethics & Society</div>
+              <span class="chip chip-green">91% match</span>
+              <span class="chip chip-blue">Counts: Humanities</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1">Discussion-based. Engaging cases that connect to your CS major (AI ethics, privacy, automation).</p>
+            <div class="grid grid-cols-4 gap-2 mt-2 text-xs">
+              <div><span class="text-slate-500">Rating:</span> <span class="font-semibold text-amber-500">4.5 ★</span></div>
+              <div><span class="text-slate-500">Difficulty:</span> <span class="font-semibold">2.8/5</span></div>
+              <div><span class="text-slate-500">Workload:</span> <span class="font-semibold">5.1 hrs/wk</span></div>
+              <div><span class="text-slate-500">Predict:</span> <span class="font-semibold text-blue-600">A-</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary !py-1.5 text-sm whitespace-nowrap">Add to schedule</button>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start gap-3">
+          <div class="rank-badge w-10 h-10 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold">3</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-bold text-slate-900">HIST 220 — History of Science</div>
+              <span class="chip chip-amber">82% match</span>
+              <span class="chip chip-blue">Counts: Humanities</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1">Survey of scientific thought. Some reading but no essays — multiple choice exams and one final paper.</p>
+            <div class="grid grid-cols-4 gap-2 mt-2 text-xs">
+              <div><span class="text-slate-500">Rating:</span> <span class="font-semibold text-amber-500">4.2 ★</span></div>
+              <div><span class="text-slate-500">Difficulty:</span> <span class="font-semibold">2.1/5</span></div>
+              <div><span class="text-slate-500">Workload:</span> <span class="font-semibold">3.8 hrs/wk</span></div>
+              <div><span class="text-slate-500">Predict:</span> <span class="font-semibold text-blue-600">A</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary !py-1.5 text-sm whitespace-nowrap">Add to schedule</button>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start gap-3">
+          <div class="rank-badge w-10 h-10 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold">4</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-bold text-slate-900">ART 110 — Visual Literacy</div>
+              <span class="chip chip-amber">76% match</span>
+              <span class="chip chip-blue">Counts: Humanities</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1">Studio + lecture hybrid. Hands-on projects, no essays. Engaging but requires 2 hours of in-class studio time.</p>
+            <div class="grid grid-cols-4 gap-2 mt-2 text-xs">
+              <div><span class="text-slate-500">Rating:</span> <span class="font-semibold text-amber-500">4.6 ★</span></div>
+              <div><span class="text-slate-500">Difficulty:</span> <span class="font-semibold">1.9/5</span></div>
+              <div><span class="text-slate-500">Workload:</span> <span class="font-semibold">4.5 hrs/wk</span></div>
+              <div><span class="text-slate-500">Predict:</span> <span class="font-semibold text-blue-600">A-</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary !py-1.5 text-sm whitespace-nowrap">Add to schedule</button>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <div class="flex items-start gap-3">
+          <div class="rank-badge w-10 h-10 rounded-full bg-slate-300 text-slate-700 flex items-center justify-center font-bold">5</div>
+          <div class="flex-1">
+            <div class="flex items-center gap-2">
+              <div class="font-bold text-slate-900">MUS 105 — World Music</div>
+              <span class="chip chip-amber">71% match</span>
+              <span class="chip chip-blue">Counts: Humanities</span>
+            </div>
+            <p class="text-sm text-slate-600 mt-1">Listening-based with short response papers. Lightest workload of all options. Some sections require attendance at concerts.</p>
+            <div class="grid grid-cols-4 gap-2 mt-2 text-xs">
+              <div><span class="text-slate-500">Rating:</span> <span class="font-semibold text-amber-500">4.4 ★</span></div>
+              <div><span class="text-slate-500">Difficulty:</span> <span class="font-semibold">1.5/5</span></div>
+              <div><span class="text-slate-500">Workload:</span> <span class="font-semibold">2.8 hrs/wk</span></div>
+              <div><span class="text-slate-500">Predict:</span> <span class="font-semibold text-blue-600">A+</span></div>
+            </div>
+          </div>
+          <button class="btn btn-primary !py-1.5 text-sm whitespace-nowrap">Add to schedule</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CHATBOT FULL PAGE
+       ============================================================ -->
+  <section id="view-chatbot" class="view hidden">
+    <div class="chat-full">
+      <div class="mb-4 text-center">
+        <h1 class="text-2xl font-bold text-slate-900">FCS Chat</h1>
+        <p class="text-sm text-slate-500 mt-1">Ask anything about your schedule, courses, or degree.</p>
+      </div>
+
+      <!-- Chat history -->
+      <div class="space-y-3 mb-4">
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">F</div>
+          <div class="chat-bubble bot">
+            Hi Raza 👋 I'm your FCS Agent. I can help you build schedules, plan your degree, find courses, or answer questions about instructors and requirements. What would you like to work on today?
+          </div>
+        </div>
+
+        <div class="flex gap-3 justify-end">
+          <div class="chat-bubble user">Build me a schedule for next semester. I need to take CS 301 and want to keep my Tuesday free for my part-time job.</div>
+        </div>
+
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">F</div>
+          <div class="space-y-2 max-w-2xl">
+            <div class="chat-bubble bot">
+              On it! Let me search for CS 301 sections and find combinations that respect your constraints.
+            </div>
+            <div class="agent-msg bot tool text-xs font-mono">
+              <div class="text-slate-500">⚙ Agent thinking...</div>
+              <div class="tool-call mt-2">
+                <div><span class="tool-name">search_courses</span> code="CS 301"</div>
+                <div class="text-slate-500 mt-1">→ Found 4 sections</div>
+              </div>
+              <div class="tool-call mt-2">
+                <div><span class="tool-name">get_constraints</span> user="razabhatti"</div>
+                <div class="text-slate-500 mt-1">→ {avoid_days: ["T"], work_schedule: "M/W/F 6-10 PM"}</div>
+              </div>
+              <div class="tool-call mt-2">
+                <div><span class="tool-name">generate_schedules</span> courses=["CS301"], constraints={...}</div>
+                <div class="tool-result mt-1">→ 12 valid schedules found, sorted by score</div>
+              </div>
+            </div>
+            <div class="chat-bubble bot">
+              Here are your top 3 options. I'd recommend <span class="font-semibold text-blue-600">Schedule #1</span> — it has CS 301 (Dr. Park) on TR, three other credits, and a 91 health score.<br><br>
+              <div class="mt-3 space-y-1.5 text-sm">
+                <div class="p-2 rounded bg-blue-50 border border-blue-200">
+                  <div class="font-semibold">Schedule #1 (Score 91)</div>
+                  <div class="text-xs">CS 301 (TR 9–10:50 AM) • MATH 310 (TR 3–4:50 PM) • 6 credits</div>
+                </div>
+                <div class="p-2 rounded bg-slate-50">
+                  <div class="font-semibold">Schedule #2 (Score 84)</div>
+                  <div class="text-xs">CS 301 (TR 1–2:50 PM) • ENG 240 (MW 2–3:50 PM) • 6 credits</div>
+                </div>
+                <div class="p-2 rounded bg-slate-50">
+                  <div class="font-semibold">Schedule #3 (Score 79)</div>
+                  <div class="text-xs">CS 301 (MWF 11–11:50 AM) • PHYS 102 (TR 11–12:50 PM) • 7 credits</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex gap-3 justify-end">
+          <div class="chat-bubble user">Schedule #1 looks good but I wanted 12-15 credits. Add something to hit that range.</div>
+        </div>
+
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">F</div>
+          <div class="chat-bubble bot">
+            Got it. With Schedule #1 at 6 credits, you have 6–9 more to add. Here are 3 options that fit your preferences (humanities, project-based, MWF or TR):<br><br>
+            <div class="space-y-1.5 text-sm">
+              <div class="p-2 rounded bg-slate-50">• <span class="font-semibold">+ENG 240 Shakespeare</span> (3cr, TR 11–12:50) → 9 credits total, 88 score</div>
+              <div class="p-2 rounded bg-slate-50">• <span class="font-semibold">+PHIL 105 Ethics</span> (3cr, MWF 1–1:50) → 9 credits total, 85 score</div>
+              <div class="p-2 rounded bg-slate-50">• <span class="font-semibold">+MATH 240 Diff Eq</span> (3cr, MWF 10–10:50) → 9 credits total, 81 score</div>
+            </div>
+            <br>Want me to lock in the Shakespeare option? It has the highest score and a great instructor.
+          </div>
+        </div>
+
+        <div class="flex gap-3 justify-end">
+          <div class="chat-bubble user">Yes! Add it. Also — does this schedule still leave Wednesday free for my research?</div>
+        </div>
+
+        <div class="flex gap-3">
+          <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 text-xs font-bold">F</div>
+          <div class="chat-bubble bot">
+            <div class="flex items-center gap-2">
+              <span class="pulse"></span>
+              <span class="text-xs text-slate-500">Agent is typing...</span>
+            </div>
+            <div class="typing mt-2"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="card p-3 sticky bottom-4">
+        <div class="flex gap-2">
+          <input type="text" class="search-input flex-1" style="padding-left:12px" placeholder="Ask FCS anything..." />
+          <button class="btn btn-primary">Send</button>
+        </div>
+        <div class="flex gap-2 mt-2 text-xs text-slate-500">
+          <span>💡 Try:</span>
+          <button class="hover:text-blue-600">"What if I take 18 credits?"</button>
+          <button class="hover:text-blue-600">"Compare CS 380 sections"</button>
+          <button class="hover:text-blue-600">"When is drop deadline?"</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CAREER PATH
+       ============================================================ -->
+  <section id="view-career" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">AI Career Path Advisor</h1>
+      <p class="text-sm text-slate-500 mt-1">Explore career outcomes from your CS degree. The tree maps academic paths to career possibilities.</p>
+    </div>
+
+    <!-- Path comparison -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+      <div class="card p-5 border-2 border-blue-400">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="text-xs text-blue-700 font-semibold uppercase tracking-wider">Path A</div>
+            <div class="text-xl font-bold text-slate-900 mt-1">Software Engineering</div>
+            <div class="text-sm text-slate-500">Industry track</div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-blue-600">$135k</div>
+            <div class="text-xs text-slate-500">median starting</div>
+          </div>
+        </div>
+        <div class="space-y-1.5 text-sm">
+          <div class="flex items-center gap-2"><span class="text-green-600">✓</span> CS 301 (Algorithms) — <span class="text-green-700 font-semibold">Required</span></div>
+          <div class="flex items-center gap-2"><span class="text-green-600">✓</span> CS 305 (Architecture) — <span class="text-green-700 font-semibold">Required</span></div>
+          <div class="flex items-center gap-2"><span class="text-green-600">✓</span> CS 320 (OS) — <span class="text-green-700 font-semibold">Required</span></div>
+          <div class="flex items-center gap-2"><span class="text-amber-600">△</span> CS 360 (Networks) — <span class="text-amber-700 font-semibold">Recommended</span></div>
+          <div class="flex items-center gap-2"><span class="text-slate-400">○</span> CS 380 (ML) — <span class="text-slate-500">Optional</span></div>
+        </div>
+        <div class="mt-3 p-2 bg-blue-50 rounded text-xs text-blue-800">
+          <span class="font-semibold">You're 75% on track.</span> Take CS 320 next semester and you're set.
+        </div>
+        <button class="btn btn-primary w-full mt-3">Pursue this path →</button>
+      </div>
+
+      <div class="card p-5">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="text-xs text-purple-700 font-semibold uppercase tracking-wider">Path B</div>
+            <div class="text-xl font-bold text-slate-900 mt-1">Medical School + CS</div>
+            <div class="text-sm text-slate-500">Pre-med + computational biology</div>
+          </div>
+          <div class="text-right">
+            <div class="text-2xl font-bold text-purple-600">$280k</div>
+            <div class="text-xs text-slate-500">after residency</div>
+          </div>
+        </div>
+        <div class="space-y-1.5 text-sm">
+          <div class="flex items-center gap-2"><span class="text-red-600">✗</span> CHEM 201 (Organic) — <span class="text-red-700 font-semibold">Required, not done</span></div>
+          <div class="flex items-center gap-2"><span class="text-red-600">✗</span> CHEM 301 (Biochem) — <span class="text-red-700 font-semibold">Required, not done</span></div>
+          <div class="flex items-center gap-2"><span class="text-red-600">✗</span> BIO 220 (Microbio) — <span class="text-red-700 font-semibold">Required, not done</span></div>
+          <div class="flex items-center gap-2"><span class="text-amber-600">△</span> CS 380 (ML) — <span class="text-amber-700 font-semibold">Recommended for comp bio</span></div>
+          <div class="flex items-center gap-2"><span class="text-amber-600">△</span> MCAT prep — <span class="text-amber-700 font-semibold">Summer before Fa 2026</span></div>
+        </div>
+        <div class="mt-3 p-2 bg-red-50 rounded text-xs text-red-800">
+          <span class="font-semibold">Significant gaps.</span> Would require 3 extra science semesters and a gap year.
+        </div>
+        <button class="btn btn-secondary w-full mt-3">Switch to this path</button>
+      </div>
+    </div>
+
+    <!-- Career tree -->
+    <div class="card p-5">
+      <h3 class="font-semibold text-slate-900 mb-4">Career Tree</h3>
+      <div class="overflow-x-auto">
+        <div class="flex flex-col items-center gap-3 min-w-max pb-2">
+          <!-- Root -->
+          <div class="career-node root">
+            <div class="font-bold">CS Degree</div>
+            <div class="text-xs opacity-80">BS in Computer Science</div>
+          </div>
+
+          <!-- Level 1 -->
+          <div class="flex gap-12 items-center">
+            <svg width="20" height="30"><line x1="10" y1="0" x2="10" y2="30" stroke="#94a3b8" stroke-width="2"/></svg>
+          </div>
+          <div class="flex gap-4">
+            <div class="career-node path">
+              <div class="font-bold text-sm">Software Eng</div>
+              <div class="text-xs">$135k start</div>
+            </div>
+            <div class="career-node alt">
+              <div class="font-bold text-sm">ML / AI</div>
+              <div class="text-xs">$155k start</div>
+            </div>
+            <div class="career-node alt">
+              <div class="font-bold text-sm">Cybersecurity</div>
+              <div class="text-xs">$130k start</div>
+            </div>
+            <div class="career-node locked">
+              <div class="font-bold text-sm">Med School + CS</div>
+              <div class="text-xs">$280k post-residency</div>
+            </div>
+            <div class="career-node locked">
+              <div class="font-bold text-sm">Academia</div>
+              <div class="text-xs">PhD required</div>
+            </div>
+          </div>
+
+          <!-- Level 2 -->
+          <div class="flex gap-12">
+            <div></div>
+            <div class="flex flex-col gap-2">
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Backend Eng</div>
+                <div class="text-xs text-slate-500">$140k</div>
+              </div>
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Frontend Eng</div>
+                <div class="text-xs text-slate-500">$125k</div>
+              </div>
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Mobile Dev</div>
+                <div class="text-xs text-slate-500">$130k</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="career-node alt">
+                <div class="text-xs font-bold">ML Engineer</div>
+                <div class="text-xs text-slate-500">$160k</div>
+              </div>
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Data Scientist</div>
+                <div class="text-xs text-slate-500">$145k</div>
+              </div>
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Research</div>
+                <div class="text-xs text-slate-500">$170k</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Pentester</div>
+                <div class="text-xs text-slate-500">$120k</div>
+              </div>
+              <div class="career-node alt">
+                <div class="text-xs font-bold">Sec Engineer</div>
+                <div class="text-xs text-slate-500">$140k</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="career-node locked">
+                <div class="text-xs font-bold">Comp Bio</div>
+                <div class="text-xs text-slate-500">$200k+</div>
+              </div>
+            </div>
+            <div class="flex flex-col gap-2">
+              <div class="career-node locked">
+                <div class="text-xs font-bold">Professor</div>
+                <div class="text-xs text-slate-500">$120k+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI recommendation -->
+    <div class="card p-5 mt-4 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center text-xl">🤖</div>
+        <div class="flex-1">
+          <div class="text-xs text-blue-700 uppercase tracking-wider font-semibold">Agent Recommendation</div>
+          <h3 class="text-lg font-bold text-slate-900 mt-1">Stay on Path A — Software Engineering</h3>
+          <p class="text-sm text-slate-700 mt-2">Based on your strong grades in CS core courses, your stated preference for project-based work, and the job market in your region, the Software Engineering path offers the best return on investment. You're 75% of the way there — only CS 320 (OS) and one elective separate you from being hire-ready. <span class="font-semibold">CS 380 (ML)</span> is a strong recommended elective that opens AI/ML opportunities without changing your trajectory.</p>
+          <div class="flex flex-wrap gap-2 mt-3">
+            <span class="chip chip-blue">Strong fit (87%)</span>
+            <span class="chip chip-green">On track</span>
+            <span class="chip chip-amber">1 course to add</span>
+          </div>
+          <div class="flex gap-2 mt-3">
+            <button class="btn btn-primary !py-1.5 text-sm">Lock in Path A</button>
+            <button class="btn btn-secondary !py-1.5 text-sm">Show other paths</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- AGENT SLIDE-IN PANEL -->
+<div id="agent-panel" class="agent-panel">
+  <div class="p-4 border-b border-slate-200 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">F</div>
+      <div>
+        <div class="font-semibold text-sm">FCS Agent</div>
+        <div class="text-xs text-slate-500 flex items-center gap-1"><span class="pulse"></span> Online • Aware of your context</div>
+      </div>
+    </div>
+    <button id="close-agent" class="btn btn-ghost !p-1.5">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div id="agent-messages" class="flex-1 overflow-y-auto p-4 space-y-3 scrollbar-thin">
+    <div class="flex">
+      <div class="agent-msg bot">Hi Raza 👋 I see you're checking out Degree Progress. Your CS major is 64% done — you're on track for Spring 2027 graduation.</div>
+    </div>
+    <div class="flex">
+      <div class="agent-msg bot">Quick heads up: I noticed you have 3 ungraded items. Want me to nudge you about those?</div>
+    </div>
+    <div class="flex justify-end">
+      <div class="agent-msg user">Yes, and also — can you check if my Spring 2026 schedule is healthy?</div>
+    </div>
+    <div class="flex">
+      <div class="agent-msg bot tool font-mono text-xs">
+        <div class="text-slate-500 mb-2">⚙ Running checks...</div>
+        <div class="space-y-1.5">
+          <div><span class="text-blue-600 font-bold">→</span> get_audit_log(user="razabhatti", status="pending")</div>
+          <div class="text-green-600 ml-4">✓ 3 items found: MATH 240 PS5, ENG 220 essay, CS 201 lab</div>
+          <div><span class="text-blue-600 font-bold">→</span> evaluate_schedule(semester="Sp 2026")</div>
+          <div class="text-green-600 ml-4">✓ Health score: 83/100 (excellent)</div>
+          <div class="ml-4 text-amber-600">⚠ Tuesday is your heaviest day (32% above average)</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex">
+      <div class="agent-msg bot">Here's what I found:<br><br>
+        <span class="font-semibold">📋 3 items need attention:</span><br>
+        • MATH 240 PS5 (due Fri 11:59 PM)<br>
+        • ENG 220 essay (due Mon)<br>
+        • CS 201 lab report (overdue by 1 day ⚠)<br><br>
+        <span class="font-semibold">📊 Spring 2026 schedule:</span><br>
+        • Health score: <span class="text-green-600 font-semibold">83/100</span><br>
+        • 1 minor warning: heavy Tuesday<br>
+        • No conflicts, walkable campus, good balance<br><br>
+        Want me to:
+        <div class="flex flex-wrap gap-1 mt-2">
+          <button class="chip chip-blue cursor-pointer">Move Tuesday's MATH 320?</button>
+          <button class="chip chip-blue cursor-pointer">Add to-do reminders</button>
+          <button class="chip chip-blue cursor-pointer">Compare with a different schedule</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="p-3 border-t border-slate-200">
+    <div class="flex gap-2 mb-2">
+      <input type="text" class="search-input flex-1" style="padding-left:12px" placeholder="Ask FCS anything..." />
+      <button class="btn btn-primary">Send</button>
+    </div>
+    <div class="text-xs text-slate-500 flex items-center gap-2">
+      <span>🎙 Voice</span>
+      <span>📎 Attach</span>
+      <span class="ml-auto">Agent is allowed to take actions. <a class="text-blue-600 underline cursor-pointer">Configure</a></span>
+    </div>
+  </div>
+</div>
+
+<!-- Live suggestion toast (visible by default to demo) -->
+<div class="suggestion" id="live-suggestion">
+  <div class="flex items-start gap-2">
+    <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-lg">⏰</div>
+    <div class="flex-1">
+      <div class="text-xs font-semibold text-amber-700 uppercase tracking-wider">Proactive</div>
+      <div class="text-sm font-semibold text-slate-900 mt-0.5">Registration in 3 days</div>
+      <p class="text-xs text-slate-600 mt-1">CS 380 fills in ~3.7 days. Want me to set a reminder?</p>
+      <div class="flex gap-1.5 mt-2">
+        <button class="btn btn-primary !py-1 !px-2 text-xs">Set reminder</button>
+        <button class="btn btn-ghost !py-1 !px-2 text-xs">×</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
+      document.getElementById("view-" + btn.dataset.tab).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+
+  // Agent panel
+  const panel = document.getElementById("agent-panel");
+  document.getElementById("open-agent").addEventListener("click", () => panel.classList.add("open"));
+  document.getElementById("open-agent-2").addEventListener("click", () => panel.classList.add("open"));
+  document.getElementById("close-agent").addEventListener("click", () => panel.classList.remove("open"));
+
+  // Live suggestion dismiss
+  document.querySelector("#live-suggestion button:last-child")?.addEventListener("click", () => {
+    document.getElementById("live-suggestion").style.display = "none";
+  });
+</script>
+</body>
+</html>

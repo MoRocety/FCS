@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FCS V3 — Phase A: Foundation</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --brand: #2563eb;
+    --brand-dark: #1d4ed8;
+    --brand-light: #dbeafe;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+  }
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  body { background: var(--slate-50); color: var(--slate-900); }
+
+  .tab-btn { transition: all 0.15s ease; border-bottom: 2px solid transparent; }
+  .tab-btn.active { color: var(--brand); border-color: var(--brand); }
+  .tab-btn:hover:not(.active) { color: var(--slate-700); }
+
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .chip-blue { background: var(--brand-light); color: var(--brand-dark); }
+  .chip-green { background: #d1fae5; color: #065f46; }
+  .chip-amber { background: #fef3c7; color: #92400e; }
+  .chip-red { background: #fee2e2; color: #991b1b; }
+  .chip-slate { background: var(--slate-100); color: var(--slate-700); }
+  .chip-active { background: var(--brand); color: white; }
+
+  .card { background: white; border: 1px solid var(--slate-200); border-radius: 12px; transition: all 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); border-color: var(--slate-300); }
+  .card-selected { border-color: var(--brand); background: #eff6ff; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.15s ease; cursor: pointer; border: 1px solid transparent; }
+  .btn-primary { background: var(--brand); color: white; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary { background: white; color: var(--slate-700); border-color: var(--slate-300); }
+  .btn-secondary:hover { background: var(--slate-50); border-color: var(--slate-400); }
+  .btn-ghost { background: transparent; color: var(--slate-600); }
+  .btn-ghost:hover { background: var(--slate-100); color: var(--slate-900); }
+  .btn-danger { background: white; color: var(--red); border-color: var(--red); }
+  .btn-danger:hover { background: #fef2f2; }
+
+  .input { width: 100%; padding: 8px 12px; border: 1px solid var(--slate-300); border-radius: 8px; font-size: 14px; background: white; transition: border-color 0.15s; }
+  .input:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
+
+  .slider { -webkit-appearance: none; width: 100%; height: 4px; background: var(--slate-200); border-radius: 999px; outline: none; }
+  .slider::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; background: var(--brand); border-radius: 50%; cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+  .slider::-moz-range-thumb { width: 16px; height: 16px; background: var(--brand); border-radius: 50%; cursor: pointer; border: none; }
+
+  .timetable { display: grid; grid-template-columns: 60px repeat(5, 1fr); border: 1px solid var(--slate-200); border-radius: 8px; overflow: hidden; background: white; }
+  .tt-cell { border-right: 1px solid var(--slate-100); border-bottom: 1px solid var(--slate-100); min-height: 36px; position: relative; }
+  .tt-cell:last-child { border-right: none; }
+  .tt-header { background: var(--slate-50); font-weight: 600; font-size: 12px; text-align: center; padding: 8px 4px; color: var(--slate-600); }
+  .tt-time { background: var(--slate-50); font-size: 11px; color: var(--slate-500); padding: 4px 6px; text-align: right; border-right: 1px solid var(--slate-200); }
+
+  .tt-block { position: absolute; left: 2px; right: 2px; border-radius: 6px; padding: 4px 6px; font-size: 10px; font-weight: 600; color: white; overflow: hidden; cursor: pointer; transition: transform 0.1s; box-shadow: 0 1px 2px rgba(0,0,0,0.1); z-index: 2; }
+  .tt-block:hover { transform: scale(1.02); z-index: 3; box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+
+  .row-clickable { cursor: pointer; transition: background 0.1s; }
+  .row-clickable:hover { background: var(--slate-50); }
+  .row-selected { background: #eff6ff !important; }
+
+  .modal-backdrop { background: rgba(15,23,42,0.5); backdrop-filter: blur(2px); }
+  .modal { background: white; border-radius: 16px; max-width: 600px; width: 90%; max-height: 85vh; overflow-y: auto; }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: 999px; }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+
+  .stats-bar { display: flex; gap: 16px; padding: 10px 14px; background: var(--slate-50); border-radius: 8px; font-size: 13px; }
+  .stat { display: flex; flex-direction: column; }
+  .stat-label { font-size: 11px; color: var(--slate-500); text-transform: uppercase; letter-spacing: 0.04em; }
+  .stat-value { font-weight: 600; color: var(--slate-900); font-size: 14px; }
+
+  .rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; font-weight: 700; font-size: 12px; }
+  .rank-1 { background: #fbbf24; color: #78350f; }
+  .rank-2 { background: #d1d5db; color: #1f2937; }
+  .rank-3 { background: #f59e0b; color: white; }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: var(--slate-900); color: white; border-radius: 10px; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">F</div>
+      <div>
+        <div class="font-bold text-slate-900 leading-tight">FCS V3</div>
+        <div class="text-xs text-slate-500">Foundation Phase</div>
+      </div>
+    </div>
+    <nav class="flex gap-1">
+      <button class="tab-btn active px-4 py-2 text-sm font-medium" data-tab="catalog">Catalog</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium" data-tab="builder">Builder</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium" data-tab="saved">Saved <span id="saved-count" class="ml-1 text-xs text-slate-400">(0)</span></button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <div class="text-right text-xs">
+        <div class="text-slate-500">Spring 2026</div>
+        <div class="font-semibold text-slate-700">Raza Bhatti</div>
+      </div>
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center text-sm font-semibold">RB</div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN -->
+<main class="max-w-7xl mx-auto px-6 py-6">
+
+  <!-- ===================== CATALOG ===================== -->
+  <section id="view-catalog" class="view">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Course Catalog</h1>
+        <p class="text-sm text-slate-500 mt-1">Browse 247 sections. Click rows to add to your schedule.</p>
+      </div>
+      <div class="flex items-center gap-2 text-sm">
+        <span class="text-slate-500">Selected:</span>
+        <span id="catalog-selected-count" class="font-semibold text-blue-600">0</span>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card p-4 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+        <div class="md:col-span-4 relative">
+          <input id="search-input" type="text" class="input pl-9" placeholder="Search by course code, title, or instructor..." />
+          <svg class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z"/></svg>
+        </div>
+        <div class="md:col-span-5 flex flex-wrap gap-1.5 items-center">
+          <span class="text-xs text-slate-500 mr-1">Dept:</span>
+          <button class="chip chip-active dept-chip" data-dept="ALL">All</button>
+          <button class="chip chip-slate dept-chip" data-dept="CS">CS</button>
+          <button class="chip chip-slate dept-chip" data-dept="MATH">MATH</button>
+          <button class="chip chip-slate dept-chip" data-dept="PHYS">PHYS</button>
+          <button class="chip chip-slate dept-chip" data-dept="CHEM">CHEM</button>
+          <button class="chip chip-slate dept-chip" data-dept="BIO">BIO</button>
+          <button class="chip chip-slate dept-chip" data-dept="ENG">ENG</button>
+          <button class="chip chip-slate dept-chip" data-dept="ECON">ECON</button>
+          <button class="chip chip-slate dept-chip" data-dept="PSYC">PSYC</button>
+        </div>
+        <div class="md:col-span-3 flex items-center gap-2">
+          <span class="text-xs text-slate-500 whitespace-nowrap">Credits:</span>
+          <span id="credit-min-label" class="text-xs font-semibold text-slate-700 w-3">1</span>
+          <input id="credit-min" type="range" min="1" max="6" value="1" class="slider" />
+          <span class="text-xs text-slate-400">—</span>
+          <span id="credit-max-label" class="text-xs font-semibold text-slate-700 w-3">6</span>
+          <input id="credit-max" type="range" min="1" max="6" value="6" class="slider" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="card overflow-hidden">
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 text-slate-600 text-xs uppercase tracking-wider">
+            <tr>
+              <th class="px-4 py-3 text-left font-semibold">Course</th>
+              <th class="px-4 py-3 text-left font-semibold">Title</th>
+              <th class="px-4 py-3 text-left font-semibold">Instructor</th>
+              <th class="px-4 py-3 text-left font-semibold">Schedule</th>
+              <th class="px-4 py-3 text-center font-semibold">Cr</th>
+              <th class="px-4 py-3 text-center font-semibold">Seats</th>
+              <th class="px-4 py-3 text-center font-semibold">Rating</th>
+              <th class="px-4 py-3 text-center font-semibold"></th>
+            </tr>
+          </thead>
+          <tbody id="catalog-tbody" class="divide-y divide-slate-100"></tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-between px-4 py-3 border-t border-slate-200 bg-slate-50">
+        <div class="text-xs text-slate-500">
+          Showing <span id="page-start" class="font-semibold text-slate-700">1</span>–<span id="page-end" class="font-semibold text-slate-700">15</span> of <span id="page-total" class="font-semibold text-slate-700">0</span> sections
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="page-prev" class="btn btn-secondary !py-1 !px-2 text-xs">‹ Prev</button>
+          <div id="page-numbers" class="flex gap-1"></div>
+          <button id="page-next" class="btn btn-secondary !py-1 !px-2 text-xs">Next ›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== BUILDER ===================== -->
+  <section id="view-builder" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Schedule Builder</h1>
+        <p class="text-sm text-slate-500 mt-1">Set your constraints and let FCS rank the best possible schedules.</p>
+      </div>
+      <div class="flex gap-2">
+        <button id="clear-builder" class="btn btn-ghost">Clear All</button>
+        <button id="generate-btn" class="btn btn-primary">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Generate Schedules
+        </button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <!-- LEFT: controls -->
+      <div class="lg:col-span-4 space-y-4">
+        <!-- Selected courses -->
+        <div class="card p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold text-slate-900">Selected Courses</h3>
+            <span id="builder-count" class="chip chip-blue">0 courses</span>
+          </div>
+          <div id="selected-list" class="space-y-2 min-h-[60px]">
+            <p class="text-sm text-slate-400 italic">Click rows in the catalog to add courses here.</p>
+          </div>
+        </div>
+
+        <!-- Credit sliders -->
+        <div class="card p-4">
+          <h3 class="font-semibold text-slate-900 mb-3">Credit Range</h3>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-500">Min credits</span>
+                <span id="b-min-label" class="font-semibold text-blue-600">12</span>
+              </div>
+              <input id="b-min" type="range" min="0" max="22" value="12" step="1" class="slider" />
+            </div>
+            <div>
+              <div class="flex justify-between text-xs mb-1">
+                <span class="text-slate-500">Max credits</span>
+                <span id="b-max-label" class="font-semibold text-blue-600">18</span>
+              </div>
+              <input id="b-max" type="range" min="0" max="22" value="18" step="1" class="slider" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Day exclusions -->
+        <div class="card p-4">
+          <h3 class="font-semibold text-slate-900 mb-3">Exclude Days</h3>
+          <p class="text-xs text-slate-500 mb-2">Toggle off days you don't want classes.</p>
+          <div class="flex gap-1.5">
+            <button class="day-toggle chip chip-active flex-1" data-day="M">Mon</button>
+            <button class="day-toggle chip chip-active flex-1" data-day="T">Tue</button>
+            <button class="day-toggle chip chip-active flex-1" data-day="W">Wed</button>
+            <button class="day-toggle chip chip-active flex-1" data-day="R">Thu</button>
+            <button class="day-toggle chip chip-active flex-1" data-day="F">Fri</button>
+          </div>
+        </div>
+
+        <!-- Generate button big -->
+        <button id="generate-btn-2" class="btn btn-primary w-full !py-3">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Find Best Schedules
+        </button>
+      </div>
+
+      <!-- RIGHT: timetable + ranked list -->
+      <div class="lg:col-span-8 space-y-4">
+        <!-- Stats bar -->
+        <div class="stats-bar">
+          <div class="stat"><span class="stat-label">Schedules</span><span id="stat-count" class="stat-value">0</span></div>
+          <div class="stat"><span class="stat-label">Best Score</span><span id="stat-best" class="stat-value text-green-600">—</span></div>
+          <div class="stat"><span class="stat-label">Avg Credits</span><span id="stat-credits" class="stat-value">—</span></div>
+          <div class="stat"><span class="stat-label">Days Used</span><span id="stat-days" class="stat-value">—</span></div>
+          <div class="stat"><span class="stat-label">Free Blocks</span><span id="stat-blocks" class="stat-value">—</span></div>
+        </div>
+
+        <!-- Timetable -->
+        <div class="card p-4">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold text-slate-900">Preview — <span id="tt-schedule-name" class="text-blue-600">Schedule #1</span></h3>
+            <div class="flex gap-1">
+              <button id="tt-prev" class="btn btn-secondary !py-1 !px-2 text-xs">‹</button>
+              <span id="tt-position" class="text-xs text-slate-500 self-center px-2">1 / 1</span>
+              <button id="tt-next" class="btn btn-secondary !py-1 !px-2 text-xs">›</button>
+            </div>
+          </div>
+          <div id="timetable" class="timetable scrollbar-thin"></div>
+        </div>
+
+        <!-- Ranked list -->
+        <div class="card p-4">
+          <h3 class="font-semibold text-slate-900 mb-3">Ranked Schedules</h3>
+          <div id="ranked-list" class="space-y-2">
+            <p class="text-sm text-slate-400 italic">No schedules generated yet. Click "Find Best Schedules".</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SAVED ===================== -->
+  <section id="view-saved" class="view hidden">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h1 class="text-2xl font-bold text-slate-900">Saved Schedules</h1>
+        <p class="text-sm text-slate-500 mt-1">Your favorite schedule combinations. Load to edit, delete to remove.</p>
+      </div>
+    </div>
+    <div id="saved-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <p class="text-sm text-slate-400 italic col-span-full">No saved schedules yet. Save one from the Builder.</p>
+    </div>
+  </section>
+</main>
+
+<!-- COURSE DETAIL MODAL -->
+<div id="course-modal" class="fixed inset-0 z-50 hidden items-center justify-center modal-backdrop p-4">
+  <div class="modal">
+    <div class="p-6">
+      <div class="flex items-start justify-between mb-4">
+        <div>
+          <div id="modal-code" class="text-xs font-semibold text-blue-600 uppercase tracking-wider">CS 201</div>
+          <h2 id="modal-title" class="text-xl font-bold text-slate-900 mt-1">Data Structures</h2>
+          <div id="modal-instructor" class="text-sm text-slate-500 mt-1">Dr. Smith</div>
+        </div>
+        <button id="modal-close" class="btn btn-ghost !p-1.5">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="grid grid-cols-3 gap-3 mb-4">
+        <div class="text-center p-3 bg-slate-50 rounded-lg">
+          <div class="text-xs text-slate-500">Credits</div>
+          <div id="modal-credits" class="font-bold text-slate-900 text-lg">3</div>
+        </div>
+        <div class="text-center p-3 bg-slate-50 rounded-lg">
+          <div class="text-xs text-slate-500">Seats</div>
+          <div id="modal-seats" class="font-bold text-green-600 text-lg">42/60</div>
+        </div>
+        <div class="text-center p-3 bg-slate-50 rounded-lg">
+          <div class="text-xs text-slate-500">Rating</div>
+          <div id="modal-rating" class="font-bold text-amber-500 text-lg">4.5 ★</div>
+        </div>
+      </div>
+      <div class="text-sm">
+        <div class="font-semibold text-slate-700 mb-1">Schedule</div>
+        <div id="modal-schedule" class="text-slate-600">MWF 9:00–9:50 AM</div>
+      </div>
+      <div class="text-sm mt-3">
+        <div class="font-semibold text-slate-700 mb-1">Description</div>
+        <p id="modal-desc" class="text-slate-600 text-sm leading-relaxed">Introduction to fundamental data structures...</p>
+      </div>
+      <div class="flex gap-2 mt-6">
+        <button id="modal-add" class="btn btn-primary flex-1">Add to Schedule</button>
+        <button class="btn btn-secondary">View Instructor</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script>
+/* ============================================================
+   DATA
+   ============================================================ */
+const COURSES = [
+  { id:1, code:"CS 201", title:"Data Structures", dept:"CS", credits:3, instructor:"Dr. Sarah Smith", days:["M","W","F"], start:540, end:590, seats:42, total:60, rating:4.5, color:"#2563eb", desc:"Introduction to fundamental data structures: arrays, linked lists, trees, graphs, hash tables. Time/space complexity analysis." },
+  { id:2, code:"CS 201", title:"Data Structures", dept:"CS", credits:3, instructor:"Prof. James Lee", days:["T","R"], start:660, end:780, seats:8, total:60, rating:4.1, color:"#7c3aed", desc:"Same course. Evening section. More project-based." },
+  { id:3, code:"CS 210", title:"Discrete Mathematics", dept:"CS", credits:3, instructor:"Dr. Maria Chen", days:["M","W","F"], start:600, end:650, seats:55, total:60, rating:4.3, color:"#2563eb", desc:"Logic, sets, functions, relations, combinatorics, graph theory, proof techniques." },
+  { id:4, code:"CS 301", title:"Algorithms", dept:"CS", credits:3, instructor:"Dr. Robert Park", days:["T","R"], start:540, end:660, seats:35, total:50, rating:4.7, color:"#2563eb", desc:"Algorithm design and analysis. Divide-and-conquer, dynamic programming, greedy, graph algorithms, NP-completeness." },
+  { id:5, code:"CS 305", title:"Computer Architecture", dept:"CS", credits:3, instructor:"Prof. Aisha Khan", days:["M","W","F"], start:660, end:710, seats:22, total:50, rating:4.0, color:"#2563eb", desc:"CPU design, memory hierarchy, pipelining, parallelism. Hands-on assembly programming." },
+  { id:6, code:"CS 320", title:"Operating Systems", dept:"CS", credits:4, instructor:"Dr. Samuel Brown", days:["M","W"], start:720, end:840, seats:18, total:40, rating:4.4, color:"#2563eb", desc:"Processes, threads, scheduling, memory management, file systems, synchronization." },
+  { id:7, code:"CS 340", title:"Database Systems", dept:"CS", credits:3, instructor:"Dr. Lin Wang", days:["T","R"], start:780, end:900, seats:28, total:45, rating:4.2, color:"#2563eb", desc:"Relational model, SQL, normalization, transactions, indexing, query optimization." },
+  { id:8, code:"CS 350", title:"Software Engineering", dept:"CS", credits:3, instructor:"Prof. David Miller", days:["M","W","F"], start:480, end:530, seats:48, total:60, rating:4.6, color:"#2563eb", desc:"Software development lifecycle, agile, testing, design patterns, team project." },
+  { id:9, code:"CS 360", title:"Computer Networks", dept:"CS", credits:3, instructor:"Dr. Yuki Tanaka", days:["T","R"], start:660, end:780, seats:30, total:50, rating:4.1, color:"#2563eb", desc:"TCP/IP, routing, congestion control, application protocols, network security basics." },
+  { id:10, code:"CS 380", title:"Machine Learning", dept:"CS", credits:3, instructor:"Dr. Emily Foster", days:["M","W","F"], start:840, end:890, seats:12, total:40, rating:4.8, color:"#2563eb", desc:"Supervised, unsupervised learning, neural networks, deep learning foundations." },
+  { id:11, code:"MATH 220", title:"Linear Algebra", dept:"MATH", credits:3, instructor:"Dr. Hans Mueller", days:["M","W","F"], start:600, end:650, seats:60, total:80, rating:4.4, color:"#10b981", desc:"Vectors, matrices, linear transformations, eigenvalues, applications." },
+  { id:12, code:"MATH 230", title:"Multivariable Calculus", dept:"MATH", credits:4, instructor:"Prof. Anna Volkov", days:["T","R"], start:540, end:660, seats:45, total:70, rating:3.9, color:"#10b981", desc:"Calculus of several variables. Partial derivatives, multiple integrals, vector calculus." },
+  { id:13, code:"MATH 240", title:"Differential Equations", dept:"MATH", credits:3, instructor:"Dr. Hassan Ali", days:["M","W","F"], start:720, end:770, seats:40, total:60, rating:4.0, color:"#10b981", desc:"First and second order ODEs, Laplace transforms, series solutions, systems." },
+  { id:14, code:"MATH 310", title:"Probability & Statistics", dept:"MATH", credits:3, instructor:"Dr. Olivia Brooks", days:["T","R"], start:780, end:900, seats:38, total:60, rating:4.5, color:"#10b981", desc:"Random variables, distributions, hypothesis testing, regression, applications." },
+  { id:15, code:"MATH 320", title:"Real Analysis", dept:"MATH", credits:3, instructor:"Dr. Karl Hoffman", days:["M","W","F"], start:540, end:590, seats:20, total:30, rating:4.2, color:"#10b981", desc:"Rigorous treatment of limits, continuity, derivatives, integration." },
+  { id:16, code:"PHYS 101", title:"Classical Mechanics", dept:"PHYS", credits:4, instructor:"Dr. Newton Pierce", days:["M","W","F"], start:660, end:710, seats:80, total:120, rating:4.1, color:"#8b5cf6", desc:"Newton's laws, energy, momentum, rotation, oscillations, waves." },
+  { id:17, code:"PHYS 102", title:"Electricity & Magnetism", dept:"PHYS", credits:4, instructor:"Prof. Maxwell Reed", days:["T","R"], start:540, end:660, seats:55, total:100, rating:3.8, color:"#8b5cf6", desc:"Electric and magnetic fields, Maxwell's equations, circuits." },
+  { id:18, code:"PHYS 201", title:"Quantum Mechanics", dept:"PHYS", credits:3, instructor:"Dr. Bohr Singh", days:["M","W","F"], start:840, end:890, seats:25, total:40, rating:4.6, color:"#8b5cf6", desc:"Schrödinger equation, hydrogen atom, angular momentum, perturbation theory." },
+  { id:19, code:"CHEM 101", title:"General Chemistry I", dept:"CHEM", credits:4, instructor:"Dr. Marie Curie", days:["M","W","F"], start:480, end:530, seats:90, total:120, rating:4.0, color:"#f59e0b", desc:"Atomic structure, bonding, stoichiometry, thermochemistry." },
+  { id:20, code:"CHEM 201", title:"Organic Chemistry", dept:"CHEM", credits:4, instructor:"Prof. Carbon Wells", days:["T","R"], start:660, end:780, seats:35, total:60, rating:3.7, color:"#f59e0b", desc:"Structure, reactions, synthesis of organic compounds. Lab included." },
+  { id:21, code:"CHEM 301", title:"Biochemistry", dept:"CHEM", credits:3, instructor:"Dr. Watson Crick", days:["M","W","F"], start:720, end:770, seats:42, total:60, rating:4.3, color:"#f59e0b", desc:"Amino acids, proteins, enzymes, metabolism, molecular biology." },
+  { id:22, code:"BIO 101", title:"Introduction to Biology", dept:"BIO", credits:3, instructor:"Dr. Darwin Finch", days:["M","W","F"], start:600, end:650, seats:100, total:150, rating:4.2, color:"#06b6d4", desc:"Cell biology, genetics, evolution, ecology fundamentals." },
+  { id:23, code:"BIO 201", title:"Genetics", dept:"BIO", credits:3, instructor:"Dr. Mendel Rose", days:["T","R"], start:780, end:900, seats:28, total:50, rating:4.4, color:"#06b6d4", desc:"Mendelian and molecular genetics, gene expression, population genetics." },
+  { id:24, code:"BIO 220", title:"Microbiology", dept:"BIO", credits:3, instructor:"Prof. Pasteur Kim", days:["M","W","F"], start:840, end:890, seats:32, total:50, rating:4.1, color:"#06b6d4", desc:"Bacteria, viruses, fungi, immunology, infectious diseases." },
+  { id:25, code:"ENG 110", title:"Composition & Rhetoric", dept:"ENG", credits:3, instructor:"Dr. Jane Austen", days:["M","W","F"], start:540, end:590, seats:22, total:25, rating:4.7, color:"#ec4899", desc:"Academic writing, argumentation, research, rhetoric." },
+  { id:26, code:"ENG 220", title:"American Literature", dept:"ENG", credits:3, instructor:"Prof. Walt Whitman", days:["T","R"], start:660, end:780, seats:30, total:35, rating:4.3, color:"#ec4899", desc:"Survey of American literature from colonial to contemporary." },
+  { id:27, code:"ENG 240", title:"Shakespeare Studies", dept:"ENG", credits:3, instructor:"Dr. Globe Theatre", days:["M","W"], start:720, end:840, seats:18, total:30, rating:4.8, color:"#ec4899", desc:"Close reading of major plays and sonnets in historical context." },
+  { id:28, code:"ECON 101", title:"Microeconomics", dept:"ECON", credits:3, instructor:"Dr. Adam Smith", days:["M","W","F"], start:600, end:650, seats:75, total:100, rating:4.0, color:"#ef4444", desc:"Supply and demand, market structures, consumer theory, game theory." },
+  { id:29, code:"ECON 102", title:"Macroeconomics", dept:"ECON", credits:3, instructor:"Prof. John Maynard", days:["T","R"], start:540, end:660, seats:65, total:100, rating:3.9, color:"#ef4444", desc:"GDP, inflation, monetary/fiscal policy, economic growth." },
+  { id:30, code:"ECON 310", title:"Game Theory", dept:"ECON", credits:3, instructor:"Dr. Nash Patel", days:["M","W","F"], start:840, end:890, seats:40, total:60, rating:4.6, color:"#ef4444", desc:"Strategic interactions, Nash equilibrium, auctions, bargaining." },
+  { id:31, code:"PSYC 101", title:"Introduction to Psychology", dept:"PSYC", credits:3, instructor:"Dr. Sigmund Reed", days:["M","W","F"], start:660, end:710, seats:90, total:120, rating:4.4, color:"#a855f7", desc:"Major areas of psychology: cognition, development, social, clinical." },
+  { id:32, code:"PSYC 220", title:"Cognitive Psychology", dept:"PSYC", credits:3, instructor:"Prof. Piaget Lopez", days:["T","R"], start:780, end:900, seats:55, total:80, rating:4.5, color:"#a855f7", desc:"Memory, attention, perception, language, problem solving." },
+  { id:33, code:"PSYC 305", title:"Abnormal Psychology", dept:"PSYC", credits:3, instructor:"Dr. Freud Jung", days:["M","W","F"], start:720, end:770, seats:48, total:60, rating:4.2, color:"#a855f7", desc:"Psychological disorders, diagnosis, treatment approaches." }
+];
+
+/* ============================================================
+   STATE
+   ============================================================ */
+let state = {
+  tab: "catalog",
+  selectedIds: new Set(),
+  search: "",
+  dept: "ALL",
+  creditMin: 1,
+  creditMax: 6,
+  page: 1,
+  pageSize: 12,
+  builder: {
+    minCr: 12,
+    maxCr: 18,
+    excludedDays: new Set(),
+    schedules: [],
+    activeIdx: 0
+  },
+  saved: []
+};
+
+/* Load from localStorage */
+try {
+  const saved = JSON.parse(localStorage.getItem("fcs-saved") || "[]");
+  if (Array.isArray(saved)) state.saved = saved;
+  const sel = JSON.parse(localStorage.getItem("fcs-selected") || "[]");
+  if (Array.isArray(sel)) state.selectedIds = new Set(sel);
+} catch(e) {}
+
+function persist() {
+  localStorage.setItem("fcs-saved", JSON.stringify(state.saved));
+  localStorage.setItem("fcs-selected", JSON.stringify([...state.selectedIds]));
+}
+
+/* ============================================================
+   UTIL
+   ============================================================ */
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+const minutesToTime = (m) => {
+  const h = Math.floor(m/60), mm = m%60;
+  const period = h >= 12 ? "PM" : "AM";
+  const h12 = h === 0 ? 12 : h > 12 ? h-12 : h;
+  return `${h12}:${mm.toString().padStart(2,"0")} ${period}`;
+};
+const showToast = (msg) => {
+  const t = $("#toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2200);
+};
+
+/* ============================================================
+   TABS
+   ============================================================ */
+$$(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => switchTab(btn.dataset.tab));
+});
+function switchTab(name) {
+  state.tab = name;
+  $$(".tab-btn").forEach(b => b.classList.toggle("active", b.dataset.tab === name));
+  $$(".view").forEach(v => v.classList.add("hidden"));
+  $(`#view-${name}`).classList.remove("hidden");
+  if (name === "builder") renderBuilder();
+  if (name === "saved") renderSaved();
+}
+
+/* ============================================================
+   CATALOG
+   ============================================================ */
+$("#search-input").addEventListener("input", (e) => { state.search = e.target.value.toLowerCase(); state.page = 1; renderCatalog(); });
+$$(".dept-chip").forEach(c => c.addEventListener("click", () => {
+  state.dept = c.dataset.dept;
+  $$(".dept-chip").forEach(x => { x.classList.remove("chip-active"); x.classList.add("chip-slate"); });
+  c.classList.remove("chip-slate"); c.classList.add("chip-active");
+  state.page = 1;
+  renderCatalog();
+}));
+$("#credit-min").addEventListener("input", (e) => {
+  state.creditMin = +e.target.value;
+  if (state.creditMin > state.creditMax) { state.creditMax = state.creditMin; $("#credit-max").value = state.creditMax; }
+  $("#credit-min-label").textContent = state.creditMin;
+  $("#credit-max-label").textContent = state.creditMax;
+  state.page = 1; renderCatalog();
+});
+$("#credit-max").addEventListener("input", (e) => {
+  state.creditMax = +e.target.value;
+  if (state.creditMax < state.creditMin) { state.creditMin = state.creditMax; $("#credit-min").value = state.creditMin; }
+  $("#credit-min-label").textContent = state.creditMin;
+  $("#credit-max-label").textContent = state.creditMax;
+  state.page = 1; renderCatalog();
+});
+
+function getFiltered() {
+  return COURSES.filter(c => {
+    if (state.dept !== "ALL" && c.dept !== state.dept) return false;
+    if (c.credits < state.creditMin || c.credits > state.creditMax) return false;
+    if (state.search) {
+      const blob = (c.code + " " + c.title + " " + c.instructor).toLowerCase();
+      if (!blob.includes(state.search)) return false;
+    }
+    return true;
+  });
+}
+
+function renderCatalog() {
+  const filtered = getFiltered();
+  const total = filtered.length;
+  const pages = Math.max(1, Math.ceil(total / state.pageSize));
+  if (state.page > pages) state.page = pages;
+  const start = (state.page - 1) * state.pageSize;
+  const end = Math.min(start + state.pageSize, total);
+  const slice = filtered.slice(start, end);
+
+  $("#catalog-tbody").innerHTML = slice.map(c => {
+    const isSel = state.selectedIds.has(c.id);
+    const seatPct = (c.seats / c.total) * 100;
+    const seatColor = seatPct < 20 ? "chip-red" : seatPct < 50 ? "chip-amber" : "chip-green";
+    const dayStr = c.days.join("");
+    return `
+      <tr class="row-clickable ${isSel ? 'row-selected' : ''}" data-id="${c.id}">
+        <td class="px-4 py-3">
+          <div class="font-semibold text-slate-900">${c.code}</div>
+          <div class="text-xs text-slate-500">${c.dept}</div>
+        </td>
+        <td class="px-4 py-3 text-slate-700">${c.title}</td>
+        <td class="px-4 py-3 text-slate-700">${c.instructor}</td>
+        <td class="px-4 py-3 text-slate-600 text-xs">
+          <div class="font-mono">${dayStr} ${minutesToTime(c.start)}–${minutesToTime(c.end)}</div>
+        </td>
+        <td class="px-4 py-3 text-center font-semibold text-slate-700">${c.credits}</td>
+        <td class="px-4 py-3 text-center">
+          <span class="chip ${seatColor}">${c.seats}/${c.total}</span>
+        </td>
+        <td class="px-4 py-3 text-center">
+          <span class="font-semibold text-amber-500">${c.rating} ★</span>
+        </td>
+        <td class="px-4 py-3 text-center">
+          <button class="btn ${isSel ? 'btn-danger' : 'btn-primary'} !py-1 !px-3 text-xs" data-toggle="${c.id}">
+            ${isSel ? 'Remove' : 'Add'}
+          </button>
+        </td>
+      </tr>`;
+  }).join("");
+
+  $("#page-start").textContent = total === 0 ? 0 : start + 1;
+  $("#page-end").textContent = end;
+  $("#page-total").textContent = total;
+  $("#catalog-selected-count").textContent = state.selectedIds.size;
+
+  // pagination buttons
+  const pn = $("#page-numbers");
+  pn.innerHTML = "";
+  const maxBtns = 5;
+  let s = Math.max(1, state.page - 2);
+  let e2 = Math.min(pages, s + maxBtns - 1);
+  s = Math.max(1, e2 - maxBtns + 1);
+  for (let i = s; i <= e2; i++) {
+    const b = document.createElement("button");
+    b.className = `btn ${i === state.page ? 'btn-primary' : 'btn-secondary'} !py-1 !px-2.5 text-xs`;
+    b.textContent = i;
+    b.addEventListener("click", () => { state.page = i; renderCatalog(); });
+    pn.appendChild(b);
+  }
+  $("#page-prev").disabled = state.page === 1;
+  $("#page-next").disabled = state.page === pages;
+
+  // row click → open modal; button click → toggle
+  $$("#catalog-tbody tr").forEach(r => {
+    r.addEventListener("click", (e) => {
+      if (e.target.closest("[data-toggle]")) return;
+      openCourseModal(+r.dataset.id);
+    });
+  });
+  $$("[data-toggle]").forEach(b => {
+    b.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleCourse(+b.dataset.toggle);
+    });
+  });
+}
+
+$("#page-prev").addEventListener("click", () => { if (state.page > 1) { state.page--; renderCatalog(); }});
+$("#page-next").addEventListener("click", () => { state.page++; renderCatalog(); });
+
+function toggleCourse(id) {
+  if (state.selectedIds.has(id)) state.selectedIds.delete(id);
+  else state.selectedIds.add(id);
+  persist();
+  renderCatalog();
+  renderBuilder();
+}
+
+/* ============================================================
+   COURSE MODAL
+   ============================================================ */
+function openCourseModal(id) {
+  const c = COURSES.find(x => x.id === id);
+  if (!c) return;
+  $("#modal-code").textContent = c.code;
+  $("#modal-title").textContent = c.title;
+  $("#modal-instructor").textContent = c.instructor;
+  $("#modal-credits").textContent = c.credits;
+  $("#modal-seats").textContent = `${c.seats}/${c.total}`;
+  $("#modal-seats").className = `font-bold text-lg ${(c.seats/c.total)<0.2?'text-red-600':(c.seats/c.total)<0.5?'text-amber-600':'text-green-600'}`;
+  $("#modal-rating").textContent = `${c.rating} ★`;
+  $("#modal-schedule").textContent = `${c.days.join("")} ${minutesToTime(c.start)}–${minutesToTime(c.end)}`;
+  $("#modal-desc").textContent = c.desc;
+  $("#modal-add").textContent = state.selectedIds.has(id) ? "Remove from Schedule" : "Add to Schedule";
+  $("#modal-add").onclick = () => { toggleCourse(id); $("#course-modal").classList.add("hidden"); $("#course-modal").classList.remove("flex"); showToast(state.selectedIds.has(id) ? `${c.code} added` : `${c.code} removed`); };
+  $("#course-modal").classList.remove("hidden");
+  $("#course-modal").classList.add("flex");
+}
+$("#modal-close").addEventListener("click", () => { $("#course-modal").classList.add("hidden"); $("#course-modal").classList.remove("flex"); });
+$("#course-modal").addEventListener("click", (e) => { if (e.target.id === "course-modal") { $("#course-modal").classList.add("hidden"); $("#course-modal").classList.remove("flex"); }});
+
+/* ============================================================
+   BUILDER
+   ============================================================ */
+$("#b-min").addEventListener("input", (e) => {
+  state.builder.minCr = +e.target.value;
+  if (state.builder.minCr > state.builder.maxCr) { state.builder.maxCr = state.builder.minCr; $("#b-max").value = state.builder.maxCr; }
+  $("#b-min-label").textContent = state.builder.minCr;
+  $("#b-max-label").textContent = state.builder.maxCr;
+});
+$("#b-max").addEventListener("input", (e) => {
+  state.builder.maxCr = +e.target.value;
+  if (state.builder.maxCr < state.builder.minCr) { state.builder.minCr = state.builder.maxCr; $("#b-min").value = state.builder.minCr; }
+  $("#b-min-label").textContent = state.builder.minCr;
+  $("#b-max-label").textContent = state.builder.maxCr;
+});
+$$(".day-toggle").forEach(b => b.addEventListener("click", () => {
+  const d = b.dataset.day;
+  if (state.builder.excludedDays.has(d)) {
+    state.builder.excludedDays.delete(d);
+    b.classList.remove("chip-slate"); b.classList.add("chip-active");
+  } else {
+    state.builder.excludedDays.add(d);
+    b.classList.remove("chip-active"); b.classList.add("chip-slate");
+  }
+}));
+$("#clear-builder").addEventListener("click", () => {
+  state.selectedIds.clear();
+  state.builder.schedules = [];
+  state.builder.activeIdx = 0;
+  persist();
+  renderCatalog();
+  renderBuilder();
+  showToast("Builder cleared");
+});
+$("#generate-btn").addEventListener("click", generateSchedules);
+$("#generate-btn-2").addEventListener("click", generateSchedules);
+
+function renderBuilder() {
+  // selected list
+  const sel = COURSES.filter(c => state.selectedIds.has(c.id));
+  $("#builder-count").textContent = `${sel.length} course${sel.length === 1 ? '' : 's'}`;
+  $("#catalog-selected-count").textContent = state.selectedIds.size;
+
+  if (sel.length === 0) {
+    $("#selected-list").innerHTML = `<p class="text-sm text-slate-400 italic">Click rows in the catalog to add courses here.</p>`;
+  } else {
+    $("#selected-list").innerHTML = sel.map(c => `
+      <div class="flex items-center justify-between p-2 rounded-lg border border-slate-200">
+        <div class="flex items-center gap-2 min-w-0">
+          <div class="w-1.5 h-8 rounded" style="background:${c.color}"></div>
+          <div class="min-w-0">
+            <div class="text-sm font-semibold text-slate-900 truncate">${c.code}</div>
+            <div class="text-xs text-slate-500 truncate">${c.days.join("")} ${minutesToTime(c.start)} • ${c.credits}cr</div>
+          </div>
+        </div>
+        <button class="btn btn-ghost !p-1 text-slate-400 hover:text-red-500" data-remove="${c.id}">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+    `).join("");
+    $$("[data-remove]").forEach(b => b.addEventListener("click", () => toggleCourse(+b.dataset.remove)));
+  }
+
+  renderTimetable();
+  renderRanked();
+}
+
+function renderTimetable() {
+  const schedules = state.builder.schedules;
+  const idx = state.builder.activeIdx;
+  const active = schedules[idx];
+  const courses = active ? active.courses : COURSES.filter(c => state.selectedIds.has(c.id));
+
+  $("#tt-position").textContent = `${schedules.length === 0 ? 0 : idx + 1} / ${schedules.length || 1}`;
+  $("#tt-schedule-name").textContent = active ? active.name : "No schedule";
+  $("#tt-prev").disabled = idx === 0;
+  $("#tt-next").disabled = idx >= schedules.length - 1;
+
+  // build grid
+  const days = ["M","T","W","R","F"];
+  const dayNames = ["Mon","Tue","Wed","Thu","Fri"];
+  const startMin = 8 * 60;
+  const endMin = 18 * 60;
+  const rowH = 24;
+
+  let html = `<div class="tt-header"></div>`;
+  dayNames.forEach(d => html += `<div class="tt-header">${d}</div>`);
+
+  for (let m = startMin; m < endMin; m += 30) {
+    html += `<div class="tt-time" style="height:${rowH}px">${minutesToTime(m)}</div>`;
+    days.forEach(d => {
+      html += `<div class="tt-cell" style="height:${rowH}px" data-day="${d}" data-time="${m}"></div>`;
+    });
+  }
+
+  $("#timetable").innerHTML = html;
+
+  // place blocks
+  courses.forEach(c => {
+    c.days.forEach(d => {
+      const days = ["M","T","W","R","F"];
+      const col = days.indexOf(d) + 2; // +2 (1=time col)
+      const topPx = ((c.start - startMin) / 30) * rowH;
+      const heightPx = ((c.end - c.start) / 30) * rowH;
+      const block = document.createElement("div");
+      block.className = "tt-block";
+      block.style.top = topPx + "px";
+      block.style.height = heightPx + "px";
+      block.style.gridColumn = `${col} / span 1`;
+      block.style.gridRow = `${(c.start - startMin) / 30 + 2} / span ${(c.end - c.start) / 30}`;
+      block.style.background = c.color;
+      block.innerHTML = `<div>${c.code.split(" ")[1]}</div><div style="font-size:9px;opacity:0.85">${c.instructor.split(" ")[1] || c.instructor}</div>`;
+      block.title = `${c.code} — ${c.title}\n${c.instructor}\n${minutesToTime(c.start)}–${minutesToTime(c.end)}`;
+      block.addEventListener("click", () => openCourseModal(c.id));
+
+      // place absolutely: switch to relative container
+      const cells = $$(`#timetable .tt-cell[data-day="${d}"]`);
+      // find a cell whose top matches
+      const targetCell = cells[(c.start - startMin) / 30];
+      if (targetCell) {
+        targetCell.style.position = "relative";
+        targetCell.appendChild(block);
+      }
+    });
+  });
+}
+
+$("#tt-prev").addEventListener("click", () => { if (state.builder.activeIdx > 0) { state.builder.activeIdx--; renderTimetable(); }});
+$("#tt-next").addEventListener("click", () => { if (state.builder.activeIdx < state.builder.schedules.length - 1) { state.builder.activeIdx++; renderTimetable(); }});
+
+function renderRanked() {
+  const list = state.builder.schedules;
+  if (list.length === 0) {
+    $("#ranked-list").innerHTML = `<p class="text-sm text-slate-400 italic">No schedules generated yet. Click "Find Best Schedules".</p>`;
+    $("#stat-count").textContent = "0";
+    $("#stat-best").textContent = "—";
+    $("#stat-credits").textContent = "—";
+    $("#stat-days").textContent = "—";
+    $("#stat-blocks").textContent = "—";
+    return;
+  }
+  $("#ranked-list").innerHTML = list.map((s, i) => {
+    const rankClass = i === 0 ? "rank-1" : i === 1 ? "rank-2" : i === 2 ? "rank-3" : "bg-slate-200 text-slate-600";
+    const credits = s.courses.reduce((sum, c) => sum + c.credits, 0);
+    return `
+      <div class="flex items-center gap-3 p-3 rounded-lg border ${i === state.builder.activeIdx ? 'border-blue-500 bg-blue-50' : 'border-slate-200 hover:border-slate-300'} cursor-pointer" data-rank="${i}">
+        <div class="rank-badge ${rankClass}">${i+1}</div>
+        <div class="flex-1 min-w-0">
+          <div class="font-semibold text-slate-900 text-sm">${s.name}</div>
+          <div class="text-xs text-slate-500">${s.courses.length} courses • ${credits} credits • ${s.courses.map(c => c.code.split(" ")[1]).join(", ")}</div>
+        </div>
+        <div class="text-right">
+          <div class="text-xs text-slate-500">Score</div>
+          <div class="font-bold ${s.score >= 80 ? 'text-green-600' : s.score >= 60 ? 'text-amber-600' : 'text-red-600'}">${s.score}</div>
+        </div>
+        <button class="btn btn-ghost !p-1 text-slate-500 hover:text-blue-600" data-save="${i}" title="Save schedule">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+        </button>
+      </div>
+    `;
+  }).join("");
+
+  $$("[data-rank]").forEach(el => el.addEventListener("click", (e) => {
+    if (e.target.closest("[data-save]")) return;
+    state.builder.activeIdx = +el.dataset.rank;
+    renderTimetable();
+    renderRanked();
+  }));
+  $$("[data-save]").forEach(b => b.addEventListener("click", (e) => {
+    e.stopPropagation();
+    saveSchedule(+b.dataset.save);
+  }));
+
+  // update stats from active
+  const active = list[state.builder.activeIdx];
+  if (active) {
+    const credits = active.courses.reduce((s, c) => s + c.credits, 0);
+    const days = new Set();
+    active.courses.forEach(c => c.days.forEach(d => days.add(d)));
+    const blocks = computeFreeBlocks(active.courses);
+    $("#stat-count").textContent = list.length;
+    $("#stat-best").textContent = list[0].score;
+    $("#stat-credits").textContent = credits;
+    $("#stat-days").textContent = `${days.size}/5`;
+    $("#stat-blocks").textContent = blocks;
+  }
+}
+
+function computeFreeBlocks(courses) {
+  const days = ["M","T","W","R","F"];
+  let total = 0;
+  days.forEach(d => {
+    const occupied = courses.filter(c => c.days.includes(d)).flatMap(c => {
+      const slots = [];
+      for (let m = c.start; m < c.end; m += 30) slots.push(m);
+      return slots;
+    });
+    const unique = new Set(occupied);
+    total += (10 * 2) - unique.size; // 8am-6pm = 20 half-hour slots
+  });
+  return total;
+}
+
+function scoreSchedule(courses) {
+  let score = 100;
+  // penalize tight days
+  const days = ["M","T","W","R","F"];
+  const usedDays = new Set();
+  courses.forEach(c => c.days.forEach(d => usedDays.add(d)));
+  // reward 3-4 day schedules
+  if (usedDays.size === 3 || usedDays.size === 4) score += 10;
+  if (usedDays.size === 5) score -= 10;
+  // reward morning balance
+  const morning = courses.filter(c => c.start < 720).length;
+  const afternoon = courses.filter(c => c.start >= 720).length;
+  if (Math.abs(morning - afternoon) <= 1) score += 5;
+  // penalize high-credit overload
+  const cr = courses.reduce((s, c) => s + c.credits, 0);
+  if (cr > 20) score -= (cr - 20) * 4;
+  // reward highly rated courses
+  const avgRating = courses.reduce((s, c) => s + c.rating, 0) / courses.length;
+  score += (avgRating - 4) * 10;
+  // free blocks
+  const blocks = computeFreeBlocks(courses);
+  score += Math.min(20, blocks);
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+/* ============================================================
+   GENERATE SCHEDULES
+   ============================================================ */
+function generateSchedules() {
+  const sel = COURSES.filter(c => state.selectedIds.has(c.id));
+  if (sel.length === 0) { showToast("Add at least one course first"); switchTab("catalog"); return; }
+
+  // For each course, we have alternatives only if same code with different instructor/time
+  // Group by code, expand to combinations
+  const groups = {};
+  sel.forEach(c => {
+    if (!groups[c.code]) groups[c.code] = [];
+    groups[c.code].push(c);
+  });
+
+  // build combinations
+  const keys = Object.keys(groups);
+  let combos = [[]];
+  keys.forEach(k => {
+    const newCombos = [];
+    combos.forEach(combo => {
+      groups[k].forEach(alt => {
+        newCombos.push([...combo, alt]);
+      });
+    });
+    combos = newCombos;
+  });
+
+  // filter: no time conflict, exclude days respected, credit range ok
+  const valid = combos.filter(combo => {
+    // credit range
+    const cr = combo.reduce((s, c) => s + c.credits, 0);
+    if (cr < state.builder.minCr || cr > state.builder.maxCr) return false;
+    // excluded days
+    for (const c of combo) {
+      for (const d of c.days) {
+        if (state.builder.excludedDays.has(d)) return false;
+      }
+    }
+    // conflict
+    for (let i = 0; i < combo.length; i++) {
+      for (let j = i+1; j < combo.length; j++) {
+        if (conflicts(combo[i], combo[j])) return false;
+      }
+    }
+    return true;
+  });
+
+  if (valid.length === 0) {
+    showToast("No valid schedules with these constraints");
+    state.builder.schedules = [];
+    state.builder.activeIdx = 0;
+    renderRanked();
+    return;
+  }
+
+  // score and sort
+  const scored = valid.map((combo, i) => ({
+    name: `Schedule #${i+1}`,
+    courses: combo,
+    score: scoreSchedule(combo)
+  })).sort((a, b) => b.score - a.score).map((s, i) => ({ ...s, name: `Schedule #${i+1}` }));
+
+  state.builder.schedules = scored.slice(0, 20);
+  state.builder.activeIdx = 0;
+  renderTimetable();
+  renderRanked();
+  showToast(`Found ${state.builder.schedules.length} valid schedule${state.builder.schedules.length===1?'':'s'}`);
+}
+
+function conflicts(a, b) {
+  // same day overlap?
+  for (const d of a.days) {
+    if (b.days.includes(d)) {
+      if (a.start < b.end && b.start < a.end) return true;
+    }
+  }
+  return false;
+}
+
+function saveSchedule(idx) {
+  const s = state.builder.schedules[idx];
+  if (!s) return;
+  const saveObj = {
+    id: Date.now(),
+    name: s.name,
+    score: s.score,
+    courses: s.courses.map(c => c.id),
+    createdAt: new Date().toISOString()
+  };
+  state.saved.unshift(saveObj);
+  persist();
+  updateSavedCount();
+  showToast(`Saved ${s.name}!`);
+  renderSaved();
+}
+
+function updateSavedCount() {
+  $("#saved-count").textContent = `(${state.saved.length})`;
+}
+
+/* ============================================================
+   SAVED
+   ============================================================ */
+function renderSaved() {
+  if (state.saved.length === 0) {
+    $("#saved-grid").innerHTML = `<p class="text-sm text-slate-400 italic col-span-full">No saved schedules yet. Save one from the Builder.</p>`;
+    return;
+  }
+  $("#saved-grid").innerHTML = state.saved.map(s => {
+    const courses = COURSES.filter(c => s.courses.includes(c.id));
+    const credits = courses.reduce((sum, c) => sum + c.credits, 0);
+    return `
+      <div class="card p-4">
+        <div class="flex items-start justify-between mb-3">
+          <div>
+            <div class="text-xs text-slate-500 uppercase tracking-wider">${new Date(s.createdAt).toLocaleDateString()}</div>
+            <div class="font-bold text-slate-900 mt-0.5">${s.name}</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs text-slate-500">Score</div>
+            <div class="font-bold text-lg ${s.score >= 80 ? 'text-green-600' : s.score >= 60 ? 'text-amber-600' : 'text-red-600'}">${s.score}</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-1.5 mb-3">
+          ${courses.map(c => `<span class="chip" style="background:${c.color}20;color:${c.color}">${c.code}</span>`).join("")}
+        </div>
+        <div class="text-xs text-slate-500 mb-4">${courses.length} courses • ${credits} credits</div>
+        <div class="flex gap-2">
+          <button class="btn btn-primary flex-1 !py-1.5 text-xs" data-load="${s.id}">Load</button>
+          <button class="btn btn-danger !py-1.5 text-xs" data-delete="${s.id}">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  $$("[data-load]").forEach(b => b.addEventListener("click", () => loadSaved(+b.dataset.load)));
+  $$("[data-delete]").forEach(b => b.addEventListener("click", () => {
+    state.saved = state.saved.filter(x => x.id !== +b.dataset.delete);
+    persist();
+    updateSavedCount();
+    renderSaved();
+    showToast("Schedule deleted");
+  }));
+}
+
+function loadSaved(id) {
+  const s = state.saved.find(x => x.id === id);
+  if (!s) return;
+  state.selectedIds = new Set(s.courses);
+  persist();
+  switchTab("builder");
+  state.builder.schedules = [{
+    name: s.name,
+    courses: COURSES.filter(c => s.courses.includes(c.id)),
+    score: s.score
+  }];
+  state.builder.activeIdx = 0;
+  renderBuilder();
+  showToast(`Loaded ${s.name}`);
+}
+
+/* ============================================================
+   INIT
+   ============================================================ */
+renderCatalog();
+updateSavedCount();
+</script>
+</body>
+</html>

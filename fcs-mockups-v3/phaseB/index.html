@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FCS V3 — Phase B: Intelligence</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --brand: #2563eb;
+    --brand-dark: #1d4ed8;
+    --brand-light: #dbeafe;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --red: #ef4444;
+    --slate-50: #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+  }
+  * { font-family: 'Inter', system-ui, sans-serif; }
+  body { background: var(--slate-50); color: var(--slate-900); }
+
+  .tab-btn { transition: all 0.15s ease; border-bottom: 2px solid transparent; }
+  .tab-btn.active { color: var(--brand); border-color: var(--brand); }
+  .tab-btn:hover:not(.active) { color: var(--slate-700); }
+
+  .chip { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; }
+  .chip-blue { background: var(--brand-light); color: var(--brand-dark); }
+  .chip-green { background: #d1fae5; color: #065f46; }
+  .chip-amber { background: #fef3c7; color: #92400e; }
+  .chip-red { background: #fee2e2; color: #991b1b; }
+  .chip-slate { background: var(--slate-100); color: var(--slate-700); }
+  .chip-active { background: var(--brand); color: white; }
+  .chip-purple { background: #ede9fe; color: #5b21b6; }
+
+  .card { background: white; border: 1px solid var(--slate-200); border-radius: 12px; transition: all 0.15s ease; }
+  .card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .card-flush { padding: 0; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-weight: 500; font-size: 14px; transition: all 0.15s ease; cursor: pointer; border: 1px solid transparent; }
+  .btn-primary { background: var(--brand); color: white; }
+  .btn-primary:hover { background: var(--brand-dark); }
+  .btn-secondary { background: white; color: var(--slate-700); border-color: var(--slate-300); }
+  .btn-secondary:hover { background: var(--slate-50); }
+  .btn-ghost { background: transparent; color: var(--slate-600); }
+  .btn-ghost:hover { background: var(--slate-100); color: var(--slate-900); }
+  .btn-danger { background: white; color: var(--red); border-color: var(--red); }
+  .btn-danger:hover { background: #fef2f2; }
+
+  .stat-tile { background: white; border: 1px solid var(--slate-200); border-radius: 12px; padding: 14px; }
+  .stat-tile .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--slate-500); font-weight: 600; }
+  .stat-tile .value { font-size: 24px; font-weight: 700; color: var(--slate-900); margin-top: 2px; }
+  .stat-tile .sub { font-size: 12px; color: var(--slate-500); margin-top: 2px; }
+
+  .gauge { width: 160px; height: 80px; position: relative; overflow: hidden; }
+  .gauge svg { width: 100%; height: 100%; }
+  .gauge-center { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center; }
+
+  .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 140px; padding: 8px 0; }
+  .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .bar { width: 100%; background: var(--brand); border-radius: 4px 4px 0 0; transition: all 0.2s; min-height: 2px; }
+  .bar:hover { opacity: 0.85; }
+  .bar-label { font-size: 11px; color: var(--slate-600); font-weight: 500; }
+
+  .line-chart { position: relative; height: 140px; }
+  .line-chart svg { width: 100%; height: 100%; }
+
+  .star { color: #fbbf24; }
+
+  .spark { display: inline-block; vertical-align: middle; }
+  .spark-bar { fill: var(--brand); }
+
+  .instructor-avatar { width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #2563eb, #7c3aed); color: white; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 20px; flex-shrink: 0; }
+  .instructor-avatar.lg { width: 80px; height: 80px; font-size: 28px; }
+
+  .sub-tab { padding: 6px 12px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; color: var(--slate-600); }
+  .sub-tab.active { background: var(--brand-light); color: var(--brand-dark); }
+  .sub-tab:hover:not(.active) { background: var(--slate-100); }
+
+  .review { padding: 12px; border-bottom: 1px solid var(--slate-100); }
+  .review:last-child { border-bottom: none; }
+
+  .score-ring { position: relative; width: 120px; height: 120px; }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  .risk-flag { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-radius: 8px; border-left: 3px solid; }
+  .risk-low { background: #f0fdf4; border-color: var(--green); }
+  .risk-med { background: #fffbeb; border-color: var(--amber); }
+  .risk-high { background: #fef2f2; border-color: var(--red); }
+
+  .modal-backdrop { background: rgba(15,23,42,0.5); backdrop-filter: blur(2px); }
+  .modal { background: white; border-radius: 16px; max-width: 720px; width: 90%; max-height: 88vh; overflow-y: auto; }
+
+  .toast { position: fixed; bottom: 24px; right: 24px; padding: 12px 20px; background: var(--slate-900); color: white; border-radius: 10px; font-size: 14px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); z-index: 100; opacity: 0; transform: translateY(20px); transition: all 0.3s; }
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background: var(--slate-300); border-radius: 999px; }
+</style>
+</head>
+<body class="min-h-screen">
+
+<!-- HEADER -->
+<header class="bg-white border-b border-slate-200 sticky top-0 z-30">
+  <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-lg bg-blue-600 flex items-center justify-center text-white font-bold">F</div>
+      <div>
+        <div class="font-bold text-slate-900 leading-tight">FCS V3</div>
+        <div class="text-xs text-slate-500">Intelligence Phase</div>
+      </div>
+    </div>
+    <nav class="flex gap-1 overflow-x-auto">
+      <button class="tab-btn active px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="instructor">Instructor Profile</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="compare">Compare</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="course-detail">Course Detail</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="will-it-fill">Will It Fill?</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="health">Health Score</button>
+      <button class="tab-btn px-4 py-2 text-sm font-medium whitespace-nowrap" data-tab="stress">Stress Test</button>
+    </nav>
+    <div class="flex items-center gap-2">
+      <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 text-white flex items-center justify-center text-sm font-semibold">RB</div>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-6">
+
+  <!-- ============================================================
+       INSTRUCTOR PROFILE
+       ============================================================ -->
+  <section id="view-instructor" class="view">
+    <div class="mb-4">
+      <button class="btn btn-ghost text-sm" data-go="compare">→ Jump to Compare</button>
+    </div>
+
+    <!-- Header card -->
+    <div class="card p-6 mb-4">
+      <div class="flex items-start gap-5">
+        <div class="instructor-avatar lg">SS</div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <h1 class="text-2xl font-bold text-slate-900">Dr. Sarah Smith</h1>
+            <span class="chip chip-blue">CS Department</span>
+            <span class="chip chip-slate">12 years teaching</span>
+          </div>
+          <p class="text-sm text-slate-600">Professor of Computer Science • Office: Tech Building 405 • smith@university.edu</p>
+          <div class="flex items-center gap-4 mt-3 text-sm">
+            <div><span class="star">★</span> <span class="font-semibold">4.5</span> <span class="text-slate-500">(238 reviews)</span></div>
+            <div class="text-slate-300">|</div>
+            <div><span class="text-slate-500">Effectiveness:</span> <span class="font-semibold text-green-600">87/100</span></div>
+            <div class="text-slate-300">|</div>
+            <div><span class="text-slate-500">Pass rate:</span> <span class="font-semibold">94%</span></div>
+          </div>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            <span class="chip chip-purple">Project-based</span>
+            <span class="chip chip-purple">Clear rubrics</span>
+            <span class="chip chip-purple">Tough grader</span>
+            <span class="chip chip-purple">Office hours daily</span>
+            <span class="chip chip-purple">Cold calling</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2">
+          <button class="btn btn-primary">Add to Compare</button>
+          <button class="btn btn-secondary">View Courses</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Effectiveness grid -->
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-4">
+      <div class="stat-tile">
+        <div class="label">Effectiveness</div>
+        <div class="value text-green-600">87</div>
+        <div class="sub">Top 15% of dept</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Quality</div>
+        <div class="value">4.5<span class="text-sm text-slate-400">/5</span></div>
+        <div class="sub">238 student ratings</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Difficulty</div>
+        <div class="value text-amber-600">3.7<span class="text-sm text-slate-400">/5</span></div>
+        <div class="sub">Above average</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Pass Rate</div>
+        <div class="value">94%</div>
+        <div class="sub">vs 87% dept avg</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Avg Grade</div>
+        <div class="value">B+</div>
+        <div class="sub">GPA 3.3</div>
+      </div>
+    </div>
+
+    <!-- Charts row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Grade Distribution</h3>
+        <p class="text-xs text-slate-500 mb-3">Across 1,247 students, last 5 semesters</p>
+        <div class="bar-chart">
+          <div class="bar-col">
+            <div class="bar" style="height:8%; background:#94a3b8" title="A"></div>
+            <div class="bar-label">A</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:24%; background:#10b981" title="A-"></div>
+            <div class="bar-label">A-</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:32%; background:#10b981" title="B+"></div>
+            <div class="bar-label">B+</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:48%; background:#2563eb" title="B"></div>
+            <div class="bar-label">B</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:38%; background:#f59e0b" title="B-"></div>
+            <div class="bar-label">B-</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:22%; background:#f59e0b" title="C+"></div>
+            <div class="bar-label">C+</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:12%; background:#ef4444" title="C"></div>
+            <div class="bar-label">C</div>
+          </div>
+          <div class="bar-col">
+            <div class="bar" style="height:6%; background:#ef4444" title="D/F"></div>
+            <div class="bar-label">D/F</div>
+          </div>
+        </div>
+        <div class="mt-3 flex items-center gap-3 text-xs">
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-green-500"></span> Above B+</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-blue-500"></span> B</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-500"></span> B- to C+</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-red-500"></span> C and below</div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Difficulty vs Quality Trend</h3>
+        <p class="text-xs text-slate-500 mb-3">5-semester rolling average</p>
+        <div class="line-chart">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="grad1" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%" stop-color="#2563eb" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#2563eb" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <!-- grid -->
+            <line x1="40" y1="20" x2="400" y2="20" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="60" x2="400" y2="60" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="100" x2="400" y2="100" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <!-- quality line (top) -->
+            <polyline points="40,55 130,45 220,40 310,30 400,25" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+            <polygon points="40,55 130,45 220,40 310,30 400,25 400,20 40,20" fill="url(#grad1)"/>
+            <!-- difficulty line (bottom) -->
+            <polyline points="40,85 130,90 220,95 310,85 400,90" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,3"/>
+            <!-- labels -->
+            <text x="40" y="115" font-size="10" fill="#64748b">Sp24</text>
+            <text x="130" y="115" font-size="10" fill="#64748b">Fa24</text>
+            <text x="220" y="115" font-size="10" fill="#64748b">Sp25</text>
+            <text x="310" y="115" font-size="10" fill="#64748b">Fa25</text>
+            <text x="385" y="115" font-size="10" fill="#64748b">Sp26*</text>
+            <!-- dots -->
+            <circle cx="40" cy="55" r="3" fill="#2563eb"/>
+            <circle cx="130" cy="45" r="3" fill="#2563eb"/>
+            <circle cx="220" cy="40" r="3" fill="#2563eb"/>
+            <circle cx="310" cy="30" r="3" fill="#2563eb"/>
+            <circle cx="400" cy="25" r="3" fill="#2563eb"/>
+            <circle cx="40" cy="85" r="3" fill="#f59e0b"/>
+            <circle cx="130" cy="90" r="3" fill="#f59e0b"/>
+            <circle cx="220" cy="95" r="3" fill="#f59e0b"/>
+            <circle cx="310" cy="85" r="3" fill="#f59e0b"/>
+            <circle cx="400" cy="90" r="3" fill="#f59e0b"/>
+          </svg>
+        </div>
+        <div class="flex items-center gap-4 text-xs mt-2">
+          <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-blue-600"></span> Quality (4.0→4.5)</div>
+          <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-amber-500" style="border-top:2px dashed"></span> Difficulty (3.5→3.7)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Office hours + course history + reviews -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+      <!-- Office hours -->
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3 flex items-center gap-2">
+          <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Office Hours
+        </h3>
+        <div class="space-y-2 text-sm">
+          <div class="flex justify-between"><span class="text-slate-600">Monday</span><span class="font-semibold">2:00 – 4:00 PM</span></div>
+          <div class="flex justify-between"><span class="text-slate-600">Wednesday</span><span class="font-semibold">10:00 AM – 12:00 PM</span></div>
+          <div class="flex justify-between"><span class="text-slate-600">Thursday</span><span class="font-semibold">3:00 – 5:00 PM</span></div>
+          <div class="flex justify-between"><span class="text-slate-600">Friday</span><span class="font-semibold text-amber-600">By appt only</span></div>
+        </div>
+        <button class="btn btn-secondary w-full mt-3 !py-1.5 text-xs">Book a slot</button>
+      </div>
+
+      <!-- Course history -->
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Courses Taught</h3>
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-sm p-2 rounded hover:bg-slate-50">
+            <div>
+              <div class="font-semibold text-slate-900">CS 201 — Data Structures</div>
+              <div class="text-xs text-slate-500">4 sections/sem • 200 students</div>
+            </div>
+            <span class="chip chip-green">4.5 ★</span>
+          </div>
+          <div class="flex items-center justify-between text-sm p-2 rounded hover:bg-slate-50">
+            <div>
+              <div class="font-semibold text-slate-900">CS 301 — Algorithms</div>
+              <div class="text-xs text-slate-500">2 sections/sem • 80 students</div>
+            </div>
+            <span class="chip chip-green">4.7 ★</span>
+          </div>
+          <div class="flex items-center justify-between text-sm p-2 rounded hover:bg-slate-50">
+            <div>
+              <div class="font-semibold text-slate-900">CS 401 — Adv Algorithms</div>
+              <div class="text-xs text-slate-500">1 section/sem • 30 students</div>
+            </div>
+            <span class="chip chip-amber">4.2 ★</span>
+          </div>
+          <div class="flex items-center justify-between text-sm p-2 rounded hover:bg-slate-50">
+            <div>
+              <div class="font-semibold text-slate-900">CS 510 — Grad Theory</div>
+              <div class="text-xs text-slate-500">1 section/sem • 15 students</div>
+            </div>
+            <span class="chip chip-blue">4.8 ★</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick stats side -->
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">At a Glance</h3>
+        <div class="space-y-3 text-sm">
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">Clarity of explanations</span><span class="font-semibold">4.6/5</span></div>
+            <div class="h-1.5 bg-slate-100 rounded"><div class="h-1.5 bg-blue-500 rounded" style="width:92%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">Responsiveness to questions</span><span class="font-semibold">4.3/5</span></div>
+            <div class="h-1.5 bg-slate-100 rounded"><div class="h-1.5 bg-blue-500 rounded" style="width:86%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">Fairness in grading</span><span class="font-semibold">4.1/5</span></div>
+            <div class="h-1.5 bg-slate-100 rounded"><div class="h-1.5 bg-blue-500 rounded" style="width:82%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">Engagement in class</span><span class="font-semibold">4.4/5</span></div>
+            <div class="h-1.5 bg-slate-100 rounded"><div class="h-1.5 bg-blue-500 rounded" style="width:88%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-xs mb-1"><span class="text-slate-500">Workload reasonableness</span><span class="font-semibold">3.6/5</span></div>
+            <div class="h-1.5 bg-slate-100 rounded"><div class="h-1.5 bg-amber-500 rounded" style="width:72%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="card p-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-semibold text-slate-900">Student Reviews</h3>
+        <div class="flex gap-1">
+          <span class="sub-tab active">All (238)</span>
+          <span class="sub-tab">5★ (89)</span>
+          <span class="sub-tab">4★ (102)</span>
+          <span class="sub-tab">3★ (32)</span>
+          <span class="sub-tab">≤2★ (15)</span>
+        </div>
+      </div>
+
+      <div class="divide-y divide-slate-100">
+        <div class="review">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-purple-400 text-white flex items-center justify-center text-xs font-semibold">AK</div>
+              <div>
+                <div class="text-sm font-semibold">Anonymous • CS 201, Sp25</div>
+                <div class="text-xs text-slate-500">2 weeks ago</div>
+              </div>
+            </div>
+            <div class="text-sm"><span class="star">★★★★★</span></div>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">Dr. Smith is amazing. Her lectures are super clear and she always ties concepts back to real-world applications. The projects were tough but I learned more in this class than any other. Office hours saved me before the final.</p>
+          <div class="flex items-center gap-2 mt-2 text-xs">
+            <span class="chip chip-green">Helpful</span>
+            <span class="chip chip-blue">Clear</span>
+            <span class="chip chip-purple">Tough but fair</span>
+          </div>
+        </div>
+
+        <div class="review">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-pink-400 text-white flex items-center justify-center text-xs font-semibold">MJ</div>
+              <div>
+                <div class="text-sm font-semibold">Anonymous • CS 301, Fa24</div>
+                <div class="text-xs text-slate-500">3 months ago</div>
+              </div>
+            </div>
+            <div class="text-sm"><span class="star">★★★★</span><span class="star opacity-30">★</span></div>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">Content is great. Dr. Smith knows algorithms inside and out. Cold calling is real — be prepared. I wish homework had more partial credit options; one wrong line on a proof and you lose 20 points.</p>
+          <div class="flex items-center gap-2 mt-2 text-xs">
+            <span class="chip chip-amber">Cold calling</span>
+            <span class="chip chip-red">Strict grading</span>
+          </div>
+        </div>
+
+        <div class="review">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-teal-400 text-white flex items-center justify-center text-xs font-semibold">SP</div>
+              <div>
+                <div class="text-sm font-semibold">Anonymous • CS 201, Sp25</div>
+                <div class="text-xs text-slate-500">1 month ago</div>
+              </div>
+            </div>
+            <div class="text-sm"><span class="star">★★★★★</span></div>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">Best CS professor I've had. She genuinely cares about students getting it. The study guides for exams are basically the exam. Highly recommend her section if you can get in.</p>
+          <div class="flex items-center gap-2 mt-2 text-xs">
+            <span class="chip chip-green">Best professor</span>
+            <span class="chip chip-blue">Study guides</span>
+          </div>
+        </div>
+
+        <div class="review">
+          <div class="flex items-center justify-between mb-1">
+            <div class="flex items-center gap-2">
+              <div class="w-8 h-8 rounded-full bg-gradient-to-br from-red-400 to-orange-400 text-white flex items-center justify-center text-xs font-semibold">TL</div>
+              <div>
+                <div class="text-sm font-semibold">Anonymous • CS 301, Fa24</div>
+                <div class="text-xs text-slate-500">4 months ago</div>
+              </div>
+            </div>
+            <div class="text-sm"><span class="star">★★★</span><span class="star opacity-30">★★</span></div>
+          </div>
+          <p class="text-sm text-slate-700 leading-relaxed">She's brilliant but not the most accessible. Got a B- and felt like I worked harder than people in other 301 sections. Rubric was vague on the final project.</p>
+          <div class="flex items-center gap-2 mt-2 text-xs">
+            <span class="chip chip-amber">Vague rubric</span>
+          </div>
+        </div>
+      </div>
+      <div class="pt-3 text-center">
+        <button class="btn btn-secondary text-sm">Load more reviews</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COMPARE
+       ============================================================ -->
+  <section id="view-compare" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Compare Instructors</h1>
+      <p class="text-sm text-slate-500 mt-1">Side-by-side analysis of two instructors teaching the same course.</p>
+    </div>
+
+    <div class="card p-3 mb-4 flex items-center gap-3">
+      <span class="text-sm text-slate-500">Comparing for:</span>
+      <span class="chip chip-blue">CS 201 — Data Structures</span>
+      <div class="flex-1"></div>
+      <button class="btn btn-secondary !py-1 text-xs">Change course</button>
+    </div>
+
+    <!-- Prediction banner -->
+    <div class="card p-4 mb-4 bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <div class="flex-1">
+          <div class="text-sm font-semibold text-slate-900">GPA Prediction (based on your history)</div>
+          <p class="text-sm text-slate-600">You typically earn <span class="font-semibold">B+ in CS courses</span>. With <span class="font-semibold text-blue-600">Dr. Smith</span> you'd average <span class="font-bold text-blue-600">B+ (3.3)</span>, with <span class="font-semibold text-purple-600">Prof. Lee</span> you'd average <span class="font-bold text-purple-600">B (3.0)</span>.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+      <!-- Instructor A -->
+      <div class="card p-5 border-blue-300 border-2 relative">
+        <div class="absolute -top-3 left-4 chip chip-blue">Option A</div>
+        <div class="flex items-center gap-3 mb-4 mt-1">
+          <div class="instructor-avatar">SS</div>
+          <div>
+            <div class="font-bold text-slate-900">Dr. Sarah Smith</div>
+            <div class="text-xs text-slate-500">MWF 9:00–9:50 AM • Tech 305</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Effectiveness</div>
+            <div class="font-bold text-green-600 text-lg">87/100</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Rating</div>
+            <div class="font-bold text-amber-500 text-lg">4.5 ★</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Difficulty</div>
+            <div class="font-bold text-amber-600 text-lg">3.7/5</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Pass Rate</div>
+            <div class="font-bold text-lg">94%</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Avg Grade</div>
+            <div class="font-bold text-lg">B+</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Workload</div>
+            <div class="font-bold text-lg">8.2 hrs/wk</div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-xs text-slate-500 mb-1">Style</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="chip chip-purple">Project-based</span>
+            <span class="chip chip-purple">Clear rubrics</span>
+            <span class="chip chip-purple">Cold calling</span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-xs text-slate-500 mb-1">Your predicted grade</div>
+          <div class="text-2xl font-bold text-blue-600">B+ <span class="text-sm text-slate-500 font-normal">(3.3 GPA)</span></div>
+        </div>
+        <button class="btn btn-primary w-full mt-4">Select Dr. Smith</button>
+      </div>
+
+      <!-- Instructor B -->
+      <div class="card p-5 relative">
+        <div class="absolute -top-3 left-4 chip chip-purple">Option B</div>
+        <div class="flex items-center gap-3 mb-4 mt-1">
+          <div class="instructor-avatar" style="background:linear-gradient(135deg,#7c3aed,#ec4899)">JL</div>
+          <div>
+            <div class="font-bold text-slate-900">Prof. James Lee</div>
+            <div class="text-xs text-slate-500">TR 11:00 AM–1:00 PM • Tech 410</div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3 text-sm">
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Effectiveness</div>
+            <div class="font-bold text-amber-600 text-lg">72/100</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Rating</div>
+            <div class="font-bold text-amber-500 text-lg">4.1 ★</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Difficulty</div>
+            <div class="font-bold text-lg">3.2/5</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Pass Rate</div>
+            <div class="font-bold text-lg">96%</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Avg Grade</div>
+            <div class="font-bold text-lg">B</div>
+          </div>
+          <div class="p-2.5 bg-slate-50 rounded">
+            <div class="text-xs text-slate-500">Workload</div>
+            <div class="font-bold text-lg">6.5 hrs/wk</div>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-xs text-slate-500 mb-1">Style</div>
+          <div class="flex flex-wrap gap-1">
+            <span class="chip chip-purple">Group projects</span>
+            <span class="chip chip-purple">Lenient grading</span>
+            <span class="chip chip-purple">Recorded lectures</span>
+          </div>
+        </div>
+        <div class="mt-3">
+          <div class="text-xs text-slate-500 mb-1">Your predicted grade</div>
+          <div class="text-2xl font-bold text-purple-600">B <span class="text-sm text-slate-500 font-normal">(3.0 GPA)</span></div>
+        </div>
+        <button class="btn btn-secondary w-full mt-4">Select Prof. Lee</button>
+      </div>
+    </div>
+
+    <!-- Side by side grade bars -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Grade Distribution Comparison</h3>
+      <div class="space-y-3">
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span class="font-semibold text-blue-600">Dr. Smith</span><span class="text-slate-500">n=200</span></div>
+          <div class="flex h-6 rounded overflow-hidden text-xs text-white font-semibold">
+            <div style="width:8%;background:#94a3b8" class="flex items-center justify-center">8%</div>
+            <div style="width:24%;background:#10b981" class="flex items-center justify-center">24%</div>
+            <div style="width:32%;background:#10b981" class="flex items-center justify-center">32%</div>
+            <div style="width:20%;background:#2563eb" class="flex items-center justify-center">20%</div>
+            <div style="width:10%;background:#f59e0b" class="flex items-center justify-center">10%</div>
+            <div style="width:6%;background:#ef4444" class="flex items-center justify-center">6%</div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between text-xs mb-1"><span class="font-semibold text-purple-600">Prof. Lee</span><span class="text-slate-500">n=80</span></div>
+          <div class="flex h-6 rounded overflow-hidden text-xs text-white font-semibold">
+            <div style="width:14%;background:#94a3b8" class="flex items-center justify-center">14%</div>
+            <div style="width:18%;background:#10b981" class="flex items-center justify-center">18%</div>
+            <div style="width:28%;background:#10b981" class="flex items-center justify-center">28%</div>
+            <div style="width:24%;background:#2563eb" class="flex items-center justify-center">24%</div>
+            <div style="width:12%;background:#f59e0b" class="flex items-center justify-center">12%</div>
+            <div style="width:4%;background:#ef4444" class="flex items-center justify-center">4%</div>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-3 text-xs pt-1">
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-slate-400"></span> A</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-green-500"></span> A-/B+</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-blue-500"></span> B</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-amber-500"></span> B-/C+</div>
+          <div class="flex items-center gap-1"><span class="w-3 h-3 rounded bg-red-500"></span> C and below</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Verdict -->
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-2">Our Take</h3>
+      <p class="text-sm text-slate-700 leading-relaxed">For a student aiming for <span class="font-semibold">strong foundational knowledge</span>, Dr. Smith's section is the better choice — higher effectiveness score, more rigorous training, and historical data shows stronger outcomes in follow-on CS courses. Prof. Lee's section is great if you want a lighter load or need to balance a tough semester, but students report being less prepared for CS 301.</p>
+      <div class="flex gap-2 mt-3">
+        <button class="btn btn-primary">Pick Dr. Smith →</button>
+        <button class="btn btn-secondary">Show more comparisons</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COURSE DETAIL
+       ============================================================ -->
+  <section id="view-course-detail" class="view hidden">
+    <div class="mb-4 flex items-center gap-3 text-sm">
+      <span class="chip chip-blue">CS 201</span>
+      <span class="text-slate-400">/</span>
+      <span class="text-slate-600">3 sections offered • Fall 2026</span>
+    </div>
+
+    <div class="card p-6 mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Data Structures</h1>
+      <p class="text-slate-600 mt-2 leading-relaxed">Introduction to fundamental data structures: arrays, linked lists, trees, graphs, hash tables. Time and space complexity analysis. Implementation in Java/Python. Prerequisite: CS 101 or equivalent programming experience.</p>
+      <div class="flex items-center gap-6 mt-4 text-sm">
+        <div><span class="text-slate-500">Credits:</span> <span class="font-semibold">3</span></div>
+        <div><span class="text-slate-500">Enrollment:</span> <span class="font-semibold">150/170</span></div>
+        <div><span class="text-slate-500">Required for:</span> <span class="font-semibold">CS major, SE minor</span></div>
+        <div><span class="text-slate-500">Avg rating:</span> <span class="font-semibold text-amber-500">4.3 ★</span></div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-4">
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Grade Distribution</h3>
+        <p class="text-xs text-slate-500 mb-2">Last 5 semesters, all sections</p>
+        <div class="bar-chart">
+          <div class="bar-col"><div class="bar" style="height:12%;background:#94a3b8"></div><div class="bar-label">A</div></div>
+          <div class="bar-col"><div class="bar" style="height:22%;background:#10b981"></div><div class="bar-label">A-</div></div>
+          <div class="bar-col"><div class="bar" style="height:34%;background:#10b981"></div><div class="bar-label">B+</div></div>
+          <div class="bar-col"><div class="bar" style="height:42%;background:#2563eb"></div><div class="bar-label">B</div></div>
+          <div class="bar-col"><div class="bar" style="height:28%;background:#f59e0b"></div><div class="bar-label">B-</div></div>
+          <div class="bar-col"><div class="bar" style="height:18%;background:#f59e0b"></div><div class="bar-label">C+</div></div>
+          <div class="bar-col"><div class="bar" style="height:10%;background:#ef4444"></div><div class="bar-label">C</div></div>
+          <div class="bar-col"><div class="bar" style="height:5%;background:#ef4444"></div><div class="bar-label">D/F</div></div>
+        </div>
+        <div class="text-center text-xs text-slate-500 mt-2">Median: <span class="font-semibold text-slate-700">B</span></div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Difficulty Trend</h3>
+        <p class="text-xs text-slate-500 mb-2">Has the course gotten harder?</p>
+        <div class="line-chart">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+            <line x1="40" y1="40" x2="400" y2="40" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="80" x2="400" y2="80" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="120" x2="400" y2="120" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <polyline points="40,90 130,85 220,80 310,70 400,60" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+            <circle cx="40" cy="90" r="3" fill="#ef4444"/>
+            <circle cx="130" cy="85" r="3" fill="#ef4444"/>
+            <circle cx="220" cy="80" r="3" fill="#ef4444"/>
+            <circle cx="310" cy="70" r="3" fill="#ef4444"/>
+            <circle cx="400" cy="60" r="3" fill="#ef4444"/>
+            <text x="40" y="135" font-size="10" fill="#64748b">Sp24</text>
+            <text x="130" y="135" font-size="10" fill="#64748b">Fa24</text>
+            <text x="220" y="135" font-size="10" fill="#64748b">Sp25</text>
+            <text x="310" y="135" font-size="10" fill="#64748b">Fa25</text>
+            <text x="385" y="135" font-size="10" fill="#64748b">Sp26</text>
+          </svg>
+        </div>
+        <div class="flex items-center gap-1 text-xs text-red-600 mt-1">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <span class="font-semibold">+18% harder</span> over 5 semesters
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Workload Trend</h3>
+        <p class="text-xs text-slate-500 mb-2">Average hours/week outside class</p>
+        <div class="line-chart">
+          <svg viewBox="0 0 400 140" preserveAspectRatio="none">
+            <line x1="40" y1="40" x2="400" y2="40" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="80" x2="400" y2="80" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <line x1="40" y1="120" x2="400" y2="120" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+            <polyline points="40,100 130,90 220,85 310,75 400,70" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+            <circle cx="40" cy="100" r="3" fill="#f59e0b"/>
+            <circle cx="130" cy="90" r="3" fill="#f59e0b"/>
+            <circle cx="220" cy="85" r="3" fill="#f59e0b"/>
+            <circle cx="310" cy="75" r="3" fill="#f59e0b"/>
+            <circle cx="400" cy="70" r="3" fill="#f59e0b"/>
+            <text x="40" y="135" font-size="10" fill="#64748b">Sp24</text>
+            <text x="130" y="135" font-size="10" fill="#64748b">Fa24</text>
+            <text x="220" y="135" font-size="10" fill="#64748b">Sp25</text>
+            <text x="310" y="135" font-size="10" fill="#64748b">Fa25</text>
+            <text x="385" y="135" font-size="10" fill="#64748b">Sp26</text>
+          </svg>
+        </div>
+        <div class="flex items-center gap-1 text-xs text-amber-600 mt-1">
+          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <span class="font-semibold">+1.8 hrs/wk</span> increase
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Retake Rate & Outcomes</h3>
+        <div class="space-y-4">
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-slate-600">% of students who retook</span>
+              <span class="font-bold text-amber-600">8.4%</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-amber-500 rounded" style="width:8.4%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-slate-600">% earned C or better</span>
+              <span class="font-bold text-green-600">95%</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-green-500 rounded" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-slate-600">% went on to pass CS 301</span>
+              <span class="font-bold text-green-600">88%</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-green-500 rounded" style="width:88%"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="text-slate-600">% reported prepared for 301</span>
+              <span class="font-bold text-blue-600">76%</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-blue-500 rounded" style="width:76%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-4">
+        <h3 class="font-semibold text-slate-900 mb-3">Prerequisite Chain</h3>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 p-2.5 rounded bg-slate-50">
+            <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">✓</div>
+            <div class="flex-1">
+              <div class="font-semibold text-sm">CS 101 — Intro to Programming</div>
+              <div class="text-xs text-slate-500">You completed with A- (Sp25)</div>
+            </div>
+            <span class="chip chip-green">Met</span>
+          </div>
+          <div class="flex items-center gap-3 p-2.5 rounded bg-slate-50">
+            <div class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center text-xs font-bold">✓</div>
+            <div class="flex-1">
+              <div class="font-semibold text-sm">MATH 130 — Discrete Math (recommended)</div>
+              <div class="text-xs text-slate-500">You completed with B+ (Sp25)</div>
+            </div>
+            <span class="chip chip-green">Met</span>
+          </div>
+          <div class="flex items-center gap-3 p-2.5 rounded bg-blue-50 border-2 border-blue-300">
+            <div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold">→</div>
+            <div class="flex-1">
+              <div class="font-semibold text-sm">CS 201 — Data Structures</div>
+              <div class="text-xs text-blue-600">Currently viewing</div>
+            </div>
+            <span class="chip chip-blue">Target</span>
+          </div>
+          <div class="flex items-center gap-3 p-2.5 rounded bg-slate-50">
+            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-xs font-bold">↳</div>
+            <div class="flex-1">
+              <div class="font-semibold text-sm text-slate-700">CS 301 — Algorithms (unlocks next)</div>
+              <div class="text-xs text-slate-500">Required: C or better in CS 201</div>
+            </div>
+            <span class="chip chip-slate">Locked</span>
+          </div>
+          <div class="flex items-center gap-3 p-2.5 rounded bg-slate-50">
+            <div class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 flex items-center justify-center text-xs font-bold">↳</div>
+            <div class="flex-1">
+              <div class="font-semibold text-sm text-slate-700">CS 320 — Operating Systems (unlocks next)</div>
+              <div class="text-xs text-slate-500">Required: C or better in CS 201</div>
+            </div>
+            <span class="chip chip-slate">Locked</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WILL IT FILL
+       ============================================================ -->
+  <section id="view-will-it-fill" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Will It Fill?</h1>
+      <p class="text-sm text-slate-500 mt-1">Predict seat availability and fill-up speed for sections on your watchlist.</p>
+    </div>
+
+    <div class="card p-4 mb-4 border-amber-300 border-2 bg-amber-50">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center text-lg font-bold">!</div>
+        <div class="flex-1">
+          <div class="font-semibold text-amber-900">CS 380 — Machine Learning (Dr. Foster) is filling fast</div>
+          <p class="text-sm text-amber-800 mt-1">12 of 40 seats remain. At current velocity, this section will be full in <span class="font-bold">~2.5 days</span>. Consider adding an alternate section or joining the waitlist.</p>
+        </div>
+        <button class="btn btn-primary !py-1 text-xs whitespace-nowrap">Take Action</button>
+      </div>
+    </div>
+
+    <div class="card p-4 mb-4">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-semibold text-slate-900">CS 380-A — Machine Learning</h3>
+        <div class="flex gap-1">
+          <span class="chip chip-amber">High Risk</span>
+          <span class="chip chip-slate">Section A</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+        <div class="stat-tile">
+          <div class="label">Seats Remaining</div>
+          <div class="value text-amber-600">12 <span class="text-sm text-slate-400 font-normal">/ 40</span></div>
+          <div class="sub">30% capacity left</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Current Velocity</div>
+          <div class="value text-amber-600">3.2 <span class="text-sm text-slate-400 font-normal">/day</span></div>
+          <div class="sub">7-day moving avg</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Predicted Fill Date</div>
+          <div class="value">3.7 days</div>
+          <div class="sub">Confidence: 78%</div>
+        </div>
+        <div class="stat-tile">
+          <div class="label">Waitlist Odds</div>
+          <div class="value text-red-600">22%</div>
+          <div class="sub">7-person waitlist</div>
+        </div>
+      </div>
+
+      <!-- Seat velocity chart -->
+      <h4 class="text-sm font-semibold text-slate-700 mb-2">Seat Velocity (last 14 days)</h4>
+      <div class="line-chart" style="height:160px">
+        <svg viewBox="0 0 600 160" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="velo" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3"/>
+              <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <!-- grid -->
+          <line x1="40" y1="20" x2="600" y2="20" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+          <line x1="40" y1="60" x2="600" y2="60" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+          <line x1="40" y1="100" x2="600" y2="100" stroke="#e2e8f0" stroke-dasharray="2,2"/>
+          <line x1="40" y1="140" x2="600" y2="140" stroke="#e2e8f0"/>
+          <!-- y axis labels -->
+          <text x="35" y="24" font-size="9" fill="#64748b" text-anchor="end">40</text>
+          <text x="35" y="64" font-size="9" fill="#64748b" text-anchor="end">30</text>
+          <text x="35" y="104" font-size="9" fill="#64748b" text-anchor="end">20</text>
+          <text x="35" y="144" font-size="9" fill="#64748b" text-anchor="end">10</text>
+          <!-- actual line -->
+          <polyline points="40,30 80,32 120,38 160,45 200,50 240,55 280,62 320,68 360,75 400,82 440,90 480,98 520,105 560,110 600,115" fill="none" stroke="#f59e0b" stroke-width="2.5"/>
+          <polygon points="40,30 80,32 120,38 160,45 200,50 240,55 280,62 320,68 360,75 400,82 440,90 480,98 520,105 560,110 600,115 600,140 40,140" fill="url(#velo)"/>
+          <!-- prediction (dashed) -->
+          <line x1="600" y1="115" x2="600" y2="135" stroke="#ef4444" stroke-dasharray="3,3"/>
+          <!-- confidence interval -->
+          <polygon points="600,100 600,135 660,140 660,100" fill="#ef4444" opacity="0.1"/>
+          <text x="610" y="125" font-size="10" fill="#ef4444" font-weight="600">CI</text>
+          <!-- x labels -->
+          <text x="40" y="155" font-size="9" fill="#64748b">14d ago</text>
+          <text x="320" y="155" font-size="9" fill="#64748b">7d ago</text>
+          <text x="595" y="155" font-size="9" fill="#64748b" text-anchor="end">today</text>
+          <!-- "Today" marker -->
+          <line x1="600" y1="20" x2="600" y2="140" stroke="#94a3b8" stroke-dasharray="2,2"/>
+        </svg>
+      </div>
+      <div class="flex items-center gap-3 text-xs mt-2">
+        <div class="flex items-center gap-1.5"><span class="w-3 h-0.5 bg-amber-500"></span> Actual enrollment</div>
+        <div class="flex items-center gap-1.5"><span class="w-3 h-3 bg-red-500 opacity-20"></span> Predicted range (CI)</div>
+      </div>
+    </div>
+
+    <!-- Historical context -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Historical Fill Pattern (CS 380 across years)</h3>
+      <div class="space-y-2">
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-slate-600">Sp 2025 (final)</span>
+            <span class="font-semibold text-red-600">100% full by day 1</span>
+          </div>
+          <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-red-500 rounded" style="width:100%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-slate-600">Fa 2024 (final)</span>
+            <span class="font-semibold text-amber-600">98% full by day 3</span>
+          </div>
+          <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-amber-500 rounded" style="width:98%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-slate-600">Sp 2024 (final)</span>
+            <span class="font-semibold text-amber-600">94% full by day 5</span>
+          </div>
+          <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-amber-500 rounded" style="width:94%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between text-sm mb-1">
+            <span class="text-slate-600">Fa 2023 (final)</span>
+            <span class="font-semibold text-amber-600">89% full by day 5</span>
+          </div>
+          <div class="h-2 bg-slate-100 rounded"><div class="h-2 bg-amber-500 rounded" style="width:89%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alternate sections -->
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Safer Alternatives</h3>
+      <div class="space-y-2">
+        <div class="flex items-center justify-between p-3 rounded-lg border border-green-200 bg-green-50">
+          <div>
+            <div class="font-semibold text-slate-900">CS 380-B — Machine Learning</div>
+            <div class="text-xs text-slate-600">Dr. Patel • MWF 2:00–2:50 PM</div>
+          </div>
+          <div class="text-right">
+            <div class="font-semibold text-green-600">28/40 seats</div>
+            <div class="text-xs text-slate-500">Low fill risk</div>
+          </div>
+        </div>
+        <div class="flex items-center justify-between p-3 rounded-lg border border-slate-200">
+          <div>
+            <div class="font-semibold text-slate-900">CS 380-C — Machine Learning (Honors)</div>
+            <div class="text-xs text-slate-600">Dr. Foster • TR 3:00–4:30 PM</div>
+          </div>
+          <div class="text-right">
+            <div class="font-semibold text-green-600">22/30 seats</div>
+            <div class="text-xs text-slate-500">Honors section, smaller</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       HEALTH SCORE
+       ============================================================ -->
+  <section id="view-health" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Schedule Health Score</h1>
+      <p class="text-sm text-slate-500 mt-1">Comprehensive grade for your current schedule draft.</p>
+    </div>
+
+    <!-- Top: gauge + summary -->
+    <div class="card p-6 mb-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="flex flex-col items-center">
+          <div class="gauge" style="width:200px;height:120px">
+            <svg viewBox="0 0 200 120">
+              <defs>
+                <linearGradient id="gaugeGrad" x1="0" x2="1">
+                  <stop offset="0%" stop-color="#ef4444"/>
+                  <stop offset="50%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#10b981"/>
+                </linearGradient>
+              </defs>
+              <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="#e2e8f0" stroke-width="14" stroke-linecap="round"/>
+              <path d="M 20 110 A 80 80 0 0 1 180 110" fill="none" stroke="url(#gaugeGrad)" stroke-width="14" stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="42"/>
+            </svg>
+            <div class="gauge-center">
+              <div class="text-4xl font-bold text-green-600">83</div>
+              <div class="text-xs text-slate-500 uppercase tracking-wider">Excellent</div>
+            </div>
+          </div>
+          <div class="mt-2 text-xs text-slate-500">Top 18% of generated schedules</div>
+        </div>
+
+        <div class="md:col-span-2 space-y-2">
+          <h3 class="font-semibold text-slate-900">Schedule #1 — 16 credits</h3>
+          <p class="text-sm text-slate-600">Strong balance of difficulty, no conflicts, good instructor quality. Slight concern: Tuesday is your heaviest day.</p>
+          <div class="flex flex-wrap gap-1.5">
+            <span class="chip chip-green">No conflicts</span>
+            <span class="chip chip-green">Walkable campus</span>
+            <span class="chip chip-amber">Heavy Tuesday</span>
+            <span class="chip chip-green">2 study days</span>
+            <span class="chip chip-blue">Predicted GPA 3.4</span>
+          </div>
+          <div class="flex gap-2 mt-3">
+            <button class="btn btn-primary !py-1.5 text-sm">Save this schedule</button>
+            <button class="btn btn-secondary !py-1.5 text-sm">Try variations</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Component breakdown -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-4">Score Breakdown</h3>
+      <div class="space-y-4">
+        <div>
+          <div class="flex justify-between items-end mb-1.5">
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Time Conflicts</div>
+              <div class="text-xs text-slate-500">No overlapping class times</div>
+            </div>
+            <div class="font-bold text-green-600 text-lg">100/100</div>
+          </div>
+          <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-2.5 bg-green-500 rounded-full" style="width:100%"></div></div>
+        </div>
+        <div>
+          <div class="flex justify-between items-end mb-1.5">
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Commute Friendliness</div>
+              <div class="text-xs text-slate-500">Walking time between buildings</div>
+            </div>
+            <div class="font-bold text-green-600 text-lg">92/100</div>
+          </div>
+          <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-2.5 bg-green-500 rounded-full" style="width:92%"></div></div>
+          <div class="text-xs text-slate-500 mt-1">Max gap: 12 min • Avg gap: 6 min</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-end mb-1.5">
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Workload Balance</div>
+              <div class="text-xs text-slate-500">Hours of work spread across days</div>
+            </div>
+            <div class="font-bold text-amber-600 text-lg">68/100</div>
+          </div>
+          <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-2.5 bg-amber-500 rounded-full" style="width:68%"></div></div>
+          <div class="text-xs text-slate-500 mt-1">Tuesday is 32% heavier than your lightest day</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-end mb-1.5">
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Grade Prediction</div>
+              <div class="text-xs text-slate-500">Predicted GPA based on instructor history</div>
+            </div>
+            <div class="font-bold text-green-600 text-lg">88/100</div>
+          </div>
+          <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-2.5 bg-green-500 rounded-full" style="width:88%"></div></div>
+          <div class="text-xs text-slate-500 mt-1">Predicted: 3.4 GPA • 78% confidence</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-end mb-1.5">
+            <div>
+              <div class="font-semibold text-slate-900 text-sm">Seat Urgency</div>
+              <div class="text-xs text-slate-500">Likelihood of getting into all sections</div>
+            </div>
+            <div class="font-bold text-amber-600 text-lg">71/100</div>
+          </div>
+          <div class="h-2.5 bg-slate-100 rounded-full overflow-hidden"><div class="h-2.5 bg-amber-500 rounded-full" style="width:71%"></div></div>
+          <div class="text-xs text-slate-500 mt-1">1 section at risk (12 seats left)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-3">To improve your score to 90+</h3>
+      <div class="space-y-2">
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-amber-50 border border-amber-200">
+          <div class="text-amber-600 font-bold">↻</div>
+          <div class="text-sm">
+            <span class="font-semibold">Move a Tuesday class to Thursday</span> — would improve workload balance by 14 points and bring the score to <span class="font-bold">87</span>.
+          </div>
+        </div>
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-blue-50 border border-blue-200">
+          <div class="text-blue-600 font-bold">⤴</div>
+          <div class="text-sm">
+            <span class="font-semibold">Swap to Dr. Park's section of CS 301</span> — would improve grade prediction by 6 points and bring the score to <span class="font-bold">88</span>.
+          </div>
+        </div>
+        <div class="flex items-start gap-2 p-3 rounded-lg bg-green-50 border border-green-200">
+          <div class="text-green-600 font-bold">✓</div>
+          <div class="text-sm">
+            <span class="font-semibold">Add CS 380-B as backup</span> — would eliminate seat urgency risk and bring the score to <span class="font-bold">91</span>.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STRESS TEST
+       ============================================================ -->
+  <section id="view-stress" class="view hidden">
+    <div class="mb-4">
+      <h1 class="text-2xl font-bold text-slate-900">Schedule Stress Test</h1>
+      <p class="text-sm text-slate-500 mt-1">What could go wrong? Pre-flight check for risk and burnout.</p>
+    </div>
+
+    <!-- Risk summary -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mb-4">
+      <div class="stat-tile border-l-4 border-green-500">
+        <div class="label">Risk Level</div>
+        <div class="value text-green-600">Low</div>
+        <div class="sub">2 minor flags</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Burnout Score</div>
+        <div class="value text-amber-600">42<span class="text-sm text-slate-400 font-normal">/100</span></div>
+        <div class="sub">Manageable</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Exam Conflicts</div>
+        <div class="value">0</div>
+        <div class="sub">All clear</div>
+      </div>
+      <div class="stat-tile">
+        <div class="label">Free Days</div>
+        <div class="value">2<span class="text-sm text-slate-400 font-normal">/5</span></div>
+        <div class="sub">Wed & Fri</div>
+      </div>
+    </div>
+
+    <!-- Risk flags -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Risk Flags</h3>
+      <div class="space-y-2">
+        <div class="risk-flag risk-med">
+          <div class="text-amber-600 text-lg">⚠</div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm text-amber-900">Heavy Tuesday</div>
+            <p class="text-xs text-amber-800 mt-0.5">You have 6 hours of class + 4 hours of work due. Consider moving a non-required assignment to a lighter day.</p>
+          </div>
+        </div>
+        <div class="risk-flag risk-med">
+          <div class="text-amber-600 text-lg">⚠</div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm text-amber-900">Final exam back-to-back</div>
+            <p class="text-xs text-amber-800 mt-0.5">CS 301 final (Dec 12, 8 AM) and MATH 320 final (Dec 12, 2 PM) on the same day. High cognitive load.</p>
+          </div>
+        </div>
+        <div class="risk-flag risk-low">
+          <div class="text-green-600 text-lg">✓</div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm text-green-900">No time conflicts</div>
+            <p class="text-xs text-green-800 mt-0.5">No overlapping class times across your schedule.</p>
+          </div>
+        </div>
+        <div class="risk-flag risk-low">
+          <div class="text-green-600 text-lg">✓</div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm text-green-900">Free day available</div>
+            <p class="text-xs text-green-800 mt-0.5">Wednesday is a free day — great for recovery, work, or focused study.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Energy forecast -->
+    <div class="card p-4 mb-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Energy Forecast by Day</h3>
+      <p class="text-xs text-slate-500 mb-4">Predicted mental energy level based on class difficulty, time of day, and workload</p>
+      <div class="grid grid-cols-5 gap-2">
+        <div class="text-center">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Mon</div>
+          <div class="h-32 bg-slate-100 rounded-lg relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-amber-500 to-amber-300" style="height:60%"></div>
+            <div class="absolute top-1 left-0 right-0 text-xs font-semibold text-slate-700">60%</div>
+          </div>
+          <div class="text-xs text-slate-500 mt-1">3 classes</div>
+        </div>
+        <div class="text-center">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Tue</div>
+          <div class="h-32 bg-slate-100 rounded-lg relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-red-500 to-red-300" style="height:90%"></div>
+            <div class="absolute top-1 left-0 right-0 text-xs font-semibold text-slate-700">90%</div>
+          </div>
+          <div class="text-xs text-red-600 font-semibold mt-1">3 classes</div>
+        </div>
+        <div class="text-center">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Wed</div>
+          <div class="h-32 bg-slate-100 rounded-lg relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-500 to-green-300" style="height:0%"></div>
+            <div class="absolute top-1 left-0 right-0 text-xs font-semibold text-slate-700">0%</div>
+          </div>
+          <div class="text-xs text-green-600 font-semibold mt-1">Free day</div>
+        </div>
+        <div class="text-center">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Thu</div>
+          <div class="h-32 bg-slate-100 rounded-lg relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-amber-500 to-amber-300" style="height:50%"></div>
+            <div class="absolute top-1 left-0 right-0 text-xs font-semibold text-slate-700">50%</div>
+          </div>
+          <div class="text-xs text-slate-500 mt-1">2 classes</div>
+        </div>
+        <div class="text-center">
+          <div class="text-xs font-semibold text-slate-700 mb-2">Fri</div>
+          <div class="h-32 bg-slate-100 rounded-lg relative overflow-hidden">
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-500 to-green-300" style="height:0%"></div>
+            <div class="absolute top-1 left-0 right-0 text-xs font-semibold text-slate-700">0%</div>
+          </div>
+          <div class="text-xs text-green-600 font-semibold mt-1">Free day</div>
+        </div>
+      </div>
+      <div class="mt-4 p-3 bg-blue-50 rounded-lg border border-blue-200">
+        <div class="text-sm">
+          <span class="font-semibold text-blue-900">💡 Tip:</span>
+          <span class="text-blue-800">Schedule deep work and study sessions on Wednesday when you have the most recovery capacity.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam calendar preview -->
+    <div class="card p-4">
+      <h3 class="font-semibold text-slate-900 mb-3">Final Exam Calendar</h3>
+      <div class="space-y-2">
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-green-50 border border-green-200">
+          <div class="w-12 text-center">
+            <div class="text-xs text-slate-500">Dec 9</div>
+            <div class="text-xs font-semibold">Tue</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">MATH 230 — Multivariable Calc</div>
+            <div class="text-xs text-slate-500">10:30 AM • 2 hours</div>
+          </div>
+          <span class="chip chip-green">Isolated</span>
+        </div>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-amber-50 border border-amber-200">
+          <div class="w-12 text-center">
+            <div class="text-xs text-slate-500">Dec 10</div>
+            <div class="text-xs font-semibold">Wed</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">CS 201 — Data Structures</div>
+            <div class="text-xs text-slate-500">8:00 AM • 2.5 hours</div>
+          </div>
+          <span class="chip chip-green">Isolated</span>
+        </div>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-red-50 border border-red-300 border-2">
+          <div class="w-12 text-center">
+            <div class="text-xs text-slate-500">Dec 12</div>
+            <div class="text-xs font-semibold">Fri</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">CS 301 — Algorithms</div>
+            <div class="text-xs text-slate-500">8:00 AM • 3 hours</div>
+          </div>
+          <span class="chip chip-red">Stacked</span>
+        </div>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-red-50 border border-red-300 border-2">
+          <div class="w-12 text-center">
+            <div class="text-xs text-slate-500">Dec 12</div>
+            <div class="text-xs font-semibold">Fri</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">MATH 320 — Real Analysis</div>
+            <div class="text-xs text-slate-500">2:00 PM • 2 hours</div>
+          </div>
+          <span class="chip chip-red">Stacked</span>
+        </div>
+        <div class="flex items-center gap-3 p-2.5 rounded-lg bg-green-50 border border-green-200">
+          <div class="w-12 text-center">
+            <div class="text-xs text-slate-500">Dec 16</div>
+            <div class="text-xs font-semibold">Tue</div>
+          </div>
+          <div class="flex-1">
+            <div class="font-semibold text-sm">ENG 110 — Composition</div>
+            <div class="text-xs text-slate-500">1:00 PM • Take-home</div>
+          </div>
+          <span class="chip chip-green">Isolated</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+
+<script>
+  // Tab switching
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const target = btn.dataset.tab;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.toggle("active", b === btn));
+      document.querySelectorAll(".view").forEach(v => v.classList.add("hidden"));
+      document.getElementById("view-" + target).classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+  document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => {
+    document.querySelector(`[data-tab="${b.dataset.go}"]`).click();
+  }));
+  document.querySelectorAll(".sub-tab").forEach(t => t.addEventListener("click", () => {
+    const siblings = t.parentElement.querySelectorAll(".sub-tab");
+    siblings.forEach(s => s.classList.remove("active"));
+    t.classList.add("active");
+  }));
+</script>
+</body>
+</html>
