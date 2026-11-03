@@ -83,19 +83,18 @@ CHIN!!101!!A!!Chinese I!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!Z Kexin!!EBLOCKE13
 CHIN!!101!!B!!Chinese I!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Z Kexin!!EBLOCKE139!!None!!None!!None!!None!!20!!20
 CHIN!!101!!C!!Chinese I!!3.00!!['T', 'R']!!11:00!!12:15!!M Wei!!EBLOCKE244!!None!!None!!None!!None!!20!!20
 COMP!!102!!A!!Programming I!!4.00!!['T', 'R']!!09:30!!10:45!!U Nisar!!SBLOCKS218!!SBLOCKS319!!['R']!!14:00!!16:50!!35!!35
-COMP!!102!!B!!Programming I!!4.00!!['T', 'R']!!09:30!!10:45!!N Ashraf!!SBLOCKS320!!SBLOCKS219!!['W']!!09:00!!11:50!!35!!35
+COMP!!102!!B!!Programming I!!4.00!!['T', 'R']!!09:30!!10:45!!N Ashraf!!SBLOCKS320!!SBLOCKS219!!['R']!!14:00!!16:50!!35!!35
 COMP!!111!!A!!Programming II!!4.00!!['T', 'R']!!11:00!!12:15!!F Shaheen!!SBLOCKS216!!SBLOCKS120!!['W']!!14:00!!16:50!!25!!25
 COMP!!111!!B!!Programming II!!4.00!!['T', 'R']!!09:30!!10:45!!TBD!!SBLOCKS219!!SBLOCKS320!!['T']!!14:00!!16:50!!35!!35
 COMP!!111!!C!!Programming II!!4.00!!['M', 'W']!!12:00!!12:50!!N Ashraf!!SBLOCKS319!!SBLOCKS317!!['F']!!12:00!!12:50!!35!!35
 COMP!!111!!D!!Programming II!!4.00!!['M', 'W', 'F']!!11:00!!11:50!!S Qureshi!!SBLOCKS316!!SBLOCKS319!!['T']!!14:00!!16:50!!35!!35
 COMP!!113!!A!!Discrete Mathematics!!3.00!!['T', 'R']!!14:00!!15:15!!A Atique!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 COMP!!113!!B!!Discrete Mathematics!!3.00!!['T', 'R']!!09:30!!10:45!!M Chaudhry!!SBLOCKS216!!None!!None!!None!!None!!35!!35
-COMP!!113!!C!!Discrete Mathematics!!3.00!!['T', 'R']!!11:00!!12:15!!S Nasim!!SBLOCKS215!!None!!None!!None!!None!!35!!35
+COMP!!113!!C!!Discrete Mathematics!!3.00!!['T', 'R']!!08:00!!09:15!!S Nasim!!SBLOCKS210!!None!!None!!None!!None!!35!!35
 COMP!!200!!A!!Data Struc. & Algor.!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!S Qureshi!!SBLOCKS319!!SBLOCKS320!!['R']!!14:00!!16:50!!35!!35
 COMP!!200!!B!!Data Struc. & Algor.!!4.00!!['T', 'R']!!08:00!!09:15!!F Shaheen!!SBLOCKS320!!SBLOCKS120!!['F']!!09:00!!11:50!!35!!35
 COMP!!206!!A!!Digital Logic Design!!3.00!!['T', 'R']!!14:00!!15:15!!I Iqbal!!SBLOCKS215!!SBLOCKS027A!!['W']!!08:00!!10:50!!25!!25
 COMP!!206!!B!!Digital Logic Design!!3.00!!['M']!!08:00!!10:50!!I Iqbal!!SBLOCKS027A!!SBLOCKS216!!['T', 'R']!!12:30!!13:45!!25!!25
-COMP!!206!!C!!Digital Logic Design!!3.00!!['T']!!08:00!!10:50!!M Butt!!SBLOCKS027A!!SBLOCKS316!!['T', 'R']!!09:30!!10:45!!25!!25
 COMP!!206!!D!!Digital Logic Design!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!SBLOCKS317!!SBLOCKS027A!!['F']!!09:00!!11:50!!25!!25
 COMP!!213!!A!!Database Systems!!4.00!!['M', 'W']!!10:00!!11:50!!N Sabahat!!SBLOCKS319!!None!!None!!None!!None!!35!!35
 COMP!!213!!B!!Database Systems!!4.00!!['W', 'F']!!15:00!!16:50!!S Abbasi!!SBLOCKS218!!None!!None!!None!!None!!35!!35
@@ -105,23 +104,23 @@ COMP!!220!!B!!Software Engineering!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Toor!
 COMP!!300!!A!!Computer Organizatio!!3.00!!['W']!!09:00!!10:50!!A Khan!!SBLOCKS215!!SBLOCKS218!!['F']!!09:00!!10:50!!35!!35
 COMP!!300!!B!!Computer Organizatio!!3.00!!['W']!!11:00!!12:50!!A Khan!!SBLOCKS317!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!35
 COMP!!300!!C!!Computer Organizatio!!3.00!!['M', 'W']!!15:00!!16:50!!I Iqbal!!SBLOCKS319!!None!!None!!None!!None!!35!!35
-COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS215!!SBLOCKS219!!['F']!!09:00!!10:50!!35!!35
+COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS219!!SBLOCKS219!!['W']!!09:00!!10:50!!35!!35
 COMP!!301!!B!!Operating Systems!!3.00!!['M']!!11:00!!12:50!!M Chaudhry!!SBLOCKS320!!SBLOCKS216!!['W']!!11:00!!12:50!!35!!35
 COMP!!302!!A!!Theory of Automata!!3.00!!['T', 'R']!!08:00!!09:15!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!35
 COMP!!302!!B!!Theory of Automata!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Yousaf!!SBLOCKS216!!None!!None!!None!!None!!35!!35
-COMP!!303!!A!!D&A of Algorithms!!3.00!!['T', 'R']!!08:00!!09:15!!Q Quraishi!!SBLOCKS316!!None!!None!!None!!None!!35!!35
+COMP!!303!!A!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Q Quraishi!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 COMP!!303!!B!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Nazar!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 COMP!!303!!C!!D&A of Algorithms!!3.00!!['T', 'R']!!12:30!!13:45!!N Nazar!!SBLOCKS215!!None!!None!!None!!None!!35!!35
-COMP!!311!!A!!Computer Networks!!3.00!!['M', 'W']!!11:00!!12:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
-COMP!!311!!B!!Computer Networks!!3.00!!['T', 'R']!!11:00!!12:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
+COMP!!311!!A!!Computer Networks!!3.00!!['T', 'R']!!09:00!!10:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
+COMP!!311!!B!!Computer Networks!!3.00!!['T', 'R']!!12:00!!13:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!311!!C!!Computer Networks!!3.00!!['M', 'W']!!09:00!!10:50!!A Basharat!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!360!!A!!Introduction to AI!!3.00!!['W', 'F']!!11:00!!12:50!!A Khanum!!SBLOCKS218!!None!!None!!None!!None!!35!!35
 COMP!!360!!B!!Introduction to AI!!3.00!!['T', 'R']!!11:00!!12:50!!A Khanum!!SBLOCKS218!!None!!None!!None!!None!!35!!35
-COMP!!360!!C!!Introduction to AI!!3.00!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS219!!SBLOCKS216!!['F']!!11:00!!12:50!!35!!35
+COMP!!360!!C!!Introduction to AI!!3.00!!['M']!!11:00!!12:50!!U Nisar!!SBLOCKS219!!SBLOCKS219!!['W']!!11:00!!12:50!!35!!35
 COMP!!401!!A!!Ethics Comp Professn!!1.00!!['F']!!12:00!!12:50!!S Nasim!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 COMP!!401!!B!!Ethics Comp Professn!!1.00!!['M']!!14:00!!14:50!!S Nasim!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 COMP!!410!!A!!Parallel and Distrib!!3.00!!['M']!!15:00!!16:50!!S Nasim!!SBLOCKS218!!SBLOCKS319!!['F']!!15:00!!16:50!!35!!35
-COMP!!410!!B!!Parallel and Distrib!!3.00!!['T', 'R']!!08:00!!09:50!!S Nasim!!SBLOCKS120!!None!!None!!None!!None!!25!!25
+COMP!!410!!B!!Parallel and Distrib!!3.00!!['T', 'R']!!10:00!!11:50!!S Nasim!!SBLOCKS319!!None!!None!!None!!None!!35!!35
 COMP!!421!!A!!Information Security!!3.00!!['T', 'R']!!12:30!!13:45!!A Basharat!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 COMP!!421!!B!!Information Security!!3.00!!['T', 'R']!!08:00!!09:15!!R Sirhindi!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 COMP!!421!!C!!Information Security!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!R Sirhindi!!SBLOCKS317!!None!!None!!None!!None!!35!!35
@@ -166,18 +165,18 @@ CRST!!471E!!A!!New Testament Book Study!!3.00!!['T', 'R']!!12:30!!13:45!!D Ephra
 CRST!!535B!!A!!Hebrew Exegesis Ezek!!3.00!!['W']!!15:00!!18:00!!D Lanz!!XBLOCKX018!!None!!None!!None!!None!!35!!35
 CRST!!565A!!A!!New Test.Theol.Theme!!3.00!!['T']!!15:00!!18:00!!W Davey!!XBLOCKX019!!None!!None!!None!!None!!25!!25
 CRST!!575C!!A!!Greek Exegesis Ephes!!3.00!!['R']!!15:00!!18:00!!W Davey!!XBLOCKX019!!None!!None!!None!!None!!35!!35
-CSCS!!100!!A!!Intro to Computing!!3.00!!['T', 'R']!!08:00!!09:15!!N Nazar!!SBLOCKS218!!None!!None!!None!!None!!35!!35
-CSCS!!100!!B!!Intro to Computing!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Saleem!!SBLOCKS320!!None!!None!!None!!None!!35!!35
-CSCS!!100!!C!!Intro to Computing!!3.00!!['T', 'R']!!12:30!!13:45!!R Sirhindi!!SBLOCKS319!!None!!None!!None!!None!!35!!35
-CSCS!!100!!D!!Intro to Computing!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Toor!!SBLOCKS219!!None!!None!!None!!None!!35!!35
-CSCS!!100!!E!!Intro to Computing!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Nisar!!SBLOCKS320!!None!!None!!None!!None!!35!!35
-CSCS!!100!!F!!Intro to Computing!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!SBLOCKS218!!None!!None!!None!!None!!35!!35
-CSCS!!100!!G!!Intro to Computing!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!SBLOCKS219!!None!!None!!None!!None!!35!!35
-CSCS!!100!!H!!Intro to Computing!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!35
-CSCS!!100!!I!!Intro to Computing!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!35
-CSCS!!100!!J!!Intro to Computing!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!SBLOCKS219!!None!!None!!None!!None!!35!!35
-CSCS!!101!!A!!Adv. Appl of ICT!!3.00!!['T', 'R']!!14:00!!15:15!!S Abbasi!!SBLOCKS218!!None!!None!!None!!None!!35!!35
-CSCS!!101!!B!!Adv. Appl of ICT!!3.00!!['T', 'R']!!12:30!!13:45!!N Sabahat!!SBLOCKS219!!None!!None!!None!!None!!35!!35
+CSCS!!100!!A!!Applications of ICT!!3.00!!['T', 'R']!!08:00!!09:15!!N Nazar!!SBLOCKS218!!None!!None!!None!!None!!35!!35
+CSCS!!100!!B!!Applications of ICT!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!Q Quraishi!!SBLOCKS320!!None!!None!!None!!None!!35!!35
+CSCS!!100!!C!!Applications of ICT!!3.00!!['T', 'R']!!12:30!!13:45!!R Sirhindi!!SBLOCKS319!!None!!None!!None!!None!!35!!35
+CSCS!!100!!D!!Applications of ICT!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!S Toor!!SBLOCKS219!!None!!None!!None!!None!!35!!35
+CSCS!!100!!E!!Applications of ICT!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!U Nisar!!SBLOCKS320!!None!!None!!None!!None!!35!!35
+CSCS!!100!!F!!Applications of ICT!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!SBLOCKS218!!None!!None!!None!!None!!35!!35
+CSCS!!100!!G!!Applications of ICT!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!TBD!!SBLOCKS219!!None!!None!!None!!None!!35!!35
+CSCS!!100!!H!!Applications of ICT!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!35
+CSCS!!100!!I!!Applications of ICT!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!SBLOCKS319!!None!!None!!None!!None!!35!!35
+CSCS!!100!!J!!Applications of ICT!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!SBLOCKS219!!None!!None!!None!!None!!35!!35
+CSCS!!101!!A!!Adv. Appl of ICT!!3.00!!['T', 'R']!!14:00!!15:15!!N Sabahat!!SBLOCKS218!!None!!None!!None!!None!!35!!35
+CSCS!!101!!B!!Adv. Appl of ICT!!3.00!!['T', 'R']!!12:30!!13:45!!S Abbasi!!SBLOCKS219!!None!!None!!None!!None!!35!!35
 CSCS!!105!!A!!Basic Electronics!!4.00!!['T', 'R']!!15:30!!16:45!!A Atique!!SBLOCKS316!!SBLOCKS027!!['R']!!08:00!!10:50!!25!!25
 CSCS!!202!!A!!Comp Linear Algeb!!3.00!!['T', 'R']!!11:00!!12:15!!F Ibraheem!!SBLOCKS413!!None!!None!!None!!None!!35!!35
 CSCS!!202!!B!!Comp Linear Algeb!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!F Janjua!!SBLOCKS316!!None!!None!!None!!None!!35!!35
@@ -192,7 +191,7 @@ CSCS!!320!!B!!Numerical Computing!!3.00!!['T', 'R']!!09:30!!10:45!!A Nadeem!!SBL
 CSCS!!320!!C!!Numerical Computing!!3.00!!['T', 'R']!!09:30!!10:45!!F Ibraheem!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 CSCS!!321!!A!!Cyber Security!!3.00!!['M', 'W']!!09:00!!10:50!!M Butt!!SBLOCKS218!!None!!None!!None!!None!!35!!35
 CSCS!!342!!A!!Web Application Deve!!3.00!!['M', 'W']!!08:00!!09:50!!A Yousaf!!SBLOCKS320!!None!!None!!None!!None!!35!!35
-CSCS!!363!!A!!Generative AI!!3.00!!['T', 'R']!!11:00!!12:15!!Q Quraishi!!SBLOCKS317!!None!!None!!None!!None!!35!!35
+CSCS!!363!!A!!Generative AI!!3.00!!['M', 'W']!!12:00!!12:50!!Q Quraishi!!SBLOCKS316!!SBLOCKS215!!['F']!!12:00!!12:50!!35!!35
 CSCS!!363!!B!!Generative AI!!3.00!!['T', 'R']!!11:00!!12:15!!M Butt!!SBLOCKS316!!None!!None!!None!!None!!35!!35
 CSCS!!366!!A!!Into.to Nat Language!!3.00!!['T', 'R']!!14:00!!15:15!!A Khanum!!SBLOCKS216!!None!!None!!None!!None!!35!!35
 CSCS!!367!!A!!Blockchain tech.&app!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Qureshi!!SBLOCKS316!!None!!None!!None!!None!!35!!35
@@ -359,7 +358,7 @@ FSQM!!699E!!C!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!I Khok
 FSQM!!699E!!D!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!K Muaz!!TBDTBD!!None!!None!!None!!None!!25!!25
 FSQM!!699E!!E!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!M Imran!!TBDTBD!!None!!None!!None!!None!!25!!25
 FSQM!!699E!!F!!Reserach Thesis!!0!!['M', 'T', 'W', 'R', 'F']!!None!!None!!S Ali!!TBDTBD!!None!!None!!None!!None!!25!!25
-GEOG!!101!!A!!Funda of Geography!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!EBLOCKE228!!None!!None!!None!!None!!35!!35
+GEOG!!101!!A!!Funda of Geography!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!K Shafiqu!!EBLOCKE228!!None!!None!!None!!None!!35!!35
 GEOG!!101!!B!!Funda of Geography!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!35
 GEOG!!101!!C!!Funda of Geography!!3.00!!['T', 'R']!!09:30!!10:45!!K Shakrul!!EBLOCKE228!!None!!None!!None!!None!!35!!35
 GEOG!!101!!D!!Funda of Geography!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!K Shafiqu!!EBLOCKE228!!None!!None!!None!!None!!35!!35
@@ -532,14 +531,14 @@ MCOM!!410!!A!!Documentary Making!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!A Amir!!E
 MCOM!!414!!A!!Research Methodology!!3.00!!['T', 'R']!!09:30!!10:45!!Dr S Abbas!!EBLOCKE041!!None!!None!!None!!None!!35!!35
 MCOM!!414!!B!!Research Methodology!!3.00!!['T', 'R']!!11:00!!12:15!!Dr S Abbas!!EBLOCKE041!!None!!None!!None!!None!!35!!35
 MCOM!!415!!A!!Comm Campaign Design!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Saleem!!EBLOCKE041!!None!!None!!None!!None!!35!!35
-MCOM!!415!!B!!Comm Campaign Design!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!Z Masood!!EBLOCKE041!!None!!None!!None!!None!!35!!35
+MCOM!!415!!B!!Comm Campaign Design!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!S Saleem!!EBLOCKE041!!None!!None!!None!!None!!35!!35
 MCOM!!430!!A!!Media Lab!!4.00!!['T', 'R']!!11:00!!12:15!!S Saleem!!MCENTE01!!None!!None!!None!!None!!35!!35
 MCOM!!499!!A!!Research Thesis/Proj!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!35!!35
 MCOM!!512!!A!!Comm.Res.MethodsII!!3.00!!['R']!!16:00!!19:00!!Dr S Abbas!!EBLOCKE039!!None!!None!!None!!None!!35!!35
 MCOM!!517!!A!!M.Debate:Issu.MCOM!!3.00!!['M']!!16:00!!19:00!!A Muzamil!!SBLOCKS109!!None!!None!!None!!None!!35!!35
 MCOM!!522!!A!!Inter. Journalism!!3.00!!['T']!!16:00!!19:00!!A Khan!!EBLOCKE039!!None!!None!!None!!None!!25!!25
 MCOM!!525!!A!!MCOM.Theory II!!3.00!!['W']!!16:00!!19:00!!F Jabeen!!EBLOCKE039!!None!!None!!None!!None!!35!!35
-MCOM!!526!!A!!Med.&Cul. Change!!3.00!!['T']!!16:00!!19:00!!S Saleem!!EBLOCKE040!!None!!None!!None!!None!!15!!15
+MCOM!!526!!A!!Med.&Cul. Change!!3.00!!['T']!!16:00!!19:00!!Z Masood!!EBLOCKE040!!None!!None!!None!!None!!15!!15
 MCOM!!699B!!A!!Thesis!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!TBD!!TBDTBD!!None!!None!!None!!None!!35!!35
 MPGN!!505!!A!!Genetic Basis of Hum!!3.00!!['T']!!16:00!!19:00!!N Asghar!!SBLOCKS313!!None!!None!!None!!None!!25!!25
 MPGN!!603!!A!!Cellular Signal Tran!!3.00!!['W']!!16:00!!19:00!!M Yousaf!!SBLOCKS313!!None!!None!!None!!None!!25!!25
@@ -609,6 +608,25 @@ PLSC!!101!!K!!Intro to Pol Science!!3.00!!['T', 'R']!!08:00!!09:15!!TBD!!EBLOCKE
 PLSC!!102!!A!!Pakistan Government!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!M Mirza!!EBLOCKE126!!None!!None!!None!!None!!35!!35
 PLSC!!102!!B!!Pakistan Government!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!K Khan!!EBLOCKE126!!None!!None!!None!!None!!35!!35
 PLSC!!102!!C!!Pakistan Government!!3.00!!['T', 'R']!!09:30!!10:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!35
+PLSC!!202!!A!!Gov. of Dev. Countri!!3.00!!['T', 'R']!!08:00!!09:15!!S Awan!!EBLOCKE228!!None!!None!!None!!None!!35!!35
+PLSC!!203!!A!!International Relati!!3.00!!['T', 'R']!!14:00!!15:15!!M Farooqi!!EBLOCKE122!!None!!None!!None!!None!!35!!35
+PLSC!!203!!B!!International Relati!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Mirza!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!212!!A!!Theor Comp. Politic!!3.00!!['T', 'R']!!12:30!!13:45!!M U Farooq!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!301!!A!!Ancnt, Mdvl, Poli Th!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!K Khan!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!301!!B!!Ancnt, Mdvl, Poli Th!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!S Awan!!EBLOCKE243!!None!!None!!None!!None!!35!!35
+PLSC!!302!!A!!Modern Political The!!3.00!!['T', 'R']!!15:30!!16:45!!Q Memon!!EBLOCKE202!!None!!None!!None!!None!!35!!35
+PLSC!!303!!A!!Contemp Poli Theory!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!Q Memon!!EBLOCKE213!!None!!None!!None!!None!!35!!35
+PLSC!!304!!A!!Research Methodology!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!A Qureshi!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!310!!A!!Politics Middle East!!3.00!!['T', 'R']!!12:30!!13:45!!M A Imran!!EBLOCKE122!!None!!None!!None!!None!!35!!35
+PLSC!!321!!A!!Pakistan Foreign Pol!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!TBD!!EBLOCKE140!!None!!None!!None!!None!!35!!35
+PLSC!!323!!A!!Intrntl Organization!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!M Farooqi!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!331!!A!!Const Law I - U.S.!!3.00!!['T', 'R']!!11:00!!12:15!!M Younis!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!336!!A!!Public Administratio!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!K Khan!!EBLOCKE243!!None!!None!!None!!None!!35!!35
+PLSC!!339!!A!!Gender and Politics!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!A. Indrias!!EBLOCKE139!!None!!None!!None!!None!!35!!35
+PLSC!!341!!A!!Politics of China!!3.00!!['T', 'R']!!14:00!!15:15!!M U Farooq!!EBLOCKE126!!None!!None!!None!!None!!35!!35
+PLSC!!400!!A!!Current Political Pr!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!Q Memon!!EBLOCKE228!!None!!None!!None!!None!!35!!35
+PLSC!!401!!A!!International Politi!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!S Sindhu!!EBLOCKE204!!None!!None!!None!!None!!35!!35
+PLSC!!403!!A!!Sem Majr Poli Scienc!!3.00!!['T', 'R']!!15:30!!16:45!!M Younis!!EBLOCKE126!!None!!None!!None!!None!!15!!15
 PSYC!!100!!A!!Intro to Psychology!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Majeed!!EBLOCKE230!!None!!None!!None!!None!!35!!35
 PSYC!!100!!B!!Intro to Psychology!!3.00!!['T', 'R']!!11:00!!12:15!!S Anthoney!!EBLOCKE347!!None!!None!!None!!None!!35!!35
 PSYC!!100!!C!!Intro to Psychology!!3.00!!['T', 'R']!!11:00!!12:15!!U Ashiq!!EBLOCKE137!!None!!None!!None!!None!!35!!35
