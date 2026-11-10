@@ -46,7 +46,7 @@ BIOT!!711!!A!!Recent trends in Agr!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!
 BIOT!!712!!A!!Advances in Medical!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!Team!!SBLOCKTBD!!None!!None!!None!!None!!25!!25
 CHEM!!100!!A!!Intro. to Chemistry!!3.00!!['M', 'W']!!09:00!!09:50!!M Asghar!!SBLOCKS210!!SBLOCKS148!!['W']!!11:00!!12:50!!35!!35
 CHEM!!100!!B!!Intro. to Chemistry!!3.00!!['M']!!11:00!!12:50!!M Rashida!!SBLOCKS148!!SBLOCKS210!!['T', 'R']!!09:30!!10:20!!35!!35
-CHEM!!100!!C!!Intro. to Chemistry!!4.00!!['T', 'R']!!12:30!!13:20!!M Abbas!!SBLOCKS210!!SBLOCKS135!!['R']!!09:00!!10:50!!35!!35
+CHEM!!100!!C!!Intro. to Chemistry!!3.00!!['T', 'R']!!12:30!!13:20!!M Abbas!!SBLOCKS210!!SBLOCKS135!!['R']!!09:00!!10:50!!35!!35
 CHEM!!100!!D!!Intro. to Chemistry!!3.00!!['M']!!09:00!!09:50!!M Qamar!!SBLOCKS212!!SBLOCKS148!!['F']!!14:00!!15:50!!35!!35
 CHEM!!100!!E!!Intro. to Chemistry!!3.00!!['M']!!09:00!!10:50!!H Abid!!SBLOCKS148!!SBLOCKS210!!['T', 'R']!!11:00!!11:50!!35!!35
 CHEM!!100!!F!!Intro. to Chemistry!!3.00!!['W', 'F']!!09:00!!09:50!!TBD!!SBLOCKS212!!SBLOCKS148!!['F']!!09:00!!10:50!!35!!35
@@ -94,7 +94,7 @@ COMP!!113!!C!!Discrete Mathematics!!3.00!!['T', 'R']!!08:00!!09:15!!S Nasim!!SBL
 COMP!!200!!A!!Data Struc. & Algor.!!4.00!!['M', 'W', 'F']!!14:00!!14:50!!S Qureshi!!SBLOCKS319!!SBLOCKS320!!['R']!!14:00!!16:50!!35!!35
 COMP!!200!!B!!Data Struc. & Algor.!!4.00!!['T', 'R']!!08:00!!09:15!!F Shaheen!!SBLOCKS320!!SBLOCKS120!!['F']!!09:00!!11:50!!35!!35
 COMP!!206!!A!!Digital Logic Design!!3.00!!['T', 'R']!!14:00!!15:15!!I Iqbal!!SBLOCKS215!!SBLOCKS027A!!['W']!!08:00!!10:50!!25!!25
-COMP!!206!!B!!Digital Logic Design!!3.00!!['M']!!08:00!!10:50!!I Iqbal!!SBLOCKS027A!!SBLOCKS216!!['T', 'R']!!12:30!!13:45!!25!!25
+COMP!!206!!B!!Digital Logic Design!!3.00!!['M']!!08:00!!10:50!!I Iqbal!!SBLOCKS027A!!SBLOCKS215!!['T', 'R']!!11:00!!12:15!!25!!25
 COMP!!206!!D!!Digital Logic Design!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!TBD!!SBLOCKS317!!SBLOCKS027A!!['F']!!09:00!!11:50!!25!!25
 COMP!!213!!A!!Database Systems!!4.00!!['M', 'W']!!10:00!!11:50!!N Sabahat!!SBLOCKS319!!None!!None!!None!!None!!35!!35
 COMP!!213!!B!!Database Systems!!4.00!!['W', 'F']!!15:00!!16:50!!S Abbasi!!SBLOCKS218!!None!!None!!None!!None!!35!!35
@@ -103,7 +103,7 @@ COMP!!220!!A!!Software Engineering!!3.00!!['T', 'R']!!09:30!!10:45!!N Sabahat!!S
 COMP!!220!!B!!Software Engineering!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Toor!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 COMP!!300!!A!!Computer Organizatio!!3.00!!['W']!!09:00!!10:50!!A Khan!!SBLOCKS215!!SBLOCKS218!!['F']!!09:00!!10:50!!35!!35
 COMP!!300!!B!!Computer Organizatio!!3.00!!['W']!!11:00!!12:50!!A Khan!!SBLOCKS317!!SBLOCKS319!!['F']!!11:00!!12:50!!35!!35
-COMP!!300!!C!!Computer Organizatio!!3.00!!['M', 'W']!!15:00!!16:50!!I Iqbal!!SBLOCKS319!!None!!None!!None!!None!!35!!35
+COMP!!300!!C!!Computer Organizatio!!3.00!!['M', 'W']!!11:00!!12:50!!I Iqbal!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!301!!A!!Operating Systems!!3.00!!['M']!!09:00!!10:50!!M Chaudhry!!SBLOCKS219!!SBLOCKS219!!['W']!!09:00!!10:50!!35!!35
 COMP!!301!!B!!Operating Systems!!3.00!!['M']!!11:00!!12:50!!M Chaudhry!!SBLOCKS320!!SBLOCKS216!!['W']!!11:00!!12:50!!35!!35
 COMP!!302!!A!!Theory of Automata!!3.00!!['T', 'R']!!08:00!!09:15!!A Yousaf!!SBLOCKS215!!None!!None!!None!!None!!35!!35
@@ -112,7 +112,7 @@ COMP!!303!!A!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!Q Quraishi
 COMP!!303!!B!!D&A of Algorithms!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Nazar!!SBLOCKS317!!None!!None!!None!!None!!35!!35
 COMP!!303!!C!!D&A of Algorithms!!3.00!!['T', 'R']!!12:30!!13:45!!N Nazar!!SBLOCKS215!!None!!None!!None!!None!!35!!35
 COMP!!311!!A!!Computer Networks!!3.00!!['T', 'R']!!09:00!!10:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
-COMP!!311!!B!!Computer Networks!!3.00!!['T', 'R']!!12:00!!13:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
+COMP!!311!!B!!comp!!3.00!!['T', 'R']!!12:00!!13:50!!M Mushtaq!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!311!!C!!Computer Networks!!3.00!!['M', 'W']!!09:00!!10:50!!A Basharat!!SBLOCKS120!!None!!None!!None!!None!!25!!25
 COMP!!360!!A!!Introduction to AI!!3.00!!['W', 'F']!!11:00!!12:50!!A Khanum!!SBLOCKS218!!None!!None!!None!!None!!35!!35
 COMP!!360!!B!!Introduction to AI!!3.00!!['T', 'R']!!11:00!!12:50!!A Khanum!!SBLOCKS218!!None!!None!!None!!None!!35!!35
