@@ -325,7 +325,7 @@ ENVR!!101!!B!!Intro Env Sciences!!3.00!!['M', 'F']!!14:00!!14:50!!D Bakker!!SBLO
 ENVR!!101!!C!!Intro Env Sciences!!3.00!!['T', 'R']!!14:00!!14:50!!TBD!!SBLOCKS424!!SBLOCKS039!!['F']!!14:00!!15:50!!35!!35
 ENVR!!151!!A!!Intro to Sources!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Akram!!SBLOCKS424!!None!!None!!None!!None!!35!!35
 ENVR!!210!!A!!Earth's Physl Realms!!3.00!!['T', 'R']!!09:30!!10:45!!K Shafiqu!!EBLOCKE242!!None!!None!!None!!None!!25!!25
-ENVR!!212!!A!!Res Methds&Stats!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!EBLOCKE105!!None!!None!!None!!None!!5!!5
+ENVR!!212!!A!!Res Methds&Stats!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!EBLOCKE105!!None!!None!!None!!None!!15!!15
 ENVR!!250!!A!!Environmental Manage!!3.00!!['T', 'R']!!11:00!!12:15!!S Machado!!SBLOCKS417!!None!!None!!None!!None!!35!!35
 ENVR!!252!!A!!Environ. Pollution!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!M Shahbaz!!SBLOCKS424!!None!!None!!None!!None!!35!!35
 ENVR!!252!!B!!Environ. Pollution!!3.00!!['M', 'W', 'F']!!09:00!!09:50!!S Ilyas!!SBLOCKS417!!None!!None!!None!!None!!35!!35
@@ -614,7 +614,7 @@ PKST!!101!!E!!Pakistan Studies!!2.00!!['M']!!11:00!!11:50!!M Shafqat!!EBLOCKE137
 PKST!!101!!F!!Pakistan Studies!!2.00!!['W', 'F']!!11:00!!11:50!!M Haider!!EBLOCKE137!!None!!None!!None!!None!!35!!35
 PKST!!103!!A!!Ideology and Constit!!2.00!!['T', 'R']!!09:00!!09:50!!F Masih!!EBLOCKE121!!None!!None!!None!!None!!35!!35
 PKST!!103!!B!!Ideology and Constit!!2.00!!['T', 'R']!!08:00!!08:50!!U Ibad!!EBLOCKE140!!None!!None!!None!!None!!35!!35
-PKST!!103!!C!!Ideology and Constit!!2.00!!['T', 'R']!!08:00!!08:50!!S Sumbal!!EBLOCKE121!!None!!None!!None!!None!!35!!35
+PKST!!103!!C!!Ideology and Constit!!2.00!!['M', 'W']!!15:00!!15:50!!S Sumbal!!SBLOCKS112!!None!!None!!None!!None!!35!!35
 PKST!!103!!D!!Ideology and Constit!!2.00!!['T', 'R']!!10:00!!10:50!!A Ijaz!!EBLOCKE121!!None!!None!!None!!None!!35!!35
 PKST!!103!!E!!Ideology and Constit!!2.00!!['M', 'W']!!12:00!!12:50!!M Shafqat!!EBLOCKE121!!None!!None!!None!!None!!35!!35
 PKST!!103!!F!!Ideology and Constit!!2.00!!['M']!!12:00!!12:50!!M Haider!!EBLOCKE137!!EBLOCKE121!!['F']!!12:00!!12:50!!35!!35
@@ -753,7 +753,7 @@ STAT!!102!!C!!Prob & Prob. Distrib!!3.00!!['T', 'R']!!09:30!!10:45!!S Ayub!!SBLO
 STAT!!115!!A!!Probability & Stat.!!3.00!!['T', 'R']!!09:30!!10:45!!I Naqvi!!SBLOCKS421!!None!!None!!None!!None!!35!!35
 STAT!!115!!B!!Probability & Stat.!!3.00!!['M', 'W', 'F']!!08:00!!08:50!!A Sarwar!!SBLOCKS425!!None!!None!!None!!None!!35!!35
 STAT!!115!!C!!Probability & Stat.!!3.00!!['T', 'R']!!12:30!!13:45!!S Samuel!!SBLOCKS420!!None!!None!!None!!None!!35!!35
-STAT!!212!!A!!Res. Meth. & Statis!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!EBLOCKE105!!None!!None!!None!!None!!20!!20
+STAT!!212!!A!!Res. Meth. & Statis!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Hanook!!EBLOCKE105!!None!!None!!None!!None!!10!!10
 STAT!!301!!A!!Sampling Tech. I!!3.00!!['T', 'R']!!14:00!!15:15!!N Mushtaq!!SBLOCKS425!!None!!None!!None!!None!!35!!35
 STAT!!305!!A!!Stat Quality Control!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!M Raza!!SBLOCKS421!!None!!None!!None!!None!!35!!35
 STAT!!313!!A!!Operation Research!!3.00!!['T', 'R']!!14:00!!15:15!!K Azhar!!SBLOCKS413!!None!!None!!None!!None!!15!!15
@@ -795,3 +795,24 @@ URDU!!101!!G!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Ashraf!
 URDU!!101!!H!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!11:00!!11:50!!Q Hayat!!EBLOCKE102!!None!!None!!None!!None!!35!!35
 URDU!!101!!I!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!10:00!!10:50!!S Ashraf!!EBLOCKE102!!None!!None!!None!!None!!35!!35
 URDU!!101!!J!!Communicative Urdu!!3.00!!['T', 'R']!!11:00!!12:15!!S Tahir!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!K!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!S Tahir!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!L!!Communicative Urdu!!3.00!!['T', 'R']!!12:30!!13:45!!M Tahir!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!M!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!A Anwar!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!N!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!A Samuel!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!O!!Communicative Urdu!!3.00!!['T', 'R']!!14:00!!15:15!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!35
+URDU!!101!!P!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE103!!None!!None!!None!!None!!35!!35
+URDU!!101!!Q!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Anwar!!EBLOCKE101!!None!!None!!None!!None!!35!!35
+URDU!!101!!R!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!N Khokhar!!SBLOCKS212!!None!!None!!None!!None!!35!!35
+URDU!!101!!S!!Communicative Urdu!!3.00!!['T', 'R']!!15:30!!16:45!!S Tahir!!EBLOCKE102!!None!!None!!None!!None!!35!!35
+URDU!!101!!T!!Communicative Urdu!!3.00!!['M', 'W', 'F']!!16:00!!16:50!!N Khokhar!!EBLOCKE102!!None!!None!!None!!None!!35!!35
+URDU!!102!!A!!A Foundational Study of Iqbal!!3.00!!['M', 'W', 'F']!!12:00!!12:50!!TBD!!EBLOCKE102!!None!!None!!None!!None!!35!!35
+URDU!!106!!A!!A Study of Manto!!3.00!!['M', 'W', 'F']!!15:00!!15:50!!A Virk!!EBLOCKE105!!None!!None!!None!!None!!35!!35
+URDU!!208!!A!!Script Wr in Urdu!!3.00!!['M', 'W', 'F']!!14:00!!14:50!!N Khokhar!!SBLOCKS212!!None!!None!!None!!None!!35!!35
+URDU!!209!!A!!Urdu and Media!!3.00!!['T', 'R']!!11:00!!12:15!!A Samuel!!EBLOCKE103!!None!!None!!None!!None!!35!!35
+URDU!!499!!A!!Practical Research!!3.00!!['M', 'T', 'W', 'R', 'F']!!None!!None!!A Samuel!!TBDTBD!!None!!None!!None!!None!!35!!35
+URDU!!501!!A!!Pri. & App. of Res.!!3.00!!['M']!!16:00!!19:00!!N Jamal!!EBLOCKE101!!None!!None!!None!!None!!25!!25
+URDU!!502!!A!!Pri. & App. of Crit.!!3.00!!['T']!!16:00!!19:00!!N Jamal!!EBLOCKE101!!None!!None!!None!!None!!25!!25
+URDU!!504!!A!!Lit. of the Minor.!!3.00!!['R']!!16:00!!19:00!!A Samuel!!EBLOCKE101!!None!!None!!None!!None!!25!!25
+URDU!!505!!A!!Principles and Appli!!3.00!!['M']!!17:00!!20:00!!N Jamal!!EBLOCKE102!!None!!None!!None!!None!!25!!25
+URDU!!506!!A!!Research Seminar!!3.00!!['T']!!16:00!!19:00!!A Virk!!EBLOCKE102!!None!!None!!None!!None!!25!!25
+URDU!!507!!A!!Art of Creative Writ!!3.00!!['W']!!16:00!!19:00!!M Tahir!!EBLOCKE102!!None!!None!!None!!None!!25!!25
